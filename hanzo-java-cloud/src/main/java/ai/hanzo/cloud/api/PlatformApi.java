@@ -27,35 +27,42 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.AddDomainReq;
-import ai.hanzo.cloud.model.AppView;
-import ai.hanzo.cloud.model.BuildBoard;
-import ai.hanzo.cloud.model.CDApp;
-import ai.hanzo.cloud.model.CdResp;
-import ai.hanzo.cloud.model.CreateAppReq;
-import ai.hanzo.cloud.model.Declaration;
-import ai.hanzo.cloud.model.DeclaredResp;
-import ai.hanzo.cloud.model.DeployLogs;
-import ai.hanzo.cloud.model.DeployReq;
-import ai.hanzo.cloud.model.DeploymentView;
-import ai.hanzo.cloud.model.DomainView;
-import ai.hanzo.cloud.model.DriftBoard;
-import ai.hanzo.cloud.model.EnvironmentBoard;
-import ai.hanzo.cloud.model.PipelineBoard;
-import ai.hanzo.cloud.model.PreviewReq;
-import ai.hanzo.cloud.model.PreviewView;
-import ai.hanzo.cloud.model.ProjectView;
-import ai.hanzo.cloud.model.PromoteReq;
-import ai.hanzo.cloud.model.Readiness;
-import ai.hanzo.cloud.model.ReleaseBoard;
-import ai.hanzo.cloud.model.RestartRef;
-import ai.hanzo.cloud.model.Restarted;
-import ai.hanzo.cloud.model.RollbackReq;
-import ai.hanzo.cloud.model.RunReq;
-import ai.hanzo.cloud.model.RunView;
-import ai.hanzo.cloud.model.RunnerBuildReq;
-import ai.hanzo.cloud.model.RunnerBuildResp;
-import ai.hanzo.cloud.model.SetEnvReq;
+import ai.hanzo.cloud.model.DeclareReq;
+import ai.hanzo.cloud.model.DeclareResp;
+import ai.hanzo.cloud.model.PlatformAddDomainReq;
+import ai.hanzo.cloud.model.PlatformAppMove;
+import ai.hanzo.cloud.model.PlatformAppOut;
+import ai.hanzo.cloud.model.PlatformAppView;
+import ai.hanzo.cloud.model.PlatformBuildBoard;
+import ai.hanzo.cloud.model.PlatformCDApp;
+import ai.hanzo.cloud.model.PlatformCdResp;
+import ai.hanzo.cloud.model.PlatformCreateAppReq;
+import ai.hanzo.cloud.model.PlatformDeclaration;
+import ai.hanzo.cloud.model.PlatformDeclaredResp;
+import ai.hanzo.cloud.model.PlatformDeployLogs;
+import ai.hanzo.cloud.model.PlatformDeployReq;
+import ai.hanzo.cloud.model.PlatformDeploymentView;
+import ai.hanzo.cloud.model.PlatformDomainView;
+import ai.hanzo.cloud.model.PlatformDriftBoard;
+import ai.hanzo.cloud.model.PlatformEnvironmentBoard;
+import ai.hanzo.cloud.model.PlatformPipelineBoard;
+import ai.hanzo.cloud.model.PlatformPreviewReq;
+import ai.hanzo.cloud.model.PlatformPreviewView;
+import ai.hanzo.cloud.model.PlatformProjectBoard;
+import ai.hanzo.cloud.model.PlatformProjectCreate;
+import ai.hanzo.cloud.model.PlatformProjectRename;
+import ai.hanzo.cloud.model.PlatformProjectView;
+import ai.hanzo.cloud.model.PlatformProjectWrite;
+import ai.hanzo.cloud.model.PlatformPromoteReq;
+import ai.hanzo.cloud.model.PlatformReadiness;
+import ai.hanzo.cloud.model.PlatformReleaseBoard;
+import ai.hanzo.cloud.model.PlatformRollbackReq;
+import ai.hanzo.cloud.model.PlatformRunReq;
+import ai.hanzo.cloud.model.PlatformRunView;
+import ai.hanzo.cloud.model.PlatformRunnerBuildReq;
+import ai.hanzo.cloud.model.PlatformRunnerBuildResp;
+import ai.hanzo.cloud.model.PlatformSetEnvReq;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -101,6 +108,162 @@ public class PlatformApi {
     }
 
     /**
+     * Build call for deletePlatformProjectsByProject
+     * @param project Project is the project to delete, from the path. (required)
+     * @param into Into is the existing project its apps move into. Required: an app always belongs to exactly one project. (optional)
+     * @param org Org names the projects&#39; owner, defaulting to the caller&#39;s own scope. (optional)
+     * @param mode Mode is &#x60;branch&#x60; (the default) or &#x60;commit&#x60;. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deletePlatformProjectsByProjectCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String into, @javax.annotation.Nullable String org, @javax.annotation.Nullable String mode, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/platform/projects/{project}"
+            .replace("{" + "project" + "}", localVarApiClient.escapeString(project.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (into != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("into", into));
+        }
+
+        if (org != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("org", org));
+        }
+
+        if (mode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("mode", mode));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deletePlatformProjectsByProjectValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String into, @javax.annotation.Nullable String org, @javax.annotation.Nullable String mode, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'project' is set
+        if (project == null) {
+            throw new ApiException("Missing the required parameter 'project' when calling deletePlatformProjectsByProject(Async)");
+        }
+
+        return deletePlatformProjectsByProjectCall(project, into, org, mode, _callback);
+
+    }
+
+    /**
+     * Folds a project into another.
+     * Folds a project into another.  An app always belongs to exactly one project, so a project ends by moving its apps: &#x60;into&#x60; names the existing project they move to, and the project is gone once no file names it. One commit to &#x60;hanzoai/universe&#x60;; &#x60;mode&#x60; as for create. 404 when &#x60;into&#x60; is not a project.
+     * @param project Project is the project to delete, from the path. (required)
+     * @param into Into is the existing project its apps move into. Required: an app always belongs to exactly one project. (optional)
+     * @param org Org names the projects&#39; owner, defaulting to the caller&#39;s own scope. (optional)
+     * @param mode Mode is &#x60;branch&#x60; (the default) or &#x60;commit&#x60;. (optional)
+     * @return PlatformProjectWrite
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public PlatformProjectWrite deletePlatformProjectsByProject(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String into, @javax.annotation.Nullable String org, @javax.annotation.Nullable String mode) throws ApiException {
+        ApiResponse<PlatformProjectWrite> localVarResp = deletePlatformProjectsByProjectWithHttpInfo(project, into, org, mode);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Folds a project into another.
+     * Folds a project into another.  An app always belongs to exactly one project, so a project ends by moving its apps: &#x60;into&#x60; names the existing project they move to, and the project is gone once no file names it. One commit to &#x60;hanzoai/universe&#x60;; &#x60;mode&#x60; as for create. 404 when &#x60;into&#x60; is not a project.
+     * @param project Project is the project to delete, from the path. (required)
+     * @param into Into is the existing project its apps move into. Required: an app always belongs to exactly one project. (optional)
+     * @param org Org names the projects&#39; owner, defaulting to the caller&#39;s own scope. (optional)
+     * @param mode Mode is &#x60;branch&#x60; (the default) or &#x60;commit&#x60;. (optional)
+     * @return ApiResponse&lt;PlatformProjectWrite&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PlatformProjectWrite> deletePlatformProjectsByProjectWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String into, @javax.annotation.Nullable String org, @javax.annotation.Nullable String mode) throws ApiException {
+        okhttp3.Call localVarCall = deletePlatformProjectsByProjectValidateBeforeCall(project, into, org, mode, null);
+        Type localVarReturnType = new TypeToken<PlatformProjectWrite>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Folds a project into another. (asynchronously)
+     * Folds a project into another.  An app always belongs to exactly one project, so a project ends by moving its apps: &#x60;into&#x60; names the existing project they move to, and the project is gone once no file names it. One commit to &#x60;hanzoai/universe&#x60;; &#x60;mode&#x60; as for create. 404 when &#x60;into&#x60; is not a project.
+     * @param project Project is the project to delete, from the path. (required)
+     * @param into Into is the existing project its apps move into. Required: an app always belongs to exactly one project. (optional)
+     * @param org Org names the projects&#39; owner, defaulting to the caller&#39;s own scope. (optional)
+     * @param mode Mode is &#x60;branch&#x60; (the default) or &#x60;commit&#x60;. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deletePlatformProjectsByProjectAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String into, @javax.annotation.Nullable String org, @javax.annotation.Nullable String mode, final ApiCallback<PlatformProjectWrite> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deletePlatformProjectsByProjectValidateBeforeCall(project, into, org, mode, _callback);
+        Type localVarReturnType = new TypeToken<PlatformProjectWrite>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for deletePlatformProjectsByProjectAppsByApp
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
@@ -112,6 +275,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deletePlatformProjectsByProjectAppsByAppCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -142,6 +306,7 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -177,7 +342,7 @@ public class PlatformApi {
 
     /**
      * Deletes an application and tears down what it runs.
-     * Deletes an application and tears down what it runs.  It removes the application record and tears down what it owns in the org&#39;s tenant namespace — its operator Service CR and its KMSSecret — then answers 204. An app this org and project do not have is 404, never a silent success.  Teardown is best-effort by design: a cluster that refuses or is unreachable does not block the delete, so the record cannot be left orphaned behind a broken cluster; the failure is logged for operators and the orphan reaper reconciles it. Requires a validated principal; 403 without one.
+     * Deletes an application and tears down what it runs.  It removes the application record and tears down what it owns in the org&#39;s tenant namespace — its operator Service CR and its KMSSecret — then answers 204. An app this org and project do not have is 404, never a silent success.  Teardown is best-effort by design: a cluster that refuses or is unreachable does not block the delete, so the record cannot be left orphaned behind a broken cluster; the failure is logged for operators and the orphan reaper reconciles it. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -186,6 +351,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deletePlatformProjectsByProjectAppsByApp(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -194,7 +360,7 @@ public class PlatformApi {
 
     /**
      * Deletes an application and tears down what it runs.
-     * Deletes an application and tears down what it runs.  It removes the application record and tears down what it owns in the org&#39;s tenant namespace — its operator Service CR and its KMSSecret — then answers 204. An app this org and project do not have is 404, never a silent success.  Teardown is best-effort by design: a cluster that refuses or is unreachable does not block the delete, so the record cannot be left orphaned behind a broken cluster; the failure is logged for operators and the orphan reaper reconciles it. Requires a validated principal; 403 without one.
+     * Deletes an application and tears down what it runs.  It removes the application record and tears down what it owns in the org&#39;s tenant namespace — its operator Service CR and its KMSSecret — then answers 204. An app this org and project do not have is 404, never a silent success.  Teardown is best-effort by design: a cluster that refuses or is unreachable does not block the delete, so the record cannot be left orphaned behind a broken cluster; the failure is logged for operators and the orphan reaper reconciles it. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @return ApiResponse&lt;Void&gt;
@@ -204,6 +370,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deletePlatformProjectsByProjectAppsByAppWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
@@ -213,7 +380,7 @@ public class PlatformApi {
 
     /**
      * Deletes an application and tears down what it runs. (asynchronously)
-     * Deletes an application and tears down what it runs.  It removes the application record and tears down what it owns in the org&#39;s tenant namespace — its operator Service CR and its KMSSecret — then answers 204. An app this org and project do not have is 404, never a silent success.  Teardown is best-effort by design: a cluster that refuses or is unreachable does not block the delete, so the record cannot be left orphaned behind a broken cluster; the failure is logged for operators and the orphan reaper reconciles it. Requires a validated principal; 403 without one.
+     * Deletes an application and tears down what it runs.  It removes the application record and tears down what it owns in the org&#39;s tenant namespace — its operator Service CR and its KMSSecret — then answers 204. An app this org and project do not have is 404, never a silent success.  Teardown is best-effort by design: a cluster that refuses or is unreachable does not block the delete, so the record cannot be left orphaned behind a broken cluster; the failure is logged for operators and the orphan reaper reconciles it. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -224,6 +391,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deletePlatformProjectsByProjectAppsByAppAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
@@ -245,6 +413,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deletePlatformProjectsByProjectAppsByAppDomainsByHostCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
@@ -276,6 +445,7 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -316,7 +486,7 @@ public class PlatformApi {
 
     /**
      * Detaches a hostname and releases the claim.
-     * Detaches a hostname and releases the claim.  It drops the host from the app&#39;s ingress and releases any custom claim on it, so the name becomes claimable again — by this org or any other. Answers 204.  The default host is permanent and cannot be removed: that is 400, not 404. A host that is neither attached nor claimed here is 404. Requires a validated principal; 403 without one.
+     * Detaches a hostname and releases the claim.  It drops the host from the app&#39;s ingress and releases any custom claim on it, so the name becomes claimable again — by this org or any other. Answers 204.  The default host is permanent and cannot be removed: that is 400, not 404. A host that is neither attached nor claimed here is 404. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param host Host is the hostname, from the path. (required)
@@ -326,6 +496,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deletePlatformProjectsByProjectAppsByAppDomainsByHost(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
@@ -334,7 +505,7 @@ public class PlatformApi {
 
     /**
      * Detaches a hostname and releases the claim.
-     * Detaches a hostname and releases the claim.  It drops the host from the app&#39;s ingress and releases any custom claim on it, so the name becomes claimable again — by this org or any other. Answers 204.  The default host is permanent and cannot be removed: that is 400, not 404. A host that is neither attached nor claimed here is 404. Requires a validated principal; 403 without one.
+     * Detaches a hostname and releases the claim.  It drops the host from the app&#39;s ingress and releases any custom claim on it, so the name becomes claimable again — by this org or any other. Answers 204.  The default host is permanent and cannot be removed: that is 400, not 404. A host that is neither attached nor claimed here is 404. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param host Host is the hostname, from the path. (required)
@@ -345,6 +516,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deletePlatformProjectsByProjectAppsByAppDomainsByHostWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
@@ -354,7 +526,7 @@ public class PlatformApi {
 
     /**
      * Detaches a hostname and releases the claim. (asynchronously)
-     * Detaches a hostname and releases the claim.  It drops the host from the app&#39;s ingress and releases any custom claim on it, so the name becomes claimable again — by this org or any other. Answers 204.  The default host is permanent and cannot be removed: that is 400, not 404. A host that is neither attached nor claimed here is 404. Requires a validated principal; 403 without one.
+     * Detaches a hostname and releases the claim.  It drops the host from the app&#39;s ingress and releases any custom claim on it, so the name becomes claimable again — by this org or any other. Answers 204.  The default host is permanent and cannot be removed: that is 400, not 404. A host that is neither attached nor claimed here is 404. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param host Host is the hostname, from the path. (required)
@@ -366,12 +538,145 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deletePlatformProjectsByProjectAppsByAppDomainsByHostAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deletePlatformProjectsByProjectAppsByAppDomainsByHostValidateBeforeCall(project, app, host, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getBuildById
+     * @param id ID is the build&#39;s id, from the path. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBuildByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/build/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBuildByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getBuildById(Async)");
+        }
+
+        return getBuildByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Answers one build: its status, and for a failed build the reason.
+     * Answers one build: its status, and for a failed build the reason.  A build belongs to the organization its credential names, so it is read by the credential that could have asked for it, and another organization&#39;s build is 404 rather than 403: whether an id exists is not said to anyone it is not for.
+     * @param id ID is the build&#39;s id, from the path. (required)
+     * @return PlatformRunnerBuildResp
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public PlatformRunnerBuildResp getBuildById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<PlatformRunnerBuildResp> localVarResp = getBuildByIdWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Answers one build: its status, and for a failed build the reason.
+     * Answers one build: its status, and for a failed build the reason.  A build belongs to the organization its credential names, so it is read by the credential that could have asked for it, and another organization&#39;s build is 404 rather than 403: whether an id exists is not said to anyone it is not for.
+     * @param id ID is the build&#39;s id, from the path. (required)
+     * @return ApiResponse&lt;PlatformRunnerBuildResp&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PlatformRunnerBuildResp> getBuildByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getBuildByIdValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<PlatformRunnerBuildResp>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Answers one build: its status, and for a failed build the reason. (asynchronously)
+     * Answers one build: its status, and for a failed build the reason.  A build belongs to the organization its credential names, so it is read by the credential that could have asked for it, and another organization&#39;s build is 404 rather than 403: whether an id exists is not said to anyone it is not for.
+     * @param id ID is the build&#39;s id, from the path. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBuildByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<PlatformRunnerBuildResp> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBuildByIdValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<PlatformRunnerBuildResp>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -385,6 +690,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformAppsCall(@javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
@@ -417,7 +723,8 @@ public class PlatformApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -443,44 +750,46 @@ public class PlatformApi {
 
     /**
      * Answers what this organisation has declared, joined with what the delivery plane has done about it.
-     * Answers what this organisation has declared, joined with what the delivery plane has done about it.  The join is best-effort BY DESIGN and says so when it is missing: the declarations ARE the answer to \&quot;what have I deployed\&quot;, so refusing the whole board because the cluster is unreadable would lose the half that is readable. What must never happen is a silent null — an unreadable plane is reported as &#x60;cd.unavailable&#x60; carrying the reason, never as an app with no reconciliation.
+     * Answers what this organisation has declared, joined with what the delivery plane has done about it.  The join is best-effort BY DESIGN and says so when it is missing: the declarations ARE the answer to \&quot;what have I deployed\&quot;, so refusing the whole board because the cluster is unreadable would lose the half that is readable. What must never happen is a silent null — an unreadable plane is reported as &#x60;cd.unavailable&#x60; carrying the reason, never as an app with no reconciliation, and a values file that does not parse is listed in &#x60;unreadable&#x60;, never dropped.
      * @param org Org names the organisation whose declarations to read, defaulting to the caller&#39;s own. Only a SuperAdmin may name one that is not theirs; anyone else naming a foreign org is refused, so this widens nothing by itself. (optional)
-     * @return DeclaredResp
+     * @return PlatformDeclaredResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DeclaredResp getPlatformApps(@javax.annotation.Nullable String org) throws ApiException {
-        ApiResponse<DeclaredResp> localVarResp = getPlatformAppsWithHttpInfo(org);
+    public PlatformDeclaredResp getPlatformApps(@javax.annotation.Nullable String org) throws ApiException {
+        ApiResponse<PlatformDeclaredResp> localVarResp = getPlatformAppsWithHttpInfo(org);
         return localVarResp.getData();
     }
 
     /**
      * Answers what this organisation has declared, joined with what the delivery plane has done about it.
-     * Answers what this organisation has declared, joined with what the delivery plane has done about it.  The join is best-effort BY DESIGN and says so when it is missing: the declarations ARE the answer to \&quot;what have I deployed\&quot;, so refusing the whole board because the cluster is unreadable would lose the half that is readable. What must never happen is a silent null — an unreadable plane is reported as &#x60;cd.unavailable&#x60; carrying the reason, never as an app with no reconciliation.
+     * Answers what this organisation has declared, joined with what the delivery plane has done about it.  The join is best-effort BY DESIGN and says so when it is missing: the declarations ARE the answer to \&quot;what have I deployed\&quot;, so refusing the whole board because the cluster is unreadable would lose the half that is readable. What must never happen is a silent null — an unreadable plane is reported as &#x60;cd.unavailable&#x60; carrying the reason, never as an app with no reconciliation, and a values file that does not parse is listed in &#x60;unreadable&#x60;, never dropped.
      * @param org Org names the organisation whose declarations to read, defaulting to the caller&#39;s own. Only a SuperAdmin may name one that is not theirs; anyone else naming a foreign org is refused, so this widens nothing by itself. (optional)
-     * @return ApiResponse&lt;DeclaredResp&gt;
+     * @return ApiResponse&lt;PlatformDeclaredResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeclaredResp> getPlatformAppsWithHttpInfo(@javax.annotation.Nullable String org) throws ApiException {
+    public ApiResponse<PlatformDeclaredResp> getPlatformAppsWithHttpInfo(@javax.annotation.Nullable String org) throws ApiException {
         okhttp3.Call localVarCall = getPlatformAppsValidateBeforeCall(org, null);
-        Type localVarReturnType = new TypeToken<DeclaredResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformDeclaredResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Answers what this organisation has declared, joined with what the delivery plane has done about it. (asynchronously)
-     * Answers what this organisation has declared, joined with what the delivery plane has done about it.  The join is best-effort BY DESIGN and says so when it is missing: the declarations ARE the answer to \&quot;what have I deployed\&quot;, so refusing the whole board because the cluster is unreadable would lose the half that is readable. What must never happen is a silent null — an unreadable plane is reported as &#x60;cd.unavailable&#x60; carrying the reason, never as an app with no reconciliation.
+     * Answers what this organisation has declared, joined with what the delivery plane has done about it.  The join is best-effort BY DESIGN and says so when it is missing: the declarations ARE the answer to \&quot;what have I deployed\&quot;, so refusing the whole board because the cluster is unreadable would lose the half that is readable. What must never happen is a silent null — an unreadable plane is reported as &#x60;cd.unavailable&#x60; carrying the reason, never as an app with no reconciliation, and a values file that does not parse is listed in &#x60;unreadable&#x60;, never dropped.
      * @param org Org names the organisation whose declarations to read, defaulting to the caller&#39;s own. Only a SuperAdmin may name one that is not theirs; anyone else naming a foreign org is refused, so this widens nothing by itself. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -490,12 +799,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformAppsAsync(@javax.annotation.Nullable String org, final ApiCallback<DeclaredResp> _callback) throws ApiException {
+    public okhttp3.Call getPlatformAppsAsync(@javax.annotation.Nullable String org, final ApiCallback<PlatformDeclaredResp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformAppsValidateBeforeCall(org, _callback);
-        Type localVarReturnType = new TypeToken<DeclaredResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformDeclaredResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -511,6 +821,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformAppsByAppCall(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
@@ -544,7 +855,8 @@ public class PlatformApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -578,17 +890,18 @@ public class PlatformApi {
      * Answers ONE declaration — what git says this app is, before the delivery plane has had any say in it.
      * @param app App is the DNS-1123 label of the declaration. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which app is read whatever else is sent. (required)
      * @param org Org names the organisation the declaration lives in, defaulting to the caller&#39;s own and subject to the same SuperAdmin rule as the listing. (optional)
-     * @return Declaration
+     * @return PlatformDeclaration
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Declaration getPlatformAppsByApp(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org) throws ApiException {
-        ApiResponse<Declaration> localVarResp = getPlatformAppsByAppWithHttpInfo(app, org);
+    public PlatformDeclaration getPlatformAppsByApp(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org) throws ApiException {
+        ApiResponse<PlatformDeclaration> localVarResp = getPlatformAppsByAppWithHttpInfo(app, org);
         return localVarResp.getData();
     }
 
@@ -597,18 +910,19 @@ public class PlatformApi {
      * Answers ONE declaration — what git says this app is, before the delivery plane has had any say in it.
      * @param app App is the DNS-1123 label of the declaration. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which app is read whatever else is sent. (required)
      * @param org Org names the organisation the declaration lives in, defaulting to the caller&#39;s own and subject to the same SuperAdmin rule as the listing. (optional)
-     * @return ApiResponse&lt;Declaration&gt;
+     * @return ApiResponse&lt;PlatformDeclaration&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Declaration> getPlatformAppsByAppWithHttpInfo(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org) throws ApiException {
+    public ApiResponse<PlatformDeclaration> getPlatformAppsByAppWithHttpInfo(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org) throws ApiException {
         okhttp3.Call localVarCall = getPlatformAppsByAppValidateBeforeCall(app, org, null);
-        Type localVarReturnType = new TypeToken<Declaration>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformDeclaration>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -625,12 +939,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformAppsByAppAsync(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org, final ApiCallback<Declaration> _callback) throws ApiException {
+    public okhttp3.Call getPlatformAppsByAppAsync(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org, final ApiCallback<PlatformDeclaration> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformAppsByAppValidateBeforeCall(app, org, _callback);
-        Type localVarReturnType = new TypeToken<Declaration>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformDeclaration>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -646,6 +961,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformAppsByAppCdCall(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
@@ -679,7 +995,8 @@ public class PlatformApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -713,17 +1030,18 @@ public class PlatformApi {
      * Answers ONE app&#39;s reconciliation alone — the poll a deploy console makes while it waits, without re-reading the whole inventory each time.
      * @param app App is the DNS-1123 label of the declaration. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which app is read whatever else is sent. (required)
      * @param org Org names the organisation the declaration lives in, defaulting to the caller&#39;s own and subject to the same SuperAdmin rule as the listing. (optional)
-     * @return CDApp
+     * @return PlatformCDApp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CDApp getPlatformAppsByAppCd(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org) throws ApiException {
-        ApiResponse<CDApp> localVarResp = getPlatformAppsByAppCdWithHttpInfo(app, org);
+    public PlatformCDApp getPlatformAppsByAppCd(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org) throws ApiException {
+        ApiResponse<PlatformCDApp> localVarResp = getPlatformAppsByAppCdWithHttpInfo(app, org);
         return localVarResp.getData();
     }
 
@@ -732,18 +1050,19 @@ public class PlatformApi {
      * Answers ONE app&#39;s reconciliation alone — the poll a deploy console makes while it waits, without re-reading the whole inventory each time.
      * @param app App is the DNS-1123 label of the declaration. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which app is read whatever else is sent. (required)
      * @param org Org names the organisation the declaration lives in, defaulting to the caller&#39;s own and subject to the same SuperAdmin rule as the listing. (optional)
-     * @return ApiResponse&lt;CDApp&gt;
+     * @return ApiResponse&lt;PlatformCDApp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CDApp> getPlatformAppsByAppCdWithHttpInfo(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org) throws ApiException {
+    public ApiResponse<PlatformCDApp> getPlatformAppsByAppCdWithHttpInfo(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org) throws ApiException {
         okhttp3.Call localVarCall = getPlatformAppsByAppCdValidateBeforeCall(app, org, null);
-        Type localVarReturnType = new TypeToken<CDApp>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformCDApp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -760,12 +1079,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformAppsByAppCdAsync(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org, final ApiCallback<CDApp> _callback) throws ApiException {
+    public okhttp3.Call getPlatformAppsByAppCdAsync(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org, final ApiCallback<PlatformCDApp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformAppsByAppCdValidateBeforeCall(app, org, _callback);
-        Type localVarReturnType = new TypeToken<CDApp>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformCDApp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -779,6 +1099,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformBuildsCall(final ApiCallback _callback) throws ApiException {
@@ -807,7 +1128,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -833,42 +1155,44 @@ public class PlatformApi {
 
     /**
      * Returns real build records for your org.
-     * Returns real build records for your org.  It lists the org&#39;s BuildKit build records — the git build step behind a deploy — each with the repo it built, the short commit, its status, when it started and how long it took. These are real records or an honest empty list; a build appears here because one ran, never because a page needed a row. Builds are created only by /deploy and the push-to-deploy hook. Requires a validated principal; 403 without one.
-     * @return BuildBoard
+     * Returns real build records for your org.  It lists the org&#39;s BuildKit build records — the git build step behind a deploy — each with the repo it built, the short commit, its status, when it started and how long it took, followed by its site builds: a project in the org&#39;s own code workspace built from its repository in a sandbox, newest first. These are real records or an honest empty list; a build appears here because one ran, never because a page needed a row. Requires a validated principal; 401 without one.
+     * @return PlatformBuildBoard
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BuildBoard getPlatformBuilds() throws ApiException {
-        ApiResponse<BuildBoard> localVarResp = getPlatformBuildsWithHttpInfo();
+    public PlatformBuildBoard getPlatformBuilds() throws ApiException {
+        ApiResponse<PlatformBuildBoard> localVarResp = getPlatformBuildsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns real build records for your org.
-     * Returns real build records for your org.  It lists the org&#39;s BuildKit build records — the git build step behind a deploy — each with the repo it built, the short commit, its status, when it started and how long it took. These are real records or an honest empty list; a build appears here because one ran, never because a page needed a row. Builds are created only by /deploy and the push-to-deploy hook. Requires a validated principal; 403 without one.
-     * @return ApiResponse&lt;BuildBoard&gt;
+     * Returns real build records for your org.  It lists the org&#39;s BuildKit build records — the git build step behind a deploy — each with the repo it built, the short commit, its status, when it started and how long it took, followed by its site builds: a project in the org&#39;s own code workspace built from its repository in a sandbox, newest first. These are real records or an honest empty list; a build appears here because one ran, never because a page needed a row. Requires a validated principal; 401 without one.
+     * @return ApiResponse&lt;PlatformBuildBoard&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BuildBoard> getPlatformBuildsWithHttpInfo() throws ApiException {
+    public ApiResponse<PlatformBuildBoard> getPlatformBuildsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlatformBuildsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<BuildBoard>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformBuildBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns real build records for your org. (asynchronously)
-     * Returns real build records for your org.  It lists the org&#39;s BuildKit build records — the git build step behind a deploy — each with the repo it built, the short commit, its status, when it started and how long it took. These are real records or an honest empty list; a build appears here because one ran, never because a page needed a row. Builds are created only by /deploy and the push-to-deploy hook. Requires a validated principal; 403 without one.
+     * Returns real build records for your org.  It lists the org&#39;s BuildKit build records — the git build step behind a deploy — each with the repo it built, the short commit, its status, when it started and how long it took, followed by its site builds: a project in the org&#39;s own code workspace built from its repository in a sandbox, newest first. These are real records or an honest empty list; a build appears here because one ran, never because a page needed a row. Requires a validated principal; 401 without one.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -877,12 +1201,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformBuildsAsync(final ApiCallback<BuildBoard> _callback) throws ApiException {
+    public okhttp3.Call getPlatformBuildsAsync(final ApiCallback<PlatformBuildBoard> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformBuildsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<BuildBoard>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformBuildBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -896,6 +1221,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformCdCall(final ApiCallback _callback) throws ApiException {
@@ -924,7 +1250,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -951,35 +1278,37 @@ public class PlatformApi {
     /**
      * Answers every Application the delivery plane holds.
      * Answers every Application the delivery plane holds.  Scoped to the namespaces the caller&#39;s own validated org owns: the ROLE admits the caller and the tenant boundary is applied inside, so an admin of one org never observes another&#39;s.
-     * @return CdResp
+     * @return PlatformCdResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CdResp getPlatformCd() throws ApiException {
-        ApiResponse<CdResp> localVarResp = getPlatformCdWithHttpInfo();
+    public PlatformCdResp getPlatformCd() throws ApiException {
+        ApiResponse<PlatformCdResp> localVarResp = getPlatformCdWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Answers every Application the delivery plane holds.
      * Answers every Application the delivery plane holds.  Scoped to the namespaces the caller&#39;s own validated org owns: the ROLE admits the caller and the tenant boundary is applied inside, so an admin of one org never observes another&#39;s.
-     * @return ApiResponse&lt;CdResp&gt;
+     * @return ApiResponse&lt;PlatformCdResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CdResp> getPlatformCdWithHttpInfo() throws ApiException {
+    public ApiResponse<PlatformCdResp> getPlatformCdWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlatformCdValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CdResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformCdResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -994,101 +1323,14 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformCdAsync(final ApiCallback<CdResp> _callback) throws ApiException {
+    public okhttp3.Call getPlatformCdAsync(final ApiCallback<PlatformCdResp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformCdValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CdResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformCdResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getPlatformCi
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getPlatformCiCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/platform/ci";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPlatformCiValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getPlatformCiCall(_callback);
-
-    }
-
-    /**
-     * Continuous integration (not wired)
-     * Answers 501. The forge&#39;s Actions runs need a Forgejo API client and this deployment has none; an empty run list would be indistinguishable from a forge with no runs.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getPlatformCi() throws ApiException {
-        getPlatformCiWithHttpInfo();
-    }
-
-    /**
-     * Continuous integration (not wired)
-     * Answers 501. The forge&#39;s Actions runs need a Forgejo API client and this deployment has none; an empty run list would be indistinguishable from a forge with no runs.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getPlatformCiWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getPlatformCiValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Continuous integration (not wired) (asynchronously)
-     * Answers 501. The forge&#39;s Actions runs need a Forgejo API client and this deployment has none; an empty run list would be indistinguishable from a forge with no runs.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getPlatformCiAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getPlatformCiValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -1101,6 +1343,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformEnvironmentsCall(final ApiCallback _callback) throws ApiException {
@@ -1129,7 +1372,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1155,42 +1399,44 @@ public class PlatformApi {
 
     /**
      * Returns your deploy targets, and what is running on each.
-     * Returns your deploy targets, and what is running on each.  It returns the org&#39;s environments — the distinct deploy targets its applications name, &#x60;production&#x60; for anything that names none — each aggregating the apps that target it, a rolled-up status and when it last changed.  An environment is DERIVED, not stored: there is nothing to create or delete here, and an environment exists exactly as long as an app points at it. Requires a validated principal; 403 without one.
-     * @return EnvironmentBoard
+     * Returns your deploy targets, and what is running on each.  It returns the org&#39;s environments — the distinct deploy targets its applications name, &#x60;production&#x60; for anything that names none — each aggregating the apps that target it, a rolled-up status and when it last changed.  An environment is DERIVED, not stored: there is nothing to create or delete here, and an environment exists exactly as long as an app points at it. Requires a validated principal; 401 without one.
+     * @return PlatformEnvironmentBoard
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EnvironmentBoard getPlatformEnvironments() throws ApiException {
-        ApiResponse<EnvironmentBoard> localVarResp = getPlatformEnvironmentsWithHttpInfo();
+    public PlatformEnvironmentBoard getPlatformEnvironments() throws ApiException {
+        ApiResponse<PlatformEnvironmentBoard> localVarResp = getPlatformEnvironmentsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns your deploy targets, and what is running on each.
-     * Returns your deploy targets, and what is running on each.  It returns the org&#39;s environments — the distinct deploy targets its applications name, &#x60;production&#x60; for anything that names none — each aggregating the apps that target it, a rolled-up status and when it last changed.  An environment is DERIVED, not stored: there is nothing to create or delete here, and an environment exists exactly as long as an app points at it. Requires a validated principal; 403 without one.
-     * @return ApiResponse&lt;EnvironmentBoard&gt;
+     * Returns your deploy targets, and what is running on each.  It returns the org&#39;s environments — the distinct deploy targets its applications name, &#x60;production&#x60; for anything that names none — each aggregating the apps that target it, a rolled-up status and when it last changed.  An environment is DERIVED, not stored: there is nothing to create or delete here, and an environment exists exactly as long as an app points at it. Requires a validated principal; 401 without one.
+     * @return ApiResponse&lt;PlatformEnvironmentBoard&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EnvironmentBoard> getPlatformEnvironmentsWithHttpInfo() throws ApiException {
+    public ApiResponse<PlatformEnvironmentBoard> getPlatformEnvironmentsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlatformEnvironmentsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<EnvironmentBoard>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformEnvironmentBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns your deploy targets, and what is running on each. (asynchronously)
-     * Returns your deploy targets, and what is running on each.  It returns the org&#39;s environments — the distinct deploy targets its applications name, &#x60;production&#x60; for anything that names none — each aggregating the apps that target it, a rolled-up status and when it last changed.  An environment is DERIVED, not stored: there is nothing to create or delete here, and an environment exists exactly as long as an app points at it. Requires a validated principal; 403 without one.
+     * Returns your deploy targets, and what is running on each.  It returns the org&#39;s environments — the distinct deploy targets its applications name, &#x60;production&#x60; for anything that names none — each aggregating the apps that target it, a rolled-up status and when it last changed.  An environment is DERIVED, not stored: there is nothing to create or delete here, and an environment exists exactly as long as an app points at it. Requires a validated principal; 401 without one.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1199,12 +1445,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformEnvironmentsAsync(final ApiCallback<EnvironmentBoard> _callback) throws ApiException {
+    public okhttp3.Call getPlatformEnvironmentsAsync(final ApiCallback<PlatformEnvironmentBoard> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformEnvironmentsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<EnvironmentBoard>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformEnvironmentBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1222,6 +1469,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformFleetCall(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift, final ApiCallback _callback) throws ApiException {
@@ -1266,7 +1514,8 @@ public class PlatformApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1297,17 +1546,18 @@ public class PlatformApi {
      * @param health Health narrows to one health colour: green, yellow or red. (optional)
      * @param org Org narrows to one image namespace. (optional)
      * @param drift Drift is &#x60;1&#x60; or &#x60;true&#x60; to show only rows that have actually drifted. It is a STRING and not a bool because those two spellings are exactly what the board has always accepted, and a bool would silently widen that to &#x60;?drift&#x60; alone and to &#x60;TRUE&#x60; — a behaviour change wearing a type change&#39;s clothes. (optional)
-     * @return DriftBoard
+     * @return PlatformDriftBoard
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DriftBoard getPlatformFleet(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift) throws ApiException {
-        ApiResponse<DriftBoard> localVarResp = getPlatformFleetWithHttpInfo(env, health, org, drift);
+    public PlatformDriftBoard getPlatformFleet(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift) throws ApiException {
+        ApiResponse<PlatformDriftBoard> localVarResp = getPlatformFleetWithHttpInfo(env, health, org, drift);
         return localVarResp.getData();
     }
 
@@ -1318,18 +1568,19 @@ public class PlatformApi {
      * @param health Health narrows to one health colour: green, yellow or red. (optional)
      * @param org Org narrows to one image namespace. (optional)
      * @param drift Drift is &#x60;1&#x60; or &#x60;true&#x60; to show only rows that have actually drifted. It is a STRING and not a bool because those two spellings are exactly what the board has always accepted, and a bool would silently widen that to &#x60;?drift&#x60; alone and to &#x60;TRUE&#x60; — a behaviour change wearing a type change&#39;s clothes. (optional)
-     * @return ApiResponse&lt;DriftBoard&gt;
+     * @return ApiResponse&lt;PlatformDriftBoard&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DriftBoard> getPlatformFleetWithHttpInfo(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift) throws ApiException {
+    public ApiResponse<PlatformDriftBoard> getPlatformFleetWithHttpInfo(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift) throws ApiException {
         okhttp3.Call localVarCall = getPlatformFleetValidateBeforeCall(env, health, org, drift, null);
-        Type localVarReturnType = new TypeToken<DriftBoard>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformDriftBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1348,12 +1599,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformFleetAsync(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift, final ApiCallback<DriftBoard> _callback) throws ApiException {
+    public okhttp3.Call getPlatformFleetAsync(@javax.annotation.Nullable String env, @javax.annotation.Nullable String health, @javax.annotation.Nullable String org, @javax.annotation.Nullable String drift, final ApiCallback<PlatformDriftBoard> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformFleetValidateBeforeCall(env, health, org, drift, _callback);
-        Type localVarReturnType = new TypeToken<DriftBoard>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformDriftBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1369,6 +1621,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformFleetByAppCall(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env, final ApiCallback _callback) throws ApiException {
@@ -1402,7 +1655,8 @@ public class PlatformApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1436,17 +1690,18 @@ public class PlatformApi {
      * Returns one platform service, resolved to production by default.  It returns a single platform service by its CR name, with the same declared-versus-running and drift facts the board carries. The name must be a DNS-1123 label; anything else is 400.  Namespaces are scanned in lifecycle order — main, then test, then dev — and the first match wins, so a bare name resolves to PRODUCTION. The scan covers only the namespaces the caller is authorized for, so an org admin can never read a service outside their own org, and a name found in none of them is 404 rather than a leak.
      * @param app App is the service&#39;s CR name, from the path. It must be a DNS-1123 label. (required)
      * @param env Env narrows the scan to one lifecycle env: main, test or dev. Omitted, the namespaces are scanned in lifecycle order and the first match wins, so a bare name resolves to PRODUCTION. (optional)
-     * @return AppView
+     * @return PlatformAppView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AppView getPlatformFleetByApp(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env) throws ApiException {
-        ApiResponse<AppView> localVarResp = getPlatformFleetByAppWithHttpInfo(app, env);
+    public PlatformAppView getPlatformFleetByApp(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env) throws ApiException {
+        ApiResponse<PlatformAppView> localVarResp = getPlatformFleetByAppWithHttpInfo(app, env);
         return localVarResp.getData();
     }
 
@@ -1455,18 +1710,19 @@ public class PlatformApi {
      * Returns one platform service, resolved to production by default.  It returns a single platform service by its CR name, with the same declared-versus-running and drift facts the board carries. The name must be a DNS-1123 label; anything else is 400.  Namespaces are scanned in lifecycle order — main, then test, then dev — and the first match wins, so a bare name resolves to PRODUCTION. The scan covers only the namespaces the caller is authorized for, so an org admin can never read a service outside their own org, and a name found in none of them is 404 rather than a leak.
      * @param app App is the service&#39;s CR name, from the path. It must be a DNS-1123 label. (required)
      * @param env Env narrows the scan to one lifecycle env: main, test or dev. Omitted, the namespaces are scanned in lifecycle order and the first match wins, so a bare name resolves to PRODUCTION. (optional)
-     * @return ApiResponse&lt;AppView&gt;
+     * @return ApiResponse&lt;PlatformAppView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AppView> getPlatformFleetByAppWithHttpInfo(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env) throws ApiException {
+    public ApiResponse<PlatformAppView> getPlatformFleetByAppWithHttpInfo(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env) throws ApiException {
         okhttp3.Call localVarCall = getPlatformFleetByAppValidateBeforeCall(app, env, null);
-        Type localVarReturnType = new TypeToken<AppView>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformAppView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1483,12 +1739,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformFleetByAppAsync(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env, final ApiCallback<AppView> _callback) throws ApiException {
+    public okhttp3.Call getPlatformFleetByAppAsync(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String env, final ApiCallback<PlatformAppView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformFleetByAppValidateBeforeCall(app, env, _callback);
-        Type localVarReturnType = new TypeToken<AppView>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformAppView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1503,6 +1760,7 @@ public class PlatformApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformHealthCall(final ApiCallback _callback) throws ApiException {
@@ -1531,7 +1789,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1558,7 +1817,7 @@ public class PlatformApi {
     /**
      * Reports whether this control plane can actually deploy anything.
      * Reports whether this control plane can actually deploy anything.  A real probe, not a status page. It answers 200 only when the metadata store is open AND the cluster is genuinely reachable — proved by LISTING the operator App CRD, which settles reachability and CRD presence in one bounded call, and which is the exact question every deploy depends on. Anything else is 503 carrying the real reason and whether the CRD was found.  A constructed cluster client proves nothing — it is built from a kubeconfig, not from a reachable apiserver — so this deliberately spends a round trip rather than reporting &#x60;ok&#x60; while every deploy fails. Not admin-gated: liveness has to be probe-able without a credential.
-     * @return Readiness
+     * @return PlatformReadiness
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1566,17 +1825,18 @@ public class PlatformApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Readiness getPlatformHealth() throws ApiException {
-        ApiResponse<Readiness> localVarResp = getPlatformHealthWithHttpInfo();
+    public PlatformReadiness getPlatformHealth() throws ApiException {
+        ApiResponse<PlatformReadiness> localVarResp = getPlatformHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports whether this control plane can actually deploy anything.
      * Reports whether this control plane can actually deploy anything.  A real probe, not a status page. It answers 200 only when the metadata store is open AND the cluster is genuinely reachable — proved by LISTING the operator App CRD, which settles reachability and CRD presence in one bounded call, and which is the exact question every deploy depends on. Anything else is 503 carrying the real reason and whether the CRD was found.  A constructed cluster client proves nothing — it is built from a kubeconfig, not from a reachable apiserver — so this deliberately spends a round trip rather than reporting &#x60;ok&#x60; while every deploy fails. Not admin-gated: liveness has to be probe-able without a credential.
-     * @return ApiResponse&lt;Readiness&gt;
+     * @return ApiResponse&lt;PlatformReadiness&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1584,11 +1844,12 @@ public class PlatformApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Readiness> getPlatformHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<PlatformReadiness> getPlatformHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlatformHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Readiness>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformReadiness>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1604,12 +1865,13 @@ public class PlatformApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformHealthAsync(final ApiCallback<Readiness> _callback) throws ApiException {
+    public okhttp3.Call getPlatformHealthAsync(final ApiCallback<PlatformReadiness> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Readiness>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformReadiness>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1623,6 +1885,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformPipelinesCall(final ApiCallback _callback) throws ApiException {
@@ -1651,7 +1914,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1677,42 +1941,44 @@ public class PlatformApi {
 
     /**
      * Returns one build-and-deploy pipeline per app, with its latest run.
-     * Returns one build-and-deploy pipeline per app, with its latest run.  It returns one pipeline per application in the caller&#39;s org — its repo or image source, its current status, and when its most recent deployment ran and how long it took. A pipeline is a PROJECTION of an app plus its newest deployment, not a separate record: it comes into existence with the app and is triggered only through /deploy, never here. Requires a validated principal; 403 without one.
-     * @return PipelineBoard
+     * Returns one build-and-deploy pipeline per app, with its latest run.  It returns one pipeline per application in the caller&#39;s org — its repo or image source, its current status, and when its most recent deployment ran and how long it took. A pipeline is a PROJECTION of an app plus its newest deployment, not a separate record: it comes into existence with the app and is triggered only through /deploy, never here. Requires a validated principal; 401 without one.
+     * @return PlatformPipelineBoard
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PipelineBoard getPlatformPipelines() throws ApiException {
-        ApiResponse<PipelineBoard> localVarResp = getPlatformPipelinesWithHttpInfo();
+    public PlatformPipelineBoard getPlatformPipelines() throws ApiException {
+        ApiResponse<PlatformPipelineBoard> localVarResp = getPlatformPipelinesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns one build-and-deploy pipeline per app, with its latest run.
-     * Returns one build-and-deploy pipeline per app, with its latest run.  It returns one pipeline per application in the caller&#39;s org — its repo or image source, its current status, and when its most recent deployment ran and how long it took. A pipeline is a PROJECTION of an app plus its newest deployment, not a separate record: it comes into existence with the app and is triggered only through /deploy, never here. Requires a validated principal; 403 without one.
-     * @return ApiResponse&lt;PipelineBoard&gt;
+     * Returns one build-and-deploy pipeline per app, with its latest run.  It returns one pipeline per application in the caller&#39;s org — its repo or image source, its current status, and when its most recent deployment ran and how long it took. A pipeline is a PROJECTION of an app plus its newest deployment, not a separate record: it comes into existence with the app and is triggered only through /deploy, never here. Requires a validated principal; 401 without one.
+     * @return ApiResponse&lt;PlatformPipelineBoard&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PipelineBoard> getPlatformPipelinesWithHttpInfo() throws ApiException {
+    public ApiResponse<PlatformPipelineBoard> getPlatformPipelinesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlatformPipelinesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PipelineBoard>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformPipelineBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns one build-and-deploy pipeline per app, with its latest run. (asynchronously)
-     * Returns one build-and-deploy pipeline per app, with its latest run.  It returns one pipeline per application in the caller&#39;s org — its repo or image source, its current status, and when its most recent deployment ran and how long it took. A pipeline is a PROJECTION of an app plus its newest deployment, not a separate record: it comes into existence with the app and is triggered only through /deploy, never here. Requires a validated principal; 403 without one.
+     * Returns one build-and-deploy pipeline per app, with its latest run.  It returns one pipeline per application in the caller&#39;s org — its repo or image source, its current status, and when its most recent deployment ran and how long it took. A pipeline is a PROJECTION of an app plus its newest deployment, not a separate record: it comes into existence with the app and is triggered only through /deploy, never here. Requires a validated principal; 401 without one.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1721,17 +1987,19 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformPipelinesAsync(final ApiCallback<PipelineBoard> _callback) throws ApiException {
+    public okhttp3.Call getPlatformPipelinesAsync(final ApiCallback<PlatformPipelineBoard> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformPipelinesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PipelineBoard>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformPipelineBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for getPlatformProjects
+     * @param org Org names whose projects to read. Omitted, a SuperAdmin reads every owner&#39;s and anyone else reads their own; naming another org is an act-as only a SuperAdmin has, and naming a platform directory reads the platform&#39;s own. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1740,9 +2008,10 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformProjectsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsCall(@javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1767,8 +2036,13 @@ public class PlatformApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (org != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("org", org));
+        }
+
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1787,49 +2061,54 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPlatformProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getPlatformProjectsCall(_callback);
+    private okhttp3.Call getPlatformProjectsValidateBeforeCall(@javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
+        return getPlatformProjectsCall(org, _callback);
 
     }
 
     /**
-     * Returns your org&#39;s projects, each with how many apps live under it.
-     * Returns your org&#39;s projects, each with how many apps live under it.  It lists the caller org&#39;s projects with the number of platform applications in each. A project is IAM&#39;s resource — it is created and deleted at /v1/iam/projects, never here — so this is the ONE projection IAM cannot serve: the project plus what the platform has put under it.  Requires a validated principal; 403 without one, and the org comes from that validated identity rather than a request header. This is the console&#39;s first authenticated read, so a project store that is not yet initialised degrades to an EMPTY list rather than a 500 — a new org genuinely has zero projects — and the real cause is surfaced to operators instead of to the caller.
-     * @return List&lt;ProjectView&gt;
+     * Answers every project the caller may see, with how its apps stand.
+     * Answers every project the caller may see, with how its apps stand.  A project is the &#x60;partOf&#x60; its apps&#39; values files name, so this is the declaration inventory grouped by that key, joined per app with CD&#39;s reconciliation, the pods the cluster runs and the newest release the registry publishes, and folded into counts: apps, namespaces, sync, health and drift. Declarations that name no project are listed separately, because each one is drift in git.  A SuperAdmin sees every owner&#39;s projects, the platform&#39;s own among them; an org admin sees only its own org&#39;s. &#x60;org&#x60; narrows a SuperAdmin to one owner. A plane that cannot be read leaves its counts at unknown and says why in cdUnavailable or clusterUnavailable; it never empties the board. A values file that does not parse is listed in unreadable and costs only its own row.
+     * @param org Org names whose projects to read. Omitted, a SuperAdmin reads every owner&#39;s and anyone else reads their own; naming another org is an act-as only a SuperAdmin has, and naming a platform directory reads the platform&#39;s own. (optional)
+     * @return PlatformProjectBoard
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProjectView> getPlatformProjects() throws ApiException {
-        ApiResponse<List<ProjectView>> localVarResp = getPlatformProjectsWithHttpInfo();
+    public PlatformProjectBoard getPlatformProjects(@javax.annotation.Nullable String org) throws ApiException {
+        ApiResponse<PlatformProjectBoard> localVarResp = getPlatformProjectsWithHttpInfo(org);
         return localVarResp.getData();
     }
 
     /**
-     * Returns your org&#39;s projects, each with how many apps live under it.
-     * Returns your org&#39;s projects, each with how many apps live under it.  It lists the caller org&#39;s projects with the number of platform applications in each. A project is IAM&#39;s resource — it is created and deleted at /v1/iam/projects, never here — so this is the ONE projection IAM cannot serve: the project plus what the platform has put under it.  Requires a validated principal; 403 without one, and the org comes from that validated identity rather than a request header. This is the console&#39;s first authenticated read, so a project store that is not yet initialised degrades to an EMPTY list rather than a 500 — a new org genuinely has zero projects — and the real cause is surfaced to operators instead of to the caller.
-     * @return ApiResponse&lt;List&lt;ProjectView&gt;&gt;
+     * Answers every project the caller may see, with how its apps stand.
+     * Answers every project the caller may see, with how its apps stand.  A project is the &#x60;partOf&#x60; its apps&#39; values files name, so this is the declaration inventory grouped by that key, joined per app with CD&#39;s reconciliation, the pods the cluster runs and the newest release the registry publishes, and folded into counts: apps, namespaces, sync, health and drift. Declarations that name no project are listed separately, because each one is drift in git.  A SuperAdmin sees every owner&#39;s projects, the platform&#39;s own among them; an org admin sees only its own org&#39;s. &#x60;org&#x60; narrows a SuperAdmin to one owner. A plane that cannot be read leaves its counts at unknown and says why in cdUnavailable or clusterUnavailable; it never empties the board. A values file that does not parse is listed in unreadable and costs only its own row.
+     * @param org Org names whose projects to read. Omitted, a SuperAdmin reads every owner&#39;s and anyone else reads their own; naming another org is an act-as only a SuperAdmin has, and naming a platform directory reads the platform&#39;s own. (optional)
+     * @return ApiResponse&lt;PlatformProjectBoard&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProjectView>> getPlatformProjectsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getPlatformProjectsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<ProjectView>>(){}.getType();
+    public ApiResponse<PlatformProjectBoard> getPlatformProjectsWithHttpInfo(@javax.annotation.Nullable String org) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformProjectsValidateBeforeCall(org, null);
+        Type localVarReturnType = new TypeToken<PlatformProjectBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Returns your org&#39;s projects, each with how many apps live under it. (asynchronously)
-     * Returns your org&#39;s projects, each with how many apps live under it.  It lists the caller org&#39;s projects with the number of platform applications in each. A project is IAM&#39;s resource — it is created and deleted at /v1/iam/projects, never here — so this is the ONE projection IAM cannot serve: the project plus what the platform has put under it.  Requires a validated principal; 403 without one, and the org comes from that validated identity rather than a request header. This is the console&#39;s first authenticated read, so a project store that is not yet initialised degrades to an EMPTY list rather than a 500 — a new org genuinely has zero projects — and the real cause is surfaced to operators instead of to the caller.
+     * Answers every project the caller may see, with how its apps stand. (asynchronously)
+     * Answers every project the caller may see, with how its apps stand.  A project is the &#x60;partOf&#x60; its apps&#39; values files name, so this is the declaration inventory grouped by that key, joined per app with CD&#39;s reconciliation, the pods the cluster runs and the newest release the registry publishes, and folded into counts: apps, namespaces, sync, health and drift. Declarations that name no project are listed separately, because each one is drift in git.  A SuperAdmin sees every owner&#39;s projects, the platform&#39;s own among them; an org admin sees only its own org&#39;s. &#x60;org&#x60; narrows a SuperAdmin to one owner. A plane that cannot be read leaves its counts at unknown and says why in cdUnavailable or clusterUnavailable; it never empties the board. A values file that does not parse is listed in unreadable and costs only its own row.
+     * @param org Org names whose projects to read. Omitted, a SuperAdmin reads every owner&#39;s and anyone else reads their own; naming another org is an act-as only a SuperAdmin has, and naming a platform directory reads the platform&#39;s own. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1838,18 +2117,20 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformProjectsAsync(final ApiCallback<List<ProjectView>> _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsAsync(@javax.annotation.Nullable String org, final ApiCallback<PlatformProjectBoard> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPlatformProjectsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<ProjectView>>(){}.getType();
+        okhttp3.Call localVarCall = getPlatformProjectsValidateBeforeCall(org, _callback);
+        Type localVarReturnType = new TypeToken<PlatformProjectBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for getPlatformProjectsByProject
      * @param project Project is the project&#39;s name, from the path. (required)
+     * @param org Org names the project&#39;s owner, defaulting to the caller&#39;s own scope — which for a SuperAdmin whose home is a brand org is the platform&#39;s. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1858,9 +2139,10 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformProjectsByProjectCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1886,8 +2168,13 @@ public class PlatformApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (org != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("org", org));
+        }
+
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1906,57 +2193,62 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPlatformProjectsByProjectValidateBeforeCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformProjectsByProjectValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
             throw new ApiException("Missing the required parameter 'project' when calling getPlatformProjectsByProject(Async)");
         }
 
-        return getPlatformProjectsByProjectCall(project, _callback);
+        return getPlatformProjectsByProjectCall(project, org, _callback);
 
     }
 
     /**
-     * Returns one project and its app count.
-     * Returns one project and its app count.  It returns a single project of the caller&#39;s org with the number of platform applications under it. A project this org does not have is 404, which is also what another tenant&#39;s project looks like from here. Requires a validated principal; 403 without one.
+     * Answers one project and every app in it.
+     * Answers one project and every app in it.  Each app carries its declaration — image, hosts, replicas, the KMS paths it reads (never a value) — together with the CD Application reconciling it, what its pods run, the newest release its registry publishes, and the drift between those four. 404 when no declaration in the caller&#39;s scope names the project.
      * @param project Project is the project&#39;s name, from the path. (required)
-     * @return ProjectView
+     * @param org Org names the project&#39;s owner, defaulting to the caller&#39;s own scope — which for a SuperAdmin whose home is a brand org is the platform&#39;s. (optional)
+     * @return PlatformProjectView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectView getPlatformProjectsByProject(@javax.annotation.Nonnull String project) throws ApiException {
-        ApiResponse<ProjectView> localVarResp = getPlatformProjectsByProjectWithHttpInfo(project);
+    public PlatformProjectView getPlatformProjectsByProject(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String org) throws ApiException {
+        ApiResponse<PlatformProjectView> localVarResp = getPlatformProjectsByProjectWithHttpInfo(project, org);
         return localVarResp.getData();
     }
 
     /**
-     * Returns one project and its app count.
-     * Returns one project and its app count.  It returns a single project of the caller&#39;s org with the number of platform applications under it. A project this org does not have is 404, which is also what another tenant&#39;s project looks like from here. Requires a validated principal; 403 without one.
+     * Answers one project and every app in it.
+     * Answers one project and every app in it.  Each app carries its declaration — image, hosts, replicas, the KMS paths it reads (never a value) — together with the CD Application reconciling it, what its pods run, the newest release its registry publishes, and the drift between those four. 404 when no declaration in the caller&#39;s scope names the project.
      * @param project Project is the project&#39;s name, from the path. (required)
-     * @return ApiResponse&lt;ProjectView&gt;
+     * @param org Org names the project&#39;s owner, defaulting to the caller&#39;s own scope — which for a SuperAdmin whose home is a brand org is the platform&#39;s. (optional)
+     * @return ApiResponse&lt;PlatformProjectView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectView> getPlatformProjectsByProjectWithHttpInfo(@javax.annotation.Nonnull String project) throws ApiException {
-        okhttp3.Call localVarCall = getPlatformProjectsByProjectValidateBeforeCall(project, null);
-        Type localVarReturnType = new TypeToken<ProjectView>(){}.getType();
+    public ApiResponse<PlatformProjectView> getPlatformProjectsByProjectWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String org) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformProjectsByProjectValidateBeforeCall(project, org, null);
+        Type localVarReturnType = new TypeToken<PlatformProjectView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Returns one project and its app count. (asynchronously)
-     * Returns one project and its app count.  It returns a single project of the caller&#39;s org with the number of platform applications under it. A project this org does not have is 404, which is also what another tenant&#39;s project looks like from here. Requires a validated principal; 403 without one.
+     * Answers one project and every app in it. (asynchronously)
+     * Answers one project and every app in it.  Each app carries its declaration — image, hosts, replicas, the KMS paths it reads (never a value) — together with the CD Application reconciling it, what its pods run, the newest release its registry publishes, and the drift between those four. 404 when no declaration in the caller&#39;s scope names the project.
      * @param project Project is the project&#39;s name, from the path. (required)
+     * @param org Org names the project&#39;s owner, defaulting to the caller&#39;s own scope — which for a SuperAdmin whose home is a brand org is the platform&#39;s. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1965,12 +2257,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformProjectsByProjectAsync(@javax.annotation.Nonnull String project, final ApiCallback<ProjectView> _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String org, final ApiCallback<PlatformProjectView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPlatformProjectsByProjectValidateBeforeCall(project, _callback);
-        Type localVarReturnType = new TypeToken<ProjectView>(){}.getType();
+        okhttp3.Call localVarCall = getPlatformProjectsByProjectValidateBeforeCall(project, org, _callback);
+        Type localVarReturnType = new TypeToken<PlatformProjectView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1985,6 +2278,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformProjectsByProjectAppsCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
@@ -2014,7 +2308,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2045,44 +2340,46 @@ public class PlatformApi {
 
     /**
      * Returns the applications in one project, with what the cluster says about them.
-     * Returns the applications in one project, with what the cluster says about them.  It lists the caller org&#39;s applications under one project. Each row carries the stored record and, for an app that is live or deploying, the LIVE phase and health read from its operator Service CR; an app with sealed env also carries its secret-sync state. Those cluster reads are best-effort — an unreachable cluster leaves those fields empty and never blocks the listing.  The project must exist in IAM for this org, or the answer is 404; the &#x60;default&#x60; project is implicit and always accepted, because it is part of what an org IS. Requires a validated principal; 403 without one.
+     * Returns the applications in one project, with what the cluster says about them.  It lists the caller org&#39;s applications under one project. Each row carries the stored record and, for an app that is live or deploying, the LIVE phase and health read from its operator Service CR; an app with sealed env also carries its secret-sync state. Those cluster reads are best-effort — an unreachable cluster leaves those fields empty and never blocks the listing.  The project must exist in IAM for this org, or the answer is 404; the &#x60;default&#x60; project is implicit and always accepted, because it is part of what an org IS. Requires a validated principal; 401 without one.
      * @param project Project is the project&#39;s name, from the path. (required)
-     * @return List&lt;AppView&gt;
+     * @return List&lt;PlatformAppOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<AppView> getPlatformProjectsByProjectApps(@javax.annotation.Nonnull String project) throws ApiException {
-        ApiResponse<List<AppView>> localVarResp = getPlatformProjectsByProjectAppsWithHttpInfo(project);
+    public List<PlatformAppOut> getPlatformProjectsByProjectApps(@javax.annotation.Nonnull String project) throws ApiException {
+        ApiResponse<List<PlatformAppOut>> localVarResp = getPlatformProjectsByProjectAppsWithHttpInfo(project);
         return localVarResp.getData();
     }
 
     /**
      * Returns the applications in one project, with what the cluster says about them.
-     * Returns the applications in one project, with what the cluster says about them.  It lists the caller org&#39;s applications under one project. Each row carries the stored record and, for an app that is live or deploying, the LIVE phase and health read from its operator Service CR; an app with sealed env also carries its secret-sync state. Those cluster reads are best-effort — an unreachable cluster leaves those fields empty and never blocks the listing.  The project must exist in IAM for this org, or the answer is 404; the &#x60;default&#x60; project is implicit and always accepted, because it is part of what an org IS. Requires a validated principal; 403 without one.
+     * Returns the applications in one project, with what the cluster says about them.  It lists the caller org&#39;s applications under one project. Each row carries the stored record and, for an app that is live or deploying, the LIVE phase and health read from its operator Service CR; an app with sealed env also carries its secret-sync state. Those cluster reads are best-effort — an unreachable cluster leaves those fields empty and never blocks the listing.  The project must exist in IAM for this org, or the answer is 404; the &#x60;default&#x60; project is implicit and always accepted, because it is part of what an org IS. Requires a validated principal; 401 without one.
      * @param project Project is the project&#39;s name, from the path. (required)
-     * @return ApiResponse&lt;List&lt;AppView&gt;&gt;
+     * @return ApiResponse&lt;List&lt;PlatformAppOut&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<AppView>> getPlatformProjectsByProjectAppsWithHttpInfo(@javax.annotation.Nonnull String project) throws ApiException {
+    public ApiResponse<List<PlatformAppOut>> getPlatformProjectsByProjectAppsWithHttpInfo(@javax.annotation.Nonnull String project) throws ApiException {
         okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsValidateBeforeCall(project, null);
-        Type localVarReturnType = new TypeToken<List<AppView>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<PlatformAppOut>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns the applications in one project, with what the cluster says about them. (asynchronously)
-     * Returns the applications in one project, with what the cluster says about them.  It lists the caller org&#39;s applications under one project. Each row carries the stored record and, for an app that is live or deploying, the LIVE phase and health read from its operator Service CR; an app with sealed env also carries its secret-sync state. Those cluster reads are best-effort — an unreachable cluster leaves those fields empty and never blocks the listing.  The project must exist in IAM for this org, or the answer is 404; the &#x60;default&#x60; project is implicit and always accepted, because it is part of what an org IS. Requires a validated principal; 403 without one.
+     * Returns the applications in one project, with what the cluster says about them.  It lists the caller org&#39;s applications under one project. Each row carries the stored record and, for an app that is live or deploying, the LIVE phase and health read from its operator Service CR; an app with sealed env also carries its secret-sync state. Those cluster reads are best-effort — an unreachable cluster leaves those fields empty and never blocks the listing.  The project must exist in IAM for this org, or the answer is 404; the &#x60;default&#x60; project is implicit and always accepted, because it is part of what an org IS. Requires a validated principal; 401 without one.
      * @param project Project is the project&#39;s name, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2092,12 +2389,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformProjectsByProjectAppsAsync(@javax.annotation.Nonnull String project, final ApiCallback<List<AppView>> _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsAsync(@javax.annotation.Nonnull String project, final ApiCallback<List<PlatformAppOut>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsValidateBeforeCall(project, _callback);
-        Type localVarReturnType = new TypeToken<List<AppView>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<PlatformAppOut>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2113,6 +2411,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformProjectsByProjectAppsByAppCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -2143,7 +2442,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2179,46 +2479,48 @@ public class PlatformApi {
 
     /**
      * Returns one application, with its live phase, health and secret sync.
-     * Returns one application, with its live phase, health and secret sync.  It returns a single application of the caller&#39;s org together with what the cluster currently reports for it: the operator Service CR&#39;s phase and health, and whether its sealed env has synced. An app this org and project do not have is 404. Requires a validated principal; 403 without one.
+     * Returns one application, with its live phase, health and secret sync.  It returns a single application of the caller&#39;s org together with what the cluster currently reports for it: the operator Service CR&#39;s phase and health, and whether its sealed env has synced. An app this org and project do not have is 404. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @return AppView
+     * @return PlatformAppOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AppView getPlatformProjectsByProjectAppsByApp(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        ApiResponse<AppView> localVarResp = getPlatformProjectsByProjectAppsByAppWithHttpInfo(project, app);
+    public PlatformAppOut getPlatformProjectsByProjectAppsByApp(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        ApiResponse<PlatformAppOut> localVarResp = getPlatformProjectsByProjectAppsByAppWithHttpInfo(project, app);
         return localVarResp.getData();
     }
 
     /**
      * Returns one application, with its live phase, health and secret sync.
-     * Returns one application, with its live phase, health and secret sync.  It returns a single application of the caller&#39;s org together with what the cluster currently reports for it: the operator Service CR&#39;s phase and health, and whether its sealed env has synced. An app this org and project do not have is 404. Requires a validated principal; 403 without one.
+     * Returns one application, with its live phase, health and secret sync.  It returns a single application of the caller&#39;s org together with what the cluster currently reports for it: the operator Service CR&#39;s phase and health, and whether its sealed env has synced. An app this org and project do not have is 404. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @return ApiResponse&lt;AppView&gt;
+     * @return ApiResponse&lt;PlatformAppOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AppView> getPlatformProjectsByProjectAppsByAppWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+    public ApiResponse<PlatformAppOut> getPlatformProjectsByProjectAppsByAppWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
         okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppValidateBeforeCall(project, app, null);
-        Type localVarReturnType = new TypeToken<AppView>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformAppOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns one application, with its live phase, health and secret sync. (asynchronously)
-     * Returns one application, with its live phase, health and secret sync.  It returns a single application of the caller&#39;s org together with what the cluster currently reports for it: the operator Service CR&#39;s phase and health, and whether its sealed env has synced. An app this org and project do not have is 404. Requires a validated principal; 403 without one.
+     * Returns one application, with its live phase, health and secret sync.  It returns a single application of the caller&#39;s org together with what the cluster currently reports for it: the operator Service CR&#39;s phase and health, and whether its sealed env has synced. An app this org and project do not have is 404. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2229,12 +2531,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformProjectsByProjectAppsByAppAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<AppView> _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsByAppAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<PlatformAppOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppValidateBeforeCall(project, app, _callback);
-        Type localVarReturnType = new TypeToken<AppView>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformAppOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2250,6 +2553,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -2280,7 +2584,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2316,46 +2621,48 @@ public class PlatformApi {
 
     /**
      * Returns an app&#39;s deployment history.
-     * Returns an app&#39;s deployment history.  It lists every deployment recorded for one of the caller org&#39;s applications, newest version first, each with its version, status, source, commit and image. Failed and superseded attempts are included — that is the point of a history. Requires a validated principal; 403 without one.
+     * Returns an app&#39;s deployment history.  It lists every deployment recorded for one of the caller org&#39;s applications, newest version first, each with its version, status, source, commit and image. Failed and superseded attempts are included — that is the point of a history. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @return List&lt;DeploymentView&gt;
+     * @return List&lt;PlatformDeploymentView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<DeploymentView> getPlatformProjectsByProjectAppsByAppDeployments(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        ApiResponse<List<DeploymentView>> localVarResp = getPlatformProjectsByProjectAppsByAppDeploymentsWithHttpInfo(project, app);
+    public List<PlatformDeploymentView> getPlatformProjectsByProjectAppsByAppDeployments(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        ApiResponse<List<PlatformDeploymentView>> localVarResp = getPlatformProjectsByProjectAppsByAppDeploymentsWithHttpInfo(project, app);
         return localVarResp.getData();
     }
 
     /**
      * Returns an app&#39;s deployment history.
-     * Returns an app&#39;s deployment history.  It lists every deployment recorded for one of the caller org&#39;s applications, newest version first, each with its version, status, source, commit and image. Failed and superseded attempts are included — that is the point of a history. Requires a validated principal; 403 without one.
+     * Returns an app&#39;s deployment history.  It lists every deployment recorded for one of the caller org&#39;s applications, newest version first, each with its version, status, source, commit and image. Failed and superseded attempts are included — that is the point of a history. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @return ApiResponse&lt;List&lt;DeploymentView&gt;&gt;
+     * @return ApiResponse&lt;List&lt;PlatformDeploymentView&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<DeploymentView>> getPlatformProjectsByProjectAppsByAppDeploymentsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+    public ApiResponse<List<PlatformDeploymentView>> getPlatformProjectsByProjectAppsByAppDeploymentsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
         okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppDeploymentsValidateBeforeCall(project, app, null);
-        Type localVarReturnType = new TypeToken<List<DeploymentView>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<PlatformDeploymentView>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns an app&#39;s deployment history. (asynchronously)
-     * Returns an app&#39;s deployment history.  It lists every deployment recorded for one of the caller org&#39;s applications, newest version first, each with its version, status, source, commit and image. Failed and superseded attempts are included — that is the point of a history. Requires a validated principal; 403 without one.
+     * Returns an app&#39;s deployment history.  It lists every deployment recorded for one of the caller org&#39;s applications, newest version first, each with its version, status, source, commit and image. Failed and superseded attempts are included — that is the point of a history. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2366,12 +2673,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<List<DeploymentView>> _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<List<PlatformDeploymentView>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppDeploymentsValidateBeforeCall(project, app, _callback);
-        Type localVarReturnType = new TypeToken<List<DeploymentView>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<PlatformDeploymentView>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2388,6 +2696,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsByIdCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -2419,7 +2728,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2460,48 +2770,50 @@ public class PlatformApi {
 
     /**
      * Returns one deployment of one app.
-     * Returns one deployment of one app.  It returns a single deployment by id, scoped to the named application of the caller&#39;s org — so an id belonging to another app or another tenant is 404, not a read. Requires a validated principal; 403 without one.
+     * Returns one deployment of one app.  It returns a single deployment by id, scoped to the named application of the caller&#39;s org — so an id belonging to another app or another tenant is 404, not a read. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param id ID is the deployment&#39;s id, from the path. (required)
-     * @return DeploymentView
+     * @return PlatformDeploymentView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DeploymentView getPlatformProjectsByProjectAppsByAppDeploymentsById(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<DeploymentView> localVarResp = getPlatformProjectsByProjectAppsByAppDeploymentsByIdWithHttpInfo(project, app, id);
+    public PlatformDeploymentView getPlatformProjectsByProjectAppsByAppDeploymentsById(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<PlatformDeploymentView> localVarResp = getPlatformProjectsByProjectAppsByAppDeploymentsByIdWithHttpInfo(project, app, id);
         return localVarResp.getData();
     }
 
     /**
      * Returns one deployment of one app.
-     * Returns one deployment of one app.  It returns a single deployment by id, scoped to the named application of the caller&#39;s org — so an id belonging to another app or another tenant is 404, not a read. Requires a validated principal; 403 without one.
+     * Returns one deployment of one app.  It returns a single deployment by id, scoped to the named application of the caller&#39;s org — so an id belonging to another app or another tenant is 404, not a read. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param id ID is the deployment&#39;s id, from the path. (required)
-     * @return ApiResponse&lt;DeploymentView&gt;
+     * @return ApiResponse&lt;PlatformDeploymentView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeploymentView> getPlatformProjectsByProjectAppsByAppDeploymentsByIdWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<PlatformDeploymentView> getPlatformProjectsByProjectAppsByAppDeploymentsByIdWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppDeploymentsByIdValidateBeforeCall(project, app, id, null);
-        Type localVarReturnType = new TypeToken<DeploymentView>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformDeploymentView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns one deployment of one app. (asynchronously)
-     * Returns one deployment of one app.  It returns a single deployment by id, scoped to the named application of the caller&#39;s org — so an id belonging to another app or another tenant is 404, not a read. Requires a validated principal; 403 without one.
+     * Returns one deployment of one app.  It returns a single deployment by id, scoped to the named application of the caller&#39;s org — so an id belonging to another app or another tenant is 404, not a read. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param id ID is the deployment&#39;s id, from the path. (required)
@@ -2513,12 +2825,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsByIdAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback<DeploymentView> _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsByIdAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback<PlatformDeploymentView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppDeploymentsByIdValidateBeforeCall(project, app, id, _callback);
-        Type localVarReturnType = new TypeToken<DeploymentView>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformDeploymentView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2535,6 +2848,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -2566,7 +2880,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2607,48 +2922,50 @@ public class PlatformApi {
 
     /**
      * Returns real logs for a deployment — the build&#39;s, then the app&#39;s.
-     * Returns real logs for a deployment — the build&#39;s, then the app&#39;s.  It returns the deployment&#39;s recorded status timeline together with LIVE pod logs pulled from the cluster: the build pod&#39;s output while a git build is running, and the running app&#39;s output once it is deployed. The &#x60;source&#x60; field says which of the two the body is — &#x60;build&#x60;, &#x60;app&#x60; or &#x60;none&#x60; — so a console can label the pane honestly.  It never fabricates log content. When no pod exists yet, or the cluster is unreachable, it degrades to the recorded timeline and says so. Every cluster read is confined to the caller org&#39;s own namespaces and time-boxed. Requires a validated principal; 403 without one.
+     * Returns real logs for a deployment — the build&#39;s, then the app&#39;s.  It returns the deployment&#39;s recorded status timeline together with LIVE pod logs pulled from the cluster: the build pod&#39;s output while a git build is running, and the running app&#39;s output once it is deployed. The &#x60;source&#x60; field says which of the two the body is — &#x60;build&#x60;, &#x60;app&#x60; or &#x60;none&#x60; — so a console can label the pane honestly.  It never fabricates log content. When no pod exists yet, or the cluster is unreachable, it degrades to the recorded timeline and says so. Every cluster read is confined to the caller org&#39;s own namespaces and time-boxed. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param id ID is the deployment&#39;s id, from the path. (required)
-     * @return DeployLogs
+     * @return PlatformDeployLogs
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DeployLogs getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogs(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<DeployLogs> localVarResp = getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsWithHttpInfo(project, app, id);
+    public PlatformDeployLogs getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogs(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<PlatformDeployLogs> localVarResp = getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsWithHttpInfo(project, app, id);
         return localVarResp.getData();
     }
 
     /**
      * Returns real logs for a deployment — the build&#39;s, then the app&#39;s.
-     * Returns real logs for a deployment — the build&#39;s, then the app&#39;s.  It returns the deployment&#39;s recorded status timeline together with LIVE pod logs pulled from the cluster: the build pod&#39;s output while a git build is running, and the running app&#39;s output once it is deployed. The &#x60;source&#x60; field says which of the two the body is — &#x60;build&#x60;, &#x60;app&#x60; or &#x60;none&#x60; — so a console can label the pane honestly.  It never fabricates log content. When no pod exists yet, or the cluster is unreachable, it degrades to the recorded timeline and says so. Every cluster read is confined to the caller org&#39;s own namespaces and time-boxed. Requires a validated principal; 403 without one.
+     * Returns real logs for a deployment — the build&#39;s, then the app&#39;s.  It returns the deployment&#39;s recorded status timeline together with LIVE pod logs pulled from the cluster: the build pod&#39;s output while a git build is running, and the running app&#39;s output once it is deployed. The &#x60;source&#x60; field says which of the two the body is — &#x60;build&#x60;, &#x60;app&#x60; or &#x60;none&#x60; — so a console can label the pane honestly.  It never fabricates log content. When no pod exists yet, or the cluster is unreachable, it degrades to the recorded timeline and says so. Every cluster read is confined to the caller org&#39;s own namespaces and time-boxed. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param id ID is the deployment&#39;s id, from the path. (required)
-     * @return ApiResponse&lt;DeployLogs&gt;
+     * @return ApiResponse&lt;PlatformDeployLogs&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeployLogs> getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<PlatformDeployLogs> getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsValidateBeforeCall(project, app, id, null);
-        Type localVarReturnType = new TypeToken<DeployLogs>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformDeployLogs>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns real logs for a deployment — the build&#39;s, then the app&#39;s. (asynchronously)
-     * Returns real logs for a deployment — the build&#39;s, then the app&#39;s.  It returns the deployment&#39;s recorded status timeline together with LIVE pod logs pulled from the cluster: the build pod&#39;s output while a git build is running, and the running app&#39;s output once it is deployed. The &#x60;source&#x60; field says which of the two the body is — &#x60;build&#x60;, &#x60;app&#x60; or &#x60;none&#x60; — so a console can label the pane honestly.  It never fabricates log content. When no pod exists yet, or the cluster is unreachable, it degrades to the recorded timeline and says so. Every cluster read is confined to the caller org&#39;s own namespaces and time-boxed. Requires a validated principal; 403 without one.
+     * Returns real logs for a deployment — the build&#39;s, then the app&#39;s.  It returns the deployment&#39;s recorded status timeline together with LIVE pod logs pulled from the cluster: the build pod&#39;s output while a git build is running, and the running app&#39;s output once it is deployed. The &#x60;source&#x60; field says which of the two the body is — &#x60;build&#x60;, &#x60;app&#x60; or &#x60;none&#x60; — so a console can label the pane honestly.  It never fabricates log content. When no pod exists yet, or the cluster is unreachable, it degrades to the recorded timeline and says so. Every cluster read is confined to the caller org&#39;s own namespaces and time-boxed. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param id ID is the deployment&#39;s id, from the path. (required)
@@ -2660,12 +2977,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback<DeployLogs> _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String id, final ApiCallback<PlatformDeployLogs> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppDeploymentsByIdLogsValidateBeforeCall(project, app, id, _callback);
-        Type localVarReturnType = new TypeToken<DeployLogs>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformDeployLogs>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2681,6 +2999,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformProjectsByProjectAppsByAppDomainsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -2711,7 +3030,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2747,46 +3067,48 @@ public class PlatformApi {
 
     /**
      * Returns every hostname this app answers on.
-     * Returns every hostname this app answers on.  It lists the app&#39;s hosts: the permanent default host it was born with, any org-subtree hosts attached to it, and every custom host claimed for it with its verification state and, while pending, the DNS challenge records to publish. Live endpoint status for each host is observed from the cluster. Requires a validated principal; 403 without one.
+     * Returns every hostname this app answers on.  It lists the app&#39;s hosts: the permanent default host it was born with, any org-subtree hosts attached to it, and every custom host claimed for it with its verification state and, while pending, the DNS challenge records to publish. Live endpoint status for each host is observed from the cluster. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @return List&lt;DomainView&gt;
+     * @return List&lt;PlatformDomainView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<DomainView> getPlatformProjectsByProjectAppsByAppDomains(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        ApiResponse<List<DomainView>> localVarResp = getPlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(project, app);
+    public List<PlatformDomainView> getPlatformProjectsByProjectAppsByAppDomains(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        ApiResponse<List<PlatformDomainView>> localVarResp = getPlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(project, app);
         return localVarResp.getData();
     }
 
     /**
      * Returns every hostname this app answers on.
-     * Returns every hostname this app answers on.  It lists the app&#39;s hosts: the permanent default host it was born with, any org-subtree hosts attached to it, and every custom host claimed for it with its verification state and, while pending, the DNS challenge records to publish. Live endpoint status for each host is observed from the cluster. Requires a validated principal; 403 without one.
+     * Returns every hostname this app answers on.  It lists the app&#39;s hosts: the permanent default host it was born with, any org-subtree hosts attached to it, and every custom host claimed for it with its verification state and, while pending, the DNS challenge records to publish. Live endpoint status for each host is observed from the cluster. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @return ApiResponse&lt;List&lt;DomainView&gt;&gt;
+     * @return ApiResponse&lt;List&lt;PlatformDomainView&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<DomainView>> getPlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+    public ApiResponse<List<PlatformDomainView>> getPlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
         okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(project, app, null);
-        Type localVarReturnType = new TypeToken<List<DomainView>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<PlatformDomainView>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns every hostname this app answers on. (asynchronously)
-     * Returns every hostname this app answers on.  It lists the app&#39;s hosts: the permanent default host it was born with, any org-subtree hosts attached to it, and every custom host claimed for it with its verification state and, while pending, the DNS challenge records to publish. Live endpoint status for each host is observed from the cluster. Requires a validated principal; 403 without one.
+     * Returns every hostname this app answers on.  It lists the app&#39;s hosts: the permanent default host it was born with, any org-subtree hosts attached to it, and every custom host claimed for it with its verification state and, while pending, the DNS challenge records to publish. Live endpoint status for each host is observed from the cluster. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2797,12 +3119,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformProjectsByProjectAppsByAppDomainsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<List<DomainView>> _callback) throws ApiException {
+    public okhttp3.Call getPlatformProjectsByProjectAppsByAppDomainsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<List<PlatformDomainView>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(project, app, _callback);
-        Type localVarReturnType = new TypeToken<List<DomainView>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<PlatformDomainView>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2816,6 +3139,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlatformReleasesCall(final ApiCallback _callback) throws ApiException {
@@ -2844,7 +3168,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2870,42 +3195,44 @@ public class PlatformApi {
 
     /**
      * Returns the versions that actually reached the cluster.
-     * Returns the versions that actually reached the cluster.  It lists the org&#39;s releases: the deployments that were genuinely applied to the cluster, with the app they belong to, their version, environment, status and when they were released. A deployment that failed or is still building is NOT a release and is excluded — reaching the cluster is what makes one. Requires a validated principal; 403 without one.
-     * @return ReleaseBoard
+     * Returns the versions that actually reached the cluster.  It lists the org&#39;s releases: the deployments that were genuinely applied to the cluster, with the app they belong to, their version, environment, status and when they were released. A deployment that failed or is still building is NOT a release and is excluded — reaching the cluster is what makes one. Requires a validated principal; 401 without one.
+     * @return PlatformReleaseBoard
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ReleaseBoard getPlatformReleases() throws ApiException {
-        ApiResponse<ReleaseBoard> localVarResp = getPlatformReleasesWithHttpInfo();
+    public PlatformReleaseBoard getPlatformReleases() throws ApiException {
+        ApiResponse<PlatformReleaseBoard> localVarResp = getPlatformReleasesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the versions that actually reached the cluster.
-     * Returns the versions that actually reached the cluster.  It lists the org&#39;s releases: the deployments that were genuinely applied to the cluster, with the app they belong to, their version, environment, status and when they were released. A deployment that failed or is still building is NOT a release and is excluded — reaching the cluster is what makes one. Requires a validated principal; 403 without one.
-     * @return ApiResponse&lt;ReleaseBoard&gt;
+     * Returns the versions that actually reached the cluster.  It lists the org&#39;s releases: the deployments that were genuinely applied to the cluster, with the app they belong to, their version, environment, status and when they were released. A deployment that failed or is still building is NOT a release and is excluded — reaching the cluster is what makes one. Requires a validated principal; 401 without one.
+     * @return ApiResponse&lt;PlatformReleaseBoard&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReleaseBoard> getPlatformReleasesWithHttpInfo() throws ApiException {
+    public ApiResponse<PlatformReleaseBoard> getPlatformReleasesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlatformReleasesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ReleaseBoard>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformReleaseBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns the versions that actually reached the cluster. (asynchronously)
-     * Returns the versions that actually reached the cluster.  It lists the org&#39;s releases: the deployments that were genuinely applied to the cluster, with the app they belong to, their version, environment, status and when they were released. A deployment that failed or is still building is NOT a release and is excluded — reaching the cluster is what makes one. Requires a validated principal; 403 without one.
+     * Returns the versions that actually reached the cluster.  It lists the org&#39;s releases: the deployments that were genuinely applied to the cluster, with the app they belong to, their version, environment, status and when they were released. A deployment that failed or is still building is NOT a release and is excluded — reaching the cluster is what makes one. Requires a validated principal; 401 without one.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2914,22 +3241,31 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlatformReleasesAsync(final ApiCallback<ReleaseBoard> _callback) throws ApiException {
+    public okhttp3.Call getPlatformReleasesAsync(final ApiCallback<PlatformReleaseBoard> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformReleasesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ReleaseBoard>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformReleaseBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postPlatformApps
+     * Build call for postBuild
+     * @param platformRunnerBuildReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postPlatformAppsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBuildCall(@javax.annotation.Nonnull PlatformRunnerBuildReq platformRunnerBuildReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2943,7 +3279,138 @@ public class PlatformApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = platformRunnerBuildReq;
+
+        // create path and map variables
+        String localVarPath = "/v1/build";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postBuildValidateBeforeCall(@javax.annotation.Nonnull PlatformRunnerBuildReq platformRunnerBuildReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'platformRunnerBuildReq' is set
+        if (platformRunnerBuildReq == null) {
+            throw new ApiException("Missing the required parameter 'platformRunnerBuildReq' when calling postBuild(Async)");
+        }
+
+        return postBuildCall(platformRunnerBuildReq, _callback);
+
+    }
+
+    /**
+     * Triggers a native build — an image, or the binaries a repo declares.
+     * Triggers a native build — an image, or the binaries a repo declares.  The fabric&#39;s own build trigger, and what &#x60;hanzo build&#x60; and git-push-to-deploy call. It answers 202 with the build job id: a queued build, not a pushed artifact.  Two lanes, and a build is exactly one of them. The IMAGE lane takes &#x60;repo&#x60; and the output &#x60;image&#x60; and launches a BuildKit Job that pushes it. The ARTIFACT lane takes &#x60;binaries&#x60; — the same recipe the repo&#39;s hanzo.yml declares — and publishes to object storage instead; it must carry no &#x60;image&#x60;, because a build produces binaries or an image, never both.  PRIVILEGED, and A BUILD BELONGS TO THE ORGANIZATION ITS CREDENTIAL NAMES. Two credentials, never a third:    - one that NAMES an organization — a person who administers it (the &#x60;hanzo     build&#x60; path, so one IAM login authorizes a build with no separate build     token), or that organization&#39;s own machine identity (the pipeline path). The     build is attributed to that org and confined to what it owns.   - the shared build-callback token, compared in constant time. It names NO     organization, which is both why the fabric&#39;s own release can publish across     brands with it and why anything that CAN name one is read first.  Both are bounded by the owned-registry allowlist. The org path is bounded again, by the org: the image&#39;s registry namespace must be one that organization owns, so it publishes into its own brand and can never overwrite another&#39;s through the shared push credential. The same confinement applies to the artifact lane&#39;s repo owner. There is no request field naming an organization — the attribution is read off the credential, so there is nothing for a caller to write it with.  The output image is parsed and validated as a single well-formed OCI ref before any authorization decision reads it, so a crafted ref cannot smuggle a build-exporter attribute past the check.
+     * @param platformRunnerBuildReq  (required)
+     * @return PlatformRunnerBuildResp
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public PlatformRunnerBuildResp postBuild(@javax.annotation.Nonnull PlatformRunnerBuildReq platformRunnerBuildReq) throws ApiException {
+        ApiResponse<PlatformRunnerBuildResp> localVarResp = postBuildWithHttpInfo(platformRunnerBuildReq);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Triggers a native build — an image, or the binaries a repo declares.
+     * Triggers a native build — an image, or the binaries a repo declares.  The fabric&#39;s own build trigger, and what &#x60;hanzo build&#x60; and git-push-to-deploy call. It answers 202 with the build job id: a queued build, not a pushed artifact.  Two lanes, and a build is exactly one of them. The IMAGE lane takes &#x60;repo&#x60; and the output &#x60;image&#x60; and launches a BuildKit Job that pushes it. The ARTIFACT lane takes &#x60;binaries&#x60; — the same recipe the repo&#39;s hanzo.yml declares — and publishes to object storage instead; it must carry no &#x60;image&#x60;, because a build produces binaries or an image, never both.  PRIVILEGED, and A BUILD BELONGS TO THE ORGANIZATION ITS CREDENTIAL NAMES. Two credentials, never a third:    - one that NAMES an organization — a person who administers it (the &#x60;hanzo     build&#x60; path, so one IAM login authorizes a build with no separate build     token), or that organization&#39;s own machine identity (the pipeline path). The     build is attributed to that org and confined to what it owns.   - the shared build-callback token, compared in constant time. It names NO     organization, which is both why the fabric&#39;s own release can publish across     brands with it and why anything that CAN name one is read first.  Both are bounded by the owned-registry allowlist. The org path is bounded again, by the org: the image&#39;s registry namespace must be one that organization owns, so it publishes into its own brand and can never overwrite another&#39;s through the shared push credential. The same confinement applies to the artifact lane&#39;s repo owner. There is no request field naming an organization — the attribution is read off the credential, so there is nothing for a caller to write it with.  The output image is parsed and validated as a single well-formed OCI ref before any authorization decision reads it, so a crafted ref cannot smuggle a build-exporter attribute past the check.
+     * @param platformRunnerBuildReq  (required)
+     * @return ApiResponse&lt;PlatformRunnerBuildResp&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PlatformRunnerBuildResp> postBuildWithHttpInfo(@javax.annotation.Nonnull PlatformRunnerBuildReq platformRunnerBuildReq) throws ApiException {
+        okhttp3.Call localVarCall = postBuildValidateBeforeCall(platformRunnerBuildReq, null);
+        Type localVarReturnType = new TypeToken<PlatformRunnerBuildResp>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Triggers a native build — an image, or the binaries a repo declares. (asynchronously)
+     * Triggers a native build — an image, or the binaries a repo declares.  The fabric&#39;s own build trigger, and what &#x60;hanzo build&#x60; and git-push-to-deploy call. It answers 202 with the build job id: a queued build, not a pushed artifact.  Two lanes, and a build is exactly one of them. The IMAGE lane takes &#x60;repo&#x60; and the output &#x60;image&#x60; and launches a BuildKit Job that pushes it. The ARTIFACT lane takes &#x60;binaries&#x60; — the same recipe the repo&#39;s hanzo.yml declares — and publishes to object storage instead; it must carry no &#x60;image&#x60;, because a build produces binaries or an image, never both.  PRIVILEGED, and A BUILD BELONGS TO THE ORGANIZATION ITS CREDENTIAL NAMES. Two credentials, never a third:    - one that NAMES an organization — a person who administers it (the &#x60;hanzo     build&#x60; path, so one IAM login authorizes a build with no separate build     token), or that organization&#39;s own machine identity (the pipeline path). The     build is attributed to that org and confined to what it owns.   - the shared build-callback token, compared in constant time. It names NO     organization, which is both why the fabric&#39;s own release can publish across     brands with it and why anything that CAN name one is read first.  Both are bounded by the owned-registry allowlist. The org path is bounded again, by the org: the image&#39;s registry namespace must be one that organization owns, so it publishes into its own brand and can never overwrite another&#39;s through the shared push credential. The same confinement applies to the artifact lane&#39;s repo owner. There is no request field naming an organization — the attribution is read off the credential, so there is nothing for a caller to write it with.  The output image is parsed and validated as a single well-formed OCI ref before any authorization decision reads it, so a crafted ref cannot smuggle a build-exporter attribute past the check.
+     * @param platformRunnerBuildReq  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postBuildAsync(@javax.annotation.Nonnull PlatformRunnerBuildReq platformRunnerBuildReq, final ApiCallback<PlatformRunnerBuildResp> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postBuildValidateBeforeCall(platformRunnerBuildReq, _callback);
+        Type localVarReturnType = new TypeToken<PlatformRunnerBuildResp>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postPlatformApps
+     * @param declareReq  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postPlatformAppsCall(@javax.annotation.Nullable DeclareReq declareReq, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = declareReq;
 
         // create path and map variables
         String localVarPath = "/v1/platform/apps";
@@ -2955,103 +3422,6 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPlatformAppsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postPlatformAppsCall(_callback);
-
-    }
-
-    /**
-     * Deploy an app through cd.hanzo.ai
-     * Builds a git repository into an image and writes the declaration that names it — a values file in &#x60;hanzoai/universe&#x60; under &#x60;charts/app/values/&lt;namespace&gt;/&lt;name&gt;.yaml&#x60;, which the &#x60;fleet&#x60; ApplicationSet renders as one Application. That file IS the deployment: nothing else has to be applied.  &#x60;mode&#x60; decides whether anything can go live. The default, &#x60;branch&#x60;, pushes to &#x60;deploy/&lt;namespace&gt;/&lt;name&gt;/&lt;tag&gt;&#x60; and returns a review URL; the generator reads main, so a branch declaration deploys NOTHING and merging the review is the deliberate act. &#x60;commit&#x60; writes main, and proves the image is pullable first — a declaration naming an image the registry cannot serve is an ImagePullBackOff with no rollback path.  Omit &#x60;tag&#x60; to build; give it to declare an image an earlier call already built, which is how a green build is released without rebuilding it.  An org is its name: the values DIRECTORY, the destination NAMESPACE and the AppProject FENCE are all &#x60;&lt;org&gt;&#x60;, and the image is &#x60;&lt;registry&gt;/&lt;org&gt;/&lt;app&gt;&#x60;. None of them is a request field — the directory decides what CD admits the sync under and the repository decides what the cluster pulls, so a caller who could name either could reach outside its own org.  &#x60;org&#x60; is an ACT-AS, not a placement field: it defaults to the caller&#39;s own, and naming another requires SuperAdmin. So does naming a RESERVED org — the platform&#39;s own namespace family (the brands and their environments, the control and delivery planes, &#x60;admin&#x60;) — even when it is the caller&#39;s own, because an IAM org named &#x60;kube-system&#x60; does not own Kubernetes. Both refuse rather than downgrade, so an escape attempt is never indistinguishable from a normal request.  A host outside the caller&#39;s org subtree is refused: claim and verify a custom domain first.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postPlatformApps() throws ApiException {
-        postPlatformAppsWithHttpInfo();
-    }
-
-    /**
-     * Deploy an app through cd.hanzo.ai
-     * Builds a git repository into an image and writes the declaration that names it — a values file in &#x60;hanzoai/universe&#x60; under &#x60;charts/app/values/&lt;namespace&gt;/&lt;name&gt;.yaml&#x60;, which the &#x60;fleet&#x60; ApplicationSet renders as one Application. That file IS the deployment: nothing else has to be applied.  &#x60;mode&#x60; decides whether anything can go live. The default, &#x60;branch&#x60;, pushes to &#x60;deploy/&lt;namespace&gt;/&lt;name&gt;/&lt;tag&gt;&#x60; and returns a review URL; the generator reads main, so a branch declaration deploys NOTHING and merging the review is the deliberate act. &#x60;commit&#x60; writes main, and proves the image is pullable first — a declaration naming an image the registry cannot serve is an ImagePullBackOff with no rollback path.  Omit &#x60;tag&#x60; to build; give it to declare an image an earlier call already built, which is how a green build is released without rebuilding it.  An org is its name: the values DIRECTORY, the destination NAMESPACE and the AppProject FENCE are all &#x60;&lt;org&gt;&#x60;, and the image is &#x60;&lt;registry&gt;/&lt;org&gt;/&lt;app&gt;&#x60;. None of them is a request field — the directory decides what CD admits the sync under and the repository decides what the cluster pulls, so a caller who could name either could reach outside its own org.  &#x60;org&#x60; is an ACT-AS, not a placement field: it defaults to the caller&#39;s own, and naming another requires SuperAdmin. So does naming a RESERVED org — the platform&#39;s own namespace family (the brands and their environments, the control and delivery planes, &#x60;admin&#x60;) — even when it is the caller&#39;s own, because an IAM org named &#x60;kube-system&#x60; does not own Kubernetes. Both refuse rather than downgrade, so an escape attempt is never indistinguishable from a normal request.  A host outside the caller&#39;s org subtree is refused: claim and verify a custom domain first.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postPlatformAppsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postPlatformAppsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Deploy an app through cd.hanzo.ai (asynchronously)
-     * Builds a git repository into an image and writes the declaration that names it — a values file in &#x60;hanzoai/universe&#x60; under &#x60;charts/app/values/&lt;namespace&gt;/&lt;name&gt;.yaml&#x60;, which the &#x60;fleet&#x60; ApplicationSet renders as one Application. That file IS the deployment: nothing else has to be applied.  &#x60;mode&#x60; decides whether anything can go live. The default, &#x60;branch&#x60;, pushes to &#x60;deploy/&lt;namespace&gt;/&lt;name&gt;/&lt;tag&gt;&#x60; and returns a review URL; the generator reads main, so a branch declaration deploys NOTHING and merging the review is the deliberate act. &#x60;commit&#x60; writes main, and proves the image is pullable first — a declaration naming an image the registry cannot serve is an ImagePullBackOff with no rollback path.  Omit &#x60;tag&#x60; to build; give it to declare an image an earlier call already built, which is how a green build is released without rebuilding it.  An org is its name: the values DIRECTORY, the destination NAMESPACE and the AppProject FENCE are all &#x60;&lt;org&gt;&#x60;, and the image is &#x60;&lt;registry&gt;/&lt;org&gt;/&lt;app&gt;&#x60;. None of them is a request field — the directory decides what CD admits the sync under and the repository decides what the cluster pulls, so a caller who could name either could reach outside its own org.  &#x60;org&#x60; is an ACT-AS, not a placement field: it defaults to the caller&#39;s own, and naming another requires SuperAdmin. So does naming a RESERVED org — the platform&#39;s own namespace family (the brands and their environments, the control and delivery planes, &#x60;admin&#x60;) — even when it is the caller&#39;s own, because an IAM org named &#x60;kube-system&#x60; does not own Kubernetes. Both refuse rather than downgrade, so an escape attempt is never indistinguishable from a normal request.  A host outside the caller&#39;s org subtree is refused: claim and verify a custom domain first.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postPlatformAppsAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postPlatformAppsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postPlatformFleetByAppDeploy
-     * @param app App is the service&#39;s CR name, from the path. It must be a DNS-1123 label. (required)
-     * @param restartRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postPlatformFleetByAppDeployCall(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull RestartRef restartRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = restartRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/platform/fleet/{app}/deploy"
-            .replace("{" + "app" + "}", localVarApiClient.escapeString(app.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
             "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -3072,65 +3442,52 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPlatformFleetByAppDeployValidateBeforeCall(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull RestartRef restartRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'app' is set
-        if (app == null) {
-            throw new ApiException("Missing the required parameter 'app' when calling postPlatformFleetByAppDeploy(Async)");
-        }
-
-        // verify the required parameter 'restartRef' is set
-        if (restartRef == null) {
-            throw new ApiException("Missing the required parameter 'restartRef' when calling postPlatformFleetByAppDeploy(Async)");
-        }
-
-        return postPlatformFleetByAppDeployCall(app, restartRef, _callback);
+    private okhttp3.Call postPlatformAppsValidateBeforeCall(@javax.annotation.Nullable DeclareReq declareReq, final ApiCallback _callback) throws ApiException {
+        return postPlatformAppsCall(declareReq, _callback);
 
     }
 
     /**
-     * Rolls a platform service&#39;s pods, in a named environment.
-     * Rolls a platform service&#39;s pods, in a named environment.  It triggers a rolling restart of one platform service&#39;s Deployment by stamping a fresh restart annotation, and answers 202 with the app, the namespace, the environment and the timestamp. It restarts pods; it does NOT change the image — a version change is the release path, not this.  SuperAdmin ONLY, and deliberately narrower than the read gate beside it. The only namespaces this board touches are the platform&#39;s own tier, so a restart here recycles a SHARED service every tenant depends on. A brand-org admin is a customer-org admin, not a platform operator: observing the board is bounded and audited, and restarting production identity is not.  &#x60;?env&#x3D;main|test|dev&#x60; is REQUIRED — a bare call does not default to production, which is what closes the fat-finger and confused-deputy hazard — and any other value is 400. A service with no Deployment to restart in that environment is 404.
-     * @param app App is the service&#39;s CR name, from the path. It must be a DNS-1123 label. (required)
-     * @param restartRef  (required)
-     * @return Restarted
+     * Deploy an app through cd.hanzo.ai
+     * Builds a git repository into an image and writes the declaration that names it — a values file in &#x60;hanzoai/universe&#x60; under &#x60;charts/app/values/&lt;namespace&gt;/&lt;name&gt;.yaml&#x60;, which the &#x60;fleet&#x60; ApplicationSet renders as one Application. That file IS the deployment: nothing else has to be applied.  &#x60;repo&#x60; is a GitHub repository — &#x60;owner/name&#x60; or &#x60;https://github.com/owner/name&#x60; — or another https clone URL. A GitHub repository must be one the caller may see: their own connected GitHub, or the installations their org holds for an org admin (the same set &#x60;GET /v1/provider/github/repos&#x60; lists); anything else is 404. It is built at the name GitHub gives it now, from &#x60;ref&#x60;, which defaults to its default branch. Any other URL is an org admin&#39;s to build.  &#x60;partOf&#x60; names the project the app belongs to, and defaults to the app&#39;s own name.  Every member of the org may deploy; WHERE it lands is the difference. An org admin commits to universe main and CD applies it — in one call, naming the tag its own build will push, which CD pulls once the build lands. Anyone else opens a review: the declaration is pushed to &#x60;deploy/&lt;namespace&gt;/&lt;name&gt;/&lt;tag&gt;&#x60;, &#x60;declaration.review&#x60; is the link that opens the pull request, and nothing deploys until it is merged. &#x60;mode&#x60; may say &#x60;branch&#x60; to make an admin&#39;s deploy a review too; a non-admin naming &#x60;commit&#x60; is refused, never downgraded.  A member&#39;s deploy is bounded by who asked: one build at a time and never the org&#39;s last build slot, which is kept for its admins; ten deploys an hour; five open review branches. Past a bound it answers 429. A review branch is deleted once main declares its tag, or after seven days unmerged; &#x60;notice&#x60; says so, and that the public &#x60;env&#x60; values the branch carries are cleartext in universe, where deleting the branch does not unpublish them.  A release of an image an earlier call built (&#x60;tag&#x60; given) is proven pullable before main is pointed at it — a declaration naming an image the registry cannot serve is an ImagePullBackOff with no rollback path.  Omit &#x60;tag&#x60; to build; give it to declare an image an earlier call already built, which is how a green build is released without rebuilding it. That release is an org admin&#39;s: a member&#39;s deploy always builds, and carries public &#x60;env&#x60; only — a sealed value would write the running app&#39;s secrets before the review is merged, so a member naming one is refused.  An org is its name: the values DIRECTORY, the destination NAMESPACE and the AppProject FENCE are all &#x60;&lt;org&gt;&#x60;, and the image is &#x60;&lt;registry&gt;/&lt;org&gt;/&lt;app&gt;&#x60;. None of them is a request field — the directory decides what CD admits the sync under and the repository decides what the cluster pulls, so a caller who could name either could reach outside its own org.  &#x60;org&#x60; is an ACT-AS, not a placement field: it defaults to the caller&#39;s own, and naming another requires SuperAdmin. So does naming a RESERVED org — the platform&#39;s own namespace family (the brands and their environments, the control and delivery planes, &#x60;admin&#x60;) — even when it is the caller&#39;s own, because an IAM org named &#x60;kube-system&#x60; does not own Kubernetes. Both refuse rather than downgrade, so an escape attempt is never indistinguishable from a normal request.  A host outside the caller&#39;s org subtree is refused: claim and verify a custom domain first.
+     * @param declareReq  (optional)
+     * @return DeclareResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public Restarted postPlatformFleetByAppDeploy(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull RestartRef restartRef) throws ApiException {
-        ApiResponse<Restarted> localVarResp = postPlatformFleetByAppDeployWithHttpInfo(app, restartRef);
+    public DeclareResp postPlatformApps(@javax.annotation.Nullable DeclareReq declareReq) throws ApiException {
+        ApiResponse<DeclareResp> localVarResp = postPlatformAppsWithHttpInfo(declareReq);
         return localVarResp.getData();
     }
 
     /**
-     * Rolls a platform service&#39;s pods, in a named environment.
-     * Rolls a platform service&#39;s pods, in a named environment.  It triggers a rolling restart of one platform service&#39;s Deployment by stamping a fresh restart annotation, and answers 202 with the app, the namespace, the environment and the timestamp. It restarts pods; it does NOT change the image — a version change is the release path, not this.  SuperAdmin ONLY, and deliberately narrower than the read gate beside it. The only namespaces this board touches are the platform&#39;s own tier, so a restart here recycles a SHARED service every tenant depends on. A brand-org admin is a customer-org admin, not a platform operator: observing the board is bounded and audited, and restarting production identity is not.  &#x60;?env&#x3D;main|test|dev&#x60; is REQUIRED — a bare call does not default to production, which is what closes the fat-finger and confused-deputy hazard — and any other value is 400. A service with no Deployment to restart in that environment is 404.
-     * @param app App is the service&#39;s CR name, from the path. It must be a DNS-1123 label. (required)
-     * @param restartRef  (required)
-     * @return ApiResponse&lt;Restarted&gt;
+     * Deploy an app through cd.hanzo.ai
+     * Builds a git repository into an image and writes the declaration that names it — a values file in &#x60;hanzoai/universe&#x60; under &#x60;charts/app/values/&lt;namespace&gt;/&lt;name&gt;.yaml&#x60;, which the &#x60;fleet&#x60; ApplicationSet renders as one Application. That file IS the deployment: nothing else has to be applied.  &#x60;repo&#x60; is a GitHub repository — &#x60;owner/name&#x60; or &#x60;https://github.com/owner/name&#x60; — or another https clone URL. A GitHub repository must be one the caller may see: their own connected GitHub, or the installations their org holds for an org admin (the same set &#x60;GET /v1/provider/github/repos&#x60; lists); anything else is 404. It is built at the name GitHub gives it now, from &#x60;ref&#x60;, which defaults to its default branch. Any other URL is an org admin&#39;s to build.  &#x60;partOf&#x60; names the project the app belongs to, and defaults to the app&#39;s own name.  Every member of the org may deploy; WHERE it lands is the difference. An org admin commits to universe main and CD applies it — in one call, naming the tag its own build will push, which CD pulls once the build lands. Anyone else opens a review: the declaration is pushed to &#x60;deploy/&lt;namespace&gt;/&lt;name&gt;/&lt;tag&gt;&#x60;, &#x60;declaration.review&#x60; is the link that opens the pull request, and nothing deploys until it is merged. &#x60;mode&#x60; may say &#x60;branch&#x60; to make an admin&#39;s deploy a review too; a non-admin naming &#x60;commit&#x60; is refused, never downgraded.  A member&#39;s deploy is bounded by who asked: one build at a time and never the org&#39;s last build slot, which is kept for its admins; ten deploys an hour; five open review branches. Past a bound it answers 429. A review branch is deleted once main declares its tag, or after seven days unmerged; &#x60;notice&#x60; says so, and that the public &#x60;env&#x60; values the branch carries are cleartext in universe, where deleting the branch does not unpublish them.  A release of an image an earlier call built (&#x60;tag&#x60; given) is proven pullable before main is pointed at it — a declaration naming an image the registry cannot serve is an ImagePullBackOff with no rollback path.  Omit &#x60;tag&#x60; to build; give it to declare an image an earlier call already built, which is how a green build is released without rebuilding it. That release is an org admin&#39;s: a member&#39;s deploy always builds, and carries public &#x60;env&#x60; only — a sealed value would write the running app&#39;s secrets before the review is merged, so a member naming one is refused.  An org is its name: the values DIRECTORY, the destination NAMESPACE and the AppProject FENCE are all &#x60;&lt;org&gt;&#x60;, and the image is &#x60;&lt;registry&gt;/&lt;org&gt;/&lt;app&gt;&#x60;. None of them is a request field — the directory decides what CD admits the sync under and the repository decides what the cluster pulls, so a caller who could name either could reach outside its own org.  &#x60;org&#x60; is an ACT-AS, not a placement field: it defaults to the caller&#39;s own, and naming another requires SuperAdmin. So does naming a RESERVED org — the platform&#39;s own namespace family (the brands and their environments, the control and delivery planes, &#x60;admin&#x60;) — even when it is the caller&#39;s own, because an IAM org named &#x60;kube-system&#x60; does not own Kubernetes. Both refuse rather than downgrade, so an escape attempt is never indistinguishable from a normal request.  A host outside the caller&#39;s org subtree is refused: claim and verify a custom domain first.
+     * @param declareReq  (optional)
+     * @return ApiResponse&lt;DeclareResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Restarted> postPlatformFleetByAppDeployWithHttpInfo(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull RestartRef restartRef) throws ApiException {
-        okhttp3.Call localVarCall = postPlatformFleetByAppDeployValidateBeforeCall(app, restartRef, null);
-        Type localVarReturnType = new TypeToken<Restarted>(){}.getType();
+    public ApiResponse<DeclareResp> postPlatformAppsWithHttpInfo(@javax.annotation.Nullable DeclareReq declareReq) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformAppsValidateBeforeCall(declareReq, null);
+        Type localVarReturnType = new TypeToken<DeclareResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Rolls a platform service&#39;s pods, in a named environment. (asynchronously)
-     * Rolls a platform service&#39;s pods, in a named environment.  It triggers a rolling restart of one platform service&#39;s Deployment by stamping a fresh restart annotation, and answers 202 with the app, the namespace, the environment and the timestamp. It restarts pods; it does NOT change the image — a version change is the release path, not this.  SuperAdmin ONLY, and deliberately narrower than the read gate beside it. The only namespaces this board touches are the platform&#39;s own tier, so a restart here recycles a SHARED service every tenant depends on. A brand-org admin is a customer-org admin, not a platform operator: observing the board is bounded and audited, and restarting production identity is not.  &#x60;?env&#x3D;main|test|dev&#x60; is REQUIRED — a bare call does not default to production, which is what closes the fat-finger and confused-deputy hazard — and any other value is 400. A service with no Deployment to restart in that environment is 404.
-     * @param app App is the service&#39;s CR name, from the path. It must be a DNS-1123 label. (required)
-     * @param restartRef  (required)
+     * Deploy an app through cd.hanzo.ai (asynchronously)
+     * Builds a git repository into an image and writes the declaration that names it — a values file in &#x60;hanzoai/universe&#x60; under &#x60;charts/app/values/&lt;namespace&gt;/&lt;name&gt;.yaml&#x60;, which the &#x60;fleet&#x60; ApplicationSet renders as one Application. That file IS the deployment: nothing else has to be applied.  &#x60;repo&#x60; is a GitHub repository — &#x60;owner/name&#x60; or &#x60;https://github.com/owner/name&#x60; — or another https clone URL. A GitHub repository must be one the caller may see: their own connected GitHub, or the installations their org holds for an org admin (the same set &#x60;GET /v1/provider/github/repos&#x60; lists); anything else is 404. It is built at the name GitHub gives it now, from &#x60;ref&#x60;, which defaults to its default branch. Any other URL is an org admin&#39;s to build.  &#x60;partOf&#x60; names the project the app belongs to, and defaults to the app&#39;s own name.  Every member of the org may deploy; WHERE it lands is the difference. An org admin commits to universe main and CD applies it — in one call, naming the tag its own build will push, which CD pulls once the build lands. Anyone else opens a review: the declaration is pushed to &#x60;deploy/&lt;namespace&gt;/&lt;name&gt;/&lt;tag&gt;&#x60;, &#x60;declaration.review&#x60; is the link that opens the pull request, and nothing deploys until it is merged. &#x60;mode&#x60; may say &#x60;branch&#x60; to make an admin&#39;s deploy a review too; a non-admin naming &#x60;commit&#x60; is refused, never downgraded.  A member&#39;s deploy is bounded by who asked: one build at a time and never the org&#39;s last build slot, which is kept for its admins; ten deploys an hour; five open review branches. Past a bound it answers 429. A review branch is deleted once main declares its tag, or after seven days unmerged; &#x60;notice&#x60; says so, and that the public &#x60;env&#x60; values the branch carries are cleartext in universe, where deleting the branch does not unpublish them.  A release of an image an earlier call built (&#x60;tag&#x60; given) is proven pullable before main is pointed at it — a declaration naming an image the registry cannot serve is an ImagePullBackOff with no rollback path.  Omit &#x60;tag&#x60; to build; give it to declare an image an earlier call already built, which is how a green build is released without rebuilding it. That release is an org admin&#39;s: a member&#39;s deploy always builds, and carries public &#x60;env&#x60; only — a sealed value would write the running app&#39;s secrets before the review is merged, so a member naming one is refused.  An org is its name: the values DIRECTORY, the destination NAMESPACE and the AppProject FENCE are all &#x60;&lt;org&gt;&#x60;, and the image is &#x60;&lt;registry&gt;/&lt;org&gt;/&lt;app&gt;&#x60;. None of them is a request field — the directory decides what CD admits the sync under and the repository decides what the cluster pulls, so a caller who could name either could reach outside its own org.  &#x60;org&#x60; is an ACT-AS, not a placement field: it defaults to the caller&#39;s own, and naming another requires SuperAdmin. So does naming a RESERVED org — the platform&#39;s own namespace family (the brands and their environments, the control and delivery planes, &#x60;admin&#x60;) — even when it is the caller&#39;s own, because an IAM org named &#x60;kube-system&#x60; does not own Kubernetes. Both refuse rather than downgrade, so an escape attempt is never indistinguishable from a normal request.  A host outside the caller&#39;s org subtree is refused: claim and verify a custom domain first.
+     * @param declareReq  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3138,20 +3495,19 @@ public class PlatformApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformFleetByAppDeployAsync(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull RestartRef restartRef, final ApiCallback<Restarted> _callback) throws ApiException {
+    public okhttp3.Call postPlatformAppsAsync(@javax.annotation.Nullable DeclareReq declareReq, final ApiCallback<DeclareResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postPlatformFleetByAppDeployValidateBeforeCall(app, restartRef, _callback);
-        Type localVarReturnType = new TypeToken<Restarted>(){}.getType();
+        okhttp3.Call localVarCall = postPlatformAppsValidateBeforeCall(declareReq, _callback);
+        Type localVarReturnType = new TypeToken<DeclareResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postPlatformProjectsByProjectApps
-     * @param project Project is the project to create the application under, from the path. (required)
-     * @param createAppReq  (required)
+     * Build call for postPlatformProjects
+     * @param platformProjectCreate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3160,9 +3516,10 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformProjectsByProjectAppsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull CreateAppReq createAppReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsCall(@javax.annotation.Nonnull PlatformProjectCreate platformProjectCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3176,7 +3533,140 @@ public class PlatformApi {
             basePath = null;
         }
 
-        Object localVarPostBody = createAppReq;
+        Object localVarPostBody = platformProjectCreate;
+
+        // create path and map variables
+        String localVarPath = "/v1/platform/projects";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postPlatformProjectsValidateBeforeCall(@javax.annotation.Nonnull PlatformProjectCreate platformProjectCreate, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'platformProjectCreate' is set
+        if (platformProjectCreate == null) {
+            throw new ApiException("Missing the required parameter 'platformProjectCreate' when calling postPlatformProjects(Async)");
+        }
+
+        return postPlatformProjectsCall(platformProjectCreate, _callback);
+
+    }
+
+    /**
+     * Creates a project from the apps it starts with.
+     * Creates a project from the apps it starts with.  A project is the &#x60;partOf&#x60; its apps&#39; values files name, so creating one names it on the listed apps: one commit to &#x60;hanzoai/universe&#x60; that moves each file&#39;s &#x60;partOf&#x60; scalar and touches nothing else. There is no empty project; to start one with a new app, create the app with &#x60;partOf&#x60; (POST /v1/platform/apps).  &#x60;mode&#x60; is &#x60;branch&#x60; (the default: a review branch, nothing deploys) or &#x60;commit&#x60; (main). A &#x60;partOf&#x60; change relabels the app&#39;s pods, so the sync that applies it rolls them. 409 when the name already names apps — move apps into an existing project with PUT /v1/platform/apps/{app}/project. An org admin changes its own org&#39;s projects; the platform&#39;s own, and another org&#39;s, are SuperAdmin.
+     * @param platformProjectCreate  (required)
+     * @return PlatformProjectWrite
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public PlatformProjectWrite postPlatformProjects(@javax.annotation.Nonnull PlatformProjectCreate platformProjectCreate) throws ApiException {
+        ApiResponse<PlatformProjectWrite> localVarResp = postPlatformProjectsWithHttpInfo(platformProjectCreate);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Creates a project from the apps it starts with.
+     * Creates a project from the apps it starts with.  A project is the &#x60;partOf&#x60; its apps&#39; values files name, so creating one names it on the listed apps: one commit to &#x60;hanzoai/universe&#x60; that moves each file&#39;s &#x60;partOf&#x60; scalar and touches nothing else. There is no empty project; to start one with a new app, create the app with &#x60;partOf&#x60; (POST /v1/platform/apps).  &#x60;mode&#x60; is &#x60;branch&#x60; (the default: a review branch, nothing deploys) or &#x60;commit&#x60; (main). A &#x60;partOf&#x60; change relabels the app&#39;s pods, so the sync that applies it rolls them. 409 when the name already names apps — move apps into an existing project with PUT /v1/platform/apps/{app}/project. An org admin changes its own org&#39;s projects; the platform&#39;s own, and another org&#39;s, are SuperAdmin.
+     * @param platformProjectCreate  (required)
+     * @return ApiResponse&lt;PlatformProjectWrite&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PlatformProjectWrite> postPlatformProjectsWithHttpInfo(@javax.annotation.Nonnull PlatformProjectCreate platformProjectCreate) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformProjectsValidateBeforeCall(platformProjectCreate, null);
+        Type localVarReturnType = new TypeToken<PlatformProjectWrite>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Creates a project from the apps it starts with. (asynchronously)
+     * Creates a project from the apps it starts with.  A project is the &#x60;partOf&#x60; its apps&#39; values files name, so creating one names it on the listed apps: one commit to &#x60;hanzoai/universe&#x60; that moves each file&#39;s &#x60;partOf&#x60; scalar and touches nothing else. There is no empty project; to start one with a new app, create the app with &#x60;partOf&#x60; (POST /v1/platform/apps).  &#x60;mode&#x60; is &#x60;branch&#x60; (the default: a review branch, nothing deploys) or &#x60;commit&#x60; (main). A &#x60;partOf&#x60; change relabels the app&#39;s pods, so the sync that applies it rolls them. 409 when the name already names apps — move apps into an existing project with PUT /v1/platform/apps/{app}/project. An org admin changes its own org&#39;s projects; the platform&#39;s own, and another org&#39;s, are SuperAdmin.
+     * @param platformProjectCreate  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postPlatformProjectsAsync(@javax.annotation.Nonnull PlatformProjectCreate platformProjectCreate, final ApiCallback<PlatformProjectWrite> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postPlatformProjectsValidateBeforeCall(platformProjectCreate, _callback);
+        Type localVarReturnType = new TypeToken<PlatformProjectWrite>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postPlatformProjectsByProjectApps
+     * @param project Project is the project to create the application under, from the path. (required)
+     * @param platformCreateAppReq  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postPlatformProjectsByProjectAppsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull PlatformCreateAppReq platformCreateAppReq, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = platformCreateAppReq;
 
         // create path and map variables
         String localVarPath = "/v1/platform/projects/{project}/apps"
@@ -3189,7 +3679,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3209,65 +3700,67 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPlatformProjectsByProjectAppsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull CreateAppReq createAppReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformProjectsByProjectAppsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull PlatformCreateAppReq platformCreateAppReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
             throw new ApiException("Missing the required parameter 'project' when calling postPlatformProjectsByProjectApps(Async)");
         }
 
-        // verify the required parameter 'createAppReq' is set
-        if (createAppReq == null) {
-            throw new ApiException("Missing the required parameter 'createAppReq' when calling postPlatformProjectsByProjectApps(Async)");
+        // verify the required parameter 'platformCreateAppReq' is set
+        if (platformCreateAppReq == null) {
+            throw new ApiException("Missing the required parameter 'platformCreateAppReq' when calling postPlatformProjectsByProjectApps(Async)");
         }
 
-        return postPlatformProjectsByProjectAppsCall(project, createAppReq, _callback);
+        return postPlatformProjectsByProjectAppsCall(project, platformCreateAppReq, _callback);
 
     }
 
     /**
      * Creates an application from a git repo or a container image.
-     * Creates an application from a git repo or a container image.  It registers a new application under one of the caller org&#39;s projects and answers 201 with it. Creating does NOT deploy: the app lands in &#x60;draft&#x60; and nothing reaches the cluster until /deploy.  &#x60;source&#x60; is &#x60;git&#x60; — which requires &#x60;repo.url&#x60; — or &#x60;image&#x60;, which requires &#x60;image.repository&#x60;; anything else is 400. A git app builds with zero-config &#x60;pack&#x60; by default and may opt into &#x60;dockerfile&#x60;; an image app never builds. The repo URL and Dockerfile path are validated here against the SAME allowlist the privileged build enforces, so an unsafe source is refused before it is ever persisted.  The &#x60;slug&#x60; is the app&#39;s identity in the cluster: given or derived from &#x60;name&#x60;, it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60;, and a slug already used in this project is 409. &#x60;replicas&#x60; and &#x60;storageGb&#x60; are clamped to the deployment&#39;s limits rather than refused.  Env keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A variable marked &#x60;secret: true&#x60; is SEALED into KMS and its plaintext is never written to the database — and if KMS is unavailable the create fails 503 rather than falling back to storing a secret in the clear.  The app is seeded with its canonical default host, so it has a working HTTPS URL the moment it deploys. A bare custom domain cannot be attached here — it has to go through add-domain and DNS verification first. Requires a validated principal; 403 without one, and every cluster object it will later create lands in that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
+     * Creates an application from a git repo or a container image.  It registers a new application under one of the caller org&#39;s projects and answers 201 with it. Creating does NOT deploy: the app lands in &#x60;draft&#x60; and nothing reaches the cluster until /deploy.  &#x60;source&#x60; is &#x60;git&#x60; — which requires &#x60;repo.url&#x60; — or &#x60;image&#x60;, which requires &#x60;image.repository&#x60;; anything else is 400. A git app builds with zero-config &#x60;pack&#x60; by default and may opt into &#x60;dockerfile&#x60;; an image app never builds. The repo URL and Dockerfile path are validated here against the SAME allowlist the privileged build enforces, so an unsafe source is refused before it is ever persisted.  The &#x60;slug&#x60; is the app&#39;s identity in the cluster: given or derived from &#x60;name&#x60;, it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60;, and a slug already used in this project is 409. &#x60;replicas&#x60; and &#x60;storageGb&#x60; are clamped to the deployment&#39;s limits rather than refused.  Env keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A variable marked &#x60;secret: true&#x60; is SEALED into KMS and its plaintext is never written to the database — and if KMS is unavailable the create fails 503 rather than falling back to storing a secret in the clear.  The app is seeded with its canonical default host, so it has a working HTTPS URL the moment it deploys. A bare custom domain cannot be attached here — it has to go through add-domain and DNS verification first. Requires a validated principal; 401 without one, and every cluster object it will later create lands in that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
      * @param project Project is the project to create the application under, from the path. (required)
-     * @param createAppReq  (required)
-     * @return AppView
+     * @param platformCreateAppReq  (required)
+     * @return PlatformAppOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AppView postPlatformProjectsByProjectApps(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull CreateAppReq createAppReq) throws ApiException {
-        ApiResponse<AppView> localVarResp = postPlatformProjectsByProjectAppsWithHttpInfo(project, createAppReq);
+    public PlatformAppOut postPlatformProjectsByProjectApps(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull PlatformCreateAppReq platformCreateAppReq) throws ApiException {
+        ApiResponse<PlatformAppOut> localVarResp = postPlatformProjectsByProjectAppsWithHttpInfo(project, platformCreateAppReq);
         return localVarResp.getData();
     }
 
     /**
      * Creates an application from a git repo or a container image.
-     * Creates an application from a git repo or a container image.  It registers a new application under one of the caller org&#39;s projects and answers 201 with it. Creating does NOT deploy: the app lands in &#x60;draft&#x60; and nothing reaches the cluster until /deploy.  &#x60;source&#x60; is &#x60;git&#x60; — which requires &#x60;repo.url&#x60; — or &#x60;image&#x60;, which requires &#x60;image.repository&#x60;; anything else is 400. A git app builds with zero-config &#x60;pack&#x60; by default and may opt into &#x60;dockerfile&#x60;; an image app never builds. The repo URL and Dockerfile path are validated here against the SAME allowlist the privileged build enforces, so an unsafe source is refused before it is ever persisted.  The &#x60;slug&#x60; is the app&#39;s identity in the cluster: given or derived from &#x60;name&#x60;, it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60;, and a slug already used in this project is 409. &#x60;replicas&#x60; and &#x60;storageGb&#x60; are clamped to the deployment&#39;s limits rather than refused.  Env keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A variable marked &#x60;secret: true&#x60; is SEALED into KMS and its plaintext is never written to the database — and if KMS is unavailable the create fails 503 rather than falling back to storing a secret in the clear.  The app is seeded with its canonical default host, so it has a working HTTPS URL the moment it deploys. A bare custom domain cannot be attached here — it has to go through add-domain and DNS verification first. Requires a validated principal; 403 without one, and every cluster object it will later create lands in that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
+     * Creates an application from a git repo or a container image.  It registers a new application under one of the caller org&#39;s projects and answers 201 with it. Creating does NOT deploy: the app lands in &#x60;draft&#x60; and nothing reaches the cluster until /deploy.  &#x60;source&#x60; is &#x60;git&#x60; — which requires &#x60;repo.url&#x60; — or &#x60;image&#x60;, which requires &#x60;image.repository&#x60;; anything else is 400. A git app builds with zero-config &#x60;pack&#x60; by default and may opt into &#x60;dockerfile&#x60;; an image app never builds. The repo URL and Dockerfile path are validated here against the SAME allowlist the privileged build enforces, so an unsafe source is refused before it is ever persisted.  The &#x60;slug&#x60; is the app&#39;s identity in the cluster: given or derived from &#x60;name&#x60;, it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60;, and a slug already used in this project is 409. &#x60;replicas&#x60; and &#x60;storageGb&#x60; are clamped to the deployment&#39;s limits rather than refused.  Env keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A variable marked &#x60;secret: true&#x60; is SEALED into KMS and its plaintext is never written to the database — and if KMS is unavailable the create fails 503 rather than falling back to storing a secret in the clear.  The app is seeded with its canonical default host, so it has a working HTTPS URL the moment it deploys. A bare custom domain cannot be attached here — it has to go through add-domain and DNS verification first. Requires a validated principal; 401 without one, and every cluster object it will later create lands in that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
      * @param project Project is the project to create the application under, from the path. (required)
-     * @param createAppReq  (required)
-     * @return ApiResponse&lt;AppView&gt;
+     * @param platformCreateAppReq  (required)
+     * @return ApiResponse&lt;PlatformAppOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AppView> postPlatformProjectsByProjectAppsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull CreateAppReq createAppReq) throws ApiException {
-        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsValidateBeforeCall(project, createAppReq, null);
-        Type localVarReturnType = new TypeToken<AppView>(){}.getType();
+    public ApiResponse<PlatformAppOut> postPlatformProjectsByProjectAppsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull PlatformCreateAppReq platformCreateAppReq) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsValidateBeforeCall(project, platformCreateAppReq, null);
+        Type localVarReturnType = new TypeToken<PlatformAppOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Creates an application from a git repo or a container image. (asynchronously)
-     * Creates an application from a git repo or a container image.  It registers a new application under one of the caller org&#39;s projects and answers 201 with it. Creating does NOT deploy: the app lands in &#x60;draft&#x60; and nothing reaches the cluster until /deploy.  &#x60;source&#x60; is &#x60;git&#x60; — which requires &#x60;repo.url&#x60; — or &#x60;image&#x60;, which requires &#x60;image.repository&#x60;; anything else is 400. A git app builds with zero-config &#x60;pack&#x60; by default and may opt into &#x60;dockerfile&#x60;; an image app never builds. The repo URL and Dockerfile path are validated here against the SAME allowlist the privileged build enforces, so an unsafe source is refused before it is ever persisted.  The &#x60;slug&#x60; is the app&#39;s identity in the cluster: given or derived from &#x60;name&#x60;, it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60;, and a slug already used in this project is 409. &#x60;replicas&#x60; and &#x60;storageGb&#x60; are clamped to the deployment&#39;s limits rather than refused.  Env keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A variable marked &#x60;secret: true&#x60; is SEALED into KMS and its plaintext is never written to the database — and if KMS is unavailable the create fails 503 rather than falling back to storing a secret in the clear.  The app is seeded with its canonical default host, so it has a working HTTPS URL the moment it deploys. A bare custom domain cannot be attached here — it has to go through add-domain and DNS verification first. Requires a validated principal; 403 without one, and every cluster object it will later create lands in that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
+     * Creates an application from a git repo or a container image.  It registers a new application under one of the caller org&#39;s projects and answers 201 with it. Creating does NOT deploy: the app lands in &#x60;draft&#x60; and nothing reaches the cluster until /deploy.  &#x60;source&#x60; is &#x60;git&#x60; — which requires &#x60;repo.url&#x60; — or &#x60;image&#x60;, which requires &#x60;image.repository&#x60;; anything else is 400. A git app builds with zero-config &#x60;pack&#x60; by default and may opt into &#x60;dockerfile&#x60;; an image app never builds. The repo URL and Dockerfile path are validated here against the SAME allowlist the privileged build enforces, so an unsafe source is refused before it is ever persisted.  The &#x60;slug&#x60; is the app&#39;s identity in the cluster: given or derived from &#x60;name&#x60;, it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60;, and a slug already used in this project is 409. &#x60;replicas&#x60; and &#x60;storageGb&#x60; are clamped to the deployment&#39;s limits rather than refused.  Env keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A variable marked &#x60;secret: true&#x60; is SEALED into KMS and its plaintext is never written to the database — and if KMS is unavailable the create fails 503 rather than falling back to storing a secret in the clear.  The app is seeded with its canonical default host, so it has a working HTTPS URL the moment it deploys. A bare custom domain cannot be attached here — it has to go through add-domain and DNS verification first. Requires a validated principal; 401 without one, and every cluster object it will later create lands in that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
      * @param project Project is the project to create the application under, from the path. (required)
-     * @param createAppReq  (required)
+     * @param platformCreateAppReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3276,12 +3769,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformProjectsByProjectAppsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull CreateAppReq createAppReq, final ApiCallback<AppView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull PlatformCreateAppReq platformCreateAppReq, final ApiCallback<PlatformAppOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsValidateBeforeCall(project, createAppReq, _callback);
-        Type localVarReturnType = new TypeToken<AppView>(){}.getType();
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsValidateBeforeCall(project, platformCreateAppReq, _callback);
+        Type localVarReturnType = new TypeToken<PlatformAppOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3289,7 +3783,7 @@ public class PlatformApi {
      * Build call for postPlatformProjectsByProjectAppsByAppDeploy
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param deployReq  (required)
+     * @param platformDeployReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3298,9 +3792,10 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformProjectsByProjectAppsByAppDeployCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull DeployReq deployReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppDeployCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformDeployReq platformDeployReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3314,7 +3809,7 @@ public class PlatformApi {
             basePath = null;
         }
 
-        Object localVarPostBody = deployReq;
+        Object localVarPostBody = platformDeployReq;
 
         // create path and map variables
         String localVarPath = "/v1/platform/projects/{project}/apps/{app}/deploy"
@@ -3328,7 +3823,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3348,7 +3844,7 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPlatformProjectsByProjectAppsByAppDeployValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull DeployReq deployReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformProjectsByProjectAppsByAppDeployValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformDeployReq platformDeployReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
             throw new ApiException("Missing the required parameter 'project' when calling postPlatformProjectsByProjectAppsByAppDeploy(Async)");
@@ -3359,62 +3855,64 @@ public class PlatformApi {
             throw new ApiException("Missing the required parameter 'app' when calling postPlatformProjectsByProjectAppsByAppDeploy(Async)");
         }
 
-        // verify the required parameter 'deployReq' is set
-        if (deployReq == null) {
-            throw new ApiException("Missing the required parameter 'deployReq' when calling postPlatformProjectsByProjectAppsByAppDeploy(Async)");
+        // verify the required parameter 'platformDeployReq' is set
+        if (platformDeployReq == null) {
+            throw new ApiException("Missing the required parameter 'platformDeployReq' when calling postPlatformProjectsByProjectAppsByAppDeploy(Async)");
         }
 
-        return postPlatformProjectsByProjectAppsByAppDeployCall(project, app, deployReq, _callback);
+        return postPlatformProjectsByProjectAppsByAppDeployCall(project, app, platformDeployReq, _callback);
 
     }
 
     /**
      * Deploys the app — building it first if it comes from git.
-     * Deploys the app — building it first if it comes from git.  It starts a new, monotonically versioned deployment of the app and answers 202 with the deployment record. A 202 is an ACCEPTED deployment, not a live one.  An IMAGE app deploys the tag you name (falling back to the app&#39;s tag, then &#x60;latest&#x60;) by writing its operator Service CR; the operator reconciles it to running. A GIT app launches an in-cluster BuildKit Job at &#x60;commit&#x60; — or the app&#39;s branch — and comes back in &#x60;building&#x60;; the Service CR is applied later, by the reconciler, once the Job succeeds. The reconciler is restart-safe, so a build in flight survives a cloud restart.  Deploys are bounded per org: over the concurrent-deploy cap is 429 and NOTHING is recorded, so a rejected deploy leaves no phantom in the history. An unreachable cluster is 503 but still records an honest &#x60;error&#x60; deployment, because a deploy that was attempted and failed must not be indistinguishable from one never made. Every other failure is likewise recorded in its real terminal state.  This is metered work: a git build is billed to the org&#39;s ledger in wall-clock build minutes once the Job finishes, and the running deployment is billed for its compute per tick for as long as it stays live. Requires a validated principal; 403 without one, and everything is written into that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
+     * Deploys the app — building it first if it comes from git.  It starts a new, monotonically versioned deployment of the app and answers 202 with the deployment record. A 202 is an ACCEPTED deployment, not a live one.  An IMAGE app deploys the tag you name (falling back to the app&#39;s tag, then &#x60;latest&#x60;) by writing its operator Service CR; the operator reconciles it to running. A GIT app launches an in-cluster BuildKit Job at &#x60;commit&#x60; — or the app&#39;s branch — and comes back in &#x60;building&#x60;; the Service CR is applied later, by the reconciler, once the Job succeeds. The reconciler is restart-safe, so a build in flight survives a cloud restart.  Deploys are bounded per org: over the concurrent-deploy cap is 429 and NOTHING is recorded, so a rejected deploy leaves no phantom in the history. An unreachable cluster is 503 but still records an honest &#x60;error&#x60; deployment, because a deploy that was attempted and failed must not be indistinguishable from one never made. Every other failure is likewise recorded in its real terminal state.  This is metered work: a git build is billed to the org&#39;s ledger in wall-clock build minutes once the Job finishes, and the running deployment is billed for its compute per tick for as long as it stays live. Requires a validated principal; 401 without one, and everything is written into that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param deployReq  (required)
-     * @return DeploymentView
+     * @param platformDeployReq  (required)
+     * @return PlatformDeploymentView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DeploymentView postPlatformProjectsByProjectAppsByAppDeploy(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull DeployReq deployReq) throws ApiException {
-        ApiResponse<DeploymentView> localVarResp = postPlatformProjectsByProjectAppsByAppDeployWithHttpInfo(project, app, deployReq);
+    public PlatformDeploymentView postPlatformProjectsByProjectAppsByAppDeploy(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformDeployReq platformDeployReq) throws ApiException {
+        ApiResponse<PlatformDeploymentView> localVarResp = postPlatformProjectsByProjectAppsByAppDeployWithHttpInfo(project, app, platformDeployReq);
         return localVarResp.getData();
     }
 
     /**
      * Deploys the app — building it first if it comes from git.
-     * Deploys the app — building it first if it comes from git.  It starts a new, monotonically versioned deployment of the app and answers 202 with the deployment record. A 202 is an ACCEPTED deployment, not a live one.  An IMAGE app deploys the tag you name (falling back to the app&#39;s tag, then &#x60;latest&#x60;) by writing its operator Service CR; the operator reconciles it to running. A GIT app launches an in-cluster BuildKit Job at &#x60;commit&#x60; — or the app&#39;s branch — and comes back in &#x60;building&#x60;; the Service CR is applied later, by the reconciler, once the Job succeeds. The reconciler is restart-safe, so a build in flight survives a cloud restart.  Deploys are bounded per org: over the concurrent-deploy cap is 429 and NOTHING is recorded, so a rejected deploy leaves no phantom in the history. An unreachable cluster is 503 but still records an honest &#x60;error&#x60; deployment, because a deploy that was attempted and failed must not be indistinguishable from one never made. Every other failure is likewise recorded in its real terminal state.  This is metered work: a git build is billed to the org&#39;s ledger in wall-clock build minutes once the Job finishes, and the running deployment is billed for its compute per tick for as long as it stays live. Requires a validated principal; 403 without one, and everything is written into that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
+     * Deploys the app — building it first if it comes from git.  It starts a new, monotonically versioned deployment of the app and answers 202 with the deployment record. A 202 is an ACCEPTED deployment, not a live one.  An IMAGE app deploys the tag you name (falling back to the app&#39;s tag, then &#x60;latest&#x60;) by writing its operator Service CR; the operator reconciles it to running. A GIT app launches an in-cluster BuildKit Job at &#x60;commit&#x60; — or the app&#39;s branch — and comes back in &#x60;building&#x60;; the Service CR is applied later, by the reconciler, once the Job succeeds. The reconciler is restart-safe, so a build in flight survives a cloud restart.  Deploys are bounded per org: over the concurrent-deploy cap is 429 and NOTHING is recorded, so a rejected deploy leaves no phantom in the history. An unreachable cluster is 503 but still records an honest &#x60;error&#x60; deployment, because a deploy that was attempted and failed must not be indistinguishable from one never made. Every other failure is likewise recorded in its real terminal state.  This is metered work: a git build is billed to the org&#39;s ledger in wall-clock build minutes once the Job finishes, and the running deployment is billed for its compute per tick for as long as it stays live. Requires a validated principal; 401 without one, and everything is written into that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param deployReq  (required)
-     * @return ApiResponse&lt;DeploymentView&gt;
+     * @param platformDeployReq  (required)
+     * @return ApiResponse&lt;PlatformDeploymentView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeploymentView> postPlatformProjectsByProjectAppsByAppDeployWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull DeployReq deployReq) throws ApiException {
-        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppDeployValidateBeforeCall(project, app, deployReq, null);
-        Type localVarReturnType = new TypeToken<DeploymentView>(){}.getType();
+    public ApiResponse<PlatformDeploymentView> postPlatformProjectsByProjectAppsByAppDeployWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformDeployReq platformDeployReq) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppDeployValidateBeforeCall(project, app, platformDeployReq, null);
+        Type localVarReturnType = new TypeToken<PlatformDeploymentView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Deploys the app — building it first if it comes from git. (asynchronously)
-     * Deploys the app — building it first if it comes from git.  It starts a new, monotonically versioned deployment of the app and answers 202 with the deployment record. A 202 is an ACCEPTED deployment, not a live one.  An IMAGE app deploys the tag you name (falling back to the app&#39;s tag, then &#x60;latest&#x60;) by writing its operator Service CR; the operator reconciles it to running. A GIT app launches an in-cluster BuildKit Job at &#x60;commit&#x60; — or the app&#39;s branch — and comes back in &#x60;building&#x60;; the Service CR is applied later, by the reconciler, once the Job succeeds. The reconciler is restart-safe, so a build in flight survives a cloud restart.  Deploys are bounded per org: over the concurrent-deploy cap is 429 and NOTHING is recorded, so a rejected deploy leaves no phantom in the history. An unreachable cluster is 503 but still records an honest &#x60;error&#x60; deployment, because a deploy that was attempted and failed must not be indistinguishable from one never made. Every other failure is likewise recorded in its real terminal state.  This is metered work: a git build is billed to the org&#39;s ledger in wall-clock build minutes once the Job finishes, and the running deployment is billed for its compute per tick for as long as it stays live. Requires a validated principal; 403 without one, and everything is written into that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
+     * Deploys the app — building it first if it comes from git.  It starts a new, monotonically versioned deployment of the app and answers 202 with the deployment record. A 202 is an ACCEPTED deployment, not a live one.  An IMAGE app deploys the tag you name (falling back to the app&#39;s tag, then &#x60;latest&#x60;) by writing its operator Service CR; the operator reconciles it to running. A GIT app launches an in-cluster BuildKit Job at &#x60;commit&#x60; — or the app&#39;s branch — and comes back in &#x60;building&#x60;; the Service CR is applied later, by the reconciler, once the Job succeeds. The reconciler is restart-safe, so a build in flight survives a cloud restart.  Deploys are bounded per org: over the concurrent-deploy cap is 429 and NOTHING is recorded, so a rejected deploy leaves no phantom in the history. An unreachable cluster is 503 but still records an honest &#x60;error&#x60; deployment, because a deploy that was attempted and failed must not be indistinguishable from one never made. Every other failure is likewise recorded in its real terminal state.  This is metered work: a git build is billed to the org&#39;s ledger in wall-clock build minutes once the Job finishes, and the running deployment is billed for its compute per tick for as long as it stays live. Requires a validated principal; 401 without one, and everything is written into that org&#39;s own &#x60;tenant-&lt;org&gt;&#x60; namespace.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param deployReq  (required)
+     * @param platformDeployReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3423,12 +3921,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformProjectsByProjectAppsByAppDeployAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull DeployReq deployReq, final ApiCallback<DeploymentView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppDeployAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformDeployReq platformDeployReq, final ApiCallback<PlatformDeploymentView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppDeployValidateBeforeCall(project, app, deployReq, _callback);
-        Type localVarReturnType = new TypeToken<DeploymentView>(){}.getType();
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppDeployValidateBeforeCall(project, app, platformDeployReq, _callback);
+        Type localVarReturnType = new TypeToken<PlatformDeploymentView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3436,7 +3935,7 @@ public class PlatformApi {
      * Build call for postPlatformProjectsByProjectAppsByAppDomains
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param addDomainReq  (required)
+     * @param platformAddDomainReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3446,9 +3945,10 @@ public class PlatformApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformProjectsByProjectAppsByAppDomainsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull AddDomainReq addDomainReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppDomainsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformAddDomainReq platformAddDomainReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3462,7 +3962,7 @@ public class PlatformApi {
             basePath = null;
         }
 
-        Object localVarPostBody = addDomainReq;
+        Object localVarPostBody = platformAddDomainReq;
 
         // create path and map variables
         String localVarPath = "/v1/platform/projects/{project}/apps/{app}/domains"
@@ -3476,7 +3976,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3496,7 +3997,7 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull AddDomainReq addDomainReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformAddDomainReq platformAddDomainReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
             throw new ApiException("Missing the required parameter 'project' when calling postPlatformProjectsByProjectAppsByAppDomains(Async)");
@@ -3507,22 +4008,22 @@ public class PlatformApi {
             throw new ApiException("Missing the required parameter 'app' when calling postPlatformProjectsByProjectAppsByAppDomains(Async)");
         }
 
-        // verify the required parameter 'addDomainReq' is set
-        if (addDomainReq == null) {
-            throw new ApiException("Missing the required parameter 'addDomainReq' when calling postPlatformProjectsByProjectAppsByAppDomains(Async)");
+        // verify the required parameter 'platformAddDomainReq' is set
+        if (platformAddDomainReq == null) {
+            throw new ApiException("Missing the required parameter 'platformAddDomainReq' when calling postPlatformProjectsByProjectAppsByAppDomains(Async)");
         }
 
-        return postPlatformProjectsByProjectAppsByAppDomainsCall(project, app, addDomainReq, _callback);
+        return postPlatformProjectsByProjectAppsByAppDomainsCall(project, app, platformAddDomainReq, _callback);
 
     }
 
     /**
      * Attaches a hostname — instantly if you already own it, otherwise with a DNS challenge.
-     * Attaches a hostname — instantly if you already own it, otherwise with a DNS challenge.  It attaches &#x60;host&#x60; to the app, and which of two things happens depends on who owns the name. A host inside the caller org&#39;s own subtree is structurally owned, so it goes ACTIVE immediately and answers 201. A bring-your-own host is claimed as PENDING and answers the DNS challenge records to publish; it is NOT rendered into the app&#39;s ingress until /verify passes.  Claims are globally unique. A host already claimed by another organization is 409, and so is one claimed by a different app in your own; re-adding this app&#39;s OWN claim is idempotent and answers its current state at 200. The default host is always attached and re-adding it is 409. A host under the platform&#39;s shared apex that is not the caller&#39;s own subtree is 403 — it belongs to whoever owns that subtree and can never be grabbed through the custom path.  &#x60;host&#x60; must be a valid DNS hostname; anything else is 400. Requires a validated principal; 403 without one.
+     * Attaches a hostname — instantly if you already own it, otherwise with a DNS challenge.  It attaches &#x60;host&#x60; to the app, and which of two things happens depends on who owns the name. A host inside the caller org&#39;s own subtree is structurally owned, so it goes ACTIVE immediately and answers 201. A bring-your-own host is claimed as PENDING and answers the DNS challenge records to publish; it is NOT rendered into the app&#39;s ingress until /verify passes.  Claims are globally unique. A host already claimed by another organization is 409, and so is one claimed by a different app in your own; re-adding this app&#39;s OWN claim is idempotent and answers its current state at 200. The default host is always attached and re-adding it is 409. A host under the platform&#39;s shared apex that is not the caller&#39;s own subtree is 403 — it belongs to whoever owns that subtree and can never be grabbed through the custom path.  &#x60;host&#x60; must be a valid DNS hostname; anything else is 400. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param addDomainReq  (required)
-     * @return DomainView
+     * @param platformAddDomainReq  (required)
+     * @return PlatformDomainView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -3530,20 +4031,21 @@ public class PlatformApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DomainView postPlatformProjectsByProjectAppsByAppDomains(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull AddDomainReq addDomainReq) throws ApiException {
-        ApiResponse<DomainView> localVarResp = postPlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(project, app, addDomainReq);
+    public PlatformDomainView postPlatformProjectsByProjectAppsByAppDomains(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformAddDomainReq platformAddDomainReq) throws ApiException {
+        ApiResponse<PlatformDomainView> localVarResp = postPlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(project, app, platformAddDomainReq);
         return localVarResp.getData();
     }
 
     /**
      * Attaches a hostname — instantly if you already own it, otherwise with a DNS challenge.
-     * Attaches a hostname — instantly if you already own it, otherwise with a DNS challenge.  It attaches &#x60;host&#x60; to the app, and which of two things happens depends on who owns the name. A host inside the caller org&#39;s own subtree is structurally owned, so it goes ACTIVE immediately and answers 201. A bring-your-own host is claimed as PENDING and answers the DNS challenge records to publish; it is NOT rendered into the app&#39;s ingress until /verify passes.  Claims are globally unique. A host already claimed by another organization is 409, and so is one claimed by a different app in your own; re-adding this app&#39;s OWN claim is idempotent and answers its current state at 200. The default host is always attached and re-adding it is 409. A host under the platform&#39;s shared apex that is not the caller&#39;s own subtree is 403 — it belongs to whoever owns that subtree and can never be grabbed through the custom path.  &#x60;host&#x60; must be a valid DNS hostname; anything else is 400. Requires a validated principal; 403 without one.
+     * Attaches a hostname — instantly if you already own it, otherwise with a DNS challenge.  It attaches &#x60;host&#x60; to the app, and which of two things happens depends on who owns the name. A host inside the caller org&#39;s own subtree is structurally owned, so it goes ACTIVE immediately and answers 201. A bring-your-own host is claimed as PENDING and answers the DNS challenge records to publish; it is NOT rendered into the app&#39;s ingress until /verify passes.  Claims are globally unique. A host already claimed by another organization is 409, and so is one claimed by a different app in your own; re-adding this app&#39;s OWN claim is idempotent and answers its current state at 200. The default host is always attached and re-adding it is 409. A host under the platform&#39;s shared apex that is not the caller&#39;s own subtree is 403 — it belongs to whoever owns that subtree and can never be grabbed through the custom path.  &#x60;host&#x60; must be a valid DNS hostname; anything else is 400. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param addDomainReq  (required)
-     * @return ApiResponse&lt;DomainView&gt;
+     * @param platformAddDomainReq  (required)
+     * @return ApiResponse&lt;PlatformDomainView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -3551,20 +4053,21 @@ public class PlatformApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DomainView> postPlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull AddDomainReq addDomainReq) throws ApiException {
-        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(project, app, addDomainReq, null);
-        Type localVarReturnType = new TypeToken<DomainView>(){}.getType();
+    public ApiResponse<PlatformDomainView> postPlatformProjectsByProjectAppsByAppDomainsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformAddDomainReq platformAddDomainReq) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(project, app, platformAddDomainReq, null);
+        Type localVarReturnType = new TypeToken<PlatformDomainView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Attaches a hostname — instantly if you already own it, otherwise with a DNS challenge. (asynchronously)
-     * Attaches a hostname — instantly if you already own it, otherwise with a DNS challenge.  It attaches &#x60;host&#x60; to the app, and which of two things happens depends on who owns the name. A host inside the caller org&#39;s own subtree is structurally owned, so it goes ACTIVE immediately and answers 201. A bring-your-own host is claimed as PENDING and answers the DNS challenge records to publish; it is NOT rendered into the app&#39;s ingress until /verify passes.  Claims are globally unique. A host already claimed by another organization is 409, and so is one claimed by a different app in your own; re-adding this app&#39;s OWN claim is idempotent and answers its current state at 200. The default host is always attached and re-adding it is 409. A host under the platform&#39;s shared apex that is not the caller&#39;s own subtree is 403 — it belongs to whoever owns that subtree and can never be grabbed through the custom path.  &#x60;host&#x60; must be a valid DNS hostname; anything else is 400. Requires a validated principal; 403 without one.
+     * Attaches a hostname — instantly if you already own it, otherwise with a DNS challenge.  It attaches &#x60;host&#x60; to the app, and which of two things happens depends on who owns the name. A host inside the caller org&#39;s own subtree is structurally owned, so it goes ACTIVE immediately and answers 201. A bring-your-own host is claimed as PENDING and answers the DNS challenge records to publish; it is NOT rendered into the app&#39;s ingress until /verify passes.  Claims are globally unique. A host already claimed by another organization is 409, and so is one claimed by a different app in your own; re-adding this app&#39;s OWN claim is idempotent and answers its current state at 200. The default host is always attached and re-adding it is 409. A host under the platform&#39;s shared apex that is not the caller&#39;s own subtree is 403 — it belongs to whoever owns that subtree and can never be grabbed through the custom path.  &#x60;host&#x60; must be a valid DNS hostname; anything else is 400. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param addDomainReq  (required)
+     * @param platformAddDomainReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3574,12 +4077,13 @@ public class PlatformApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformProjectsByProjectAppsByAppDomainsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull AddDomainReq addDomainReq, final ApiCallback<DomainView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppDomainsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformAddDomainReq platformAddDomainReq, final ApiCallback<PlatformDomainView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(project, app, addDomainReq, _callback);
-        Type localVarReturnType = new TypeToken<DomainView>(){}.getType();
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppDomainsValidateBeforeCall(project, app, platformAddDomainReq, _callback);
+        Type localVarReturnType = new TypeToken<PlatformDomainView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3596,6 +4100,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
@@ -3627,7 +4132,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3668,48 +4174,50 @@ public class PlatformApi {
 
     /**
      * Checks a custom domain&#39;s DNS and turns it on if it passes.
-     * Checks a custom domain&#39;s DNS and turns it on if it passes.  It runs the DNS challenge check for a pending custom host and, when it passes, marks the host verified and renders it into the app&#39;s ingress so it starts serving.  A check that RAN and did not pass is not an error: it answers 200 with the host still pending and the reason in &#x60;detail&#x60;, so a console can show the operator what DNS is actually returning. An already-verified host answers as-is without re-checking. A host not claimed by this app is 404. Requires a validated principal; 403 without one.
+     * Checks a custom domain&#39;s DNS and turns it on if it passes.  It runs the DNS challenge check for a pending custom host and, when it passes, marks the host verified and renders it into the app&#39;s ingress so it starts serving.  A check that RAN and did not pass is not an error: it answers 200 with the host still pending and the reason in &#x60;detail&#x60;, so a console can show the operator what DNS is actually returning. An already-verified host answers as-is without re-checking. A host not claimed by this app is 404. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param host Host is the hostname, from the path. (required)
-     * @return DomainView
+     * @return PlatformDomainView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DomainView postPlatformProjectsByProjectAppsByAppDomainsByHostVerify(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
-        ApiResponse<DomainView> localVarResp = postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyWithHttpInfo(project, app, host);
+    public PlatformDomainView postPlatformProjectsByProjectAppsByAppDomainsByHostVerify(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
+        ApiResponse<PlatformDomainView> localVarResp = postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyWithHttpInfo(project, app, host);
         return localVarResp.getData();
     }
 
     /**
      * Checks a custom domain&#39;s DNS and turns it on if it passes.
-     * Checks a custom domain&#39;s DNS and turns it on if it passes.  It runs the DNS challenge check for a pending custom host and, when it passes, marks the host verified and renders it into the app&#39;s ingress so it starts serving.  A check that RAN and did not pass is not an error: it answers 200 with the host still pending and the reason in &#x60;detail&#x60;, so a console can show the operator what DNS is actually returning. An already-verified host answers as-is without re-checking. A host not claimed by this app is 404. Requires a validated principal; 403 without one.
+     * Checks a custom domain&#39;s DNS and turns it on if it passes.  It runs the DNS challenge check for a pending custom host and, when it passes, marks the host verified and renders it into the app&#39;s ingress so it starts serving.  A check that RAN and did not pass is not an error: it answers 200 with the host still pending and the reason in &#x60;detail&#x60;, so a console can show the operator what DNS is actually returning. An already-verified host answers as-is without re-checking. A host not claimed by this app is 404. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param host Host is the hostname, from the path. (required)
-     * @return ApiResponse&lt;DomainView&gt;
+     * @return ApiResponse&lt;PlatformDomainView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DomainView> postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
+    public ApiResponse<PlatformDomainView> postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host) throws ApiException {
         okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyValidateBeforeCall(project, app, host, null);
-        Type localVarReturnType = new TypeToken<DomainView>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformDomainView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Checks a custom domain&#39;s DNS and turns it on if it passes. (asynchronously)
-     * Checks a custom domain&#39;s DNS and turns it on if it passes.  It runs the DNS challenge check for a pending custom host and, when it passes, marks the host verified and renders it into the app&#39;s ingress so it starts serving.  A check that RAN and did not pass is not an error: it answers 200 with the host still pending and the reason in &#x60;detail&#x60;, so a console can show the operator what DNS is actually returning. An already-verified host answers as-is without re-checking. A host not claimed by this app is 404. Requires a validated principal; 403 without one.
+     * Checks a custom domain&#39;s DNS and turns it on if it passes.  It runs the DNS challenge check for a pending custom host and, when it passes, marks the host verified and renders it into the app&#39;s ingress so it starts serving.  A check that RAN and did not pass is not an error: it answers 200 with the host still pending and the reason in &#x60;detail&#x60;, so a console can show the operator what DNS is actually returning. An already-verified host answers as-is without re-checking. A host not claimed by this app is 404. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param host Host is the hostname, from the path. (required)
@@ -3721,12 +4229,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback<DomainView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull String host, final ApiCallback<PlatformDomainView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppDomainsByHostVerifyValidateBeforeCall(project, app, host, _callback);
-        Type localVarReturnType = new TypeToken<DomainView>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformDomainView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3734,7 +4243,7 @@ public class PlatformApi {
      * Build call for postPlatformProjectsByProjectAppsByAppPreview
      * @param project Project is the project the parent application lives under, from the path. (required)
      * @param app App is the parent application&#39;s slug, from the path. (required)
-     * @param previewReq  (required)
+     * @param platformPreviewReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3743,9 +4252,10 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformProjectsByProjectAppsByAppPreviewCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PreviewReq previewReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppPreviewCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformPreviewReq platformPreviewReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3759,7 +4269,7 @@ public class PlatformApi {
             basePath = null;
         }
 
-        Object localVarPostBody = previewReq;
+        Object localVarPostBody = platformPreviewReq;
 
         // create path and map variables
         String localVarPath = "/v1/platform/projects/{project}/apps/{app}/preview"
@@ -3773,7 +4283,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3793,7 +4304,7 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPlatformProjectsByProjectAppsByAppPreviewValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PreviewReq previewReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformProjectsByProjectAppsByAppPreviewValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformPreviewReq platformPreviewReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
             throw new ApiException("Missing the required parameter 'project' when calling postPlatformProjectsByProjectAppsByAppPreview(Async)");
@@ -3804,62 +4315,64 @@ public class PlatformApi {
             throw new ApiException("Missing the required parameter 'app' when calling postPlatformProjectsByProjectAppsByAppPreview(Async)");
         }
 
-        // verify the required parameter 'previewReq' is set
-        if (previewReq == null) {
-            throw new ApiException("Missing the required parameter 'previewReq' when calling postPlatformProjectsByProjectAppsByAppPreview(Async)");
+        // verify the required parameter 'platformPreviewReq' is set
+        if (platformPreviewReq == null) {
+            throw new ApiException("Missing the required parameter 'platformPreviewReq' when calling postPlatformProjectsByProjectAppsByAppPreview(Async)");
         }
 
-        return postPlatformProjectsByProjectAppsByAppPreviewCall(project, app, previewReq, _callback);
+        return postPlatformProjectsByProjectAppsByAppPreviewCall(project, app, platformPreviewReq, _callback);
 
     }
 
     /**
      * Puts a branch on its own URL.
-     * Puts a branch on its own URL.  It deploys an already-built &#x60;image&#x60; to a per-branch preview and answers its URL, the branch, the preview&#39;s slug and the deployment. The preview is a FIRST-CLASS application named &#x60;&lt;app&gt;-&lt;branch&gt;&#x60; in the same project and tenant namespace, with its own default host — so it is completely isolated from production while reusing the same deploy mechanic. Re-previewing a branch converges that same target in place rather than stacking another one.  It carries NO environment variables, deliberately: a preview never inherits production&#39;s secrets. It also does not build — &#x60;image&#x60; is required and must already exist, and &#x60;branch&#x60; defaults to the parent app&#39;s. A branch that does not resolve to a valid slug distinct from the parent&#39;s is 400. Requires a validated principal; 403 without one.
+     * Puts a branch on its own URL.  It deploys an already-built &#x60;image&#x60; to a per-branch preview and answers its URL, the branch, the preview&#39;s slug and the deployment. The preview is a FIRST-CLASS application named &#x60;&lt;app&gt;-&lt;branch&gt;&#x60; in the same project and tenant namespace, with its own default host — so it is completely isolated from production while reusing the same deploy mechanic. Re-previewing a branch converges that same target in place rather than stacking another one.  It carries NO environment variables, deliberately: a preview never inherits production&#39;s secrets. It also does not build — &#x60;image&#x60; is required and must already exist, and &#x60;branch&#x60; defaults to the parent app&#39;s. A branch that does not resolve to a valid slug distinct from the parent&#39;s is 400. Requires a validated principal; 401 without one.
      * @param project Project is the project the parent application lives under, from the path. (required)
      * @param app App is the parent application&#39;s slug, from the path. (required)
-     * @param previewReq  (required)
-     * @return PreviewView
+     * @param platformPreviewReq  (required)
+     * @return PlatformPreviewView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PreviewView postPlatformProjectsByProjectAppsByAppPreview(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PreviewReq previewReq) throws ApiException {
-        ApiResponse<PreviewView> localVarResp = postPlatformProjectsByProjectAppsByAppPreviewWithHttpInfo(project, app, previewReq);
+    public PlatformPreviewView postPlatformProjectsByProjectAppsByAppPreview(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformPreviewReq platformPreviewReq) throws ApiException {
+        ApiResponse<PlatformPreviewView> localVarResp = postPlatformProjectsByProjectAppsByAppPreviewWithHttpInfo(project, app, platformPreviewReq);
         return localVarResp.getData();
     }
 
     /**
      * Puts a branch on its own URL.
-     * Puts a branch on its own URL.  It deploys an already-built &#x60;image&#x60; to a per-branch preview and answers its URL, the branch, the preview&#39;s slug and the deployment. The preview is a FIRST-CLASS application named &#x60;&lt;app&gt;-&lt;branch&gt;&#x60; in the same project and tenant namespace, with its own default host — so it is completely isolated from production while reusing the same deploy mechanic. Re-previewing a branch converges that same target in place rather than stacking another one.  It carries NO environment variables, deliberately: a preview never inherits production&#39;s secrets. It also does not build — &#x60;image&#x60; is required and must already exist, and &#x60;branch&#x60; defaults to the parent app&#39;s. A branch that does not resolve to a valid slug distinct from the parent&#39;s is 400. Requires a validated principal; 403 without one.
+     * Puts a branch on its own URL.  It deploys an already-built &#x60;image&#x60; to a per-branch preview and answers its URL, the branch, the preview&#39;s slug and the deployment. The preview is a FIRST-CLASS application named &#x60;&lt;app&gt;-&lt;branch&gt;&#x60; in the same project and tenant namespace, with its own default host — so it is completely isolated from production while reusing the same deploy mechanic. Re-previewing a branch converges that same target in place rather than stacking another one.  It carries NO environment variables, deliberately: a preview never inherits production&#39;s secrets. It also does not build — &#x60;image&#x60; is required and must already exist, and &#x60;branch&#x60; defaults to the parent app&#39;s. A branch that does not resolve to a valid slug distinct from the parent&#39;s is 400. Requires a validated principal; 401 without one.
      * @param project Project is the project the parent application lives under, from the path. (required)
      * @param app App is the parent application&#39;s slug, from the path. (required)
-     * @param previewReq  (required)
-     * @return ApiResponse&lt;PreviewView&gt;
+     * @param platformPreviewReq  (required)
+     * @return ApiResponse&lt;PlatformPreviewView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PreviewView> postPlatformProjectsByProjectAppsByAppPreviewWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PreviewReq previewReq) throws ApiException {
-        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppPreviewValidateBeforeCall(project, app, previewReq, null);
-        Type localVarReturnType = new TypeToken<PreviewView>(){}.getType();
+    public ApiResponse<PlatformPreviewView> postPlatformProjectsByProjectAppsByAppPreviewWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformPreviewReq platformPreviewReq) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppPreviewValidateBeforeCall(project, app, platformPreviewReq, null);
+        Type localVarReturnType = new TypeToken<PlatformPreviewView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Puts a branch on its own URL. (asynchronously)
-     * Puts a branch on its own URL.  It deploys an already-built &#x60;image&#x60; to a per-branch preview and answers its URL, the branch, the preview&#39;s slug and the deployment. The preview is a FIRST-CLASS application named &#x60;&lt;app&gt;-&lt;branch&gt;&#x60; in the same project and tenant namespace, with its own default host — so it is completely isolated from production while reusing the same deploy mechanic. Re-previewing a branch converges that same target in place rather than stacking another one.  It carries NO environment variables, deliberately: a preview never inherits production&#39;s secrets. It also does not build — &#x60;image&#x60; is required and must already exist, and &#x60;branch&#x60; defaults to the parent app&#39;s. A branch that does not resolve to a valid slug distinct from the parent&#39;s is 400. Requires a validated principal; 403 without one.
+     * Puts a branch on its own URL.  It deploys an already-built &#x60;image&#x60; to a per-branch preview and answers its URL, the branch, the preview&#39;s slug and the deployment. The preview is a FIRST-CLASS application named &#x60;&lt;app&gt;-&lt;branch&gt;&#x60; in the same project and tenant namespace, with its own default host — so it is completely isolated from production while reusing the same deploy mechanic. Re-previewing a branch converges that same target in place rather than stacking another one.  It carries NO environment variables, deliberately: a preview never inherits production&#39;s secrets. It also does not build — &#x60;image&#x60; is required and must already exist, and &#x60;branch&#x60; defaults to the parent app&#39;s. A branch that does not resolve to a valid slug distinct from the parent&#39;s is 400. Requires a validated principal; 401 without one.
      * @param project Project is the project the parent application lives under, from the path. (required)
      * @param app App is the parent application&#39;s slug, from the path. (required)
-     * @param previewReq  (required)
+     * @param platformPreviewReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3868,12 +4381,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformProjectsByProjectAppsByAppPreviewAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PreviewReq previewReq, final ApiCallback<PreviewView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppPreviewAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformPreviewReq platformPreviewReq, final ApiCallback<PlatformPreviewView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppPreviewValidateBeforeCall(project, app, previewReq, _callback);
-        Type localVarReturnType = new TypeToken<PreviewView>(){}.getType();
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppPreviewValidateBeforeCall(project, app, platformPreviewReq, _callback);
+        Type localVarReturnType = new TypeToken<PlatformPreviewView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3881,7 +4395,7 @@ public class PlatformApi {
      * Build call for postPlatformProjectsByProjectAppsByAppPromote
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param promoteReq  (required)
+     * @param platformPromoteReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3890,9 +4404,10 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformProjectsByProjectAppsByAppPromoteCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PromoteReq promoteReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppPromoteCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformPromoteReq platformPromoteReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3906,7 +4421,7 @@ public class PlatformApi {
             basePath = null;
         }
 
-        Object localVarPostBody = promoteReq;
+        Object localVarPostBody = platformPromoteReq;
 
         // create path and map variables
         String localVarPath = "/v1/platform/projects/{project}/apps/{app}/promote"
@@ -3920,7 +4435,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3940,7 +4456,7 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPlatformProjectsByProjectAppsByAppPromoteValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PromoteReq promoteReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformProjectsByProjectAppsByAppPromoteValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformPromoteReq platformPromoteReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
             throw new ApiException("Missing the required parameter 'project' when calling postPlatformProjectsByProjectAppsByAppPromote(Async)");
@@ -3951,62 +4467,64 @@ public class PlatformApi {
             throw new ApiException("Missing the required parameter 'app' when calling postPlatformProjectsByProjectAppsByAppPromote(Async)");
         }
 
-        // verify the required parameter 'promoteReq' is set
-        if (promoteReq == null) {
-            throw new ApiException("Missing the required parameter 'promoteReq' when calling postPlatformProjectsByProjectAppsByAppPromote(Async)");
+        // verify the required parameter 'platformPromoteReq' is set
+        if (platformPromoteReq == null) {
+            throw new ApiException("Missing the required parameter 'platformPromoteReq' when calling postPlatformProjectsByProjectAppsByAppPromote(Async)");
         }
 
-        return postPlatformProjectsByProjectAppsByAppPromoteCall(project, app, promoteReq, _callback);
+        return postPlatformProjectsByProjectAppsByAppPromoteCall(project, app, platformPromoteReq, _callback);
 
     }
 
     /**
      * Promotes an already-built release to the app.
-     * Promotes an already-built release to the app.  It redeploys an image that already exists — named either by &#x60;deploymentId&#x60;, which promotes that deployment&#39;s exact built image, or by &#x60;tag&#x60;, resolved the same way a deploy resolves one. One of the two is required; neither is 400.  Promotion never builds. A deployment that carries no built image cannot be promoted and is 400, and a deployment id outside this app is 404. It runs through the same deploy core as everything else, so it takes a NEW version number and is subject to the same per-org concurrency cap. Requires a validated principal; 403 without one.
+     * Promotes an already-built release to the app.  It redeploys an image that already exists — named either by &#x60;deploymentId&#x60;, which promotes that deployment&#39;s exact built image, or by &#x60;tag&#x60;, resolved the same way a deploy resolves one. One of the two is required; neither is 400.  Promotion never builds. A deployment that carries no built image cannot be promoted and is 400, and a deployment id outside this app is 404. It runs through the same deploy core as everything else, so it takes a NEW version number and is subject to the same per-org concurrency cap. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param promoteReq  (required)
-     * @return DeploymentView
+     * @param platformPromoteReq  (required)
+     * @return PlatformDeploymentView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DeploymentView postPlatformProjectsByProjectAppsByAppPromote(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PromoteReq promoteReq) throws ApiException {
-        ApiResponse<DeploymentView> localVarResp = postPlatformProjectsByProjectAppsByAppPromoteWithHttpInfo(project, app, promoteReq);
+    public PlatformDeploymentView postPlatformProjectsByProjectAppsByAppPromote(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformPromoteReq platformPromoteReq) throws ApiException {
+        ApiResponse<PlatformDeploymentView> localVarResp = postPlatformProjectsByProjectAppsByAppPromoteWithHttpInfo(project, app, platformPromoteReq);
         return localVarResp.getData();
     }
 
     /**
      * Promotes an already-built release to the app.
-     * Promotes an already-built release to the app.  It redeploys an image that already exists — named either by &#x60;deploymentId&#x60;, which promotes that deployment&#39;s exact built image, or by &#x60;tag&#x60;, resolved the same way a deploy resolves one. One of the two is required; neither is 400.  Promotion never builds. A deployment that carries no built image cannot be promoted and is 400, and a deployment id outside this app is 404. It runs through the same deploy core as everything else, so it takes a NEW version number and is subject to the same per-org concurrency cap. Requires a validated principal; 403 without one.
+     * Promotes an already-built release to the app.  It redeploys an image that already exists — named either by &#x60;deploymentId&#x60;, which promotes that deployment&#39;s exact built image, or by &#x60;tag&#x60;, resolved the same way a deploy resolves one. One of the two is required; neither is 400.  Promotion never builds. A deployment that carries no built image cannot be promoted and is 400, and a deployment id outside this app is 404. It runs through the same deploy core as everything else, so it takes a NEW version number and is subject to the same per-org concurrency cap. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param promoteReq  (required)
-     * @return ApiResponse&lt;DeploymentView&gt;
+     * @param platformPromoteReq  (required)
+     * @return ApiResponse&lt;PlatformDeploymentView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeploymentView> postPlatformProjectsByProjectAppsByAppPromoteWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PromoteReq promoteReq) throws ApiException {
-        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppPromoteValidateBeforeCall(project, app, promoteReq, null);
-        Type localVarReturnType = new TypeToken<DeploymentView>(){}.getType();
+    public ApiResponse<PlatformDeploymentView> postPlatformProjectsByProjectAppsByAppPromoteWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformPromoteReq platformPromoteReq) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppPromoteValidateBeforeCall(project, app, platformPromoteReq, null);
+        Type localVarReturnType = new TypeToken<PlatformDeploymentView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Promotes an already-built release to the app. (asynchronously)
-     * Promotes an already-built release to the app.  It redeploys an image that already exists — named either by &#x60;deploymentId&#x60;, which promotes that deployment&#39;s exact built image, or by &#x60;tag&#x60;, resolved the same way a deploy resolves one. One of the two is required; neither is 400.  Promotion never builds. A deployment that carries no built image cannot be promoted and is 400, and a deployment id outside this app is 404. It runs through the same deploy core as everything else, so it takes a NEW version number and is subject to the same per-org concurrency cap. Requires a validated principal; 403 without one.
+     * Promotes an already-built release to the app.  It redeploys an image that already exists — named either by &#x60;deploymentId&#x60;, which promotes that deployment&#39;s exact built image, or by &#x60;tag&#x60;, resolved the same way a deploy resolves one. One of the two is required; neither is 400.  Promotion never builds. A deployment that carries no built image cannot be promoted and is 400, and a deployment id outside this app is 404. It runs through the same deploy core as everything else, so it takes a NEW version number and is subject to the same per-org concurrency cap. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param promoteReq  (required)
+     * @param platformPromoteReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4015,12 +4533,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformProjectsByProjectAppsByAppPromoteAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PromoteReq promoteReq, final ApiCallback<DeploymentView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppPromoteAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformPromoteReq platformPromoteReq, final ApiCallback<PlatformDeploymentView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppPromoteValidateBeforeCall(project, app, promoteReq, _callback);
-        Type localVarReturnType = new TypeToken<DeploymentView>(){}.getType();
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppPromoteValidateBeforeCall(project, app, platformPromoteReq, _callback);
+        Type localVarReturnType = new TypeToken<PlatformDeploymentView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4028,7 +4547,7 @@ public class PlatformApi {
      * Build call for postPlatformProjectsByProjectAppsByAppRollback
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param rollbackReq  (required)
+     * @param platformRollbackReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4037,9 +4556,10 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformProjectsByProjectAppsByAppRollbackCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull RollbackReq rollbackReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppRollbackCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformRollbackReq platformRollbackReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4053,7 +4573,7 @@ public class PlatformApi {
             basePath = null;
         }
 
-        Object localVarPostBody = rollbackReq;
+        Object localVarPostBody = platformRollbackReq;
 
         // create path and map variables
         String localVarPath = "/v1/platform/projects/{project}/apps/{app}/rollback"
@@ -4067,7 +4587,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4087,7 +4608,7 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPlatformProjectsByProjectAppsByAppRollbackValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull RollbackReq rollbackReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postPlatformProjectsByProjectAppsByAppRollbackValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformRollbackReq platformRollbackReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
             throw new ApiException("Missing the required parameter 'project' when calling postPlatformProjectsByProjectAppsByAppRollback(Async)");
@@ -4098,62 +4619,64 @@ public class PlatformApi {
             throw new ApiException("Missing the required parameter 'app' when calling postPlatformProjectsByProjectAppsByAppRollback(Async)");
         }
 
-        // verify the required parameter 'rollbackReq' is set
-        if (rollbackReq == null) {
-            throw new ApiException("Missing the required parameter 'rollbackReq' when calling postPlatformProjectsByProjectAppsByAppRollback(Async)");
+        // verify the required parameter 'platformRollbackReq' is set
+        if (platformRollbackReq == null) {
+            throw new ApiException("Missing the required parameter 'platformRollbackReq' when calling postPlatformProjectsByProjectAppsByAppRollback(Async)");
         }
 
-        return postPlatformProjectsByProjectAppsByAppRollbackCall(project, app, rollbackReq, _callback);
+        return postPlatformProjectsByProjectAppsByAppRollbackCall(project, app, platformRollbackReq, _callback);
 
     }
 
     /**
      * Goes back to the previous release.
-     * Goes back to the previous release.  It redeploys a prior image: the one named by &#x60;deploymentId&#x60;, or — with no body — the newest earlier deployment that carries a real built image and did not error, skipping the release currently live. An app with nothing earlier to return to is 400.  A rollback is a deploy of an old image, not a rewind: it takes a NEW version number and appends to the history rather than erasing what came after. Both lookups are scoped to this app and org, so another tenant&#39;s image can never be rolled in. Requires a validated principal; 403 without one.
+     * Goes back to the previous release.  It redeploys a prior image: the one named by &#x60;deploymentId&#x60;, or — with no body — the newest earlier deployment that carries a real built image and did not error, skipping the release currently live. An app with nothing earlier to return to is 400.  A rollback is a deploy of an old image, not a rewind: it takes a NEW version number and appends to the history rather than erasing what came after. Both lookups are scoped to this app and org, so another tenant&#39;s image can never be rolled in. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param rollbackReq  (required)
-     * @return DeploymentView
+     * @param platformRollbackReq  (required)
+     * @return PlatformDeploymentView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DeploymentView postPlatformProjectsByProjectAppsByAppRollback(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull RollbackReq rollbackReq) throws ApiException {
-        ApiResponse<DeploymentView> localVarResp = postPlatformProjectsByProjectAppsByAppRollbackWithHttpInfo(project, app, rollbackReq);
+    public PlatformDeploymentView postPlatformProjectsByProjectAppsByAppRollback(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformRollbackReq platformRollbackReq) throws ApiException {
+        ApiResponse<PlatformDeploymentView> localVarResp = postPlatformProjectsByProjectAppsByAppRollbackWithHttpInfo(project, app, platformRollbackReq);
         return localVarResp.getData();
     }
 
     /**
      * Goes back to the previous release.
-     * Goes back to the previous release.  It redeploys a prior image: the one named by &#x60;deploymentId&#x60;, or — with no body — the newest earlier deployment that carries a real built image and did not error, skipping the release currently live. An app with nothing earlier to return to is 400.  A rollback is a deploy of an old image, not a rewind: it takes a NEW version number and appends to the history rather than erasing what came after. Both lookups are scoped to this app and org, so another tenant&#39;s image can never be rolled in. Requires a validated principal; 403 without one.
+     * Goes back to the previous release.  It redeploys a prior image: the one named by &#x60;deploymentId&#x60;, or — with no body — the newest earlier deployment that carries a real built image and did not error, skipping the release currently live. An app with nothing earlier to return to is 400.  A rollback is a deploy of an old image, not a rewind: it takes a NEW version number and appends to the history rather than erasing what came after. Both lookups are scoped to this app and org, so another tenant&#39;s image can never be rolled in. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param rollbackReq  (required)
-     * @return ApiResponse&lt;DeploymentView&gt;
+     * @param platformRollbackReq  (required)
+     * @return ApiResponse&lt;PlatformDeploymentView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeploymentView> postPlatformProjectsByProjectAppsByAppRollbackWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull RollbackReq rollbackReq) throws ApiException {
-        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppRollbackValidateBeforeCall(project, app, rollbackReq, null);
-        Type localVarReturnType = new TypeToken<DeploymentView>(){}.getType();
+    public ApiResponse<PlatformDeploymentView> postPlatformProjectsByProjectAppsByAppRollbackWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformRollbackReq platformRollbackReq) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppRollbackValidateBeforeCall(project, app, platformRollbackReq, null);
+        Type localVarReturnType = new TypeToken<PlatformDeploymentView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Goes back to the previous release. (asynchronously)
-     * Goes back to the previous release.  It redeploys a prior image: the one named by &#x60;deploymentId&#x60;, or — with no body — the newest earlier deployment that carries a real built image and did not error, skipping the release currently live. An app with nothing earlier to return to is 400.  A rollback is a deploy of an old image, not a rewind: it takes a NEW version number and appends to the history rather than erasing what came after. Both lookups are scoped to this app and org, so another tenant&#39;s image can never be rolled in. Requires a validated principal; 403 without one.
+     * Goes back to the previous release.  It redeploys a prior image: the one named by &#x60;deploymentId&#x60;, or — with no body — the newest earlier deployment that carries a real built image and did not error, skipping the release currently live. An app with nothing earlier to return to is 400.  A rollback is a deploy of an old image, not a rewind: it takes a NEW version number and appends to the history rather than erasing what came after. Both lookups are scoped to this app and org, so another tenant&#39;s image can never be rolled in. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param rollbackReq  (required)
+     * @param platformRollbackReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4162,12 +4685,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformProjectsByProjectAppsByAppRollbackAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull RollbackReq rollbackReq, final ApiCallback<DeploymentView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppRollbackAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformRollbackReq platformRollbackReq, final ApiCallback<PlatformDeploymentView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppRollbackValidateBeforeCall(project, app, rollbackReq, _callback);
-        Type localVarReturnType = new TypeToken<DeploymentView>(){}.getType();
+        okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppRollbackValidateBeforeCall(project, app, platformRollbackReq, _callback);
+        Type localVarReturnType = new TypeToken<PlatformDeploymentView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4183,6 +4707,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postPlatformProjectsByProjectAppsByAppStartCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -4213,7 +4738,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4249,46 +4775,48 @@ public class PlatformApi {
 
     /**
      * Starts a stopped app back up.
-     * Starts a stopped app back up.  It scales the app&#39;s Service back to its configured replica count and marks it live, answering the updated application. It does not redeploy: the image already on the Service CR is what comes back.  The billing watermark is reset to now as part of starting, so the org is charged for THIS live span and never for the gap the app spent stopped. An app with no Service CR is 404, an unreachable cluster is 503, and a cluster that refuses the scale is 502. Requires a validated principal; 403 without one.
+     * Starts a stopped app back up.  It scales the app&#39;s Service back to its configured replica count and marks it live, answering the updated application. It does not redeploy: the image already on the Service CR is what comes back.  The billing watermark is reset to now as part of starting, so the org is charged for THIS live span and never for the gap the app spent stopped. An app with no Service CR is 404, an unreachable cluster is 503, and a cluster that refuses the scale is 502. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @return AppView
+     * @return PlatformAppOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AppView postPlatformProjectsByProjectAppsByAppStart(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        ApiResponse<AppView> localVarResp = postPlatformProjectsByProjectAppsByAppStartWithHttpInfo(project, app);
+    public PlatformAppOut postPlatformProjectsByProjectAppsByAppStart(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        ApiResponse<PlatformAppOut> localVarResp = postPlatformProjectsByProjectAppsByAppStartWithHttpInfo(project, app);
         return localVarResp.getData();
     }
 
     /**
      * Starts a stopped app back up.
-     * Starts a stopped app back up.  It scales the app&#39;s Service back to its configured replica count and marks it live, answering the updated application. It does not redeploy: the image already on the Service CR is what comes back.  The billing watermark is reset to now as part of starting, so the org is charged for THIS live span and never for the gap the app spent stopped. An app with no Service CR is 404, an unreachable cluster is 503, and a cluster that refuses the scale is 502. Requires a validated principal; 403 without one.
+     * Starts a stopped app back up.  It scales the app&#39;s Service back to its configured replica count and marks it live, answering the updated application. It does not redeploy: the image already on the Service CR is what comes back.  The billing watermark is reset to now as part of starting, so the org is charged for THIS live span and never for the gap the app spent stopped. An app with no Service CR is 404, an unreachable cluster is 503, and a cluster that refuses the scale is 502. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @return ApiResponse&lt;AppView&gt;
+     * @return ApiResponse&lt;PlatformAppOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AppView> postPlatformProjectsByProjectAppsByAppStartWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+    public ApiResponse<PlatformAppOut> postPlatformProjectsByProjectAppsByAppStartWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
         okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppStartValidateBeforeCall(project, app, null);
-        Type localVarReturnType = new TypeToken<AppView>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformAppOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Starts a stopped app back up. (asynchronously)
-     * Starts a stopped app back up.  It scales the app&#39;s Service back to its configured replica count and marks it live, answering the updated application. It does not redeploy: the image already on the Service CR is what comes back.  The billing watermark is reset to now as part of starting, so the org is charged for THIS live span and never for the gap the app spent stopped. An app with no Service CR is 404, an unreachable cluster is 503, and a cluster that refuses the scale is 502. Requires a validated principal; 403 without one.
+     * Starts a stopped app back up.  It scales the app&#39;s Service back to its configured replica count and marks it live, answering the updated application. It does not redeploy: the image already on the Service CR is what comes back.  The billing watermark is reset to now as part of starting, so the org is charged for THIS live span and never for the gap the app spent stopped. An app with no Service CR is 404, an unreachable cluster is 503, and a cluster that refuses the scale is 502. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -4299,12 +4827,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformProjectsByProjectAppsByAppStartAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<AppView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppStartAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<PlatformAppOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppStartValidateBeforeCall(project, app, _callback);
-        Type localVarReturnType = new TypeToken<AppView>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformAppOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4320,6 +4849,7 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postPlatformProjectsByProjectAppsByAppStopCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
@@ -4350,7 +4880,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4386,46 +4917,48 @@ public class PlatformApi {
 
     /**
      * Stops an app without deleting it.
-     * Stops an app without deleting it.  It scales the app&#39;s Service to zero replicas and marks it stopped, answering the updated application. Nothing else is removed — the record, its env, its domains and its deployment history all survive, and /start brings it back at the same replica count.  An app that is not deployed has no Service CR to scale and is 404. An unreachable cluster is 503 and a cluster that refuses the scale is 502. Because the pods stop, so does the compute metering. Requires a validated principal; 403 without one.
+     * Stops an app without deleting it.  It scales the app&#39;s Service to zero replicas and marks it stopped, answering the updated application. Nothing else is removed — the record, its env, its domains and its deployment history all survive, and /start brings it back at the same replica count.  An app that is not deployed has no Service CR to scale and is 404. An unreachable cluster is 503 and a cluster that refuses the scale is 502. Because the pods stop, so does the compute metering. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @return AppView
+     * @return PlatformAppOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AppView postPlatformProjectsByProjectAppsByAppStop(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
-        ApiResponse<AppView> localVarResp = postPlatformProjectsByProjectAppsByAppStopWithHttpInfo(project, app);
+    public PlatformAppOut postPlatformProjectsByProjectAppsByAppStop(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+        ApiResponse<PlatformAppOut> localVarResp = postPlatformProjectsByProjectAppsByAppStopWithHttpInfo(project, app);
         return localVarResp.getData();
     }
 
     /**
      * Stops an app without deleting it.
-     * Stops an app without deleting it.  It scales the app&#39;s Service to zero replicas and marks it stopped, answering the updated application. Nothing else is removed — the record, its env, its domains and its deployment history all survive, and /start brings it back at the same replica count.  An app that is not deployed has no Service CR to scale and is 404. An unreachable cluster is 503 and a cluster that refuses the scale is 502. Because the pods stop, so does the compute metering. Requires a validated principal; 403 without one.
+     * Stops an app without deleting it.  It scales the app&#39;s Service to zero replicas and marks it stopped, answering the updated application. Nothing else is removed — the record, its env, its domains and its deployment history all survive, and /start brings it back at the same replica count.  An app that is not deployed has no Service CR to scale and is 404. An unreachable cluster is 503 and a cluster that refuses the scale is 502. Because the pods stop, so does the compute metering. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @return ApiResponse&lt;AppView&gt;
+     * @return ApiResponse&lt;PlatformAppOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AppView> postPlatformProjectsByProjectAppsByAppStopWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
+    public ApiResponse<PlatformAppOut> postPlatformProjectsByProjectAppsByAppStopWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app) throws ApiException {
         okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppStopValidateBeforeCall(project, app, null);
-        Type localVarReturnType = new TypeToken<AppView>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformAppOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Stops an app without deleting it. (asynchronously)
-     * Stops an app without deleting it.  It scales the app&#39;s Service to zero replicas and marks it stopped, answering the updated application. Nothing else is removed — the record, its env, its domains and its deployment history all survive, and /start brings it back at the same replica count.  An app that is not deployed has no Service CR to scale and is 404. An unreachable cluster is 503 and a cluster that refuses the scale is 502. Because the pods stop, so does the compute metering. Requires a validated principal; 403 without one.
+     * Stops an app without deleting it.  It scales the app&#39;s Service to zero replicas and marks it stopped, answering the updated application. Nothing else is removed — the record, its env, its domains and its deployment history all survive, and /start brings it back at the same replica count.  An app that is not deployed has no Service CR to scale and is 404. An unreachable cluster is 503 and a cluster that refuses the scale is 502. Because the pods stop, so does the compute metering. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -4436,18 +4969,19 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformProjectsByProjectAppsByAppStopAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<AppView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformProjectsByProjectAppsByAppStopAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, final ApiCallback<PlatformAppOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postPlatformProjectsByProjectAppsByAppStopValidateBeforeCall(project, app, _callback);
-        Type localVarReturnType = new TypeToken<AppView>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlatformAppOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postPlatformRun
-     * @param runReq  (required)
+     * @param platformRunReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4456,9 +4990,10 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformRunCall(@javax.annotation.Nonnull RunReq runReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPlatformRunCall(@javax.annotation.Nonnull PlatformRunReq platformRunReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4472,7 +5007,7 @@ public class PlatformApi {
             basePath = null;
         }
 
-        Object localVarPostBody = runReq;
+        Object localVarPostBody = platformRunReq;
 
         // create path and map variables
         String localVarPath = "/v1/platform/run";
@@ -4484,7 +5019,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4504,57 +5040,59 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPlatformRunValidateBeforeCall(@javax.annotation.Nonnull RunReq runReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'runReq' is set
-        if (runReq == null) {
-            throw new ApiException("Missing the required parameter 'runReq' when calling postPlatformRun(Async)");
+    private okhttp3.Call postPlatformRunValidateBeforeCall(@javax.annotation.Nonnull PlatformRunReq platformRunReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'platformRunReq' is set
+        if (platformRunReq == null) {
+            throw new ApiException("Missing the required parameter 'platformRunReq' when calling postPlatformRun(Async)");
         }
 
-        return postPlatformRunCall(runReq, _callback);
+        return postPlatformRunCall(platformRunReq, _callback);
 
     }
 
     /**
      * Runs a container image and gives back a URL.
-     * Runs a container image and gives back a URL.  The one-call shortcut over project → app → deploy: give it a &#x60;name&#x60; and an &#x60;image&#x60; and it creates or updates an image-source application in your org&#39;s DEFAULT project, deploys it through the same operator Service-CR writer everything else uses, and answers its id, name, live URL, status and shape. Re-running the same name UPDATES it in place, so the call is idempotent by name.  What it produces is a first-class application, not a special object: it is listable, stoppable and redeployable through the /v1/platform routes like any other app.  &#x60;minScale&#x60; is the replica floor. &#x60;maxScale&#x60; above it declares an autoscaling ceiling; &#x60;maxScale: 0&#x60; means no autoscaler at all — a fixed run at the floor. Both are clamped to the deployment&#39;s limits. &#x60;runtime&#x60; and &#x60;shape&#x60; are accepted for the client contract and echoed back: the image is the runtime unit and sizing is the operator&#39;s default.  It is BILLING-GATED before it touches the cluster: a flat per-run fee is authorized against the org&#39;s own prepaid balance first, so an org that cannot pay is refused without anything being created. An unreachable cluster is 503 — a run never reports a URL it did not create. Secret env is sealed into KMS and fails closed without it.  Requires a validated principal; 403 without one. The org is resolved from that validated identity and is what both pays and owns the namespace — it is never read from the body.
-     * @param runReq  (required)
-     * @return RunView
+     * Runs a container image and gives back a URL.  The one-call shortcut over project → app → deploy: give it a &#x60;name&#x60; and an &#x60;image&#x60; and it creates or updates an image-source application in your org&#39;s DEFAULT project, deploys it through the same operator Service-CR writer everything else uses, and answers its id, name, live URL, status and shape. Re-running the same name UPDATES it in place, so the call is idempotent by name.  What it produces is a first-class application, not a special object: it is listable, stoppable and redeployable through the /v1/platform routes like any other app.  &#x60;minScale&#x60; is the replica floor. &#x60;maxScale&#x60; above it declares an autoscaling ceiling; &#x60;maxScale: 0&#x60; means no autoscaler at all — a fixed run at the floor. Both are clamped to the deployment&#39;s limits. &#x60;runtime&#x60; and &#x60;shape&#x60; are accepted for the client contract and echoed back: the image is the runtime unit and sizing is the operator&#39;s default.  It is BILLING-GATED before it touches the cluster: a flat per-run fee is authorized against the org&#39;s own prepaid balance first, so an org that cannot pay is refused without anything being created. An unreachable cluster is 503 — a run never reports a URL it did not create. Secret env is sealed into KMS and fails closed without it.  Requires a validated principal; 401 without one. The org is resolved from that validated identity and is what both pays and owns the namespace — it is never read from the body.
+     * @param platformRunReq  (required)
+     * @return PlatformRunView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RunView postPlatformRun(@javax.annotation.Nonnull RunReq runReq) throws ApiException {
-        ApiResponse<RunView> localVarResp = postPlatformRunWithHttpInfo(runReq);
+    public PlatformRunView postPlatformRun(@javax.annotation.Nonnull PlatformRunReq platformRunReq) throws ApiException {
+        ApiResponse<PlatformRunView> localVarResp = postPlatformRunWithHttpInfo(platformRunReq);
         return localVarResp.getData();
     }
 
     /**
      * Runs a container image and gives back a URL.
-     * Runs a container image and gives back a URL.  The one-call shortcut over project → app → deploy: give it a &#x60;name&#x60; and an &#x60;image&#x60; and it creates or updates an image-source application in your org&#39;s DEFAULT project, deploys it through the same operator Service-CR writer everything else uses, and answers its id, name, live URL, status and shape. Re-running the same name UPDATES it in place, so the call is idempotent by name.  What it produces is a first-class application, not a special object: it is listable, stoppable and redeployable through the /v1/platform routes like any other app.  &#x60;minScale&#x60; is the replica floor. &#x60;maxScale&#x60; above it declares an autoscaling ceiling; &#x60;maxScale: 0&#x60; means no autoscaler at all — a fixed run at the floor. Both are clamped to the deployment&#39;s limits. &#x60;runtime&#x60; and &#x60;shape&#x60; are accepted for the client contract and echoed back: the image is the runtime unit and sizing is the operator&#39;s default.  It is BILLING-GATED before it touches the cluster: a flat per-run fee is authorized against the org&#39;s own prepaid balance first, so an org that cannot pay is refused without anything being created. An unreachable cluster is 503 — a run never reports a URL it did not create. Secret env is sealed into KMS and fails closed without it.  Requires a validated principal; 403 without one. The org is resolved from that validated identity and is what both pays and owns the namespace — it is never read from the body.
-     * @param runReq  (required)
-     * @return ApiResponse&lt;RunView&gt;
+     * Runs a container image and gives back a URL.  The one-call shortcut over project → app → deploy: give it a &#x60;name&#x60; and an &#x60;image&#x60; and it creates or updates an image-source application in your org&#39;s DEFAULT project, deploys it through the same operator Service-CR writer everything else uses, and answers its id, name, live URL, status and shape. Re-running the same name UPDATES it in place, so the call is idempotent by name.  What it produces is a first-class application, not a special object: it is listable, stoppable and redeployable through the /v1/platform routes like any other app.  &#x60;minScale&#x60; is the replica floor. &#x60;maxScale&#x60; above it declares an autoscaling ceiling; &#x60;maxScale: 0&#x60; means no autoscaler at all — a fixed run at the floor. Both are clamped to the deployment&#39;s limits. &#x60;runtime&#x60; and &#x60;shape&#x60; are accepted for the client contract and echoed back: the image is the runtime unit and sizing is the operator&#39;s default.  It is BILLING-GATED before it touches the cluster: a flat per-run fee is authorized against the org&#39;s own prepaid balance first, so an org that cannot pay is refused without anything being created. An unreachable cluster is 503 — a run never reports a URL it did not create. Secret env is sealed into KMS and fails closed without it.  Requires a validated principal; 401 without one. The org is resolved from that validated identity and is what both pays and owns the namespace — it is never read from the body.
+     * @param platformRunReq  (required)
+     * @return ApiResponse&lt;PlatformRunView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RunView> postPlatformRunWithHttpInfo(@javax.annotation.Nonnull RunReq runReq) throws ApiException {
-        okhttp3.Call localVarCall = postPlatformRunValidateBeforeCall(runReq, null);
-        Type localVarReturnType = new TypeToken<RunView>(){}.getType();
+    public ApiResponse<PlatformRunView> postPlatformRunWithHttpInfo(@javax.annotation.Nonnull PlatformRunReq platformRunReq) throws ApiException {
+        okhttp3.Call localVarCall = postPlatformRunValidateBeforeCall(platformRunReq, null);
+        Type localVarReturnType = new TypeToken<PlatformRunView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Runs a container image and gives back a URL. (asynchronously)
-     * Runs a container image and gives back a URL.  The one-call shortcut over project → app → deploy: give it a &#x60;name&#x60; and an &#x60;image&#x60; and it creates or updates an image-source application in your org&#39;s DEFAULT project, deploys it through the same operator Service-CR writer everything else uses, and answers its id, name, live URL, status and shape. Re-running the same name UPDATES it in place, so the call is idempotent by name.  What it produces is a first-class application, not a special object: it is listable, stoppable and redeployable through the /v1/platform routes like any other app.  &#x60;minScale&#x60; is the replica floor. &#x60;maxScale&#x60; above it declares an autoscaling ceiling; &#x60;maxScale: 0&#x60; means no autoscaler at all — a fixed run at the floor. Both are clamped to the deployment&#39;s limits. &#x60;runtime&#x60; and &#x60;shape&#x60; are accepted for the client contract and echoed back: the image is the runtime unit and sizing is the operator&#39;s default.  It is BILLING-GATED before it touches the cluster: a flat per-run fee is authorized against the org&#39;s own prepaid balance first, so an org that cannot pay is refused without anything being created. An unreachable cluster is 503 — a run never reports a URL it did not create. Secret env is sealed into KMS and fails closed without it.  Requires a validated principal; 403 without one. The org is resolved from that validated identity and is what both pays and owns the namespace — it is never read from the body.
-     * @param runReq  (required)
+     * Runs a container image and gives back a URL.  The one-call shortcut over project → app → deploy: give it a &#x60;name&#x60; and an &#x60;image&#x60; and it creates or updates an image-source application in your org&#39;s DEFAULT project, deploys it through the same operator Service-CR writer everything else uses, and answers its id, name, live URL, status and shape. Re-running the same name UPDATES it in place, so the call is idempotent by name.  What it produces is a first-class application, not a special object: it is listable, stoppable and redeployable through the /v1/platform routes like any other app.  &#x60;minScale&#x60; is the replica floor. &#x60;maxScale&#x60; above it declares an autoscaling ceiling; &#x60;maxScale: 0&#x60; means no autoscaler at all — a fixed run at the floor. Both are clamped to the deployment&#39;s limits. &#x60;runtime&#x60; and &#x60;shape&#x60; are accepted for the client contract and echoed back: the image is the runtime unit and sizing is the operator&#39;s default.  It is BILLING-GATED before it touches the cluster: a flat per-run fee is authorized against the org&#39;s own prepaid balance first, so an org that cannot pay is refused without anything being created. An unreachable cluster is 503 — a run never reports a URL it did not create. Secret env is sealed into KMS and fails closed without it.  Requires a validated principal; 401 without one. The org is resolved from that validated identity and is what both pays and owns the namespace — it is never read from the body.
+     * @param platformRunReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4563,147 +5101,20 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPlatformRunAsync(@javax.annotation.Nonnull RunReq runReq, final ApiCallback<RunView> _callback) throws ApiException {
+    public okhttp3.Call postPlatformRunAsync(@javax.annotation.Nonnull PlatformRunReq platformRunReq, final ApiCallback<PlatformRunView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postPlatformRunValidateBeforeCall(runReq, _callback);
-        Type localVarReturnType = new TypeToken<RunView>(){}.getType();
+        okhttp3.Call localVarCall = postPlatformRunValidateBeforeCall(platformRunReq, _callback);
+        Type localVarReturnType = new TypeToken<PlatformRunView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postPlatformRunner
-     * @param runnerBuildReq  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postPlatformRunnerCall(@javax.annotation.Nonnull RunnerBuildReq runnerBuildReq, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = runnerBuildReq;
-
-        // create path and map variables
-        String localVarPath = "/v1/platform/runner";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPlatformRunnerValidateBeforeCall(@javax.annotation.Nonnull RunnerBuildReq runnerBuildReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'runnerBuildReq' is set
-        if (runnerBuildReq == null) {
-            throw new ApiException("Missing the required parameter 'runnerBuildReq' when calling postPlatformRunner(Async)");
-        }
-
-        return postPlatformRunnerCall(runnerBuildReq, _callback);
-
-    }
-
-    /**
-     * Triggers a native build — an image, or the binaries a repo declares.
-     * Triggers a native build — an image, or the binaries a repo declares.  The fabric&#39;s own build trigger, and what &#x60;hanzo build&#x60; and git-push-to-deploy call. It answers 202 with the build job id: a queued build, not a pushed artifact.  Two lanes, and a build is exactly one of them. The IMAGE lane takes &#x60;repo&#x60; and the output &#x60;image&#x60; and launches a BuildKit Job that pushes it. The ARTIFACT lane takes &#x60;binaries&#x60; — the same recipe the repo&#39;s hanzo.yml declares — and publishes to object storage instead; it must carry no &#x60;image&#x60;, because a build produces binaries or an image, never both.  PRIVILEGED, and A BUILD BELONGS TO THE ORGANIZATION ITS CREDENTIAL NAMES. Two credentials, never a third:    - one that NAMES an organization — a person who administers it (the &#x60;hanzo     build&#x60; path, so one IAM login authorizes a build with no separate build     token), or that organization&#39;s own machine identity (the pipeline path). The     build is attributed to that org and confined to what it owns.   - the shared build-callback token, compared in constant time. It names NO     organization, which is both why the fabric&#39;s own release can publish across     brands with it and why anything that CAN name one is read first.  Both are bounded by the owned-registry allowlist. The org path is bounded again, by the org: the image&#39;s registry namespace must be one that organization owns, so it publishes into its own brand and can never overwrite another&#39;s through the shared push credential. The same confinement applies to the artifact lane&#39;s repo owner. There is no request field naming an organization — the attribution is read off the credential, so there is nothing for a caller to write it with.  The output image is parsed and validated as a single well-formed OCI ref before any authorization decision reads it, so a crafted ref cannot smuggle a build-exporter attribute past the check.
-     * @param runnerBuildReq  (required)
-     * @return RunnerBuildResp
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
-     </table>
-     */
-    public RunnerBuildResp postPlatformRunner(@javax.annotation.Nonnull RunnerBuildReq runnerBuildReq) throws ApiException {
-        ApiResponse<RunnerBuildResp> localVarResp = postPlatformRunnerWithHttpInfo(runnerBuildReq);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Triggers a native build — an image, or the binaries a repo declares.
-     * Triggers a native build — an image, or the binaries a repo declares.  The fabric&#39;s own build trigger, and what &#x60;hanzo build&#x60; and git-push-to-deploy call. It answers 202 with the build job id: a queued build, not a pushed artifact.  Two lanes, and a build is exactly one of them. The IMAGE lane takes &#x60;repo&#x60; and the output &#x60;image&#x60; and launches a BuildKit Job that pushes it. The ARTIFACT lane takes &#x60;binaries&#x60; — the same recipe the repo&#39;s hanzo.yml declares — and publishes to object storage instead; it must carry no &#x60;image&#x60;, because a build produces binaries or an image, never both.  PRIVILEGED, and A BUILD BELONGS TO THE ORGANIZATION ITS CREDENTIAL NAMES. Two credentials, never a third:    - one that NAMES an organization — a person who administers it (the &#x60;hanzo     build&#x60; path, so one IAM login authorizes a build with no separate build     token), or that organization&#39;s own machine identity (the pipeline path). The     build is attributed to that org and confined to what it owns.   - the shared build-callback token, compared in constant time. It names NO     organization, which is both why the fabric&#39;s own release can publish across     brands with it and why anything that CAN name one is read first.  Both are bounded by the owned-registry allowlist. The org path is bounded again, by the org: the image&#39;s registry namespace must be one that organization owns, so it publishes into its own brand and can never overwrite another&#39;s through the shared push credential. The same confinement applies to the artifact lane&#39;s repo owner. There is no request field naming an organization — the attribution is read off the credential, so there is nothing for a caller to write it with.  The output image is parsed and validated as a single well-formed OCI ref before any authorization decision reads it, so a crafted ref cannot smuggle a build-exporter attribute past the check.
-     * @param runnerBuildReq  (required)
-     * @return ApiResponse&lt;RunnerBuildResp&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<RunnerBuildResp> postPlatformRunnerWithHttpInfo(@javax.annotation.Nonnull RunnerBuildReq runnerBuildReq) throws ApiException {
-        okhttp3.Call localVarCall = postPlatformRunnerValidateBeforeCall(runnerBuildReq, null);
-        Type localVarReturnType = new TypeToken<RunnerBuildResp>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Triggers a native build — an image, or the binaries a repo declares. (asynchronously)
-     * Triggers a native build — an image, or the binaries a repo declares.  The fabric&#39;s own build trigger, and what &#x60;hanzo build&#x60; and git-push-to-deploy call. It answers 202 with the build job id: a queued build, not a pushed artifact.  Two lanes, and a build is exactly one of them. The IMAGE lane takes &#x60;repo&#x60; and the output &#x60;image&#x60; and launches a BuildKit Job that pushes it. The ARTIFACT lane takes &#x60;binaries&#x60; — the same recipe the repo&#39;s hanzo.yml declares — and publishes to object storage instead; it must carry no &#x60;image&#x60;, because a build produces binaries or an image, never both.  PRIVILEGED, and A BUILD BELONGS TO THE ORGANIZATION ITS CREDENTIAL NAMES. Two credentials, never a third:    - one that NAMES an organization — a person who administers it (the &#x60;hanzo     build&#x60; path, so one IAM login authorizes a build with no separate build     token), or that organization&#39;s own machine identity (the pipeline path). The     build is attributed to that org and confined to what it owns.   - the shared build-callback token, compared in constant time. It names NO     organization, which is both why the fabric&#39;s own release can publish across     brands with it and why anything that CAN name one is read first.  Both are bounded by the owned-registry allowlist. The org path is bounded again, by the org: the image&#39;s registry namespace must be one that organization owns, so it publishes into its own brand and can never overwrite another&#39;s through the shared push credential. The same confinement applies to the artifact lane&#39;s repo owner. There is no request field naming an organization — the attribution is read off the credential, so there is nothing for a caller to write it with.  The output image is parsed and validated as a single well-formed OCI ref before any authorization decision reads it, so a crafted ref cannot smuggle a build-exporter attribute past the check.
-     * @param runnerBuildReq  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postPlatformRunnerAsync(@javax.annotation.Nonnull RunnerBuildReq runnerBuildReq, final ApiCallback<RunnerBuildResp> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postPlatformRunnerValidateBeforeCall(runnerBuildReq, _callback);
-        Type localVarReturnType = new TypeToken<RunnerBuildResp>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for putPlatformProjectsByProjectAppsByAppEnv
-     * @param project Project is the project the application lives under, from the path. (required)
-     * @param app App is the application&#39;s slug, from the path. (required)
-     * @param setEnvReq  (required)
+     * Build call for putPlatformAppsByAppProject
+     * @param app App is the declaration&#39;s name, from the path. (required)
+     * @param platformAppMove  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4712,9 +5123,10 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putPlatformProjectsByProjectAppsByAppEnvCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull SetEnvReq setEnvReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putPlatformAppsByAppProjectCall(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformAppMove platformAppMove, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4728,11 +5140,10 @@ public class PlatformApi {
             basePath = null;
         }
 
-        Object localVarPostBody = setEnvReq;
+        Object localVarPostBody = platformAppMove;
 
         // create path and map variables
-        String localVarPath = "/v1/platform/projects/{project}/apps/{app}/env"
-            .replace("{" + "project" + "}", localVarApiClient.escapeString(project.toString()))
+        String localVarPath = "/v1/platform/apps/{app}/project"
             .replace("{" + "app" + "}", localVarApiClient.escapeString(app.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -4742,7 +5153,8 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4762,7 +5174,293 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putPlatformProjectsByProjectAppsByAppEnvValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull SetEnvReq setEnvReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putPlatformAppsByAppProjectValidateBeforeCall(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformAppMove platformAppMove, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'app' is set
+        if (app == null) {
+            throw new ApiException("Missing the required parameter 'app' when calling putPlatformAppsByAppProject(Async)");
+        }
+
+        // verify the required parameter 'platformAppMove' is set
+        if (platformAppMove == null) {
+            throw new ApiException("Missing the required parameter 'platformAppMove' when calling putPlatformAppsByAppProject(Async)");
+        }
+
+        return putPlatformAppsByAppProjectCall(app, platformAppMove, _callback);
+
+    }
+
+    /**
+     * Moves an app to a project.
+     * Moves an app to a project.  It sets the declaration&#39;s &#x60;partOf&#x60; — in its cluster overlay when the overlay sets the key, else in its values file — and nothing else. Naming a project nothing names yet creates it. &#x60;org&#x60; is the values directory the app lives in; &#x60;mode&#x60; as for create.
+     * @param app App is the declaration&#39;s name, from the path. (required)
+     * @param platformAppMove  (required)
+     * @return PlatformProjectWrite
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public PlatformProjectWrite putPlatformAppsByAppProject(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformAppMove platformAppMove) throws ApiException {
+        ApiResponse<PlatformProjectWrite> localVarResp = putPlatformAppsByAppProjectWithHttpInfo(app, platformAppMove);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Moves an app to a project.
+     * Moves an app to a project.  It sets the declaration&#39;s &#x60;partOf&#x60; — in its cluster overlay when the overlay sets the key, else in its values file — and nothing else. Naming a project nothing names yet creates it. &#x60;org&#x60; is the values directory the app lives in; &#x60;mode&#x60; as for create.
+     * @param app App is the declaration&#39;s name, from the path. (required)
+     * @param platformAppMove  (required)
+     * @return ApiResponse&lt;PlatformProjectWrite&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PlatformProjectWrite> putPlatformAppsByAppProjectWithHttpInfo(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformAppMove platformAppMove) throws ApiException {
+        okhttp3.Call localVarCall = putPlatformAppsByAppProjectValidateBeforeCall(app, platformAppMove, null);
+        Type localVarReturnType = new TypeToken<PlatformProjectWrite>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Moves an app to a project. (asynchronously)
+     * Moves an app to a project.  It sets the declaration&#39;s &#x60;partOf&#x60; — in its cluster overlay when the overlay sets the key, else in its values file — and nothing else. Naming a project nothing names yet creates it. &#x60;org&#x60; is the values directory the app lives in; &#x60;mode&#x60; as for create.
+     * @param app App is the declaration&#39;s name, from the path. (required)
+     * @param platformAppMove  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putPlatformAppsByAppProjectAsync(@javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformAppMove platformAppMove, final ApiCallback<PlatformProjectWrite> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putPlatformAppsByAppProjectValidateBeforeCall(app, platformAppMove, _callback);
+        Type localVarReturnType = new TypeToken<PlatformProjectWrite>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putPlatformProjectsByProject
+     * @param project Project is the project to rename, from the path. (required)
+     * @param platformProjectRename  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putPlatformProjectsByProjectCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull PlatformProjectRename platformProjectRename, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = platformProjectRename;
+
+        // create path and map variables
+        String localVarPath = "/v1/platform/projects/{project}"
+            .replace("{" + "project" + "}", localVarApiClient.escapeString(project.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putPlatformProjectsByProjectValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull PlatformProjectRename platformProjectRename, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'project' is set
+        if (project == null) {
+            throw new ApiException("Missing the required parameter 'project' when calling putPlatformProjectsByProject(Async)");
+        }
+
+        // verify the required parameter 'platformProjectRename' is set
+        if (platformProjectRename == null) {
+            throw new ApiException("Missing the required parameter 'platformProjectRename' when calling putPlatformProjectsByProject(Async)");
+        }
+
+        return putPlatformProjectsByProjectCall(project, platformProjectRename, _callback);
+
+    }
+
+    /**
+     * Renames a project.
+     * Renames a project.  It rewrites &#x60;partOf&#x60; on every declaration that names the project, in one commit to &#x60;hanzoai/universe&#x60;. 409 when the new name is already a project: fold into it with DELETE /v1/platform/projects/{project}?into&#x3D;. &#x60;mode&#x60; as for create.
+     * @param project Project is the project to rename, from the path. (required)
+     * @param platformProjectRename  (required)
+     * @return PlatformProjectWrite
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public PlatformProjectWrite putPlatformProjectsByProject(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull PlatformProjectRename platformProjectRename) throws ApiException {
+        ApiResponse<PlatformProjectWrite> localVarResp = putPlatformProjectsByProjectWithHttpInfo(project, platformProjectRename);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Renames a project.
+     * Renames a project.  It rewrites &#x60;partOf&#x60; on every declaration that names the project, in one commit to &#x60;hanzoai/universe&#x60;. 409 when the new name is already a project: fold into it with DELETE /v1/platform/projects/{project}?into&#x3D;. &#x60;mode&#x60; as for create.
+     * @param project Project is the project to rename, from the path. (required)
+     * @param platformProjectRename  (required)
+     * @return ApiResponse&lt;PlatformProjectWrite&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PlatformProjectWrite> putPlatformProjectsByProjectWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull PlatformProjectRename platformProjectRename) throws ApiException {
+        okhttp3.Call localVarCall = putPlatformProjectsByProjectValidateBeforeCall(project, platformProjectRename, null);
+        Type localVarReturnType = new TypeToken<PlatformProjectWrite>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Renames a project. (asynchronously)
+     * Renames a project.  It rewrites &#x60;partOf&#x60; on every declaration that names the project, in one commit to &#x60;hanzoai/universe&#x60;. 409 when the new name is already a project: fold into it with DELETE /v1/platform/projects/{project}?into&#x3D;. &#x60;mode&#x60; as for create.
+     * @param project Project is the project to rename, from the path. (required)
+     * @param platformProjectRename  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putPlatformProjectsByProjectAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull PlatformProjectRename platformProjectRename, final ApiCallback<PlatformProjectWrite> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putPlatformProjectsByProjectValidateBeforeCall(project, platformProjectRename, _callback);
+        Type localVarReturnType = new TypeToken<PlatformProjectWrite>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putPlatformProjectsByProjectAppsByAppEnv
+     * @param project Project is the project the application lives under, from the path. (required)
+     * @param app App is the application&#39;s slug, from the path. (required)
+     * @param platformSetEnvReq  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putPlatformProjectsByProjectAppsByAppEnvCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformSetEnvReq platformSetEnvReq, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = platformSetEnvReq;
+
+        // create path and map variables
+        String localVarPath = "/v1/platform/projects/{project}/apps/{app}/env"
+            .replace("{" + "project" + "}", localVarApiClient.escapeString(project.toString()))
+            .replace("{" + "app" + "}", localVarApiClient.escapeString(app.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putPlatformProjectsByProjectAppsByAppEnvValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformSetEnvReq platformSetEnvReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
             throw new ApiException("Missing the required parameter 'project' when calling putPlatformProjectsByProjectAppsByAppEnv(Async)");
@@ -4773,62 +5471,64 @@ public class PlatformApi {
             throw new ApiException("Missing the required parameter 'app' when calling putPlatformProjectsByProjectAppsByAppEnv(Async)");
         }
 
-        // verify the required parameter 'setEnvReq' is set
-        if (setEnvReq == null) {
-            throw new ApiException("Missing the required parameter 'setEnvReq' when calling putPlatformProjectsByProjectAppsByAppEnv(Async)");
+        // verify the required parameter 'platformSetEnvReq' is set
+        if (platformSetEnvReq == null) {
+            throw new ApiException("Missing the required parameter 'platformSetEnvReq' when calling putPlatformProjectsByProjectAppsByAppEnv(Async)");
         }
 
-        return putPlatformProjectsByProjectAppsByAppEnvCall(project, app, setEnvReq, _callback);
+        return putPlatformProjectsByProjectAppsByAppEnvCall(project, app, platformSetEnvReq, _callback);
 
     }
 
     /**
      * Replaces an app&#39;s environment variables.
-     * Replaces an app&#39;s environment variables.  It writes the app&#39;s whole environment set and answers the updated application. This is the one post-create write path for env, and it REPLACES rather than merges: a variable absent from the body is gone, and a secret dropped from the set leaves the app&#39;s Secret on its next deploy.  Keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A value marked &#x60;secret: true&#x60; is sealed into KMS and blanked in the database, so plaintext is never persisted — and the write fails 503 if KMS is unavailable rather than storing one in the clear.  The rule worth knowing: this does not restart anything. Once the app has been deployed the secret sync is re-declared immediately so the operator re-materialises the Secret, but RUNNING pods keep the environment they started with until their next deploy or restart. Requires a validated principal; 403 without one.
+     * Replaces an app&#39;s environment variables.  It writes the app&#39;s whole environment set and answers the updated application. This is the one post-create write path for env, and it REPLACES rather than merges: a variable absent from the body is gone, and a secret dropped from the set leaves the app&#39;s Secret on its next deploy.  Keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A value marked &#x60;secret: true&#x60; is sealed into KMS and blanked in the database, so plaintext is never persisted — and the write fails 503 if KMS is unavailable rather than storing one in the clear.  The rule worth knowing: this does not restart anything. Once the app has been deployed the secret sync is re-declared immediately so the operator re-materialises the Secret, but RUNNING pods keep the environment they started with until their next deploy or restart. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param setEnvReq  (required)
-     * @return AppView
+     * @param platformSetEnvReq  (required)
+     * @return PlatformAppOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AppView putPlatformProjectsByProjectAppsByAppEnv(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull SetEnvReq setEnvReq) throws ApiException {
-        ApiResponse<AppView> localVarResp = putPlatformProjectsByProjectAppsByAppEnvWithHttpInfo(project, app, setEnvReq);
+    public PlatformAppOut putPlatformProjectsByProjectAppsByAppEnv(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformSetEnvReq platformSetEnvReq) throws ApiException {
+        ApiResponse<PlatformAppOut> localVarResp = putPlatformProjectsByProjectAppsByAppEnvWithHttpInfo(project, app, platformSetEnvReq);
         return localVarResp.getData();
     }
 
     /**
      * Replaces an app&#39;s environment variables.
-     * Replaces an app&#39;s environment variables.  It writes the app&#39;s whole environment set and answers the updated application. This is the one post-create write path for env, and it REPLACES rather than merges: a variable absent from the body is gone, and a secret dropped from the set leaves the app&#39;s Secret on its next deploy.  Keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A value marked &#x60;secret: true&#x60; is sealed into KMS and blanked in the database, so plaintext is never persisted — and the write fails 503 if KMS is unavailable rather than storing one in the clear.  The rule worth knowing: this does not restart anything. Once the app has been deployed the secret sync is re-declared immediately so the operator re-materialises the Secret, but RUNNING pods keep the environment they started with until their next deploy or restart. Requires a validated principal; 403 without one.
+     * Replaces an app&#39;s environment variables.  It writes the app&#39;s whole environment set and answers the updated application. This is the one post-create write path for env, and it REPLACES rather than merges: a variable absent from the body is gone, and a secret dropped from the set leaves the app&#39;s Secret on its next deploy.  Keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A value marked &#x60;secret: true&#x60; is sealed into KMS and blanked in the database, so plaintext is never persisted — and the write fails 503 if KMS is unavailable rather than storing one in the clear.  The rule worth knowing: this does not restart anything. Once the app has been deployed the secret sync is re-declared immediately so the operator re-materialises the Secret, but RUNNING pods keep the environment they started with until their next deploy or restart. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param setEnvReq  (required)
-     * @return ApiResponse&lt;AppView&gt;
+     * @param platformSetEnvReq  (required)
+     * @return ApiResponse&lt;PlatformAppOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AppView> putPlatformProjectsByProjectAppsByAppEnvWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull SetEnvReq setEnvReq) throws ApiException {
-        okhttp3.Call localVarCall = putPlatformProjectsByProjectAppsByAppEnvValidateBeforeCall(project, app, setEnvReq, null);
-        Type localVarReturnType = new TypeToken<AppView>(){}.getType();
+    public ApiResponse<PlatformAppOut> putPlatformProjectsByProjectAppsByAppEnvWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformSetEnvReq platformSetEnvReq) throws ApiException {
+        okhttp3.Call localVarCall = putPlatformProjectsByProjectAppsByAppEnvValidateBeforeCall(project, app, platformSetEnvReq, null);
+        Type localVarReturnType = new TypeToken<PlatformAppOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Replaces an app&#39;s environment variables. (asynchronously)
-     * Replaces an app&#39;s environment variables.  It writes the app&#39;s whole environment set and answers the updated application. This is the one post-create write path for env, and it REPLACES rather than merges: a variable absent from the body is gone, and a secret dropped from the set leaves the app&#39;s Secret on its next deploy.  Keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A value marked &#x60;secret: true&#x60; is sealed into KMS and blanked in the database, so plaintext is never persisted — and the write fails 503 if KMS is unavailable rather than storing one in the clear.  The rule worth knowing: this does not restart anything. Once the app has been deployed the secret sync is re-declared immediately so the operator re-materialises the Secret, but RUNNING pods keep the environment they started with until their next deploy or restart. Requires a validated principal; 403 without one.
+     * Replaces an app&#39;s environment variables.  It writes the app&#39;s whole environment set and answers the updated application. This is the one post-create write path for env, and it REPLACES rather than merges: a variable absent from the body is gone, and a secret dropped from the set leaves the app&#39;s Secret on its next deploy.  Keys must match &#x60;^[A-Za-z_][A-Za-z0-9_]*$&#x60;. A value marked &#x60;secret: true&#x60; is sealed into KMS and blanked in the database, so plaintext is never persisted — and the write fails 503 if KMS is unavailable rather than storing one in the clear.  The rule worth knowing: this does not restart anything. Once the app has been deployed the secret sync is re-declared immediately so the operator re-materialises the Secret, but RUNNING pods keep the environment they started with until their next deploy or restart. Requires a validated principal; 401 without one.
      * @param project Project is the project the application lives under, from the path. (required)
      * @param app App is the application&#39;s slug, from the path. (required)
-     * @param setEnvReq  (required)
+     * @param platformSetEnvReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4837,12 +5537,13 @@ public class PlatformApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putPlatformProjectsByProjectAppsByAppEnvAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull SetEnvReq setEnvReq, final ApiCallback<AppView> _callback) throws ApiException {
+    public okhttp3.Call putPlatformProjectsByProjectAppsByAppEnvAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String app, @javax.annotation.Nonnull PlatformSetEnvReq platformSetEnvReq, final ApiCallback<PlatformAppOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putPlatformProjectsByProjectAppsByAppEnvValidateBeforeCall(project, app, setEnvReq, _callback);
-        Type localVarReturnType = new TypeToken<AppView>(){}.getType();
+        okhttp3.Call localVarCall = putPlatformProjectsByProjectAppsByAppEnvValidateBeforeCall(project, app, platformSetEnvReq, _callback);
+        Type localVarReturnType = new TypeToken<PlatformAppOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

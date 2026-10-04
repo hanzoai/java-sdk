@@ -27,8 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.EnableResp;
-import ai.hanzo.cloud.model.SharesOut;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.ShareEnableResp;
+import ai.hanzo.cloud.model.ShareSharesOut;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -83,6 +84,7 @@ public class ShareApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getShareCall(final ApiCallback _callback) throws ApiException {
@@ -111,7 +113,8 @@ public class ShareApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -138,35 +141,37 @@ public class ShareApi {
     /**
      * Returns the tunnel shares the caller&#39;s org currently has open, across every environment that org has enabled.
      * Returns the tunnel shares the caller&#39;s org currently has open, across every environment that org has enabled. It is a READ and it degrades honestly: an unconfigured deployment, an org that has not provisioned yet, and an unreachable controller all answer an EMPTY list at 200 rather than an error, so the console never error-toasts on load.
-     * @return SharesOut
+     * @return ShareSharesOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SharesOut getShare() throws ApiException {
-        ApiResponse<SharesOut> localVarResp = getShareWithHttpInfo();
+    public ShareSharesOut getShare() throws ApiException {
+        ApiResponse<ShareSharesOut> localVarResp = getShareWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the tunnel shares the caller&#39;s org currently has open, across every environment that org has enabled.
      * Returns the tunnel shares the caller&#39;s org currently has open, across every environment that org has enabled. It is a READ and it degrades honestly: an unconfigured deployment, an org that has not provisioned yet, and an unreachable controller all answer an EMPTY list at 200 rather than an error, so the console never error-toasts on load.
-     * @return ApiResponse&lt;SharesOut&gt;
+     * @return ApiResponse&lt;ShareSharesOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SharesOut> getShareWithHttpInfo() throws ApiException {
+    public ApiResponse<ShareSharesOut> getShareWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getShareValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<SharesOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<ShareSharesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -181,12 +186,13 @@ public class ShareApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getShareAsync(final ApiCallback<SharesOut> _callback) throws ApiException {
+    public okhttp3.Call getShareAsync(final ApiCallback<ShareSharesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getShareValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<SharesOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<ShareSharesOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -200,6 +206,7 @@ public class ShareApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postShareEnableCall(final ApiCallback _callback) throws ApiException {
@@ -228,7 +235,8 @@ public class ShareApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -253,43 +261,45 @@ public class ShareApi {
     }
 
     /**
-     * Enable provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel.
-     * Enable provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel. It is idempotent: the account is keyed deterministically off the VALIDATED org, so a repeat call hands back the same account rather than creating a second one, and a caller can only ever provision their OWN org&#39;s account. 503 when the deployment has no share controller configured; 502 when that controller is unreachable.
-     * @return EnableResp
+     * Provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel.
+     * Provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel. It is idempotent: the account is keyed deterministically off the VALIDATED org, so a repeat call hands back the same account rather than creating a second one, and a caller can only ever provision their OWN org&#39;s account. 503 when the deployment has no share controller configured; 502 when that controller is unreachable.
+     * @return ShareEnableResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EnableResp postShareEnable() throws ApiException {
-        ApiResponse<EnableResp> localVarResp = postShareEnableWithHttpInfo();
+    public ShareEnableResp postShareEnable() throws ApiException {
+        ApiResponse<ShareEnableResp> localVarResp = postShareEnableWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Enable provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel.
-     * Enable provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel. It is idempotent: the account is keyed deterministically off the VALIDATED org, so a repeat call hands back the same account rather than creating a second one, and a caller can only ever provision their OWN org&#39;s account. 503 when the deployment has no share controller configured; 502 when that controller is unreachable.
-     * @return ApiResponse&lt;EnableResp&gt;
+     * Provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel.
+     * Provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel. It is idempotent: the account is keyed deterministically off the VALIDATED org, so a repeat call hands back the same account rather than creating a second one, and a caller can only ever provision their OWN org&#39;s account. 503 when the deployment has no share controller configured; 502 when that controller is unreachable.
+     * @return ApiResponse&lt;ShareEnableResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EnableResp> postShareEnableWithHttpInfo() throws ApiException {
+    public ApiResponse<ShareEnableResp> postShareEnableWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = postShareEnableValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<EnableResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<ShareEnableResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Enable provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel. (asynchronously)
-     * Enable provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel. It is idempotent: the account is keyed deterministically off the VALIDATED org, so a repeat call hands back the same account rather than creating a second one, and a caller can only ever provision their OWN org&#39;s account. 503 when the deployment has no share controller configured; 502 when that controller is unreachable.
+     * Provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel. (asynchronously)
+     * Provisions the caller org&#39;s tunnel account and returns the credential the &#x60;hanzo share&#x60; CLI needs to run a tunnel. It is idempotent: the account is keyed deterministically off the VALIDATED org, so a repeat call hands back the same account rather than creating a second one, and a caller can only ever provision their OWN org&#39;s account. 503 when the deployment has no share controller configured; 502 when that controller is unreachable.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -298,12 +308,13 @@ public class ShareApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postShareEnableAsync(final ApiCallback<EnableResp> _callback) throws ApiException {
+    public okhttp3.Call postShareEnableAsync(final ApiCallback<ShareEnableResp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postShareEnableValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<EnableResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<ShareEnableResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

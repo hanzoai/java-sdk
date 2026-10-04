@@ -27,11 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.PatchSyncIn;
-import ai.hanzo.cloud.model.SyncList;
-import ai.hanzo.cloud.model.SyncQueued;
-import ai.hanzo.cloud.model.SyncReq;
-import ai.hanzo.cloud.model.SyncView;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.SyncPatchSyncIn;
+import ai.hanzo.cloud.model.SyncSyncList;
+import ai.hanzo.cloud.model.SyncSyncQueued;
+import ai.hanzo.cloud.model.SyncSyncReq;
+import ai.hanzo.cloud.model.SyncSyncView;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -87,6 +88,7 @@ public class SyncApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteSyncByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -116,6 +118,7 @@ public class SyncApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -145,8 +148,8 @@ public class SyncApi {
     }
 
     /**
-     * Delete removes one sync and tears down the outbound mirror it derived, answering 204.
-     * Delete removes one sync and tears down the outbound mirror it derived, answering 204. The teardown is the point: without it an unsynced repository would keep force-pushing to the upstream it is no longer linked to. Org-scoped, so another tenant&#39;s id is the same 404 an unknown id gives.
+     * Removes one sync and tears down the outbound mirror it derived, answering 204.
+     * Removes one sync and tears down the outbound mirror it derived, answering 204. The teardown is the point: without it an unsynced repository would keep force-pushing to the upstream it is no longer linked to. Org-scoped, so another tenant&#39;s id is the same 404 an unknown id gives.
      * @param id ID is the sync to act on, from the path. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -154,6 +157,7 @@ public class SyncApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteSyncById(@javax.annotation.Nonnull String id) throws ApiException {
@@ -161,8 +165,8 @@ public class SyncApi {
     }
 
     /**
-     * Delete removes one sync and tears down the outbound mirror it derived, answering 204.
-     * Delete removes one sync and tears down the outbound mirror it derived, answering 204. The teardown is the point: without it an unsynced repository would keep force-pushing to the upstream it is no longer linked to. Org-scoped, so another tenant&#39;s id is the same 404 an unknown id gives.
+     * Removes one sync and tears down the outbound mirror it derived, answering 204.
+     * Removes one sync and tears down the outbound mirror it derived, answering 204. The teardown is the point: without it an unsynced repository would keep force-pushing to the upstream it is no longer linked to. Org-scoped, so another tenant&#39;s id is the same 404 an unknown id gives.
      * @param id ID is the sync to act on, from the path. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -171,6 +175,7 @@ public class SyncApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteSyncByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -179,8 +184,8 @@ public class SyncApi {
     }
 
     /**
-     * Delete removes one sync and tears down the outbound mirror it derived, answering 204. (asynchronously)
-     * Delete removes one sync and tears down the outbound mirror it derived, answering 204. The teardown is the point: without it an unsynced repository would keep force-pushing to the upstream it is no longer linked to. Org-scoped, so another tenant&#39;s id is the same 404 an unknown id gives.
+     * Removes one sync and tears down the outbound mirror it derived, answering 204. (asynchronously)
+     * Removes one sync and tears down the outbound mirror it derived, answering 204. The teardown is the point: without it an unsynced repository would keep force-pushing to the upstream it is no longer linked to. Org-scoped, so another tenant&#39;s id is the same 404 an unknown id gives.
      * @param id ID is the sync to act on, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -190,6 +195,7 @@ public class SyncApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteSyncByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -208,6 +214,7 @@ public class SyncApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSyncCall(final ApiCallback _callback) throws ApiException {
@@ -236,7 +243,8 @@ public class SyncApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -261,43 +269,45 @@ public class SyncApi {
     }
 
     /**
-     * List returns every sync link the caller&#39;s org has, each with its two endpoints, its direction and trigger policy, and the time it last reconciled.
-     * List returns every sync link the caller&#39;s org has, each with its two endpoints, its direction and trigger policy, and the time it last reconciled. Scoped to the caller&#39;s own org — another tenant&#39;s links are structurally unreachable.
-     * @return SyncList
+     * Returns every sync link the caller&#39;s org has, each with its two endpoints, its direction and trigger policy, the time it last reconciled, and for a repo link its native copy on the forge — the address to clone it from, its default branch and whether it is in step.
+     * Returns every sync link the caller&#39;s org has, each with its two endpoints, its direction and trigger policy, the time it last reconciled, and for a repo link its native copy on the forge — the address to clone it from, its default branch and whether it is in step. Scoped to the caller&#39;s own org — another tenant&#39;s links are structurally unreachable.
+     * @return SyncSyncList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SyncList getSync() throws ApiException {
-        ApiResponse<SyncList> localVarResp = getSyncWithHttpInfo();
+    public SyncSyncList getSync() throws ApiException {
+        ApiResponse<SyncSyncList> localVarResp = getSyncWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * List returns every sync link the caller&#39;s org has, each with its two endpoints, its direction and trigger policy, and the time it last reconciled.
-     * List returns every sync link the caller&#39;s org has, each with its two endpoints, its direction and trigger policy, and the time it last reconciled. Scoped to the caller&#39;s own org — another tenant&#39;s links are structurally unreachable.
-     * @return ApiResponse&lt;SyncList&gt;
+     * Returns every sync link the caller&#39;s org has, each with its two endpoints, its direction and trigger policy, the time it last reconciled, and for a repo link its native copy on the forge — the address to clone it from, its default branch and whether it is in step.
+     * Returns every sync link the caller&#39;s org has, each with its two endpoints, its direction and trigger policy, the time it last reconciled, and for a repo link its native copy on the forge — the address to clone it from, its default branch and whether it is in step. Scoped to the caller&#39;s own org — another tenant&#39;s links are structurally unreachable.
+     * @return ApiResponse&lt;SyncSyncList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SyncList> getSyncWithHttpInfo() throws ApiException {
+    public ApiResponse<SyncSyncList> getSyncWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getSyncValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<SyncList>(){}.getType();
+        Type localVarReturnType = new TypeToken<SyncSyncList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * List returns every sync link the caller&#39;s org has, each with its two endpoints, its direction and trigger policy, and the time it last reconciled. (asynchronously)
-     * List returns every sync link the caller&#39;s org has, each with its two endpoints, its direction and trigger policy, and the time it last reconciled. Scoped to the caller&#39;s own org — another tenant&#39;s links are structurally unreachable.
+     * Returns every sync link the caller&#39;s org has, each with its two endpoints, its direction and trigger policy, the time it last reconciled, and for a repo link its native copy on the forge — the address to clone it from, its default branch and whether it is in step. (asynchronously)
+     * Returns every sync link the caller&#39;s org has, each with its two endpoints, its direction and trigger policy, the time it last reconciled, and for a repo link its native copy on the forge — the address to clone it from, its default branch and whether it is in step. Scoped to the caller&#39;s own org — another tenant&#39;s links are structurally unreachable.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -306,12 +316,13 @@ public class SyncApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSyncAsync(final ApiCallback<SyncList> _callback) throws ApiException {
+    public okhttp3.Call getSyncAsync(final ApiCallback<SyncSyncList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSyncValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<SyncList>(){}.getType();
+        Type localVarReturnType = new TypeToken<SyncSyncList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -326,6 +337,7 @@ public class SyncApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSyncByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -355,7 +367,8 @@ public class SyncApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -385,45 +398,47 @@ public class SyncApi {
     }
 
     /**
-     * Get returns one sync by id.
-     * Get returns one sync by id. It is org-scoped: an id belonging to another tenant is the same 404 an unknown id gives, so a probe learns nothing about what exists.
+     * Returns one sync by id.
+     * Returns one sync by id. It is org-scoped: an id belonging to another tenant is the same 404 an unknown id gives, so a probe learns nothing about what exists.
      * @param id ID is the sync to act on, from the path. (required)
-     * @return SyncView
+     * @return SyncSyncView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SyncView getSyncById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<SyncView> localVarResp = getSyncByIdWithHttpInfo(id);
+    public SyncSyncView getSyncById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SyncSyncView> localVarResp = getSyncByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
-     * Get returns one sync by id.
-     * Get returns one sync by id. It is org-scoped: an id belonging to another tenant is the same 404 an unknown id gives, so a probe learns nothing about what exists.
+     * Returns one sync by id.
+     * Returns one sync by id. It is org-scoped: an id belonging to another tenant is the same 404 an unknown id gives, so a probe learns nothing about what exists.
      * @param id ID is the sync to act on, from the path. (required)
-     * @return ApiResponse&lt;SyncView&gt;
+     * @return ApiResponse&lt;SyncSyncView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SyncView> getSyncByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<SyncSyncView> getSyncByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getSyncByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<SyncView>(){}.getType();
+        Type localVarReturnType = new TypeToken<SyncSyncView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get returns one sync by id. (asynchronously)
-     * Get returns one sync by id. It is org-scoped: an id belonging to another tenant is the same 404 an unknown id gives, so a probe learns nothing about what exists.
+     * Returns one sync by id. (asynchronously)
+     * Returns one sync by id. It is org-scoped: an id belonging to another tenant is the same 404 an unknown id gives, so a probe learns nothing about what exists.
      * @param id ID is the sync to act on, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -433,19 +448,20 @@ public class SyncApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSyncByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SyncView> _callback) throws ApiException {
+    public okhttp3.Call getSyncByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SyncSyncView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSyncByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<SyncView>(){}.getType();
+        Type localVarReturnType = new TypeToken<SyncSyncView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for patchSyncById
      * @param id ID is the sync to update, from the path. (required)
-     * @param patchSyncIn  (required)
+     * @param syncPatchSyncIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -454,9 +470,10 @@ public class SyncApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchSyncByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSyncIn patchSyncIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchSyncByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SyncPatchSyncIn syncPatchSyncIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -470,7 +487,7 @@ public class SyncApi {
             basePath = null;
         }
 
-        Object localVarPostBody = patchSyncIn;
+        Object localVarPostBody = syncPatchSyncIn;
 
         // create path and map variables
         String localVarPath = "/v1/sync/{id}"
@@ -483,7 +500,8 @@ public class SyncApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -503,65 +521,67 @@ public class SyncApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchSyncByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSyncIn patchSyncIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchSyncByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SyncPatchSyncIn syncPatchSyncIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling patchSyncById(Async)");
         }
 
-        // verify the required parameter 'patchSyncIn' is set
-        if (patchSyncIn == null) {
-            throw new ApiException("Missing the required parameter 'patchSyncIn' when calling patchSyncById(Async)");
+        // verify the required parameter 'syncPatchSyncIn' is set
+        if (syncPatchSyncIn == null) {
+            throw new ApiException("Missing the required parameter 'syncPatchSyncIn' when calling patchSyncById(Async)");
         }
 
-        return patchSyncByIdCall(id, patchSyncIn, _callback);
+        return patchSyncByIdCall(id, syncPatchSyncIn, _callback);
 
     }
 
     /**
-     * Patch updates one sync&#39;s mutable policy — direction, trigger and actor — in place.
-     * Patch updates one sync&#39;s mutable policy — direction, trigger and actor — in place. The endpoints and the kind are immutable: re-pointing a sync is a delete and a create, so a link can never silently start syncing somewhere else. A field the request omits is left as it was. Changing the direction immediately reconciles the derived outbound mirror, so turning push off stops the upstream being written to rather than merely recording the intent.
+     * Updates one sync&#39;s mutable policy — direction, trigger and actor — in place.
+     * Updates one sync&#39;s mutable policy — direction, trigger and actor — in place. The endpoints and the kind are immutable: re-pointing a sync is a delete and a create, so a link can never silently start syncing somewhere else. A field the request omits is left as it was. Changing the direction immediately reconciles the derived outbound mirror, so turning push off stops the upstream being written to rather than merely recording the intent.
      * @param id ID is the sync to update, from the path. (required)
-     * @param patchSyncIn  (required)
-     * @return SyncView
+     * @param syncPatchSyncIn  (required)
+     * @return SyncSyncView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SyncView patchSyncById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSyncIn patchSyncIn) throws ApiException {
-        ApiResponse<SyncView> localVarResp = patchSyncByIdWithHttpInfo(id, patchSyncIn);
+    public SyncSyncView patchSyncById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SyncPatchSyncIn syncPatchSyncIn) throws ApiException {
+        ApiResponse<SyncSyncView> localVarResp = patchSyncByIdWithHttpInfo(id, syncPatchSyncIn);
         return localVarResp.getData();
     }
 
     /**
-     * Patch updates one sync&#39;s mutable policy — direction, trigger and actor — in place.
-     * Patch updates one sync&#39;s mutable policy — direction, trigger and actor — in place. The endpoints and the kind are immutable: re-pointing a sync is a delete and a create, so a link can never silently start syncing somewhere else. A field the request omits is left as it was. Changing the direction immediately reconciles the derived outbound mirror, so turning push off stops the upstream being written to rather than merely recording the intent.
+     * Updates one sync&#39;s mutable policy — direction, trigger and actor — in place.
+     * Updates one sync&#39;s mutable policy — direction, trigger and actor — in place. The endpoints and the kind are immutable: re-pointing a sync is a delete and a create, so a link can never silently start syncing somewhere else. A field the request omits is left as it was. Changing the direction immediately reconciles the derived outbound mirror, so turning push off stops the upstream being written to rather than merely recording the intent.
      * @param id ID is the sync to update, from the path. (required)
-     * @param patchSyncIn  (required)
-     * @return ApiResponse&lt;SyncView&gt;
+     * @param syncPatchSyncIn  (required)
+     * @return ApiResponse&lt;SyncSyncView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SyncView> patchSyncByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSyncIn patchSyncIn) throws ApiException {
-        okhttp3.Call localVarCall = patchSyncByIdValidateBeforeCall(id, patchSyncIn, null);
-        Type localVarReturnType = new TypeToken<SyncView>(){}.getType();
+    public ApiResponse<SyncSyncView> patchSyncByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SyncPatchSyncIn syncPatchSyncIn) throws ApiException {
+        okhttp3.Call localVarCall = patchSyncByIdValidateBeforeCall(id, syncPatchSyncIn, null);
+        Type localVarReturnType = new TypeToken<SyncSyncView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Patch updates one sync&#39;s mutable policy — direction, trigger and actor — in place. (asynchronously)
-     * Patch updates one sync&#39;s mutable policy — direction, trigger and actor — in place. The endpoints and the kind are immutable: re-pointing a sync is a delete and a create, so a link can never silently start syncing somewhere else. A field the request omits is left as it was. Changing the direction immediately reconciles the derived outbound mirror, so turning push off stops the upstream being written to rather than merely recording the intent.
+     * Updates one sync&#39;s mutable policy — direction, trigger and actor — in place. (asynchronously)
+     * Updates one sync&#39;s mutable policy — direction, trigger and actor — in place. The endpoints and the kind are immutable: re-pointing a sync is a delete and a create, so a link can never silently start syncing somewhere else. A field the request omits is left as it was. Changing the direction immediately reconciles the derived outbound mirror, so turning push off stops the upstream being written to rather than merely recording the intent.
      * @param id ID is the sync to update, from the path. (required)
-     * @param patchSyncIn  (required)
+     * @param syncPatchSyncIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -570,18 +590,19 @@ public class SyncApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchSyncByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSyncIn patchSyncIn, final ApiCallback<SyncView> _callback) throws ApiException {
+    public okhttp3.Call patchSyncByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SyncPatchSyncIn syncPatchSyncIn, final ApiCallback<SyncSyncView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchSyncByIdValidateBeforeCall(id, patchSyncIn, _callback);
-        Type localVarReturnType = new TypeToken<SyncView>(){}.getType();
+        okhttp3.Call localVarCall = patchSyncByIdValidateBeforeCall(id, syncPatchSyncIn, _callback);
+        Type localVarReturnType = new TypeToken<SyncSyncView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postSync
-     * @param syncReq  (required)
+     * @param syncSyncReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -590,9 +611,10 @@ public class SyncApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSyncCall(@javax.annotation.Nonnull SyncReq syncReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSyncCall(@javax.annotation.Nonnull SyncSyncReq syncSyncReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -606,7 +628,7 @@ public class SyncApi {
             basePath = null;
         }
 
-        Object localVarPostBody = syncReq;
+        Object localVarPostBody = syncSyncReq;
 
         // create path and map variables
         String localVarPath = "/v1/sync";
@@ -618,7 +640,8 @@ public class SyncApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -638,57 +661,59 @@ public class SyncApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postSyncValidateBeforeCall(@javax.annotation.Nonnull SyncReq syncReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'syncReq' is set
-        if (syncReq == null) {
-            throw new ApiException("Missing the required parameter 'syncReq' when calling postSync(Async)");
+    private okhttp3.Call postSyncValidateBeforeCall(@javax.annotation.Nonnull SyncSyncReq syncSyncReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'syncSyncReq' is set
+        if (syncSyncReq == null) {
+            throw new ApiException("Missing the required parameter 'syncSyncReq' when calling postSync(Async)");
         }
 
-        return postSyncCall(syncReq, _callback);
+        return postSyncCall(syncSyncReq, _callback);
 
     }
 
     /**
-     * Create declares a sync between two endpoints and returns it.
-     * Create declares a sync between two endpoints and returns it. It is an UPSERT: re-declaring the same source and target updates that link rather than piling up duplicates, so a console that re-submits is safe. The org comes from the validated principal, never from the request, so a sync can only ever bind endpoints inside the caller&#39;s own org. A git source must be an https clone URL on the provider&#39;s own host with no embedded credentials; a target left empty is derived as a native repository named after the source. With run&#x3D;true the first reconcile is queued in the background, so a large initial import never blocks this response.
-     * @param syncReq  (required)
-     * @return SyncView
+     * Declares a sync between two endpoints and returns it.
+     * Declares a sync between two endpoints and returns it. It is an UPSERT: re-declaring the same source and target updates that link rather than piling up duplicates, so a console that re-submits is safe. The org comes from the validated principal, never from the request, so a sync can only ever bind endpoints inside the caller&#39;s own org. A git source must be an https clone URL on the provider&#39;s own host with no embedded credentials; a target left empty is derived as a native repository named after the source. A source naming only a GitHub account (https://github.com/&lt;account&gt;) links the whole account: every repository the org&#39;s GitHub installation grants on it gets a repo link of its own, with this link&#39;s direction and trigger, and so does every repository created there later. With run&#x3D;true the first reconcile is queued in the background, so a large initial import never blocks this response.
+     * @param syncSyncReq  (required)
+     * @return SyncSyncView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SyncView postSync(@javax.annotation.Nonnull SyncReq syncReq) throws ApiException {
-        ApiResponse<SyncView> localVarResp = postSyncWithHttpInfo(syncReq);
+    public SyncSyncView postSync(@javax.annotation.Nonnull SyncSyncReq syncSyncReq) throws ApiException {
+        ApiResponse<SyncSyncView> localVarResp = postSyncWithHttpInfo(syncSyncReq);
         return localVarResp.getData();
     }
 
     /**
-     * Create declares a sync between two endpoints and returns it.
-     * Create declares a sync between two endpoints and returns it. It is an UPSERT: re-declaring the same source and target updates that link rather than piling up duplicates, so a console that re-submits is safe. The org comes from the validated principal, never from the request, so a sync can only ever bind endpoints inside the caller&#39;s own org. A git source must be an https clone URL on the provider&#39;s own host with no embedded credentials; a target left empty is derived as a native repository named after the source. With run&#x3D;true the first reconcile is queued in the background, so a large initial import never blocks this response.
-     * @param syncReq  (required)
-     * @return ApiResponse&lt;SyncView&gt;
+     * Declares a sync between two endpoints and returns it.
+     * Declares a sync between two endpoints and returns it. It is an UPSERT: re-declaring the same source and target updates that link rather than piling up duplicates, so a console that re-submits is safe. The org comes from the validated principal, never from the request, so a sync can only ever bind endpoints inside the caller&#39;s own org. A git source must be an https clone URL on the provider&#39;s own host with no embedded credentials; a target left empty is derived as a native repository named after the source. A source naming only a GitHub account (https://github.com/&lt;account&gt;) links the whole account: every repository the org&#39;s GitHub installation grants on it gets a repo link of its own, with this link&#39;s direction and trigger, and so does every repository created there later. With run&#x3D;true the first reconcile is queued in the background, so a large initial import never blocks this response.
+     * @param syncSyncReq  (required)
+     * @return ApiResponse&lt;SyncSyncView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SyncView> postSyncWithHttpInfo(@javax.annotation.Nonnull SyncReq syncReq) throws ApiException {
-        okhttp3.Call localVarCall = postSyncValidateBeforeCall(syncReq, null);
-        Type localVarReturnType = new TypeToken<SyncView>(){}.getType();
+    public ApiResponse<SyncSyncView> postSyncWithHttpInfo(@javax.annotation.Nonnull SyncSyncReq syncSyncReq) throws ApiException {
+        okhttp3.Call localVarCall = postSyncValidateBeforeCall(syncSyncReq, null);
+        Type localVarReturnType = new TypeToken<SyncSyncView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Create declares a sync between two endpoints and returns it. (asynchronously)
-     * Create declares a sync between two endpoints and returns it. It is an UPSERT: re-declaring the same source and target updates that link rather than piling up duplicates, so a console that re-submits is safe. The org comes from the validated principal, never from the request, so a sync can only ever bind endpoints inside the caller&#39;s own org. A git source must be an https clone URL on the provider&#39;s own host with no embedded credentials; a target left empty is derived as a native repository named after the source. With run&#x3D;true the first reconcile is queued in the background, so a large initial import never blocks this response.
-     * @param syncReq  (required)
+     * Declares a sync between two endpoints and returns it. (asynchronously)
+     * Declares a sync between two endpoints and returns it. It is an UPSERT: re-declaring the same source and target updates that link rather than piling up duplicates, so a console that re-submits is safe. The org comes from the validated principal, never from the request, so a sync can only ever bind endpoints inside the caller&#39;s own org. A git source must be an https clone URL on the provider&#39;s own host with no embedded credentials; a target left empty is derived as a native repository named after the source. A source naming only a GitHub account (https://github.com/&lt;account&gt;) links the whole account: every repository the org&#39;s GitHub installation grants on it gets a repo link of its own, with this link&#39;s direction and trigger, and so does every repository created there later. With run&#x3D;true the first reconcile is queued in the background, so a large initial import never blocks this response.
+     * @param syncSyncReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -697,12 +722,13 @@ public class SyncApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSyncAsync(@javax.annotation.Nonnull SyncReq syncReq, final ApiCallback<SyncView> _callback) throws ApiException {
+    public okhttp3.Call postSyncAsync(@javax.annotation.Nonnull SyncSyncReq syncSyncReq, final ApiCallback<SyncSyncView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postSyncValidateBeforeCall(syncReq, _callback);
-        Type localVarReturnType = new TypeToken<SyncView>(){}.getType();
+        okhttp3.Call localVarCall = postSyncValidateBeforeCall(syncSyncReq, _callback);
+        Type localVarReturnType = new TypeToken<SyncSyncView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -717,6 +743,7 @@ public class SyncApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postSyncByIdRunCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -746,7 +773,8 @@ public class SyncApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -776,45 +804,47 @@ public class SyncApi {
     }
 
     /**
-     * Run reconciles one sync now — the manual re-sync, and the initial import for a link created without run&#x3D;true.
-     * Run reconciles one sync now — the manual re-sync, and the initial import for a link created without run&#x3D;true. The work is handed to a bounded background worker and the call answers 202 immediately, so a large mirror-in never holds the request open; queued&#x3D;true means accepted, not finished.
+     * Reconciles one sync now — the manual re-sync, and the initial import for a link created without run&#x3D;true.
+     * Reconciles one sync now — the manual re-sync, and the initial import for a link created without run&#x3D;true. The work is handed to a bounded background worker and the call answers 202 immediately, so a large mirror-in never holds the request open; queued&#x3D;true means accepted, not finished.
      * @param id ID is the sync to act on, from the path. (required)
-     * @return SyncQueued
+     * @return SyncSyncQueued
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SyncQueued postSyncByIdRun(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<SyncQueued> localVarResp = postSyncByIdRunWithHttpInfo(id);
+    public SyncSyncQueued postSyncByIdRun(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SyncSyncQueued> localVarResp = postSyncByIdRunWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
-     * Run reconciles one sync now — the manual re-sync, and the initial import for a link created without run&#x3D;true.
-     * Run reconciles one sync now — the manual re-sync, and the initial import for a link created without run&#x3D;true. The work is handed to a bounded background worker and the call answers 202 immediately, so a large mirror-in never holds the request open; queued&#x3D;true means accepted, not finished.
+     * Reconciles one sync now — the manual re-sync, and the initial import for a link created without run&#x3D;true.
+     * Reconciles one sync now — the manual re-sync, and the initial import for a link created without run&#x3D;true. The work is handed to a bounded background worker and the call answers 202 immediately, so a large mirror-in never holds the request open; queued&#x3D;true means accepted, not finished.
      * @param id ID is the sync to act on, from the path. (required)
-     * @return ApiResponse&lt;SyncQueued&gt;
+     * @return ApiResponse&lt;SyncSyncQueued&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SyncQueued> postSyncByIdRunWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<SyncSyncQueued> postSyncByIdRunWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postSyncByIdRunValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<SyncQueued>(){}.getType();
+        Type localVarReturnType = new TypeToken<SyncSyncQueued>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Run reconciles one sync now — the manual re-sync, and the initial import for a link created without run&#x3D;true. (asynchronously)
-     * Run reconciles one sync now — the manual re-sync, and the initial import for a link created without run&#x3D;true. The work is handed to a bounded background worker and the call answers 202 immediately, so a large mirror-in never holds the request open; queued&#x3D;true means accepted, not finished.
+     * Reconciles one sync now — the manual re-sync, and the initial import for a link created without run&#x3D;true. (asynchronously)
+     * Reconciles one sync now — the manual re-sync, and the initial import for a link created without run&#x3D;true. The work is handed to a bounded background worker and the call answers 202 immediately, so a large mirror-in never holds the request open; queued&#x3D;true means accepted, not finished.
      * @param id ID is the sync to act on, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -824,12 +854,13 @@ public class SyncApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSyncByIdRunAsync(@javax.annotation.Nonnull String id, final ApiCallback<SyncQueued> _callback) throws ApiException {
+    public okhttp3.Call postSyncByIdRunAsync(@javax.annotation.Nonnull String id, final ApiCallback<SyncSyncQueued> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postSyncByIdRunValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<SyncQueued>(){}.getType();
+        Type localVarReturnType = new TypeToken<SyncSyncQueued>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

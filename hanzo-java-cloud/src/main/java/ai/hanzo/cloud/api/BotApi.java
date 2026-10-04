@@ -27,10 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.BotRoster;
-import ai.hanzo.cloud.model.BotRuns;
-import ai.hanzo.cloud.model.BotStopped;
-import ai.hanzo.cloud.model.BotSync;
+import ai.hanzo.cloud.model.BotBotRoster;
+import ai.hanzo.cloud.model.BotBotRuns;
+import ai.hanzo.cloud.model.BotBotStopped;
+import ai.hanzo.cloud.model.BotBotSync;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -85,6 +86,7 @@ public class BotApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBotMembersCall(final ApiCallback _callback) throws ApiException {
@@ -113,7 +115,8 @@ public class BotApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -140,35 +143,37 @@ public class BotApi {
     /**
      * Returns the caller org&#39;s bots as space members — each with the member account uuid and the Person reference the roster addresses it by.
      * Returns the caller org&#39;s bots as space members — each with the member account uuid and the Person reference the roster addresses it by.  A deployment that runs no team subsystem has no spaces and therefore no roster, which is an empty list rather than an error: ErrNoPeer is the ONE error that means \&quot;this deployment does not run that app\&quot;, and every other failure is an outage and says so.
-     * @return BotRoster
+     * @return BotBotRoster
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BotRoster getBotMembers() throws ApiException {
-        ApiResponse<BotRoster> localVarResp = getBotMembersWithHttpInfo();
+    public BotBotRoster getBotMembers() throws ApiException {
+        ApiResponse<BotBotRoster> localVarResp = getBotMembersWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller org&#39;s bots as space members — each with the member account uuid and the Person reference the roster addresses it by.
      * Returns the caller org&#39;s bots as space members — each with the member account uuid and the Person reference the roster addresses it by.  A deployment that runs no team subsystem has no spaces and therefore no roster, which is an empty list rather than an error: ErrNoPeer is the ONE error that means \&quot;this deployment does not run that app\&quot;, and every other failure is an outage and says so.
-     * @return ApiResponse&lt;BotRoster&gt;
+     * @return ApiResponse&lt;BotBotRoster&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BotRoster> getBotMembersWithHttpInfo() throws ApiException {
+    public ApiResponse<BotBotRoster> getBotMembersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBotMembersValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<BotRoster>(){}.getType();
+        Type localVarReturnType = new TypeToken<BotBotRoster>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -183,12 +188,13 @@ public class BotApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBotMembersAsync(final ApiCallback<BotRoster> _callback) throws ApiException {
+    public okhttp3.Call getBotMembersAsync(final ApiCallback<BotBotRoster> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBotMembersValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<BotRoster>(){}.getType();
+        Type localVarReturnType = new TypeToken<BotBotRoster>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -202,6 +208,7 @@ public class BotApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBotRunsCall(final ApiCallback _callback) throws ApiException {
@@ -230,7 +237,8 @@ public class BotApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -255,43 +263,45 @@ public class BotApi {
     }
 
     /**
-     * List returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here.
-     * List returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here.  The org is ALWAYS the validated principal&#39;s org, NEVER a request field, and it is what scopes the runtime&#39;s answer — so one tenant can never enumerate another&#39;s runs. A runtime that cannot answer is an error, not an empty list: [] would tell the caller \&quot;your org has no runs\&quot;, which is a different claim from \&quot;we could not ask\&quot;, and the difference is the whole reason this endpoint exists.
-     * @return BotRuns
+     * Returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here.
+     * Returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here.  The org is ALWAYS the validated principal&#39;s org, NEVER a request field, and it is what scopes the runtime&#39;s answer — so one tenant can never enumerate another&#39;s runs. A runtime that cannot answer is an error, not an empty list: [] would tell the caller \&quot;your org has no runs\&quot;, which is a different claim from \&quot;we could not ask\&quot;, and the difference is the whole reason this endpoint exists.
+     * @return BotBotRuns
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BotRuns getBotRuns() throws ApiException {
-        ApiResponse<BotRuns> localVarResp = getBotRunsWithHttpInfo();
+    public BotBotRuns getBotRuns() throws ApiException {
+        ApiResponse<BotBotRuns> localVarResp = getBotRunsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * List returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here.
-     * List returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here.  The org is ALWAYS the validated principal&#39;s org, NEVER a request field, and it is what scopes the runtime&#39;s answer — so one tenant can never enumerate another&#39;s runs. A runtime that cannot answer is an error, not an empty list: [] would tell the caller \&quot;your org has no runs\&quot;, which is a different claim from \&quot;we could not ask\&quot;, and the difference is the whole reason this endpoint exists.
-     * @return ApiResponse&lt;BotRuns&gt;
+     * Returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here.
+     * Returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here.  The org is ALWAYS the validated principal&#39;s org, NEVER a request field, and it is what scopes the runtime&#39;s answer — so one tenant can never enumerate another&#39;s runs. A runtime that cannot answer is an error, not an empty list: [] would tell the caller \&quot;your org has no runs\&quot;, which is a different claim from \&quot;we could not ask\&quot;, and the difference is the whole reason this endpoint exists.
+     * @return ApiResponse&lt;BotBotRuns&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BotRuns> getBotRunsWithHttpInfo() throws ApiException {
+    public ApiResponse<BotBotRuns> getBotRunsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBotRunsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<BotRuns>(){}.getType();
+        Type localVarReturnType = new TypeToken<BotBotRuns>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * List returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here. (asynchronously)
-     * List returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here.  The org is ALWAYS the validated principal&#39;s org, NEVER a request field, and it is what scopes the runtime&#39;s answer — so one tenant can never enumerate another&#39;s runs. A runtime that cannot answer is an error, not an empty list: [] would tell the caller \&quot;your org has no runs\&quot;, which is a different claim from \&quot;we could not ask\&quot;, and the difference is the whole reason this endpoint exists.
+     * Returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here. (asynchronously)
+     * Returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here.  The org is ALWAYS the validated principal&#39;s org, NEVER a request field, and it is what scopes the runtime&#39;s answer — so one tenant can never enumerate another&#39;s runs. A runtime that cannot answer is an error, not an empty list: [] would tell the caller \&quot;your org has no runs\&quot;, which is a different claim from \&quot;we could not ask\&quot;, and the difference is the whole reason this endpoint exists.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -300,12 +310,13 @@ public class BotApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBotRunsAsync(final ApiCallback<BotRuns> _callback) throws ApiException {
+    public okhttp3.Call getBotRunsAsync(final ApiCallback<BotBotRuns> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBotRunsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<BotRuns>(){}.getType();
+        Type localVarReturnType = new TypeToken<BotBotRuns>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -319,6 +330,7 @@ public class BotApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postBotMembersSyncCall(final ApiCallback _callback) throws ApiException {
@@ -347,7 +359,8 @@ public class BotApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -374,35 +387,37 @@ public class BotApi {
     /**
      * Re-projects the caller org&#39;s bots as members into every space of the org and removes the ones whose agent is gone.
      * Re-projects the caller org&#39;s bots as members into every space of the org and removes the ones whose agent is gone. Idempotent, and admin only — the admin bit rides the caller to team, which is what decides it.
-     * @return BotSync
+     * @return BotBotSync
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BotSync postBotMembersSync() throws ApiException {
-        ApiResponse<BotSync> localVarResp = postBotMembersSyncWithHttpInfo();
+    public BotBotSync postBotMembersSync() throws ApiException {
+        ApiResponse<BotBotSync> localVarResp = postBotMembersSyncWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Re-projects the caller org&#39;s bots as members into every space of the org and removes the ones whose agent is gone.
      * Re-projects the caller org&#39;s bots as members into every space of the org and removes the ones whose agent is gone. Idempotent, and admin only — the admin bit rides the caller to team, which is what decides it.
-     * @return ApiResponse&lt;BotSync&gt;
+     * @return ApiResponse&lt;BotBotSync&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BotSync> postBotMembersSyncWithHttpInfo() throws ApiException {
+    public ApiResponse<BotBotSync> postBotMembersSyncWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = postBotMembersSyncValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<BotSync>(){}.getType();
+        Type localVarReturnType = new TypeToken<BotBotSync>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -417,125 +432,14 @@ public class BotApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBotMembersSyncAsync(final ApiCallback<BotSync> _callback) throws ApiException {
+    public okhttp3.Call postBotMembersSyncAsync(final ApiCallback<BotBotSync> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postBotMembersSyncValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<BotSync>(){}.getType();
+        Type localVarReturnType = new TypeToken<BotBotSync>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postBotRuns
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 501 </td><td> not implemented </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postBotRunsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/bot/runs";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBotRunsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postBotRunsCall(_callback);
-
-    }
-
-    /**
-     * Answers 501 to every call: launching a bot run is not implemented.
-     * Answers 501 to every call: launching a bot run is not implemented.  The bot runtime exposes no launch operation, so nothing here can start a sandbox. This address is published rather than dropped because it is the collection every run is created in: GET lists them, POST would launch one.  The refusal is total and takes no input. No run id is minted, no session URL is handed back, and no per-run fee is charged. That is the point: the earlier version minted an id the runtime had never heard of, pointed it at a VNC node that did not exist, and took real money for it. 501 is the truth, and the truth is cheaper than a plausible lie.  Listing and stopping runs are live and org-scoped. Only the launch is missing, and it returns in the same change that can prove a bot boots — a runtime-side launch operation first (TS, cross-repo), with the entitlement gate and the meter beside it.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 501 </td><td> not implemented </td><td>  -  </td></tr>
-     </table>
-     */
-    public void postBotRuns() throws ApiException {
-        postBotRunsWithHttpInfo();
-    }
-
-    /**
-     * Answers 501 to every call: launching a bot run is not implemented.
-     * Answers 501 to every call: launching a bot run is not implemented.  The bot runtime exposes no launch operation, so nothing here can start a sandbox. This address is published rather than dropped because it is the collection every run is created in: GET lists them, POST would launch one.  The refusal is total and takes no input. No run id is minted, no session URL is handed back, and no per-run fee is charged. That is the point: the earlier version minted an id the runtime had never heard of, pointed it at a VNC node that did not exist, and took real money for it. 501 is the truth, and the truth is cheaper than a plausible lie.  Listing and stopping runs are live and org-scoped. Only the launch is missing, and it returns in the same change that can prove a bot boots — a runtime-side launch operation first (TS, cross-repo), with the entitlement gate and the meter beside it.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 501 </td><td> not implemented </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> postBotRunsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postBotRunsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Answers 501 to every call: launching a bot run is not implemented. (asynchronously)
-     * Answers 501 to every call: launching a bot run is not implemented.  The bot runtime exposes no launch operation, so nothing here can start a sandbox. This address is published rather than dropped because it is the collection every run is created in: GET lists them, POST would launch one.  The refusal is total and takes no input. No run id is minted, no session URL is handed back, and no per-run fee is charged. That is the point: the earlier version minted an id the runtime had never heard of, pointed it at a VNC node that did not exist, and took real money for it. 501 is the truth, and the truth is cheaper than a plausible lie.  Listing and stopping runs are live and org-scoped. Only the launch is missing, and it returns in the same change that can prove a bot boots — a runtime-side launch operation first (TS, cross-repo), with the entitlement gate and the meter beside it.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 501 </td><td> not implemented </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postBotRunsAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postBotRunsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -549,6 +453,7 @@ public class BotApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postBotRunsByRunidStopCall(@javax.annotation.Nonnull String runId, final ApiCallback _callback) throws ApiException {
@@ -578,7 +483,8 @@ public class BotApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -608,45 +514,47 @@ public class BotApi {
     }
 
     /**
-     * Stop terminates one of the caller org&#39;s own bot runs and reports its terminal state.
-     * Stop terminates one of the caller org&#39;s own bot runs and reports its terminal state.  The own-key guard is the org: it is the caller&#39;s validated org, never theirs to choose, and the runtime resolves the run id UNDER it. A run belonging to another tenant is not among this org&#39;s runs, so it answers absent — the same 404 a nonexistent id gets, which is what keeps this from being an oracle.  Absence is honoured ONLY when the runtime answers it. A runtime that does not serve stop reports nothing about the run, and reporting \&quot;stopped\&quot; on that basis would be a stop that cannot fail — so it is a 502.
+     * Terminates one of the caller org&#39;s own bot runs and reports its terminal state.
+     * Terminates one of the caller org&#39;s own bot runs and reports its terminal state.  The own-key guard is the org: it is the caller&#39;s validated org, never theirs to choose, and the runtime resolves the run id UNDER it. A run belonging to another tenant is not among this org&#39;s runs, so it answers absent — the same 404 a nonexistent id gets, which is what keeps this from being an oracle.  Absence is honoured ONLY when the runtime answers it. A runtime that does not serve stop reports nothing about the run, and reporting \&quot;stopped\&quot; on that basis would be a stop that cannot fail — so it is a 502.
      * @param runId RunID is the run to stop, as the bot runtime named it. It is read from the URL — the &#x60;{runId}&#x60; segment the router matched on — and a body carrying a different id cannot redirect the stop. (required)
-     * @return BotStopped
+     * @return BotBotStopped
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BotStopped postBotRunsByRunidStop(@javax.annotation.Nonnull String runId) throws ApiException {
-        ApiResponse<BotStopped> localVarResp = postBotRunsByRunidStopWithHttpInfo(runId);
+    public BotBotStopped postBotRunsByRunidStop(@javax.annotation.Nonnull String runId) throws ApiException {
+        ApiResponse<BotBotStopped> localVarResp = postBotRunsByRunidStopWithHttpInfo(runId);
         return localVarResp.getData();
     }
 
     /**
-     * Stop terminates one of the caller org&#39;s own bot runs and reports its terminal state.
-     * Stop terminates one of the caller org&#39;s own bot runs and reports its terminal state.  The own-key guard is the org: it is the caller&#39;s validated org, never theirs to choose, and the runtime resolves the run id UNDER it. A run belonging to another tenant is not among this org&#39;s runs, so it answers absent — the same 404 a nonexistent id gets, which is what keeps this from being an oracle.  Absence is honoured ONLY when the runtime answers it. A runtime that does not serve stop reports nothing about the run, and reporting \&quot;stopped\&quot; on that basis would be a stop that cannot fail — so it is a 502.
+     * Terminates one of the caller org&#39;s own bot runs and reports its terminal state.
+     * Terminates one of the caller org&#39;s own bot runs and reports its terminal state.  The own-key guard is the org: it is the caller&#39;s validated org, never theirs to choose, and the runtime resolves the run id UNDER it. A run belonging to another tenant is not among this org&#39;s runs, so it answers absent — the same 404 a nonexistent id gets, which is what keeps this from being an oracle.  Absence is honoured ONLY when the runtime answers it. A runtime that does not serve stop reports nothing about the run, and reporting \&quot;stopped\&quot; on that basis would be a stop that cannot fail — so it is a 502.
      * @param runId RunID is the run to stop, as the bot runtime named it. It is read from the URL — the &#x60;{runId}&#x60; segment the router matched on — and a body carrying a different id cannot redirect the stop. (required)
-     * @return ApiResponse&lt;BotStopped&gt;
+     * @return ApiResponse&lt;BotBotStopped&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BotStopped> postBotRunsByRunidStopWithHttpInfo(@javax.annotation.Nonnull String runId) throws ApiException {
+    public ApiResponse<BotBotStopped> postBotRunsByRunidStopWithHttpInfo(@javax.annotation.Nonnull String runId) throws ApiException {
         okhttp3.Call localVarCall = postBotRunsByRunidStopValidateBeforeCall(runId, null);
-        Type localVarReturnType = new TypeToken<BotStopped>(){}.getType();
+        Type localVarReturnType = new TypeToken<BotBotStopped>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Stop terminates one of the caller org&#39;s own bot runs and reports its terminal state. (asynchronously)
-     * Stop terminates one of the caller org&#39;s own bot runs and reports its terminal state.  The own-key guard is the org: it is the caller&#39;s validated org, never theirs to choose, and the runtime resolves the run id UNDER it. A run belonging to another tenant is not among this org&#39;s runs, so it answers absent — the same 404 a nonexistent id gets, which is what keeps this from being an oracle.  Absence is honoured ONLY when the runtime answers it. A runtime that does not serve stop reports nothing about the run, and reporting \&quot;stopped\&quot; on that basis would be a stop that cannot fail — so it is a 502.
+     * Terminates one of the caller org&#39;s own bot runs and reports its terminal state. (asynchronously)
+     * Terminates one of the caller org&#39;s own bot runs and reports its terminal state.  The own-key guard is the org: it is the caller&#39;s validated org, never theirs to choose, and the runtime resolves the run id UNDER it. A run belonging to another tenant is not among this org&#39;s runs, so it answers absent — the same 404 a nonexistent id gets, which is what keeps this from being an oracle.  Absence is honoured ONLY when the runtime answers it. A runtime that does not serve stop reports nothing about the run, and reporting \&quot;stopped\&quot; on that basis would be a stop that cannot fail — so it is a 502.
      * @param runId RunID is the run to stop, as the bot runtime named it. It is read from the URL — the &#x60;{runId}&#x60; segment the router matched on — and a body carrying a different id cannot redirect the stop. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -656,12 +564,13 @@ public class BotApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBotRunsByRunidStopAsync(@javax.annotation.Nonnull String runId, final ApiCallback<BotStopped> _callback) throws ApiException {
+    public okhttp3.Call postBotRunsByRunidStopAsync(@javax.annotation.Nonnull String runId, final ApiCallback<BotBotStopped> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postBotRunsByRunidStopValidateBeforeCall(runId, _callback);
-        Type localVarReturnType = new TypeToken<BotStopped>(){}.getType();
+        Type localVarReturnType = new TypeToken<BotBotStopped>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

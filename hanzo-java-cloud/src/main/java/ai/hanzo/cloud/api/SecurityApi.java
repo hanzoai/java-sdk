@@ -27,14 +27,15 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.FindingList;
-import ai.hanzo.cloud.model.FindingView;
-import ai.hanzo.cloud.model.RuleList;
-import ai.hanzo.cloud.model.Ruleset;
-import ai.hanzo.cloud.model.ScanDetail;
-import ai.hanzo.cloud.model.ScanList;
-import ai.hanzo.cloud.model.ScanView;
-import ai.hanzo.cloud.model.SubmitReq;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.SecurityFindingList;
+import ai.hanzo.cloud.model.SecurityFindingView;
+import ai.hanzo.cloud.model.SecurityRuleList;
+import ai.hanzo.cloud.model.SecurityRuleset;
+import ai.hanzo.cloud.model.SecurityScanDetail;
+import ai.hanzo.cloud.model.SecurityScanList;
+import ai.hanzo.cloud.model.SecurityScanView;
+import ai.hanzo.cloud.model.SecuritySubmitReq;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -92,6 +93,7 @@ public class SecurityApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSecurityFindingsCall(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -132,7 +134,8 @@ public class SecurityApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -162,17 +165,18 @@ public class SecurityApi {
      * @param scanId ScanID narrows to a single scan. (optional)
      * @param minSeverity MinSeverity drops everything below that rank: critical, high, medium or low. A value outside that set is refused rather than quietly ignored, so a filter typo cannot read as \&quot;no findings\&quot;. (optional)
      * @param limit Limit caps the page. (optional)
-     * @return FindingList
+     * @return SecurityFindingList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FindingList getSecurityFindings(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<FindingList> localVarResp = getSecurityFindingsWithHttpInfo(scanId, minSeverity, limit);
+    public SecurityFindingList getSecurityFindings(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<SecurityFindingList> localVarResp = getSecurityFindingsWithHttpInfo(scanId, minSeverity, limit);
         return localVarResp.getData();
     }
 
@@ -182,18 +186,19 @@ public class SecurityApi {
      * @param scanId ScanID narrows to a single scan. (optional)
      * @param minSeverity MinSeverity drops everything below that rank: critical, high, medium or low. A value outside that set is refused rather than quietly ignored, so a filter typo cannot read as \&quot;no findings\&quot;. (optional)
      * @param limit Limit caps the page. (optional)
-     * @return ApiResponse&lt;FindingList&gt;
+     * @return ApiResponse&lt;SecurityFindingList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FindingList> getSecurityFindingsWithHttpInfo(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<SecurityFindingList> getSecurityFindingsWithHttpInfo(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getSecurityFindingsValidateBeforeCall(scanId, minSeverity, limit, null);
-        Type localVarReturnType = new TypeToken<FindingList>(){}.getType();
+        Type localVarReturnType = new TypeToken<SecurityFindingList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -211,12 +216,13 @@ public class SecurityApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSecurityFindingsAsync(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Long limit, final ApiCallback<FindingList> _callback) throws ApiException {
+    public okhttp3.Call getSecurityFindingsAsync(@javax.annotation.Nullable String scanId, @javax.annotation.Nullable String minSeverity, @javax.annotation.Nullable Long limit, final ApiCallback<SecurityFindingList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSecurityFindingsValidateBeforeCall(scanId, minSeverity, limit, _callback);
-        Type localVarReturnType = new TypeToken<FindingList>(){}.getType();
+        Type localVarReturnType = new TypeToken<SecurityFindingList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -231,6 +237,7 @@ public class SecurityApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSecurityFindingsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -260,7 +267,8 @@ public class SecurityApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -293,17 +301,18 @@ public class SecurityApi {
      * Returns a single finding: which rule fired, where (path and line), the masked preview and the SHA-256 fingerprint of the secret — the raw secret is not stored and cannot be read back.
      * Returns a single finding: which rule fired, where (path and line), the masked preview and the SHA-256 fingerprint of the secret — the raw secret is not stored and cannot be read back.  Scoped to the caller&#39;s org, and a finding belonging to another org is the same 404 as one that never existed.
      * @param id ID is the finding the URL names. (required)
-     * @return FindingView
+     * @return SecurityFindingView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FindingView getSecurityFindingsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<FindingView> localVarResp = getSecurityFindingsByIdWithHttpInfo(id);
+    public SecurityFindingView getSecurityFindingsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SecurityFindingView> localVarResp = getSecurityFindingsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -311,18 +320,19 @@ public class SecurityApi {
      * Returns a single finding: which rule fired, where (path and line), the masked preview and the SHA-256 fingerprint of the secret — the raw secret is not stored and cannot be read back.
      * Returns a single finding: which rule fired, where (path and line), the masked preview and the SHA-256 fingerprint of the secret — the raw secret is not stored and cannot be read back.  Scoped to the caller&#39;s org, and a finding belonging to another org is the same 404 as one that never existed.
      * @param id ID is the finding the URL names. (required)
-     * @return ApiResponse&lt;FindingView&gt;
+     * @return ApiResponse&lt;SecurityFindingView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FindingView> getSecurityFindingsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<SecurityFindingView> getSecurityFindingsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getSecurityFindingsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<FindingView>(){}.getType();
+        Type localVarReturnType = new TypeToken<SecurityFindingView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -338,12 +348,13 @@ public class SecurityApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSecurityFindingsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<FindingView> _callback) throws ApiException {
+    public okhttp3.Call getSecurityFindingsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SecurityFindingView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSecurityFindingsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<FindingView>(){}.getType();
+        Type localVarReturnType = new TypeToken<SecurityFindingView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -357,6 +368,7 @@ public class SecurityApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSecurityHealthCall(final ApiCallback _callback) throws ApiException {
@@ -385,7 +397,8 @@ public class SecurityApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -412,35 +425,37 @@ public class SecurityApi {
     /**
      * Reports that the scanning subsystem is serving and how many secret-detection rules the engine holds.
      * Reports that the scanning subsystem is serving and how many secret-detection rules the engine holds.  It has no external dependency — the answer is ok whenever the findings store opened — so it measures this process rather than anything downstream. It reads no tenant: a prober that sends no principal is answered, not refused.
-     * @return Ruleset
+     * @return SecurityRuleset
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Ruleset getSecurityHealth() throws ApiException {
-        ApiResponse<Ruleset> localVarResp = getSecurityHealthWithHttpInfo();
+    public SecurityRuleset getSecurityHealth() throws ApiException {
+        ApiResponse<SecurityRuleset> localVarResp = getSecurityHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports that the scanning subsystem is serving and how many secret-detection rules the engine holds.
      * Reports that the scanning subsystem is serving and how many secret-detection rules the engine holds.  It has no external dependency — the answer is ok whenever the findings store opened — so it measures this process rather than anything downstream. It reads no tenant: a prober that sends no principal is answered, not refused.
-     * @return ApiResponse&lt;Ruleset&gt;
+     * @return ApiResponse&lt;SecurityRuleset&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Ruleset> getSecurityHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<SecurityRuleset> getSecurityHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getSecurityHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Ruleset>(){}.getType();
+        Type localVarReturnType = new TypeToken<SecurityRuleset>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -455,12 +470,13 @@ public class SecurityApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSecurityHealthAsync(final ApiCallback<Ruleset> _callback) throws ApiException {
+    public okhttp3.Call getSecurityHealthAsync(final ApiCallback<SecurityRuleset> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSecurityHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Ruleset>(){}.getType();
+        Type localVarReturnType = new TypeToken<SecurityRuleset>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -474,6 +490,7 @@ public class SecurityApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSecurityRulesCall(final ApiCallback _callback) throws ApiException {
@@ -502,7 +519,8 @@ public class SecurityApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -529,35 +547,37 @@ public class SecurityApi {
     /**
      * Is the secret-detection catalog the engine scans with.
      * Is the secret-detection catalog the engine scans with.  It returns every rule a scan can fire — the id, name and severity a finding cites — so a caller can render or triage results without hard-coding the catalog. It is the same for everyone and discloses nothing tenant-specific, so it carries no org scope.
-     * @return RuleList
+     * @return SecurityRuleList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RuleList getSecurityRules() throws ApiException {
-        ApiResponse<RuleList> localVarResp = getSecurityRulesWithHttpInfo();
+    public SecurityRuleList getSecurityRules() throws ApiException {
+        ApiResponse<SecurityRuleList> localVarResp = getSecurityRulesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Is the secret-detection catalog the engine scans with.
      * Is the secret-detection catalog the engine scans with.  It returns every rule a scan can fire — the id, name and severity a finding cites — so a caller can render or triage results without hard-coding the catalog. It is the same for everyone and discloses nothing tenant-specific, so it carries no org scope.
-     * @return ApiResponse&lt;RuleList&gt;
+     * @return ApiResponse&lt;SecurityRuleList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RuleList> getSecurityRulesWithHttpInfo() throws ApiException {
+    public ApiResponse<SecurityRuleList> getSecurityRulesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getSecurityRulesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<RuleList>(){}.getType();
+        Type localVarReturnType = new TypeToken<SecurityRuleList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -572,12 +592,13 @@ public class SecurityApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSecurityRulesAsync(final ApiCallback<RuleList> _callback) throws ApiException {
+    public okhttp3.Call getSecurityRulesAsync(final ApiCallback<SecurityRuleList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSecurityRulesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<RuleList>(){}.getType();
+        Type localVarReturnType = new TypeToken<SecurityRuleList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -592,6 +613,7 @@ public class SecurityApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSecurityScansCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -624,7 +646,8 @@ public class SecurityApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -652,17 +675,18 @@ public class SecurityApi {
      * Is the org&#39;s scan history, newest first, each as the same summary the submission answered — files read, findings fired, tally by severity.
      * Is the org&#39;s scan history, newest first, each as the same summary the submission answered — files read, findings fired, tally by severity.  Strictly org-scoped: a caller only ever sees its own scans, and one with no validated org is refused.
      * @param limit Limit caps the page. (optional)
-     * @return ScanList
+     * @return SecurityScanList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ScanList getSecurityScans(@javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<ScanList> localVarResp = getSecurityScansWithHttpInfo(limit);
+    public SecurityScanList getSecurityScans(@javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<SecurityScanList> localVarResp = getSecurityScansWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -670,18 +694,19 @@ public class SecurityApi {
      * Is the org&#39;s scan history, newest first, each as the same summary the submission answered — files read, findings fired, tally by severity.
      * Is the org&#39;s scan history, newest first, each as the same summary the submission answered — files read, findings fired, tally by severity.  Strictly org-scoped: a caller only ever sees its own scans, and one with no validated org is refused.
      * @param limit Limit caps the page. (optional)
-     * @return ApiResponse&lt;ScanList&gt;
+     * @return ApiResponse&lt;SecurityScanList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ScanList> getSecurityScansWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<SecurityScanList> getSecurityScansWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getSecurityScansValidateBeforeCall(limit, null);
-        Type localVarReturnType = new TypeToken<ScanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<SecurityScanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -697,12 +722,13 @@ public class SecurityApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSecurityScansAsync(@javax.annotation.Nullable Long limit, final ApiCallback<ScanList> _callback) throws ApiException {
+    public okhttp3.Call getSecurityScansAsync(@javax.annotation.Nullable Long limit, final ApiCallback<SecurityScanList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSecurityScansValidateBeforeCall(limit, _callback);
-        Type localVarReturnType = new TypeToken<ScanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<SecurityScanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -717,6 +743,7 @@ public class SecurityApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSecurityScansByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -746,7 +773,8 @@ public class SecurityApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -779,17 +807,18 @@ public class SecurityApi {
      * Returns one scan together with every finding on it, so the detail view is one round-trip rather than a list call per scan.
      * Returns one scan together with every finding on it, so the detail view is one round-trip rather than a list call per scan. The findings carry masked previews and fingerprints, never secrets.  Scoped to the caller&#39;s org: a scan id belonging to another org is the same 404 as an id that never existed, so a ruleset learns nothing about what exists elsewhere. No validated org is refused.
      * @param id ID is the scan the URL names. (required)
-     * @return ScanDetail
+     * @return SecurityScanDetail
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ScanDetail getSecurityScansById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<ScanDetail> localVarResp = getSecurityScansByIdWithHttpInfo(id);
+    public SecurityScanDetail getSecurityScansById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SecurityScanDetail> localVarResp = getSecurityScansByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -797,18 +826,19 @@ public class SecurityApi {
      * Returns one scan together with every finding on it, so the detail view is one round-trip rather than a list call per scan.
      * Returns one scan together with every finding on it, so the detail view is one round-trip rather than a list call per scan. The findings carry masked previews and fingerprints, never secrets.  Scoped to the caller&#39;s org: a scan id belonging to another org is the same 404 as an id that never existed, so a ruleset learns nothing about what exists elsewhere. No validated org is refused.
      * @param id ID is the scan the URL names. (required)
-     * @return ApiResponse&lt;ScanDetail&gt;
+     * @return ApiResponse&lt;SecurityScanDetail&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ScanDetail> getSecurityScansByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<SecurityScanDetail> getSecurityScansByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getSecurityScansByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<ScanDetail>(){}.getType();
+        Type localVarReturnType = new TypeToken<SecurityScanDetail>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -824,18 +854,19 @@ public class SecurityApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSecurityScansByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<ScanDetail> _callback) throws ApiException {
+    public okhttp3.Call getSecurityScansByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SecurityScanDetail> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSecurityScansByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<ScanDetail>(){}.getType();
+        Type localVarReturnType = new TypeToken<SecurityScanDetail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postSecurityScans
-     * @param submitReq  (required)
+     * @param securitySubmitReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -844,9 +875,10 @@ public class SecurityApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSecurityScansCall(@javax.annotation.Nonnull SubmitReq submitReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSecurityScansCall(@javax.annotation.Nonnull SecuritySubmitReq securitySubmitReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -860,7 +892,7 @@ public class SecurityApi {
             basePath = null;
         }
 
-        Object localVarPostBody = submitReq;
+        Object localVarPostBody = securitySubmitReq;
 
         // create path and map variables
         String localVarPath = "/v1/security/scans";
@@ -872,7 +904,8 @@ public class SecurityApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -892,57 +925,59 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postSecurityScansValidateBeforeCall(@javax.annotation.Nonnull SubmitReq submitReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'submitReq' is set
-        if (submitReq == null) {
-            throw new ApiException("Missing the required parameter 'submitReq' when calling postSecurityScans(Async)");
+    private okhttp3.Call postSecurityScansValidateBeforeCall(@javax.annotation.Nonnull SecuritySubmitReq securitySubmitReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'securitySubmitReq' is set
+        if (securitySubmitReq == null) {
+            throw new ApiException("Missing the required parameter 'securitySubmitReq' when calling postSecurityScans(Async)");
         }
 
-        return postSecurityScansCall(submitReq, _callback);
+        return postSecurityScansCall(securitySubmitReq, _callback);
 
     }
 
     /**
      * Runs the detection engine over a batch of files and answers 201 with the scan summary: how many files were read, how many findings fired, and the tally by severity.
      * Runs the detection engine over a batch of files and answers 201 with the scan summary: how many files were read, how many findings fired, and the tally by severity.  THE SUBMITTED CONTENT IS NEVER STORED. It is scanned in memory; what persists is the finding — its rule, its path and line, a MASKED preview (first and last characters kept, the middle starred) and the SHA-256 fingerprint of the raw secret. The fingerprint is what makes the same secret recognisable across scans and after rotation without the secret ever being written down.  It requires a validated org, which scopes the stored scan and every finding on it; a caller with no org is refused. Bounded at 500 files and 8 MiB of total content per submission — split a larger tree across scans. One scan is one metered unit, and the scan is recorded in the audit log with its tally, never with its findings.
-     * @param submitReq  (required)
-     * @return ScanView
+     * @param securitySubmitReq  (required)
+     * @return SecurityScanView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ScanView postSecurityScans(@javax.annotation.Nonnull SubmitReq submitReq) throws ApiException {
-        ApiResponse<ScanView> localVarResp = postSecurityScansWithHttpInfo(submitReq);
+    public SecurityScanView postSecurityScans(@javax.annotation.Nonnull SecuritySubmitReq securitySubmitReq) throws ApiException {
+        ApiResponse<SecurityScanView> localVarResp = postSecurityScansWithHttpInfo(securitySubmitReq);
         return localVarResp.getData();
     }
 
     /**
      * Runs the detection engine over a batch of files and answers 201 with the scan summary: how many files were read, how many findings fired, and the tally by severity.
      * Runs the detection engine over a batch of files and answers 201 with the scan summary: how many files were read, how many findings fired, and the tally by severity.  THE SUBMITTED CONTENT IS NEVER STORED. It is scanned in memory; what persists is the finding — its rule, its path and line, a MASKED preview (first and last characters kept, the middle starred) and the SHA-256 fingerprint of the raw secret. The fingerprint is what makes the same secret recognisable across scans and after rotation without the secret ever being written down.  It requires a validated org, which scopes the stored scan and every finding on it; a caller with no org is refused. Bounded at 500 files and 8 MiB of total content per submission — split a larger tree across scans. One scan is one metered unit, and the scan is recorded in the audit log with its tally, never with its findings.
-     * @param submitReq  (required)
-     * @return ApiResponse&lt;ScanView&gt;
+     * @param securitySubmitReq  (required)
+     * @return ApiResponse&lt;SecurityScanView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ScanView> postSecurityScansWithHttpInfo(@javax.annotation.Nonnull SubmitReq submitReq) throws ApiException {
-        okhttp3.Call localVarCall = postSecurityScansValidateBeforeCall(submitReq, null);
-        Type localVarReturnType = new TypeToken<ScanView>(){}.getType();
+    public ApiResponse<SecurityScanView> postSecurityScansWithHttpInfo(@javax.annotation.Nonnull SecuritySubmitReq securitySubmitReq) throws ApiException {
+        okhttp3.Call localVarCall = postSecurityScansValidateBeforeCall(securitySubmitReq, null);
+        Type localVarReturnType = new TypeToken<SecurityScanView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Runs the detection engine over a batch of files and answers 201 with the scan summary: how many files were read, how many findings fired, and the tally by severity. (asynchronously)
      * Runs the detection engine over a batch of files and answers 201 with the scan summary: how many files were read, how many findings fired, and the tally by severity.  THE SUBMITTED CONTENT IS NEVER STORED. It is scanned in memory; what persists is the finding — its rule, its path and line, a MASKED preview (first and last characters kept, the middle starred) and the SHA-256 fingerprint of the raw secret. The fingerprint is what makes the same secret recognisable across scans and after rotation without the secret ever being written down.  It requires a validated org, which scopes the stored scan and every finding on it; a caller with no org is refused. Bounded at 500 files and 8 MiB of total content per submission — split a larger tree across scans. One scan is one metered unit, and the scan is recorded in the audit log with its tally, never with its findings.
-     * @param submitReq  (required)
+     * @param securitySubmitReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -951,12 +986,13 @@ public class SecurityApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSecurityScansAsync(@javax.annotation.Nonnull SubmitReq submitReq, final ApiCallback<ScanView> _callback) throws ApiException {
+    public okhttp3.Call postSecurityScansAsync(@javax.annotation.Nonnull SecuritySubmitReq securitySubmitReq, final ApiCallback<SecurityScanView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postSecurityScansValidateBeforeCall(submitReq, _callback);
-        Type localVarReturnType = new TypeToken<ScanView>(){}.getType();
+        okhttp3.Call localVarCall = postSecurityScansValidateBeforeCall(securitySubmitReq, _callback);
+        Type localVarReturnType = new TypeToken<SecurityScanView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

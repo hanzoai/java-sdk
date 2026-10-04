@@ -27,26 +27,27 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Board;
-import ai.hanzo.cloud.model.DatasetList;
-import ai.hanzo.cloud.model.DatasetReq;
-import ai.hanzo.cloud.model.DatasetView;
-import ai.hanzo.cloud.model.EvaluatorList;
-import ai.hanzo.cloud.model.EvaluatorReq;
-import ai.hanzo.cloud.model.EvaluatorView;
-import ai.hanzo.cloud.model.ItemList;
-import ai.hanzo.cloud.model.ItemReq;
-import ai.hanzo.cloud.model.ItemView;
-import ai.hanzo.cloud.model.RunRequest;
-import ai.hanzo.cloud.model.RunSummary;
-import ai.hanzo.cloud.model.Runs;
-import ai.hanzo.cloud.model.ScoreConfigList;
-import ai.hanzo.cloud.model.ScoreConfigReq;
-import ai.hanzo.cloud.model.ScoreConfigView;
-import ai.hanzo.cloud.model.ScoreList;
-import ai.hanzo.cloud.model.ScoreReq;
-import ai.hanzo.cloud.model.ScoreView;
-import ai.hanzo.cloud.model.TraceList;
+import ai.hanzo.cloud.model.EvalBoard;
+import ai.hanzo.cloud.model.EvalDatasetList;
+import ai.hanzo.cloud.model.EvalDatasetReq;
+import ai.hanzo.cloud.model.EvalDatasetView;
+import ai.hanzo.cloud.model.EvalEvaluatorList;
+import ai.hanzo.cloud.model.EvalEvaluatorReq;
+import ai.hanzo.cloud.model.EvalEvaluatorView;
+import ai.hanzo.cloud.model.EvalItemList;
+import ai.hanzo.cloud.model.EvalItemReq;
+import ai.hanzo.cloud.model.EvalItemView;
+import ai.hanzo.cloud.model.EvalRunRequest;
+import ai.hanzo.cloud.model.EvalRunSummary;
+import ai.hanzo.cloud.model.EvalRuns;
+import ai.hanzo.cloud.model.EvalScoreConfigList;
+import ai.hanzo.cloud.model.EvalScoreConfigReq;
+import ai.hanzo.cloud.model.EvalScoreConfigView;
+import ai.hanzo.cloud.model.EvalScoreList;
+import ai.hanzo.cloud.model.EvalScoreReq;
+import ai.hanzo.cloud.model.EvalScoreView;
+import ai.hanzo.cloud.model.EvalTraceList;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -102,6 +103,7 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteEvalDatasetsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -131,6 +133,7 @@ public class EvalApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -161,7 +164,7 @@ public class EvalApi {
 
     /**
      * Removes the named dataset of the caller&#39;s org AND all of its examples, in one transaction.
-     * Removes the named dataset of the caller&#39;s org AND all of its examples, in one transaction.  This is not a detach: the examples are gone with the set, so a dataset cannot be resurrected by re-creating the name. A name this org does not have is 404 — never a silent success — and a name belonging to another tenant is the same 404, because the delete is predicated on the validated org. Requires a validated principal; 403 without one. Runs and scores already recorded against the dataset are telemetry events and are NOT deleted with it.
+     * Removes the named dataset of the caller&#39;s org AND all of its examples, in one transaction.  This is not a detach: the examples are gone with the set, so a dataset cannot be resurrected by re-creating the name. A name this org does not have is 404 — never a silent success — and a name belonging to another tenant is the same 404, because the delete is predicated on the validated org. Requires a validated principal; 401 without one. Runs and scores already recorded against the dataset are telemetry events and are NOT deleted with it.
      * @param name Name is the dataset the URL names. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -169,6 +172,7 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteEvalDatasetsByName(@javax.annotation.Nonnull String name) throws ApiException {
@@ -177,7 +181,7 @@ public class EvalApi {
 
     /**
      * Removes the named dataset of the caller&#39;s org AND all of its examples, in one transaction.
-     * Removes the named dataset of the caller&#39;s org AND all of its examples, in one transaction.  This is not a detach: the examples are gone with the set, so a dataset cannot be resurrected by re-creating the name. A name this org does not have is 404 — never a silent success — and a name belonging to another tenant is the same 404, because the delete is predicated on the validated org. Requires a validated principal; 403 without one. Runs and scores already recorded against the dataset are telemetry events and are NOT deleted with it.
+     * Removes the named dataset of the caller&#39;s org AND all of its examples, in one transaction.  This is not a detach: the examples are gone with the set, so a dataset cannot be resurrected by re-creating the name. A name this org does not have is 404 — never a silent success — and a name belonging to another tenant is the same 404, because the delete is predicated on the validated org. Requires a validated principal; 401 without one. Runs and scores already recorded against the dataset are telemetry events and are NOT deleted with it.
      * @param name Name is the dataset the URL names. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -186,6 +190,7 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteEvalDatasetsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
@@ -195,7 +200,7 @@ public class EvalApi {
 
     /**
      * Removes the named dataset of the caller&#39;s org AND all of its examples, in one transaction. (asynchronously)
-     * Removes the named dataset of the caller&#39;s org AND all of its examples, in one transaction.  This is not a detach: the examples are gone with the set, so a dataset cannot be resurrected by re-creating the name. A name this org does not have is 404 — never a silent success — and a name belonging to another tenant is the same 404, because the delete is predicated on the validated org. Requires a validated principal; 403 without one. Runs and scores already recorded against the dataset are telemetry events and are NOT deleted with it.
+     * Removes the named dataset of the caller&#39;s org AND all of its examples, in one transaction.  This is not a detach: the examples are gone with the set, so a dataset cannot be resurrected by re-creating the name. A name this org does not have is 404 — never a silent success — and a name belonging to another tenant is the same 404, because the delete is predicated on the validated org. Requires a validated principal; 401 without one. Runs and scores already recorded against the dataset are telemetry events and are NOT deleted with it.
      * @param name Name is the dataset the URL names. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -205,6 +210,7 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteEvalDatasetsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
@@ -224,6 +230,7 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEvalDatasetsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -256,7 +263,8 @@ public class EvalApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -282,44 +290,46 @@ public class EvalApi {
 
     /**
      * Is the datasets your org has, each with its name, description, metadata and timestamps.
-     * Is the datasets your org has, each with its name, description, metadata and timestamps.  It is the only way to enumerate what an org holds. Requires a validated principal; 403 without one. Every row is filtered on the validated org, so there is no parameter that reaches another tenant&#39;s datasets. The item count is NOT populated here — read one dataset to get it.
+     * Is the datasets your org has, each with its name, description, metadata and timestamps.  It is the only way to enumerate what an org holds. Requires a validated principal; 401 without one. Every row is filtered on the validated org, so there is no parameter that reaches another tenant&#39;s datasets. The item count is NOT populated here — read one dataset to get it.
      * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
-     * @return DatasetList
+     * @return EvalDatasetList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DatasetList getEvalDatasets(@javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<DatasetList> localVarResp = getEvalDatasetsWithHttpInfo(limit);
+    public EvalDatasetList getEvalDatasets(@javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<EvalDatasetList> localVarResp = getEvalDatasetsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
     /**
      * Is the datasets your org has, each with its name, description, metadata and timestamps.
-     * Is the datasets your org has, each with its name, description, metadata and timestamps.  It is the only way to enumerate what an org holds. Requires a validated principal; 403 without one. Every row is filtered on the validated org, so there is no parameter that reaches another tenant&#39;s datasets. The item count is NOT populated here — read one dataset to get it.
+     * Is the datasets your org has, each with its name, description, metadata and timestamps.  It is the only way to enumerate what an org holds. Requires a validated principal; 401 without one. Every row is filtered on the validated org, so there is no parameter that reaches another tenant&#39;s datasets. The item count is NOT populated here — read one dataset to get it.
      * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
-     * @return ApiResponse&lt;DatasetList&gt;
+     * @return ApiResponse&lt;EvalDatasetList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DatasetList> getEvalDatasetsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<EvalDatasetList> getEvalDatasetsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEvalDatasetsValidateBeforeCall(limit, null);
-        Type localVarReturnType = new TypeToken<DatasetList>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalDatasetList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Is the datasets your org has, each with its name, description, metadata and timestamps. (asynchronously)
-     * Is the datasets your org has, each with its name, description, metadata and timestamps.  It is the only way to enumerate what an org holds. Requires a validated principal; 403 without one. Every row is filtered on the validated org, so there is no parameter that reaches another tenant&#39;s datasets. The item count is NOT populated here — read one dataset to get it.
+     * Is the datasets your org has, each with its name, description, metadata and timestamps.  It is the only way to enumerate what an org holds. Requires a validated principal; 401 without one. Every row is filtered on the validated org, so there is no parameter that reaches another tenant&#39;s datasets. The item count is NOT populated here — read one dataset to get it.
      * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -329,12 +339,13 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalDatasetsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<DatasetList> _callback) throws ApiException {
+    public okhttp3.Call getEvalDatasetsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<EvalDatasetList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEvalDatasetsValidateBeforeCall(limit, _callback);
-        Type localVarReturnType = new TypeToken<DatasetList>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalDatasetList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -349,6 +360,7 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEvalDatasetsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -378,7 +390,8 @@ public class EvalApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -409,44 +422,46 @@ public class EvalApi {
 
     /**
      * Returns one dataset of the caller&#39;s org by name, together with its live item count — the one read that answers how big the set actually is.
-     * Returns one dataset of the caller&#39;s org by name, together with its live item count — the one read that answers how big the set actually is.  A name this org does not have is 404, which is also what another tenant&#39;s dataset looks like from here. Requires a validated principal; 403 without one.
+     * Returns one dataset of the caller&#39;s org by name, together with its live item count — the one read that answers how big the set actually is.  A name this org does not have is 404, which is also what another tenant&#39;s dataset looks like from here. Requires a validated principal; 401 without one.
      * @param name Name is the dataset the URL names. (required)
-     * @return DatasetView
+     * @return EvalDatasetView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DatasetView getEvalDatasetsByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<DatasetView> localVarResp = getEvalDatasetsByNameWithHttpInfo(name);
+    public EvalDatasetView getEvalDatasetsByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<EvalDatasetView> localVarResp = getEvalDatasetsByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
     /**
      * Returns one dataset of the caller&#39;s org by name, together with its live item count — the one read that answers how big the set actually is.
-     * Returns one dataset of the caller&#39;s org by name, together with its live item count — the one read that answers how big the set actually is.  A name this org does not have is 404, which is also what another tenant&#39;s dataset looks like from here. Requires a validated principal; 403 without one.
+     * Returns one dataset of the caller&#39;s org by name, together with its live item count — the one read that answers how big the set actually is.  A name this org does not have is 404, which is also what another tenant&#39;s dataset looks like from here. Requires a validated principal; 401 without one.
      * @param name Name is the dataset the URL names. (required)
-     * @return ApiResponse&lt;DatasetView&gt;
+     * @return ApiResponse&lt;EvalDatasetView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DatasetView> getEvalDatasetsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<EvalDatasetView> getEvalDatasetsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getEvalDatasetsByNameValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<DatasetView>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalDatasetView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns one dataset of the caller&#39;s org by name, together with its live item count — the one read that answers how big the set actually is. (asynchronously)
-     * Returns one dataset of the caller&#39;s org by name, together with its live item count — the one read that answers how big the set actually is.  A name this org does not have is 404, which is also what another tenant&#39;s dataset looks like from here. Requires a validated principal; 403 without one.
+     * Returns one dataset of the caller&#39;s org by name, together with its live item count — the one read that answers how big the set actually is.  A name this org does not have is 404, which is also what another tenant&#39;s dataset looks like from here. Requires a validated principal; 401 without one.
      * @param name Name is the dataset the URL names. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -456,12 +471,13 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalDatasetsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<DatasetView> _callback) throws ApiException {
+    public okhttp3.Call getEvalDatasetsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<EvalDatasetView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEvalDatasetsByNameValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<DatasetView>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalDatasetView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -477,6 +493,7 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEvalDatasetsByNameItemsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -510,7 +527,8 @@ public class EvalApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -541,46 +559,48 @@ public class EvalApi {
 
     /**
      * Is the examples in one of your datasets — the set is named in the path, because this collection only exists inside one.
-     * Is the examples in one of your datasets — the set is named in the path, because this collection only exists inside one.  Archived examples are included, so the caller sees the whole set rather than only what a run would use. Requires a validated principal; 403 without one, and the read is filtered on the validated org, so naming another tenant&#39;s dataset returns nothing rather than its contents.
+     * Is the examples in one of your datasets — the set is named in the path, because this collection only exists inside one.  Archived examples are included, so the caller sees the whole set rather than only what a run would use. Requires a validated principal; 401 without one, and the read is filtered on the validated org, so naming another tenant&#39;s dataset returns nothing rather than its contents.
      * @param name Dataset is the set to read, from the path — this collection only exists inside one. (required)
      * @param limit  (optional)
-     * @return ItemList
+     * @return EvalItemList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ItemList getEvalDatasetsByNameItems(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<ItemList> localVarResp = getEvalDatasetsByNameItemsWithHttpInfo(name, limit);
+    public EvalItemList getEvalDatasetsByNameItems(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<EvalItemList> localVarResp = getEvalDatasetsByNameItemsWithHttpInfo(name, limit);
         return localVarResp.getData();
     }
 
     /**
      * Is the examples in one of your datasets — the set is named in the path, because this collection only exists inside one.
-     * Is the examples in one of your datasets — the set is named in the path, because this collection only exists inside one.  Archived examples are included, so the caller sees the whole set rather than only what a run would use. Requires a validated principal; 403 without one, and the read is filtered on the validated org, so naming another tenant&#39;s dataset returns nothing rather than its contents.
+     * Is the examples in one of your datasets — the set is named in the path, because this collection only exists inside one.  Archived examples are included, so the caller sees the whole set rather than only what a run would use. Requires a validated principal; 401 without one, and the read is filtered on the validated org, so naming another tenant&#39;s dataset returns nothing rather than its contents.
      * @param name Dataset is the set to read, from the path — this collection only exists inside one. (required)
      * @param limit  (optional)
-     * @return ApiResponse&lt;ItemList&gt;
+     * @return ApiResponse&lt;EvalItemList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ItemList> getEvalDatasetsByNameItemsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<EvalItemList> getEvalDatasetsByNameItemsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEvalDatasetsByNameItemsValidateBeforeCall(name, limit, null);
-        Type localVarReturnType = new TypeToken<ItemList>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalItemList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Is the examples in one of your datasets — the set is named in the path, because this collection only exists inside one. (asynchronously)
-     * Is the examples in one of your datasets — the set is named in the path, because this collection only exists inside one.  Archived examples are included, so the caller sees the whole set rather than only what a run would use. Requires a validated principal; 403 without one, and the read is filtered on the validated org, so naming another tenant&#39;s dataset returns nothing rather than its contents.
+     * Is the examples in one of your datasets — the set is named in the path, because this collection only exists inside one.  Archived examples are included, so the caller sees the whole set rather than only what a run would use. Requires a validated principal; 401 without one, and the read is filtered on the validated org, so naming another tenant&#39;s dataset returns nothing rather than its contents.
      * @param name Dataset is the set to read, from the path — this collection only exists inside one. (required)
      * @param limit  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -591,12 +611,13 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalDatasetsByNameItemsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback<ItemList> _callback) throws ApiException {
+    public okhttp3.Call getEvalDatasetsByNameItemsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback<EvalItemList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEvalDatasetsByNameItemsValidateBeforeCall(name, limit, _callback);
-        Type localVarReturnType = new TypeToken<ItemList>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalItemList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -611,6 +632,7 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEvalEvaluatorsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -643,7 +665,8 @@ public class EvalApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -669,44 +692,46 @@ public class EvalApi {
 
     /**
      * Is the judges your org has defined, each with its judge model, criteria and the score name it writes under.
-     * Is the judges your org has defined, each with its judge model, criteria and the score name it writes under.  Requires a validated principal; 403 without one, and the listing is filtered on the validated org.
+     * Is the judges your org has defined, each with its judge model, criteria and the score name it writes under.  Requires a validated principal; 401 without one, and the listing is filtered on the validated org.
      * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
-     * @return EvaluatorList
+     * @return EvalEvaluatorList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EvaluatorList getEvalEvaluators(@javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<EvaluatorList> localVarResp = getEvalEvaluatorsWithHttpInfo(limit);
+    public EvalEvaluatorList getEvalEvaluators(@javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<EvalEvaluatorList> localVarResp = getEvalEvaluatorsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
     /**
      * Is the judges your org has defined, each with its judge model, criteria and the score name it writes under.
-     * Is the judges your org has defined, each with its judge model, criteria and the score name it writes under.  Requires a validated principal; 403 without one, and the listing is filtered on the validated org.
+     * Is the judges your org has defined, each with its judge model, criteria and the score name it writes under.  Requires a validated principal; 401 without one, and the listing is filtered on the validated org.
      * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
-     * @return ApiResponse&lt;EvaluatorList&gt;
+     * @return ApiResponse&lt;EvalEvaluatorList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EvaluatorList> getEvalEvaluatorsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<EvalEvaluatorList> getEvalEvaluatorsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEvalEvaluatorsValidateBeforeCall(limit, null);
-        Type localVarReturnType = new TypeToken<EvaluatorList>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalEvaluatorList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Is the judges your org has defined, each with its judge model, criteria and the score name it writes under. (asynchronously)
-     * Is the judges your org has defined, each with its judge model, criteria and the score name it writes under.  Requires a validated principal; 403 without one, and the listing is filtered on the validated org.
+     * Is the judges your org has defined, each with its judge model, criteria and the score name it writes under.  Requires a validated principal; 401 without one, and the listing is filtered on the validated org.
      * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -716,12 +741,13 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalEvaluatorsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<EvaluatorList> _callback) throws ApiException {
+    public okhttp3.Call getEvalEvaluatorsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<EvalEvaluatorList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEvalEvaluatorsValidateBeforeCall(limit, _callback);
-        Type localVarReturnType = new TypeToken<EvaluatorList>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalEvaluatorList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -737,6 +763,7 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEvalMetricsCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String interval, final ApiCallback _callback) throws ApiException {
@@ -773,7 +800,8 @@ public class EvalApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -799,46 +827,48 @@ public class EvalApi {
 
     /**
      * Is your org&#39;s AI overview board over a window: totals (generations, prompt and completion tokens, cost in cents, errors, success rate, distinct models and users), a gap-filled time series, a per-model breakdown with the long tail folded into \&quot;other\&quot;, and latency percentiles read from the GenAI spans.
-     * Is your org&#39;s AI overview board over a window: totals (generations, prompt and completion tokens, cost in cents, errors, success rate, distinct models and users), a gap-filled time series, a per-model breakdown with the long tail folded into \&quot;other\&quot;, and latency percentiles read from the GenAI spans.  The window the answer was actually computed over is echoed back, so a client never has to infer it. A platform admin sees the board across ALL orgs; everyone else sees their own.  The board is HONEST-EMPTY where it cannot be computed: with no datastore wired, or under a named project scope the usage ledger does not yet carry, it answers a valid board with zero totals and a flat series rather than a fabricated number or a 500. Requires a validated principal; 403 without one.
+     * Is your org&#39;s AI overview board over a window: totals (generations, prompt and completion tokens, cost in cents, errors, success rate, distinct models and users), a gap-filled time series, a per-model breakdown with the long tail folded into \&quot;other\&quot;, and latency percentiles read from the GenAI spans.  The window the answer was actually computed over is echoed back, so a client never has to infer it. A platform admin sees the board across ALL orgs; everyone else sees their own.  The board is HONEST-EMPTY where it cannot be computed: with no datastore wired, or under a named project scope the usage ledger does not yet carry, it answers a valid board with zero totals and a flat series rather than a fabricated number or a 500. Requires a validated principal; 401 without one.
      * @param range Range is 24h (the default), 7d or 30d. Anything else normalises to 24h rather than failing, so the board always has a valid window. (optional)
      * @param interval Interval overrides the bucket the series is grouped into: \&quot;hour\&quot; or \&quot;day\&quot;. Any other value leaves the range&#39;s own default in place. (optional)
-     * @return Board
+     * @return EvalBoard
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Board getEvalMetrics(@javax.annotation.Nullable String range, @javax.annotation.Nullable String interval) throws ApiException {
-        ApiResponse<Board> localVarResp = getEvalMetricsWithHttpInfo(range, interval);
+    public EvalBoard getEvalMetrics(@javax.annotation.Nullable String range, @javax.annotation.Nullable String interval) throws ApiException {
+        ApiResponse<EvalBoard> localVarResp = getEvalMetricsWithHttpInfo(range, interval);
         return localVarResp.getData();
     }
 
     /**
      * Is your org&#39;s AI overview board over a window: totals (generations, prompt and completion tokens, cost in cents, errors, success rate, distinct models and users), a gap-filled time series, a per-model breakdown with the long tail folded into \&quot;other\&quot;, and latency percentiles read from the GenAI spans.
-     * Is your org&#39;s AI overview board over a window: totals (generations, prompt and completion tokens, cost in cents, errors, success rate, distinct models and users), a gap-filled time series, a per-model breakdown with the long tail folded into \&quot;other\&quot;, and latency percentiles read from the GenAI spans.  The window the answer was actually computed over is echoed back, so a client never has to infer it. A platform admin sees the board across ALL orgs; everyone else sees their own.  The board is HONEST-EMPTY where it cannot be computed: with no datastore wired, or under a named project scope the usage ledger does not yet carry, it answers a valid board with zero totals and a flat series rather than a fabricated number or a 500. Requires a validated principal; 403 without one.
+     * Is your org&#39;s AI overview board over a window: totals (generations, prompt and completion tokens, cost in cents, errors, success rate, distinct models and users), a gap-filled time series, a per-model breakdown with the long tail folded into \&quot;other\&quot;, and latency percentiles read from the GenAI spans.  The window the answer was actually computed over is echoed back, so a client never has to infer it. A platform admin sees the board across ALL orgs; everyone else sees their own.  The board is HONEST-EMPTY where it cannot be computed: with no datastore wired, or under a named project scope the usage ledger does not yet carry, it answers a valid board with zero totals and a flat series rather than a fabricated number or a 500. Requires a validated principal; 401 without one.
      * @param range Range is 24h (the default), 7d or 30d. Anything else normalises to 24h rather than failing, so the board always has a valid window. (optional)
      * @param interval Interval overrides the bucket the series is grouped into: \&quot;hour\&quot; or \&quot;day\&quot;. Any other value leaves the range&#39;s own default in place. (optional)
-     * @return ApiResponse&lt;Board&gt;
+     * @return ApiResponse&lt;EvalBoard&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Board> getEvalMetricsWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String interval) throws ApiException {
+    public ApiResponse<EvalBoard> getEvalMetricsWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String interval) throws ApiException {
         okhttp3.Call localVarCall = getEvalMetricsValidateBeforeCall(range, interval, null);
-        Type localVarReturnType = new TypeToken<Board>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Is your org&#39;s AI overview board over a window: totals (generations, prompt and completion tokens, cost in cents, errors, success rate, distinct models and users), a gap-filled time series, a per-model breakdown with the long tail folded into \&quot;other\&quot;, and latency percentiles read from the GenAI spans. (asynchronously)
-     * Is your org&#39;s AI overview board over a window: totals (generations, prompt and completion tokens, cost in cents, errors, success rate, distinct models and users), a gap-filled time series, a per-model breakdown with the long tail folded into \&quot;other\&quot;, and latency percentiles read from the GenAI spans.  The window the answer was actually computed over is echoed back, so a client never has to infer it. A platform admin sees the board across ALL orgs; everyone else sees their own.  The board is HONEST-EMPTY where it cannot be computed: with no datastore wired, or under a named project scope the usage ledger does not yet carry, it answers a valid board with zero totals and a flat series rather than a fabricated number or a 500. Requires a validated principal; 403 without one.
+     * Is your org&#39;s AI overview board over a window: totals (generations, prompt and completion tokens, cost in cents, errors, success rate, distinct models and users), a gap-filled time series, a per-model breakdown with the long tail folded into \&quot;other\&quot;, and latency percentiles read from the GenAI spans.  The window the answer was actually computed over is echoed back, so a client never has to infer it. A platform admin sees the board across ALL orgs; everyone else sees their own.  The board is HONEST-EMPTY where it cannot be computed: with no datastore wired, or under a named project scope the usage ledger does not yet carry, it answers a valid board with zero totals and a flat series rather than a fabricated number or a 500. Requires a validated principal; 401 without one.
      * @param range Range is 24h (the default), 7d or 30d. Anything else normalises to 24h rather than failing, so the board always has a valid window. (optional)
      * @param interval Interval overrides the bucket the series is grouped into: \&quot;hour\&quot; or \&quot;day\&quot;. Any other value leaves the range&#39;s own default in place. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -849,12 +879,13 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalMetricsAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String interval, final ApiCallback<Board> _callback) throws ApiException {
+    public okhttp3.Call getEvalMetricsAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String interval, final ApiCallback<EvalBoard> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEvalMetricsValidateBeforeCall(range, interval, _callback);
-        Type localVarReturnType = new TypeToken<Board>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -869,6 +900,7 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEvalRubricsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -901,7 +933,8 @@ public class EvalApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -927,44 +960,46 @@ public class EvalApi {
 
     /**
      * Is the score shapes your org has declared — each name&#39;s data type, its numeric bounds and its allowed categories.
-     * Is the score shapes your org has declared — each name&#39;s data type, its numeric bounds and its allowed categories.  Requires a validated principal; 403 without one, and the listing is filtered on the validated org.
+     * Is the score shapes your org has declared — each name&#39;s data type, its numeric bounds and its allowed categories.  Requires a validated principal; 401 without one, and the listing is filtered on the validated org.
      * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
-     * @return ScoreConfigList
+     * @return EvalScoreConfigList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ScoreConfigList getEvalRubrics(@javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<ScoreConfigList> localVarResp = getEvalRubricsWithHttpInfo(limit);
+    public EvalScoreConfigList getEvalRubrics(@javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<EvalScoreConfigList> localVarResp = getEvalRubricsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
     /**
      * Is the score shapes your org has declared — each name&#39;s data type, its numeric bounds and its allowed categories.
-     * Is the score shapes your org has declared — each name&#39;s data type, its numeric bounds and its allowed categories.  Requires a validated principal; 403 without one, and the listing is filtered on the validated org.
+     * Is the score shapes your org has declared — each name&#39;s data type, its numeric bounds and its allowed categories.  Requires a validated principal; 401 without one, and the listing is filtered on the validated org.
      * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
-     * @return ApiResponse&lt;ScoreConfigList&gt;
+     * @return ApiResponse&lt;EvalScoreConfigList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ScoreConfigList> getEvalRubricsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<EvalScoreConfigList> getEvalRubricsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEvalRubricsValidateBeforeCall(limit, null);
-        Type localVarReturnType = new TypeToken<ScoreConfigList>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalScoreConfigList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Is the score shapes your org has declared — each name&#39;s data type, its numeric bounds and its allowed categories. (asynchronously)
-     * Is the score shapes your org has declared — each name&#39;s data type, its numeric bounds and its allowed categories.  Requires a validated principal; 403 without one, and the listing is filtered on the validated org.
+     * Is the score shapes your org has declared — each name&#39;s data type, its numeric bounds and its allowed categories.  Requires a validated principal; 401 without one, and the listing is filtered on the validated org.
      * @param limit Limit caps the rows returned. It defaults to 100 and is capped at 500; a non-positive or unparseable value falls back to the default rather than failing, because a typo about paging is not a reason to refuse a read. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -974,12 +1009,13 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalRubricsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<ScoreConfigList> _callback) throws ApiException {
+    public okhttp3.Call getEvalRubricsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<EvalScoreConfigList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEvalRubricsValidateBeforeCall(limit, _callback);
-        Type localVarReturnType = new TypeToken<ScoreConfigList>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalScoreConfigList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -995,6 +1031,7 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEvalRunsCall(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -1031,7 +1068,8 @@ public class EvalApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1057,46 +1095,48 @@ public class EvalApi {
 
     /**
      * Is your past runs and how they scored — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened.
-     * Is your past runs and how they scored — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened.  Requires a validated principal; 403 without one, and rows are filtered on the validated org. These records come from the metastore rather than the datastore, so they are readable on a deployment with no telemetry wired — but a run&#39;s traces and scores are not.
+     * Is your past runs and how they scored — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened.  Requires a validated principal; 401 without one, and rows are filtered on the validated org. These records come from the metastore rather than the datastore, so they are readable on a deployment with no telemetry wired — but a run&#39;s traces and scores are not.
      * @param datasetName Dataset narrows to the runs against one dataset. (optional)
      * @param limit  (optional)
-     * @return Runs
+     * @return EvalRuns
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Runs getEvalRuns(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<Runs> localVarResp = getEvalRunsWithHttpInfo(datasetName, limit);
+    public EvalRuns getEvalRuns(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<EvalRuns> localVarResp = getEvalRunsWithHttpInfo(datasetName, limit);
         return localVarResp.getData();
     }
 
     /**
      * Is your past runs and how they scored — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened.
-     * Is your past runs and how they scored — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened.  Requires a validated principal; 403 without one, and rows are filtered on the validated org. These records come from the metastore rather than the datastore, so they are readable on a deployment with no telemetry wired — but a run&#39;s traces and scores are not.
+     * Is your past runs and how they scored — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened.  Requires a validated principal; 401 without one, and rows are filtered on the validated org. These records come from the metastore rather than the datastore, so they are readable on a deployment with no telemetry wired — but a run&#39;s traces and scores are not.
      * @param datasetName Dataset narrows to the runs against one dataset. (optional)
      * @param limit  (optional)
-     * @return ApiResponse&lt;Runs&gt;
+     * @return ApiResponse&lt;EvalRuns&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Runs> getEvalRunsWithHttpInfo(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<EvalRuns> getEvalRunsWithHttpInfo(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEvalRunsValidateBeforeCall(datasetName, limit, null);
-        Type localVarReturnType = new TypeToken<Runs>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalRuns>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Is your past runs and how they scored — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened. (asynchronously)
-     * Is your past runs and how they scored — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened.  Requires a validated principal; 403 without one, and rows are filtered on the validated org. These records come from the metastore rather than the datastore, so they are readable on a deployment with no telemetry wired — but a run&#39;s traces and scores are not.
+     * Is your past runs and how they scored — the dataset and model, the judge model, how many examples were attempted and how many scored, the average score, and when it happened.  Requires a validated principal; 401 without one, and rows are filtered on the validated org. These records come from the metastore rather than the datastore, so they are readable on a deployment with no telemetry wired — but a run&#39;s traces and scores are not.
      * @param datasetName Dataset narrows to the runs against one dataset. (optional)
      * @param limit  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1107,12 +1147,13 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalRunsAsync(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit, final ApiCallback<Runs> _callback) throws ApiException {
+    public okhttp3.Call getEvalRunsAsync(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit, final ApiCallback<EvalRuns> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEvalRunsValidateBeforeCall(datasetName, limit, _callback);
-        Type localVarReturnType = new TypeToken<Runs>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalRuns>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1130,6 +1171,7 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEvalScoresCall(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -1174,7 +1216,8 @@ public class EvalApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1200,50 +1243,52 @@ public class EvalApi {
 
     /**
      * Is the score events your org has recorded, narrowed by any of name, runName and traceId.
-     * Is the score events your org has recorded, narrowed by any of name, runName and traceId.  The org is bound as an authoritative predicate on the query, never taken from a header, so a filter can narrow the caller&#39;s own scores but can never widen past them. Requires a validated principal; 403 without one. Scores live in the datastore, so a deployment with none wired answers 503 rather than an empty page that would read as \&quot;no scores\&quot;.
+     * Is the score events your org has recorded, narrowed by any of name, runName and traceId.  The org is bound as an authoritative predicate on the query, never taken from a header, so a filter can narrow the caller&#39;s own scores but can never widen past them. Requires a validated principal; 401 without one. Scores live in the datastore, so a deployment with none wired answers 503 rather than an empty page that would read as \&quot;no scores\&quot;.
      * @param name Name narrows to one score name. (optional)
      * @param runName RunName narrows to the scores of one run. (optional)
      * @param traceId TraceID narrows to the scores on one model call. (optional)
      * @param limit  (optional)
-     * @return ScoreList
+     * @return EvalScoreList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ScoreList getEvalScores(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<ScoreList> localVarResp = getEvalScoresWithHttpInfo(name, runName, traceId, limit);
+    public EvalScoreList getEvalScores(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<EvalScoreList> localVarResp = getEvalScoresWithHttpInfo(name, runName, traceId, limit);
         return localVarResp.getData();
     }
 
     /**
      * Is the score events your org has recorded, narrowed by any of name, runName and traceId.
-     * Is the score events your org has recorded, narrowed by any of name, runName and traceId.  The org is bound as an authoritative predicate on the query, never taken from a header, so a filter can narrow the caller&#39;s own scores but can never widen past them. Requires a validated principal; 403 without one. Scores live in the datastore, so a deployment with none wired answers 503 rather than an empty page that would read as \&quot;no scores\&quot;.
+     * Is the score events your org has recorded, narrowed by any of name, runName and traceId.  The org is bound as an authoritative predicate on the query, never taken from a header, so a filter can narrow the caller&#39;s own scores but can never widen past them. Requires a validated principal; 401 without one. Scores live in the datastore, so a deployment with none wired answers 503 rather than an empty page that would read as \&quot;no scores\&quot;.
      * @param name Name narrows to one score name. (optional)
      * @param runName RunName narrows to the scores of one run. (optional)
      * @param traceId TraceID narrows to the scores on one model call. (optional)
      * @param limit  (optional)
-     * @return ApiResponse&lt;ScoreList&gt;
+     * @return ApiResponse&lt;EvalScoreList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ScoreList> getEvalScoresWithHttpInfo(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<EvalScoreList> getEvalScoresWithHttpInfo(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEvalScoresValidateBeforeCall(name, runName, traceId, limit, null);
-        Type localVarReturnType = new TypeToken<ScoreList>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalScoreList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Is the score events your org has recorded, narrowed by any of name, runName and traceId. (asynchronously)
-     * Is the score events your org has recorded, narrowed by any of name, runName and traceId.  The org is bound as an authoritative predicate on the query, never taken from a header, so a filter can narrow the caller&#39;s own scores but can never widen past them. Requires a validated principal; 403 without one. Scores live in the datastore, so a deployment with none wired answers 503 rather than an empty page that would read as \&quot;no scores\&quot;.
+     * Is the score events your org has recorded, narrowed by any of name, runName and traceId.  The org is bound as an authoritative predicate on the query, never taken from a header, so a filter can narrow the caller&#39;s own scores but can never widen past them. Requires a validated principal; 401 without one. Scores live in the datastore, so a deployment with none wired answers 503 rather than an empty page that would read as \&quot;no scores\&quot;.
      * @param name Name narrows to one score name. (optional)
      * @param runName RunName narrows to the scores of one run. (optional)
      * @param traceId TraceID narrows to the scores on one model call. (optional)
@@ -1256,12 +1301,13 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalScoresAsync(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Long limit, final ApiCallback<ScoreList> _callback) throws ApiException {
+    public okhttp3.Call getEvalScoresAsync(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Long limit, final ApiCallback<EvalScoreList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEvalScoresValidateBeforeCall(name, runName, traceId, limit, _callback);
-        Type localVarReturnType = new TypeToken<ScoreList>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalScoreList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1279,6 +1325,7 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEvalTracesCall(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -1323,7 +1370,8 @@ public class EvalApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1349,50 +1397,52 @@ public class EvalApi {
 
     /**
      * Is the traces behind your evaluations — one per model call an evaluation made, carrying its input, output, model and timing — narrowed by any of sessionId, runName and datasetName.
-     * Is the traces behind your evaluations — one per model call an evaluation made, carrying its input, output, model and timing — narrowed by any of sessionId, runName and datasetName.  Scoped by org AND by project: the project is the caller&#39;s server-minted scope, not a parameter, so it cannot be widened by asking. Requires a validated principal; 403 without one. Traces live in the datastore, so a deployment with none wired answers 503 rather than an empty page.
+     * Is the traces behind your evaluations — one per model call an evaluation made, carrying its input, output, model and timing — narrowed by any of sessionId, runName and datasetName.  Scoped by org AND by project: the project is the caller&#39;s server-minted scope, not a parameter, so it cannot be widened by asking. Requires a validated principal; 401 without one. Traces live in the datastore, so a deployment with none wired answers 503 rather than an empty page.
      * @param sessionId SessionID narrows to one session, which for an evaluation is one run. (optional)
      * @param runName RunName narrows to the calls one run made. (optional)
      * @param datasetName Dataset narrows to the calls made against one dataset. (optional)
      * @param limit  (optional)
-     * @return TraceList
+     * @return EvalTraceList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TraceList getEvalTraces(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<TraceList> localVarResp = getEvalTracesWithHttpInfo(sessionId, runName, datasetName, limit);
+    public EvalTraceList getEvalTraces(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<EvalTraceList> localVarResp = getEvalTracesWithHttpInfo(sessionId, runName, datasetName, limit);
         return localVarResp.getData();
     }
 
     /**
      * Is the traces behind your evaluations — one per model call an evaluation made, carrying its input, output, model and timing — narrowed by any of sessionId, runName and datasetName.
-     * Is the traces behind your evaluations — one per model call an evaluation made, carrying its input, output, model and timing — narrowed by any of sessionId, runName and datasetName.  Scoped by org AND by project: the project is the caller&#39;s server-minted scope, not a parameter, so it cannot be widened by asking. Requires a validated principal; 403 without one. Traces live in the datastore, so a deployment with none wired answers 503 rather than an empty page.
+     * Is the traces behind your evaluations — one per model call an evaluation made, carrying its input, output, model and timing — narrowed by any of sessionId, runName and datasetName.  Scoped by org AND by project: the project is the caller&#39;s server-minted scope, not a parameter, so it cannot be widened by asking. Requires a validated principal; 401 without one. Traces live in the datastore, so a deployment with none wired answers 503 rather than an empty page.
      * @param sessionId SessionID narrows to one session, which for an evaluation is one run. (optional)
      * @param runName RunName narrows to the calls one run made. (optional)
      * @param datasetName Dataset narrows to the calls made against one dataset. (optional)
      * @param limit  (optional)
-     * @return ApiResponse&lt;TraceList&gt;
+     * @return ApiResponse&lt;EvalTraceList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TraceList> getEvalTracesWithHttpInfo(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<EvalTraceList> getEvalTracesWithHttpInfo(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEvalTracesValidateBeforeCall(sessionId, runName, datasetName, limit, null);
-        Type localVarReturnType = new TypeToken<TraceList>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalTraceList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Is the traces behind your evaluations — one per model call an evaluation made, carrying its input, output, model and timing — narrowed by any of sessionId, runName and datasetName. (asynchronously)
-     * Is the traces behind your evaluations — one per model call an evaluation made, carrying its input, output, model and timing — narrowed by any of sessionId, runName and datasetName.  Scoped by org AND by project: the project is the caller&#39;s server-minted scope, not a parameter, so it cannot be widened by asking. Requires a validated principal; 403 without one. Traces live in the datastore, so a deployment with none wired answers 503 rather than an empty page.
+     * Is the traces behind your evaluations — one per model call an evaluation made, carrying its input, output, model and timing — narrowed by any of sessionId, runName and datasetName.  Scoped by org AND by project: the project is the caller&#39;s server-minted scope, not a parameter, so it cannot be widened by asking. Requires a validated principal; 401 without one. Traces live in the datastore, so a deployment with none wired answers 503 rather than an empty page.
      * @param sessionId SessionID narrows to one session, which for an evaluation is one run. (optional)
      * @param runName RunName narrows to the calls one run made. (optional)
      * @param datasetName Dataset narrows to the calls made against one dataset. (optional)
@@ -1405,18 +1455,19 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalTracesAsync(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit, final ApiCallback<TraceList> _callback) throws ApiException {
+    public okhttp3.Call getEvalTracesAsync(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit, final ApiCallback<EvalTraceList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEvalTracesValidateBeforeCall(sessionId, runName, datasetName, limit, _callback);
-        Type localVarReturnType = new TypeToken<TraceList>(){}.getType();
+        Type localVarReturnType = new TypeToken<EvalTraceList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postEvalDatasets
-     * @param datasetReq  (required)
+     * @param evalDatasetReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1425,9 +1476,10 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEvalDatasetsCall(@javax.annotation.Nonnull DatasetReq datasetReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEvalDatasetsCall(@javax.annotation.Nonnull EvalDatasetReq evalDatasetReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1441,7 +1493,7 @@ public class EvalApi {
             basePath = null;
         }
 
-        Object localVarPostBody = datasetReq;
+        Object localVarPostBody = evalDatasetReq;
 
         // create path and map variables
         String localVarPath = "/v1/eval/datasets";
@@ -1453,7 +1505,8 @@ public class EvalApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1473,57 +1526,59 @@ public class EvalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postEvalDatasetsValidateBeforeCall(@javax.annotation.Nonnull DatasetReq datasetReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'datasetReq' is set
-        if (datasetReq == null) {
-            throw new ApiException("Missing the required parameter 'datasetReq' when calling postEvalDatasets(Async)");
+    private okhttp3.Call postEvalDatasetsValidateBeforeCall(@javax.annotation.Nonnull EvalDatasetReq evalDatasetReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'evalDatasetReq' is set
+        if (evalDatasetReq == null) {
+            throw new ApiException("Missing the required parameter 'evalDatasetReq' when calling postEvalDatasets(Async)");
         }
 
-        return postEvalDatasetsCall(datasetReq, _callback);
+        return postEvalDatasetsCall(evalDatasetReq, _callback);
 
     }
 
     /**
      * Writes a dataset — the named set of graded examples a run scores a model against — under the caller&#39;s org and answers 201 with it.
-     * Writes a dataset — the named set of graded examples a run scores a model against — under the caller&#39;s org and answers 201 with it.  The NAME is the key, not an id: posting a name the org already has updates that dataset&#39;s description and metadata and keeps its original creation time, so this is create-or-edit and never a duplicate. Its items are untouched.  Requires a validated principal; 403 without one. The org comes from the validated owner claim, never from a client X-Org-Id, so a dataset can only ever be written under the caller&#39;s own tenant. A description over 64 KiB is 400.
-     * @param datasetReq  (required)
-     * @return DatasetView
+     * Writes a dataset — the named set of graded examples a run scores a model against — under the caller&#39;s org and answers 201 with it.  The NAME is the key, not an id: posting a name the org already has updates that dataset&#39;s description and metadata and keeps its original creation time, so this is create-or-edit and never a duplicate. Its items are untouched.  Requires a validated principal; 401 without one. The org comes from the validated owner claim, never from a client X-Org-Id, so a dataset can only ever be written under the caller&#39;s own tenant. A description over 64 KiB is 400.
+     * @param evalDatasetReq  (required)
+     * @return EvalDatasetView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DatasetView postEvalDatasets(@javax.annotation.Nonnull DatasetReq datasetReq) throws ApiException {
-        ApiResponse<DatasetView> localVarResp = postEvalDatasetsWithHttpInfo(datasetReq);
+    public EvalDatasetView postEvalDatasets(@javax.annotation.Nonnull EvalDatasetReq evalDatasetReq) throws ApiException {
+        ApiResponse<EvalDatasetView> localVarResp = postEvalDatasetsWithHttpInfo(evalDatasetReq);
         return localVarResp.getData();
     }
 
     /**
      * Writes a dataset — the named set of graded examples a run scores a model against — under the caller&#39;s org and answers 201 with it.
-     * Writes a dataset — the named set of graded examples a run scores a model against — under the caller&#39;s org and answers 201 with it.  The NAME is the key, not an id: posting a name the org already has updates that dataset&#39;s description and metadata and keeps its original creation time, so this is create-or-edit and never a duplicate. Its items are untouched.  Requires a validated principal; 403 without one. The org comes from the validated owner claim, never from a client X-Org-Id, so a dataset can only ever be written under the caller&#39;s own tenant. A description over 64 KiB is 400.
-     * @param datasetReq  (required)
-     * @return ApiResponse&lt;DatasetView&gt;
+     * Writes a dataset — the named set of graded examples a run scores a model against — under the caller&#39;s org and answers 201 with it.  The NAME is the key, not an id: posting a name the org already has updates that dataset&#39;s description and metadata and keeps its original creation time, so this is create-or-edit and never a duplicate. Its items are untouched.  Requires a validated principal; 401 without one. The org comes from the validated owner claim, never from a client X-Org-Id, so a dataset can only ever be written under the caller&#39;s own tenant. A description over 64 KiB is 400.
+     * @param evalDatasetReq  (required)
+     * @return ApiResponse&lt;EvalDatasetView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DatasetView> postEvalDatasetsWithHttpInfo(@javax.annotation.Nonnull DatasetReq datasetReq) throws ApiException {
-        okhttp3.Call localVarCall = postEvalDatasetsValidateBeforeCall(datasetReq, null);
-        Type localVarReturnType = new TypeToken<DatasetView>(){}.getType();
+    public ApiResponse<EvalDatasetView> postEvalDatasetsWithHttpInfo(@javax.annotation.Nonnull EvalDatasetReq evalDatasetReq) throws ApiException {
+        okhttp3.Call localVarCall = postEvalDatasetsValidateBeforeCall(evalDatasetReq, null);
+        Type localVarReturnType = new TypeToken<EvalDatasetView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Writes a dataset — the named set of graded examples a run scores a model against — under the caller&#39;s org and answers 201 with it. (asynchronously)
-     * Writes a dataset — the named set of graded examples a run scores a model against — under the caller&#39;s org and answers 201 with it.  The NAME is the key, not an id: posting a name the org already has updates that dataset&#39;s description and metadata and keeps its original creation time, so this is create-or-edit and never a duplicate. Its items are untouched.  Requires a validated principal; 403 without one. The org comes from the validated owner claim, never from a client X-Org-Id, so a dataset can only ever be written under the caller&#39;s own tenant. A description over 64 KiB is 400.
-     * @param datasetReq  (required)
+     * Writes a dataset — the named set of graded examples a run scores a model against — under the caller&#39;s org and answers 201 with it.  The NAME is the key, not an id: posting a name the org already has updates that dataset&#39;s description and metadata and keeps its original creation time, so this is create-or-edit and never a duplicate. Its items are untouched.  Requires a validated principal; 401 without one. The org comes from the validated owner claim, never from a client X-Org-Id, so a dataset can only ever be written under the caller&#39;s own tenant. A description over 64 KiB is 400.
+     * @param evalDatasetReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1532,19 +1587,20 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEvalDatasetsAsync(@javax.annotation.Nonnull DatasetReq datasetReq, final ApiCallback<DatasetView> _callback) throws ApiException {
+    public okhttp3.Call postEvalDatasetsAsync(@javax.annotation.Nonnull EvalDatasetReq evalDatasetReq, final ApiCallback<EvalDatasetView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postEvalDatasetsValidateBeforeCall(datasetReq, _callback);
-        Type localVarReturnType = new TypeToken<DatasetView>(){}.getType();
+        okhttp3.Call localVarCall = postEvalDatasetsValidateBeforeCall(evalDatasetReq, _callback);
+        Type localVarReturnType = new TypeToken<EvalDatasetView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postEvalDatasetsByNameItems
      * @param name  (required)
-     * @param itemReq  (required)
+     * @param evalItemReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1553,9 +1609,10 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEvalDatasetsByNameItemsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull ItemReq itemReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEvalDatasetsByNameItemsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull EvalItemReq evalItemReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1569,7 +1626,7 @@ public class EvalApi {
             basePath = null;
         }
 
-        Object localVarPostBody = itemReq;
+        Object localVarPostBody = evalItemReq;
 
         // create path and map variables
         String localVarPath = "/v1/eval/datasets/{name}/items"
@@ -1582,7 +1639,8 @@ public class EvalApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1602,65 +1660,67 @@ public class EvalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postEvalDatasetsByNameItemsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull ItemReq itemReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEvalDatasetsByNameItemsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull EvalItemReq evalItemReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postEvalDatasetsByNameItems(Async)");
         }
 
-        // verify the required parameter 'itemReq' is set
-        if (itemReq == null) {
-            throw new ApiException("Missing the required parameter 'itemReq' when calling postEvalDatasetsByNameItems(Async)");
+        // verify the required parameter 'evalItemReq' is set
+        if (evalItemReq == null) {
+            throw new ApiException("Missing the required parameter 'evalItemReq' when calling postEvalDatasetsByNameItems(Async)");
         }
 
-        return postEvalDatasetsByNameItemsCall(name, itemReq, _callback);
+        return postEvalDatasetsByNameItemsCall(name, evalItemReq, _callback);
 
     }
 
     /**
      * Writes one graded example — its input, its expected output, free-form metadata and a status — into the dataset named in the path, and answers 201 with it.
-     * Writes one graded example — its input, its expected output, free-form metadata and a status — into the dataset named in the path, and answers 201 with it.  That dataset MUST already exist for this org: an unknown one is 404, never a silent create. Requires a validated principal; 403 without one.
+     * Writes one graded example — its input, its expected output, free-form metadata and a status — into the dataset named in the path, and answers 201 with it.  That dataset MUST already exist for this org: an unknown one is 404, never a silent create. Requires a validated principal; 401 without one.
      * @param name  (required)
-     * @param itemReq  (required)
-     * @return ItemView
+     * @param evalItemReq  (required)
+     * @return EvalItemView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ItemView postEvalDatasetsByNameItems(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull ItemReq itemReq) throws ApiException {
-        ApiResponse<ItemView> localVarResp = postEvalDatasetsByNameItemsWithHttpInfo(name, itemReq);
+    public EvalItemView postEvalDatasetsByNameItems(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull EvalItemReq evalItemReq) throws ApiException {
+        ApiResponse<EvalItemView> localVarResp = postEvalDatasetsByNameItemsWithHttpInfo(name, evalItemReq);
         return localVarResp.getData();
     }
 
     /**
      * Writes one graded example — its input, its expected output, free-form metadata and a status — into the dataset named in the path, and answers 201 with it.
-     * Writes one graded example — its input, its expected output, free-form metadata and a status — into the dataset named in the path, and answers 201 with it.  That dataset MUST already exist for this org: an unknown one is 404, never a silent create. Requires a validated principal; 403 without one.
+     * Writes one graded example — its input, its expected output, free-form metadata and a status — into the dataset named in the path, and answers 201 with it.  That dataset MUST already exist for this org: an unknown one is 404, never a silent create. Requires a validated principal; 401 without one.
      * @param name  (required)
-     * @param itemReq  (required)
-     * @return ApiResponse&lt;ItemView&gt;
+     * @param evalItemReq  (required)
+     * @return ApiResponse&lt;EvalItemView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ItemView> postEvalDatasetsByNameItemsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull ItemReq itemReq) throws ApiException {
-        okhttp3.Call localVarCall = postEvalDatasetsByNameItemsValidateBeforeCall(name, itemReq, null);
-        Type localVarReturnType = new TypeToken<ItemView>(){}.getType();
+    public ApiResponse<EvalItemView> postEvalDatasetsByNameItemsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull EvalItemReq evalItemReq) throws ApiException {
+        okhttp3.Call localVarCall = postEvalDatasetsByNameItemsValidateBeforeCall(name, evalItemReq, null);
+        Type localVarReturnType = new TypeToken<EvalItemView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Writes one graded example — its input, its expected output, free-form metadata and a status — into the dataset named in the path, and answers 201 with it. (asynchronously)
-     * Writes one graded example — its input, its expected output, free-form metadata and a status — into the dataset named in the path, and answers 201 with it.  That dataset MUST already exist for this org: an unknown one is 404, never a silent create. Requires a validated principal; 403 without one.
+     * Writes one graded example — its input, its expected output, free-form metadata and a status — into the dataset named in the path, and answers 201 with it.  That dataset MUST already exist for this org: an unknown one is 404, never a silent create. Requires a validated principal; 401 without one.
      * @param name  (required)
-     * @param itemReq  (required)
+     * @param evalItemReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1669,18 +1729,19 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEvalDatasetsByNameItemsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull ItemReq itemReq, final ApiCallback<ItemView> _callback) throws ApiException {
+    public okhttp3.Call postEvalDatasetsByNameItemsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull EvalItemReq evalItemReq, final ApiCallback<EvalItemView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postEvalDatasetsByNameItemsValidateBeforeCall(name, itemReq, _callback);
-        Type localVarReturnType = new TypeToken<ItemView>(){}.getType();
+        okhttp3.Call localVarCall = postEvalDatasetsByNameItemsValidateBeforeCall(name, evalItemReq, _callback);
+        Type localVarReturnType = new TypeToken<EvalItemView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postEvalEvaluators
-     * @param evaluatorReq  (required)
+     * @param evalEvaluatorReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1689,9 +1750,10 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEvalEvaluatorsCall(@javax.annotation.Nonnull EvaluatorReq evaluatorReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEvalEvaluatorsCall(@javax.annotation.Nonnull EvalEvaluatorReq evalEvaluatorReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1705,7 +1767,7 @@ public class EvalApi {
             basePath = null;
         }
 
-        Object localVarPostBody = evaluatorReq;
+        Object localVarPostBody = evalEvaluatorReq;
 
         // create path and map variables
         String localVarPath = "/v1/eval/evaluators";
@@ -1717,7 +1779,8 @@ public class EvalApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1737,57 +1800,59 @@ public class EvalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postEvalEvaluatorsValidateBeforeCall(@javax.annotation.Nonnull EvaluatorReq evaluatorReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'evaluatorReq' is set
-        if (evaluatorReq == null) {
-            throw new ApiException("Missing the required parameter 'evaluatorReq' when calling postEvalEvaluators(Async)");
+    private okhttp3.Call postEvalEvaluatorsValidateBeforeCall(@javax.annotation.Nonnull EvalEvaluatorReq evalEvaluatorReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'evalEvaluatorReq' is set
+        if (evalEvaluatorReq == null) {
+            throw new ApiException("Missing the required parameter 'evalEvaluatorReq' when calling postEvalEvaluators(Async)");
         }
 
-        return postEvalEvaluatorsCall(evaluatorReq, _callback);
+        return postEvalEvaluatorsCall(evalEvaluatorReq, _callback);
 
     }
 
     /**
      * Saves a reusable judge for the caller&#39;s org — the judge model and the written criteria it grades against — and answers 201 with it.
-     * Saves a reusable judge for the caller&#39;s org — the judge model and the written criteria it grades against — and answers 201 with it.  Like a dataset, the NAME is the key: re-posting a name edits that judge rather than adding a second one. Requires a validated principal; 403 without one.
-     * @param evaluatorReq  (required)
-     * @return EvaluatorView
+     * Saves a reusable judge for the caller&#39;s org — the judge model and the written criteria it grades against — and answers 201 with it.  Like a dataset, the NAME is the key: re-posting a name edits that judge rather than adding a second one. Requires a validated principal; 401 without one.
+     * @param evalEvaluatorReq  (required)
+     * @return EvalEvaluatorView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EvaluatorView postEvalEvaluators(@javax.annotation.Nonnull EvaluatorReq evaluatorReq) throws ApiException {
-        ApiResponse<EvaluatorView> localVarResp = postEvalEvaluatorsWithHttpInfo(evaluatorReq);
+    public EvalEvaluatorView postEvalEvaluators(@javax.annotation.Nonnull EvalEvaluatorReq evalEvaluatorReq) throws ApiException {
+        ApiResponse<EvalEvaluatorView> localVarResp = postEvalEvaluatorsWithHttpInfo(evalEvaluatorReq);
         return localVarResp.getData();
     }
 
     /**
      * Saves a reusable judge for the caller&#39;s org — the judge model and the written criteria it grades against — and answers 201 with it.
-     * Saves a reusable judge for the caller&#39;s org — the judge model and the written criteria it grades against — and answers 201 with it.  Like a dataset, the NAME is the key: re-posting a name edits that judge rather than adding a second one. Requires a validated principal; 403 without one.
-     * @param evaluatorReq  (required)
-     * @return ApiResponse&lt;EvaluatorView&gt;
+     * Saves a reusable judge for the caller&#39;s org — the judge model and the written criteria it grades against — and answers 201 with it.  Like a dataset, the NAME is the key: re-posting a name edits that judge rather than adding a second one. Requires a validated principal; 401 without one.
+     * @param evalEvaluatorReq  (required)
+     * @return ApiResponse&lt;EvalEvaluatorView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EvaluatorView> postEvalEvaluatorsWithHttpInfo(@javax.annotation.Nonnull EvaluatorReq evaluatorReq) throws ApiException {
-        okhttp3.Call localVarCall = postEvalEvaluatorsValidateBeforeCall(evaluatorReq, null);
-        Type localVarReturnType = new TypeToken<EvaluatorView>(){}.getType();
+    public ApiResponse<EvalEvaluatorView> postEvalEvaluatorsWithHttpInfo(@javax.annotation.Nonnull EvalEvaluatorReq evalEvaluatorReq) throws ApiException {
+        okhttp3.Call localVarCall = postEvalEvaluatorsValidateBeforeCall(evalEvaluatorReq, null);
+        Type localVarReturnType = new TypeToken<EvalEvaluatorView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Saves a reusable judge for the caller&#39;s org — the judge model and the written criteria it grades against — and answers 201 with it. (asynchronously)
-     * Saves a reusable judge for the caller&#39;s org — the judge model and the written criteria it grades against — and answers 201 with it.  Like a dataset, the NAME is the key: re-posting a name edits that judge rather than adding a second one. Requires a validated principal; 403 without one.
-     * @param evaluatorReq  (required)
+     * Saves a reusable judge for the caller&#39;s org — the judge model and the written criteria it grades against — and answers 201 with it.  Like a dataset, the NAME is the key: re-posting a name edits that judge rather than adding a second one. Requires a validated principal; 401 without one.
+     * @param evalEvaluatorReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1796,18 +1861,19 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEvalEvaluatorsAsync(@javax.annotation.Nonnull EvaluatorReq evaluatorReq, final ApiCallback<EvaluatorView> _callback) throws ApiException {
+    public okhttp3.Call postEvalEvaluatorsAsync(@javax.annotation.Nonnull EvalEvaluatorReq evalEvaluatorReq, final ApiCallback<EvalEvaluatorView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postEvalEvaluatorsValidateBeforeCall(evaluatorReq, _callback);
-        Type localVarReturnType = new TypeToken<EvaluatorView>(){}.getType();
+        okhttp3.Call localVarCall = postEvalEvaluatorsValidateBeforeCall(evalEvaluatorReq, _callback);
+        Type localVarReturnType = new TypeToken<EvalEvaluatorView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postEvalRubrics
-     * @param scoreConfigReq  (required)
+     * @param evalScoreConfigReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1816,9 +1882,10 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEvalRubricsCall(@javax.annotation.Nonnull ScoreConfigReq scoreConfigReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEvalRubricsCall(@javax.annotation.Nonnull EvalScoreConfigReq evalScoreConfigReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1832,7 +1899,7 @@ public class EvalApi {
             basePath = null;
         }
 
-        Object localVarPostBody = scoreConfigReq;
+        Object localVarPostBody = evalScoreConfigReq;
 
         // create path and map variables
         String localVarPath = "/v1/eval/rubrics";
@@ -1844,7 +1911,8 @@ public class EvalApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1864,57 +1932,59 @@ public class EvalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postEvalRubricsValidateBeforeCall(@javax.annotation.Nonnull ScoreConfigReq scoreConfigReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'scoreConfigReq' is set
-        if (scoreConfigReq == null) {
-            throw new ApiException("Missing the required parameter 'scoreConfigReq' when calling postEvalRubrics(Async)");
+    private okhttp3.Call postEvalRubricsValidateBeforeCall(@javax.annotation.Nonnull EvalScoreConfigReq evalScoreConfigReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'evalScoreConfigReq' is set
+        if (evalScoreConfigReq == null) {
+            throw new ApiException("Missing the required parameter 'evalScoreConfigReq' when calling postEvalRubrics(Async)");
         }
 
-        return postEvalRubricsCall(scoreConfigReq, _callback);
+        return postEvalRubricsCall(evalScoreConfigReq, _callback);
 
     }
 
     /**
      * Defines the shape of one score name for the caller&#39;s org and answers 201 with it.
-     * Defines the shape of one score name for the caller&#39;s org and answers 201 with it.  This is the integrity contract, not documentation: once a rubric exists for a name, every score recorded under that name is checked against it and the rubric&#39;s data type is AUTHORITATIVE — a caller cannot claim a different one. Out-of-range values, unlisted labels and non-finite numbers are refused at write time.  A CATEGORICAL rubric with no categories is 400, as is a non-finite bound or a minValue above maxValue. Requires a validated principal; 403 without one.
-     * @param scoreConfigReq  (required)
-     * @return ScoreConfigView
+     * Defines the shape of one score name for the caller&#39;s org and answers 201 with it.  This is the integrity contract, not documentation: once a rubric exists for a name, every score recorded under that name is checked against it and the rubric&#39;s data type is AUTHORITATIVE — a caller cannot claim a different one. Out-of-range values, unlisted labels and non-finite numbers are refused at write time.  A CATEGORICAL rubric with no categories is 400, as is a non-finite bound or a minValue above maxValue. Requires a validated principal; 401 without one.
+     * @param evalScoreConfigReq  (required)
+     * @return EvalScoreConfigView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ScoreConfigView postEvalRubrics(@javax.annotation.Nonnull ScoreConfigReq scoreConfigReq) throws ApiException {
-        ApiResponse<ScoreConfigView> localVarResp = postEvalRubricsWithHttpInfo(scoreConfigReq);
+    public EvalScoreConfigView postEvalRubrics(@javax.annotation.Nonnull EvalScoreConfigReq evalScoreConfigReq) throws ApiException {
+        ApiResponse<EvalScoreConfigView> localVarResp = postEvalRubricsWithHttpInfo(evalScoreConfigReq);
         return localVarResp.getData();
     }
 
     /**
      * Defines the shape of one score name for the caller&#39;s org and answers 201 with it.
-     * Defines the shape of one score name for the caller&#39;s org and answers 201 with it.  This is the integrity contract, not documentation: once a rubric exists for a name, every score recorded under that name is checked against it and the rubric&#39;s data type is AUTHORITATIVE — a caller cannot claim a different one. Out-of-range values, unlisted labels and non-finite numbers are refused at write time.  A CATEGORICAL rubric with no categories is 400, as is a non-finite bound or a minValue above maxValue. Requires a validated principal; 403 without one.
-     * @param scoreConfigReq  (required)
-     * @return ApiResponse&lt;ScoreConfigView&gt;
+     * Defines the shape of one score name for the caller&#39;s org and answers 201 with it.  This is the integrity contract, not documentation: once a rubric exists for a name, every score recorded under that name is checked against it and the rubric&#39;s data type is AUTHORITATIVE — a caller cannot claim a different one. Out-of-range values, unlisted labels and non-finite numbers are refused at write time.  A CATEGORICAL rubric with no categories is 400, as is a non-finite bound or a minValue above maxValue. Requires a validated principal; 401 without one.
+     * @param evalScoreConfigReq  (required)
+     * @return ApiResponse&lt;EvalScoreConfigView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ScoreConfigView> postEvalRubricsWithHttpInfo(@javax.annotation.Nonnull ScoreConfigReq scoreConfigReq) throws ApiException {
-        okhttp3.Call localVarCall = postEvalRubricsValidateBeforeCall(scoreConfigReq, null);
-        Type localVarReturnType = new TypeToken<ScoreConfigView>(){}.getType();
+    public ApiResponse<EvalScoreConfigView> postEvalRubricsWithHttpInfo(@javax.annotation.Nonnull EvalScoreConfigReq evalScoreConfigReq) throws ApiException {
+        okhttp3.Call localVarCall = postEvalRubricsValidateBeforeCall(evalScoreConfigReq, null);
+        Type localVarReturnType = new TypeToken<EvalScoreConfigView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Defines the shape of one score name for the caller&#39;s org and answers 201 with it. (asynchronously)
-     * Defines the shape of one score name for the caller&#39;s org and answers 201 with it.  This is the integrity contract, not documentation: once a rubric exists for a name, every score recorded under that name is checked against it and the rubric&#39;s data type is AUTHORITATIVE — a caller cannot claim a different one. Out-of-range values, unlisted labels and non-finite numbers are refused at write time.  A CATEGORICAL rubric with no categories is 400, as is a non-finite bound or a minValue above maxValue. Requires a validated principal; 403 without one.
-     * @param scoreConfigReq  (required)
+     * Defines the shape of one score name for the caller&#39;s org and answers 201 with it.  This is the integrity contract, not documentation: once a rubric exists for a name, every score recorded under that name is checked against it and the rubric&#39;s data type is AUTHORITATIVE — a caller cannot claim a different one. Out-of-range values, unlisted labels and non-finite numbers are refused at write time.  A CATEGORICAL rubric with no categories is 400, as is a non-finite bound or a minValue above maxValue. Requires a validated principal; 401 without one.
+     * @param evalScoreConfigReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1923,18 +1993,19 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEvalRubricsAsync(@javax.annotation.Nonnull ScoreConfigReq scoreConfigReq, final ApiCallback<ScoreConfigView> _callback) throws ApiException {
+    public okhttp3.Call postEvalRubricsAsync(@javax.annotation.Nonnull EvalScoreConfigReq evalScoreConfigReq, final ApiCallback<EvalScoreConfigView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postEvalRubricsValidateBeforeCall(scoreConfigReq, _callback);
-        Type localVarReturnType = new TypeToken<ScoreConfigView>(){}.getType();
+        okhttp3.Call localVarCall = postEvalRubricsValidateBeforeCall(evalScoreConfigReq, _callback);
+        Type localVarReturnType = new TypeToken<EvalScoreConfigView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postEvalRuns
-     * @param runRequest  (required)
+     * @param evalRunRequest  (required)
      * @param authorization  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1945,9 +2016,10 @@ public class EvalApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 502 </td><td> bad gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEvalRunsCall(@javax.annotation.Nonnull RunRequest runRequest, @javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEvalRunsCall(@javax.annotation.Nonnull EvalRunRequest evalRunRequest, @javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1961,7 +2033,7 @@ public class EvalApi {
             basePath = null;
         }
 
-        Object localVarPostBody = runRequest;
+        Object localVarPostBody = evalRunRequest;
 
         // create path and map variables
         String localVarPath = "/v1/eval/runs";
@@ -1973,7 +2045,8 @@ public class EvalApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1998,22 +2071,22 @@ public class EvalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postEvalRunsValidateBeforeCall(@javax.annotation.Nonnull RunRequest runRequest, @javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'runRequest' is set
-        if (runRequest == null) {
-            throw new ApiException("Missing the required parameter 'runRequest' when calling postEvalRuns(Async)");
+    private okhttp3.Call postEvalRunsValidateBeforeCall(@javax.annotation.Nonnull EvalRunRequest evalRunRequest, @javax.annotation.Nullable String authorization, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'evalRunRequest' is set
+        if (evalRunRequest == null) {
+            throw new ApiException("Missing the required parameter 'evalRunRequest' when calling postEvalRuns(Async)");
         }
 
-        return postEvalRunsCall(runRequest, authorization, _callback);
+        return postEvalRunsCall(evalRunRequest, authorization, _callback);
 
     }
 
     /**
      * Runs a real evaluation and answers the summary when it is finished — this is synchronous work, not a job id.
-     * Runs a real evaluation and answers the summary when it is finished — this is synchronous work, not a job id.  For each ACTIVE example in the dataset it calls the model under test, records a trace, calls the LLM-as-judge, and records the judge&#39;s score with its reasoning. The answer carries the per-item results (item id, trace id, score, output or error) alongside items, scored and avgScore.  The dataset must belong to the caller&#39;s org (404 otherwise) and must have at least one ACTIVE example (422 otherwise).  It runs as YOU: the caller&#39;s own Authorization bearer drives the model gateway, so a request without one is 401 rather than a run made anonymously or under a service identity. Only a non-reversible hash of that credential is recorded on the traces.  Bounded and honest about it: an org may have at most 4 runs in flight and the fifth is 429 rather than queued, and the whole run is capped at 10 minutes — examples past the deadline come back with an error instead of a score, and scored counts only real successes. A run where NOTHING scored answers 502, not a 200 that looks like an evaluation. A run must be able to persist what it produces, so a deployment with no datastore wired is 503 up front. Requires a validated principal; 403 without one.
-     * @param runRequest  (required)
+     * Runs a real evaluation and answers the summary when it is finished — this is synchronous work, not a job id.  For each ACTIVE example in the dataset it calls the model under test, records a trace, calls the LLM-as-judge, and records the judge&#39;s score with its reasoning. The answer carries the per-item results (item id, trace id, score, output or error) alongside items, scored and avgScore.  The dataset must belong to the caller&#39;s org (404 otherwise) and must have at least one ACTIVE example (422 otherwise).  It runs as YOU: the caller&#39;s own Authorization bearer drives the model gateway, so a request without one is 401 rather than a run made anonymously or under a service identity. Only a non-reversible hash of that credential is recorded on the traces.  Bounded and honest about it: an org may have at most 4 runs in flight and the fifth is 429 rather than queued, and the whole run is capped at 10 minutes — examples past the deadline come back with an error instead of a score, and scored counts only real successes. A run where NOTHING scored answers 502, not a 200 that looks like an evaluation. A run must be able to persist what it produces, so a deployment with no datastore wired is 503 up front. Requires a validated principal; 401 without one.
+     * @param evalRunRequest  (required)
      * @param authorization  (optional)
-     * @return RunSummary
+     * @return EvalRunSummary
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2021,19 +2094,20 @@ public class EvalApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 502 </td><td> bad gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RunSummary postEvalRuns(@javax.annotation.Nonnull RunRequest runRequest, @javax.annotation.Nullable String authorization) throws ApiException {
-        ApiResponse<RunSummary> localVarResp = postEvalRunsWithHttpInfo(runRequest, authorization);
+    public EvalRunSummary postEvalRuns(@javax.annotation.Nonnull EvalRunRequest evalRunRequest, @javax.annotation.Nullable String authorization) throws ApiException {
+        ApiResponse<EvalRunSummary> localVarResp = postEvalRunsWithHttpInfo(evalRunRequest, authorization);
         return localVarResp.getData();
     }
 
     /**
      * Runs a real evaluation and answers the summary when it is finished — this is synchronous work, not a job id.
-     * Runs a real evaluation and answers the summary when it is finished — this is synchronous work, not a job id.  For each ACTIVE example in the dataset it calls the model under test, records a trace, calls the LLM-as-judge, and records the judge&#39;s score with its reasoning. The answer carries the per-item results (item id, trace id, score, output or error) alongside items, scored and avgScore.  The dataset must belong to the caller&#39;s org (404 otherwise) and must have at least one ACTIVE example (422 otherwise).  It runs as YOU: the caller&#39;s own Authorization bearer drives the model gateway, so a request without one is 401 rather than a run made anonymously or under a service identity. Only a non-reversible hash of that credential is recorded on the traces.  Bounded and honest about it: an org may have at most 4 runs in flight and the fifth is 429 rather than queued, and the whole run is capped at 10 minutes — examples past the deadline come back with an error instead of a score, and scored counts only real successes. A run where NOTHING scored answers 502, not a 200 that looks like an evaluation. A run must be able to persist what it produces, so a deployment with no datastore wired is 503 up front. Requires a validated principal; 403 without one.
-     * @param runRequest  (required)
+     * Runs a real evaluation and answers the summary when it is finished — this is synchronous work, not a job id.  For each ACTIVE example in the dataset it calls the model under test, records a trace, calls the LLM-as-judge, and records the judge&#39;s score with its reasoning. The answer carries the per-item results (item id, trace id, score, output or error) alongside items, scored and avgScore.  The dataset must belong to the caller&#39;s org (404 otherwise) and must have at least one ACTIVE example (422 otherwise).  It runs as YOU: the caller&#39;s own Authorization bearer drives the model gateway, so a request without one is 401 rather than a run made anonymously or under a service identity. Only a non-reversible hash of that credential is recorded on the traces.  Bounded and honest about it: an org may have at most 4 runs in flight and the fifth is 429 rather than queued, and the whole run is capped at 10 minutes — examples past the deadline come back with an error instead of a score, and scored counts only real successes. A run where NOTHING scored answers 502, not a 200 that looks like an evaluation. A run must be able to persist what it produces, so a deployment with no datastore wired is 503 up front. Requires a validated principal; 401 without one.
+     * @param evalRunRequest  (required)
      * @param authorization  (optional)
-     * @return ApiResponse&lt;RunSummary&gt;
+     * @return ApiResponse&lt;EvalRunSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -2041,18 +2115,19 @@ public class EvalApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 502 </td><td> bad gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RunSummary> postEvalRunsWithHttpInfo(@javax.annotation.Nonnull RunRequest runRequest, @javax.annotation.Nullable String authorization) throws ApiException {
-        okhttp3.Call localVarCall = postEvalRunsValidateBeforeCall(runRequest, authorization, null);
-        Type localVarReturnType = new TypeToken<RunSummary>(){}.getType();
+    public ApiResponse<EvalRunSummary> postEvalRunsWithHttpInfo(@javax.annotation.Nonnull EvalRunRequest evalRunRequest, @javax.annotation.Nullable String authorization) throws ApiException {
+        okhttp3.Call localVarCall = postEvalRunsValidateBeforeCall(evalRunRequest, authorization, null);
+        Type localVarReturnType = new TypeToken<EvalRunSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Runs a real evaluation and answers the summary when it is finished — this is synchronous work, not a job id. (asynchronously)
-     * Runs a real evaluation and answers the summary when it is finished — this is synchronous work, not a job id.  For each ACTIVE example in the dataset it calls the model under test, records a trace, calls the LLM-as-judge, and records the judge&#39;s score with its reasoning. The answer carries the per-item results (item id, trace id, score, output or error) alongside items, scored and avgScore.  The dataset must belong to the caller&#39;s org (404 otherwise) and must have at least one ACTIVE example (422 otherwise).  It runs as YOU: the caller&#39;s own Authorization bearer drives the model gateway, so a request without one is 401 rather than a run made anonymously or under a service identity. Only a non-reversible hash of that credential is recorded on the traces.  Bounded and honest about it: an org may have at most 4 runs in flight and the fifth is 429 rather than queued, and the whole run is capped at 10 minutes — examples past the deadline come back with an error instead of a score, and scored counts only real successes. A run where NOTHING scored answers 502, not a 200 that looks like an evaluation. A run must be able to persist what it produces, so a deployment with no datastore wired is 503 up front. Requires a validated principal; 403 without one.
-     * @param runRequest  (required)
+     * Runs a real evaluation and answers the summary when it is finished — this is synchronous work, not a job id.  For each ACTIVE example in the dataset it calls the model under test, records a trace, calls the LLM-as-judge, and records the judge&#39;s score with its reasoning. The answer carries the per-item results (item id, trace id, score, output or error) alongside items, scored and avgScore.  The dataset must belong to the caller&#39;s org (404 otherwise) and must have at least one ACTIVE example (422 otherwise).  It runs as YOU: the caller&#39;s own Authorization bearer drives the model gateway, so a request without one is 401 rather than a run made anonymously or under a service identity. Only a non-reversible hash of that credential is recorded on the traces.  Bounded and honest about it: an org may have at most 4 runs in flight and the fifth is 429 rather than queued, and the whole run is capped at 10 minutes — examples past the deadline come back with an error instead of a score, and scored counts only real successes. A run where NOTHING scored answers 502, not a 200 that looks like an evaluation. A run must be able to persist what it produces, so a deployment with no datastore wired is 503 up front. Requires a validated principal; 401 without one.
+     * @param evalRunRequest  (required)
      * @param authorization  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2063,18 +2138,19 @@ public class EvalApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 502 </td><td> bad gateway </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEvalRunsAsync(@javax.annotation.Nonnull RunRequest runRequest, @javax.annotation.Nullable String authorization, final ApiCallback<RunSummary> _callback) throws ApiException {
+    public okhttp3.Call postEvalRunsAsync(@javax.annotation.Nonnull EvalRunRequest evalRunRequest, @javax.annotation.Nullable String authorization, final ApiCallback<EvalRunSummary> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postEvalRunsValidateBeforeCall(runRequest, authorization, _callback);
-        Type localVarReturnType = new TypeToken<RunSummary>(){}.getType();
+        okhttp3.Call localVarCall = postEvalRunsValidateBeforeCall(evalRunRequest, authorization, _callback);
+        Type localVarReturnType = new TypeToken<EvalRunSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postEvalScores
-     * @param scoreReq  (required)
+     * @param evalScoreReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2083,9 +2159,10 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEvalScoresCall(@javax.annotation.Nonnull ScoreReq scoreReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEvalScoresCall(@javax.annotation.Nonnull EvalScoreReq evalScoreReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2099,7 +2176,7 @@ public class EvalApi {
             basePath = null;
         }
 
-        Object localVarPostBody = scoreReq;
+        Object localVarPostBody = evalScoreReq;
 
         // create path and map variables
         String localVarPath = "/v1/eval/scores";
@@ -2111,7 +2188,8 @@ public class EvalApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2131,57 +2209,59 @@ public class EvalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postEvalScoresValidateBeforeCall(@javax.annotation.Nonnull ScoreReq scoreReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'scoreReq' is set
-        if (scoreReq == null) {
-            throw new ApiException("Missing the required parameter 'scoreReq' when calling postEvalScores(Async)");
+    private okhttp3.Call postEvalScoresValidateBeforeCall(@javax.annotation.Nonnull EvalScoreReq evalScoreReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'evalScoreReq' is set
+        if (evalScoreReq == null) {
+            throw new ApiException("Missing the required parameter 'evalScoreReq' when calling postEvalScores(Async)");
         }
 
-        return postEvalScoresCall(scoreReq, _callback);
+        return postEvalScoresCall(evalScoreReq, _callback);
 
     }
 
     /**
      * Files one score event for the caller&#39;s org and answers 201 with it.
-     * Files one score event for the caller&#39;s org and answers 201 with it.  This is how human review and out-of-band graders land beside the automatic ones: name the score, give it a value (or a stringValue for a categorical label), and attach it to a trace, a run, a dataset example, or any combination.  Scores are validated fail-closed. A value must be FINITE — NaN and Inf are 400 — and if the org has declared a rubric for this name, that rubric decides the type and the value must satisfy it: inside the numeric bounds, or one of the allowed categories. A caller cannot override the declared type by sending a different dataType.  A score is TELEMETRY, not metadata, so it needs the datastore: a deployment with none wired answers 503 rather than accepting a score it cannot persist. Requires a validated principal; 403 without one, and the org is stamped from the validated claim rather than read off the body.
-     * @param scoreReq  (required)
-     * @return ScoreView
+     * Files one score event for the caller&#39;s org and answers 201 with it.  This is how human review and out-of-band graders land beside the automatic ones: name the score, give it a value (or a stringValue for a categorical label), and attach it to a trace, a run, a dataset example, or any combination.  Scores are validated fail-closed. A value must be FINITE — NaN and Inf are 400 — and if the org has declared a rubric for this name, that rubric decides the type and the value must satisfy it: inside the numeric bounds, or one of the allowed categories. A caller cannot override the declared type by sending a different dataType.  A score is TELEMETRY, not metadata, so it needs the datastore: a deployment with none wired answers 503 rather than accepting a score it cannot persist. Requires a validated principal; 401 without one, and the org is stamped from the validated claim rather than read off the body.
+     * @param evalScoreReq  (required)
+     * @return EvalScoreView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ScoreView postEvalScores(@javax.annotation.Nonnull ScoreReq scoreReq) throws ApiException {
-        ApiResponse<ScoreView> localVarResp = postEvalScoresWithHttpInfo(scoreReq);
+    public EvalScoreView postEvalScores(@javax.annotation.Nonnull EvalScoreReq evalScoreReq) throws ApiException {
+        ApiResponse<EvalScoreView> localVarResp = postEvalScoresWithHttpInfo(evalScoreReq);
         return localVarResp.getData();
     }
 
     /**
      * Files one score event for the caller&#39;s org and answers 201 with it.
-     * Files one score event for the caller&#39;s org and answers 201 with it.  This is how human review and out-of-band graders land beside the automatic ones: name the score, give it a value (or a stringValue for a categorical label), and attach it to a trace, a run, a dataset example, or any combination.  Scores are validated fail-closed. A value must be FINITE — NaN and Inf are 400 — and if the org has declared a rubric for this name, that rubric decides the type and the value must satisfy it: inside the numeric bounds, or one of the allowed categories. A caller cannot override the declared type by sending a different dataType.  A score is TELEMETRY, not metadata, so it needs the datastore: a deployment with none wired answers 503 rather than accepting a score it cannot persist. Requires a validated principal; 403 without one, and the org is stamped from the validated claim rather than read off the body.
-     * @param scoreReq  (required)
-     * @return ApiResponse&lt;ScoreView&gt;
+     * Files one score event for the caller&#39;s org and answers 201 with it.  This is how human review and out-of-band graders land beside the automatic ones: name the score, give it a value (or a stringValue for a categorical label), and attach it to a trace, a run, a dataset example, or any combination.  Scores are validated fail-closed. A value must be FINITE — NaN and Inf are 400 — and if the org has declared a rubric for this name, that rubric decides the type and the value must satisfy it: inside the numeric bounds, or one of the allowed categories. A caller cannot override the declared type by sending a different dataType.  A score is TELEMETRY, not metadata, so it needs the datastore: a deployment with none wired answers 503 rather than accepting a score it cannot persist. Requires a validated principal; 401 without one, and the org is stamped from the validated claim rather than read off the body.
+     * @param evalScoreReq  (required)
+     * @return ApiResponse&lt;EvalScoreView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ScoreView> postEvalScoresWithHttpInfo(@javax.annotation.Nonnull ScoreReq scoreReq) throws ApiException {
-        okhttp3.Call localVarCall = postEvalScoresValidateBeforeCall(scoreReq, null);
-        Type localVarReturnType = new TypeToken<ScoreView>(){}.getType();
+    public ApiResponse<EvalScoreView> postEvalScoresWithHttpInfo(@javax.annotation.Nonnull EvalScoreReq evalScoreReq) throws ApiException {
+        okhttp3.Call localVarCall = postEvalScoresValidateBeforeCall(evalScoreReq, null);
+        Type localVarReturnType = new TypeToken<EvalScoreView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Files one score event for the caller&#39;s org and answers 201 with it. (asynchronously)
-     * Files one score event for the caller&#39;s org and answers 201 with it.  This is how human review and out-of-band graders land beside the automatic ones: name the score, give it a value (or a stringValue for a categorical label), and attach it to a trace, a run, a dataset example, or any combination.  Scores are validated fail-closed. A value must be FINITE — NaN and Inf are 400 — and if the org has declared a rubric for this name, that rubric decides the type and the value must satisfy it: inside the numeric bounds, or one of the allowed categories. A caller cannot override the declared type by sending a different dataType.  A score is TELEMETRY, not metadata, so it needs the datastore: a deployment with none wired answers 503 rather than accepting a score it cannot persist. Requires a validated principal; 403 without one, and the org is stamped from the validated claim rather than read off the body.
-     * @param scoreReq  (required)
+     * Files one score event for the caller&#39;s org and answers 201 with it.  This is how human review and out-of-band graders land beside the automatic ones: name the score, give it a value (or a stringValue for a categorical label), and attach it to a trace, a run, a dataset example, or any combination.  Scores are validated fail-closed. A value must be FINITE — NaN and Inf are 400 — and if the org has declared a rubric for this name, that rubric decides the type and the value must satisfy it: inside the numeric bounds, or one of the allowed categories. A caller cannot override the declared type by sending a different dataType.  A score is TELEMETRY, not metadata, so it needs the datastore: a deployment with none wired answers 503 rather than accepting a score it cannot persist. Requires a validated principal; 401 without one, and the org is stamped from the validated claim rather than read off the body.
+     * @param evalScoreReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2190,12 +2270,13 @@ public class EvalApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEvalScoresAsync(@javax.annotation.Nonnull ScoreReq scoreReq, final ApiCallback<ScoreView> _callback) throws ApiException {
+    public okhttp3.Call postEvalScoresAsync(@javax.annotation.Nonnull EvalScoreReq evalScoreReq, final ApiCallback<EvalScoreView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postEvalScoresValidateBeforeCall(scoreReq, _callback);
-        Type localVarReturnType = new TypeToken<ScoreView>(){}.getType();
+        okhttp3.Call localVarCall = postEvalScoresValidateBeforeCall(evalScoreReq, _callback);
+        Type localVarReturnType = new TypeToken<EvalScoreView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

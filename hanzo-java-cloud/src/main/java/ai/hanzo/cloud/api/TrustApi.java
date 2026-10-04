@@ -27,19 +27,20 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Centre;
-import ai.hanzo.cloud.model.ClauseCoverage;
-import ai.hanzo.cloud.model.ControlList;
-import ai.hanzo.cloud.model.Dropped;
-import ai.hanzo.cloud.model.FaqList;
-import ai.hanzo.cloud.model.FrameworkList;
-import ai.hanzo.cloud.model.PolicyList;
-import ai.hanzo.cloud.model.SectionWrite;
-import ai.hanzo.cloud.model.SubprocessorList;
-import ai.hanzo.cloud.model.TrustCoverage;
-import ai.hanzo.cloud.model.TrustDocuments;
-import ai.hanzo.cloud.model.UpdateList;
-import ai.hanzo.cloud.model.Written;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.TrustCentre;
+import ai.hanzo.cloud.model.TrustClauseCoverage;
+import ai.hanzo.cloud.model.TrustControlList;
+import ai.hanzo.cloud.model.TrustDropped;
+import ai.hanzo.cloud.model.TrustFaqList;
+import ai.hanzo.cloud.model.TrustFrameworkList;
+import ai.hanzo.cloud.model.TrustPolicyList;
+import ai.hanzo.cloud.model.TrustSectionWrite;
+import ai.hanzo.cloud.model.TrustSubprocessorList;
+import ai.hanzo.cloud.model.TrustTrustCoverage;
+import ai.hanzo.cloud.model.TrustTrustDocuments;
+import ai.hanzo.cloud.model.TrustUpdateList;
+import ai.hanzo.cloud.model.TrustWritten;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -96,6 +97,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteTrustByKindByIdCall(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -126,7 +128,8 @@ public class TrustApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -165,17 +168,18 @@ public class TrustApi {
      * Removes one record from a section of your organization&#39;s trust centre. A record that is not there is a 404, never a silent success. A control that belongs to the deployment&#39;s own inventory is removed by a commit, not by a request.
      * @param kind Kind is the section — profile, control, document, subprocessor, policy, faq, update or risk. Anything else is not found. The URL is the authority: a value here is bound from the path, which zip binds last. (required)
      * @param id ID is the record&#39;s id within that section. The single-valued sections (profile, risk) hold one record whatever id is named. (required)
-     * @return Dropped
+     * @return TrustDropped
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Dropped deleteTrustByKindById(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Dropped> localVarResp = deleteTrustByKindByIdWithHttpInfo(kind, id);
+    public TrustDropped deleteTrustByKindById(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<TrustDropped> localVarResp = deleteTrustByKindByIdWithHttpInfo(kind, id);
         return localVarResp.getData();
     }
 
@@ -184,18 +188,19 @@ public class TrustApi {
      * Removes one record from a section of your organization&#39;s trust centre. A record that is not there is a 404, never a silent success. A control that belongs to the deployment&#39;s own inventory is removed by a commit, not by a request.
      * @param kind Kind is the section — profile, control, document, subprocessor, policy, faq, update or risk. Anything else is not found. The URL is the authority: a value here is bound from the path, which zip binds last. (required)
      * @param id ID is the record&#39;s id within that section. The single-valued sections (profile, risk) hold one record whatever id is named. (required)
-     * @return ApiResponse&lt;Dropped&gt;
+     * @return ApiResponse&lt;TrustDropped&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Dropped> deleteTrustByKindByIdWithHttpInfo(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<TrustDropped> deleteTrustByKindByIdWithHttpInfo(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteTrustByKindByIdValidateBeforeCall(kind, id, null);
-        Type localVarReturnType = new TypeToken<Dropped>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustDropped>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -212,12 +217,13 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteTrustByKindByIdAsync(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id, final ApiCallback<Dropped> _callback) throws ApiException {
+    public okhttp3.Call deleteTrustByKindByIdAsync(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id, final ApiCallback<TrustDropped> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteTrustByKindByIdValidateBeforeCall(kind, id, _callback);
-        Type localVarReturnType = new TypeToken<Dropped>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustDropped>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -231,6 +237,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustCall(final ApiCallback _callback) throws ApiException {
@@ -259,7 +266,8 @@ public class TrustApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -286,35 +294,37 @@ public class TrustApi {
     /**
      * Reads YOUR organization&#39;s whole trust centre, including the addresses of your own gated documents.
      * Reads YOUR organization&#39;s whole trust centre, including the addresses of your own gated documents. Same shape as the published endpoint; the difference is that this one is resolved from your validated bearer and shows you your own artifacts.
-     * @return Centre
+     * @return TrustCentre
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Centre getTrust() throws ApiException {
-        ApiResponse<Centre> localVarResp = getTrustWithHttpInfo();
+    public TrustCentre getTrust() throws ApiException {
+        ApiResponse<TrustCentre> localVarResp = getTrustWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reads YOUR organization&#39;s whole trust centre, including the addresses of your own gated documents.
      * Reads YOUR organization&#39;s whole trust centre, including the addresses of your own gated documents. Same shape as the published endpoint; the difference is that this one is resolved from your validated bearer and shows you your own artifacts.
-     * @return ApiResponse&lt;Centre&gt;
+     * @return ApiResponse&lt;TrustCentre&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Centre> getTrustWithHttpInfo() throws ApiException {
+    public ApiResponse<TrustCentre> getTrustWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getTrustValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Centre>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustCentre>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -329,12 +339,13 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTrustAsync(final ApiCallback<Centre> _callback) throws ApiException {
+    public okhttp3.Call getTrustAsync(final ApiCallback<TrustCentre> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTrustValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Centre>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustCentre>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -348,6 +359,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustControlsCall(final ApiCallback _callback) throws ApiException {
@@ -376,7 +388,8 @@ public class TrustApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -403,35 +416,37 @@ public class TrustApi {
     /**
      * Lists every control your organization publishes, with the counts.
      * Lists every control your organization publishes, with the counts.  A control names what it asserts, the mechanism behind it, the repository and file where that mechanism is enforced, how it is verified, and the framework clauses it maps to. Status is automated, partial or absent — and an absent one still names the clause it would satisfy, which is a roadmap, while never moving a coverage number.
-     * @return ControlList
+     * @return TrustControlList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ControlList getTrustControls() throws ApiException {
-        ApiResponse<ControlList> localVarResp = getTrustControlsWithHttpInfo();
+    public TrustControlList getTrustControls() throws ApiException {
+        ApiResponse<TrustControlList> localVarResp = getTrustControlsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists every control your organization publishes, with the counts.
      * Lists every control your organization publishes, with the counts.  A control names what it asserts, the mechanism behind it, the repository and file where that mechanism is enforced, how it is verified, and the framework clauses it maps to. Status is automated, partial or absent — and an absent one still names the clause it would satisfy, which is a roadmap, while never moving a coverage number.
-     * @return ApiResponse&lt;ControlList&gt;
+     * @return ApiResponse&lt;TrustControlList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ControlList> getTrustControlsWithHttpInfo() throws ApiException {
+    public ApiResponse<TrustControlList> getTrustControlsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getTrustControlsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ControlList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustControlList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -446,12 +461,13 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTrustControlsAsync(final ApiCallback<ControlList> _callback) throws ApiException {
+    public okhttp3.Call getTrustControlsAsync(final ApiCallback<TrustControlList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTrustControlsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ControlList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustControlList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -466,6 +482,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustControlsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -495,7 +512,8 @@ public class TrustApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -535,6 +553,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Object getTrustControlsById(@javax.annotation.Nonnull String id) throws ApiException {
@@ -553,6 +572,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> getTrustControlsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -573,6 +593,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustControlsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Object> _callback) throws ApiException {
@@ -592,6 +613,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustCoverageCall(final ApiCallback _callback) throws ApiException {
@@ -620,7 +642,8 @@ public class TrustApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -647,35 +670,37 @@ public class TrustApi {
     /**
      * Reads coverage: per framework, how many clauses have an automated control behind them, how many are partial, and how many have none — each carrying the unit it is counted in, because \&quot;12 of 20\&quot; is not a fact until you know what the 20 are.
      * Reads coverage: per framework, how many clauses have an automated control behind them, how many are partial, and how many have none — each carrying the unit it is counted in, because \&quot;12 of 20\&quot; is not a fact until you know what the 20 are.  Nothing here is a verdict. There is no boolean, and a control that only a person has read counts one rung weaker than it claims to be, because only a check that can FAIL is evidence.
-     * @return TrustCoverage
+     * @return TrustTrustCoverage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TrustCoverage getTrustCoverage() throws ApiException {
-        ApiResponse<TrustCoverage> localVarResp = getTrustCoverageWithHttpInfo();
+    public TrustTrustCoverage getTrustCoverage() throws ApiException {
+        ApiResponse<TrustTrustCoverage> localVarResp = getTrustCoverageWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reads coverage: per framework, how many clauses have an automated control behind them, how many are partial, and how many have none — each carrying the unit it is counted in, because \&quot;12 of 20\&quot; is not a fact until you know what the 20 are.
      * Reads coverage: per framework, how many clauses have an automated control behind them, how many are partial, and how many have none — each carrying the unit it is counted in, because \&quot;12 of 20\&quot; is not a fact until you know what the 20 are.  Nothing here is a verdict. There is no boolean, and a control that only a person has read counts one rung weaker than it claims to be, because only a check that can FAIL is evidence.
-     * @return ApiResponse&lt;TrustCoverage&gt;
+     * @return ApiResponse&lt;TrustTrustCoverage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TrustCoverage> getTrustCoverageWithHttpInfo() throws ApiException {
+    public ApiResponse<TrustTrustCoverage> getTrustCoverageWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getTrustCoverageValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<TrustCoverage>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustTrustCoverage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -690,12 +715,13 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTrustCoverageAsync(final ApiCallback<TrustCoverage> _callback) throws ApiException {
+    public okhttp3.Call getTrustCoverageAsync(final ApiCallback<TrustTrustCoverage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTrustCoverageValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<TrustCoverage>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustTrustCoverage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -710,6 +736,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustCoverageByFrameworkCall(@javax.annotation.Nonnull String framework, final ApiCallback _callback) throws ApiException {
@@ -739,7 +766,8 @@ public class TrustApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -772,17 +800,18 @@ public class TrustApi {
      * Reads one framework clause by clause: every clause the standard publishes, what covers it, and which controls stand behind it — so a coverage number can be checked line by line rather than taken on trust.
      * Reads one framework clause by clause: every clause the standard publishes, what covers it, and which controls stand behind it — so a coverage number can be checked line by line rather than taken on trust.
      * @param framework Framework is the framework id — \&quot;soc2\&quot;, \&quot;iso27001\&quot;, \&quot;nist80053\&quot;. (required)
-     * @return ClauseCoverage
+     * @return TrustClauseCoverage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ClauseCoverage getTrustCoverageByFramework(@javax.annotation.Nonnull String framework) throws ApiException {
-        ApiResponse<ClauseCoverage> localVarResp = getTrustCoverageByFrameworkWithHttpInfo(framework);
+    public TrustClauseCoverage getTrustCoverageByFramework(@javax.annotation.Nonnull String framework) throws ApiException {
+        ApiResponse<TrustClauseCoverage> localVarResp = getTrustCoverageByFrameworkWithHttpInfo(framework);
         return localVarResp.getData();
     }
 
@@ -790,18 +819,19 @@ public class TrustApi {
      * Reads one framework clause by clause: every clause the standard publishes, what covers it, and which controls stand behind it — so a coverage number can be checked line by line rather than taken on trust.
      * Reads one framework clause by clause: every clause the standard publishes, what covers it, and which controls stand behind it — so a coverage number can be checked line by line rather than taken on trust.
      * @param framework Framework is the framework id — \&quot;soc2\&quot;, \&quot;iso27001\&quot;, \&quot;nist80053\&quot;. (required)
-     * @return ApiResponse&lt;ClauseCoverage&gt;
+     * @return ApiResponse&lt;TrustClauseCoverage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ClauseCoverage> getTrustCoverageByFrameworkWithHttpInfo(@javax.annotation.Nonnull String framework) throws ApiException {
+    public ApiResponse<TrustClauseCoverage> getTrustCoverageByFrameworkWithHttpInfo(@javax.annotation.Nonnull String framework) throws ApiException {
         okhttp3.Call localVarCall = getTrustCoverageByFrameworkValidateBeforeCall(framework, null);
-        Type localVarReturnType = new TypeToken<ClauseCoverage>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustClauseCoverage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -817,12 +847,13 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTrustCoverageByFrameworkAsync(@javax.annotation.Nonnull String framework, final ApiCallback<ClauseCoverage> _callback) throws ApiException {
+    public okhttp3.Call getTrustCoverageByFrameworkAsync(@javax.annotation.Nonnull String framework, final ApiCallback<TrustClauseCoverage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTrustCoverageByFrameworkValidateBeforeCall(framework, _callback);
-        Type localVarReturnType = new TypeToken<ClauseCoverage>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustClauseCoverage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -836,6 +867,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustDocumentsCall(final ApiCallback _callback) throws ApiException {
@@ -864,7 +896,8 @@ public class TrustApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -891,35 +924,37 @@ public class TrustApi {
     /**
      * Lists your organization&#39;s documents.
      * Lists your organization&#39;s documents. Because this is your own centre, a gated artifact carries its address here; through the published endpoint it does not.
-     * @return TrustDocuments
+     * @return TrustTrustDocuments
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TrustDocuments getTrustDocuments() throws ApiException {
-        ApiResponse<TrustDocuments> localVarResp = getTrustDocumentsWithHttpInfo();
+    public TrustTrustDocuments getTrustDocuments() throws ApiException {
+        ApiResponse<TrustTrustDocuments> localVarResp = getTrustDocumentsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists your organization&#39;s documents.
      * Lists your organization&#39;s documents. Because this is your own centre, a gated artifact carries its address here; through the published endpoint it does not.
-     * @return ApiResponse&lt;TrustDocuments&gt;
+     * @return ApiResponse&lt;TrustTrustDocuments&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TrustDocuments> getTrustDocumentsWithHttpInfo() throws ApiException {
+    public ApiResponse<TrustTrustDocuments> getTrustDocumentsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getTrustDocumentsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<TrustDocuments>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustTrustDocuments>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -934,12 +969,13 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTrustDocumentsAsync(final ApiCallback<TrustDocuments> _callback) throws ApiException {
+    public okhttp3.Call getTrustDocumentsAsync(final ApiCallback<TrustTrustDocuments> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTrustDocumentsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<TrustDocuments>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustTrustDocuments>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -957,6 +993,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustEvidenceCall(@javax.annotation.Nullable String control, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
@@ -1001,7 +1038,8 @@ public class TrustApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1039,6 +1077,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Object getTrustEvidence(@javax.annotation.Nullable String control, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String limit) throws ApiException {
@@ -1060,6 +1099,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> getTrustEvidenceWithHttpInfo(@javax.annotation.Nullable String control, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String limit) throws ApiException {
@@ -1083,6 +1123,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustEvidenceAsync(@javax.annotation.Nullable String control, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String limit, final ApiCallback<Object> _callback) throws ApiException {
@@ -1102,6 +1143,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustFaqCall(final ApiCallback _callback) throws ApiException {
@@ -1130,7 +1172,8 @@ public class TrustApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1157,35 +1200,37 @@ public class TrustApi {
     /**
      * Lists your knowledge base — the questions a reviewer asks, answered once.
      * Lists your knowledge base — the questions a reviewer asks, answered once.
-     * @return FaqList
+     * @return TrustFaqList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FaqList getTrustFaq() throws ApiException {
-        ApiResponse<FaqList> localVarResp = getTrustFaqWithHttpInfo();
+    public TrustFaqList getTrustFaq() throws ApiException {
+        ApiResponse<TrustFaqList> localVarResp = getTrustFaqWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists your knowledge base — the questions a reviewer asks, answered once.
      * Lists your knowledge base — the questions a reviewer asks, answered once.
-     * @return ApiResponse&lt;FaqList&gt;
+     * @return ApiResponse&lt;TrustFaqList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FaqList> getTrustFaqWithHttpInfo() throws ApiException {
+    public ApiResponse<TrustFaqList> getTrustFaqWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getTrustFaqValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<FaqList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustFaqList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1200,12 +1245,13 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTrustFaqAsync(final ApiCallback<FaqList> _callback) throws ApiException {
+    public okhttp3.Call getTrustFaqAsync(final ApiCallback<TrustFaqList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTrustFaqValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<FaqList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustFaqList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1219,6 +1265,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustFrameworksCall(final ApiCallback _callback) throws ApiException {
@@ -1247,7 +1294,8 @@ public class TrustApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1274,35 +1322,37 @@ public class TrustApi {
     /**
      * Lists the frameworks coverage is computed against, and how many clauses each publishes.
      * Lists the frameworks coverage is computed against, and how many clauses each publishes. That count is the denominator of every coverage number, which is what keeps an uncovered clause visible instead of dropping out of the fraction.
-     * @return FrameworkList
+     * @return TrustFrameworkList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FrameworkList getTrustFrameworks() throws ApiException {
-        ApiResponse<FrameworkList> localVarResp = getTrustFrameworksWithHttpInfo();
+    public TrustFrameworkList getTrustFrameworks() throws ApiException {
+        ApiResponse<TrustFrameworkList> localVarResp = getTrustFrameworksWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the frameworks coverage is computed against, and how many clauses each publishes.
      * Lists the frameworks coverage is computed against, and how many clauses each publishes. That count is the denominator of every coverage number, which is what keeps an uncovered clause visible instead of dropping out of the fraction.
-     * @return ApiResponse&lt;FrameworkList&gt;
+     * @return ApiResponse&lt;TrustFrameworkList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FrameworkList> getTrustFrameworksWithHttpInfo() throws ApiException {
+    public ApiResponse<TrustFrameworkList> getTrustFrameworksWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getTrustFrameworksValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<FrameworkList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustFrameworkList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1317,12 +1367,13 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTrustFrameworksAsync(final ApiCallback<FrameworkList> _callback) throws ApiException {
+    public okhttp3.Call getTrustFrameworksAsync(final ApiCallback<TrustFrameworkList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTrustFrameworksValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<FrameworkList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustFrameworkList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1336,6 +1387,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustPoliciesCall(final ApiCallback _callback) throws ApiException {
@@ -1364,7 +1416,8 @@ public class TrustApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1391,35 +1444,37 @@ public class TrustApi {
     /**
      * Lists your organization&#39;s published policies.
      * Lists your organization&#39;s published policies.
-     * @return PolicyList
+     * @return TrustPolicyList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PolicyList getTrustPolicies() throws ApiException {
-        ApiResponse<PolicyList> localVarResp = getTrustPoliciesWithHttpInfo();
+    public TrustPolicyList getTrustPolicies() throws ApiException {
+        ApiResponse<TrustPolicyList> localVarResp = getTrustPoliciesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists your organization&#39;s published policies.
      * Lists your organization&#39;s published policies.
-     * @return ApiResponse&lt;PolicyList&gt;
+     * @return ApiResponse&lt;TrustPolicyList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PolicyList> getTrustPoliciesWithHttpInfo() throws ApiException {
+    public ApiResponse<TrustPolicyList> getTrustPoliciesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getTrustPoliciesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PolicyList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustPolicyList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1434,12 +1489,13 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTrustPoliciesAsync(final ApiCallback<PolicyList> _callback) throws ApiException {
+    public okhttp3.Call getTrustPoliciesAsync(final ApiCallback<TrustPolicyList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTrustPoliciesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PolicyList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustPolicyList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1453,6 +1509,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustProfileCall(final ApiCallback _callback) throws ApiException {
@@ -1481,7 +1538,8 @@ public class TrustApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1515,6 +1573,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Object getTrustProfile() throws ApiException {
@@ -1532,6 +1591,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> getTrustProfileWithHttpInfo() throws ApiException {
@@ -1551,6 +1611,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustProfileAsync(final ApiCallback<Object> _callback) throws ApiException {
@@ -1571,6 +1632,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustPublishedByOrgCall(@javax.annotation.Nonnull String org, final ApiCallback _callback) throws ApiException {
@@ -1600,7 +1662,8 @@ public class TrustApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1633,17 +1696,18 @@ public class TrustApi {
      * Reads a published trust centre — the whole thing in one answer: the organization&#39;s profile, its control inventory, coverage computed against each framework&#39;s whole published clause list, its documents, subprocessors, policies, knowledge base, updates and risk profile.
      * Reads a published trust centre — the whole thing in one answer: the organization&#39;s profile, its control inventory, coverage computed against each framework&#39;s whole published clause list, its documents, subprocessors, policies, knowledge base, updates and risk profile.  This is the PUBLIC endpoint and needs no credential, because a published trust centre is a public document. It answers only for an organization that has published one — an organization that has not is not found rather than empty, since an empty centre and a centre nobody meant to show read the same and are not the same thing.  A gated document appears here with its title, its type and its date and NO address: the listing says the artifact exists and that reading it takes a grant. Nothing an independent auditor signed is ever released through this endpoint.
      * @param org Org is the organization&#39;s slug — the name in its address. (required)
-     * @return Centre
+     * @return TrustCentre
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Centre getTrustPublishedByOrg(@javax.annotation.Nonnull String org) throws ApiException {
-        ApiResponse<Centre> localVarResp = getTrustPublishedByOrgWithHttpInfo(org);
+    public TrustCentre getTrustPublishedByOrg(@javax.annotation.Nonnull String org) throws ApiException {
+        ApiResponse<TrustCentre> localVarResp = getTrustPublishedByOrgWithHttpInfo(org);
         return localVarResp.getData();
     }
 
@@ -1651,18 +1715,19 @@ public class TrustApi {
      * Reads a published trust centre — the whole thing in one answer: the organization&#39;s profile, its control inventory, coverage computed against each framework&#39;s whole published clause list, its documents, subprocessors, policies, knowledge base, updates and risk profile.
      * Reads a published trust centre — the whole thing in one answer: the organization&#39;s profile, its control inventory, coverage computed against each framework&#39;s whole published clause list, its documents, subprocessors, policies, knowledge base, updates and risk profile.  This is the PUBLIC endpoint and needs no credential, because a published trust centre is a public document. It answers only for an organization that has published one — an organization that has not is not found rather than empty, since an empty centre and a centre nobody meant to show read the same and are not the same thing.  A gated document appears here with its title, its type and its date and NO address: the listing says the artifact exists and that reading it takes a grant. Nothing an independent auditor signed is ever released through this endpoint.
      * @param org Org is the organization&#39;s slug — the name in its address. (required)
-     * @return ApiResponse&lt;Centre&gt;
+     * @return ApiResponse&lt;TrustCentre&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Centre> getTrustPublishedByOrgWithHttpInfo(@javax.annotation.Nonnull String org) throws ApiException {
+    public ApiResponse<TrustCentre> getTrustPublishedByOrgWithHttpInfo(@javax.annotation.Nonnull String org) throws ApiException {
         okhttp3.Call localVarCall = getTrustPublishedByOrgValidateBeforeCall(org, null);
-        Type localVarReturnType = new TypeToken<Centre>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustCentre>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1678,12 +1743,13 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTrustPublishedByOrgAsync(@javax.annotation.Nonnull String org, final ApiCallback<Centre> _callback) throws ApiException {
+    public okhttp3.Call getTrustPublishedByOrgAsync(@javax.annotation.Nonnull String org, final ApiCallback<TrustCentre> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTrustPublishedByOrgValidateBeforeCall(org, _callback);
-        Type localVarReturnType = new TypeToken<Centre>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustCentre>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1697,6 +1763,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustRiskCall(final ApiCallback _callback) throws ApiException {
@@ -1725,7 +1792,8 @@ public class TrustApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1759,6 +1827,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Object getTrustRisk() throws ApiException {
@@ -1776,6 +1845,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> getTrustRiskWithHttpInfo() throws ApiException {
@@ -1795,6 +1865,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustRiskAsync(final ApiCallback<Object> _callback) throws ApiException {
@@ -1814,6 +1885,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustSubprocessorsCall(final ApiCallback _callback) throws ApiException {
@@ -1842,7 +1914,8 @@ public class TrustApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1869,35 +1942,37 @@ public class TrustApi {
     /**
      * Lists the third parties your organization sends data to, each naming what it is for.
      * Lists the third parties your organization sends data to, each naming what it is for.
-     * @return SubprocessorList
+     * @return TrustSubprocessorList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SubprocessorList getTrustSubprocessors() throws ApiException {
-        ApiResponse<SubprocessorList> localVarResp = getTrustSubprocessorsWithHttpInfo();
+    public TrustSubprocessorList getTrustSubprocessors() throws ApiException {
+        ApiResponse<TrustSubprocessorList> localVarResp = getTrustSubprocessorsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the third parties your organization sends data to, each naming what it is for.
      * Lists the third parties your organization sends data to, each naming what it is for.
-     * @return ApiResponse&lt;SubprocessorList&gt;
+     * @return ApiResponse&lt;TrustSubprocessorList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SubprocessorList> getTrustSubprocessorsWithHttpInfo() throws ApiException {
+    public ApiResponse<TrustSubprocessorList> getTrustSubprocessorsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getTrustSubprocessorsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<SubprocessorList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustSubprocessorList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1912,12 +1987,13 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTrustSubprocessorsAsync(final ApiCallback<SubprocessorList> _callback) throws ApiException {
+    public okhttp3.Call getTrustSubprocessorsAsync(final ApiCallback<TrustSubprocessorList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTrustSubprocessorsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<SubprocessorList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustSubprocessorList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1931,6 +2007,7 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTrustUpdatesCall(final ApiCallback _callback) throws ApiException {
@@ -1959,7 +2036,8 @@ public class TrustApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1986,35 +2064,37 @@ public class TrustApi {
     /**
      * Lists your trust-centre updates, newest as you ordered them.
      * Lists your trust-centre updates, newest as you ordered them.
-     * @return UpdateList
+     * @return TrustUpdateList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public UpdateList getTrustUpdates() throws ApiException {
-        ApiResponse<UpdateList> localVarResp = getTrustUpdatesWithHttpInfo();
+    public TrustUpdateList getTrustUpdates() throws ApiException {
+        ApiResponse<TrustUpdateList> localVarResp = getTrustUpdatesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists your trust-centre updates, newest as you ordered them.
      * Lists your trust-centre updates, newest as you ordered them.
-     * @return ApiResponse&lt;UpdateList&gt;
+     * @return ApiResponse&lt;TrustUpdateList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UpdateList> getTrustUpdatesWithHttpInfo() throws ApiException {
+    public ApiResponse<TrustUpdateList> getTrustUpdatesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getTrustUpdatesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<UpdateList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustUpdateList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2029,12 +2109,13 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTrustUpdatesAsync(final ApiCallback<UpdateList> _callback) throws ApiException {
+    public okhttp3.Call getTrustUpdatesAsync(final ApiCallback<TrustUpdateList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTrustUpdatesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<UpdateList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TrustUpdateList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2042,7 +2123,7 @@ public class TrustApi {
      * Build call for putTrustByKindById
      * @param kind Kind is the section being written. The URL is the authority. (required)
      * @param id ID is the record&#39;s id. Omit it on a create and one is minted; the single-valued sections (profile, risk) hold one record whatever is named. (required)
-     * @param sectionWrite  (required)
+     * @param trustSectionWrite  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2051,9 +2132,10 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putTrustByKindByIdCall(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull SectionWrite sectionWrite, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putTrustByKindByIdCall(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustSectionWrite trustSectionWrite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2067,7 +2149,7 @@ public class TrustApi {
             basePath = null;
         }
 
-        Object localVarPostBody = sectionWrite;
+        Object localVarPostBody = trustSectionWrite;
 
         // create path and map variables
         String localVarPath = "/v1/trust/{kind}/{id}"
@@ -2081,7 +2163,8 @@ public class TrustApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2101,7 +2184,7 @@ public class TrustApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putTrustByKindByIdValidateBeforeCall(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull SectionWrite sectionWrite, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putTrustByKindByIdValidateBeforeCall(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustSectionWrite trustSectionWrite, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'kind' is set
         if (kind == null) {
             throw new ApiException("Missing the required parameter 'kind' when calling putTrustByKindById(Async)");
@@ -2112,62 +2195,64 @@ public class TrustApi {
             throw new ApiException("Missing the required parameter 'id' when calling putTrustByKindById(Async)");
         }
 
-        // verify the required parameter 'sectionWrite' is set
-        if (sectionWrite == null) {
-            throw new ApiException("Missing the required parameter 'sectionWrite' when calling putTrustByKindById(Async)");
+        // verify the required parameter 'trustSectionWrite' is set
+        if (trustSectionWrite == null) {
+            throw new ApiException("Missing the required parameter 'trustSectionWrite' when calling putTrustByKindById(Async)");
         }
 
-        return putTrustByKindByIdCall(kind, id, sectionWrite, _callback);
+        return putTrustByKindByIdCall(kind, id, trustSectionWrite, _callback);
 
     }
 
     /**
      * Writes one record into a section of YOUR organization&#39;s trust centre — profile, control, document, subprocessor, policy, faq, update or risk.
-     * Writes one record into a section of YOUR organization&#39;s trust centre — profile, control, document, subprocessor, policy, faq, update or risk.  A control written here is held to exactly the rule a control committed to the deployment&#39;s own inventory is held to, by the same validator: its prose may not claim a certificate and may not name a framework (a framework belongs in the mappings, where it arrives attached to a number), anything short of automated must say what is missing, and a mapping to a clause no framework declares is refused rather than scored as nothing.  A document defaults to GATED. An artifact an independent auditor signed — a SOC 2 report, an ISO certificate, a penetration test, an auditor letter — cannot be made public at all; it is released through a grant. A self-assessment can, because the organization is the one attesting it.  The deployment&#39;s OWN control inventory is governed in git and is not writable here: naming one of its ids is a conflict, not an overwrite.
+     * Writes one record into a section of YOUR organization&#39;s trust centre — profile, control, document, subprocessor, policy, faq, update or risk.  A control written here is held to exactly the rule a control committed to the deployment&#39;s own inventory is held to, by the same validator: its prose may not claim a certificate and may not name a framework (a framework belongs in the mappings, where it arrives attached to a number), anything short of automated must say what is missing, and a mapping to a clause no framework declares is refused rather than scored as nothing.  A document defaults to GATED. An artifact an independent auditor signed — an attestation report, a certificate, a penetration test, an auditor letter — cannot be made public at all; it is released through a grant. A self-assessment can, because the organization is the one attesting it.  The deployment&#39;s OWN control inventory is governed in git and is not writable here: naming one of its ids is a conflict, not an overwrite.
      * @param kind Kind is the section being written. The URL is the authority. (required)
      * @param id ID is the record&#39;s id. Omit it on a create and one is minted; the single-valued sections (profile, risk) hold one record whatever is named. (required)
-     * @param sectionWrite  (required)
-     * @return Written
+     * @param trustSectionWrite  (required)
+     * @return TrustWritten
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Written putTrustByKindById(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull SectionWrite sectionWrite) throws ApiException {
-        ApiResponse<Written> localVarResp = putTrustByKindByIdWithHttpInfo(kind, id, sectionWrite);
+    public TrustWritten putTrustByKindById(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustSectionWrite trustSectionWrite) throws ApiException {
+        ApiResponse<TrustWritten> localVarResp = putTrustByKindByIdWithHttpInfo(kind, id, trustSectionWrite);
         return localVarResp.getData();
     }
 
     /**
      * Writes one record into a section of YOUR organization&#39;s trust centre — profile, control, document, subprocessor, policy, faq, update or risk.
-     * Writes one record into a section of YOUR organization&#39;s trust centre — profile, control, document, subprocessor, policy, faq, update or risk.  A control written here is held to exactly the rule a control committed to the deployment&#39;s own inventory is held to, by the same validator: its prose may not claim a certificate and may not name a framework (a framework belongs in the mappings, where it arrives attached to a number), anything short of automated must say what is missing, and a mapping to a clause no framework declares is refused rather than scored as nothing.  A document defaults to GATED. An artifact an independent auditor signed — a SOC 2 report, an ISO certificate, a penetration test, an auditor letter — cannot be made public at all; it is released through a grant. A self-assessment can, because the organization is the one attesting it.  The deployment&#39;s OWN control inventory is governed in git and is not writable here: naming one of its ids is a conflict, not an overwrite.
+     * Writes one record into a section of YOUR organization&#39;s trust centre — profile, control, document, subprocessor, policy, faq, update or risk.  A control written here is held to exactly the rule a control committed to the deployment&#39;s own inventory is held to, by the same validator: its prose may not claim a certificate and may not name a framework (a framework belongs in the mappings, where it arrives attached to a number), anything short of automated must say what is missing, and a mapping to a clause no framework declares is refused rather than scored as nothing.  A document defaults to GATED. An artifact an independent auditor signed — an attestation report, a certificate, a penetration test, an auditor letter — cannot be made public at all; it is released through a grant. A self-assessment can, because the organization is the one attesting it.  The deployment&#39;s OWN control inventory is governed in git and is not writable here: naming one of its ids is a conflict, not an overwrite.
      * @param kind Kind is the section being written. The URL is the authority. (required)
      * @param id ID is the record&#39;s id. Omit it on a create and one is minted; the single-valued sections (profile, risk) hold one record whatever is named. (required)
-     * @param sectionWrite  (required)
-     * @return ApiResponse&lt;Written&gt;
+     * @param trustSectionWrite  (required)
+     * @return ApiResponse&lt;TrustWritten&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Written> putTrustByKindByIdWithHttpInfo(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull SectionWrite sectionWrite) throws ApiException {
-        okhttp3.Call localVarCall = putTrustByKindByIdValidateBeforeCall(kind, id, sectionWrite, null);
-        Type localVarReturnType = new TypeToken<Written>(){}.getType();
+    public ApiResponse<TrustWritten> putTrustByKindByIdWithHttpInfo(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustSectionWrite trustSectionWrite) throws ApiException {
+        okhttp3.Call localVarCall = putTrustByKindByIdValidateBeforeCall(kind, id, trustSectionWrite, null);
+        Type localVarReturnType = new TypeToken<TrustWritten>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Writes one record into a section of YOUR organization&#39;s trust centre — profile, control, document, subprocessor, policy, faq, update or risk. (asynchronously)
-     * Writes one record into a section of YOUR organization&#39;s trust centre — profile, control, document, subprocessor, policy, faq, update or risk.  A control written here is held to exactly the rule a control committed to the deployment&#39;s own inventory is held to, by the same validator: its prose may not claim a certificate and may not name a framework (a framework belongs in the mappings, where it arrives attached to a number), anything short of automated must say what is missing, and a mapping to a clause no framework declares is refused rather than scored as nothing.  A document defaults to GATED. An artifact an independent auditor signed — a SOC 2 report, an ISO certificate, a penetration test, an auditor letter — cannot be made public at all; it is released through a grant. A self-assessment can, because the organization is the one attesting it.  The deployment&#39;s OWN control inventory is governed in git and is not writable here: naming one of its ids is a conflict, not an overwrite.
+     * Writes one record into a section of YOUR organization&#39;s trust centre — profile, control, document, subprocessor, policy, faq, update or risk.  A control written here is held to exactly the rule a control committed to the deployment&#39;s own inventory is held to, by the same validator: its prose may not claim a certificate and may not name a framework (a framework belongs in the mappings, where it arrives attached to a number), anything short of automated must say what is missing, and a mapping to a clause no framework declares is refused rather than scored as nothing.  A document defaults to GATED. An artifact an independent auditor signed — an attestation report, a certificate, a penetration test, an auditor letter — cannot be made public at all; it is released through a grant. A self-assessment can, because the organization is the one attesting it.  The deployment&#39;s OWN control inventory is governed in git and is not writable here: naming one of its ids is a conflict, not an overwrite.
      * @param kind Kind is the section being written. The URL is the authority. (required)
      * @param id ID is the record&#39;s id. Omit it on a create and one is minted; the single-valued sections (profile, risk) hold one record whatever is named. (required)
-     * @param sectionWrite  (required)
+     * @param trustSectionWrite  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2176,12 +2261,13 @@ public class TrustApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putTrustByKindByIdAsync(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull SectionWrite sectionWrite, final ApiCallback<Written> _callback) throws ApiException {
+    public okhttp3.Call putTrustByKindByIdAsync(@javax.annotation.Nonnull String kind, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustSectionWrite trustSectionWrite, final ApiCallback<TrustWritten> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putTrustByKindByIdValidateBeforeCall(kind, id, sectionWrite, _callback);
-        Type localVarReturnType = new TypeToken<Written>(){}.getType();
+        okhttp3.Call localVarCall = putTrustByKindByIdValidateBeforeCall(kind, id, trustSectionWrite, _callback);
+        Type localVarReturnType = new TypeToken<TrustWritten>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

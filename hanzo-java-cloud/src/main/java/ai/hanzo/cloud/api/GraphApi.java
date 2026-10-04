@@ -27,16 +27,31 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.GraphAssertIn;
-import ai.hanzo.cloud.model.GraphAssertOut;
-import ai.hanzo.cloud.model.GraphNeighborsIn;
-import ai.hanzo.cloud.model.GraphNeighborsOut;
+import ai.hanzo.cloud.model.GraphGraphAnswerIn;
+import ai.hanzo.cloud.model.GraphGraphAnswerOut;
+import ai.hanzo.cloud.model.GraphGraphAssertIn;
+import ai.hanzo.cloud.model.GraphGraphAssertOut;
+import ai.hanzo.cloud.model.GraphGraphCommunitiesIn;
+import ai.hanzo.cloud.model.GraphGraphCommunitiesOut;
+import ai.hanzo.cloud.model.GraphGraphDeriveIn;
+import ai.hanzo.cloud.model.GraphGraphDeriveOut;
+import ai.hanzo.cloud.model.GraphGraphDiffIn;
+import ai.hanzo.cloud.model.GraphGraphDiffOut;
+import ai.hanzo.cloud.model.GraphGraphEraseIn;
+import ai.hanzo.cloud.model.GraphGraphEraseOut;
+import ai.hanzo.cloud.model.GraphGraphExtractOut;
+import ai.hanzo.cloud.model.GraphGraphNeighborsIn;
+import ai.hanzo.cloud.model.GraphGraphNeighborsOut;
+import ai.hanzo.cloud.model.GraphGraphPathIn;
+import ai.hanzo.cloud.model.GraphGraphPathOut;
+import ai.hanzo.cloud.model.GraphGraphReadOut;
+import ai.hanzo.cloud.model.GraphGraphResolveIn;
+import ai.hanzo.cloud.model.GraphGraphResolveOut;
+import ai.hanzo.cloud.model.GraphGraphSourceIn;
+import ai.hanzo.cloud.model.GraphGraphVocabularyOut;
 import ai.hanzo.cloud.model.GraphQLIn;
 import ai.hanzo.cloud.model.GraphQLOut;
-import ai.hanzo.cloud.model.GraphReadOut;
-import ai.hanzo.cloud.model.GraphResolveIn;
-import ai.hanzo.cloud.model.GraphResolveOut;
-import ai.hanzo.cloud.model.GraphVocabularyOut;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -82,8 +97,8 @@ public class GraphApi {
     }
 
     /**
-     * Build call for graphAssert
-     * @param graphAssertIn  (required)
+     * Build call for graphAnswer
+     * @param graphGraphAnswerIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -92,9 +107,10 @@ public class GraphApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call graphAssertCall(@javax.annotation.Nonnull GraphAssertIn graphAssertIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call graphAnswerCall(@javax.annotation.Nonnull GraphGraphAnswerIn graphGraphAnswerIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -108,7 +124,139 @@ public class GraphApi {
             basePath = null;
         }
 
-        Object localVarPostBody = graphAssertIn;
+        Object localVarPostBody = graphGraphAnswerIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/graph/answer";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call graphAnswerValidateBeforeCall(@javax.annotation.Nonnull GraphGraphAnswerIn graphGraphAnswerIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'graphGraphAnswerIn' is set
+        if (graphGraphAnswerIn == null) {
+            throw new ApiException("Missing the required parameter 'graphGraphAnswerIn' when calling graphAnswer(Async)");
+        }
+
+        return graphAnswerCall(graphGraphAnswerIn, _callback);
+
+    }
+
+    /**
+     * Answers a question from the whole graph and cites the assertions it rests on.
+     * Answers a question from the whole graph and cites the assertions it rests on.  It asks a model what each community&#39;s in-force facts say about the question, then asks once more for one answer from those findings. Every cited ID is checked to be a row of this graph, a failed model call fails the answer, and the calls are billed to the calling organization.  Time: as_of and as_known place the graph that is read; either absent is now.
+     * @param graphGraphAnswerIn  (required)
+     * @return GraphGraphAnswerOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public GraphGraphAnswerOut graphAnswer(@javax.annotation.Nonnull GraphGraphAnswerIn graphGraphAnswerIn) throws ApiException {
+        ApiResponse<GraphGraphAnswerOut> localVarResp = graphAnswerWithHttpInfo(graphGraphAnswerIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Answers a question from the whole graph and cites the assertions it rests on.
+     * Answers a question from the whole graph and cites the assertions it rests on.  It asks a model what each community&#39;s in-force facts say about the question, then asks once more for one answer from those findings. Every cited ID is checked to be a row of this graph, a failed model call fails the answer, and the calls are billed to the calling organization.  Time: as_of and as_known place the graph that is read; either absent is now.
+     * @param graphGraphAnswerIn  (required)
+     * @return ApiResponse&lt;GraphGraphAnswerOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GraphGraphAnswerOut> graphAnswerWithHttpInfo(@javax.annotation.Nonnull GraphGraphAnswerIn graphGraphAnswerIn) throws ApiException {
+        okhttp3.Call localVarCall = graphAnswerValidateBeforeCall(graphGraphAnswerIn, null);
+        Type localVarReturnType = new TypeToken<GraphGraphAnswerOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Answers a question from the whole graph and cites the assertions it rests on. (asynchronously)
+     * Answers a question from the whole graph and cites the assertions it rests on.  It asks a model what each community&#39;s in-force facts say about the question, then asks once more for one answer from those findings. Every cited ID is checked to be a row of this graph, a failed model call fails the answer, and the calls are billed to the calling organization.  Time: as_of and as_known place the graph that is read; either absent is now.
+     * @param graphGraphAnswerIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphAnswerAsync(@javax.annotation.Nonnull GraphGraphAnswerIn graphGraphAnswerIn, final ApiCallback<GraphGraphAnswerOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = graphAnswerValidateBeforeCall(graphGraphAnswerIn, _callback);
+        Type localVarReturnType = new TypeToken<GraphGraphAnswerOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for graphAssert
+     * @param graphGraphAssertIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphAssertCall(@javax.annotation.Nonnull GraphGraphAssertIn graphGraphAssertIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = graphGraphAssertIn;
 
         // create path and map variables
         String localVarPath = "/v1/graph";
@@ -120,7 +268,8 @@ public class GraphApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -140,57 +289,59 @@ public class GraphApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call graphAssertValidateBeforeCall(@javax.annotation.Nonnull GraphAssertIn graphAssertIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'graphAssertIn' is set
-        if (graphAssertIn == null) {
-            throw new ApiException("Missing the required parameter 'graphAssertIn' when calling graphAssert(Async)");
+    private okhttp3.Call graphAssertValidateBeforeCall(@javax.annotation.Nonnull GraphGraphAssertIn graphGraphAssertIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'graphGraphAssertIn' is set
+        if (graphGraphAssertIn == null) {
+            throw new ApiException("Missing the required parameter 'graphGraphAssertIn' when calling graphAssert(Async)");
         }
 
-        return graphAssertCall(graphAssertIn, _callback);
+        return graphAssertCall(graphGraphAssertIn, _callback);
 
     }
 
     /**
-     * Assert what is true of an entity
-     * 
-     * @param graphAssertIn  (required)
-     * @return GraphAssertOut
+     * Records a batch of assertions and counts what became of each.
+     * Records a batch of assertions and counts what became of each.  Each member is judged alone: one refusal does not discard the rest, and a member this plane already holds is a duplicate, not a refusal. A batch with nothing admitted answers 400.  Time: at and until are when the statement was so, which an as_of read is bounded by; the server stamps knowable, the later of seen and its own clock, which an as_known read is bounded by. Nothing is overwritten: a correction is the statement filed again, and the version known latest speaks for it.
+     * @param graphGraphAssertIn  (required)
+     * @return GraphGraphAssertOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public GraphAssertOut graphAssert(@javax.annotation.Nonnull GraphAssertIn graphAssertIn) throws ApiException {
-        ApiResponse<GraphAssertOut> localVarResp = graphAssertWithHttpInfo(graphAssertIn);
+    public GraphGraphAssertOut graphAssert(@javax.annotation.Nonnull GraphGraphAssertIn graphGraphAssertIn) throws ApiException {
+        ApiResponse<GraphGraphAssertOut> localVarResp = graphAssertWithHttpInfo(graphGraphAssertIn);
         return localVarResp.getData();
     }
 
     /**
-     * Assert what is true of an entity
-     * 
-     * @param graphAssertIn  (required)
-     * @return ApiResponse&lt;GraphAssertOut&gt;
+     * Records a batch of assertions and counts what became of each.
+     * Records a batch of assertions and counts what became of each.  Each member is judged alone: one refusal does not discard the rest, and a member this plane already holds is a duplicate, not a refusal. A batch with nothing admitted answers 400.  Time: at and until are when the statement was so, which an as_of read is bounded by; the server stamps knowable, the later of seen and its own clock, which an as_known read is bounded by. Nothing is overwritten: a correction is the statement filed again, and the version known latest speaks for it.
+     * @param graphGraphAssertIn  (required)
+     * @return ApiResponse&lt;GraphGraphAssertOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GraphAssertOut> graphAssertWithHttpInfo(@javax.annotation.Nonnull GraphAssertIn graphAssertIn) throws ApiException {
-        okhttp3.Call localVarCall = graphAssertValidateBeforeCall(graphAssertIn, null);
-        Type localVarReturnType = new TypeToken<GraphAssertOut>(){}.getType();
+    public ApiResponse<GraphGraphAssertOut> graphAssertWithHttpInfo(@javax.annotation.Nonnull GraphGraphAssertIn graphGraphAssertIn) throws ApiException {
+        okhttp3.Call localVarCall = graphAssertValidateBeforeCall(graphGraphAssertIn, null);
+        Type localVarReturnType = new TypeToken<GraphGraphAssertOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Assert what is true of an entity (asynchronously)
-     * 
-     * @param graphAssertIn  (required)
+     * Records a batch of assertions and counts what became of each. (asynchronously)
+     * Records a batch of assertions and counts what became of each.  Each member is judged alone: one refusal does not discard the rest, and a member this plane already holds is a duplicate, not a refusal. A batch with nothing admitted answers 400.  Time: at and until are when the statement was so, which an as_of read is bounded by; the server stamps knowable, the later of seen and its own clock, which an as_known read is bounded by. Nothing is overwritten: a correction is the statement filed again, and the version known latest speaks for it.
+     * @param graphGraphAssertIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -199,18 +350,19 @@ public class GraphApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call graphAssertAsync(@javax.annotation.Nonnull GraphAssertIn graphAssertIn, final ApiCallback<GraphAssertOut> _callback) throws ApiException {
+    public okhttp3.Call graphAssertAsync(@javax.annotation.Nonnull GraphGraphAssertIn graphGraphAssertIn, final ApiCallback<GraphGraphAssertOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = graphAssertValidateBeforeCall(graphAssertIn, _callback);
-        Type localVarReturnType = new TypeToken<GraphAssertOut>(){}.getType();
+        okhttp3.Call localVarCall = graphAssertValidateBeforeCall(graphGraphAssertIn, _callback);
+        Type localVarReturnType = new TypeToken<GraphGraphAssertOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for graphNeighbors
-     * @param graphNeighborsIn  (required)
+     * Build call for graphCommunities
+     * @param graphGraphCommunitiesIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -219,9 +371,10 @@ public class GraphApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call graphNeighborsCall(@javax.annotation.Nonnull GraphNeighborsIn graphNeighborsIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call graphCommunitiesCall(@javax.annotation.Nonnull GraphGraphCommunitiesIn graphGraphCommunitiesIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -235,10 +388,10 @@ public class GraphApi {
             basePath = null;
         }
 
-        Object localVarPostBody = graphNeighborsIn;
+        Object localVarPostBody = graphGraphCommunitiesIn;
 
         // create path and map variables
-        String localVarPath = "/v1/graph/neighbors";
+        String localVarPath = "/v1/graph/communities";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -247,7 +400,8 @@ public class GraphApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -267,57 +421,59 @@ public class GraphApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call graphNeighborsValidateBeforeCall(@javax.annotation.Nonnull GraphNeighborsIn graphNeighborsIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'graphNeighborsIn' is set
-        if (graphNeighborsIn == null) {
-            throw new ApiException("Missing the required parameter 'graphNeighborsIn' when calling graphNeighbors(Async)");
+    private okhttp3.Call graphCommunitiesValidateBeforeCall(@javax.annotation.Nonnull GraphGraphCommunitiesIn graphGraphCommunitiesIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'graphGraphCommunitiesIn' is set
+        if (graphGraphCommunitiesIn == null) {
+            throw new ApiException("Missing the required parameter 'graphGraphCommunitiesIn' when calling graphCommunities(Async)");
         }
 
-        return graphNeighborsCall(graphNeighborsIn, _callback);
+        return graphCommunitiesCall(graphGraphCommunitiesIn, _callback);
 
     }
 
     /**
-     * Walk the edges from a seed set, bounded
-     * 
-     * @param graphNeighborsIn  (required)
-     * @return GraphNeighborsOut
+     * Partitions the edge graph into sets of entities more densely connected to each other than to the rest.
+     * Partitions the edge graph into sets of entities more densely connected to each other than to the rest.  The graph is the one a walk reads, direction dropped, and the partition is deterministic: the same graph at the same point numbers the same communities.  Time: as_of and as_known place the graph that is partitioned; either absent is now.
+     * @param graphGraphCommunitiesIn  (required)
+     * @return GraphGraphCommunitiesOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public GraphNeighborsOut graphNeighbors(@javax.annotation.Nonnull GraphNeighborsIn graphNeighborsIn) throws ApiException {
-        ApiResponse<GraphNeighborsOut> localVarResp = graphNeighborsWithHttpInfo(graphNeighborsIn);
+    public GraphGraphCommunitiesOut graphCommunities(@javax.annotation.Nonnull GraphGraphCommunitiesIn graphGraphCommunitiesIn) throws ApiException {
+        ApiResponse<GraphGraphCommunitiesOut> localVarResp = graphCommunitiesWithHttpInfo(graphGraphCommunitiesIn);
         return localVarResp.getData();
     }
 
     /**
-     * Walk the edges from a seed set, bounded
-     * 
-     * @param graphNeighborsIn  (required)
-     * @return ApiResponse&lt;GraphNeighborsOut&gt;
+     * Partitions the edge graph into sets of entities more densely connected to each other than to the rest.
+     * Partitions the edge graph into sets of entities more densely connected to each other than to the rest.  The graph is the one a walk reads, direction dropped, and the partition is deterministic: the same graph at the same point numbers the same communities.  Time: as_of and as_known place the graph that is partitioned; either absent is now.
+     * @param graphGraphCommunitiesIn  (required)
+     * @return ApiResponse&lt;GraphGraphCommunitiesOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GraphNeighborsOut> graphNeighborsWithHttpInfo(@javax.annotation.Nonnull GraphNeighborsIn graphNeighborsIn) throws ApiException {
-        okhttp3.Call localVarCall = graphNeighborsValidateBeforeCall(graphNeighborsIn, null);
-        Type localVarReturnType = new TypeToken<GraphNeighborsOut>(){}.getType();
+    public ApiResponse<GraphGraphCommunitiesOut> graphCommunitiesWithHttpInfo(@javax.annotation.Nonnull GraphGraphCommunitiesIn graphGraphCommunitiesIn) throws ApiException {
+        okhttp3.Call localVarCall = graphCommunitiesValidateBeforeCall(graphGraphCommunitiesIn, null);
+        Type localVarReturnType = new TypeToken<GraphGraphCommunitiesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Walk the edges from a seed set, bounded (asynchronously)
-     * 
-     * @param graphNeighborsIn  (required)
+     * Partitions the edge graph into sets of entities more densely connected to each other than to the rest. (asynchronously)
+     * Partitions the edge graph into sets of entities more densely connected to each other than to the rest.  The graph is the one a walk reads, direction dropped, and the partition is deterministic: the same graph at the same point numbers the same communities.  Time: as_of and as_known place the graph that is partitioned; either absent is now.
+     * @param graphGraphCommunitiesIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -326,12 +482,937 @@ public class GraphApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call graphNeighborsAsync(@javax.annotation.Nonnull GraphNeighborsIn graphNeighborsIn, final ApiCallback<GraphNeighborsOut> _callback) throws ApiException {
+    public okhttp3.Call graphCommunitiesAsync(@javax.annotation.Nonnull GraphGraphCommunitiesIn graphGraphCommunitiesIn, final ApiCallback<GraphGraphCommunitiesOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = graphNeighborsValidateBeforeCall(graphNeighborsIn, _callback);
-        Type localVarReturnType = new TypeToken<GraphNeighborsOut>(){}.getType();
+        okhttp3.Call localVarCall = graphCommunitiesValidateBeforeCall(graphGraphCommunitiesIn, _callback);
+        Type localVarReturnType = new TypeToken<GraphGraphCommunitiesOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for graphDerive
+     * @param graphGraphDeriveIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphDeriveCall(@javax.annotation.Nonnull GraphGraphDeriveIn graphGraphDeriveIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = graphGraphDeriveIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/graph/derive";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call graphDeriveValidateBeforeCall(@javax.annotation.Nonnull GraphGraphDeriveIn graphGraphDeriveIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'graphGraphDeriveIn' is set
+        if (graphGraphDeriveIn == null) {
+            throw new ApiException("Missing the required parameter 'graphGraphDeriveIn' when calling graphDerive(Async)");
+        }
+
+        return graphDeriveCall(graphGraphDeriveIn, _callback);
+
+    }
+
+    /**
+     * Concludes what the organization&#39;s rules derive from the graph, with a proof for every conclusion: the rule, and each support as the assertion in force it rests on or as the derived atom it is.
+     * Concludes what the organization&#39;s rules derive from the graph, with a proof for every conclusion: the rule, and each support as the assertion in force it rests on or as the derived atom it is.  The rules are assertions — (&#x60;rule:&lt;name&gt;&#x60;, &#x60;rule&#x60;, &#x60;&lt;text&gt;&#x60;), Datalog over the organization&#39;s relations, with recursion, stratified negation and the builtins &#x3D; and !&#x3D; — and the graph is read the way resolve reads it, so a retraction, an until and a declared cardinality all apply. Nothing derived is stored unless an admin asks to file it. Without names assertions to derive without, and the answer then says what would be lost, and what gained, if they had never been filed.  Time: as_of and as_known place the graph and the rules it is read with, as they place a resolve; either absent is now. Filing takes neither: a filed conclusion holds from the instant it was derived.
+     * @param graphGraphDeriveIn  (required)
+     * @return GraphGraphDeriveOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public GraphGraphDeriveOut graphDerive(@javax.annotation.Nonnull GraphGraphDeriveIn graphGraphDeriveIn) throws ApiException {
+        ApiResponse<GraphGraphDeriveOut> localVarResp = graphDeriveWithHttpInfo(graphGraphDeriveIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Concludes what the organization&#39;s rules derive from the graph, with a proof for every conclusion: the rule, and each support as the assertion in force it rests on or as the derived atom it is.
+     * Concludes what the organization&#39;s rules derive from the graph, with a proof for every conclusion: the rule, and each support as the assertion in force it rests on or as the derived atom it is.  The rules are assertions — (&#x60;rule:&lt;name&gt;&#x60;, &#x60;rule&#x60;, &#x60;&lt;text&gt;&#x60;), Datalog over the organization&#39;s relations, with recursion, stratified negation and the builtins &#x3D; and !&#x3D; — and the graph is read the way resolve reads it, so a retraction, an until and a declared cardinality all apply. Nothing derived is stored unless an admin asks to file it. Without names assertions to derive without, and the answer then says what would be lost, and what gained, if they had never been filed.  Time: as_of and as_known place the graph and the rules it is read with, as they place a resolve; either absent is now. Filing takes neither: a filed conclusion holds from the instant it was derived.
+     * @param graphGraphDeriveIn  (required)
+     * @return ApiResponse&lt;GraphGraphDeriveOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GraphGraphDeriveOut> graphDeriveWithHttpInfo(@javax.annotation.Nonnull GraphGraphDeriveIn graphGraphDeriveIn) throws ApiException {
+        okhttp3.Call localVarCall = graphDeriveValidateBeforeCall(graphGraphDeriveIn, null);
+        Type localVarReturnType = new TypeToken<GraphGraphDeriveOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Concludes what the organization&#39;s rules derive from the graph, with a proof for every conclusion: the rule, and each support as the assertion in force it rests on or as the derived atom it is. (asynchronously)
+     * Concludes what the organization&#39;s rules derive from the graph, with a proof for every conclusion: the rule, and each support as the assertion in force it rests on or as the derived atom it is.  The rules are assertions — (&#x60;rule:&lt;name&gt;&#x60;, &#x60;rule&#x60;, &#x60;&lt;text&gt;&#x60;), Datalog over the organization&#39;s relations, with recursion, stratified negation and the builtins &#x3D; and !&#x3D; — and the graph is read the way resolve reads it, so a retraction, an until and a declared cardinality all apply. Nothing derived is stored unless an admin asks to file it. Without names assertions to derive without, and the answer then says what would be lost, and what gained, if they had never been filed.  Time: as_of and as_known place the graph and the rules it is read with, as they place a resolve; either absent is now. Filing takes neither: a filed conclusion holds from the instant it was derived.
+     * @param graphGraphDeriveIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphDeriveAsync(@javax.annotation.Nonnull GraphGraphDeriveIn graphGraphDeriveIn, final ApiCallback<GraphGraphDeriveOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = graphDeriveValidateBeforeCall(graphGraphDeriveIn, _callback);
+        Type localVarReturnType = new TypeToken<GraphGraphDeriveOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for graphDiff
+     * @param graphGraphDiffIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphDiffCall(@javax.annotation.Nonnull GraphGraphDiffIn graphGraphDiffIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = graphGraphDiffIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/graph/diff";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call graphDiffValidateBeforeCall(@javax.annotation.Nonnull GraphGraphDiffIn graphGraphDiffIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'graphGraphDiffIn' is set
+        if (graphGraphDiffIn == null) {
+            throw new ApiException("Missing the required parameter 'graphGraphDiffIn' when calling graphDiff(Async)");
+        }
+
+        return graphDiffCall(graphGraphDiffIn, _callback);
+
+    }
+
+    /**
+     * Reports what came into force, was superseded and was retracted between two points.
+     * Reports what came into force, was superseded and was retracted between two points.  Each point is resolved as resolve would, never read off the rows in between. A version that loses the order is invisible here as it is there, and one that repeats what held is agreement, not change.  Time: a point is an as_of and an as_known instant, from and from_known against to and to_known. Hold the known instants equal for what happened in the world; hold the valid instants equal for what the record learned. to and to_known default to now, from to to and from_known to to_known, and the two points must differ.
+     * @param graphGraphDiffIn  (required)
+     * @return GraphGraphDiffOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public GraphGraphDiffOut graphDiff(@javax.annotation.Nonnull GraphGraphDiffIn graphGraphDiffIn) throws ApiException {
+        ApiResponse<GraphGraphDiffOut> localVarResp = graphDiffWithHttpInfo(graphGraphDiffIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Reports what came into force, was superseded and was retracted between two points.
+     * Reports what came into force, was superseded and was retracted between two points.  Each point is resolved as resolve would, never read off the rows in between. A version that loses the order is invisible here as it is there, and one that repeats what held is agreement, not change.  Time: a point is an as_of and an as_known instant, from and from_known against to and to_known. Hold the known instants equal for what happened in the world; hold the valid instants equal for what the record learned. to and to_known default to now, from to to and from_known to to_known, and the two points must differ.
+     * @param graphGraphDiffIn  (required)
+     * @return ApiResponse&lt;GraphGraphDiffOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GraphGraphDiffOut> graphDiffWithHttpInfo(@javax.annotation.Nonnull GraphGraphDiffIn graphGraphDiffIn) throws ApiException {
+        okhttp3.Call localVarCall = graphDiffValidateBeforeCall(graphGraphDiffIn, null);
+        Type localVarReturnType = new TypeToken<GraphGraphDiffOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Reports what came into force, was superseded and was retracted between two points. (asynchronously)
+     * Reports what came into force, was superseded and was retracted between two points.  Each point is resolved as resolve would, never read off the rows in between. A version that loses the order is invisible here as it is there, and one that repeats what held is agreement, not change.  Time: a point is an as_of and an as_known instant, from and from_known against to and to_known. Hold the known instants equal for what happened in the world; hold the valid instants equal for what the record learned. to and to_known default to now, from to to and from_known to to_known, and the two points must differ.
+     * @param graphGraphDiffIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphDiffAsync(@javax.annotation.Nonnull GraphGraphDiffIn graphGraphDiffIn, final ApiCallback<GraphGraphDiffOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = graphDiffValidateBeforeCall(graphGraphDiffIn, _callback);
+        Type localVarReturnType = new TypeToken<GraphGraphDiffOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for graphErase
+     * @param graphGraphEraseIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphEraseCall(@javax.annotation.Nonnull GraphGraphEraseIn graphGraphEraseIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = graphGraphEraseIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/graph/erase";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call graphEraseValidateBeforeCall(@javax.annotation.Nonnull GraphGraphEraseIn graphGraphEraseIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'graphGraphEraseIn' is set
+        if (graphGraphEraseIn == null) {
+            throw new ApiException("Missing the required parameter 'graphGraphEraseIn' when calling graphErase(Async)");
+        }
+
+        return graphEraseCall(graphGraphEraseIn, _callback);
+
+    }
+
+    /**
+     * Removes every assertion that names an entity and returns a receipt.
+     * Removes every assertion that names an entity and returns a receipt.  It requires an admin of the organization it acts in; platform sudo is not enough, so erasure is never cross-tenant. Nothing is removed while a matching assertion is under litigation hold (409) or where the erasure cannot be recorded (503). The audit trail keeps who, when, why, how many and the receipt&#39;s digest, never the entity, and holds it before the erasure commits.  Time: erasure is the one act outside the two times. The rows go at every as_of and as_known, so no past read recovers them.
+     * @param graphGraphEraseIn  (required)
+     * @return GraphGraphEraseOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public GraphGraphEraseOut graphErase(@javax.annotation.Nonnull GraphGraphEraseIn graphGraphEraseIn) throws ApiException {
+        ApiResponse<GraphGraphEraseOut> localVarResp = graphEraseWithHttpInfo(graphGraphEraseIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Removes every assertion that names an entity and returns a receipt.
+     * Removes every assertion that names an entity and returns a receipt.  It requires an admin of the organization it acts in; platform sudo is not enough, so erasure is never cross-tenant. Nothing is removed while a matching assertion is under litigation hold (409) or where the erasure cannot be recorded (503). The audit trail keeps who, when, why, how many and the receipt&#39;s digest, never the entity, and holds it before the erasure commits.  Time: erasure is the one act outside the two times. The rows go at every as_of and as_known, so no past read recovers them.
+     * @param graphGraphEraseIn  (required)
+     * @return ApiResponse&lt;GraphGraphEraseOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GraphGraphEraseOut> graphEraseWithHttpInfo(@javax.annotation.Nonnull GraphGraphEraseIn graphGraphEraseIn) throws ApiException {
+        okhttp3.Call localVarCall = graphEraseValidateBeforeCall(graphGraphEraseIn, null);
+        Type localVarReturnType = new TypeToken<GraphGraphEraseOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Removes every assertion that names an entity and returns a receipt. (asynchronously)
+     * Removes every assertion that names an entity and returns a receipt.  It requires an admin of the organization it acts in; platform sudo is not enough, so erasure is never cross-tenant. Nothing is removed while a matching assertion is under litigation hold (409) or where the erasure cannot be recorded (503). The audit trail keeps who, when, why, how many and the receipt&#39;s digest, never the entity, and holds it before the erasure commits.  Time: erasure is the one act outside the two times. The rows go at every as_of and as_known, so no past read recovers them.
+     * @param graphGraphEraseIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphEraseAsync(@javax.annotation.Nonnull GraphGraphEraseIn graphGraphEraseIn, final ApiCallback<GraphGraphEraseOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = graphEraseValidateBeforeCall(graphGraphEraseIn, _callback);
+        Type localVarReturnType = new TypeToken<GraphGraphEraseOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for graphExtract
+     * @param graphGraphSourceIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphExtractCall(@javax.annotation.Nonnull GraphGraphSourceIn graphGraphSourceIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = graphGraphSourceIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/graph/extract";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call graphExtractValidateBeforeCall(@javax.annotation.Nonnull GraphGraphSourceIn graphGraphSourceIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'graphGraphSourceIn' is set
+        if (graphGraphSourceIn == null) {
+            throw new ApiException("Missing the required parameter 'graphGraphSourceIn' when calling graphExtract(Async)");
+        }
+
+        return graphExtractCall(graphGraphSourceIn, _callback);
+
+    }
+
+    /**
+     * Reads the relations a source states and returns them, recording nothing.
+     * Reads the relations a source states and returns them, recording nothing.  A line &#x60;relation:: value&#x60; states one; a value written &#x60;[[key]]&#x60; names an entity and makes the relation an edge. The subject is the nearest heading above the line, or the request&#39;s subject until a heading names one.  What filing would refuse is returned apart, in refused: a declaration from a caller who is not an admin of the organization, and what the declared schema refuses, checked against the store and against the types and declarations the document itself states that the caller may file.  Time: it records nothing and takes no as_of or as_known; the schema is checked as of now.
+     * @param graphGraphSourceIn  (required)
+     * @return GraphGraphExtractOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public GraphGraphExtractOut graphExtract(@javax.annotation.Nonnull GraphGraphSourceIn graphGraphSourceIn) throws ApiException {
+        ApiResponse<GraphGraphExtractOut> localVarResp = graphExtractWithHttpInfo(graphGraphSourceIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Reads the relations a source states and returns them, recording nothing.
+     * Reads the relations a source states and returns them, recording nothing.  A line &#x60;relation:: value&#x60; states one; a value written &#x60;[[key]]&#x60; names an entity and makes the relation an edge. The subject is the nearest heading above the line, or the request&#39;s subject until a heading names one.  What filing would refuse is returned apart, in refused: a declaration from a caller who is not an admin of the organization, and what the declared schema refuses, checked against the store and against the types and declarations the document itself states that the caller may file.  Time: it records nothing and takes no as_of or as_known; the schema is checked as of now.
+     * @param graphGraphSourceIn  (required)
+     * @return ApiResponse&lt;GraphGraphExtractOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GraphGraphExtractOut> graphExtractWithHttpInfo(@javax.annotation.Nonnull GraphGraphSourceIn graphGraphSourceIn) throws ApiException {
+        okhttp3.Call localVarCall = graphExtractValidateBeforeCall(graphGraphSourceIn, null);
+        Type localVarReturnType = new TypeToken<GraphGraphExtractOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Reads the relations a source states and returns them, recording nothing. (asynchronously)
+     * Reads the relations a source states and returns them, recording nothing.  A line &#x60;relation:: value&#x60; states one; a value written &#x60;[[key]]&#x60; names an entity and makes the relation an edge. The subject is the nearest heading above the line, or the request&#39;s subject until a heading names one.  What filing would refuse is returned apart, in refused: a declaration from a caller who is not an admin of the organization, and what the declared schema refuses, checked against the store and against the types and declarations the document itself states that the caller may file.  Time: it records nothing and takes no as_of or as_known; the schema is checked as of now.
+     * @param graphGraphSourceIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphExtractAsync(@javax.annotation.Nonnull GraphGraphSourceIn graphGraphSourceIn, final ApiCallback<GraphGraphExtractOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = graphExtractValidateBeforeCall(graphGraphSourceIn, _callback);
+        Type localVarReturnType = new TypeToken<GraphGraphExtractOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for graphIngest
+     * @param graphGraphSourceIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphIngestCall(@javax.annotation.Nonnull GraphGraphSourceIn graphGraphSourceIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = graphGraphSourceIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/graph/ingest";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call graphIngestValidateBeforeCall(@javax.annotation.Nonnull GraphGraphSourceIn graphGraphSourceIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'graphGraphSourceIn' is set
+        if (graphGraphSourceIn == null) {
+            throw new ApiException("Missing the required parameter 'graphGraphSourceIn' when calling graphIngest(Async)");
+        }
+
+        return graphIngestCall(graphGraphSourceIn, _callback);
+
+    }
+
+    /**
+     * Reads a source and records what it states, through the same admission as assert.
+     * Reads a source and records what it states, through the same admission as assert.  Each assertion&#39;s evidence is the section that stated it, &#x60;&lt;source&gt;#&lt;section&gt;&#x60;, so the same source at the same at records one set of rows however often it is delivered. What extract reports refused is not recorded; it is counted as refused, with its reason, in the order the document states it. A source stating no relation is refused whole.  Time: at is the valid time of every assertion recorded, which an as_of read is bounded by; each becomes knowable at the write, so a read with an earlier as_known does not see it.
+     * @param graphGraphSourceIn  (required)
+     * @return GraphGraphAssertOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public GraphGraphAssertOut graphIngest(@javax.annotation.Nonnull GraphGraphSourceIn graphGraphSourceIn) throws ApiException {
+        ApiResponse<GraphGraphAssertOut> localVarResp = graphIngestWithHttpInfo(graphGraphSourceIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Reads a source and records what it states, through the same admission as assert.
+     * Reads a source and records what it states, through the same admission as assert.  Each assertion&#39;s evidence is the section that stated it, &#x60;&lt;source&gt;#&lt;section&gt;&#x60;, so the same source at the same at records one set of rows however often it is delivered. What extract reports refused is not recorded; it is counted as refused, with its reason, in the order the document states it. A source stating no relation is refused whole.  Time: at is the valid time of every assertion recorded, which an as_of read is bounded by; each becomes knowable at the write, so a read with an earlier as_known does not see it.
+     * @param graphGraphSourceIn  (required)
+     * @return ApiResponse&lt;GraphGraphAssertOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GraphGraphAssertOut> graphIngestWithHttpInfo(@javax.annotation.Nonnull GraphGraphSourceIn graphGraphSourceIn) throws ApiException {
+        okhttp3.Call localVarCall = graphIngestValidateBeforeCall(graphGraphSourceIn, null);
+        Type localVarReturnType = new TypeToken<GraphGraphAssertOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Reads a source and records what it states, through the same admission as assert. (asynchronously)
+     * Reads a source and records what it states, through the same admission as assert.  Each assertion&#39;s evidence is the section that stated it, &#x60;&lt;source&gt;#&lt;section&gt;&#x60;, so the same source at the same at records one set of rows however often it is delivered. What extract reports refused is not recorded; it is counted as refused, with its reason, in the order the document states it. A source stating no relation is refused whole.  Time: at is the valid time of every assertion recorded, which an as_of read is bounded by; each becomes knowable at the write, so a read with an earlier as_known does not see it.
+     * @param graphGraphSourceIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphIngestAsync(@javax.annotation.Nonnull GraphGraphSourceIn graphGraphSourceIn, final ApiCallback<GraphGraphAssertOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = graphIngestValidateBeforeCall(graphGraphSourceIn, _callback);
+        Type localVarReturnType = new TypeToken<GraphGraphAssertOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for graphNeighbors
+     * @param graphGraphNeighborsIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphNeighborsCall(@javax.annotation.Nonnull GraphGraphNeighborsIn graphGraphNeighborsIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = graphGraphNeighborsIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/graph/neighbors";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call graphNeighborsValidateBeforeCall(@javax.annotation.Nonnull GraphGraphNeighborsIn graphGraphNeighborsIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'graphGraphNeighborsIn' is set
+        if (graphGraphNeighborsIn == null) {
+            throw new ApiException("Missing the required parameter 'graphGraphNeighborsIn' when calling graphNeighbors(Async)");
+        }
+
+        return graphNeighborsCall(graphGraphNeighborsIn, _callback);
+
+    }
+
+    /**
+     * Walks the in-force edges from a set of seeds and lists every entity reached, bounded.
+     * Walks the in-force edges from a set of seeds and lists every entity reached, bounded.  Only the edge that holds at the point is a hop: a superseded or retracted edge is not, and neither is a property.  Time: as_of walks the graph as it stood at that instant and as_known as this plane knew it then; either absent is now.
+     * @param graphGraphNeighborsIn  (required)
+     * @return GraphGraphNeighborsOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public GraphGraphNeighborsOut graphNeighbors(@javax.annotation.Nonnull GraphGraphNeighborsIn graphGraphNeighborsIn) throws ApiException {
+        ApiResponse<GraphGraphNeighborsOut> localVarResp = graphNeighborsWithHttpInfo(graphGraphNeighborsIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Walks the in-force edges from a set of seeds and lists every entity reached, bounded.
+     * Walks the in-force edges from a set of seeds and lists every entity reached, bounded.  Only the edge that holds at the point is a hop: a superseded or retracted edge is not, and neither is a property.  Time: as_of walks the graph as it stood at that instant and as_known as this plane knew it then; either absent is now.
+     * @param graphGraphNeighborsIn  (required)
+     * @return ApiResponse&lt;GraphGraphNeighborsOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GraphGraphNeighborsOut> graphNeighborsWithHttpInfo(@javax.annotation.Nonnull GraphGraphNeighborsIn graphGraphNeighborsIn) throws ApiException {
+        okhttp3.Call localVarCall = graphNeighborsValidateBeforeCall(graphGraphNeighborsIn, null);
+        Type localVarReturnType = new TypeToken<GraphGraphNeighborsOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Walks the in-force edges from a set of seeds and lists every entity reached, bounded. (asynchronously)
+     * Walks the in-force edges from a set of seeds and lists every entity reached, bounded.  Only the edge that holds at the point is a hop: a superseded or retracted edge is not, and neither is a property.  Time: as_of walks the graph as it stood at that instant and as_known as this plane knew it then; either absent is now.
+     * @param graphGraphNeighborsIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphNeighborsAsync(@javax.annotation.Nonnull GraphGraphNeighborsIn graphGraphNeighborsIn, final ApiCallback<GraphGraphNeighborsOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = graphNeighborsValidateBeforeCall(graphGraphNeighborsIn, _callback);
+        Type localVarReturnType = new TypeToken<GraphGraphNeighborsOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for graphPath
+     * @param graphGraphPathIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphPathCall(@javax.annotation.Nonnull GraphGraphPathIn graphGraphPathIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = graphGraphPathIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/graph/path";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call graphPathValidateBeforeCall(@javax.annotation.Nonnull GraphGraphPathIn graphGraphPathIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'graphGraphPathIn' is set
+        if (graphGraphPathIn == null) {
+            throw new ApiException("Missing the required parameter 'graphGraphPathIn' when calling graphPath(Async)");
+        }
+
+        return graphPathCall(graphGraphPathIn, _callback);
+
+    }
+
+    /**
+     * Finds the shortest chain of in-force edges from one entity to another.
+     * Finds the shortest chain of in-force edges from one entity to another.  It is the walk behind neighbors stopped at a goal: the same bound and the same rule for which edge is in force. A causal chain is this op with relations naming the relations that mean cause, such as caused_by and influenced.  Time: as_of and as_known place the graph the path is found in; either absent is now.
+     * @param graphGraphPathIn  (required)
+     * @return GraphGraphPathOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public GraphGraphPathOut graphPath(@javax.annotation.Nonnull GraphGraphPathIn graphGraphPathIn) throws ApiException {
+        ApiResponse<GraphGraphPathOut> localVarResp = graphPathWithHttpInfo(graphGraphPathIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Finds the shortest chain of in-force edges from one entity to another.
+     * Finds the shortest chain of in-force edges from one entity to another.  It is the walk behind neighbors stopped at a goal: the same bound and the same rule for which edge is in force. A causal chain is this op with relations naming the relations that mean cause, such as caused_by and influenced.  Time: as_of and as_known place the graph the path is found in; either absent is now.
+     * @param graphGraphPathIn  (required)
+     * @return ApiResponse&lt;GraphGraphPathOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GraphGraphPathOut> graphPathWithHttpInfo(@javax.annotation.Nonnull GraphGraphPathIn graphGraphPathIn) throws ApiException {
+        okhttp3.Call localVarCall = graphPathValidateBeforeCall(graphGraphPathIn, null);
+        Type localVarReturnType = new TypeToken<GraphGraphPathOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Finds the shortest chain of in-force edges from one entity to another. (asynchronously)
+     * Finds the shortest chain of in-force edges from one entity to another.  It is the walk behind neighbors stopped at a goal: the same bound and the same rule for which edge is in force. A causal chain is this op with relations naming the relations that mean cause, such as caused_by and influenced.  Time: as_of and as_known place the graph the path is found in; either absent is now.
+     * @param graphGraphPathIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphPathAsync(@javax.annotation.Nonnull GraphGraphPathIn graphGraphPathIn, final ApiCallback<GraphGraphPathOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = graphPathValidateBeforeCall(graphGraphPathIn, _callback);
+        Type localVarReturnType = new TypeToken<GraphGraphPathOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -339,8 +1420,9 @@ public class GraphApi {
      * Build call for graphRead
      * @param entity Entity narrows to what was asserted ABOUT one entity. Absent matches every entity. (optional)
      * @param relation Relation narrows to one relation. Absent matches every relation. (optional)
-     * @param value Value narrows to assertions pointing AT one value, which is how the edges into an entity are read. (optional)
-     * @param asOf AsOf bounds the read to what was knowable at an instant, RFC 3339. Absent reads everything this plane holds. (optional)
+     * @param value Value narrows to assertions pointing AT one value, which is how the edges into an entity are read. A property&#39;s scalar is matched byte for byte and an edge&#39;s value by its key, folded as every key is. (optional)
+     * @param asOf AsOf bounds the read to statements begun by an instant of the world, RFC 3339. Absent reads every instant. (optional)
+     * @param asKnown AsKnown bounds the read to what this plane had heard by an instant, RFC 3339. Absent reads everything it holds. (optional)
      * @param limit Limit caps how many assertions come back. Absent, zero, or anything above the walk ceiling is the ceiling. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -350,9 +1432,10 @@ public class GraphApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call graphReadCall(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call graphReadCall(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable String asKnown, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -393,12 +1476,17 @@ public class GraphApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("as_of", asOf));
         }
 
+        if (asKnown != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("as_known", asKnown));
+        }
+
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -417,63 +1505,68 @@ public class GraphApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call graphReadValidateBeforeCall(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
-        return graphReadCall(entity, relation, value, asOf, limit, _callback);
+    private okhttp3.Call graphReadValidateBeforeCall(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable String asKnown, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        return graphReadCall(entity, relation, value, asOf, asKnown, limit, _callback);
 
     }
 
     /**
-     * Read the assertions this organization has recorded
-     * 
+     * Lists the assertions recorded, every version, oldest first.
+     * Lists the assertions recorded, every version, oldest first.  It resolves nothing: a superseded claim and the one that superseded it both appear.  Time: as_of keeps statements begun by that instant of the world and as_known keeps what this plane had heard by then; either absent is no bound.
      * @param entity Entity narrows to what was asserted ABOUT one entity. Absent matches every entity. (optional)
      * @param relation Relation narrows to one relation. Absent matches every relation. (optional)
-     * @param value Value narrows to assertions pointing AT one value, which is how the edges into an entity are read. (optional)
-     * @param asOf AsOf bounds the read to what was knowable at an instant, RFC 3339. Absent reads everything this plane holds. (optional)
+     * @param value Value narrows to assertions pointing AT one value, which is how the edges into an entity are read. A property&#39;s scalar is matched byte for byte and an edge&#39;s value by its key, folded as every key is. (optional)
+     * @param asOf AsOf bounds the read to statements begun by an instant of the world, RFC 3339. Absent reads every instant. (optional)
+     * @param asKnown AsKnown bounds the read to what this plane had heard by an instant, RFC 3339. Absent reads everything it holds. (optional)
      * @param limit Limit caps how many assertions come back. Absent, zero, or anything above the walk ceiling is the ceiling. (optional)
-     * @return GraphReadOut
+     * @return GraphGraphReadOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public GraphReadOut graphRead(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<GraphReadOut> localVarResp = graphReadWithHttpInfo(entity, relation, value, asOf, limit);
+    public GraphGraphReadOut graphRead(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable String asKnown, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<GraphGraphReadOut> localVarResp = graphReadWithHttpInfo(entity, relation, value, asOf, asKnown, limit);
         return localVarResp.getData();
     }
 
     /**
-     * Read the assertions this organization has recorded
-     * 
+     * Lists the assertions recorded, every version, oldest first.
+     * Lists the assertions recorded, every version, oldest first.  It resolves nothing: a superseded claim and the one that superseded it both appear.  Time: as_of keeps statements begun by that instant of the world and as_known keeps what this plane had heard by then; either absent is no bound.
      * @param entity Entity narrows to what was asserted ABOUT one entity. Absent matches every entity. (optional)
      * @param relation Relation narrows to one relation. Absent matches every relation. (optional)
-     * @param value Value narrows to assertions pointing AT one value, which is how the edges into an entity are read. (optional)
-     * @param asOf AsOf bounds the read to what was knowable at an instant, RFC 3339. Absent reads everything this plane holds. (optional)
+     * @param value Value narrows to assertions pointing AT one value, which is how the edges into an entity are read. A property&#39;s scalar is matched byte for byte and an edge&#39;s value by its key, folded as every key is. (optional)
+     * @param asOf AsOf bounds the read to statements begun by an instant of the world, RFC 3339. Absent reads every instant. (optional)
+     * @param asKnown AsKnown bounds the read to what this plane had heard by an instant, RFC 3339. Absent reads everything it holds. (optional)
      * @param limit Limit caps how many assertions come back. Absent, zero, or anything above the walk ceiling is the ceiling. (optional)
-     * @return ApiResponse&lt;GraphReadOut&gt;
+     * @return ApiResponse&lt;GraphGraphReadOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GraphReadOut> graphReadWithHttpInfo(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit) throws ApiException {
-        okhttp3.Call localVarCall = graphReadValidateBeforeCall(entity, relation, value, asOf, limit, null);
-        Type localVarReturnType = new TypeToken<GraphReadOut>(){}.getType();
+    public ApiResponse<GraphGraphReadOut> graphReadWithHttpInfo(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable String asKnown, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = graphReadValidateBeforeCall(entity, relation, value, asOf, asKnown, limit, null);
+        Type localVarReturnType = new TypeToken<GraphGraphReadOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Read the assertions this organization has recorded (asynchronously)
-     * 
+     * Lists the assertions recorded, every version, oldest first. (asynchronously)
+     * Lists the assertions recorded, every version, oldest first.  It resolves nothing: a superseded claim and the one that superseded it both appear.  Time: as_of keeps statements begun by that instant of the world and as_known keeps what this plane had heard by then; either absent is no bound.
      * @param entity Entity narrows to what was asserted ABOUT one entity. Absent matches every entity. (optional)
      * @param relation Relation narrows to one relation. Absent matches every relation. (optional)
-     * @param value Value narrows to assertions pointing AT one value, which is how the edges into an entity are read. (optional)
-     * @param asOf AsOf bounds the read to what was knowable at an instant, RFC 3339. Absent reads everything this plane holds. (optional)
+     * @param value Value narrows to assertions pointing AT one value, which is how the edges into an entity are read. A property&#39;s scalar is matched byte for byte and an edge&#39;s value by its key, folded as every key is. (optional)
+     * @param asOf AsOf bounds the read to statements begun by an instant of the world, RFC 3339. Absent reads every instant. (optional)
+     * @param asKnown AsKnown bounds the read to what this plane had heard by an instant, RFC 3339. Absent reads everything it holds. (optional)
      * @param limit Limit caps how many assertions come back. Absent, zero, or anything above the walk ceiling is the ceiling. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -483,18 +1576,19 @@ public class GraphApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call graphReadAsync(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit, final ApiCallback<GraphReadOut> _callback) throws ApiException {
+    public okhttp3.Call graphReadAsync(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable String asKnown, @javax.annotation.Nullable Long limit, final ApiCallback<GraphGraphReadOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = graphReadValidateBeforeCall(entity, relation, value, asOf, limit, _callback);
-        Type localVarReturnType = new TypeToken<GraphReadOut>(){}.getType();
+        okhttp3.Call localVarCall = graphReadValidateBeforeCall(entity, relation, value, asOf, asKnown, limit, _callback);
+        Type localVarReturnType = new TypeToken<GraphGraphReadOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for graphResolve
-     * @param graphResolveIn  (required)
+     * @param graphGraphResolveIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -503,9 +1597,10 @@ public class GraphApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call graphResolveCall(@javax.annotation.Nonnull GraphResolveIn graphResolveIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call graphResolveCall(@javax.annotation.Nonnull GraphGraphResolveIn graphGraphResolveIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -519,7 +1614,7 @@ public class GraphApi {
             basePath = null;
         }
 
-        Object localVarPostBody = graphResolveIn;
+        Object localVarPostBody = graphGraphResolveIn;
 
         // create path and map variables
         String localVarPath = "/v1/graph/resolve";
@@ -531,7 +1626,8 @@ public class GraphApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -551,57 +1647,59 @@ public class GraphApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call graphResolveValidateBeforeCall(@javax.annotation.Nonnull GraphResolveIn graphResolveIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'graphResolveIn' is set
-        if (graphResolveIn == null) {
-            throw new ApiException("Missing the required parameter 'graphResolveIn' when calling graphResolve(Async)");
+    private okhttp3.Call graphResolveValidateBeforeCall(@javax.annotation.Nonnull GraphGraphResolveIn graphGraphResolveIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'graphGraphResolveIn' is set
+        if (graphGraphResolveIn == null) {
+            throw new ApiException("Missing the required parameter 'graphGraphResolveIn' when calling graphResolve(Async)");
         }
 
-        return graphResolveCall(graphResolveIn, _callback);
+        return graphResolveCall(graphGraphResolveIn, _callback);
 
     }
 
     /**
-     * What is in force about an entity as of an instant, and what disagreed
-     * 
-     * @param graphResolveIn  (required)
-     * @return GraphResolveOut
+     * Answers what holds for one entity and relation at a point, winner first, with every weaker account that disagreed.
+     * Answers what holds for one entity and relation at a point, winner first, with every weaker account that disagreed.  The winner is the holding statement begun most recently, then the strongest under the rule vocabulary names. A relation that holds many values answers each; a disagreement is reported as contested, never resolved into silence.  Time: as_of is the instant of the world asked about and as_known how much this plane had heard; either absent is now.
+     * @param graphGraphResolveIn  (required)
+     * @return GraphGraphResolveOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public GraphResolveOut graphResolve(@javax.annotation.Nonnull GraphResolveIn graphResolveIn) throws ApiException {
-        ApiResponse<GraphResolveOut> localVarResp = graphResolveWithHttpInfo(graphResolveIn);
+    public GraphGraphResolveOut graphResolve(@javax.annotation.Nonnull GraphGraphResolveIn graphGraphResolveIn) throws ApiException {
+        ApiResponse<GraphGraphResolveOut> localVarResp = graphResolveWithHttpInfo(graphGraphResolveIn);
         return localVarResp.getData();
     }
 
     /**
-     * What is in force about an entity as of an instant, and what disagreed
-     * 
-     * @param graphResolveIn  (required)
-     * @return ApiResponse&lt;GraphResolveOut&gt;
+     * Answers what holds for one entity and relation at a point, winner first, with every weaker account that disagreed.
+     * Answers what holds for one entity and relation at a point, winner first, with every weaker account that disagreed.  The winner is the holding statement begun most recently, then the strongest under the rule vocabulary names. A relation that holds many values answers each; a disagreement is reported as contested, never resolved into silence.  Time: as_of is the instant of the world asked about and as_known how much this plane had heard; either absent is now.
+     * @param graphGraphResolveIn  (required)
+     * @return ApiResponse&lt;GraphGraphResolveOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GraphResolveOut> graphResolveWithHttpInfo(@javax.annotation.Nonnull GraphResolveIn graphResolveIn) throws ApiException {
-        okhttp3.Call localVarCall = graphResolveValidateBeforeCall(graphResolveIn, null);
-        Type localVarReturnType = new TypeToken<GraphResolveOut>(){}.getType();
+    public ApiResponse<GraphGraphResolveOut> graphResolveWithHttpInfo(@javax.annotation.Nonnull GraphGraphResolveIn graphGraphResolveIn) throws ApiException {
+        okhttp3.Call localVarCall = graphResolveValidateBeforeCall(graphGraphResolveIn, null);
+        Type localVarReturnType = new TypeToken<GraphGraphResolveOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * What is in force about an entity as of an instant, and what disagreed (asynchronously)
-     * 
-     * @param graphResolveIn  (required)
+     * Answers what holds for one entity and relation at a point, winner first, with every weaker account that disagreed. (asynchronously)
+     * Answers what holds for one entity and relation at a point, winner first, with every weaker account that disagreed.  The winner is the holding statement begun most recently, then the strongest under the rule vocabulary names. A relation that holds many values answers each; a disagreement is reported as contested, never resolved into silence.  Time: as_of is the instant of the world asked about and as_known how much this plane had heard; either absent is now.
+     * @param graphGraphResolveIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -610,20 +1708,22 @@ public class GraphApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call graphResolveAsync(@javax.annotation.Nonnull GraphResolveIn graphResolveIn, final ApiCallback<GraphResolveOut> _callback) throws ApiException {
+    public okhttp3.Call graphResolveAsync(@javax.annotation.Nonnull GraphGraphResolveIn graphGraphResolveIn, final ApiCallback<GraphGraphResolveOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = graphResolveValidateBeforeCall(graphResolveIn, _callback);
-        Type localVarReturnType = new TypeToken<GraphResolveOut>(){}.getType();
+        okhttp3.Call localVarCall = graphResolveValidateBeforeCall(graphGraphResolveIn, _callback);
+        Type localVarReturnType = new TypeToken<GraphGraphResolveOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for graphSearch
-     * @param q Q is what to look for: words, matched as prefixes, all of them required. Punctuation is text here rather than syntax, so an entity key searches as itself. (optional)
+     * @param q Q is what to look for: words, matched as prefixes, all of them required. Punctuation is text here rather than syntax, so an entity key searches as itself. (required)
      * @param relation Relation narrows to one relation. Absent matches every relation. (optional)
-     * @param asOf AsOf bounds the search to what was knowable at an instant, RFC 3339. Absent searches everything this plane holds. (optional)
+     * @param asOf AsOf bounds the search to statements begun by an instant of the world, RFC 3339. Absent searches every instant. (optional)
+     * @param asKnown AsKnown bounds the search to what this plane had heard by an instant, RFC 3339. Absent searches everything it holds. (optional)
      * @param limit Limit caps how many assertions come back. Absent, zero, or anything above the walk ceiling is the ceiling. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -633,9 +1733,10 @@ public class GraphApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call graphSearchCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call graphSearchCall(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable String asKnown, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -672,12 +1773,17 @@ public class GraphApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("as_of", asOf));
         }
 
+        if (asKnown != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("as_known", asKnown));
+        }
+
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -696,60 +1802,70 @@ public class GraphApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call graphSearchValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
-        return graphSearchCall(q, relation, asOf, limit, _callback);
+    private okhttp3.Call graphSearchValidateBeforeCall(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable String asKnown, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'q' is set
+        if (q == null) {
+            throw new ApiException("Missing the required parameter 'q' when calling graphSearch(Async)");
+        }
+
+        return graphSearchCall(q, relation, asOf, asKnown, limit, _callback);
 
     }
 
     /**
-     * Find assertions by their text rather than by an entity key
-     * Finds assertions by their text where read finds them by their keys.  It is the READ with one more term, not a second way to leave the store: same order, same ceiling, same tenancy, and searching composes with narrowing by relation and by instant because all of them are terms of one filter.  It resolves nothing. What matches is what was asserted, including claims that were later corrected — which is the honest answer to \&quot;where is this mentioned\&quot; and the reason the caller then asks resolve about what it found.
-     * @param q Q is what to look for: words, matched as prefixes, all of them required. Punctuation is text here rather than syntax, so an entity key searches as itself. (optional)
+     * Finds assertions by their words, where read finds them by their keys, best match first.
+     * Finds assertions by their words, where read finds them by their keys, best match first.  Every word must match, as a prefix. The answer is ordered by bm25, which weighs a word by how rare it is and a row by how much of it the words are, so a limit keeps the best matches rather than the oldest. It resolves nothing, so a match may be a claim later corrected; ask resolve about what it finds.  Time: as_of and as_known bound it exactly as they bound read; either absent is no bound.
+     * @param q Q is what to look for: words, matched as prefixes, all of them required. Punctuation is text here rather than syntax, so an entity key searches as itself. (required)
      * @param relation Relation narrows to one relation. Absent matches every relation. (optional)
-     * @param asOf AsOf bounds the search to what was knowable at an instant, RFC 3339. Absent searches everything this plane holds. (optional)
+     * @param asOf AsOf bounds the search to statements begun by an instant of the world, RFC 3339. Absent searches every instant. (optional)
+     * @param asKnown AsKnown bounds the search to what this plane had heard by an instant, RFC 3339. Absent searches everything it holds. (optional)
      * @param limit Limit caps how many assertions come back. Absent, zero, or anything above the walk ceiling is the ceiling. (optional)
-     * @return GraphReadOut
+     * @return GraphGraphReadOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public GraphReadOut graphSearch(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<GraphReadOut> localVarResp = graphSearchWithHttpInfo(q, relation, asOf, limit);
+    public GraphGraphReadOut graphSearch(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable String asKnown, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<GraphGraphReadOut> localVarResp = graphSearchWithHttpInfo(q, relation, asOf, asKnown, limit);
         return localVarResp.getData();
     }
 
     /**
-     * Find assertions by their text rather than by an entity key
-     * Finds assertions by their text where read finds them by their keys.  It is the READ with one more term, not a second way to leave the store: same order, same ceiling, same tenancy, and searching composes with narrowing by relation and by instant because all of them are terms of one filter.  It resolves nothing. What matches is what was asserted, including claims that were later corrected — which is the honest answer to \&quot;where is this mentioned\&quot; and the reason the caller then asks resolve about what it found.
-     * @param q Q is what to look for: words, matched as prefixes, all of them required. Punctuation is text here rather than syntax, so an entity key searches as itself. (optional)
+     * Finds assertions by their words, where read finds them by their keys, best match first.
+     * Finds assertions by their words, where read finds them by their keys, best match first.  Every word must match, as a prefix. The answer is ordered by bm25, which weighs a word by how rare it is and a row by how much of it the words are, so a limit keeps the best matches rather than the oldest. It resolves nothing, so a match may be a claim later corrected; ask resolve about what it finds.  Time: as_of and as_known bound it exactly as they bound read; either absent is no bound.
+     * @param q Q is what to look for: words, matched as prefixes, all of them required. Punctuation is text here rather than syntax, so an entity key searches as itself. (required)
      * @param relation Relation narrows to one relation. Absent matches every relation. (optional)
-     * @param asOf AsOf bounds the search to what was knowable at an instant, RFC 3339. Absent searches everything this plane holds. (optional)
+     * @param asOf AsOf bounds the search to statements begun by an instant of the world, RFC 3339. Absent searches every instant. (optional)
+     * @param asKnown AsKnown bounds the search to what this plane had heard by an instant, RFC 3339. Absent searches everything it holds. (optional)
      * @param limit Limit caps how many assertions come back. Absent, zero, or anything above the walk ceiling is the ceiling. (optional)
-     * @return ApiResponse&lt;GraphReadOut&gt;
+     * @return ApiResponse&lt;GraphGraphReadOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GraphReadOut> graphSearchWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit) throws ApiException {
-        okhttp3.Call localVarCall = graphSearchValidateBeforeCall(q, relation, asOf, limit, null);
-        Type localVarReturnType = new TypeToken<GraphReadOut>(){}.getType();
+    public ApiResponse<GraphGraphReadOut> graphSearchWithHttpInfo(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable String asKnown, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = graphSearchValidateBeforeCall(q, relation, asOf, asKnown, limit, null);
+        Type localVarReturnType = new TypeToken<GraphGraphReadOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Find assertions by their text rather than by an entity key (asynchronously)
-     * Finds assertions by their text where read finds them by their keys.  It is the READ with one more term, not a second way to leave the store: same order, same ceiling, same tenancy, and searching composes with narrowing by relation and by instant because all of them are terms of one filter.  It resolves nothing. What matches is what was asserted, including claims that were later corrected — which is the honest answer to \&quot;where is this mentioned\&quot; and the reason the caller then asks resolve about what it found.
-     * @param q Q is what to look for: words, matched as prefixes, all of them required. Punctuation is text here rather than syntax, so an entity key searches as itself. (optional)
+     * Finds assertions by their words, where read finds them by their keys, best match first. (asynchronously)
+     * Finds assertions by their words, where read finds them by their keys, best match first.  Every word must match, as a prefix. The answer is ordered by bm25, which weighs a word by how rare it is and a row by how much of it the words are, so a limit keeps the best matches rather than the oldest. It resolves nothing, so a match may be a claim later corrected; ask resolve about what it finds.  Time: as_of and as_known bound it exactly as they bound read; either absent is no bound.
+     * @param q Q is what to look for: words, matched as prefixes, all of them required. Punctuation is text here rather than syntax, so an entity key searches as itself. (required)
      * @param relation Relation narrows to one relation. Absent matches every relation. (optional)
-     * @param asOf AsOf bounds the search to what was knowable at an instant, RFC 3339. Absent searches everything this plane holds. (optional)
+     * @param asOf AsOf bounds the search to statements begun by an instant of the world, RFC 3339. Absent searches every instant. (optional)
+     * @param asKnown AsKnown bounds the search to what this plane had heard by an instant, RFC 3339. Absent searches everything it holds. (optional)
      * @param limit Limit caps how many assertions come back. Absent, zero, or anything above the walk ceiling is the ceiling. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -759,12 +1875,13 @@ public class GraphApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call graphSearchAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit, final ApiCallback<GraphReadOut> _callback) throws ApiException {
+    public okhttp3.Call graphSearchAsync(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable String asKnown, @javax.annotation.Nullable Long limit, final ApiCallback<GraphGraphReadOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = graphSearchValidateBeforeCall(q, relation, asOf, limit, _callback);
-        Type localVarReturnType = new TypeToken<GraphReadOut>(){}.getType();
+        okhttp3.Call localVarCall = graphSearchValidateBeforeCall(q, relation, asOf, asKnown, limit, _callback);
+        Type localVarReturnType = new TypeToken<GraphGraphReadOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -778,6 +1895,7 @@ public class GraphApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call graphVocabularyCall(final ApiCallback _callback) throws ApiException {
@@ -806,7 +1924,8 @@ public class GraphApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -831,43 +1950,45 @@ public class GraphApi {
     }
 
     /**
-     * The relations in use, and the rule that resolves a conflict
-     * 
-     * @return GraphVocabularyOut
+     * Lists the relations in use, the schema declared for them and the rule that settles a conflict.
+     * Lists the relations in use, the schema declared for them and the rule that settles a conflict.  Time: it takes no as_of or as_known; the schema is the one in force now.
+     * @return GraphGraphVocabularyOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public GraphVocabularyOut graphVocabulary() throws ApiException {
-        ApiResponse<GraphVocabularyOut> localVarResp = graphVocabularyWithHttpInfo();
+    public GraphGraphVocabularyOut graphVocabulary() throws ApiException {
+        ApiResponse<GraphGraphVocabularyOut> localVarResp = graphVocabularyWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * The relations in use, and the rule that resolves a conflict
-     * 
-     * @return ApiResponse&lt;GraphVocabularyOut&gt;
+     * Lists the relations in use, the schema declared for them and the rule that settles a conflict.
+     * Lists the relations in use, the schema declared for them and the rule that settles a conflict.  Time: it takes no as_of or as_known; the schema is the one in force now.
+     * @return ApiResponse&lt;GraphGraphVocabularyOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GraphVocabularyOut> graphVocabularyWithHttpInfo() throws ApiException {
+    public ApiResponse<GraphGraphVocabularyOut> graphVocabularyWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = graphVocabularyValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GraphVocabularyOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<GraphGraphVocabularyOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * The relations in use, and the rule that resolves a conflict (asynchronously)
-     * 
+     * Lists the relations in use, the schema declared for them and the rule that settles a conflict. (asynchronously)
+     * Lists the relations in use, the schema declared for them and the rule that settles a conflict.  Time: it takes no as_of or as_known; the schema is the one in force now.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -876,12 +1997,13 @@ public class GraphApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call graphVocabularyAsync(final ApiCallback<GraphVocabularyOut> _callback) throws ApiException {
+    public okhttp3.Call graphVocabularyAsync(final ApiCallback<GraphGraphVocabularyOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = graphVocabularyValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GraphVocabularyOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<GraphGraphVocabularyOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

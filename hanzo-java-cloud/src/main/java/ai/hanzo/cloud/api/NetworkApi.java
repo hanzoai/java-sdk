@@ -27,15 +27,16 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.IdentityIn;
-import ai.hanzo.cloud.model.IdentityList;
-import ai.hanzo.cloud.model.IdentityView;
-import ai.hanzo.cloud.model.MeshServiceList;
-import ai.hanzo.cloud.model.NetworkList;
-import ai.hanzo.cloud.model.NetworkView;
-import ai.hanzo.cloud.model.PublishedView;
-import ai.hanzo.cloud.model.RouterList;
-import ai.hanzo.cloud.model.ServiceIn;
+import ai.hanzo.cloud.model.NetworkIdentityIn;
+import ai.hanzo.cloud.model.NetworkIdentityList;
+import ai.hanzo.cloud.model.NetworkIdentityView;
+import ai.hanzo.cloud.model.NetworkMeshServiceList;
+import ai.hanzo.cloud.model.NetworkNetworkList;
+import ai.hanzo.cloud.model.NetworkNetworkView;
+import ai.hanzo.cloud.model.NetworkPublishedView;
+import ai.hanzo.cloud.model.NetworkRouterList;
+import ai.hanzo.cloud.model.NetworkServiceIn;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -91,6 +92,7 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteNetworkIdentitiesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -120,6 +122,7 @@ public class NetworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -149,8 +152,8 @@ public class NetworkApi {
     }
 
     /**
-     * Removes one of the org&#39;s fabric identities.
-     * Removes one of the org&#39;s fabric identities. The device&#39;s credential stops authenticating and its enrollment, if unspent, stops enrolling.  An id belonging to another org — or to nothing — is 404 before any write reaches the controller: whether an identity exists is itself a cross-tenant fact, and a delete may only ever act on what the caller could list.
+     * Takes one of the org&#39;s fabric identities out of the org.
+     * Takes one of the org&#39;s fabric identities out of the org.  The identity&#39;s \&quot;org-&lt;org&gt;\&quot; role and every role scoped to the org are removed and the rest is left alone, so an identity another org shares keeps working there. The identity itself is deleted when no org role is left on it, or when the caller IS its IAM subject — a person may always remove themselves.  An id belonging to another org — or to nothing — is 404 before any write reaches the controller: whether an identity exists is itself a cross-tenant fact, and a delete may only ever act on what the caller could list, which for a plain member is its own identity. A fabric administrator is the controller&#39;s own and is refused.
      * @param id ID is the identity id from the path. The URL is the addressing authority, so it binds from there whatever else the request carries. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -158,6 +161,7 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteNetworkIdentitiesById(@javax.annotation.Nonnull String id) throws ApiException {
@@ -165,8 +169,8 @@ public class NetworkApi {
     }
 
     /**
-     * Removes one of the org&#39;s fabric identities.
-     * Removes one of the org&#39;s fabric identities. The device&#39;s credential stops authenticating and its enrollment, if unspent, stops enrolling.  An id belonging to another org — or to nothing — is 404 before any write reaches the controller: whether an identity exists is itself a cross-tenant fact, and a delete may only ever act on what the caller could list.
+     * Takes one of the org&#39;s fabric identities out of the org.
+     * Takes one of the org&#39;s fabric identities out of the org.  The identity&#39;s \&quot;org-&lt;org&gt;\&quot; role and every role scoped to the org are removed and the rest is left alone, so an identity another org shares keeps working there. The identity itself is deleted when no org role is left on it, or when the caller IS its IAM subject — a person may always remove themselves.  An id belonging to another org — or to nothing — is 404 before any write reaches the controller: whether an identity exists is itself a cross-tenant fact, and a delete may only ever act on what the caller could list, which for a plain member is its own identity. A fabric administrator is the controller&#39;s own and is refused.
      * @param id ID is the identity id from the path. The URL is the addressing authority, so it binds from there whatever else the request carries. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -175,6 +179,7 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteNetworkIdentitiesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -183,8 +188,8 @@ public class NetworkApi {
     }
 
     /**
-     * Removes one of the org&#39;s fabric identities. (asynchronously)
-     * Removes one of the org&#39;s fabric identities. The device&#39;s credential stops authenticating and its enrollment, if unspent, stops enrolling.  An id belonging to another org — or to nothing — is 404 before any write reaches the controller: whether an identity exists is itself a cross-tenant fact, and a delete may only ever act on what the caller could list.
+     * Takes one of the org&#39;s fabric identities out of the org. (asynchronously)
+     * Takes one of the org&#39;s fabric identities out of the org.  The identity&#39;s \&quot;org-&lt;org&gt;\&quot; role and every role scoped to the org are removed and the rest is left alone, so an identity another org shares keeps working there. The identity itself is deleted when no org role is left on it, or when the caller IS its IAM subject — a person may always remove themselves.  An id belonging to another org — or to nothing — is 404 before any write reaches the controller: whether an identity exists is itself a cross-tenant fact, and a delete may only ever act on what the caller could list, which for a plain member is its own identity. A fabric administrator is the controller&#39;s own and is refused.
      * @param id ID is the identity id from the path. The URL is the addressing authority, so it binds from there whatever else the request carries. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -194,11 +199,139 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteNetworkIdentitiesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteNetworkIdentitiesByIdValidateBeforeCall(id, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteNetworkServicesById
+     * @param id ID is the service id from the path. The URL is the addressing authority, so it binds from there whatever else the request carries. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteNetworkServicesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/network/services/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteNetworkServicesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteNetworkServicesById(Async)");
+        }
+
+        return deleteNetworkServicesByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Takes a name off the org&#39;s overlay: the two policies, the service and its two configs that publishing made, in that order, and the \&quot;&lt;name&gt;-host\&quot; role from each of the org&#39;s identities — that role exists only for the bind policy to select, and a role naming no service is one the identities endpoint refuses to write.
+     * Takes a name off the org&#39;s overlay: the two policies, the service and its two configs that publishing made, in that order, and the \&quot;&lt;name&gt;-host\&quot; role from each of the org&#39;s identities — that role exists only for the bind policy to select, and a role naming no service is one the identities endpoint refuses to write.  Only objects carrying this service&#39;s own names are deleted, so a policy that selects the service by attribute is left alone. An id belonging to another org — or to nothing — is 404 before any write, as for an identity. Like publishing it is a steward&#39;s act, and a plain member is 403 before the controller is read.
+     * @param id ID is the service id from the path. The URL is the addressing authority, so it binds from there whatever else the request carries. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteNetworkServicesById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteNetworkServicesByIdWithHttpInfo(id);
+    }
+
+    /**
+     * Takes a name off the org&#39;s overlay: the two policies, the service and its two configs that publishing made, in that order, and the \&quot;&lt;name&gt;-host\&quot; role from each of the org&#39;s identities — that role exists only for the bind policy to select, and a role naming no service is one the identities endpoint refuses to write.
+     * Takes a name off the org&#39;s overlay: the two policies, the service and its two configs that publishing made, in that order, and the \&quot;&lt;name&gt;-host\&quot; role from each of the org&#39;s identities — that role exists only for the bind policy to select, and a role naming no service is one the identities endpoint refuses to write.  Only objects carrying this service&#39;s own names are deleted, so a policy that selects the service by attribute is left alone. An id belonging to another org — or to nothing — is 404 before any write, as for an identity. Like publishing it is a steward&#39;s act, and a plain member is 403 before the controller is read.
+     * @param id ID is the service id from the path. The URL is the addressing authority, so it binds from there whatever else the request carries. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteNetworkServicesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteNetworkServicesByIdValidateBeforeCall(id, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Takes a name off the org&#39;s overlay: the two policies, the service and its two configs that publishing made, in that order, and the \&quot;&lt;name&gt;-host\&quot; role from each of the org&#39;s identities — that role exists only for the bind policy to select, and a role naming no service is one the identities endpoint refuses to write. (asynchronously)
+     * Takes a name off the org&#39;s overlay: the two policies, the service and its two configs that publishing made, in that order, and the \&quot;&lt;name&gt;-host\&quot; role from each of the org&#39;s identities — that role exists only for the bind policy to select, and a role naming no service is one the identities endpoint refuses to write.  Only objects carrying this service&#39;s own names are deleted, so a policy that selects the service by attribute is left alone. An id belonging to another org — or to nothing — is 404 before any write, as for an identity. Like publishing it is a steward&#39;s act, and a plain member is 403 before the controller is read.
+     * @param id ID is the service id from the path. The URL is the addressing authority, so it binds from there whatever else the request carries. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteNetworkServicesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteNetworkServicesByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -212,6 +345,7 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getNetworkCall(final ApiCallback _callback) throws ApiException {
@@ -240,7 +374,8 @@ public class NetworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -267,35 +402,37 @@ public class NetworkApi {
     /**
      * Returns the caller&#39;s org overlay network on the Zero Trust fabric.
      * Returns the caller&#39;s org overlay network on the Zero Trust fabric.  The org has at most ONE overlay, projected from the edge-routers tagged with its \&quot;org-&lt;org&gt;\&quot; role attribute: nodes is the real router count and status is \&quot;connected\&quot; once at least one router has dialed home, \&quot;provisioning\&quot; while none has. An org with no routers gets an empty list, never a fabricated network.  The read degrades rather than erroring: a deployment with no ZT credential, and a controller that cannot be reached, both answer 200 with an empty list so the console&#39;s Networks page renders a clean empty state instead of an error.
-     * @return NetworkList
+     * @return NetworkNetworkList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public NetworkList getNetwork() throws ApiException {
-        ApiResponse<NetworkList> localVarResp = getNetworkWithHttpInfo();
+    public NetworkNetworkList getNetwork() throws ApiException {
+        ApiResponse<NetworkNetworkList> localVarResp = getNetworkWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller&#39;s org overlay network on the Zero Trust fabric.
      * Returns the caller&#39;s org overlay network on the Zero Trust fabric.  The org has at most ONE overlay, projected from the edge-routers tagged with its \&quot;org-&lt;org&gt;\&quot; role attribute: nodes is the real router count and status is \&quot;connected\&quot; once at least one router has dialed home, \&quot;provisioning\&quot; while none has. An org with no routers gets an empty list, never a fabricated network.  The read degrades rather than erroring: a deployment with no ZT credential, and a controller that cannot be reached, both answer 200 with an empty list so the console&#39;s Networks page renders a clean empty state instead of an error.
-     * @return ApiResponse&lt;NetworkList&gt;
+     * @return ApiResponse&lt;NetworkNetworkList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NetworkList> getNetworkWithHttpInfo() throws ApiException {
+    public ApiResponse<NetworkNetworkList> getNetworkWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getNetworkValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<NetworkList>(){}.getType();
+        Type localVarReturnType = new TypeToken<NetworkNetworkList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -310,12 +447,13 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getNetworkAsync(final ApiCallback<NetworkList> _callback) throws ApiException {
+    public okhttp3.Call getNetworkAsync(final ApiCallback<NetworkNetworkList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getNetworkValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<NetworkList>(){}.getType();
+        Type localVarReturnType = new TypeToken<NetworkNetworkList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -330,6 +468,7 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getNetworkByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -359,7 +498,8 @@ public class NetworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -392,17 +532,18 @@ public class NetworkApi {
      * Returns one overlay network by id, scoped to the caller&#39;s org.
      * Returns one overlay network by id, scoped to the caller&#39;s org.  The org has exactly one overlay network and its id is derived from the org, so any other id — another tenant&#39;s, or one that does not exist — is 404 rather than a peek across the tenant boundary. An org whose network exists but has no edge-routers is 404 too, for the same reason the list is empty: there is no overlay until something is on it.
      * @param id ID is the network id from the path. The URL is the addressing authority, so it binds from there whatever else the request carries. (required)
-     * @return NetworkView
+     * @return NetworkNetworkView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public NetworkView getNetworkById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<NetworkView> localVarResp = getNetworkByIdWithHttpInfo(id);
+    public NetworkNetworkView getNetworkById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<NetworkNetworkView> localVarResp = getNetworkByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -410,18 +551,19 @@ public class NetworkApi {
      * Returns one overlay network by id, scoped to the caller&#39;s org.
      * Returns one overlay network by id, scoped to the caller&#39;s org.  The org has exactly one overlay network and its id is derived from the org, so any other id — another tenant&#39;s, or one that does not exist — is 404 rather than a peek across the tenant boundary. An org whose network exists but has no edge-routers is 404 too, for the same reason the list is empty: there is no overlay until something is on it.
      * @param id ID is the network id from the path. The URL is the addressing authority, so it binds from there whatever else the request carries. (required)
-     * @return ApiResponse&lt;NetworkView&gt;
+     * @return ApiResponse&lt;NetworkNetworkView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NetworkView> getNetworkByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<NetworkNetworkView> getNetworkByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getNetworkByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<NetworkView>(){}.getType();
+        Type localVarReturnType = new TypeToken<NetworkNetworkView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -437,12 +579,13 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getNetworkByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<NetworkView> _callback) throws ApiException {
+    public okhttp3.Call getNetworkByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<NetworkNetworkView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getNetworkByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<NetworkView>(){}.getType();
+        Type localVarReturnType = new TypeToken<NetworkNetworkView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -456,6 +599,7 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getNetworkIdentitiesCall(final ApiCallback _callback) throws ApiException {
@@ -484,7 +628,8 @@ public class NetworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -510,42 +655,44 @@ public class NetworkApi {
 
     /**
      * Returns the fabric identities the caller&#39;s org owns.
-     * Returns the fabric identities the caller&#39;s org owns.  One row per identity tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute — a device minted here, enrolled or not. An identity that has not yet enrolled still carries its one-time enrollment, so a mislaid JWT is read again here rather than re-minted.  A tenancy read over the full inventory, so like the mesh list it does NOT degrade: an unconfigured deployment answers 503.
-     * @return IdentityList
+     * Returns the fabric identities the caller&#39;s org owns.  One row per identity tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute, each naming the IAM subject it logs in as. A steward sees every one; a plain member sees only its own, since who else is on the org&#39;s network is not a member&#39;s to read, and a plain member&#39;s API key, which holds no identity, is refused.  A tenancy read over the full inventory, so like the mesh list it does NOT degrade: an unconfigured deployment answers 503.
+     * @return NetworkIdentityList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IdentityList getNetworkIdentities() throws ApiException {
-        ApiResponse<IdentityList> localVarResp = getNetworkIdentitiesWithHttpInfo();
+    public NetworkIdentityList getNetworkIdentities() throws ApiException {
+        ApiResponse<NetworkIdentityList> localVarResp = getNetworkIdentitiesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the fabric identities the caller&#39;s org owns.
-     * Returns the fabric identities the caller&#39;s org owns.  One row per identity tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute — a device minted here, enrolled or not. An identity that has not yet enrolled still carries its one-time enrollment, so a mislaid JWT is read again here rather than re-minted.  A tenancy read over the full inventory, so like the mesh list it does NOT degrade: an unconfigured deployment answers 503.
-     * @return ApiResponse&lt;IdentityList&gt;
+     * Returns the fabric identities the caller&#39;s org owns.  One row per identity tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute, each naming the IAM subject it logs in as. A steward sees every one; a plain member sees only its own, since who else is on the org&#39;s network is not a member&#39;s to read, and a plain member&#39;s API key, which holds no identity, is refused.  A tenancy read over the full inventory, so like the mesh list it does NOT degrade: an unconfigured deployment answers 503.
+     * @return ApiResponse&lt;NetworkIdentityList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IdentityList> getNetworkIdentitiesWithHttpInfo() throws ApiException {
+    public ApiResponse<NetworkIdentityList> getNetworkIdentitiesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getNetworkIdentitiesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<IdentityList>(){}.getType();
+        Type localVarReturnType = new TypeToken<NetworkIdentityList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns the fabric identities the caller&#39;s org owns. (asynchronously)
-     * Returns the fabric identities the caller&#39;s org owns.  One row per identity tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute — a device minted here, enrolled or not. An identity that has not yet enrolled still carries its one-time enrollment, so a mislaid JWT is read again here rather than re-minted.  A tenancy read over the full inventory, so like the mesh list it does NOT degrade: an unconfigured deployment answers 503.
+     * Returns the fabric identities the caller&#39;s org owns.  One row per identity tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute, each naming the IAM subject it logs in as. A steward sees every one; a plain member sees only its own, since who else is on the org&#39;s network is not a member&#39;s to read, and a plain member&#39;s API key, which holds no identity, is refused.  A tenancy read over the full inventory, so like the mesh list it does NOT degrade: an unconfigured deployment answers 503.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -554,12 +701,13 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getNetworkIdentitiesAsync(final ApiCallback<IdentityList> _callback) throws ApiException {
+    public okhttp3.Call getNetworkIdentitiesAsync(final ApiCallback<NetworkIdentityList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getNetworkIdentitiesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<IdentityList>(){}.getType();
+        Type localVarReturnType = new TypeToken<NetworkIdentityList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -573,6 +721,7 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getNetworkRoutersCall(final ApiCallback _callback) throws ApiException {
@@ -601,7 +750,8 @@ public class NetworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -628,35 +778,37 @@ public class NetworkApi {
     /**
      * Returns the Zero Trust routers the caller&#39;s org owns.
      * Returns the Zero Trust routers the caller&#39;s org owns.  One row per real ZT edge-router tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute, carrying the controller&#39;s own health signal: \&quot;online\&quot; when connected, \&quot;disabled\&quot; when administratively disabled, \&quot;offline\&quot; otherwise. region is filled only from a \&quot;region-&lt;slug&gt;\&quot; role attribute and omitted when the router carries none, so the column renders \&quot;—\&quot; rather than a guess.  The read degrades rather than erroring: a deployment with no ZT credential, and a controller that cannot be reached, both answer 200 with an empty list.
-     * @return RouterList
+     * @return NetworkRouterList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RouterList getNetworkRouters() throws ApiException {
-        ApiResponse<RouterList> localVarResp = getNetworkRoutersWithHttpInfo();
+    public NetworkRouterList getNetworkRouters() throws ApiException {
+        ApiResponse<NetworkRouterList> localVarResp = getNetworkRoutersWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the Zero Trust routers the caller&#39;s org owns.
      * Returns the Zero Trust routers the caller&#39;s org owns.  One row per real ZT edge-router tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute, carrying the controller&#39;s own health signal: \&quot;online\&quot; when connected, \&quot;disabled\&quot; when administratively disabled, \&quot;offline\&quot; otherwise. region is filled only from a \&quot;region-&lt;slug&gt;\&quot; role attribute and omitted when the router carries none, so the column renders \&quot;—\&quot; rather than a guess.  The read degrades rather than erroring: a deployment with no ZT credential, and a controller that cannot be reached, both answer 200 with an empty list.
-     * @return ApiResponse&lt;RouterList&gt;
+     * @return ApiResponse&lt;NetworkRouterList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RouterList> getNetworkRoutersWithHttpInfo() throws ApiException {
+    public ApiResponse<NetworkRouterList> getNetworkRoutersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getNetworkRoutersValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<RouterList>(){}.getType();
+        Type localVarReturnType = new TypeToken<NetworkRouterList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -671,12 +823,13 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getNetworkRoutersAsync(final ApiCallback<RouterList> _callback) throws ApiException {
+    public okhttp3.Call getNetworkRoutersAsync(final ApiCallback<NetworkRouterList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getNetworkRoutersValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<RouterList>(){}.getType();
+        Type localVarReturnType = new TypeToken<NetworkRouterList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -690,6 +843,7 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getNetworkServicesCall(final ApiCallback _callback) throws ApiException {
@@ -718,7 +872,8 @@ public class NetworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -745,35 +900,37 @@ public class NetworkApi {
     /**
      * Returns the Zero Trust edge services the caller&#39;s org owns.
      * Returns the Zero Trust edge services the caller&#39;s org owns.  One row per real ZT edge service tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute: mtls is \&quot;required\&quot; when the service mandates end-to-end encryption and \&quot;enabled\&quot; otherwise (the fabric always mutually authenticates every link), and status is \&quot;active\&quot; because a listed service is a configured, dialable entry. A service tagged for another org, or tagged for none, is invisible here.  Unlike the network and router reads this does NOT degrade: an unconfigured deployment answers 503 and an unreachable controller surfaces the upstream&#39;s status, so a mesh page never renders \&quot;no services\&quot; for a fabric it simply could not read.
-     * @return MeshServiceList
+     * @return NetworkMeshServiceList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MeshServiceList getNetworkServices() throws ApiException {
-        ApiResponse<MeshServiceList> localVarResp = getNetworkServicesWithHttpInfo();
+    public NetworkMeshServiceList getNetworkServices() throws ApiException {
+        ApiResponse<NetworkMeshServiceList> localVarResp = getNetworkServicesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the Zero Trust edge services the caller&#39;s org owns.
      * Returns the Zero Trust edge services the caller&#39;s org owns.  One row per real ZT edge service tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute: mtls is \&quot;required\&quot; when the service mandates end-to-end encryption and \&quot;enabled\&quot; otherwise (the fabric always mutually authenticates every link), and status is \&quot;active\&quot; because a listed service is a configured, dialable entry. A service tagged for another org, or tagged for none, is invisible here.  Unlike the network and router reads this does NOT degrade: an unconfigured deployment answers 503 and an unreachable controller surfaces the upstream&#39;s status, so a mesh page never renders \&quot;no services\&quot; for a fabric it simply could not read.
-     * @return ApiResponse&lt;MeshServiceList&gt;
+     * @return ApiResponse&lt;NetworkMeshServiceList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MeshServiceList> getNetworkServicesWithHttpInfo() throws ApiException {
+    public ApiResponse<NetworkMeshServiceList> getNetworkServicesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getNetworkServicesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<MeshServiceList>(){}.getType();
+        Type localVarReturnType = new TypeToken<NetworkMeshServiceList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -788,18 +945,19 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getNetworkServicesAsync(final ApiCallback<MeshServiceList> _callback) throws ApiException {
+    public okhttp3.Call getNetworkServicesAsync(final ApiCallback<NetworkMeshServiceList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getNetworkServicesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<MeshServiceList>(){}.getType();
+        Type localVarReturnType = new TypeToken<NetworkMeshServiceList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postNetworkIdentities
-     * @param identityIn  (required)
+     * @param networkIdentityIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -808,9 +966,10 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postNetworkIdentitiesCall(@javax.annotation.Nonnull IdentityIn identityIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postNetworkIdentitiesCall(@javax.annotation.Nonnull NetworkIdentityIn networkIdentityIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -824,7 +983,7 @@ public class NetworkApi {
             basePath = null;
         }
 
-        Object localVarPostBody = identityIn;
+        Object localVarPostBody = networkIdentityIn;
 
         // create path and map variables
         String localVarPath = "/v1/network/identities";
@@ -836,7 +995,8 @@ public class NetworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -856,57 +1016,59 @@ public class NetworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postNetworkIdentitiesValidateBeforeCall(@javax.annotation.Nonnull IdentityIn identityIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'identityIn' is set
-        if (identityIn == null) {
-            throw new ApiException("Missing the required parameter 'identityIn' when calling postNetworkIdentities(Async)");
+    private okhttp3.Call postNetworkIdentitiesValidateBeforeCall(@javax.annotation.Nonnull NetworkIdentityIn networkIdentityIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'networkIdentityIn' is set
+        if (networkIdentityIn == null) {
+            throw new ApiException("Missing the required parameter 'networkIdentityIn' when calling postNetworkIdentities(Async)");
         }
 
-        return postNetworkIdentitiesCall(identityIn, _callback);
+        return postNetworkIdentitiesCall(networkIdentityIn, _callback);
 
     }
 
     /**
-     * Mints a fabric identity for a device the caller&#39;s org brings.
-     * Mints a fabric identity for a device the caller&#39;s org brings.  The identity is created of type Device, tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute plus any supplied roles — each scoped to the org, and a \&quot;&lt;service&gt;-host\&quot; role refused unless the org has published that service. The answer carries the controller&#39;s one-time enrollment JWT: the device presents it once to join the fabric, and until it does the same token can be read back off GET /v1/network/identities.  A write, so it does not degrade: an unconfigured deployment answers 503.
-     * @param identityIn  (required)
-     * @return IdentityView
+     * Puts the caller on the org&#39;s overlay as its own IAM subject.
+     * Puts the caller on the org&#39;s overlay as its own IAM subject.  The identity is the one whose externalId is the caller&#39;s &#x60;sub&#x60;, admitted by the controller&#39;s \&quot;iam\&quot; auth policy: the caller logs in to the fabric with its own IAM access token, and nothing is enrolled. It is named by the subject unless a name is given, and carries the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute plus any supplied roles — each scoped to the org, and a \&quot;&lt;service&gt;-host\&quot; role refused unless the org has published that service. Roles are a steward&#39;s to take: a plain member joins with the org role alone, and asking for more is 403 before the controller is written.  An API key is refused 403: the fabric admits an IAM access token, a person&#39;s or an application&#39;s, and a key has none to log in with.  IDEMPOTENT: a caller who already has an identity gets the same one back, with any of these roles it lacked added — which is how one person&#39;s identity comes to serve every org they act in.  A write, so it does not degrade: an unconfigured deployment answers 503.
+     * @param networkIdentityIn  (required)
+     * @return NetworkIdentityView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IdentityView postNetworkIdentities(@javax.annotation.Nonnull IdentityIn identityIn) throws ApiException {
-        ApiResponse<IdentityView> localVarResp = postNetworkIdentitiesWithHttpInfo(identityIn);
+    public NetworkIdentityView postNetworkIdentities(@javax.annotation.Nonnull NetworkIdentityIn networkIdentityIn) throws ApiException {
+        ApiResponse<NetworkIdentityView> localVarResp = postNetworkIdentitiesWithHttpInfo(networkIdentityIn);
         return localVarResp.getData();
     }
 
     /**
-     * Mints a fabric identity for a device the caller&#39;s org brings.
-     * Mints a fabric identity for a device the caller&#39;s org brings.  The identity is created of type Device, tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute plus any supplied roles — each scoped to the org, and a \&quot;&lt;service&gt;-host\&quot; role refused unless the org has published that service. The answer carries the controller&#39;s one-time enrollment JWT: the device presents it once to join the fabric, and until it does the same token can be read back off GET /v1/network/identities.  A write, so it does not degrade: an unconfigured deployment answers 503.
-     * @param identityIn  (required)
-     * @return ApiResponse&lt;IdentityView&gt;
+     * Puts the caller on the org&#39;s overlay as its own IAM subject.
+     * Puts the caller on the org&#39;s overlay as its own IAM subject.  The identity is the one whose externalId is the caller&#39;s &#x60;sub&#x60;, admitted by the controller&#39;s \&quot;iam\&quot; auth policy: the caller logs in to the fabric with its own IAM access token, and nothing is enrolled. It is named by the subject unless a name is given, and carries the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute plus any supplied roles — each scoped to the org, and a \&quot;&lt;service&gt;-host\&quot; role refused unless the org has published that service. Roles are a steward&#39;s to take: a plain member joins with the org role alone, and asking for more is 403 before the controller is written.  An API key is refused 403: the fabric admits an IAM access token, a person&#39;s or an application&#39;s, and a key has none to log in with.  IDEMPOTENT: a caller who already has an identity gets the same one back, with any of these roles it lacked added — which is how one person&#39;s identity comes to serve every org they act in.  A write, so it does not degrade: an unconfigured deployment answers 503.
+     * @param networkIdentityIn  (required)
+     * @return ApiResponse&lt;NetworkIdentityView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IdentityView> postNetworkIdentitiesWithHttpInfo(@javax.annotation.Nonnull IdentityIn identityIn) throws ApiException {
-        okhttp3.Call localVarCall = postNetworkIdentitiesValidateBeforeCall(identityIn, null);
-        Type localVarReturnType = new TypeToken<IdentityView>(){}.getType();
+    public ApiResponse<NetworkIdentityView> postNetworkIdentitiesWithHttpInfo(@javax.annotation.Nonnull NetworkIdentityIn networkIdentityIn) throws ApiException {
+        okhttp3.Call localVarCall = postNetworkIdentitiesValidateBeforeCall(networkIdentityIn, null);
+        Type localVarReturnType = new TypeToken<NetworkIdentityView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Mints a fabric identity for a device the caller&#39;s org brings. (asynchronously)
-     * Mints a fabric identity for a device the caller&#39;s org brings.  The identity is created of type Device, tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute plus any supplied roles — each scoped to the org, and a \&quot;&lt;service&gt;-host\&quot; role refused unless the org has published that service. The answer carries the controller&#39;s one-time enrollment JWT: the device presents it once to join the fabric, and until it does the same token can be read back off GET /v1/network/identities.  A write, so it does not degrade: an unconfigured deployment answers 503.
-     * @param identityIn  (required)
+     * Puts the caller on the org&#39;s overlay as its own IAM subject. (asynchronously)
+     * Puts the caller on the org&#39;s overlay as its own IAM subject.  The identity is the one whose externalId is the caller&#39;s &#x60;sub&#x60;, admitted by the controller&#39;s \&quot;iam\&quot; auth policy: the caller logs in to the fabric with its own IAM access token, and nothing is enrolled. It is named by the subject unless a name is given, and carries the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute plus any supplied roles — each scoped to the org, and a \&quot;&lt;service&gt;-host\&quot; role refused unless the org has published that service. Roles are a steward&#39;s to take: a plain member joins with the org role alone, and asking for more is 403 before the controller is written.  An API key is refused 403: the fabric admits an IAM access token, a person&#39;s or an application&#39;s, and a key has none to log in with.  IDEMPOTENT: a caller who already has an identity gets the same one back, with any of these roles it lacked added — which is how one person&#39;s identity comes to serve every org they act in.  A write, so it does not degrade: an unconfigured deployment answers 503.
+     * @param networkIdentityIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -915,18 +1077,19 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postNetworkIdentitiesAsync(@javax.annotation.Nonnull IdentityIn identityIn, final ApiCallback<IdentityView> _callback) throws ApiException {
+    public okhttp3.Call postNetworkIdentitiesAsync(@javax.annotation.Nonnull NetworkIdentityIn networkIdentityIn, final ApiCallback<NetworkIdentityView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postNetworkIdentitiesValidateBeforeCall(identityIn, _callback);
-        Type localVarReturnType = new TypeToken<IdentityView>(){}.getType();
+        okhttp3.Call localVarCall = postNetworkIdentitiesValidateBeforeCall(networkIdentityIn, _callback);
+        Type localVarReturnType = new TypeToken<NetworkIdentityView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postNetworkServices
-     * @param serviceIn  (required)
+     * @param networkServiceIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -935,9 +1098,10 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postNetworkServicesCall(@javax.annotation.Nonnull ServiceIn serviceIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postNetworkServicesCall(@javax.annotation.Nonnull NetworkServiceIn networkServiceIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -951,7 +1115,7 @@ public class NetworkApi {
             basePath = null;
         }
 
-        Object localVarPostBody = serviceIn;
+        Object localVarPostBody = networkServiceIn;
 
         // create path and map variables
         String localVarPath = "/v1/network/services";
@@ -963,7 +1127,8 @@ public class NetworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -983,57 +1148,59 @@ public class NetworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postNetworkServicesValidateBeforeCall(@javax.annotation.Nonnull ServiceIn serviceIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'serviceIn' is set
-        if (serviceIn == null) {
-            throw new ApiException("Missing the required parameter 'serviceIn' when calling postNetworkServices(Async)");
+    private okhttp3.Call postNetworkServicesValidateBeforeCall(@javax.annotation.Nonnull NetworkServiceIn networkServiceIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'networkServiceIn' is set
+        if (networkServiceIn == null) {
+            throw new ApiException("Missing the required parameter 'networkServiceIn' when calling postNetworkServices(Async)");
         }
 
-        return postNetworkServicesCall(serviceIn, _callback);
+        return postNetworkServicesCall(networkServiceIn, _callback);
 
     }
 
     /**
      * Puts a name on the org&#39;s overlay: a fabric service forwarding to host:port on whichever of the org&#39;s devices carries the \&quot;&lt;name&gt;-host\&quot; role, dialable at \&quot;&lt;name&gt;.&lt;org&gt;.zt\&quot; by any of the org&#39;s identities — and by the cloud&#39;s own, which is what lets a BYO cluster&#39;s apiserver be attached to the fleet with a \&quot;.zt\&quot; kubeconfig.
-     * Puts a name on the org&#39;s overlay: a fabric service forwarding to host:port on whichever of the org&#39;s devices carries the \&quot;&lt;name&gt;-host\&quot; role, dialable at \&quot;&lt;name&gt;.&lt;org&gt;.zt\&quot; by any of the org&#39;s identities — and by the cloud&#39;s own, which is what lets a BYO cluster&#39;s apiserver be attached to the fleet with a \&quot;.zt\&quot; kubeconfig.  Answers 201 with the service and its DNS name. The objects behind it are created in dependency order and unwound on failure, so a half-published service never lingers on the fabric.  A write, so it does not degrade: an unconfigured deployment answers 503.
-     * @param serviceIn  (required)
-     * @return PublishedView
+     * Puts a name on the org&#39;s overlay: a fabric service forwarding to host:port on whichever of the org&#39;s devices carries the \&quot;&lt;name&gt;-host\&quot; role, dialable at \&quot;&lt;name&gt;.&lt;org&gt;.zt\&quot; by any of the org&#39;s identities — and by the cloud&#39;s own, which is what lets a BYO cluster&#39;s apiserver be attached to the fleet with a \&quot;.zt\&quot; kubeconfig.  Answers 201 with the service and its DNS name. The objects behind it are created in dependency order and unwound on failure, so a half-published service never lingers on the fabric. Publishing is a steward&#39;s act — an admin of the org or its own machine client — and a plain member is 403.  A write, so it does not degrade: an unconfigured deployment answers 503.
+     * @param networkServiceIn  (required)
+     * @return NetworkPublishedView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PublishedView postNetworkServices(@javax.annotation.Nonnull ServiceIn serviceIn) throws ApiException {
-        ApiResponse<PublishedView> localVarResp = postNetworkServicesWithHttpInfo(serviceIn);
+    public NetworkPublishedView postNetworkServices(@javax.annotation.Nonnull NetworkServiceIn networkServiceIn) throws ApiException {
+        ApiResponse<NetworkPublishedView> localVarResp = postNetworkServicesWithHttpInfo(networkServiceIn);
         return localVarResp.getData();
     }
 
     /**
      * Puts a name on the org&#39;s overlay: a fabric service forwarding to host:port on whichever of the org&#39;s devices carries the \&quot;&lt;name&gt;-host\&quot; role, dialable at \&quot;&lt;name&gt;.&lt;org&gt;.zt\&quot; by any of the org&#39;s identities — and by the cloud&#39;s own, which is what lets a BYO cluster&#39;s apiserver be attached to the fleet with a \&quot;.zt\&quot; kubeconfig.
-     * Puts a name on the org&#39;s overlay: a fabric service forwarding to host:port on whichever of the org&#39;s devices carries the \&quot;&lt;name&gt;-host\&quot; role, dialable at \&quot;&lt;name&gt;.&lt;org&gt;.zt\&quot; by any of the org&#39;s identities — and by the cloud&#39;s own, which is what lets a BYO cluster&#39;s apiserver be attached to the fleet with a \&quot;.zt\&quot; kubeconfig.  Answers 201 with the service and its DNS name. The objects behind it are created in dependency order and unwound on failure, so a half-published service never lingers on the fabric.  A write, so it does not degrade: an unconfigured deployment answers 503.
-     * @param serviceIn  (required)
-     * @return ApiResponse&lt;PublishedView&gt;
+     * Puts a name on the org&#39;s overlay: a fabric service forwarding to host:port on whichever of the org&#39;s devices carries the \&quot;&lt;name&gt;-host\&quot; role, dialable at \&quot;&lt;name&gt;.&lt;org&gt;.zt\&quot; by any of the org&#39;s identities — and by the cloud&#39;s own, which is what lets a BYO cluster&#39;s apiserver be attached to the fleet with a \&quot;.zt\&quot; kubeconfig.  Answers 201 with the service and its DNS name. The objects behind it are created in dependency order and unwound on failure, so a half-published service never lingers on the fabric. Publishing is a steward&#39;s act — an admin of the org or its own machine client — and a plain member is 403.  A write, so it does not degrade: an unconfigured deployment answers 503.
+     * @param networkServiceIn  (required)
+     * @return ApiResponse&lt;NetworkPublishedView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PublishedView> postNetworkServicesWithHttpInfo(@javax.annotation.Nonnull ServiceIn serviceIn) throws ApiException {
-        okhttp3.Call localVarCall = postNetworkServicesValidateBeforeCall(serviceIn, null);
-        Type localVarReturnType = new TypeToken<PublishedView>(){}.getType();
+    public ApiResponse<NetworkPublishedView> postNetworkServicesWithHttpInfo(@javax.annotation.Nonnull NetworkServiceIn networkServiceIn) throws ApiException {
+        okhttp3.Call localVarCall = postNetworkServicesValidateBeforeCall(networkServiceIn, null);
+        Type localVarReturnType = new TypeToken<NetworkPublishedView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Puts a name on the org&#39;s overlay: a fabric service forwarding to host:port on whichever of the org&#39;s devices carries the \&quot;&lt;name&gt;-host\&quot; role, dialable at \&quot;&lt;name&gt;.&lt;org&gt;.zt\&quot; by any of the org&#39;s identities — and by the cloud&#39;s own, which is what lets a BYO cluster&#39;s apiserver be attached to the fleet with a \&quot;.zt\&quot; kubeconfig. (asynchronously)
-     * Puts a name on the org&#39;s overlay: a fabric service forwarding to host:port on whichever of the org&#39;s devices carries the \&quot;&lt;name&gt;-host\&quot; role, dialable at \&quot;&lt;name&gt;.&lt;org&gt;.zt\&quot; by any of the org&#39;s identities — and by the cloud&#39;s own, which is what lets a BYO cluster&#39;s apiserver be attached to the fleet with a \&quot;.zt\&quot; kubeconfig.  Answers 201 with the service and its DNS name. The objects behind it are created in dependency order and unwound on failure, so a half-published service never lingers on the fabric.  A write, so it does not degrade: an unconfigured deployment answers 503.
-     * @param serviceIn  (required)
+     * Puts a name on the org&#39;s overlay: a fabric service forwarding to host:port on whichever of the org&#39;s devices carries the \&quot;&lt;name&gt;-host\&quot; role, dialable at \&quot;&lt;name&gt;.&lt;org&gt;.zt\&quot; by any of the org&#39;s identities — and by the cloud&#39;s own, which is what lets a BYO cluster&#39;s apiserver be attached to the fleet with a \&quot;.zt\&quot; kubeconfig.  Answers 201 with the service and its DNS name. The objects behind it are created in dependency order and unwound on failure, so a half-published service never lingers on the fabric. Publishing is a steward&#39;s act — an admin of the org or its own machine client — and a plain member is 403.  A write, so it does not degrade: an unconfigured deployment answers 503.
+     * @param networkServiceIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1042,12 +1209,13 @@ public class NetworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postNetworkServicesAsync(@javax.annotation.Nonnull ServiceIn serviceIn, final ApiCallback<PublishedView> _callback) throws ApiException {
+    public okhttp3.Call postNetworkServicesAsync(@javax.annotation.Nonnull NetworkServiceIn networkServiceIn, final ApiCallback<NetworkPublishedView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postNetworkServicesValidateBeforeCall(serviceIn, _callback);
-        Type localVarReturnType = new TypeToken<PublishedView>(){}.getType();
+        okhttp3.Call localVarCall = postNetworkServicesValidateBeforeCall(networkServiceIn, _callback);
+        Type localVarReturnType = new TypeToken<NetworkPublishedView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

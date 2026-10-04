@@ -27,14 +27,15 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.DriveIn;
-import ai.hanzo.cloud.model.DriveItem;
-import ai.hanzo.cloud.model.DriveList;
-import ai.hanzo.cloud.model.FileList;
-import ai.hanzo.cloud.model.SpaceHealth;
-import ai.hanzo.cloud.model.SpaceIn;
-import ai.hanzo.cloud.model.SpaceItem;
-import ai.hanzo.cloud.model.SpaceList;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.SpaceDriveIn;
+import ai.hanzo.cloud.model.SpaceDriveItem;
+import ai.hanzo.cloud.model.SpaceDriveList;
+import ai.hanzo.cloud.model.SpaceFileList;
+import ai.hanzo.cloud.model.SpaceSpaceHealth;
+import ai.hanzo.cloud.model.SpaceSpaceIn;
+import ai.hanzo.cloud.model.SpaceSpaceItem;
+import ai.hanzo.cloud.model.SpaceSpaceList;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -91,6 +92,7 @@ public class SpaceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteSpaceBySpaceDrivesByDriveCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String drive, final ApiCallback _callback) throws ApiException {
@@ -121,6 +123,7 @@ public class SpaceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -165,6 +168,7 @@ public class SpaceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteSpaceBySpaceDrivesByDrive(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String drive) throws ApiException {
@@ -183,6 +187,7 @@ public class SpaceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteSpaceBySpaceDrivesByDriveWithHttpInfo(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String drive) throws ApiException {
@@ -203,6 +208,7 @@ public class SpaceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteSpaceBySpaceDrivesByDriveAsync(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String drive, final ApiCallback<Void> _callback) throws ApiException {
@@ -222,6 +228,7 @@ public class SpaceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSpaceBySpaceDrivesCall(@javax.annotation.Nonnull String space, final ApiCallback _callback) throws ApiException {
@@ -251,7 +258,8 @@ public class SpaceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -284,17 +292,18 @@ public class SpaceApi {
      * Lists a space&#39;s drives.
      * Lists a space&#39;s drives.  Listing the drives IS listing the space&#39;s root folder, because a drive is the first segment of a key and nothing else — so the two can never disagree the way a drives table and the keys under it would. A space the caller&#39;s org does not own is the same 404 an unknown name gives.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing read, and the debit lands only once the listing has succeeded.
      * @param space Space is the space&#39;s name, from the path. (required)
-     * @return DriveList
+     * @return SpaceDriveList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DriveList getSpaceBySpaceDrives(@javax.annotation.Nonnull String space) throws ApiException {
-        ApiResponse<DriveList> localVarResp = getSpaceBySpaceDrivesWithHttpInfo(space);
+    public SpaceDriveList getSpaceBySpaceDrives(@javax.annotation.Nonnull String space) throws ApiException {
+        ApiResponse<SpaceDriveList> localVarResp = getSpaceBySpaceDrivesWithHttpInfo(space);
         return localVarResp.getData();
     }
 
@@ -302,18 +311,19 @@ public class SpaceApi {
      * Lists a space&#39;s drives.
      * Lists a space&#39;s drives.  Listing the drives IS listing the space&#39;s root folder, because a drive is the first segment of a key and nothing else — so the two can never disagree the way a drives table and the keys under it would. A space the caller&#39;s org does not own is the same 404 an unknown name gives.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing read, and the debit lands only once the listing has succeeded.
      * @param space Space is the space&#39;s name, from the path. (required)
-     * @return ApiResponse&lt;DriveList&gt;
+     * @return ApiResponse&lt;SpaceDriveList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DriveList> getSpaceBySpaceDrivesWithHttpInfo(@javax.annotation.Nonnull String space) throws ApiException {
+    public ApiResponse<SpaceDriveList> getSpaceBySpaceDrivesWithHttpInfo(@javax.annotation.Nonnull String space) throws ApiException {
         okhttp3.Call localVarCall = getSpaceBySpaceDrivesValidateBeforeCall(space, null);
-        Type localVarReturnType = new TypeToken<DriveList>(){}.getType();
+        Type localVarReturnType = new TypeToken<SpaceDriveList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -329,12 +339,13 @@ public class SpaceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSpaceBySpaceDrivesAsync(@javax.annotation.Nonnull String space, final ApiCallback<DriveList> _callback) throws ApiException {
+    public okhttp3.Call getSpaceBySpaceDrivesAsync(@javax.annotation.Nonnull String space, final ApiCallback<SpaceDriveList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSpaceBySpaceDrivesValidateBeforeCall(space, _callback);
-        Type localVarReturnType = new TypeToken<DriveList>(){}.getType();
+        Type localVarReturnType = new TypeToken<SpaceDriveList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -352,6 +363,7 @@ public class SpaceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSpaceBySpaceDrivesByDriveFilesCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String drive, @javax.annotation.Nullable String folder, @javax.annotation.Nullable String recursive, final ApiCallback _callback) throws ApiException {
@@ -390,7 +402,8 @@ public class SpaceApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -431,17 +444,18 @@ public class SpaceApi {
      * @param drive Drive is the drive to list, from the path. (required)
      * @param folder  (optional)
      * @param recursive  (optional)
-     * @return FileList
+     * @return SpaceFileList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FileList getSpaceBySpaceDrivesByDriveFiles(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String drive, @javax.annotation.Nullable String folder, @javax.annotation.Nullable String recursive) throws ApiException {
-        ApiResponse<FileList> localVarResp = getSpaceBySpaceDrivesByDriveFilesWithHttpInfo(space, drive, folder, recursive);
+    public SpaceFileList getSpaceBySpaceDrivesByDriveFiles(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String drive, @javax.annotation.Nullable String folder, @javax.annotation.Nullable String recursive) throws ApiException {
+        ApiResponse<SpaceFileList> localVarResp = getSpaceBySpaceDrivesByDriveFilesWithHttpInfo(space, drive, folder, recursive);
         return localVarResp.getData();
     }
 
@@ -452,18 +466,19 @@ public class SpaceApi {
      * @param drive Drive is the drive to list, from the path. (required)
      * @param folder  (optional)
      * @param recursive  (optional)
-     * @return ApiResponse&lt;FileList&gt;
+     * @return ApiResponse&lt;SpaceFileList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FileList> getSpaceBySpaceDrivesByDriveFilesWithHttpInfo(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String drive, @javax.annotation.Nullable String folder, @javax.annotation.Nullable String recursive) throws ApiException {
+    public ApiResponse<SpaceFileList> getSpaceBySpaceDrivesByDriveFilesWithHttpInfo(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String drive, @javax.annotation.Nullable String folder, @javax.annotation.Nullable String recursive) throws ApiException {
         okhttp3.Call localVarCall = getSpaceBySpaceDrivesByDriveFilesValidateBeforeCall(space, drive, folder, recursive, null);
-        Type localVarReturnType = new TypeToken<FileList>(){}.getType();
+        Type localVarReturnType = new TypeToken<SpaceFileList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -482,12 +497,13 @@ public class SpaceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSpaceBySpaceDrivesByDriveFilesAsync(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String drive, @javax.annotation.Nullable String folder, @javax.annotation.Nullable String recursive, final ApiCallback<FileList> _callback) throws ApiException {
+    public okhttp3.Call getSpaceBySpaceDrivesByDriveFilesAsync(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String drive, @javax.annotation.Nullable String folder, @javax.annotation.Nullable String recursive, final ApiCallback<SpaceFileList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSpaceBySpaceDrivesByDriveFilesValidateBeforeCall(space, drive, folder, recursive, _callback);
-        Type localVarReturnType = new TypeToken<FileList>(){}.getType();
+        Type localVarReturnType = new TypeToken<SpaceFileList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -502,6 +518,7 @@ public class SpaceApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSpaceHealthCall(final ApiCallback _callback) throws ApiException {
@@ -530,7 +547,8 @@ public class SpaceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -555,9 +573,9 @@ public class SpaceApi {
     }
 
     /**
-     * Health reports whether this deployment can serve spaces, drives and files.
-     * Health reports whether this deployment can serve spaces, drives and files.  It is a REAL probe rather than a constant: 200 when object-store credentials are present, so the store is reachable in principle, and 503 with the reason when they are not. It is deliberately NOT gated — liveness has to be probe-able without a token — so it is the one operation here that names no space and bills nothing.
-     * @return SpaceHealth
+     * Reports whether this deployment can serve spaces, drives and files.
+     * Reports whether this deployment can serve spaces, drives and files.  It is a REAL probe rather than a constant: 200 when object-store credentials are present, so the store is reachable in principle, and 503 with the reason when they are not. It is deliberately NOT gated — liveness has to be probe-able without a token — so it is the one operation here that names no space and bills nothing.
+     * @return SpaceSpaceHealth
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -565,17 +583,18 @@ public class SpaceApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SpaceHealth getSpaceHealth() throws ApiException {
-        ApiResponse<SpaceHealth> localVarResp = getSpaceHealthWithHttpInfo();
+    public SpaceSpaceHealth getSpaceHealth() throws ApiException {
+        ApiResponse<SpaceSpaceHealth> localVarResp = getSpaceHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Health reports whether this deployment can serve spaces, drives and files.
-     * Health reports whether this deployment can serve spaces, drives and files.  It is a REAL probe rather than a constant: 200 when object-store credentials are present, so the store is reachable in principle, and 503 with the reason when they are not. It is deliberately NOT gated — liveness has to be probe-able without a token — so it is the one operation here that names no space and bills nothing.
-     * @return ApiResponse&lt;SpaceHealth&gt;
+     * Reports whether this deployment can serve spaces, drives and files.
+     * Reports whether this deployment can serve spaces, drives and files.  It is a REAL probe rather than a constant: 200 when object-store credentials are present, so the store is reachable in principle, and 503 with the reason when they are not. It is deliberately NOT gated — liveness has to be probe-able without a token — so it is the one operation here that names no space and bills nothing.
+     * @return ApiResponse&lt;SpaceSpaceHealth&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -583,17 +602,18 @@ public class SpaceApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SpaceHealth> getSpaceHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<SpaceSpaceHealth> getSpaceHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getSpaceHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<SpaceHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<SpaceSpaceHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Health reports whether this deployment can serve spaces, drives and files. (asynchronously)
-     * Health reports whether this deployment can serve spaces, drives and files.  It is a REAL probe rather than a constant: 200 when object-store credentials are present, so the store is reachable in principle, and 503 with the reason when they are not. It is deliberately NOT gated — liveness has to be probe-able without a token — so it is the one operation here that names no space and bills nothing.
+     * Reports whether this deployment can serve spaces, drives and files. (asynchronously)
+     * Reports whether this deployment can serve spaces, drives and files.  It is a REAL probe rather than a constant: 200 when object-store credentials are present, so the store is reachable in principle, and 503 with the reason when they are not. It is deliberately NOT gated — liveness has to be probe-able without a token — so it is the one operation here that names no space and bills nothing.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -603,12 +623,13 @@ public class SpaceApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSpaceHealthAsync(final ApiCallback<SpaceHealth> _callback) throws ApiException {
+    public okhttp3.Call getSpaceHealthAsync(final ApiCallback<SpaceSpaceHealth> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSpaceHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<SpaceHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<SpaceSpaceHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -622,6 +643,7 @@ public class SpaceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSpaceSpacesCall(final ApiCallback _callback) throws ApiException {
@@ -650,7 +672,8 @@ public class SpaceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -677,35 +700,37 @@ public class SpaceApi {
     /**
      * Lists the caller org&#39;s own spaces.
      * Lists the caller org&#39;s own spaces.  Only the caller&#39;s: every space is physically named under a per-org prefix and the listing strips that prefix, so another org&#39;s spaces are not in the answer at all. Another org&#39;s space is not refused but INVISIBLE, so this cannot be used to learn that a name is taken elsewhere.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit lands only once the work has succeeded.
-     * @return SpaceList
+     * @return SpaceSpaceList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SpaceList getSpaceSpaces() throws ApiException {
-        ApiResponse<SpaceList> localVarResp = getSpaceSpacesWithHttpInfo();
+    public SpaceSpaceList getSpaceSpaces() throws ApiException {
+        ApiResponse<SpaceSpaceList> localVarResp = getSpaceSpacesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the caller org&#39;s own spaces.
      * Lists the caller org&#39;s own spaces.  Only the caller&#39;s: every space is physically named under a per-org prefix and the listing strips that prefix, so another org&#39;s spaces are not in the answer at all. Another org&#39;s space is not refused but INVISIBLE, so this cannot be used to learn that a name is taken elsewhere.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit lands only once the work has succeeded.
-     * @return ApiResponse&lt;SpaceList&gt;
+     * @return ApiResponse&lt;SpaceSpaceList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SpaceList> getSpaceSpacesWithHttpInfo() throws ApiException {
+    public ApiResponse<SpaceSpaceList> getSpaceSpacesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getSpaceSpacesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<SpaceList>(){}.getType();
+        Type localVarReturnType = new TypeToken<SpaceSpaceList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -720,19 +745,20 @@ public class SpaceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSpaceSpacesAsync(final ApiCallback<SpaceList> _callback) throws ApiException {
+    public okhttp3.Call getSpaceSpacesAsync(final ApiCallback<SpaceSpaceList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSpaceSpacesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<SpaceList>(){}.getType();
+        Type localVarReturnType = new TypeToken<SpaceSpaceList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postSpaceBySpaceDrives
      * @param space Space is the space to create the drive in, from the path. It carries NO &#x60;url:\&quot;-\&quot;&#x60;, unlike the field below it, and the difference is the whole reason both tags are written out: zip&#39;s binder skips a field tagged \&quot;-\&quot; for EVERY URL source, path params included, so a path-borne value that carried it would arrive empty and the create would refuse a perfectly good address. (required)
-     * @param driveIn  (required)
+     * @param spaceDriveIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -741,9 +767,10 @@ public class SpaceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSpaceBySpaceDrivesCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull DriveIn driveIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSpaceBySpaceDrivesCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull SpaceDriveIn spaceDriveIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -757,7 +784,7 @@ public class SpaceApi {
             basePath = null;
         }
 
-        Object localVarPostBody = driveIn;
+        Object localVarPostBody = spaceDriveIn;
 
         // create path and map variables
         String localVarPath = "/v1/space/{space}/drives"
@@ -770,7 +797,8 @@ public class SpaceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -790,18 +818,18 @@ public class SpaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postSpaceBySpaceDrivesValidateBeforeCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull DriveIn driveIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSpaceBySpaceDrivesValidateBeforeCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull SpaceDriveIn spaceDriveIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'space' is set
         if (space == null) {
             throw new ApiException("Missing the required parameter 'space' when calling postSpaceBySpaceDrives(Async)");
         }
 
-        // verify the required parameter 'driveIn' is set
-        if (driveIn == null) {
-            throw new ApiException("Missing the required parameter 'driveIn' when calling postSpaceBySpaceDrives(Async)");
+        // verify the required parameter 'spaceDriveIn' is set
+        if (spaceDriveIn == null) {
+            throw new ApiException("Missing the required parameter 'spaceDriveIn' when calling postSpaceBySpaceDrives(Async)");
         }
 
-        return postSpaceBySpaceDrivesCall(space, driveIn, _callback);
+        return postSpaceBySpaceDrivesCall(space, spaceDriveIn, _callback);
 
     }
 
@@ -809,18 +837,19 @@ public class SpaceApi {
      * Makes a new drive in a space and answers 201 with it.
      * Makes a new drive in a space and answers 201 with it.  A drive is a PREFIX and not a bucket, so making one writes a zero-byte marker at \&quot;&lt;name&gt;/\&quot; — which is what makes an empty drive visible to a listing that has no other key to find. A name already taken in the space is 409.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing created, and the debit lands only once the drive exists.
      * @param space Space is the space to create the drive in, from the path. It carries NO &#x60;url:\&quot;-\&quot;&#x60;, unlike the field below it, and the difference is the whole reason both tags are written out: zip&#39;s binder skips a field tagged \&quot;-\&quot; for EVERY URL source, path params included, so a path-borne value that carried it would arrive empty and the create would refuse a perfectly good address. (required)
-     * @param driveIn  (required)
-     * @return DriveItem
+     * @param spaceDriveIn  (required)
+     * @return SpaceDriveItem
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DriveItem postSpaceBySpaceDrives(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull DriveIn driveIn) throws ApiException {
-        ApiResponse<DriveItem> localVarResp = postSpaceBySpaceDrivesWithHttpInfo(space, driveIn);
+    public SpaceDriveItem postSpaceBySpaceDrives(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull SpaceDriveIn spaceDriveIn) throws ApiException {
+        ApiResponse<SpaceDriveItem> localVarResp = postSpaceBySpaceDrivesWithHttpInfo(space, spaceDriveIn);
         return localVarResp.getData();
     }
 
@@ -828,19 +857,20 @@ public class SpaceApi {
      * Makes a new drive in a space and answers 201 with it.
      * Makes a new drive in a space and answers 201 with it.  A drive is a PREFIX and not a bucket, so making one writes a zero-byte marker at \&quot;&lt;name&gt;/\&quot; — which is what makes an empty drive visible to a listing that has no other key to find. A name already taken in the space is 409.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing created, and the debit lands only once the drive exists.
      * @param space Space is the space to create the drive in, from the path. It carries NO &#x60;url:\&quot;-\&quot;&#x60;, unlike the field below it, and the difference is the whole reason both tags are written out: zip&#39;s binder skips a field tagged \&quot;-\&quot; for EVERY URL source, path params included, so a path-borne value that carried it would arrive empty and the create would refuse a perfectly good address. (required)
-     * @param driveIn  (required)
-     * @return ApiResponse&lt;DriveItem&gt;
+     * @param spaceDriveIn  (required)
+     * @return ApiResponse&lt;SpaceDriveItem&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DriveItem> postSpaceBySpaceDrivesWithHttpInfo(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull DriveIn driveIn) throws ApiException {
-        okhttp3.Call localVarCall = postSpaceBySpaceDrivesValidateBeforeCall(space, driveIn, null);
-        Type localVarReturnType = new TypeToken<DriveItem>(){}.getType();
+    public ApiResponse<SpaceDriveItem> postSpaceBySpaceDrivesWithHttpInfo(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull SpaceDriveIn spaceDriveIn) throws ApiException {
+        okhttp3.Call localVarCall = postSpaceBySpaceDrivesValidateBeforeCall(space, spaceDriveIn, null);
+        Type localVarReturnType = new TypeToken<SpaceDriveItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -848,7 +878,7 @@ public class SpaceApi {
      * Makes a new drive in a space and answers 201 with it. (asynchronously)
      * Makes a new drive in a space and answers 201 with it.  A drive is a PREFIX and not a bucket, so making one writes a zero-byte marker at \&quot;&lt;name&gt;/\&quot; — which is what makes an empty drive visible to a listing that has no other key to find. A name already taken in the space is 409.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing created, and the debit lands only once the drive exists.
      * @param space Space is the space to create the drive in, from the path. It carries NO &#x60;url:\&quot;-\&quot;&#x60;, unlike the field below it, and the difference is the whole reason both tags are written out: zip&#39;s binder skips a field tagged \&quot;-\&quot; for EVERY URL source, path params included, so a path-borne value that carried it would arrive empty and the create would refuse a perfectly good address. (required)
-     * @param driveIn  (required)
+     * @param spaceDriveIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -857,18 +887,19 @@ public class SpaceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSpaceBySpaceDrivesAsync(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull DriveIn driveIn, final ApiCallback<DriveItem> _callback) throws ApiException {
+    public okhttp3.Call postSpaceBySpaceDrivesAsync(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull SpaceDriveIn spaceDriveIn, final ApiCallback<SpaceDriveItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postSpaceBySpaceDrivesValidateBeforeCall(space, driveIn, _callback);
-        Type localVarReturnType = new TypeToken<DriveItem>(){}.getType();
+        okhttp3.Call localVarCall = postSpaceBySpaceDrivesValidateBeforeCall(space, spaceDriveIn, _callback);
+        Type localVarReturnType = new TypeToken<SpaceDriveItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postSpaceSpaces
-     * @param spaceIn  (required)
+     * @param spaceSpaceIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -877,9 +908,10 @@ public class SpaceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSpaceSpacesCall(@javax.annotation.Nonnull SpaceIn spaceIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSpaceSpacesCall(@javax.annotation.Nonnull SpaceSpaceIn spaceSpaceIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -893,7 +925,7 @@ public class SpaceApi {
             basePath = null;
         }
 
-        Object localVarPostBody = spaceIn;
+        Object localVarPostBody = spaceSpaceIn;
 
         // create path and map variables
         String localVarPath = "/v1/space/spaces";
@@ -905,7 +937,8 @@ public class SpaceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -925,57 +958,59 @@ public class SpaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postSpaceSpacesValidateBeforeCall(@javax.annotation.Nonnull SpaceIn spaceIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'spaceIn' is set
-        if (spaceIn == null) {
-            throw new ApiException("Missing the required parameter 'spaceIn' when calling postSpaceSpaces(Async)");
+    private okhttp3.Call postSpaceSpacesValidateBeforeCall(@javax.annotation.Nonnull SpaceSpaceIn spaceSpaceIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'spaceSpaceIn' is set
+        if (spaceSpaceIn == null) {
+            throw new ApiException("Missing the required parameter 'spaceSpaceIn' when calling postSpaceSpaces(Async)");
         }
 
-        return postSpaceSpacesCall(spaceIn, _callback);
+        return postSpaceSpacesCall(spaceSpaceIn, _callback);
 
     }
 
     /**
      * Makes a new space for the caller&#39;s org and answers 201 with it.
      * Makes a new space for the caller&#39;s org and answers 201 with it.  The one bucket a space&#39;s files live in is derived from the caller&#39;s VALIDATED org, so an org can only ever create inside its own namespace and no request field can redirect that. A name already taken in the org is 409.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing created, and the debit lands only once the space exists.
-     * @param spaceIn  (required)
-     * @return SpaceItem
+     * @param spaceSpaceIn  (required)
+     * @return SpaceSpaceItem
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SpaceItem postSpaceSpaces(@javax.annotation.Nonnull SpaceIn spaceIn) throws ApiException {
-        ApiResponse<SpaceItem> localVarResp = postSpaceSpacesWithHttpInfo(spaceIn);
+    public SpaceSpaceItem postSpaceSpaces(@javax.annotation.Nonnull SpaceSpaceIn spaceSpaceIn) throws ApiException {
+        ApiResponse<SpaceSpaceItem> localVarResp = postSpaceSpacesWithHttpInfo(spaceSpaceIn);
         return localVarResp.getData();
     }
 
     /**
      * Makes a new space for the caller&#39;s org and answers 201 with it.
      * Makes a new space for the caller&#39;s org and answers 201 with it.  The one bucket a space&#39;s files live in is derived from the caller&#39;s VALIDATED org, so an org can only ever create inside its own namespace and no request field can redirect that. A name already taken in the org is 409.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing created, and the debit lands only once the space exists.
-     * @param spaceIn  (required)
-     * @return ApiResponse&lt;SpaceItem&gt;
+     * @param spaceSpaceIn  (required)
+     * @return ApiResponse&lt;SpaceSpaceItem&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SpaceItem> postSpaceSpacesWithHttpInfo(@javax.annotation.Nonnull SpaceIn spaceIn) throws ApiException {
-        okhttp3.Call localVarCall = postSpaceSpacesValidateBeforeCall(spaceIn, null);
-        Type localVarReturnType = new TypeToken<SpaceItem>(){}.getType();
+    public ApiResponse<SpaceSpaceItem> postSpaceSpacesWithHttpInfo(@javax.annotation.Nonnull SpaceSpaceIn spaceSpaceIn) throws ApiException {
+        okhttp3.Call localVarCall = postSpaceSpacesValidateBeforeCall(spaceSpaceIn, null);
+        Type localVarReturnType = new TypeToken<SpaceSpaceItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Makes a new space for the caller&#39;s org and answers 201 with it. (asynchronously)
      * Makes a new space for the caller&#39;s org and answers 201 with it.  The one bucket a space&#39;s files live in is derived from the caller&#39;s VALIDATED org, so an org can only ever create inside its own namespace and no request field can redirect that. A name already taken in the org is 409.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing created, and the debit lands only once the space exists.
-     * @param spaceIn  (required)
+     * @param spaceSpaceIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -984,12 +1019,13 @@ public class SpaceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSpaceSpacesAsync(@javax.annotation.Nonnull SpaceIn spaceIn, final ApiCallback<SpaceItem> _callback) throws ApiException {
+    public okhttp3.Call postSpaceSpacesAsync(@javax.annotation.Nonnull SpaceSpaceIn spaceSpaceIn, final ApiCallback<SpaceSpaceItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postSpaceSpacesValidateBeforeCall(spaceIn, _callback);
-        Type localVarReturnType = new TypeToken<SpaceItem>(){}.getType();
+        okhttp3.Call localVarCall = postSpaceSpacesValidateBeforeCall(spaceSpaceIn, _callback);
+        Type localVarReturnType = new TypeToken<SpaceSpaceItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

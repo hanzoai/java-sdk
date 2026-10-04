@@ -1,22 +1,27 @@
 #!/bin/sh
-# README.md prints the coordinate a reader pastes, so every version it names is
-# the one hanzo-java-cloud/build.gradle publishes. It named 8.5.89, which Maven
-# Central never served, while Central served 8.5.156.
+# README.md prints the coordinate a reader pastes, so the version it names has
+# to be one this build publishes. It named 8.5.89, which Maven Central never
+# served, while Central served 8.5.156.
+#
+# It names the RELEASE LINE, not the patch: every cloud release cuts a patch
+# into build.gradle and nothing else, so a README pinned to a patch is stale
+# from the next release on. Gradle's `X.Y.+` and Maven's `[X.Y,X.Y+1)` both
+# resolve the newest patch of the line build.gradle is on.
 set -eu
 cd "$(dirname "$0")/.."
 
-want=$(sed -n "s/^version = '\(.*\)'/\1/p" hanzo-java-cloud/build.gradle)
+want=$(./scripts/version)
 [ -n "$want" ] || { echo "no version in hanzo-java-cloud/build.gradle" >&2; exit 1; }
+line=${want%.*}
+major=${line%.*}; minor=${line#*.}
+gradle="$line.+"
+maven="[$line,$major.$((minor + 1)))"
 
-named=$( {
-  grep -oE 'ai\.hanzo:hanzo-java-cloud:[0-9][0-9A-Za-z.+-]*' README.md | sed 's/.*://'
-  grep -oE '<version>[^<]+</version>' README.md | sed -E 's#</?version>##g'
-} | sort -u)
-[ -n "$named" ] || { echo "README.md names no version of ai.hanzo:hanzo-java-cloud" >&2; exit 1; }
-
-wrong=$(printf '%s\n' "$named" | grep -vxF "$want" || true)
-[ -z "$wrong" ] || { echo "README.md names $(echo $wrong); this build publishes $want" >&2; exit 1; }
-echo "README.md names $want"
+named=$(grep -oE 'ai\.hanzo:hanzo-java-cloud:[0-9][0-9A-Za-z.+-]*' README.md | sed 's/.*://' | sort -u)
+[ "$named" = "$gradle" ] || { echo "README.md names ai.hanzo:hanzo-java-cloud:$(echo $named); this build publishes the $gradle line" >&2; exit 1; }
+versions=$(grep -oE '<version>[^<]+</version>' README.md | sed -E 's#</?version>##g' | sort -u)
+[ "$versions" = "$maven" ] || { echo "README.md's Maven <version> is $(echo $versions); this build publishes $maven" >&2; exit 1; }
+echo "README.md names $gradle and $maven, the line of $want"
 
 # Every API class a README snippet names is one this build generates. The
 # quickstart called KeysApi and ModelsApi, which neither this tree nor any

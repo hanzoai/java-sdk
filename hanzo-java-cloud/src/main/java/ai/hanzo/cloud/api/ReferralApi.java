@@ -27,9 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.ClaimRequest;
-import ai.hanzo.cloud.model.ClaimView;
-import ai.hanzo.cloud.model.MyReferrals;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.ReferralClaimRequest;
+import ai.hanzo.cloud.model.ReferralClaimView;
+import ai.hanzo.cloud.model.ReferralMyReferrals;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -84,6 +85,7 @@ public class ReferralApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getReferralCall(final ApiCallback _callback) throws ApiException {
@@ -112,7 +114,8 @@ public class ReferralApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -139,35 +142,37 @@ public class ReferralApi {
     /**
      * Returns the caller&#39;s referral code, share link and the referrals they have made.
      * Returns the caller&#39;s referral code, share link and the referrals they have made.  The code is a stable, deterministic function of the org, so the link in this response is the same one every time. Each row carries the referee and the status of that attribution.  IT IS A PURE READ. It advances no referral, grants nothing and deposits nothing — a GET reports state, it never changes it. Qualification is the admin sweep&#39;s job (POST /v1/admin/referral/sweep). The one row this handler can write is the caller&#39;s OWN code-directory entry (EnsureCode), which materialises a value deriveCode already computes deterministically from the org id so the code has an O(1) reverse lookup; it carries no money, no referral state and no other tenant.
-     * @return MyReferrals
+     * @return ReferralMyReferrals
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MyReferrals getReferral() throws ApiException {
-        ApiResponse<MyReferrals> localVarResp = getReferralWithHttpInfo();
+    public ReferralMyReferrals getReferral() throws ApiException {
+        ApiResponse<ReferralMyReferrals> localVarResp = getReferralWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller&#39;s referral code, share link and the referrals they have made.
      * Returns the caller&#39;s referral code, share link and the referrals they have made.  The code is a stable, deterministic function of the org, so the link in this response is the same one every time. Each row carries the referee and the status of that attribution.  IT IS A PURE READ. It advances no referral, grants nothing and deposits nothing — a GET reports state, it never changes it. Qualification is the admin sweep&#39;s job (POST /v1/admin/referral/sweep). The one row this handler can write is the caller&#39;s OWN code-directory entry (EnsureCode), which materialises a value deriveCode already computes deterministically from the org id so the code has an O(1) reverse lookup; it carries no money, no referral state and no other tenant.
-     * @return ApiResponse&lt;MyReferrals&gt;
+     * @return ApiResponse&lt;ReferralMyReferrals&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MyReferrals> getReferralWithHttpInfo() throws ApiException {
+    public ApiResponse<ReferralMyReferrals> getReferralWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getReferralValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<MyReferrals>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReferralMyReferrals>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -182,18 +187,19 @@ public class ReferralApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getReferralAsync(final ApiCallback<MyReferrals> _callback) throws ApiException {
+    public okhttp3.Call getReferralAsync(final ApiCallback<ReferralMyReferrals> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getReferralValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<MyReferrals>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReferralMyReferrals>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postReferralClaim
-     * @param claimRequest  (required)
+     * @param referralClaimRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -202,9 +208,10 @@ public class ReferralApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postReferralClaimCall(@javax.annotation.Nonnull ClaimRequest claimRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postReferralClaimCall(@javax.annotation.Nonnull ReferralClaimRequest referralClaimRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -218,7 +225,7 @@ public class ReferralApi {
             basePath = null;
         }
 
-        Object localVarPostBody = claimRequest;
+        Object localVarPostBody = referralClaimRequest;
 
         // create path and map variables
         String localVarPath = "/v1/referral/claim";
@@ -230,7 +237,8 @@ public class ReferralApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -250,57 +258,59 @@ public class ReferralApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postReferralClaimValidateBeforeCall(@javax.annotation.Nonnull ClaimRequest claimRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'claimRequest' is set
-        if (claimRequest == null) {
-            throw new ApiException("Missing the required parameter 'claimRequest' when calling postReferralClaim(Async)");
+    private okhttp3.Call postReferralClaimValidateBeforeCall(@javax.annotation.Nonnull ReferralClaimRequest referralClaimRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'referralClaimRequest' is set
+        if (referralClaimRequest == null) {
+            throw new ApiException("Missing the required parameter 'referralClaimRequest' when calling postReferralClaim(Async)");
         }
 
-        return postReferralClaimCall(claimRequest, _callback);
+        return postReferralClaimCall(referralClaimRequest, _callback);
 
     }
 
     /**
      * Records that the caller&#39;s org signed up through a referral code.
      * Records that the caller&#39;s org signed up through a referral code.  The REFEREE is the validated caller, never a client field, and the referrer is resolved from the code — so a caller can only ever attach THEMSELVES to someone else&#39;s code. Referring yourself is 400 and an unknown code is 404.  It is idempotent and first-touch: an org can be referred once, ever. A repeat call returns the referral already on file with created&#x3D;false and 200, where the first call answers 201.  Recording a referral grants nothing, and neither does anything downstream of it: the edge later advances to qualified when the referee makes metered spend (POST /v1/admin/referral/sweep), and that is the end of it. No credit is ever issued from this package.
-     * @param claimRequest  (required)
-     * @return ClaimView
+     * @param referralClaimRequest  (required)
+     * @return ReferralClaimView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ClaimView postReferralClaim(@javax.annotation.Nonnull ClaimRequest claimRequest) throws ApiException {
-        ApiResponse<ClaimView> localVarResp = postReferralClaimWithHttpInfo(claimRequest);
+    public ReferralClaimView postReferralClaim(@javax.annotation.Nonnull ReferralClaimRequest referralClaimRequest) throws ApiException {
+        ApiResponse<ReferralClaimView> localVarResp = postReferralClaimWithHttpInfo(referralClaimRequest);
         return localVarResp.getData();
     }
 
     /**
      * Records that the caller&#39;s org signed up through a referral code.
      * Records that the caller&#39;s org signed up through a referral code.  The REFEREE is the validated caller, never a client field, and the referrer is resolved from the code — so a caller can only ever attach THEMSELVES to someone else&#39;s code. Referring yourself is 400 and an unknown code is 404.  It is idempotent and first-touch: an org can be referred once, ever. A repeat call returns the referral already on file with created&#x3D;false and 200, where the first call answers 201.  Recording a referral grants nothing, and neither does anything downstream of it: the edge later advances to qualified when the referee makes metered spend (POST /v1/admin/referral/sweep), and that is the end of it. No credit is ever issued from this package.
-     * @param claimRequest  (required)
-     * @return ApiResponse&lt;ClaimView&gt;
+     * @param referralClaimRequest  (required)
+     * @return ApiResponse&lt;ReferralClaimView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ClaimView> postReferralClaimWithHttpInfo(@javax.annotation.Nonnull ClaimRequest claimRequest) throws ApiException {
-        okhttp3.Call localVarCall = postReferralClaimValidateBeforeCall(claimRequest, null);
-        Type localVarReturnType = new TypeToken<ClaimView>(){}.getType();
+    public ApiResponse<ReferralClaimView> postReferralClaimWithHttpInfo(@javax.annotation.Nonnull ReferralClaimRequest referralClaimRequest) throws ApiException {
+        okhttp3.Call localVarCall = postReferralClaimValidateBeforeCall(referralClaimRequest, null);
+        Type localVarReturnType = new TypeToken<ReferralClaimView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Records that the caller&#39;s org signed up through a referral code. (asynchronously)
      * Records that the caller&#39;s org signed up through a referral code.  The REFEREE is the validated caller, never a client field, and the referrer is resolved from the code — so a caller can only ever attach THEMSELVES to someone else&#39;s code. Referring yourself is 400 and an unknown code is 404.  It is idempotent and first-touch: an org can be referred once, ever. A repeat call returns the referral already on file with created&#x3D;false and 200, where the first call answers 201.  Recording a referral grants nothing, and neither does anything downstream of it: the edge later advances to qualified when the referee makes metered spend (POST /v1/admin/referral/sweep), and that is the end of it. No credit is ever issued from this package.
-     * @param claimRequest  (required)
+     * @param referralClaimRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -309,12 +319,13 @@ public class ReferralApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postReferralClaimAsync(@javax.annotation.Nonnull ClaimRequest claimRequest, final ApiCallback<ClaimView> _callback) throws ApiException {
+    public okhttp3.Call postReferralClaimAsync(@javax.annotation.Nonnull ReferralClaimRequest referralClaimRequest, final ApiCallback<ReferralClaimView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postReferralClaimValidateBeforeCall(claimRequest, _callback);
-        Type localVarReturnType = new TypeToken<ClaimView>(){}.getType();
+        okhttp3.Call localVarCall = postReferralClaimValidateBeforeCall(referralClaimRequest, _callback);
+        Type localVarReturnType = new TypeToken<ReferralClaimView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

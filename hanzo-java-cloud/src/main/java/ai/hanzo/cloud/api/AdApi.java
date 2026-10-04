@@ -27,11 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.AdCampaign;
-import ai.hanzo.cloud.model.AdSummary;
-import ai.hanzo.cloud.model.CampaignInput;
-import ai.hanzo.cloud.model.CampaignList;
-import ai.hanzo.cloud.model.UpdateCampaignIn;
+import ai.hanzo.cloud.model.AdAdCampaign;
+import ai.hanzo.cloud.model.AdAdSummary;
+import ai.hanzo.cloud.model.AdCampaignInput;
+import ai.hanzo.cloud.model.AdCampaignList;
+import ai.hanzo.cloud.model.AdUpdateCampaignIn;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -87,6 +88,7 @@ public class AdApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteAdCampaignsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -116,6 +118,7 @@ public class AdApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -154,6 +157,7 @@ public class AdApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteAdCampaignsById(@javax.annotation.Nonnull String id) throws ApiException {
@@ -171,6 +175,7 @@ public class AdApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteAdCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -190,6 +195,7 @@ public class AdApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteAdCampaignsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -210,6 +216,7 @@ public class AdApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdCampaignsCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -246,7 +253,8 @@ public class AdApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -275,17 +283,18 @@ public class AdApi {
      * Returns the caller org&#39;s ad campaigns, most recently updated first, optionally narrowed to one lifecycle status. The listing is bounded by the org: another tenant&#39;s campaigns are not reachable from here at all.
      * @param status Status filters to one lifecycle state (draft, active, paused, completed). Empty returns every campaign the org has. (optional)
      * @param limit Limit caps how many campaigns come back: default 200, maximum 1000. A value that is not a positive integer reads as the default. (optional)
-     * @return CampaignList
+     * @return AdCampaignList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignList getAdCampaigns(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<CampaignList> localVarResp = getAdCampaignsWithHttpInfo(status, limit);
+    public AdCampaignList getAdCampaigns(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<AdCampaignList> localVarResp = getAdCampaignsWithHttpInfo(status, limit);
         return localVarResp.getData();
     }
 
@@ -294,18 +303,19 @@ public class AdApi {
      * Returns the caller org&#39;s ad campaigns, most recently updated first, optionally narrowed to one lifecycle status. The listing is bounded by the org: another tenant&#39;s campaigns are not reachable from here at all.
      * @param status Status filters to one lifecycle state (draft, active, paused, completed). Empty returns every campaign the org has. (optional)
      * @param limit Limit caps how many campaigns come back: default 200, maximum 1000. A value that is not a positive integer reads as the default. (optional)
-     * @return ApiResponse&lt;CampaignList&gt;
+     * @return ApiResponse&lt;AdCampaignList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignList> getAdCampaignsWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<AdCampaignList> getAdCampaignsWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getAdCampaignsValidateBeforeCall(status, limit, null);
-        Type localVarReturnType = new TypeToken<CampaignList>(){}.getType();
+        Type localVarReturnType = new TypeToken<AdCampaignList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -322,12 +332,13 @@ public class AdApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdCampaignsAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit, final ApiCallback<CampaignList> _callback) throws ApiException {
+    public okhttp3.Call getAdCampaignsAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit, final ApiCallback<AdCampaignList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdCampaignsValidateBeforeCall(status, limit, _callback);
-        Type localVarReturnType = new TypeToken<CampaignList>(){}.getType();
+        Type localVarReturnType = new TypeToken<AdCampaignList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -342,6 +353,7 @@ public class AdApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdCampaignsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -371,7 +383,8 @@ public class AdApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -404,17 +417,18 @@ public class AdApi {
      * Returns one of the caller org&#39;s campaigns.
      * Returns one of the caller org&#39;s campaigns. An id another org owns reads as not found, so the response cannot confirm that it exists.
      * @param id  (required)
-     * @return AdCampaign
+     * @return AdAdCampaign
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AdCampaign getAdCampaignsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<AdCampaign> localVarResp = getAdCampaignsByIdWithHttpInfo(id);
+    public AdAdCampaign getAdCampaignsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<AdAdCampaign> localVarResp = getAdCampaignsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -422,18 +436,19 @@ public class AdApi {
      * Returns one of the caller org&#39;s campaigns.
      * Returns one of the caller org&#39;s campaigns. An id another org owns reads as not found, so the response cannot confirm that it exists.
      * @param id  (required)
-     * @return ApiResponse&lt;AdCampaign&gt;
+     * @return ApiResponse&lt;AdAdCampaign&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdCampaign> getAdCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<AdAdCampaign> getAdCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getAdCampaignsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<AdCampaign>(){}.getType();
+        Type localVarReturnType = new TypeToken<AdAdCampaign>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -449,12 +464,13 @@ public class AdApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdCampaignsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<AdCampaign> _callback) throws ApiException {
+    public okhttp3.Call getAdCampaignsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<AdAdCampaign> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdCampaignsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<AdCampaign>(){}.getType();
+        Type localVarReturnType = new TypeToken<AdAdCampaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -468,6 +484,7 @@ public class AdApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAdSummaryCall(final ApiCallback _callback) throws ApiException {
@@ -496,7 +513,8 @@ public class AdApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -523,35 +541,37 @@ public class AdApi {
     /**
      * Rolls the caller org&#39;s ad campaigns up into four numbers: how many campaigns exist, how many are active, and the summed budget and spend across all of them.
      * Rolls the caller org&#39;s ad campaigns up into four numbers: how many campaigns exist, how many are active, and the summed budget and spend across all of them. Budget and spend are MINOR units (cents), the same units the campaign rows carry. It counts only this org&#39;s campaigns.
-     * @return AdSummary
+     * @return AdAdSummary
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AdSummary getAdSummary() throws ApiException {
-        ApiResponse<AdSummary> localVarResp = getAdSummaryWithHttpInfo();
+    public AdAdSummary getAdSummary() throws ApiException {
+        ApiResponse<AdAdSummary> localVarResp = getAdSummaryWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Rolls the caller org&#39;s ad campaigns up into four numbers: how many campaigns exist, how many are active, and the summed budget and spend across all of them.
      * Rolls the caller org&#39;s ad campaigns up into four numbers: how many campaigns exist, how many are active, and the summed budget and spend across all of them. Budget and spend are MINOR units (cents), the same units the campaign rows carry. It counts only this org&#39;s campaigns.
-     * @return ApiResponse&lt;AdSummary&gt;
+     * @return ApiResponse&lt;AdAdSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdSummary> getAdSummaryWithHttpInfo() throws ApiException {
+    public ApiResponse<AdAdSummary> getAdSummaryWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getAdSummaryValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<AdSummary>(){}.getType();
+        Type localVarReturnType = new TypeToken<AdAdSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -566,18 +586,19 @@ public class AdApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAdSummaryAsync(final ApiCallback<AdSummary> _callback) throws ApiException {
+    public okhttp3.Call getAdSummaryAsync(final ApiCallback<AdAdSummary> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAdSummaryValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<AdSummary>(){}.getType();
+        Type localVarReturnType = new TypeToken<AdAdSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postAdCampaigns
-     * @param campaignInput  (required)
+     * @param adCampaignInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -586,9 +607,10 @@ public class AdApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAdCampaignsCall(@javax.annotation.Nonnull CampaignInput campaignInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAdCampaignsCall(@javax.annotation.Nonnull AdCampaignInput adCampaignInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -602,7 +624,7 @@ public class AdApi {
             basePath = null;
         }
 
-        Object localVarPostBody = campaignInput;
+        Object localVarPostBody = adCampaignInput;
 
         // create path and map variables
         String localVarPath = "/v1/ad/campaigns";
@@ -614,7 +636,8 @@ public class AdApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -634,57 +657,59 @@ public class AdApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAdCampaignsValidateBeforeCall(@javax.annotation.Nonnull CampaignInput campaignInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'campaignInput' is set
-        if (campaignInput == null) {
-            throw new ApiException("Missing the required parameter 'campaignInput' when calling postAdCampaigns(Async)");
+    private okhttp3.Call postAdCampaignsValidateBeforeCall(@javax.annotation.Nonnull AdCampaignInput adCampaignInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'adCampaignInput' is set
+        if (adCampaignInput == null) {
+            throw new ApiException("Missing the required parameter 'adCampaignInput' when calling postAdCampaigns(Async)");
         }
 
-        return postAdCampaignsCall(campaignInput, _callback);
+        return postAdCampaignsCall(adCampaignInput, _callback);
 
     }
 
     /**
      * Registers a new ad campaign for the caller&#39;s org and answers 201 with the stored row.
      * Registers a new ad campaign for the caller&#39;s org and answers 201 with the stored row. It only records the campaign — nothing is sent to the ad network until POST /v1/ad/campaigns/{id}/launch runs it. The org is stamped by the server from the validated principal, so a body can never place a campaign in another tenant.
-     * @param campaignInput  (required)
-     * @return AdCampaign
+     * @param adCampaignInput  (required)
+     * @return AdAdCampaign
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AdCampaign postAdCampaigns(@javax.annotation.Nonnull CampaignInput campaignInput) throws ApiException {
-        ApiResponse<AdCampaign> localVarResp = postAdCampaignsWithHttpInfo(campaignInput);
+    public AdAdCampaign postAdCampaigns(@javax.annotation.Nonnull AdCampaignInput adCampaignInput) throws ApiException {
+        ApiResponse<AdAdCampaign> localVarResp = postAdCampaignsWithHttpInfo(adCampaignInput);
         return localVarResp.getData();
     }
 
     /**
      * Registers a new ad campaign for the caller&#39;s org and answers 201 with the stored row.
      * Registers a new ad campaign for the caller&#39;s org and answers 201 with the stored row. It only records the campaign — nothing is sent to the ad network until POST /v1/ad/campaigns/{id}/launch runs it. The org is stamped by the server from the validated principal, so a body can never place a campaign in another tenant.
-     * @param campaignInput  (required)
-     * @return ApiResponse&lt;AdCampaign&gt;
+     * @param adCampaignInput  (required)
+     * @return ApiResponse&lt;AdAdCampaign&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdCampaign> postAdCampaignsWithHttpInfo(@javax.annotation.Nonnull CampaignInput campaignInput) throws ApiException {
-        okhttp3.Call localVarCall = postAdCampaignsValidateBeforeCall(campaignInput, null);
-        Type localVarReturnType = new TypeToken<AdCampaign>(){}.getType();
+    public ApiResponse<AdAdCampaign> postAdCampaignsWithHttpInfo(@javax.annotation.Nonnull AdCampaignInput adCampaignInput) throws ApiException {
+        okhttp3.Call localVarCall = postAdCampaignsValidateBeforeCall(adCampaignInput, null);
+        Type localVarReturnType = new TypeToken<AdAdCampaign>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Registers a new ad campaign for the caller&#39;s org and answers 201 with the stored row. (asynchronously)
      * Registers a new ad campaign for the caller&#39;s org and answers 201 with the stored row. It only records the campaign — nothing is sent to the ad network until POST /v1/ad/campaigns/{id}/launch runs it. The org is stamped by the server from the validated principal, so a body can never place a campaign in another tenant.
-     * @param campaignInput  (required)
+     * @param adCampaignInput  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -693,12 +718,13 @@ public class AdApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAdCampaignsAsync(@javax.annotation.Nonnull CampaignInput campaignInput, final ApiCallback<AdCampaign> _callback) throws ApiException {
+    public okhttp3.Call postAdCampaignsAsync(@javax.annotation.Nonnull AdCampaignInput adCampaignInput, final ApiCallback<AdAdCampaign> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAdCampaignsValidateBeforeCall(campaignInput, _callback);
-        Type localVarReturnType = new TypeToken<AdCampaign>(){}.getType();
+        okhttp3.Call localVarCall = postAdCampaignsValidateBeforeCall(adCampaignInput, _callback);
+        Type localVarReturnType = new TypeToken<AdAdCampaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -803,7 +829,7 @@ public class AdApi {
     /**
      * Build call for putAdCampaignsById
      * @param id  (required)
-     * @param updateCampaignIn  (required)
+     * @param adUpdateCampaignIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -812,9 +838,10 @@ public class AdApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putAdCampaignsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateCampaignIn updateCampaignIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putAdCampaignsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AdUpdateCampaignIn adUpdateCampaignIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -828,7 +855,7 @@ public class AdApi {
             basePath = null;
         }
 
-        Object localVarPostBody = updateCampaignIn;
+        Object localVarPostBody = adUpdateCampaignIn;
 
         // create path and map variables
         String localVarPath = "/v1/ad/campaigns/{id}"
@@ -841,7 +868,8 @@ public class AdApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -861,18 +889,18 @@ public class AdApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putAdCampaignsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateCampaignIn updateCampaignIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putAdCampaignsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AdUpdateCampaignIn adUpdateCampaignIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling putAdCampaignsById(Async)");
         }
 
-        // verify the required parameter 'updateCampaignIn' is set
-        if (updateCampaignIn == null) {
-            throw new ApiException("Missing the required parameter 'updateCampaignIn' when calling putAdCampaignsById(Async)");
+        // verify the required parameter 'adUpdateCampaignIn' is set
+        if (adUpdateCampaignIn == null) {
+            throw new ApiException("Missing the required parameter 'adUpdateCampaignIn' when calling putAdCampaignsById(Async)");
         }
 
-        return putAdCampaignsByIdCall(id, updateCampaignIn, _callback);
+        return putAdCampaignsByIdCall(id, adUpdateCampaignIn, _callback);
 
     }
 
@@ -880,18 +908,19 @@ public class AdApi {
      * Replaces the user-owned fields of one of the caller org&#39;s campaigns and answers the stored row.
      * Replaces the user-owned fields of one of the caller org&#39;s campaigns and answers the stored row. It is a full replace, not a patch: every field is written from the request, so an omitted one is cleared. externalId is launch-owned and is never touched here, so editing a campaign cannot break its link to a live provider execution.
      * @param id  (required)
-     * @param updateCampaignIn  (required)
-     * @return AdCampaign
+     * @param adUpdateCampaignIn  (required)
+     * @return AdAdCampaign
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AdCampaign putAdCampaignsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateCampaignIn updateCampaignIn) throws ApiException {
-        ApiResponse<AdCampaign> localVarResp = putAdCampaignsByIdWithHttpInfo(id, updateCampaignIn);
+    public AdAdCampaign putAdCampaignsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AdUpdateCampaignIn adUpdateCampaignIn) throws ApiException {
+        ApiResponse<AdAdCampaign> localVarResp = putAdCampaignsByIdWithHttpInfo(id, adUpdateCampaignIn);
         return localVarResp.getData();
     }
 
@@ -899,19 +928,20 @@ public class AdApi {
      * Replaces the user-owned fields of one of the caller org&#39;s campaigns and answers the stored row.
      * Replaces the user-owned fields of one of the caller org&#39;s campaigns and answers the stored row. It is a full replace, not a patch: every field is written from the request, so an omitted one is cleared. externalId is launch-owned and is never touched here, so editing a campaign cannot break its link to a live provider execution.
      * @param id  (required)
-     * @param updateCampaignIn  (required)
-     * @return ApiResponse&lt;AdCampaign&gt;
+     * @param adUpdateCampaignIn  (required)
+     * @return ApiResponse&lt;AdAdCampaign&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AdCampaign> putAdCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateCampaignIn updateCampaignIn) throws ApiException {
-        okhttp3.Call localVarCall = putAdCampaignsByIdValidateBeforeCall(id, updateCampaignIn, null);
-        Type localVarReturnType = new TypeToken<AdCampaign>(){}.getType();
+    public ApiResponse<AdAdCampaign> putAdCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AdUpdateCampaignIn adUpdateCampaignIn) throws ApiException {
+        okhttp3.Call localVarCall = putAdCampaignsByIdValidateBeforeCall(id, adUpdateCampaignIn, null);
+        Type localVarReturnType = new TypeToken<AdAdCampaign>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -919,7 +949,7 @@ public class AdApi {
      * Replaces the user-owned fields of one of the caller org&#39;s campaigns and answers the stored row. (asynchronously)
      * Replaces the user-owned fields of one of the caller org&#39;s campaigns and answers the stored row. It is a full replace, not a patch: every field is written from the request, so an omitted one is cleared. externalId is launch-owned and is never touched here, so editing a campaign cannot break its link to a live provider execution.
      * @param id  (required)
-     * @param updateCampaignIn  (required)
+     * @param adUpdateCampaignIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -928,12 +958,13 @@ public class AdApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putAdCampaignsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateCampaignIn updateCampaignIn, final ApiCallback<AdCampaign> _callback) throws ApiException {
+    public okhttp3.Call putAdCampaignsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AdUpdateCampaignIn adUpdateCampaignIn, final ApiCallback<AdAdCampaign> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putAdCampaignsByIdValidateBeforeCall(id, updateCampaignIn, _callback);
-        Type localVarReturnType = new TypeToken<AdCampaign>(){}.getType();
+        okhttp3.Call localVarCall = putAdCampaignsByIdValidateBeforeCall(id, adUpdateCampaignIn, _callback);
+        Type localVarReturnType = new TypeToken<AdAdCampaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

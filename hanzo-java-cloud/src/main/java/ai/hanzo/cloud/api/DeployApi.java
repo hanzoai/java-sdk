@@ -27,20 +27,17 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.ArgoApp;
-import ai.hanzo.cloud.model.ArgoAppList;
-import ai.hanzo.cloud.model.ArgoClusterList;
-import ai.hanzo.cloud.model.ArgoProjectList;
-import ai.hanzo.cloud.model.ArgoRevisionMetadata;
-import ai.hanzo.cloud.model.ArgoSyncWindows;
-import ai.hanzo.cloud.model.ArgoTree;
-import ai.hanzo.cloud.model.ConsoleSettings;
-import ai.hanzo.cloud.model.DeployHealth;
-import ai.hanzo.cloud.model.GitOpsPlane;
-import ai.hanzo.cloud.model.ReconcileReport;
-import ai.hanzo.cloud.model.SessionEnded;
-import ai.hanzo.cloud.model.SessionUser;
-import ai.hanzo.cloud.model.VersionMessage;
+import ai.hanzo.cloud.model.DeployArgoApp;
+import ai.hanzo.cloud.model.DeployArgoAppList;
+import ai.hanzo.cloud.model.DeployArgoClusterList;
+import ai.hanzo.cloud.model.DeployArgoProjectList;
+import ai.hanzo.cloud.model.DeployArgoRevisionMetadata;
+import ai.hanzo.cloud.model.DeployArgoSyncWindows;
+import ai.hanzo.cloud.model.DeployArgoTree;
+import ai.hanzo.cloud.model.DeployDeployHealth;
+import ai.hanzo.cloud.model.DeploySessionEnded;
+import ai.hanzo.cloud.model.DeploySessionUser;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -95,6 +92,7 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDeployApplicationsCall(final ApiCallback _callback) throws ApiException {
@@ -123,7 +121,8 @@ public class DeployApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -150,35 +149,37 @@ public class DeployApi {
     /**
      * Returns the fleet as an argocd ApplicationList: one projected Application per operator App CR, carrying the image tag the CR DECLARES, the tag actually RUNNING in the cluster&#39;s Deployment, the reconciled health, and the sync verdict those two produce (declared &#x3D;&#x3D; running ⇒ Synced, both known and different ⇒ OutOfSync, either unknown ⇒ Unknown).
      * Returns the fleet as an argocd ApplicationList: one projected Application per operator App CR, carrying the image tag the CR DECLARES, the tag actually RUNNING in the cluster&#39;s Deployment, the reconciled health, and the sync verdict those two produce (declared &#x3D;&#x3D; running ⇒ Synced, both known and different ⇒ OutOfSync, either unknown ⇒ Unknown).  It is TENANT-SCOPED: a platform SuperAdmin reads every platform namespace, a validated org member reads only its own org&#39;s tenant namespace and only the App CRs labelled with its org, and anyone else is refused. A cross-tenant CR is never projected into an answer.
-     * @return ArgoAppList
+     * @return DeployArgoAppList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ArgoAppList getDeployApplications() throws ApiException {
-        ApiResponse<ArgoAppList> localVarResp = getDeployApplicationsWithHttpInfo();
+    public DeployArgoAppList getDeployApplications() throws ApiException {
+        ApiResponse<DeployArgoAppList> localVarResp = getDeployApplicationsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the fleet as an argocd ApplicationList: one projected Application per operator App CR, carrying the image tag the CR DECLARES, the tag actually RUNNING in the cluster&#39;s Deployment, the reconciled health, and the sync verdict those two produce (declared &#x3D;&#x3D; running ⇒ Synced, both known and different ⇒ OutOfSync, either unknown ⇒ Unknown).
      * Returns the fleet as an argocd ApplicationList: one projected Application per operator App CR, carrying the image tag the CR DECLARES, the tag actually RUNNING in the cluster&#39;s Deployment, the reconciled health, and the sync verdict those two produce (declared &#x3D;&#x3D; running ⇒ Synced, both known and different ⇒ OutOfSync, either unknown ⇒ Unknown).  It is TENANT-SCOPED: a platform SuperAdmin reads every platform namespace, a validated org member reads only its own org&#39;s tenant namespace and only the App CRs labelled with its org, and anyone else is refused. A cross-tenant CR is never projected into an answer.
-     * @return ApiResponse&lt;ArgoAppList&gt;
+     * @return ApiResponse&lt;DeployArgoAppList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArgoAppList> getDeployApplicationsWithHttpInfo() throws ApiException {
+    public ApiResponse<DeployArgoAppList> getDeployApplicationsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDeployApplicationsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ArgoAppList>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployArgoAppList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -193,12 +194,13 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDeployApplicationsAsync(final ApiCallback<ArgoAppList> _callback) throws ApiException {
+    public okhttp3.Call getDeployApplicationsAsync(final ApiCallback<DeployArgoAppList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDeployApplicationsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ArgoAppList>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployArgoAppList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -213,6 +215,7 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDeployApplicationsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -242,7 +245,8 @@ public class DeployApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -275,17 +279,18 @@ public class DeployApi {
      * Returns ONE projected argocd Application by name, with status.resources filled in from its reconciled resource tree — which is what makes it the detail view rather than a row of the list.
      * Returns ONE projected argocd Application by name, with status.resources filled in from its reconciled resource tree — which is what makes it the detail view rather than a row of the list.  It is TENANT-SCOPED, and a name that belongs to another org is reported NOT FOUND rather than refused: a 403 would confirm the application exists, so the route would become a cross-tenant existence oracle. A name that is not a DNS-1123 label is a 400 before any cluster read.
      * @param name Name is the application to read, from the path. It must be a DNS-1123 label (lowercase alphanumerics and hyphens, starting and ending alphanumeric) — every operator App CR&#39;s metadata.name satisfies that, and anything else is a 400 rather than a lookup. (required)
-     * @return ArgoApp
+     * @return DeployArgoApp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ArgoApp getDeployApplicationsByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ArgoApp> localVarResp = getDeployApplicationsByNameWithHttpInfo(name);
+    public DeployArgoApp getDeployApplicationsByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<DeployArgoApp> localVarResp = getDeployApplicationsByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -293,18 +298,19 @@ public class DeployApi {
      * Returns ONE projected argocd Application by name, with status.resources filled in from its reconciled resource tree — which is what makes it the detail view rather than a row of the list.
      * Returns ONE projected argocd Application by name, with status.resources filled in from its reconciled resource tree — which is what makes it the detail view rather than a row of the list.  It is TENANT-SCOPED, and a name that belongs to another org is reported NOT FOUND rather than refused: a 403 would confirm the application exists, so the route would become a cross-tenant existence oracle. A name that is not a DNS-1123 label is a 400 before any cluster read.
      * @param name Name is the application to read, from the path. It must be a DNS-1123 label (lowercase alphanumerics and hyphens, starting and ending alphanumeric) — every operator App CR&#39;s metadata.name satisfies that, and anything else is a 400 rather than a lookup. (required)
-     * @return ApiResponse&lt;ArgoApp&gt;
+     * @return ApiResponse&lt;DeployArgoApp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArgoApp> getDeployApplicationsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<DeployArgoApp> getDeployApplicationsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getDeployApplicationsByNameValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<ArgoApp>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployArgoApp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -320,12 +326,13 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDeployApplicationsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ArgoApp> _callback) throws ApiException {
+    public okhttp3.Call getDeployApplicationsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<DeployArgoApp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDeployApplicationsByNameValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<ArgoApp>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployArgoApp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -340,6 +347,7 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDeployApplicationsByNameResourceTreeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -369,7 +377,8 @@ public class DeployApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -402,17 +411,18 @@ public class DeployApi {
      * Returns one application&#39;s argocd ApplicationTree: the objects the operator reconciled from its App CR, reached by ownerRef — the Deployment and, under it, the ReplicaSet and Pods, plus the Service, Ingress, HorizontalPodAutoscaler, PodDisruptionBudget and ConfigMaps it owns — each node carrying its parent edges and its health.
      * Returns one application&#39;s argocd ApplicationTree: the objects the operator reconciled from its App CR, reached by ownerRef — the Deployment and, under it, the ReplicaSet and Pods, plus the Service, Ingress, HorizontalPodAutoscaler, PodDisruptionBudget and ConfigMaps it owns — each node carrying its parent edges and its health.  Secrets are DELIBERATELY not walked, so no materialized environment can ever appear in the tree. Tenant-scoped exactly like the application read: another org&#39;s name is not found, a malformed name is a 400.
      * @param name Name is the application to read, from the path. It must be a DNS-1123 label (lowercase alphanumerics and hyphens, starting and ending alphanumeric) — every operator App CR&#39;s metadata.name satisfies that, and anything else is a 400 rather than a lookup. (required)
-     * @return ArgoTree
+     * @return DeployArgoTree
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ArgoTree getDeployApplicationsByNameResourceTree(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ArgoTree> localVarResp = getDeployApplicationsByNameResourceTreeWithHttpInfo(name);
+    public DeployArgoTree getDeployApplicationsByNameResourceTree(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<DeployArgoTree> localVarResp = getDeployApplicationsByNameResourceTreeWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -420,18 +430,19 @@ public class DeployApi {
      * Returns one application&#39;s argocd ApplicationTree: the objects the operator reconciled from its App CR, reached by ownerRef — the Deployment and, under it, the ReplicaSet and Pods, plus the Service, Ingress, HorizontalPodAutoscaler, PodDisruptionBudget and ConfigMaps it owns — each node carrying its parent edges and its health.
      * Returns one application&#39;s argocd ApplicationTree: the objects the operator reconciled from its App CR, reached by ownerRef — the Deployment and, under it, the ReplicaSet and Pods, plus the Service, Ingress, HorizontalPodAutoscaler, PodDisruptionBudget and ConfigMaps it owns — each node carrying its parent edges and its health.  Secrets are DELIBERATELY not walked, so no materialized environment can ever appear in the tree. Tenant-scoped exactly like the application read: another org&#39;s name is not found, a malformed name is a 400.
      * @param name Name is the application to read, from the path. It must be a DNS-1123 label (lowercase alphanumerics and hyphens, starting and ending alphanumeric) — every operator App CR&#39;s metadata.name satisfies that, and anything else is a 400 rather than a lookup. (required)
-     * @return ApiResponse&lt;ArgoTree&gt;
+     * @return ApiResponse&lt;DeployArgoTree&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArgoTree> getDeployApplicationsByNameResourceTreeWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<DeployArgoTree> getDeployApplicationsByNameResourceTreeWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getDeployApplicationsByNameResourceTreeValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<ArgoTree>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployArgoTree>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -447,12 +458,13 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDeployApplicationsByNameResourceTreeAsync(@javax.annotation.Nonnull String name, final ApiCallback<ArgoTree> _callback) throws ApiException {
+    public okhttp3.Call getDeployApplicationsByNameResourceTreeAsync(@javax.annotation.Nonnull String name, final ApiCallback<DeployArgoTree> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDeployApplicationsByNameResourceTreeValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<ArgoTree>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployArgoTree>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -468,6 +480,7 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDeployApplicationsByNameRevisionsByRevisionMetadataCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision, final ApiCallback _callback) throws ApiException {
@@ -498,7 +511,8 @@ public class DeployApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -537,17 +551,18 @@ public class DeployApi {
      * Returns the argocd RevisionMetadata for one revision of one application — what the detail view shows beside a revision.  An App CR is IMAGE-pinned rather than commit-pinned: the deploy names an image tag, and the git source this projection reports is the display-only manifest repo, not the application&#39;s own source. Nothing in this process can read a commit&#39;s author or message for an arbitrary revision. So rather than 404 (which the SPA turns into an error toast) or invent a git author, it answers the HONEST minimum: date is when the App CR was created, message is the revision asked for — with the empty revision and \&quot;HEAD\&quot; resolving to the image tag the CR declares — and author is empty. An over-long revision is truncated before it is echoed back.  Tenant-scoped exactly like the application read.
      * @param name Name is the application to read, from the path. It must be a DNS-1123 label. (required)
      * @param revision Revision is the revision to describe, from the path. The empty revision and \&quot;HEAD\&quot; both mean \&quot;whatever this application currently declares\&quot;. (required)
-     * @return ArgoRevisionMetadata
+     * @return DeployArgoRevisionMetadata
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ArgoRevisionMetadata getDeployApplicationsByNameRevisionsByRevisionMetadata(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision) throws ApiException {
-        ApiResponse<ArgoRevisionMetadata> localVarResp = getDeployApplicationsByNameRevisionsByRevisionMetadataWithHttpInfo(name, revision);
+    public DeployArgoRevisionMetadata getDeployApplicationsByNameRevisionsByRevisionMetadata(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision) throws ApiException {
+        ApiResponse<DeployArgoRevisionMetadata> localVarResp = getDeployApplicationsByNameRevisionsByRevisionMetadataWithHttpInfo(name, revision);
         return localVarResp.getData();
     }
 
@@ -556,18 +571,19 @@ public class DeployApi {
      * Returns the argocd RevisionMetadata for one revision of one application — what the detail view shows beside a revision.  An App CR is IMAGE-pinned rather than commit-pinned: the deploy names an image tag, and the git source this projection reports is the display-only manifest repo, not the application&#39;s own source. Nothing in this process can read a commit&#39;s author or message for an arbitrary revision. So rather than 404 (which the SPA turns into an error toast) or invent a git author, it answers the HONEST minimum: date is when the App CR was created, message is the revision asked for — with the empty revision and \&quot;HEAD\&quot; resolving to the image tag the CR declares — and author is empty. An over-long revision is truncated before it is echoed back.  Tenant-scoped exactly like the application read.
      * @param name Name is the application to read, from the path. It must be a DNS-1123 label. (required)
      * @param revision Revision is the revision to describe, from the path. The empty revision and \&quot;HEAD\&quot; both mean \&quot;whatever this application currently declares\&quot;. (required)
-     * @return ApiResponse&lt;ArgoRevisionMetadata&gt;
+     * @return ApiResponse&lt;DeployArgoRevisionMetadata&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArgoRevisionMetadata> getDeployApplicationsByNameRevisionsByRevisionMetadataWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision) throws ApiException {
+    public ApiResponse<DeployArgoRevisionMetadata> getDeployApplicationsByNameRevisionsByRevisionMetadataWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision) throws ApiException {
         okhttp3.Call localVarCall = getDeployApplicationsByNameRevisionsByRevisionMetadataValidateBeforeCall(name, revision, null);
-        Type localVarReturnType = new TypeToken<ArgoRevisionMetadata>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployArgoRevisionMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -584,12 +600,13 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDeployApplicationsByNameRevisionsByRevisionMetadataAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision, final ApiCallback<ArgoRevisionMetadata> _callback) throws ApiException {
+    public okhttp3.Call getDeployApplicationsByNameRevisionsByRevisionMetadataAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision, final ApiCallback<DeployArgoRevisionMetadata> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDeployApplicationsByNameRevisionsByRevisionMetadataValidateBeforeCall(name, revision, _callback);
-        Type localVarReturnType = new TypeToken<ArgoRevisionMetadata>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployArgoRevisionMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -604,6 +621,7 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDeployApplicationsByNameSyncwindowsCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -633,7 +651,8 @@ public class DeployApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -666,17 +685,18 @@ public class DeployApi {
      * Returns one application&#39;s argocd ApplicationSyncWindowState — the answer to \&quot;is anything blocking a sync of this application right now?\&quot;.
      * Returns one application&#39;s argocd ApplicationSyncWindowState — the answer to \&quot;is anything blocking a sync of this application right now?\&quot;.  This platform runs NO sync windows, so the answer is always the permissive empty one: canSync true, with no active and no assigned windows. The application is still resolved first, so a name that is not the caller&#39;s is not found rather than handed the static body — the endpoint discloses nothing about another tenant&#39;s fleet.
      * @param name Name is the application to read, from the path. It must be a DNS-1123 label (lowercase alphanumerics and hyphens, starting and ending alphanumeric) — every operator App CR&#39;s metadata.name satisfies that, and anything else is a 400 rather than a lookup. (required)
-     * @return ArgoSyncWindows
+     * @return DeployArgoSyncWindows
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ArgoSyncWindows getDeployApplicationsByNameSyncwindows(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ArgoSyncWindows> localVarResp = getDeployApplicationsByNameSyncwindowsWithHttpInfo(name);
+    public DeployArgoSyncWindows getDeployApplicationsByNameSyncwindows(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<DeployArgoSyncWindows> localVarResp = getDeployApplicationsByNameSyncwindowsWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -684,18 +704,19 @@ public class DeployApi {
      * Returns one application&#39;s argocd ApplicationSyncWindowState — the answer to \&quot;is anything blocking a sync of this application right now?\&quot;.
      * Returns one application&#39;s argocd ApplicationSyncWindowState — the answer to \&quot;is anything blocking a sync of this application right now?\&quot;.  This platform runs NO sync windows, so the answer is always the permissive empty one: canSync true, with no active and no assigned windows. The application is still resolved first, so a name that is not the caller&#39;s is not found rather than handed the static body — the endpoint discloses nothing about another tenant&#39;s fleet.
      * @param name Name is the application to read, from the path. It must be a DNS-1123 label (lowercase alphanumerics and hyphens, starting and ending alphanumeric) — every operator App CR&#39;s metadata.name satisfies that, and anything else is a 400 rather than a lookup. (required)
-     * @return ApiResponse&lt;ArgoSyncWindows&gt;
+     * @return ApiResponse&lt;DeployArgoSyncWindows&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArgoSyncWindows> getDeployApplicationsByNameSyncwindowsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<DeployArgoSyncWindows> getDeployApplicationsByNameSyncwindowsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getDeployApplicationsByNameSyncwindowsValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<ArgoSyncWindows>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployArgoSyncWindows>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -711,101 +732,14 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDeployApplicationsByNameSyncwindowsAsync(@javax.annotation.Nonnull String name, final ApiCallback<ArgoSyncWindows> _callback) throws ApiException {
+    public okhttp3.Call getDeployApplicationsByNameSyncwindowsAsync(@javax.annotation.Nonnull String name, final ApiCallback<DeployArgoSyncWindows> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDeployApplicationsByNameSyncwindowsValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<ArgoSyncWindows>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployArgoSyncWindows>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getDeployCallback
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getDeployCallbackCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/deploy/callback";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDeployCallbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getDeployCallbackCall(_callback);
-
-    }
-
-    /**
-     * Finish the sign-in round trip and mint the console session
-     * Completes the redirect from IAM: it validates &#x60;state&#x60; against the single-use flow cookie in constant time, redeems the authorization code with the PKCE verifier, and then VERIFIES the resulting token exactly as this deployment&#39;s identity boundary will on every later request — so a token that would be refused next request fails here with the real reason instead of producing a sign-in loop. On success it sets the session cookie, bounded by the token&#39;s own expiry, and redirects to the validated return path.  It fails closed, and closes on the ADMIN ORG: a principal whose verified owner claim is not the reserved admin org is told plainly that it lacks the role (403) and no cookie is minted for it. That check is not the authorization decision — every gated route re-derives SuperAdmin from the verified JWT — it exists so nobody is handed a session that silently 403s everything. No flow in progress, or a mismatched &#x60;state&#x60;, is a 400; a refused or unexchangeable code is a 401.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getDeployCallback() throws ApiException {
-        getDeployCallbackWithHttpInfo();
-    }
-
-    /**
-     * Finish the sign-in round trip and mint the console session
-     * Completes the redirect from IAM: it validates &#x60;state&#x60; against the single-use flow cookie in constant time, redeems the authorization code with the PKCE verifier, and then VERIFIES the resulting token exactly as this deployment&#39;s identity boundary will on every later request — so a token that would be refused next request fails here with the real reason instead of producing a sign-in loop. On success it sets the session cookie, bounded by the token&#39;s own expiry, and redirects to the validated return path.  It fails closed, and closes on the ADMIN ORG: a principal whose verified owner claim is not the reserved admin org is told plainly that it lacks the role (403) and no cookie is minted for it. That check is not the authorization decision — every gated route re-derives SuperAdmin from the verified JWT — it exists so nobody is handed a session that silently 403s everything. No flow in progress, or a mismatched &#x60;state&#x60;, is a 400; a refused or unexchangeable code is a 401.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getDeployCallbackWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getDeployCallbackValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Finish the sign-in round trip and mint the console session (asynchronously)
-     * Completes the redirect from IAM: it validates &#x60;state&#x60; against the single-use flow cookie in constant time, redeems the authorization code with the PKCE verifier, and then VERIFIES the resulting token exactly as this deployment&#39;s identity boundary will on every later request — so a token that would be refused next request fails here with the real reason instead of producing a sign-in loop. On success it sets the session cookie, bounded by the token&#39;s own expiry, and redirects to the validated return path.  It fails closed, and closes on the ADMIN ORG: a principal whose verified owner claim is not the reserved admin org is told plainly that it lacks the role (403) and no cookie is minted for it. That check is not the authorization decision — every gated route re-derives SuperAdmin from the verified JWT — it exists so nobody is handed a session that silently 403s everything. No flow in progress, or a mismatched &#x60;state&#x60;, is a 400; a refused or unexchangeable code is a 401.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getDeployCallbackAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getDeployCallbackValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -818,6 +752,7 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDeployClustersCall(final ApiCallback _callback) throws ApiException {
@@ -846,7 +781,8 @@ public class DeployApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -873,35 +809,37 @@ public class DeployApi {
     /**
      * Returns the argocd ClusterList of the destinations the caller&#39;s applications reconcile into: one entry per distinct destination server, carrying the count of applications reconciling into it.
      * Returns the argocd ClusterList of the destinations the caller&#39;s applications reconcile into: one entry per distinct destination server, carrying the count of applications reconciling into it. The in-cluster destination is always present, so an empty fleet still answers one cluster, and no cluster credential can appear — the projected type physically has no config field.  It is TENANT-SCOPED and reads the SAME App CRs the applications list reads: a platform SuperAdmin counts the whole fleet, a validated org member counts only its own org&#39;s applications, anyone else is refused.
-     * @return ArgoClusterList
+     * @return DeployArgoClusterList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ArgoClusterList getDeployClusters() throws ApiException {
-        ApiResponse<ArgoClusterList> localVarResp = getDeployClustersWithHttpInfo();
+    public DeployArgoClusterList getDeployClusters() throws ApiException {
+        ApiResponse<DeployArgoClusterList> localVarResp = getDeployClustersWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the argocd ClusterList of the destinations the caller&#39;s applications reconcile into: one entry per distinct destination server, carrying the count of applications reconciling into it.
      * Returns the argocd ClusterList of the destinations the caller&#39;s applications reconcile into: one entry per distinct destination server, carrying the count of applications reconciling into it. The in-cluster destination is always present, so an empty fleet still answers one cluster, and no cluster credential can appear — the projected type physically has no config field.  It is TENANT-SCOPED and reads the SAME App CRs the applications list reads: a platform SuperAdmin counts the whole fleet, a validated org member counts only its own org&#39;s applications, anyone else is refused.
-     * @return ApiResponse&lt;ArgoClusterList&gt;
+     * @return ApiResponse&lt;DeployArgoClusterList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArgoClusterList> getDeployClustersWithHttpInfo() throws ApiException {
+    public ApiResponse<DeployArgoClusterList> getDeployClustersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDeployClustersValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ArgoClusterList>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployArgoClusterList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -916,129 +854,13 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDeployClustersAsync(final ApiCallback<ArgoClusterList> _callback) throws ApiException {
+    public okhttp3.Call getDeployClustersAsync(final ApiCallback<DeployArgoClusterList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDeployClustersValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ArgoClusterList>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getDeployGitops
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getDeployGitopsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/deploy/gitops";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDeployGitopsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getDeployGitopsCall(_callback);
-
-    }
-
-    /**
-     * Lists every Hanzo CD Application in the cluster: the git source each one polls, the commit it last APPLIED, how its last sync operation ended, and its recent deploy history — newest deploy first, ordered by namespace then name.
-     * Lists every Hanzo CD Application in the cluster: the git source each one polls, the commit it last APPLIED, how its last sync operation ended, and its recent deploy history — newest deploy first, ordered by namespace then name.  This is the layer ABOVE the application board, and the two disagree in exactly the case an operator most needs to see: main carries a new image pin, CD has not applied that commit yet, so every App CR still declares the old tag and the application board is legitimately \&quot;Synced\&quot; while the deploy has not landed. Only the applied revision here can show that.  installed is false — with a reason and an empty list — when the CD CRD is not served in this cluster. That is a FACT about the cluster rather than a failure of the request, so the caller can say \&quot;no CD plane here\&quot; instead of rendering an error it cannot act on; a genuine transport or RBAC failure still errors.  Read-only, and platform SuperAdmin only: the CD plane is fleet infrastructure with no tenant dimension. This view observes CD and never drives it — the sync policy is automated with self-heal, and the actionable verb an operator has is the per-application reconcile at POST /v1/deploy/applications/{name}/sync.
-     * @return GitOpsPlane
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public GitOpsPlane getDeployGitops() throws ApiException {
-        ApiResponse<GitOpsPlane> localVarResp = getDeployGitopsWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Lists every Hanzo CD Application in the cluster: the git source each one polls, the commit it last APPLIED, how its last sync operation ended, and its recent deploy history — newest deploy first, ordered by namespace then name.
-     * Lists every Hanzo CD Application in the cluster: the git source each one polls, the commit it last APPLIED, how its last sync operation ended, and its recent deploy history — newest deploy first, ordered by namespace then name.  This is the layer ABOVE the application board, and the two disagree in exactly the case an operator most needs to see: main carries a new image pin, CD has not applied that commit yet, so every App CR still declares the old tag and the application board is legitimately \&quot;Synced\&quot; while the deploy has not landed. Only the applied revision here can show that.  installed is false — with a reason and an empty list — when the CD CRD is not served in this cluster. That is a FACT about the cluster rather than a failure of the request, so the caller can say \&quot;no CD plane here\&quot; instead of rendering an error it cannot act on; a genuine transport or RBAC failure still errors.  Read-only, and platform SuperAdmin only: the CD plane is fleet infrastructure with no tenant dimension. This view observes CD and never drives it — the sync policy is automated with self-heal, and the actionable verb an operator has is the per-application reconcile at POST /v1/deploy/applications/{name}/sync.
-     * @return ApiResponse&lt;GitOpsPlane&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<GitOpsPlane> getDeployGitopsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getDeployGitopsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GitOpsPlane>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Lists every Hanzo CD Application in the cluster: the git source each one polls, the commit it last APPLIED, how its last sync operation ended, and its recent deploy history — newest deploy first, ordered by namespace then name. (asynchronously)
-     * Lists every Hanzo CD Application in the cluster: the git source each one polls, the commit it last APPLIED, how its last sync operation ended, and its recent deploy history — newest deploy first, ordered by namespace then name.  This is the layer ABOVE the application board, and the two disagree in exactly the case an operator most needs to see: main carries a new image pin, CD has not applied that commit yet, so every App CR still declares the old tag and the application board is legitimately \&quot;Synced\&quot; while the deploy has not landed. Only the applied revision here can show that.  installed is false — with a reason and an empty list — when the CD CRD is not served in this cluster. That is a FACT about the cluster rather than a failure of the request, so the caller can say \&quot;no CD plane here\&quot; instead of rendering an error it cannot act on; a genuine transport or RBAC failure still errors.  Read-only, and platform SuperAdmin only: the CD plane is fleet infrastructure with no tenant dimension. This view observes CD and never drives it — the sync policy is automated with self-heal, and the actionable verb an operator has is the per-application reconcile at POST /v1/deploy/applications/{name}/sync.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getDeployGitopsAsync(final ApiCallback<GitOpsPlane> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getDeployGitopsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GitOpsPlane>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployArgoClusterList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1053,6 +875,7 @@ public class DeployApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDeployHealthCall(final ApiCallback _callback) throws ApiException {
@@ -1081,7 +904,8 @@ public class DeployApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1106,9 +930,9 @@ public class DeployApi {
     }
 
     /**
-     * Health reports whether this deployment can observe the delivery plane.
-     * Health reports whether this deployment can observe the delivery plane.  200 only when the Kubernetes API answers AND the App custom resource is served; 503 with the same shape otherwise, naming which half failed. It reports BOOLEANS and never the underlying error, because the route is unauthenticated — liveness must be probe-able without a token — and a raw client error can disclose the apiserver address or an RBAC detail. That detail is logged server-side instead.
-     * @return DeployHealth
+     * Reports whether this deployment can observe the delivery plane.
+     * Reports whether this deployment can observe the delivery plane.  200 only when the Kubernetes API answers AND the App custom resource is served; 503 with the same shape otherwise, naming which half failed. It reports BOOLEANS and never the underlying error, because the route is unauthenticated — liveness must be probe-able without a token — and a raw client error can disclose the apiserver address or an RBAC detail. That detail is logged server-side instead.
+     * @return DeployDeployHealth
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1116,17 +940,18 @@ public class DeployApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DeployHealth getDeployHealth() throws ApiException {
-        ApiResponse<DeployHealth> localVarResp = getDeployHealthWithHttpInfo();
+    public DeployDeployHealth getDeployHealth() throws ApiException {
+        ApiResponse<DeployDeployHealth> localVarResp = getDeployHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Health reports whether this deployment can observe the delivery plane.
-     * Health reports whether this deployment can observe the delivery plane.  200 only when the Kubernetes API answers AND the App custom resource is served; 503 with the same shape otherwise, naming which half failed. It reports BOOLEANS and never the underlying error, because the route is unauthenticated — liveness must be probe-able without a token — and a raw client error can disclose the apiserver address or an RBAC detail. That detail is logged server-side instead.
-     * @return ApiResponse&lt;DeployHealth&gt;
+     * Reports whether this deployment can observe the delivery plane.
+     * Reports whether this deployment can observe the delivery plane.  200 only when the Kubernetes API answers AND the App custom resource is served; 503 with the same shape otherwise, naming which half failed. It reports BOOLEANS and never the underlying error, because the route is unauthenticated — liveness must be probe-able without a token — and a raw client error can disclose the apiserver address or an RBAC detail. That detail is logged server-side instead.
+     * @return ApiResponse&lt;DeployDeployHealth&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1134,17 +959,18 @@ public class DeployApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeployHealth> getDeployHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<DeployDeployHealth> getDeployHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDeployHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<DeployHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployDeployHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Health reports whether this deployment can observe the delivery plane. (asynchronously)
-     * Health reports whether this deployment can observe the delivery plane.  200 only when the Kubernetes API answers AND the App custom resource is served; 503 with the same shape otherwise, naming which half failed. It reports BOOLEANS and never the underlying error, because the route is unauthenticated — liveness must be probe-able without a token — and a raw client error can disclose the apiserver address or an RBAC detail. That detail is logged server-side instead.
+     * Reports whether this deployment can observe the delivery plane. (asynchronously)
+     * Reports whether this deployment can observe the delivery plane.  200 only when the Kubernetes API answers AND the App custom resource is served; 503 with the same shape otherwise, naming which half failed. It reports BOOLEANS and never the underlying error, because the route is unauthenticated — liveness must be probe-able without a token — and a raw client error can disclose the apiserver address or an RBAC detail. That detail is logged server-side instead.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1154,12 +980,13 @@ public class DeployApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDeployHealthAsync(final ApiCallback<DeployHealth> _callback) throws ApiException {
+    public okhttp3.Call getDeployHealthAsync(final ApiCallback<DeployDeployHealth> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDeployHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<DeployHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployDeployHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1261,6 +1088,7 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDeployProjectsCall(final ApiCallback _callback) throws ApiException {
@@ -1289,7 +1117,8 @@ public class DeployApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1316,35 +1145,37 @@ public class DeployApi {
     /**
      * Returns the argocd AppProjectList this console groups and filters applications by.
      * Returns the argocd AppProjectList this console groups and filters applications by. Projects are owned by Hanzo IAM rather than by argocd, so they are REFLECTED read-only from the IAM project store and nothing is persisted here: a validated org member gets its own organization&#39;s projects and a platform SuperAdmin gets every organization&#39;s.  A SuperAdmin whose IAM store is not reachable falls back to the real argoproj.io AppProject CRs when that CRD is served, and otherwise to one permissive synthesized project per distinct project name the App CRs declare. A project named \&quot;default\&quot; is always present, because that is what an App CR carrying no project label projects to.
-     * @return ArgoProjectList
+     * @return DeployArgoProjectList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ArgoProjectList getDeployProjects() throws ApiException {
-        ApiResponse<ArgoProjectList> localVarResp = getDeployProjectsWithHttpInfo();
+    public DeployArgoProjectList getDeployProjects() throws ApiException {
+        ApiResponse<DeployArgoProjectList> localVarResp = getDeployProjectsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the argocd AppProjectList this console groups and filters applications by.
      * Returns the argocd AppProjectList this console groups and filters applications by. Projects are owned by Hanzo IAM rather than by argocd, so they are REFLECTED read-only from the IAM project store and nothing is persisted here: a validated org member gets its own organization&#39;s projects and a platform SuperAdmin gets every organization&#39;s.  A SuperAdmin whose IAM store is not reachable falls back to the real argoproj.io AppProject CRs when that CRD is served, and otherwise to one permissive synthesized project per distinct project name the App CRs declare. A project named \&quot;default\&quot; is always present, because that is what an App CR carrying no project label projects to.
-     * @return ApiResponse&lt;ArgoProjectList&gt;
+     * @return ApiResponse&lt;DeployArgoProjectList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArgoProjectList> getDeployProjectsWithHttpInfo() throws ApiException {
+    public ApiResponse<DeployArgoProjectList> getDeployProjectsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDeployProjectsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ArgoProjectList>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployArgoProjectList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1359,12 +1190,13 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDeployProjectsAsync(final ApiCallback<ArgoProjectList> _callback) throws ApiException {
+    public okhttp3.Call getDeployProjectsAsync(final ApiCallback<DeployArgoProjectList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDeployProjectsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ArgoProjectList>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployArgoProjectList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1378,6 +1210,7 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDeploySessionUserinfoCall(final ApiCallback _callback) throws ApiException {
@@ -1406,7 +1239,8 @@ public class DeployApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1433,35 +1267,37 @@ public class DeployApi {
     /**
      * Answers \&quot;is this browser signed in, and if not where does it sign in?\&quot; — the dashboard SPA&#39;s bootstrap question, and the only route on this plane that answers for an anonymous caller.
      * Answers \&quot;is this browser signed in, and if not where does it sign in?\&quot; — the dashboard SPA&#39;s bootstrap question, and the only route on this plane that answers for an anonymous caller.  The anonymous answer carries loggedIn:false and a URL and NOTHING else: no username, no org, no groups, no issuer, no hint about who the caller might be or what exists in the cluster. Answering it costs nothing (the caller already knows whether it holds a cookie) and withholding it costs the whole sign-in journey.  The predicate is the platform SuperAdmin fact — the SAME one every other route here gates on, minted from a validated principal whose org is the reserved admin org — so a validated-but-not-SuperAdmin caller is reported as NOT signed in, which is the truth as this console defines it: they cannot use it.
-     * @return SessionUser
+     * @return DeploySessionUser
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SessionUser getDeploySessionUserinfo() throws ApiException {
-        ApiResponse<SessionUser> localVarResp = getDeploySessionUserinfoWithHttpInfo();
+    public DeploySessionUser getDeploySessionUserinfo() throws ApiException {
+        ApiResponse<DeploySessionUser> localVarResp = getDeploySessionUserinfoWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Answers \&quot;is this browser signed in, and if not where does it sign in?\&quot; — the dashboard SPA&#39;s bootstrap question, and the only route on this plane that answers for an anonymous caller.
      * Answers \&quot;is this browser signed in, and if not where does it sign in?\&quot; — the dashboard SPA&#39;s bootstrap question, and the only route on this plane that answers for an anonymous caller.  The anonymous answer carries loggedIn:false and a URL and NOTHING else: no username, no org, no groups, no issuer, no hint about who the caller might be or what exists in the cluster. Answering it costs nothing (the caller already knows whether it holds a cookie) and withholding it costs the whole sign-in journey.  The predicate is the platform SuperAdmin fact — the SAME one every other route here gates on, minted from a validated principal whose org is the reserved admin org — so a validated-but-not-SuperAdmin caller is reported as NOT signed in, which is the truth as this console defines it: they cannot use it.
-     * @return ApiResponse&lt;SessionUser&gt;
+     * @return ApiResponse&lt;DeploySessionUser&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SessionUser> getDeploySessionUserinfoWithHttpInfo() throws ApiException {
+    public ApiResponse<DeploySessionUser> getDeploySessionUserinfoWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDeploySessionUserinfoValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<SessionUser>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeploySessionUser>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1476,129 +1312,13 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDeploySessionUserinfoAsync(final ApiCallback<SessionUser> _callback) throws ApiException {
+    public okhttp3.Call getDeploySessionUserinfoAsync(final ApiCallback<DeploySessionUser> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDeploySessionUserinfoValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<SessionUser>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getDeploySettings
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getDeploySettingsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/deploy/settings";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDeploySettingsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getDeploySettingsCall(_callback);
-
-    }
-
-    /**
-     * Returns the argocd AuthSettings object the dashboard SPA awaits before its first render.
-     * Returns the argocd AuthSettings object the dashboard SPA awaits before its first render.  Every value is a CONSTANT of this projection rather than configuration read from anywhere: the SPA&#39;s own login form is reported disabled and its OIDC config null because Hanzo IAM owns identity at the edge and this console&#39;s sign-in is GET /v1/deploy/login, and every argocd feature the projection does not implement — status badges, Dex connectors, config-management plugins, kustomize versions, the exec terminal, apps-in-any-namespace, the hydrator, sync-with-replace — is reported off. Platform SuperAdmin only.
-     * @return ConsoleSettings
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ConsoleSettings getDeploySettings() throws ApiException {
-        ApiResponse<ConsoleSettings> localVarResp = getDeploySettingsWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns the argocd AuthSettings object the dashboard SPA awaits before its first render.
-     * Returns the argocd AuthSettings object the dashboard SPA awaits before its first render.  Every value is a CONSTANT of this projection rather than configuration read from anywhere: the SPA&#39;s own login form is reported disabled and its OIDC config null because Hanzo IAM owns identity at the edge and this console&#39;s sign-in is GET /v1/deploy/login, and every argocd feature the projection does not implement — status badges, Dex connectors, config-management plugins, kustomize versions, the exec terminal, apps-in-any-namespace, the hydrator, sync-with-replace — is reported off. Platform SuperAdmin only.
-     * @return ApiResponse&lt;ConsoleSettings&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ConsoleSettings> getDeploySettingsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getDeploySettingsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ConsoleSettings>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns the argocd AuthSettings object the dashboard SPA awaits before its first render. (asynchronously)
-     * Returns the argocd AuthSettings object the dashboard SPA awaits before its first render.  Every value is a CONSTANT of this projection rather than configuration read from anywhere: the SPA&#39;s own login form is reported disabled and its OIDC config null because Hanzo IAM owns identity at the edge and this console&#39;s sign-in is GET /v1/deploy/login, and every argocd feature the projection does not implement — status badges, Dex connectors, config-management plugins, kustomize versions, the exec terminal, apps-in-any-namespace, the hydrator, sync-with-replace — is reported off. Platform SuperAdmin only.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getDeploySettingsAsync(final ApiCallback<ConsoleSettings> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getDeploySettingsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ConsoleSettings>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeploySessionUser>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1789,123 +1509,6 @@ public class DeployApi {
         return localVarCall;
     }
     /**
-     * Build call for getDeployVersion
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getDeployVersionCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/deploy/version";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDeployVersionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getDeployVersionCall(_callback);
-
-    }
-
-    /**
-     * Returns the argocd VersionMessage the dashboard SPA reads at bootstrap.
-     * Returns the argocd VersionMessage the dashboard SPA reads at bootstrap. There is no argocd binary behind this plane — it is a projection over operator App CRs — so the fields say so rather than describing a build: Version names the projection, BuildDate is the moment this response was generated, and Compiler/Platform/GoVersion are the constants the SPA tolerates rather than facts about this process. Platform SuperAdmin only.
-     * @return VersionMessage
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public VersionMessage getDeployVersion() throws ApiException {
-        ApiResponse<VersionMessage> localVarResp = getDeployVersionWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns the argocd VersionMessage the dashboard SPA reads at bootstrap.
-     * Returns the argocd VersionMessage the dashboard SPA reads at bootstrap. There is no argocd binary behind this plane — it is a projection over operator App CRs — so the fields say so rather than describing a build: Version names the projection, BuildDate is the moment this response was generated, and Compiler/Platform/GoVersion are the constants the SPA tolerates rather than facts about this process. Platform SuperAdmin only.
-     * @return ApiResponse&lt;VersionMessage&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<VersionMessage> getDeployVersionWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getDeployVersionValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<VersionMessage>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns the argocd VersionMessage the dashboard SPA reads at bootstrap. (asynchronously)
-     * Returns the argocd VersionMessage the dashboard SPA reads at bootstrap. There is no argocd binary behind this plane — it is a projection over operator App CRs — so the fields say so rather than describing a build: Version names the projection, BuildDate is the moment this response was generated, and Compiler/Platform/GoVersion are the constants the SPA tolerates rather than facts about this process. Platform SuperAdmin only.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getDeployVersionAsync(final ApiCallback<VersionMessage> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getDeployVersionValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<VersionMessage>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for postDeployApplicationsByNameRollback
      * @param name Name is the application to read, from the path. It must be a DNS-1123 label (lowercase alphanumerics and hyphens, starting and ending alphanumeric) — every operator App CR&#39;s metadata.name satisfies that, and anything else is a 400 rather than a lookup. (required)
      * @param _callback Callback for upload/download progress
@@ -1916,6 +1519,7 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postDeployApplicationsByNameRollbackCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -1945,7 +1549,8 @@ public class DeployApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1978,17 +1583,18 @@ public class DeployApi {
      * Serves the console&#39;s rollback control, and today it requests a reconcile and nothing more.
      * Serves the console&#39;s rollback control, and today it requests a reconcile and nothing more.  The opening verb is not style. zipdoc drops a leading CamelCase symbol only when a plain verb follows it and never before a copula (internal/zipdoc/ extract.go:811-824, \&quot;CompleteDeployment IS the CI completion hook\&quot; would otherwise become \&quot;Is the CI completion hook\&quot;) — so \&quot;RollbackDeployApplication is …\&quot; would publish a Go symbol no caller can see into the summary an SDK docstring, an MCP tool list and a CLI help line all show.  It performs exactly what the sync action performs — the same stamp on the same App CR, the same application re-projected — and it does NOT select, pin or revert to a prior image tag. That is the one thing to know before wiring anything to it: the name is the console&#39;s, the behaviour is the sync. Pinning a previous release rides the release client, which this address does not call yet.  Same gate, same refusals and the same absent request body as the sync it shares a core with.
      * @param name Name is the application to read, from the path. It must be a DNS-1123 label (lowercase alphanumerics and hyphens, starting and ending alphanumeric) — every operator App CR&#39;s metadata.name satisfies that, and anything else is a 400 rather than a lookup. (required)
-     * @return ArgoApp
+     * @return DeployArgoApp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ArgoApp postDeployApplicationsByNameRollback(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ArgoApp> localVarResp = postDeployApplicationsByNameRollbackWithHttpInfo(name);
+    public DeployArgoApp postDeployApplicationsByNameRollback(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<DeployArgoApp> localVarResp = postDeployApplicationsByNameRollbackWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -1996,18 +1602,19 @@ public class DeployApi {
      * Serves the console&#39;s rollback control, and today it requests a reconcile and nothing more.
      * Serves the console&#39;s rollback control, and today it requests a reconcile and nothing more.  The opening verb is not style. zipdoc drops a leading CamelCase symbol only when a plain verb follows it and never before a copula (internal/zipdoc/ extract.go:811-824, \&quot;CompleteDeployment IS the CI completion hook\&quot; would otherwise become \&quot;Is the CI completion hook\&quot;) — so \&quot;RollbackDeployApplication is …\&quot; would publish a Go symbol no caller can see into the summary an SDK docstring, an MCP tool list and a CLI help line all show.  It performs exactly what the sync action performs — the same stamp on the same App CR, the same application re-projected — and it does NOT select, pin or revert to a prior image tag. That is the one thing to know before wiring anything to it: the name is the console&#39;s, the behaviour is the sync. Pinning a previous release rides the release client, which this address does not call yet.  Same gate, same refusals and the same absent request body as the sync it shares a core with.
      * @param name Name is the application to read, from the path. It must be a DNS-1123 label (lowercase alphanumerics and hyphens, starting and ending alphanumeric) — every operator App CR&#39;s metadata.name satisfies that, and anything else is a 400 rather than a lookup. (required)
-     * @return ApiResponse&lt;ArgoApp&gt;
+     * @return ApiResponse&lt;DeployArgoApp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArgoApp> postDeployApplicationsByNameRollbackWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<DeployArgoApp> postDeployApplicationsByNameRollbackWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = postDeployApplicationsByNameRollbackValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<ArgoApp>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployArgoApp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2023,139 +1630,13 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDeployApplicationsByNameRollbackAsync(@javax.annotation.Nonnull String name, final ApiCallback<ArgoApp> _callback) throws ApiException {
+    public okhttp3.Call postDeployApplicationsByNameRollbackAsync(@javax.annotation.Nonnull String name, final ApiCallback<DeployArgoApp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postDeployApplicationsByNameRollbackValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<ArgoApp>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postDeployApplicationsByNameSync
-     * @param name Name is the application to read, from the path. It must be a DNS-1123 label (lowercase alphanumerics and hyphens, starting and ending alphanumeric) — every operator App CR&#39;s metadata.name satisfies that, and anything else is a 400 rather than a lookup. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postDeployApplicationsByNameSyncCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/deploy/applications/{name}/sync"
-            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postDeployApplicationsByNameSyncValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postDeployApplicationsByNameSync(Async)");
-        }
-
-        return postDeployApplicationsByNameSyncCall(name, _callback);
-
-    }
-
-    /**
-     * Asks the operator to reconcile ONE application now.
-     * Asks the operator to reconcile ONE application now.  It stamps a sync-requested timestamp onto the application&#39;s App CR, which the operator&#39;s watch observes, and answers the application re-projected. It ASKS, it does not apply: the operator reconciles on its own clock, so a 200 means the request landed, not that the rollout finished — the returned row&#39;s running version still lags until it does.  SuperAdmin-only and fail-closed, and the gate is INSIDE the op rather than in middleware wrapped around the route. That is a correctness requirement, not a preference: this op is also reached by POST /mcp and by the by-name call plane, neither of which runs route middleware, so a gate that only the REST projection runs would publish an unguarded alias of a fleet-mutating write. It reads no request body — the URL names the application and nothing else does. An unknown name is a 404 (never a 403, which would confirm the application exists), a name that is not a DNS-1123 label is a 400, and no cluster client is a 503.
-     * @param name Name is the application to read, from the path. It must be a DNS-1123 label (lowercase alphanumerics and hyphens, starting and ending alphanumeric) — every operator App CR&#39;s metadata.name satisfies that, and anything else is a 400 rather than a lookup. (required)
-     * @return ArgoApp
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ArgoApp postDeployApplicationsByNameSync(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ArgoApp> localVarResp = postDeployApplicationsByNameSyncWithHttpInfo(name);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Asks the operator to reconcile ONE application now.
-     * Asks the operator to reconcile ONE application now.  It stamps a sync-requested timestamp onto the application&#39;s App CR, which the operator&#39;s watch observes, and answers the application re-projected. It ASKS, it does not apply: the operator reconciles on its own clock, so a 200 means the request landed, not that the rollout finished — the returned row&#39;s running version still lags until it does.  SuperAdmin-only and fail-closed, and the gate is INSIDE the op rather than in middleware wrapped around the route. That is a correctness requirement, not a preference: this op is also reached by POST /mcp and by the by-name call plane, neither of which runs route middleware, so a gate that only the REST projection runs would publish an unguarded alias of a fleet-mutating write. It reads no request body — the URL names the application and nothing else does. An unknown name is a 404 (never a 403, which would confirm the application exists), a name that is not a DNS-1123 label is a 400, and no cluster client is a 503.
-     * @param name Name is the application to read, from the path. It must be a DNS-1123 label (lowercase alphanumerics and hyphens, starting and ending alphanumeric) — every operator App CR&#39;s metadata.name satisfies that, and anything else is a 400 rather than a lookup. (required)
-     * @return ApiResponse&lt;ArgoApp&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ArgoApp> postDeployApplicationsByNameSyncWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = postDeployApplicationsByNameSyncValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<ArgoApp>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Asks the operator to reconcile ONE application now. (asynchronously)
-     * Asks the operator to reconcile ONE application now.  It stamps a sync-requested timestamp onto the application&#39;s App CR, which the operator&#39;s watch observes, and answers the application re-projected. It ASKS, it does not apply: the operator reconciles on its own clock, so a 200 means the request landed, not that the rollout finished — the returned row&#39;s running version still lags until it does.  SuperAdmin-only and fail-closed, and the gate is INSIDE the op rather than in middleware wrapped around the route. That is a correctness requirement, not a preference: this op is also reached by POST /mcp and by the by-name call plane, neither of which runs route middleware, so a gate that only the REST projection runs would publish an unguarded alias of a fleet-mutating write. It reads no request body — the URL names the application and nothing else does. An unknown name is a 404 (never a 403, which would confirm the application exists), a name that is not a DNS-1123 label is a 400, and no cluster client is a 503.
-     * @param name Name is the application to read, from the path. It must be a DNS-1123 label (lowercase alphanumerics and hyphens, starting and ending alphanumeric) — every operator App CR&#39;s metadata.name satisfies that, and anything else is a 400 rather than a lookup. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postDeployApplicationsByNameSyncAsync(@javax.annotation.Nonnull String name, final ApiCallback<ArgoApp> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postDeployApplicationsByNameSyncValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<ArgoApp>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeployArgoApp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2169,6 +1650,7 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  * Set-Cookie - Set by POST /v1/deploy/logout. <br>  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postDeployLogoutCall(final ApiCallback _callback) throws ApiException {
@@ -2197,7 +1679,8 @@ public class DeployApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2224,35 +1707,37 @@ public class DeployApi {
     /**
      * Ends the console session on this host.
      * Ends the console session on this host.  It clears this console&#39;s session cookie and answers the signed-out state with the sign-in URL to start again. IAM&#39;s own session is untouched — this ends the console session only, so signing back in may not prompt for credentials.  It is a POST because it CHANGES STATE. As a GET it was reachable by a cross-site top-level navigation, which a SameSite&#x3D;Lax cookie still rides, so any page could sign a SuperAdmin out; a POST is not carried cross-site by that cookie. It reads no request body and takes no argument: the session it ends is the one the request already carries.
-     * @return SessionEnded
+     * @return DeploySessionEnded
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  * Set-Cookie - Set by POST /v1/deploy/logout. <br>  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SessionEnded postDeployLogout() throws ApiException {
-        ApiResponse<SessionEnded> localVarResp = postDeployLogoutWithHttpInfo();
+    public DeploySessionEnded postDeployLogout() throws ApiException {
+        ApiResponse<DeploySessionEnded> localVarResp = postDeployLogoutWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Ends the console session on this host.
      * Ends the console session on this host.  It clears this console&#39;s session cookie and answers the signed-out state with the sign-in URL to start again. IAM&#39;s own session is untouched — this ends the console session only, so signing back in may not prompt for credentials.  It is a POST because it CHANGES STATE. As a GET it was reachable by a cross-site top-level navigation, which a SameSite&#x3D;Lax cookie still rides, so any page could sign a SuperAdmin out; a POST is not carried cross-site by that cookie. It reads no request body and takes no argument: the session it ends is the one the request already carries.
-     * @return ApiResponse&lt;SessionEnded&gt;
+     * @return ApiResponse&lt;DeploySessionEnded&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  * Set-Cookie - Set by POST /v1/deploy/logout. <br>  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SessionEnded> postDeployLogoutWithHttpInfo() throws ApiException {
+    public ApiResponse<DeploySessionEnded> postDeployLogoutWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = postDeployLogoutValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<SessionEnded>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeploySessionEnded>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2267,129 +1752,13 @@ public class DeployApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  * Set-Cookie - Set by POST /v1/deploy/logout. <br>  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDeployLogoutAsync(final ApiCallback<SessionEnded> _callback) throws ApiException {
+    public okhttp3.Call postDeployLogoutAsync(final ApiCallback<DeploySessionEnded> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postDeployLogoutValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<SessionEnded>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postDeployReconcile
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postDeployReconcileCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/deploy/reconcile";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postDeployReconcileValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postDeployReconcileCall(_callback);
-
-    }
-
-    /**
-     * Renders the configured git source and applies it to the cluster, once.
-     * Renders the configured git source and applies it to the cluster, once.  It runs one full GitOps sync through the embedded engine — render the configured repo, ref and path, then three-way server-side apply with scoped prune — and answers the revision it applied, the source it came from, the declared/synced/pruned/failed counts and a per-resource result. This is the WRITE half of the plane: it mutates live cluster objects and, with prune enabled, deletes objects the source no longer declares.  SuperAdmin-only and fail-closed, with the gate INSIDE the op because a typed op is also reached by POST /mcp and by the by-name call plane, where no route middleware runs. The git source is read AS THE PLATFORM, not as the caller: the coordinate is this deployment&#39;s own configuration and never a parameter, which is why the op reads no request body at all. A deployment with the engine switched off, or with no usable cluster config, answers 503; a failure to start, render or sync is a 502.
-     * @return ReconcileReport
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ReconcileReport postDeployReconcile() throws ApiException {
-        ApiResponse<ReconcileReport> localVarResp = postDeployReconcileWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Renders the configured git source and applies it to the cluster, once.
-     * Renders the configured git source and applies it to the cluster, once.  It runs one full GitOps sync through the embedded engine — render the configured repo, ref and path, then three-way server-side apply with scoped prune — and answers the revision it applied, the source it came from, the declared/synced/pruned/failed counts and a per-resource result. This is the WRITE half of the plane: it mutates live cluster objects and, with prune enabled, deletes objects the source no longer declares.  SuperAdmin-only and fail-closed, with the gate INSIDE the op because a typed op is also reached by POST /mcp and by the by-name call plane, where no route middleware runs. The git source is read AS THE PLATFORM, not as the caller: the coordinate is this deployment&#39;s own configuration and never a parameter, which is why the op reads no request body at all. A deployment with the engine switched off, or with no usable cluster config, answers 503; a failure to start, render or sync is a 502.
-     * @return ApiResponse&lt;ReconcileReport&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ReconcileReport> postDeployReconcileWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postDeployReconcileValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ReconcileReport>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Renders the configured git source and applies it to the cluster, once. (asynchronously)
-     * Renders the configured git source and applies it to the cluster, once.  It runs one full GitOps sync through the embedded engine — render the configured repo, ref and path, then three-way server-side apply with scoped prune — and answers the revision it applied, the source it came from, the declared/synced/pruned/failed counts and a per-resource result. This is the WRITE half of the plane: it mutates live cluster objects and, with prune enabled, deletes objects the source no longer declares.  SuperAdmin-only and fail-closed, with the gate INSIDE the op because a typed op is also reached by POST /mcp and by the by-name call plane, where no route middleware runs. The git source is read AS THE PLATFORM, not as the caller: the coordinate is this deployment&#39;s own configuration and never a parameter, which is why the op reads no request body at all. A deployment with the engine switched off, or with no usable cluster config, answers 503; a failure to start, render or sync is a 502.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postDeployReconcileAsync(final ApiCallback<ReconcileReport> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postDeployReconcileValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ReconcileReport>(){}.getType();
+        Type localVarReturnType = new TypeToken<DeploySessionEnded>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

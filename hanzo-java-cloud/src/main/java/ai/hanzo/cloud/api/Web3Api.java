@@ -27,11 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Balances;
-import ai.hanzo.cloud.model.ChainList;
-import ai.hanzo.cloud.model.ChainStatus;
-import ai.hanzo.cloud.model.RpcIn;
-import ai.hanzo.cloud.model.RpcOut;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.Web3Balances;
+import ai.hanzo.cloud.model.Web3ChainList;
+import ai.hanzo.cloud.model.Web3ChainStatus;
+import ai.hanzo.cloud.model.Web3RpcIn;
+import ai.hanzo.cloud.model.Web3RpcOut;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -86,6 +87,7 @@ public class Web3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getWeb3ChainsCall(final ApiCallback _callback) throws ApiException {
@@ -114,7 +116,8 @@ public class Web3Api {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -141,35 +144,37 @@ public class Web3Api {
     /**
      * Reports the chains this deployment can reach.
      * Reports the chains this deployment can reach. The list is the declared registry, so it is exactly what /v1/web3/rpc will accept — a chain that appears here is one this deployment actually has an upstream for.
-     * @return ChainList
+     * @return Web3ChainList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ChainList getWeb3Chains() throws ApiException {
-        ApiResponse<ChainList> localVarResp = getWeb3ChainsWithHttpInfo();
+    public Web3ChainList getWeb3Chains() throws ApiException {
+        ApiResponse<Web3ChainList> localVarResp = getWeb3ChainsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports the chains this deployment can reach.
      * Reports the chains this deployment can reach. The list is the declared registry, so it is exactly what /v1/web3/rpc will accept — a chain that appears here is one this deployment actually has an upstream for.
-     * @return ApiResponse&lt;ChainList&gt;
+     * @return ApiResponse&lt;Web3ChainList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChainList> getWeb3ChainsWithHttpInfo() throws ApiException {
+    public ApiResponse<Web3ChainList> getWeb3ChainsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getWeb3ChainsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ChainList>(){}.getType();
+        Type localVarReturnType = new TypeToken<Web3ChainList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -184,12 +189,13 @@ public class Web3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWeb3ChainsAsync(final ApiCallback<ChainList> _callback) throws ApiException {
+    public okhttp3.Call getWeb3ChainsAsync(final ApiCallback<Web3ChainList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWeb3ChainsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ChainList>(){}.getType();
+        Type localVarReturnType = new TypeToken<Web3ChainList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -204,6 +210,7 @@ public class Web3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getWeb3ChainsByChainCall(@javax.annotation.Nonnull String chain, final ApiCallback _callback) throws ApiException {
@@ -233,7 +240,8 @@ public class Web3Api {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -266,17 +274,18 @@ public class Web3Api {
      * Reports one chain and whether its upstream is answering.
      * Reports one chain and whether its upstream is answering. An unreachable chain is still a 200 with live:false — the chain is configured, which is a different fact from the chain being up, and a 502 here would make a console page error rather than show the outage.
      * @param chain Chain is the registry id, as in /v1/web3/chains/lux. (required)
-     * @return ChainStatus
+     * @return Web3ChainStatus
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ChainStatus getWeb3ChainsByChain(@javax.annotation.Nonnull String chain) throws ApiException {
-        ApiResponse<ChainStatus> localVarResp = getWeb3ChainsByChainWithHttpInfo(chain);
+    public Web3ChainStatus getWeb3ChainsByChain(@javax.annotation.Nonnull String chain) throws ApiException {
+        ApiResponse<Web3ChainStatus> localVarResp = getWeb3ChainsByChainWithHttpInfo(chain);
         return localVarResp.getData();
     }
 
@@ -284,18 +293,19 @@ public class Web3Api {
      * Reports one chain and whether its upstream is answering.
      * Reports one chain and whether its upstream is answering. An unreachable chain is still a 200 with live:false — the chain is configured, which is a different fact from the chain being up, and a 502 here would make a console page error rather than show the outage.
      * @param chain Chain is the registry id, as in /v1/web3/chains/lux. (required)
-     * @return ApiResponse&lt;ChainStatus&gt;
+     * @return ApiResponse&lt;Web3ChainStatus&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChainStatus> getWeb3ChainsByChainWithHttpInfo(@javax.annotation.Nonnull String chain) throws ApiException {
+    public ApiResponse<Web3ChainStatus> getWeb3ChainsByChainWithHttpInfo(@javax.annotation.Nonnull String chain) throws ApiException {
         okhttp3.Call localVarCall = getWeb3ChainsByChainValidateBeforeCall(chain, null);
-        Type localVarReturnType = new TypeToken<ChainStatus>(){}.getType();
+        Type localVarReturnType = new TypeToken<Web3ChainStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -311,12 +321,13 @@ public class Web3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWeb3ChainsByChainAsync(@javax.annotation.Nonnull String chain, final ApiCallback<ChainStatus> _callback) throws ApiException {
+    public okhttp3.Call getWeb3ChainsByChainAsync(@javax.annotation.Nonnull String chain, final ApiCallback<Web3ChainStatus> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWeb3ChainsByChainValidateBeforeCall(chain, _callback);
-        Type localVarReturnType = new TypeToken<ChainStatus>(){}.getType();
+        Type localVarReturnType = new TypeToken<Web3ChainStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -332,6 +343,7 @@ public class Web3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getWeb3TokensByChainByAddressCall(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address, final ApiCallback _callback) throws ApiException {
@@ -362,7 +374,8 @@ public class Web3Api {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -401,17 +414,18 @@ public class Web3Api {
      * Reads an address&#39;s native balance on a chain.  ERC-20 positions are NOT enumerated here: eth_getBalance answers the native one, but \&quot;every token this address holds\&quot; is an indexer question — there is no RPC call that answers it, and walking a token list would return a number that silently omits whatever the list missed. explorer owns the indexer relationship; this returns the balance the chain itself can prove.
      * @param chain Chain is the registry id. (required)
      * @param address Address is the account, 0x-prefixed. (required)
-     * @return Balances
+     * @return Web3Balances
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Balances getWeb3TokensByChainByAddress(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address) throws ApiException {
-        ApiResponse<Balances> localVarResp = getWeb3TokensByChainByAddressWithHttpInfo(chain, address);
+    public Web3Balances getWeb3TokensByChainByAddress(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address) throws ApiException {
+        ApiResponse<Web3Balances> localVarResp = getWeb3TokensByChainByAddressWithHttpInfo(chain, address);
         return localVarResp.getData();
     }
 
@@ -420,18 +434,19 @@ public class Web3Api {
      * Reads an address&#39;s native balance on a chain.  ERC-20 positions are NOT enumerated here: eth_getBalance answers the native one, but \&quot;every token this address holds\&quot; is an indexer question — there is no RPC call that answers it, and walking a token list would return a number that silently omits whatever the list missed. explorer owns the indexer relationship; this returns the balance the chain itself can prove.
      * @param chain Chain is the registry id. (required)
      * @param address Address is the account, 0x-prefixed. (required)
-     * @return ApiResponse&lt;Balances&gt;
+     * @return ApiResponse&lt;Web3Balances&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Balances> getWeb3TokensByChainByAddressWithHttpInfo(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address) throws ApiException {
+    public ApiResponse<Web3Balances> getWeb3TokensByChainByAddressWithHttpInfo(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address) throws ApiException {
         okhttp3.Call localVarCall = getWeb3TokensByChainByAddressValidateBeforeCall(chain, address, null);
-        Type localVarReturnType = new TypeToken<Balances>(){}.getType();
+        Type localVarReturnType = new TypeToken<Web3Balances>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -448,19 +463,20 @@ public class Web3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWeb3TokensByChainByAddressAsync(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address, final ApiCallback<Balances> _callback) throws ApiException {
+    public okhttp3.Call getWeb3TokensByChainByAddressAsync(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address, final ApiCallback<Web3Balances> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWeb3TokensByChainByAddressValidateBeforeCall(chain, address, _callback);
-        Type localVarReturnType = new TypeToken<Balances>(){}.getType();
+        Type localVarReturnType = new TypeToken<Web3Balances>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postWeb3RpcByChain
      * @param chain Chain is the registry id, from the URL. (required)
-     * @param rpcIn  (required)
+     * @param web3RpcIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -469,9 +485,10 @@ public class Web3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postWeb3RpcByChainCall(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull RpcIn rpcIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWeb3RpcByChainCall(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull Web3RpcIn web3RpcIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -485,7 +502,7 @@ public class Web3Api {
             basePath = null;
         }
 
-        Object localVarPostBody = rpcIn;
+        Object localVarPostBody = web3RpcIn;
 
         // create path and map variables
         String localVarPath = "/v1/web3/rpc/{chain}"
@@ -498,7 +515,8 @@ public class Web3Api {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -518,18 +536,18 @@ public class Web3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postWeb3RpcByChainValidateBeforeCall(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull RpcIn rpcIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postWeb3RpcByChainValidateBeforeCall(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull Web3RpcIn web3RpcIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'chain' is set
         if (chain == null) {
             throw new ApiException("Missing the required parameter 'chain' when calling postWeb3RpcByChain(Async)");
         }
 
-        // verify the required parameter 'rpcIn' is set
-        if (rpcIn == null) {
-            throw new ApiException("Missing the required parameter 'rpcIn' when calling postWeb3RpcByChain(Async)");
+        // verify the required parameter 'web3RpcIn' is set
+        if (web3RpcIn == null) {
+            throw new ApiException("Missing the required parameter 'web3RpcIn' when calling postWeb3RpcByChain(Async)");
         }
 
-        return postWeb3RpcByChainCall(chain, rpcIn, _callback);
+        return postWeb3RpcByChainCall(chain, web3RpcIn, _callback);
 
     }
 
@@ -537,18 +555,19 @@ public class Web3Api {
      * Forwards a JSON-RPC call to the named chain and returns its answer unchanged.
      * Forwards a JSON-RPC call to the named chain and returns its answer unchanged. Only declared chains are reachable, and only to a caller with a validated principal — this is the deployment&#39;s upstream, not an open relay.
      * @param chain Chain is the registry id, from the URL. (required)
-     * @param rpcIn  (required)
-     * @return RpcOut
+     * @param web3RpcIn  (required)
+     * @return Web3RpcOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RpcOut postWeb3RpcByChain(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull RpcIn rpcIn) throws ApiException {
-        ApiResponse<RpcOut> localVarResp = postWeb3RpcByChainWithHttpInfo(chain, rpcIn);
+    public Web3RpcOut postWeb3RpcByChain(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull Web3RpcIn web3RpcIn) throws ApiException {
+        ApiResponse<Web3RpcOut> localVarResp = postWeb3RpcByChainWithHttpInfo(chain, web3RpcIn);
         return localVarResp.getData();
     }
 
@@ -556,19 +575,20 @@ public class Web3Api {
      * Forwards a JSON-RPC call to the named chain and returns its answer unchanged.
      * Forwards a JSON-RPC call to the named chain and returns its answer unchanged. Only declared chains are reachable, and only to a caller with a validated principal — this is the deployment&#39;s upstream, not an open relay.
      * @param chain Chain is the registry id, from the URL. (required)
-     * @param rpcIn  (required)
-     * @return ApiResponse&lt;RpcOut&gt;
+     * @param web3RpcIn  (required)
+     * @return ApiResponse&lt;Web3RpcOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RpcOut> postWeb3RpcByChainWithHttpInfo(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull RpcIn rpcIn) throws ApiException {
-        okhttp3.Call localVarCall = postWeb3RpcByChainValidateBeforeCall(chain, rpcIn, null);
-        Type localVarReturnType = new TypeToken<RpcOut>(){}.getType();
+    public ApiResponse<Web3RpcOut> postWeb3RpcByChainWithHttpInfo(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull Web3RpcIn web3RpcIn) throws ApiException {
+        okhttp3.Call localVarCall = postWeb3RpcByChainValidateBeforeCall(chain, web3RpcIn, null);
+        Type localVarReturnType = new TypeToken<Web3RpcOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -576,7 +596,7 @@ public class Web3Api {
      * Forwards a JSON-RPC call to the named chain and returns its answer unchanged. (asynchronously)
      * Forwards a JSON-RPC call to the named chain and returns its answer unchanged. Only declared chains are reachable, and only to a caller with a validated principal — this is the deployment&#39;s upstream, not an open relay.
      * @param chain Chain is the registry id, from the URL. (required)
-     * @param rpcIn  (required)
+     * @param web3RpcIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -585,12 +605,13 @@ public class Web3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postWeb3RpcByChainAsync(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull RpcIn rpcIn, final ApiCallback<RpcOut> _callback) throws ApiException {
+    public okhttp3.Call postWeb3RpcByChainAsync(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull Web3RpcIn web3RpcIn, final ApiCallback<Web3RpcOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postWeb3RpcByChainValidateBeforeCall(chain, rpcIn, _callback);
-        Type localVarReturnType = new TypeToken<RpcOut>(){}.getType();
+        okhttp3.Call localVarCall = postWeb3RpcByChainValidateBeforeCall(chain, web3RpcIn, _callback);
+        Type localVarReturnType = new TypeToken<Web3RpcOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

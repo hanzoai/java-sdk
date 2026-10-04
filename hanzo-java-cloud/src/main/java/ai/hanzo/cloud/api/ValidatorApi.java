@@ -27,10 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.ChallengeView;
-import ai.hanzo.cloud.model.SlotView;
-import ai.hanzo.cloud.model.ValidatorClaim;
-import ai.hanzo.cloud.model.ValidatorList;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.ValidatorChallengeView;
+import ai.hanzo.cloud.model.ValidatorSlotView;
+import ai.hanzo.cloud.model.ValidatorValidatorClaim;
+import ai.hanzo.cloud.model.ValidatorValidatorList;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -86,6 +87,7 @@ public class ValidatorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getValidatorCall(@javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
@@ -118,7 +120,8 @@ public class ValidatorApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -146,17 +149,18 @@ public class ValidatorApi {
      * Returns the validator slots the caller&#39;s org has claimed.
      * Returns the validator slots the caller&#39;s org has claimed.  One entry per claimed slot with its node identity, its live-ish node status and the owner-gated registration queued for it, if any. Slots are org-scoped by the validated identity, so a caller can only ever see their own — a slot claimed by another org is not merely hidden from this list, it is unreachable through the whole surface.
      * @param limit Limit is how many slots to return, as a decimal string in the &#x60;?limit&#x3D;&#x60; query. Absent, unparseable or non-positive means 200; over 1000 is clamped to 1000. It is a string rather than a number because the parse that has always served this route trims surrounding whitespace, and one parse rule is better than two. (optional)
-     * @return ValidatorList
+     * @return ValidatorValidatorList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ValidatorList getValidator(@javax.annotation.Nullable String limit) throws ApiException {
-        ApiResponse<ValidatorList> localVarResp = getValidatorWithHttpInfo(limit);
+    public ValidatorValidatorList getValidator(@javax.annotation.Nullable String limit) throws ApiException {
+        ApiResponse<ValidatorValidatorList> localVarResp = getValidatorWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -164,18 +168,19 @@ public class ValidatorApi {
      * Returns the validator slots the caller&#39;s org has claimed.
      * Returns the validator slots the caller&#39;s org has claimed.  One entry per claimed slot with its node identity, its live-ish node status and the owner-gated registration queued for it, if any. Slots are org-scoped by the validated identity, so a caller can only ever see their own — a slot claimed by another org is not merely hidden from this list, it is unreachable through the whole surface.
      * @param limit Limit is how many slots to return, as a decimal string in the &#x60;?limit&#x3D;&#x60; query. Absent, unparseable or non-positive means 200; over 1000 is clamped to 1000. It is a string rather than a number because the parse that has always served this route trims surrounding whitespace, and one parse rule is better than two. (optional)
-     * @return ApiResponse&lt;ValidatorList&gt;
+     * @return ApiResponse&lt;ValidatorValidatorList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValidatorList> getValidatorWithHttpInfo(@javax.annotation.Nullable String limit) throws ApiException {
+    public ApiResponse<ValidatorValidatorList> getValidatorWithHttpInfo(@javax.annotation.Nullable String limit) throws ApiException {
         okhttp3.Call localVarCall = getValidatorValidateBeforeCall(limit, null);
-        Type localVarReturnType = new TypeToken<ValidatorList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ValidatorValidatorList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -191,12 +196,13 @@ public class ValidatorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getValidatorAsync(@javax.annotation.Nullable String limit, final ApiCallback<ValidatorList> _callback) throws ApiException {
+    public okhttp3.Call getValidatorAsync(@javax.annotation.Nullable String limit, final ApiCallback<ValidatorValidatorList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getValidatorValidateBeforeCall(limit, _callback);
-        Type localVarReturnType = new TypeToken<ValidatorList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ValidatorValidatorList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -211,6 +217,7 @@ public class ValidatorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getValidatorByTokenidCall(@javax.annotation.Nonnull String tokenId, final ApiCallback _callback) throws ApiException {
@@ -240,7 +247,8 @@ public class ValidatorApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -273,17 +281,18 @@ public class ValidatorApi {
      * Returns one claimed validator slot, scoped to the caller&#39;s org.
      * Returns one claimed validator slot, scoped to the caller&#39;s org.  A slot another org holds, and a slot nobody holds, are both 404 — never a different status, so this route cannot be used to probe which slots are taken.
      * @param tokenId TokenID is the slot&#39;s GenesisNFT token id, from the path, as a decimal string. A value that is not a positive integer is 400. It is a string rather than a number because the parse that has always served this route trims surrounding whitespace, and one parse rule is better than two. (required)
-     * @return SlotView
+     * @return ValidatorSlotView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SlotView getValidatorByTokenid(@javax.annotation.Nonnull String tokenId) throws ApiException {
-        ApiResponse<SlotView> localVarResp = getValidatorByTokenidWithHttpInfo(tokenId);
+    public ValidatorSlotView getValidatorByTokenid(@javax.annotation.Nonnull String tokenId) throws ApiException {
+        ApiResponse<ValidatorSlotView> localVarResp = getValidatorByTokenidWithHttpInfo(tokenId);
         return localVarResp.getData();
     }
 
@@ -291,18 +300,19 @@ public class ValidatorApi {
      * Returns one claimed validator slot, scoped to the caller&#39;s org.
      * Returns one claimed validator slot, scoped to the caller&#39;s org.  A slot another org holds, and a slot nobody holds, are both 404 — never a different status, so this route cannot be used to probe which slots are taken.
      * @param tokenId TokenID is the slot&#39;s GenesisNFT token id, from the path, as a decimal string. A value that is not a positive integer is 400. It is a string rather than a number because the parse that has always served this route trims surrounding whitespace, and one parse rule is better than two. (required)
-     * @return ApiResponse&lt;SlotView&gt;
+     * @return ApiResponse&lt;ValidatorSlotView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SlotView> getValidatorByTokenidWithHttpInfo(@javax.annotation.Nonnull String tokenId) throws ApiException {
+    public ApiResponse<ValidatorSlotView> getValidatorByTokenidWithHttpInfo(@javax.annotation.Nonnull String tokenId) throws ApiException {
         okhttp3.Call localVarCall = getValidatorByTokenidValidateBeforeCall(tokenId, null);
-        Type localVarReturnType = new TypeToken<SlotView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ValidatorSlotView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -318,12 +328,13 @@ public class ValidatorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getValidatorByTokenidAsync(@javax.annotation.Nonnull String tokenId, final ApiCallback<SlotView> _callback) throws ApiException {
+    public okhttp3.Call getValidatorByTokenidAsync(@javax.annotation.Nonnull String tokenId, final ApiCallback<ValidatorSlotView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getValidatorByTokenidValidateBeforeCall(tokenId, _callback);
-        Type localVarReturnType = new TypeToken<SlotView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ValidatorSlotView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -338,6 +349,7 @@ public class ValidatorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getValidatorChallengeCall(@javax.annotation.Nullable String tokenId, final ApiCallback _callback) throws ApiException {
@@ -370,7 +382,8 @@ public class ValidatorApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -398,17 +411,18 @@ public class ValidatorApi {
      * Issues the single-use nonce and the exact message a wallet must sign to claim a validator slot.
      * Issues the single-use nonce and the exact message a wallet must sign to claim a validator slot.  The nonce is bound to (validated org, slot) and stored server-side, so a signature obtained for one org or one slot can never be replayed for another, and the message POST /v1/validator verifies is rebuilt from those same server facts rather than trusted from the caller. Redeem it with POST /v1/validator before it expires; it can be redeemed once.  A tokenId outside the Validator tier is refused here rather than after signing.
      * @param tokenId TokenID is the Validator-tier GenesisNFT token id, as a decimal string in the &#x60;?tokenId&#x3D;&#x60; query. A value that is not a positive integer is 400. It is a string rather than a number because the parse that has always served this route trims surrounding whitespace, and one parse rule is better than two. (optional)
-     * @return ChallengeView
+     * @return ValidatorChallengeView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ChallengeView getValidatorChallenge(@javax.annotation.Nullable String tokenId) throws ApiException {
-        ApiResponse<ChallengeView> localVarResp = getValidatorChallengeWithHttpInfo(tokenId);
+    public ValidatorChallengeView getValidatorChallenge(@javax.annotation.Nullable String tokenId) throws ApiException {
+        ApiResponse<ValidatorChallengeView> localVarResp = getValidatorChallengeWithHttpInfo(tokenId);
         return localVarResp.getData();
     }
 
@@ -416,18 +430,19 @@ public class ValidatorApi {
      * Issues the single-use nonce and the exact message a wallet must sign to claim a validator slot.
      * Issues the single-use nonce and the exact message a wallet must sign to claim a validator slot.  The nonce is bound to (validated org, slot) and stored server-side, so a signature obtained for one org or one slot can never be replayed for another, and the message POST /v1/validator verifies is rebuilt from those same server facts rather than trusted from the caller. Redeem it with POST /v1/validator before it expires; it can be redeemed once.  A tokenId outside the Validator tier is refused here rather than after signing.
      * @param tokenId TokenID is the Validator-tier GenesisNFT token id, as a decimal string in the &#x60;?tokenId&#x3D;&#x60; query. A value that is not a positive integer is 400. It is a string rather than a number because the parse that has always served this route trims surrounding whitespace, and one parse rule is better than two. (optional)
-     * @return ApiResponse&lt;ChallengeView&gt;
+     * @return ApiResponse&lt;ValidatorChallengeView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChallengeView> getValidatorChallengeWithHttpInfo(@javax.annotation.Nullable String tokenId) throws ApiException {
+    public ApiResponse<ValidatorChallengeView> getValidatorChallengeWithHttpInfo(@javax.annotation.Nullable String tokenId) throws ApiException {
         okhttp3.Call localVarCall = getValidatorChallengeValidateBeforeCall(tokenId, null);
-        Type localVarReturnType = new TypeToken<ChallengeView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ValidatorChallengeView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -443,18 +458,19 @@ public class ValidatorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getValidatorChallengeAsync(@javax.annotation.Nullable String tokenId, final ApiCallback<ChallengeView> _callback) throws ApiException {
+    public okhttp3.Call getValidatorChallengeAsync(@javax.annotation.Nullable String tokenId, final ApiCallback<ValidatorChallengeView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getValidatorChallengeValidateBeforeCall(tokenId, _callback);
-        Type localVarReturnType = new TypeToken<ChallengeView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ValidatorChallengeView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postValidator
-     * @param validatorClaim  (required)
+     * @param validatorValidatorClaim  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -463,9 +479,10 @@ public class ValidatorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postValidatorCall(@javax.annotation.Nonnull ValidatorClaim validatorClaim, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postValidatorCall(@javax.annotation.Nonnull ValidatorValidatorClaim validatorValidatorClaim, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -479,7 +496,7 @@ public class ValidatorApi {
             basePath = null;
         }
 
-        Object localVarPostBody = validatorClaim;
+        Object localVarPostBody = validatorValidatorClaim;
 
         // create path and map variables
         String localVarPath = "/v1/validator";
@@ -491,7 +508,8 @@ public class ValidatorApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -511,57 +529,59 @@ public class ValidatorApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postValidatorValidateBeforeCall(@javax.annotation.Nonnull ValidatorClaim validatorClaim, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'validatorClaim' is set
-        if (validatorClaim == null) {
-            throw new ApiException("Missing the required parameter 'validatorClaim' when calling postValidator(Async)");
+    private okhttp3.Call postValidatorValidateBeforeCall(@javax.annotation.Nonnull ValidatorValidatorClaim validatorValidatorClaim, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'validatorValidatorClaim' is set
+        if (validatorValidatorClaim == null) {
+            throw new ApiException("Missing the required parameter 'validatorValidatorClaim' when calling postValidator(Async)");
         }
 
-        return postValidatorCall(validatorClaim, _callback);
+        return postValidatorCall(validatorValidatorClaim, _callback);
 
     }
 
     /**
      * Claims a validator slot and provisions its node, after proving the caller&#39;s wallet owns the slot&#39;s NFT.
      * Claims a validator slot and provisions its node, after proving the caller&#39;s wallet owns the slot&#39;s NFT.  The pipeline, all server-enforced: burn the single-use challenge (so a replayed or forged nonce dies before any chain read), recover the signer from the message this server rebuilds, require that wallet to hold Validator-tier GenesisNFT #tokenId on Ethereum mainnet, generate a fresh luxd staking identity and seal it into KMS, write a LuxNetwork CR for a NEW node, and ENQUEUE an owner-gated registration. The registration is never auto-submitted to any P-Chain — the owner co-signs it out of band — and the stake weight is set at co-sign time, never derived from the NFT.  It fails CLOSED at every gate: a bad signature, a non-owner, a non-tier slot or an unavailable KMS all leave no claim persisted and no key material exposed. Re-claiming a slot this org already holds re-applies the node CR and returns 200 with the existing identity (keys and NodeID are stable); a slot held by another org is 409. A cluster-less deployment still claims the slot, seals the keys and queues the registration, reporting the node as \&quot;node_pending\&quot;.
-     * @param validatorClaim  (required)
-     * @return SlotView
+     * @param validatorValidatorClaim  (required)
+     * @return ValidatorSlotView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SlotView postValidator(@javax.annotation.Nonnull ValidatorClaim validatorClaim) throws ApiException {
-        ApiResponse<SlotView> localVarResp = postValidatorWithHttpInfo(validatorClaim);
+    public ValidatorSlotView postValidator(@javax.annotation.Nonnull ValidatorValidatorClaim validatorValidatorClaim) throws ApiException {
+        ApiResponse<ValidatorSlotView> localVarResp = postValidatorWithHttpInfo(validatorValidatorClaim);
         return localVarResp.getData();
     }
 
     /**
      * Claims a validator slot and provisions its node, after proving the caller&#39;s wallet owns the slot&#39;s NFT.
      * Claims a validator slot and provisions its node, after proving the caller&#39;s wallet owns the slot&#39;s NFT.  The pipeline, all server-enforced: burn the single-use challenge (so a replayed or forged nonce dies before any chain read), recover the signer from the message this server rebuilds, require that wallet to hold Validator-tier GenesisNFT #tokenId on Ethereum mainnet, generate a fresh luxd staking identity and seal it into KMS, write a LuxNetwork CR for a NEW node, and ENQUEUE an owner-gated registration. The registration is never auto-submitted to any P-Chain — the owner co-signs it out of band — and the stake weight is set at co-sign time, never derived from the NFT.  It fails CLOSED at every gate: a bad signature, a non-owner, a non-tier slot or an unavailable KMS all leave no claim persisted and no key material exposed. Re-claiming a slot this org already holds re-applies the node CR and returns 200 with the existing identity (keys and NodeID are stable); a slot held by another org is 409. A cluster-less deployment still claims the slot, seals the keys and queues the registration, reporting the node as \&quot;node_pending\&quot;.
-     * @param validatorClaim  (required)
-     * @return ApiResponse&lt;SlotView&gt;
+     * @param validatorValidatorClaim  (required)
+     * @return ApiResponse&lt;ValidatorSlotView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SlotView> postValidatorWithHttpInfo(@javax.annotation.Nonnull ValidatorClaim validatorClaim) throws ApiException {
-        okhttp3.Call localVarCall = postValidatorValidateBeforeCall(validatorClaim, null);
-        Type localVarReturnType = new TypeToken<SlotView>(){}.getType();
+    public ApiResponse<ValidatorSlotView> postValidatorWithHttpInfo(@javax.annotation.Nonnull ValidatorValidatorClaim validatorValidatorClaim) throws ApiException {
+        okhttp3.Call localVarCall = postValidatorValidateBeforeCall(validatorValidatorClaim, null);
+        Type localVarReturnType = new TypeToken<ValidatorSlotView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Claims a validator slot and provisions its node, after proving the caller&#39;s wallet owns the slot&#39;s NFT. (asynchronously)
      * Claims a validator slot and provisions its node, after proving the caller&#39;s wallet owns the slot&#39;s NFT.  The pipeline, all server-enforced: burn the single-use challenge (so a replayed or forged nonce dies before any chain read), recover the signer from the message this server rebuilds, require that wallet to hold Validator-tier GenesisNFT #tokenId on Ethereum mainnet, generate a fresh luxd staking identity and seal it into KMS, write a LuxNetwork CR for a NEW node, and ENQUEUE an owner-gated registration. The registration is never auto-submitted to any P-Chain — the owner co-signs it out of band — and the stake weight is set at co-sign time, never derived from the NFT.  It fails CLOSED at every gate: a bad signature, a non-owner, a non-tier slot or an unavailable KMS all leave no claim persisted and no key material exposed. Re-claiming a slot this org already holds re-applies the node CR and returns 200 with the existing identity (keys and NodeID are stable); a slot held by another org is 409. A cluster-less deployment still claims the slot, seals the keys and queues the registration, reporting the node as \&quot;node_pending\&quot;.
-     * @param validatorClaim  (required)
+     * @param validatorValidatorClaim  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -570,12 +590,13 @@ public class ValidatorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postValidatorAsync(@javax.annotation.Nonnull ValidatorClaim validatorClaim, final ApiCallback<SlotView> _callback) throws ApiException {
+    public okhttp3.Call postValidatorAsync(@javax.annotation.Nonnull ValidatorValidatorClaim validatorValidatorClaim, final ApiCallback<ValidatorSlotView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postValidatorValidateBeforeCall(validatorClaim, _callback);
-        Type localVarReturnType = new TypeToken<SlotView>(){}.getType();
+        okhttp3.Call localVarCall = postValidatorValidateBeforeCall(validatorValidatorClaim, _callback);
+        Type localVarReturnType = new TypeToken<ValidatorSlotView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

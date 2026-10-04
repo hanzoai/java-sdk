@@ -27,13 +27,14 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.KmsConfig;
-import ai.hanzo.cloud.model.KmsHealth;
-import ai.hanzo.cloud.model.KmsLogin;
-import ai.hanzo.cloud.model.KmsPut;
-import ai.hanzo.cloud.model.KmsSecrets;
-import ai.hanzo.cloud.model.KmsStored;
-import ai.hanzo.cloud.model.KmsToken;
+import ai.hanzo.cloud.model.KmsKmsConfig;
+import ai.hanzo.cloud.model.KmsKmsHealth;
+import ai.hanzo.cloud.model.KmsKmsLogin;
+import ai.hanzo.cloud.model.KmsKmsPut;
+import ai.hanzo.cloud.model.KmsKmsSecrets;
+import ai.hanzo.cloud.model.KmsKmsStored;
+import ai.hanzo.cloud.model.KmsKmsToken;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -88,6 +89,7 @@ public class KmsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getKmsConfigCall(final ApiCallback _callback) throws ApiException {
@@ -116,7 +118,8 @@ public class KmsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -143,35 +146,37 @@ public class KmsApi {
     /**
      * Returns the runtime configuration for the KMS console.
      * Returns the runtime configuration for the KMS console.  What the console needs before anyone has signed in: the brand, the OIDC issuer it authenticates against, the API base for this subsystem and the path of the login exchange.  Public on purpose, and it holds nothing sensitive — it is deliberately kept under this subsystem&#39;s own namespace rather than under an admin prefix, so a gateway that admin-gates the admin routes cannot break the console&#39;s legitimate pre-login fetch.
-     * @return KmsConfig
+     * @return KmsKmsConfig
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public KmsConfig getKmsConfig() throws ApiException {
-        ApiResponse<KmsConfig> localVarResp = getKmsConfigWithHttpInfo();
+    public KmsKmsConfig getKmsConfig() throws ApiException {
+        ApiResponse<KmsKmsConfig> localVarResp = getKmsConfigWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the runtime configuration for the KMS console.
      * Returns the runtime configuration for the KMS console.  What the console needs before anyone has signed in: the brand, the OIDC issuer it authenticates against, the API base for this subsystem and the path of the login exchange.  Public on purpose, and it holds nothing sensitive — it is deliberately kept under this subsystem&#39;s own namespace rather than under an admin prefix, so a gateway that admin-gates the admin routes cannot break the console&#39;s legitimate pre-login fetch.
-     * @return ApiResponse&lt;KmsConfig&gt;
+     * @return ApiResponse&lt;KmsKmsConfig&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KmsConfig> getKmsConfigWithHttpInfo() throws ApiException {
+    public ApiResponse<KmsKmsConfig> getKmsConfigWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getKmsConfigValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<KmsConfig>(){}.getType();
+        Type localVarReturnType = new TypeToken<KmsKmsConfig>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -186,12 +191,13 @@ public class KmsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getKmsConfigAsync(final ApiCallback<KmsConfig> _callback) throws ApiException {
+    public okhttp3.Call getKmsConfigAsync(final ApiCallback<KmsKmsConfig> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getKmsConfigValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<KmsConfig>(){}.getType();
+        Type localVarReturnType = new TypeToken<KmsKmsConfig>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -206,6 +212,7 @@ public class KmsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getKmsHealthCall(final ApiCallback _callback) throws ApiException {
@@ -234,7 +241,8 @@ public class KmsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -261,7 +269,7 @@ public class KmsApi {
     /**
      * Reports whether this broker can actually serve secrets.
      * Reports whether this broker can actually serve secrets.  A real readiness probe, not a liveness stub: 200 only when the store is open AND a master key is configured, with &#x60;signing&#x60; reporting whether signing keys are set up too. Anything less answers 503 with &#x60;ready:false&#x60; and the reason — no in-process store, or no master key — which are exactly the two states in which the secret operations refuse.  Not token-gated, because the platform must be able to probe it without a credential. It reports the broker&#39;s configuration state only; no secret, no key material and no tenant name appears in it.
-     * @return KmsHealth
+     * @return KmsKmsHealth
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -269,17 +277,18 @@ public class KmsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public KmsHealth getKmsHealth() throws ApiException {
-        ApiResponse<KmsHealth> localVarResp = getKmsHealthWithHttpInfo();
+    public KmsKmsHealth getKmsHealth() throws ApiException {
+        ApiResponse<KmsKmsHealth> localVarResp = getKmsHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports whether this broker can actually serve secrets.
      * Reports whether this broker can actually serve secrets.  A real readiness probe, not a liveness stub: 200 only when the store is open AND a master key is configured, with &#x60;signing&#x60; reporting whether signing keys are set up too. Anything less answers 503 with &#x60;ready:false&#x60; and the reason — no in-process store, or no master key — which are exactly the two states in which the secret operations refuse.  Not token-gated, because the platform must be able to probe it without a credential. It reports the broker&#39;s configuration state only; no secret, no key material and no tenant name appears in it.
-     * @return ApiResponse&lt;KmsHealth&gt;
+     * @return ApiResponse&lt;KmsKmsHealth&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -287,11 +296,12 @@ public class KmsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KmsHealth> getKmsHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<KmsKmsHealth> getKmsHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getKmsHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<KmsHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<KmsKmsHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -307,12 +317,13 @@ public class KmsApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getKmsHealthAsync(final ApiCallback<KmsHealth> _callback) throws ApiException {
+    public okhttp3.Call getKmsHealthAsync(final ApiCallback<KmsKmsHealth> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getKmsHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<KmsHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<KmsKmsHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -330,6 +341,7 @@ public class KmsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getKmsSecretsCall(@javax.annotation.Nullable String env, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String path, @javax.annotation.Nullable String secretPath, final ApiCallback _callback) throws ApiException {
@@ -374,7 +386,8 @@ public class KmsApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -405,17 +418,18 @@ public class KmsApi {
      * @param environment Environment is the KMS operator&#39;s spelling of Env, accepted so one caller need not learn the other&#39;s vocabulary. Env wins when both are sent. (optional)
      * @param path Path narrows the listing to one subtree beneath the caller&#39;s org root, as a &#x60;/&#x60;-separated path such as &#x60;/ci&#x60;. OMITTED means the whole org. (optional)
      * @param secretPath SecretPath is the KMS operator&#39;s spelling of Path. Path wins when both are sent. (optional)
-     * @return KmsSecrets
+     * @return KmsKmsSecrets
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public KmsSecrets getKmsSecrets(@javax.annotation.Nullable String env, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String path, @javax.annotation.Nullable String secretPath) throws ApiException {
-        ApiResponse<KmsSecrets> localVarResp = getKmsSecretsWithHttpInfo(env, environment, path, secretPath);
+    public KmsKmsSecrets getKmsSecrets(@javax.annotation.Nullable String env, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String path, @javax.annotation.Nullable String secretPath) throws ApiException {
+        ApiResponse<KmsKmsSecrets> localVarResp = getKmsSecretsWithHttpInfo(env, environment, path, secretPath);
         return localVarResp.getData();
     }
 
@@ -426,18 +440,19 @@ public class KmsApi {
      * @param environment Environment is the KMS operator&#39;s spelling of Env, accepted so one caller need not learn the other&#39;s vocabulary. Env wins when both are sent. (optional)
      * @param path Path narrows the listing to one subtree beneath the caller&#39;s org root, as a &#x60;/&#x60;-separated path such as &#x60;/ci&#x60;. OMITTED means the whole org. (optional)
      * @param secretPath SecretPath is the KMS operator&#39;s spelling of Path. Path wins when both are sent. (optional)
-     * @return ApiResponse&lt;KmsSecrets&gt;
+     * @return ApiResponse&lt;KmsKmsSecrets&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KmsSecrets> getKmsSecretsWithHttpInfo(@javax.annotation.Nullable String env, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String path, @javax.annotation.Nullable String secretPath) throws ApiException {
+    public ApiResponse<KmsKmsSecrets> getKmsSecretsWithHttpInfo(@javax.annotation.Nullable String env, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String path, @javax.annotation.Nullable String secretPath) throws ApiException {
         okhttp3.Call localVarCall = getKmsSecretsValidateBeforeCall(env, environment, path, secretPath, null);
-        Type localVarReturnType = new TypeToken<KmsSecrets>(){}.getType();
+        Type localVarReturnType = new TypeToken<KmsKmsSecrets>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -456,18 +471,19 @@ public class KmsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getKmsSecretsAsync(@javax.annotation.Nullable String env, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String path, @javax.annotation.Nullable String secretPath, final ApiCallback<KmsSecrets> _callback) throws ApiException {
+    public okhttp3.Call getKmsSecretsAsync(@javax.annotation.Nullable String env, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String path, @javax.annotation.Nullable String secretPath, final ApiCallback<KmsKmsSecrets> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getKmsSecretsValidateBeforeCall(env, environment, path, secretPath, _callback);
-        Type localVarReturnType = new TypeToken<KmsSecrets>(){}.getType();
+        Type localVarReturnType = new TypeToken<KmsKmsSecrets>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postKmsAuthLogin
-     * @param kmsLogin  (required)
+     * @param kmsKmsLogin  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -476,9 +492,10 @@ public class KmsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postKmsAuthLoginCall(@javax.annotation.Nonnull KmsLogin kmsLogin, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postKmsAuthLoginCall(@javax.annotation.Nonnull KmsKmsLogin kmsKmsLogin, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -492,7 +509,7 @@ public class KmsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = kmsLogin;
+        Object localVarPostBody = kmsKmsLogin;
 
         // create path and map variables
         String localVarPath = "/v1/kms/auth/login";
@@ -504,7 +521,8 @@ public class KmsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -524,57 +542,59 @@ public class KmsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postKmsAuthLoginValidateBeforeCall(@javax.annotation.Nonnull KmsLogin kmsLogin, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'kmsLogin' is set
-        if (kmsLogin == null) {
-            throw new ApiException("Missing the required parameter 'kmsLogin' when calling postKmsAuthLogin(Async)");
+    private okhttp3.Call postKmsAuthLoginValidateBeforeCall(@javax.annotation.Nonnull KmsKmsLogin kmsKmsLogin, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'kmsKmsLogin' is set
+        if (kmsKmsLogin == null) {
+            throw new ApiException("Missing the required parameter 'kmsKmsLogin' when calling postKmsAuthLogin(Async)");
         }
 
-        return postKmsAuthLoginCall(kmsLogin, _callback);
+        return postKmsAuthLoginCall(kmsKmsLogin, _callback);
 
     }
 
     /**
      * Exchanges a machine credential for an IAM bearer token.
      * Exchanges a machine credential for an IAM bearer token.  Takes a tenant&#39;s machine credential — a client id and client secret — and returns an owner-scoped IAM access token with its lifetime, which is the bearer the caller then carries on the org-scoped secret operations.  It is deliberately public and unauthenticated, because it IS the credential exchange and runs before any principal exists. That makes it the one route in this subsystem rate-limited PER SOURCE IP, keyed on the real TCP peer rather than on any caller-supplied header, and body-capped in the same place.  The submitted secret is never logged and never echoed, and failures collapse to one clean status with no upstream detail: 401 when the credential does not authenticate, 502 when the identity provider is unreachable, 503 when no issuer is configured. That is on purpose — a richer error would be a validity oracle for guessed credentials.
-     * @param kmsLogin  (required)
-     * @return KmsToken
+     * @param kmsKmsLogin  (required)
+     * @return KmsKmsToken
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public KmsToken postKmsAuthLogin(@javax.annotation.Nonnull KmsLogin kmsLogin) throws ApiException {
-        ApiResponse<KmsToken> localVarResp = postKmsAuthLoginWithHttpInfo(kmsLogin);
+    public KmsKmsToken postKmsAuthLogin(@javax.annotation.Nonnull KmsKmsLogin kmsKmsLogin) throws ApiException {
+        ApiResponse<KmsKmsToken> localVarResp = postKmsAuthLoginWithHttpInfo(kmsKmsLogin);
         return localVarResp.getData();
     }
 
     /**
      * Exchanges a machine credential for an IAM bearer token.
      * Exchanges a machine credential for an IAM bearer token.  Takes a tenant&#39;s machine credential — a client id and client secret — and returns an owner-scoped IAM access token with its lifetime, which is the bearer the caller then carries on the org-scoped secret operations.  It is deliberately public and unauthenticated, because it IS the credential exchange and runs before any principal exists. That makes it the one route in this subsystem rate-limited PER SOURCE IP, keyed on the real TCP peer rather than on any caller-supplied header, and body-capped in the same place.  The submitted secret is never logged and never echoed, and failures collapse to one clean status with no upstream detail: 401 when the credential does not authenticate, 502 when the identity provider is unreachable, 503 when no issuer is configured. That is on purpose — a richer error would be a validity oracle for guessed credentials.
-     * @param kmsLogin  (required)
-     * @return ApiResponse&lt;KmsToken&gt;
+     * @param kmsKmsLogin  (required)
+     * @return ApiResponse&lt;KmsKmsToken&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KmsToken> postKmsAuthLoginWithHttpInfo(@javax.annotation.Nonnull KmsLogin kmsLogin) throws ApiException {
-        okhttp3.Call localVarCall = postKmsAuthLoginValidateBeforeCall(kmsLogin, null);
-        Type localVarReturnType = new TypeToken<KmsToken>(){}.getType();
+    public ApiResponse<KmsKmsToken> postKmsAuthLoginWithHttpInfo(@javax.annotation.Nonnull KmsKmsLogin kmsKmsLogin) throws ApiException {
+        okhttp3.Call localVarCall = postKmsAuthLoginValidateBeforeCall(kmsKmsLogin, null);
+        Type localVarReturnType = new TypeToken<KmsKmsToken>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Exchanges a machine credential for an IAM bearer token. (asynchronously)
      * Exchanges a machine credential for an IAM bearer token.  Takes a tenant&#39;s machine credential — a client id and client secret — and returns an owner-scoped IAM access token with its lifetime, which is the bearer the caller then carries on the org-scoped secret operations.  It is deliberately public and unauthenticated, because it IS the credential exchange and runs before any principal exists. That makes it the one route in this subsystem rate-limited PER SOURCE IP, keyed on the real TCP peer rather than on any caller-supplied header, and body-capped in the same place.  The submitted secret is never logged and never echoed, and failures collapse to one clean status with no upstream detail: 401 when the credential does not authenticate, 502 when the identity provider is unreachable, 503 when no issuer is configured. That is on purpose — a richer error would be a validity oracle for guessed credentials.
-     * @param kmsLogin  (required)
+     * @param kmsKmsLogin  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -583,18 +603,19 @@ public class KmsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postKmsAuthLoginAsync(@javax.annotation.Nonnull KmsLogin kmsLogin, final ApiCallback<KmsToken> _callback) throws ApiException {
+    public okhttp3.Call postKmsAuthLoginAsync(@javax.annotation.Nonnull KmsKmsLogin kmsKmsLogin, final ApiCallback<KmsKmsToken> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postKmsAuthLoginValidateBeforeCall(kmsLogin, _callback);
-        Type localVarReturnType = new TypeToken<KmsToken>(){}.getType();
+        okhttp3.Call localVarCall = postKmsAuthLoginValidateBeforeCall(kmsKmsLogin, _callback);
+        Type localVarReturnType = new TypeToken<KmsKmsToken>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postKmsSecrets
-     * @param kmsPut  (required)
+     * @param kmsKmsPut  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -603,9 +624,10 @@ public class KmsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postKmsSecretsCall(@javax.annotation.Nonnull KmsPut kmsPut, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postKmsSecretsCall(@javax.annotation.Nonnull KmsKmsPut kmsKmsPut, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -619,7 +641,7 @@ public class KmsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = kmsPut;
+        Object localVarPostBody = kmsKmsPut;
 
         // create path and map variables
         String localVarPath = "/v1/kms/secrets";
@@ -631,7 +653,8 @@ public class KmsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -651,57 +674,59 @@ public class KmsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postKmsSecretsValidateBeforeCall(@javax.annotation.Nonnull KmsPut kmsPut, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'kmsPut' is set
-        if (kmsPut == null) {
-            throw new ApiException("Missing the required parameter 'kmsPut' when calling postKmsSecrets(Async)");
+    private okhttp3.Call postKmsSecretsValidateBeforeCall(@javax.annotation.Nonnull KmsKmsPut kmsKmsPut, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'kmsKmsPut' is set
+        if (kmsKmsPut == null) {
+            throw new ApiException("Missing the required parameter 'kmsKmsPut' when calling postKmsSecrets(Async)");
         }
 
-        return postKmsSecretsCall(kmsPut, _callback);
+        return postKmsSecretsCall(kmsKmsPut, _callback);
 
     }
 
     /**
      * Stores or replaces one secret in your org.
-     * Stores or replaces one secret in your org.  Upserts one secret under the caller&#39;s own org. The value is sealed before it is written — a fresh per-secret data key, itself wrapped by the master key — so plaintext never reaches disk. The receipt confirms the name and environment that were written and does not echo the value.  &#x60;env&#x60; is REQUIRED on a write and has no default, which is the rule most easily got wrong here: reads and deletes still fall back to the default environment for older callers, but a write must not, because the environment is part of the storage key. A silently defaulted write lands in a bucket the readers that resolve project, environment and path never look in, and the stale value keeps being served — so the write fails loudly instead.  &#x60;name&#x60; is required, &#x60;path&#x60; is an optional subpath beneath the org root, and the org is taken from the validated claim rather than the body.  Requires ADMIN authority over the org — a member reads, an admin writes. A machine credential holds no membership and so is never an org admin: it can read the secrets it was issued for and cannot replace one. Fail-closed admission, in order: admin of the org, well-formed org, master key present — 403, 400 and 503, all decided before any record is touched.
-     * @param kmsPut  (required)
-     * @return KmsStored
+     * Stores or replaces one secret in your org.  Upserts one secret under the caller&#39;s own org. The value is sealed before it is written — a fresh per-secret data key, itself wrapped by the master key — so plaintext never reaches disk. The receipt confirms the name and environment that were written and does not echo the value.  &#x60;env&#x60; is REQUIRED on a write and has no default, which is the rule most easily got wrong here: reads and deletes still fall back to the default environment for older callers, but a write must not, because the environment is part of the storage key. A silently defaulted write lands in a bucket the readers that resolve project, environment and path never look in, and the stale value keeps being served — so the write fails loudly instead.  &#x60;name&#x60; is required, &#x60;path&#x60; is an optional subpath beneath the org root, and the org is taken from the validated claim rather than the body.  Opens only for SuperAdmin holding an access token, audited, or for a holder a declared WRITE grant covers at this exact path, key and environment. Org admin confers nothing here. Fail-closed admission, in order: a validated member, well-formed org, master key present, well-formed input, then the grant — 401/403, 400, 503, 400 and 403, all decided before any record is touched.  A value this deployment seals on the org&#39;s behalf — an MCP server&#39;s credential, a wallet&#39;s signing key, a delivery provider&#39;s token — is written by the app that holds it, through that app&#39;s own operation, and is never replaced here for membership or org admin, whatever the grant declaration says about enforcement.
+     * @param kmsKmsPut  (required)
+     * @return KmsKmsStored
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public KmsStored postKmsSecrets(@javax.annotation.Nonnull KmsPut kmsPut) throws ApiException {
-        ApiResponse<KmsStored> localVarResp = postKmsSecretsWithHttpInfo(kmsPut);
+    public KmsKmsStored postKmsSecrets(@javax.annotation.Nonnull KmsKmsPut kmsKmsPut) throws ApiException {
+        ApiResponse<KmsKmsStored> localVarResp = postKmsSecretsWithHttpInfo(kmsKmsPut);
         return localVarResp.getData();
     }
 
     /**
      * Stores or replaces one secret in your org.
-     * Stores or replaces one secret in your org.  Upserts one secret under the caller&#39;s own org. The value is sealed before it is written — a fresh per-secret data key, itself wrapped by the master key — so plaintext never reaches disk. The receipt confirms the name and environment that were written and does not echo the value.  &#x60;env&#x60; is REQUIRED on a write and has no default, which is the rule most easily got wrong here: reads and deletes still fall back to the default environment for older callers, but a write must not, because the environment is part of the storage key. A silently defaulted write lands in a bucket the readers that resolve project, environment and path never look in, and the stale value keeps being served — so the write fails loudly instead.  &#x60;name&#x60; is required, &#x60;path&#x60; is an optional subpath beneath the org root, and the org is taken from the validated claim rather than the body.  Requires ADMIN authority over the org — a member reads, an admin writes. A machine credential holds no membership and so is never an org admin: it can read the secrets it was issued for and cannot replace one. Fail-closed admission, in order: admin of the org, well-formed org, master key present — 403, 400 and 503, all decided before any record is touched.
-     * @param kmsPut  (required)
-     * @return ApiResponse&lt;KmsStored&gt;
+     * Stores or replaces one secret in your org.  Upserts one secret under the caller&#39;s own org. The value is sealed before it is written — a fresh per-secret data key, itself wrapped by the master key — so plaintext never reaches disk. The receipt confirms the name and environment that were written and does not echo the value.  &#x60;env&#x60; is REQUIRED on a write and has no default, which is the rule most easily got wrong here: reads and deletes still fall back to the default environment for older callers, but a write must not, because the environment is part of the storage key. A silently defaulted write lands in a bucket the readers that resolve project, environment and path never look in, and the stale value keeps being served — so the write fails loudly instead.  &#x60;name&#x60; is required, &#x60;path&#x60; is an optional subpath beneath the org root, and the org is taken from the validated claim rather than the body.  Opens only for SuperAdmin holding an access token, audited, or for a holder a declared WRITE grant covers at this exact path, key and environment. Org admin confers nothing here. Fail-closed admission, in order: a validated member, well-formed org, master key present, well-formed input, then the grant — 401/403, 400, 503, 400 and 403, all decided before any record is touched.  A value this deployment seals on the org&#39;s behalf — an MCP server&#39;s credential, a wallet&#39;s signing key, a delivery provider&#39;s token — is written by the app that holds it, through that app&#39;s own operation, and is never replaced here for membership or org admin, whatever the grant declaration says about enforcement.
+     * @param kmsKmsPut  (required)
+     * @return ApiResponse&lt;KmsKmsStored&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KmsStored> postKmsSecretsWithHttpInfo(@javax.annotation.Nonnull KmsPut kmsPut) throws ApiException {
-        okhttp3.Call localVarCall = postKmsSecretsValidateBeforeCall(kmsPut, null);
-        Type localVarReturnType = new TypeToken<KmsStored>(){}.getType();
+    public ApiResponse<KmsKmsStored> postKmsSecretsWithHttpInfo(@javax.annotation.Nonnull KmsKmsPut kmsKmsPut) throws ApiException {
+        okhttp3.Call localVarCall = postKmsSecretsValidateBeforeCall(kmsKmsPut, null);
+        Type localVarReturnType = new TypeToken<KmsKmsStored>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Stores or replaces one secret in your org. (asynchronously)
-     * Stores or replaces one secret in your org.  Upserts one secret under the caller&#39;s own org. The value is sealed before it is written — a fresh per-secret data key, itself wrapped by the master key — so plaintext never reaches disk. The receipt confirms the name and environment that were written and does not echo the value.  &#x60;env&#x60; is REQUIRED on a write and has no default, which is the rule most easily got wrong here: reads and deletes still fall back to the default environment for older callers, but a write must not, because the environment is part of the storage key. A silently defaulted write lands in a bucket the readers that resolve project, environment and path never look in, and the stale value keeps being served — so the write fails loudly instead.  &#x60;name&#x60; is required, &#x60;path&#x60; is an optional subpath beneath the org root, and the org is taken from the validated claim rather than the body.  Requires ADMIN authority over the org — a member reads, an admin writes. A machine credential holds no membership and so is never an org admin: it can read the secrets it was issued for and cannot replace one. Fail-closed admission, in order: admin of the org, well-formed org, master key present — 403, 400 and 503, all decided before any record is touched.
-     * @param kmsPut  (required)
+     * Stores or replaces one secret in your org.  Upserts one secret under the caller&#39;s own org. The value is sealed before it is written — a fresh per-secret data key, itself wrapped by the master key — so plaintext never reaches disk. The receipt confirms the name and environment that were written and does not echo the value.  &#x60;env&#x60; is REQUIRED on a write and has no default, which is the rule most easily got wrong here: reads and deletes still fall back to the default environment for older callers, but a write must not, because the environment is part of the storage key. A silently defaulted write lands in a bucket the readers that resolve project, environment and path never look in, and the stale value keeps being served — so the write fails loudly instead.  &#x60;name&#x60; is required, &#x60;path&#x60; is an optional subpath beneath the org root, and the org is taken from the validated claim rather than the body.  Opens only for SuperAdmin holding an access token, audited, or for a holder a declared WRITE grant covers at this exact path, key and environment. Org admin confers nothing here. Fail-closed admission, in order: a validated member, well-formed org, master key present, well-formed input, then the grant — 401/403, 400, 503, 400 and 403, all decided before any record is touched.  A value this deployment seals on the org&#39;s behalf — an MCP server&#39;s credential, a wallet&#39;s signing key, a delivery provider&#39;s token — is written by the app that holds it, through that app&#39;s own operation, and is never replaced here for membership or org admin, whatever the grant declaration says about enforcement.
+     * @param kmsKmsPut  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -710,12 +735,13 @@ public class KmsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postKmsSecretsAsync(@javax.annotation.Nonnull KmsPut kmsPut, final ApiCallback<KmsStored> _callback) throws ApiException {
+    public okhttp3.Call postKmsSecretsAsync(@javax.annotation.Nonnull KmsKmsPut kmsKmsPut, final ApiCallback<KmsKmsStored> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postKmsSecretsValidateBeforeCall(kmsPut, _callback);
-        Type localVarReturnType = new TypeToken<KmsStored>(){}.getType();
+        okhttp3.Call localVarCall = postKmsSecretsValidateBeforeCall(kmsKmsPut, _callback);
+        Type localVarReturnType = new TypeToken<KmsKmsStored>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

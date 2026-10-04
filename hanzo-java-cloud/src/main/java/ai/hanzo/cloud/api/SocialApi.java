@@ -27,16 +27,17 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.SocialAccount;
-import ai.hanzo.cloud.model.SocialAccountBody;
-import ai.hanzo.cloud.model.SocialAccountWrite;
-import ai.hanzo.cloud.model.SocialAccounts;
-import ai.hanzo.cloud.model.SocialPost;
-import ai.hanzo.cloud.model.SocialPostBody;
-import ai.hanzo.cloud.model.SocialPostWrite;
-import ai.hanzo.cloud.model.SocialPosts;
-import ai.hanzo.cloud.model.SocialProviders;
-import ai.hanzo.cloud.model.SocialSummary;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.SocialSocialAccount;
+import ai.hanzo.cloud.model.SocialSocialAccountBody;
+import ai.hanzo.cloud.model.SocialSocialAccountWrite;
+import ai.hanzo.cloud.model.SocialSocialAccounts;
+import ai.hanzo.cloud.model.SocialSocialPost;
+import ai.hanzo.cloud.model.SocialSocialPostBody;
+import ai.hanzo.cloud.model.SocialSocialPostWrite;
+import ai.hanzo.cloud.model.SocialSocialPosts;
+import ai.hanzo.cloud.model.SocialSocialProviders;
+import ai.hanzo.cloud.model.SocialSocialSummary;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -92,6 +93,7 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteSocialAccountsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -121,6 +123,7 @@ public class SocialApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -159,6 +162,7 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteSocialAccountsById(@javax.annotation.Nonnull String id) throws ApiException {
@@ -176,6 +180,7 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteSocialAccountsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -195,6 +200,7 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteSocialAccountsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -214,6 +220,7 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteSocialPostsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -243,6 +250,7 @@ public class SocialApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -281,6 +289,7 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteSocialPostsById(@javax.annotation.Nonnull String id) throws ApiException {
@@ -298,6 +307,7 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteSocialPostsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -317,6 +327,7 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteSocialPostsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -337,6 +348,7 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSocialAccountsCall(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
@@ -373,7 +385,8 @@ public class SocialApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -402,17 +415,18 @@ public class SocialApi {
      * Returns the org&#39;s connected accounts — each one&#39;s id, network, handle, status and timestamps, most-recently-updated first.  An account&#39;s provider access token is NEVER included in any response on this surface. Only the publisher reads it.
      * @param provider Provider keeps only accounts on one network — x, facebook, instagram, linkedin, tiktok, youtube or threads. Omit it for every network. It is lower-cased and trimmed before it is matched, and a value that names no network simply matches nothing rather than being refused. (optional)
      * @param limit Limit bounds the page, defaulting to 200 and capped at 1000. It is a string rather than an integer on purpose: the route parses it with a leading trim and falls back to the default on anything it cannot read, so &#x60;?limit&#x3D;%2050&#x60; is a page of fifty today. An integer field would refuse the space and read an unparseable value as zero, which is a different page. (optional)
-     * @return SocialAccounts
+     * @return SocialSocialAccounts
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SocialAccounts getSocialAccounts(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String limit) throws ApiException {
-        ApiResponse<SocialAccounts> localVarResp = getSocialAccountsWithHttpInfo(provider, limit);
+    public SocialSocialAccounts getSocialAccounts(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String limit) throws ApiException {
+        ApiResponse<SocialSocialAccounts> localVarResp = getSocialAccountsWithHttpInfo(provider, limit);
         return localVarResp.getData();
     }
 
@@ -421,18 +435,19 @@ public class SocialApi {
      * Returns the org&#39;s connected accounts — each one&#39;s id, network, handle, status and timestamps, most-recently-updated first.  An account&#39;s provider access token is NEVER included in any response on this surface. Only the publisher reads it.
      * @param provider Provider keeps only accounts on one network — x, facebook, instagram, linkedin, tiktok, youtube or threads. Omit it for every network. It is lower-cased and trimmed before it is matched, and a value that names no network simply matches nothing rather than being refused. (optional)
      * @param limit Limit bounds the page, defaulting to 200 and capped at 1000. It is a string rather than an integer on purpose: the route parses it with a leading trim and falls back to the default on anything it cannot read, so &#x60;?limit&#x3D;%2050&#x60; is a page of fifty today. An integer field would refuse the space and read an unparseable value as zero, which is a different page. (optional)
-     * @return ApiResponse&lt;SocialAccounts&gt;
+     * @return ApiResponse&lt;SocialSocialAccounts&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SocialAccounts> getSocialAccountsWithHttpInfo(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String limit) throws ApiException {
+    public ApiResponse<SocialSocialAccounts> getSocialAccountsWithHttpInfo(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String limit) throws ApiException {
         okhttp3.Call localVarCall = getSocialAccountsValidateBeforeCall(provider, limit, null);
-        Type localVarReturnType = new TypeToken<SocialAccounts>(){}.getType();
+        Type localVarReturnType = new TypeToken<SocialSocialAccounts>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -449,12 +464,13 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSocialAccountsAsync(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String limit, final ApiCallback<SocialAccounts> _callback) throws ApiException {
+    public okhttp3.Call getSocialAccountsAsync(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String limit, final ApiCallback<SocialSocialAccounts> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSocialAccountsValidateBeforeCall(provider, limit, _callback);
-        Type localVarReturnType = new TypeToken<SocialAccounts>(){}.getType();
+        Type localVarReturnType = new TypeToken<SocialSocialAccounts>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -469,6 +485,7 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSocialAccountsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -498,7 +515,8 @@ public class SocialApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -531,17 +549,18 @@ public class SocialApi {
      * Returns one of the org&#39;s connected accounts by id — its network, handle, status and timestamps — or 404.
      * Returns one of the org&#39;s connected accounts by id — its network, handle, status and timestamps — or 404. The provider access token is not part of the response.
      * @param id ID is the account or post to act on, taken from the path. (required)
-     * @return SocialAccount
+     * @return SocialSocialAccount
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SocialAccount getSocialAccountsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<SocialAccount> localVarResp = getSocialAccountsByIdWithHttpInfo(id);
+    public SocialSocialAccount getSocialAccountsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SocialSocialAccount> localVarResp = getSocialAccountsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -549,18 +568,19 @@ public class SocialApi {
      * Returns one of the org&#39;s connected accounts by id — its network, handle, status and timestamps — or 404.
      * Returns one of the org&#39;s connected accounts by id — its network, handle, status and timestamps — or 404. The provider access token is not part of the response.
      * @param id ID is the account or post to act on, taken from the path. (required)
-     * @return ApiResponse&lt;SocialAccount&gt;
+     * @return ApiResponse&lt;SocialSocialAccount&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SocialAccount> getSocialAccountsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<SocialSocialAccount> getSocialAccountsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getSocialAccountsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<SocialAccount>(){}.getType();
+        Type localVarReturnType = new TypeToken<SocialSocialAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -576,12 +596,13 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSocialAccountsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SocialAccount> _callback) throws ApiException {
+    public okhttp3.Call getSocialAccountsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SocialSocialAccount> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSocialAccountsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<SocialAccount>(){}.getType();
+        Type localVarReturnType = new TypeToken<SocialSocialAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -597,6 +618,7 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSocialPostsCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
@@ -633,7 +655,8 @@ public class SocialApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -662,17 +685,18 @@ public class SocialApi {
      * Returns the org&#39;s posts — content, channel, status, scheduled time, media and timestamps — most-recently-updated first.
      * @param status Status keeps only posts in one state — draft, scheduled, published or failed. Omit it for every state. The transient publishing claim is not a user-visible state and matching it is not useful. (optional)
      * @param limit Limit bounds the page, defaulting to 200 and capped at 1000. A string for the same reason accountFilter.Limit is. (optional)
-     * @return SocialPosts
+     * @return SocialSocialPosts
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SocialPosts getSocialPosts(@javax.annotation.Nullable String status, @javax.annotation.Nullable String limit) throws ApiException {
-        ApiResponse<SocialPosts> localVarResp = getSocialPostsWithHttpInfo(status, limit);
+    public SocialSocialPosts getSocialPosts(@javax.annotation.Nullable String status, @javax.annotation.Nullable String limit) throws ApiException {
+        ApiResponse<SocialSocialPosts> localVarResp = getSocialPostsWithHttpInfo(status, limit);
         return localVarResp.getData();
     }
 
@@ -681,18 +705,19 @@ public class SocialApi {
      * Returns the org&#39;s posts — content, channel, status, scheduled time, media and timestamps — most-recently-updated first.
      * @param status Status keeps only posts in one state — draft, scheduled, published or failed. Omit it for every state. The transient publishing claim is not a user-visible state and matching it is not useful. (optional)
      * @param limit Limit bounds the page, defaulting to 200 and capped at 1000. A string for the same reason accountFilter.Limit is. (optional)
-     * @return ApiResponse&lt;SocialPosts&gt;
+     * @return ApiResponse&lt;SocialSocialPosts&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SocialPosts> getSocialPostsWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable String limit) throws ApiException {
+    public ApiResponse<SocialSocialPosts> getSocialPostsWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable String limit) throws ApiException {
         okhttp3.Call localVarCall = getSocialPostsValidateBeforeCall(status, limit, null);
-        Type localVarReturnType = new TypeToken<SocialPosts>(){}.getType();
+        Type localVarReturnType = new TypeToken<SocialSocialPosts>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -709,12 +734,13 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSocialPostsAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable String limit, final ApiCallback<SocialPosts> _callback) throws ApiException {
+    public okhttp3.Call getSocialPostsAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable String limit, final ApiCallback<SocialSocialPosts> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSocialPostsValidateBeforeCall(status, limit, _callback);
-        Type localVarReturnType = new TypeToken<SocialPosts>(){}.getType();
+        Type localVarReturnType = new TypeToken<SocialSocialPosts>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -729,6 +755,7 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSocialPostsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -758,7 +785,8 @@ public class SocialApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -791,17 +819,18 @@ public class SocialApi {
      * Returns one of the org&#39;s posts by id, with its current status, scheduled time, media and — once it has published — the account and external id it published under.
      * Returns one of the org&#39;s posts by id, with its current status, scheduled time, media and — once it has published — the account and external id it published under. 404 when there is no such post for this org.
      * @param id ID is the account or post to act on, taken from the path. (required)
-     * @return SocialPost
+     * @return SocialSocialPost
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SocialPost getSocialPostsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<SocialPost> localVarResp = getSocialPostsByIdWithHttpInfo(id);
+    public SocialSocialPost getSocialPostsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SocialSocialPost> localVarResp = getSocialPostsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -809,18 +838,19 @@ public class SocialApi {
      * Returns one of the org&#39;s posts by id, with its current status, scheduled time, media and — once it has published — the account and external id it published under.
      * Returns one of the org&#39;s posts by id, with its current status, scheduled time, media and — once it has published — the account and external id it published under. 404 when there is no such post for this org.
      * @param id ID is the account or post to act on, taken from the path. (required)
-     * @return ApiResponse&lt;SocialPost&gt;
+     * @return ApiResponse&lt;SocialSocialPost&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SocialPost> getSocialPostsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<SocialSocialPost> getSocialPostsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getSocialPostsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<SocialPost>(){}.getType();
+        Type localVarReturnType = new TypeToken<SocialSocialPost>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -836,12 +866,13 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSocialPostsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SocialPost> _callback) throws ApiException {
+    public okhttp3.Call getSocialPostsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SocialSocialPost> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSocialPostsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<SocialPost>(){}.getType();
+        Type localVarReturnType = new TypeToken<SocialSocialPost>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -855,6 +886,7 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSocialProvidersCall(final ApiCallback _callback) throws ApiException {
@@ -883,7 +915,8 @@ public class SocialApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -910,35 +943,37 @@ public class SocialApi {
     /**
      * Reports each supported network&#39;s publish-readiness: whether this deployment holds the OAuth application credentials for it and, when it does not, exactly which environment variables are missing.
      * Reports each supported network&#39;s publish-readiness: whether this deployment holds the OAuth application credentials for it and, when it does not, exactly which environment variables are missing.  This is a live read of the deployment&#39;s own configuration, not a static list of networks — it answers \&quot;can I connect this today\&quot;, which is what a connect affordance and a pre-cutover checklist both need. It says nothing about whether the caller has connected an account; that is the accounts listing.
-     * @return SocialProviders
+     * @return SocialSocialProviders
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SocialProviders getSocialProviders() throws ApiException {
-        ApiResponse<SocialProviders> localVarResp = getSocialProvidersWithHttpInfo();
+    public SocialSocialProviders getSocialProviders() throws ApiException {
+        ApiResponse<SocialSocialProviders> localVarResp = getSocialProvidersWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports each supported network&#39;s publish-readiness: whether this deployment holds the OAuth application credentials for it and, when it does not, exactly which environment variables are missing.
      * Reports each supported network&#39;s publish-readiness: whether this deployment holds the OAuth application credentials for it and, when it does not, exactly which environment variables are missing.  This is a live read of the deployment&#39;s own configuration, not a static list of networks — it answers \&quot;can I connect this today\&quot;, which is what a connect affordance and a pre-cutover checklist both need. It says nothing about whether the caller has connected an account; that is the accounts listing.
-     * @return ApiResponse&lt;SocialProviders&gt;
+     * @return ApiResponse&lt;SocialSocialProviders&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SocialProviders> getSocialProvidersWithHttpInfo() throws ApiException {
+    public ApiResponse<SocialSocialProviders> getSocialProvidersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getSocialProvidersValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<SocialProviders>(){}.getType();
+        Type localVarReturnType = new TypeToken<SocialSocialProviders>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -953,12 +988,13 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSocialProvidersAsync(final ApiCallback<SocialProviders> _callback) throws ApiException {
+    public okhttp3.Call getSocialProvidersAsync(final ApiCallback<SocialSocialProviders> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSocialProvidersValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<SocialProviders>(){}.getType();
+        Type localVarReturnType = new TypeToken<SocialSocialProviders>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -972,6 +1008,7 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSocialSummaryCall(final ApiCallback _callback) throws ApiException {
@@ -1000,7 +1037,8 @@ public class SocialApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1027,35 +1065,37 @@ public class SocialApi {
     /**
      * Returns four counts for the caller&#39;s org: total posts, how many are scheduled, how many have published, and how many accounts are connected.
      * Returns four counts for the caller&#39;s org: total posts, how many are scheduled, how many have published, and how many accounts are connected. It is the dashboard roll-up, computed over the org&#39;s own rows in one read.
-     * @return SocialSummary
+     * @return SocialSocialSummary
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SocialSummary getSocialSummary() throws ApiException {
-        ApiResponse<SocialSummary> localVarResp = getSocialSummaryWithHttpInfo();
+    public SocialSocialSummary getSocialSummary() throws ApiException {
+        ApiResponse<SocialSocialSummary> localVarResp = getSocialSummaryWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns four counts for the caller&#39;s org: total posts, how many are scheduled, how many have published, and how many accounts are connected.
      * Returns four counts for the caller&#39;s org: total posts, how many are scheduled, how many have published, and how many accounts are connected. It is the dashboard roll-up, computed over the org&#39;s own rows in one read.
-     * @return ApiResponse&lt;SocialSummary&gt;
+     * @return ApiResponse&lt;SocialSocialSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SocialSummary> getSocialSummaryWithHttpInfo() throws ApiException {
+    public ApiResponse<SocialSocialSummary> getSocialSummaryWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getSocialSummaryValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<SocialSummary>(){}.getType();
+        Type localVarReturnType = new TypeToken<SocialSocialSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1070,18 +1110,19 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSocialSummaryAsync(final ApiCallback<SocialSummary> _callback) throws ApiException {
+    public okhttp3.Call getSocialSummaryAsync(final ApiCallback<SocialSocialSummary> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSocialSummaryValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<SocialSummary>(){}.getType();
+        Type localVarReturnType = new TypeToken<SocialSocialSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postSocialAccounts
-     * @param socialAccountBody  (required)
+     * @param socialSocialAccountBody  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1090,9 +1131,10 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSocialAccountsCall(@javax.annotation.Nonnull SocialAccountBody socialAccountBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSocialAccountsCall(@javax.annotation.Nonnull SocialSocialAccountBody socialSocialAccountBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1106,7 +1148,7 @@ public class SocialApi {
             basePath = null;
         }
 
-        Object localVarPostBody = socialAccountBody;
+        Object localVarPostBody = socialSocialAccountBody;
 
         // create path and map variables
         String localVarPath = "/v1/social/accounts";
@@ -1118,7 +1160,8 @@ public class SocialApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1138,57 +1181,59 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postSocialAccountsValidateBeforeCall(@javax.annotation.Nonnull SocialAccountBody socialAccountBody, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'socialAccountBody' is set
-        if (socialAccountBody == null) {
-            throw new ApiException("Missing the required parameter 'socialAccountBody' when calling postSocialAccounts(Async)");
+    private okhttp3.Call postSocialAccountsValidateBeforeCall(@javax.annotation.Nonnull SocialSocialAccountBody socialSocialAccountBody, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'socialSocialAccountBody' is set
+        if (socialSocialAccountBody == null) {
+            throw new ApiException("Missing the required parameter 'socialSocialAccountBody' when calling postSocialAccounts(Async)");
         }
 
-        return postSocialAccountsCall(socialAccountBody, _callback);
+        return postSocialAccountsCall(socialSocialAccountBody, _callback);
 
     }
 
     /**
      * Records a social account for the org and answers 201 with the stored row, including the generated id later calls address it by.
      * Records a social account for the org and answers 201 with the stored row, including the generated id later calls address it by.
-     * @param socialAccountBody  (required)
-     * @return SocialAccount
+     * @param socialSocialAccountBody  (required)
+     * @return SocialSocialAccount
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SocialAccount postSocialAccounts(@javax.annotation.Nonnull SocialAccountBody socialAccountBody) throws ApiException {
-        ApiResponse<SocialAccount> localVarResp = postSocialAccountsWithHttpInfo(socialAccountBody);
+    public SocialSocialAccount postSocialAccounts(@javax.annotation.Nonnull SocialSocialAccountBody socialSocialAccountBody) throws ApiException {
+        ApiResponse<SocialSocialAccount> localVarResp = postSocialAccountsWithHttpInfo(socialSocialAccountBody);
         return localVarResp.getData();
     }
 
     /**
      * Records a social account for the org and answers 201 with the stored row, including the generated id later calls address it by.
      * Records a social account for the org and answers 201 with the stored row, including the generated id later calls address it by.
-     * @param socialAccountBody  (required)
-     * @return ApiResponse&lt;SocialAccount&gt;
+     * @param socialSocialAccountBody  (required)
+     * @return ApiResponse&lt;SocialSocialAccount&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SocialAccount> postSocialAccountsWithHttpInfo(@javax.annotation.Nonnull SocialAccountBody socialAccountBody) throws ApiException {
-        okhttp3.Call localVarCall = postSocialAccountsValidateBeforeCall(socialAccountBody, null);
-        Type localVarReturnType = new TypeToken<SocialAccount>(){}.getType();
+    public ApiResponse<SocialSocialAccount> postSocialAccountsWithHttpInfo(@javax.annotation.Nonnull SocialSocialAccountBody socialSocialAccountBody) throws ApiException {
+        okhttp3.Call localVarCall = postSocialAccountsValidateBeforeCall(socialSocialAccountBody, null);
+        Type localVarReturnType = new TypeToken<SocialSocialAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Records a social account for the org and answers 201 with the stored row, including the generated id later calls address it by. (asynchronously)
      * Records a social account for the org and answers 201 with the stored row, including the generated id later calls address it by.
-     * @param socialAccountBody  (required)
+     * @param socialSocialAccountBody  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1197,18 +1242,19 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSocialAccountsAsync(@javax.annotation.Nonnull SocialAccountBody socialAccountBody, final ApiCallback<SocialAccount> _callback) throws ApiException {
+    public okhttp3.Call postSocialAccountsAsync(@javax.annotation.Nonnull SocialSocialAccountBody socialSocialAccountBody, final ApiCallback<SocialSocialAccount> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postSocialAccountsValidateBeforeCall(socialAccountBody, _callback);
-        Type localVarReturnType = new TypeToken<SocialAccount>(){}.getType();
+        okhttp3.Call localVarCall = postSocialAccountsValidateBeforeCall(socialSocialAccountBody, _callback);
+        Type localVarReturnType = new TypeToken<SocialSocialAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postSocialPosts
-     * @param socialPostBody  (required)
+     * @param socialSocialPostBody  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1217,9 +1263,10 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSocialPostsCall(@javax.annotation.Nonnull SocialPostBody socialPostBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSocialPostsCall(@javax.annotation.Nonnull SocialSocialPostBody socialSocialPostBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1233,7 +1280,7 @@ public class SocialApi {
             basePath = null;
         }
 
-        Object localVarPostBody = socialPostBody;
+        Object localVarPostBody = socialSocialPostBody;
 
         // create path and map variables
         String localVarPath = "/v1/social/posts";
@@ -1245,7 +1292,8 @@ public class SocialApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1265,57 +1313,59 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postSocialPostsValidateBeforeCall(@javax.annotation.Nonnull SocialPostBody socialPostBody, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'socialPostBody' is set
-        if (socialPostBody == null) {
-            throw new ApiException("Missing the required parameter 'socialPostBody' when calling postSocialPosts(Async)");
+    private okhttp3.Call postSocialPostsValidateBeforeCall(@javax.annotation.Nonnull SocialSocialPostBody socialSocialPostBody, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'socialSocialPostBody' is set
+        if (socialSocialPostBody == null) {
+            throw new ApiException("Missing the required parameter 'socialSocialPostBody' when calling postSocialPosts(Async)");
         }
 
-        return postSocialPostsCall(socialPostBody, _callback);
+        return postSocialPostsCall(socialSocialPostBody, _callback);
 
     }
 
     /**
      * Stores a post for the org and answers 201 with the stored row.
      * Stores a post for the org and answers 201 with the stored row.  A post created as scheduled for a time that has already passed is published IMMEDIATELY, and the row returned carries that outcome — this is the one behaviour a reader would otherwise miss. A future-scheduled post is left for the scheduler, and a draft is left alone. Publishing never fails the creation: the post is stored either way, and a publish that could not run leaves the row for the scheduler to retry.
-     * @param socialPostBody  (required)
-     * @return SocialPost
+     * @param socialSocialPostBody  (required)
+     * @return SocialSocialPost
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SocialPost postSocialPosts(@javax.annotation.Nonnull SocialPostBody socialPostBody) throws ApiException {
-        ApiResponse<SocialPost> localVarResp = postSocialPostsWithHttpInfo(socialPostBody);
+    public SocialSocialPost postSocialPosts(@javax.annotation.Nonnull SocialSocialPostBody socialSocialPostBody) throws ApiException {
+        ApiResponse<SocialSocialPost> localVarResp = postSocialPostsWithHttpInfo(socialSocialPostBody);
         return localVarResp.getData();
     }
 
     /**
      * Stores a post for the org and answers 201 with the stored row.
      * Stores a post for the org and answers 201 with the stored row.  A post created as scheduled for a time that has already passed is published IMMEDIATELY, and the row returned carries that outcome — this is the one behaviour a reader would otherwise miss. A future-scheduled post is left for the scheduler, and a draft is left alone. Publishing never fails the creation: the post is stored either way, and a publish that could not run leaves the row for the scheduler to retry.
-     * @param socialPostBody  (required)
-     * @return ApiResponse&lt;SocialPost&gt;
+     * @param socialSocialPostBody  (required)
+     * @return ApiResponse&lt;SocialSocialPost&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SocialPost> postSocialPostsWithHttpInfo(@javax.annotation.Nonnull SocialPostBody socialPostBody) throws ApiException {
-        okhttp3.Call localVarCall = postSocialPostsValidateBeforeCall(socialPostBody, null);
-        Type localVarReturnType = new TypeToken<SocialPost>(){}.getType();
+    public ApiResponse<SocialSocialPost> postSocialPostsWithHttpInfo(@javax.annotation.Nonnull SocialSocialPostBody socialSocialPostBody) throws ApiException {
+        okhttp3.Call localVarCall = postSocialPostsValidateBeforeCall(socialSocialPostBody, null);
+        Type localVarReturnType = new TypeToken<SocialSocialPost>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Stores a post for the org and answers 201 with the stored row. (asynchronously)
      * Stores a post for the org and answers 201 with the stored row.  A post created as scheduled for a time that has already passed is published IMMEDIATELY, and the row returned carries that outcome — this is the one behaviour a reader would otherwise miss. A future-scheduled post is left for the scheduler, and a draft is left alone. Publishing never fails the creation: the post is stored either way, and a publish that could not run leaves the row for the scheduler to retry.
-     * @param socialPostBody  (required)
+     * @param socialSocialPostBody  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1324,12 +1374,13 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSocialPostsAsync(@javax.annotation.Nonnull SocialPostBody socialPostBody, final ApiCallback<SocialPost> _callback) throws ApiException {
+    public okhttp3.Call postSocialPostsAsync(@javax.annotation.Nonnull SocialSocialPostBody socialSocialPostBody, final ApiCallback<SocialSocialPost> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postSocialPostsValidateBeforeCall(socialPostBody, _callback);
-        Type localVarReturnType = new TypeToken<SocialPost>(){}.getType();
+        okhttp3.Call localVarCall = postSocialPostsValidateBeforeCall(socialSocialPostBody, _callback);
+        Type localVarReturnType = new TypeToken<SocialSocialPost>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1344,6 +1395,7 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postSocialPostsByIdPublishCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1373,7 +1425,8 @@ public class SocialApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1406,17 +1459,18 @@ public class SocialApi {
      * Publishes the post immediately to the connected accounts on its channel and answers with the updated row, carrying the account and external id it published under.
      * Publishes the post immediately to the connected accounts on its channel and answers with the updated row, carrying the account and external id it published under.  It is IDEMPOTENT: a post that has already published, or that another caller is publishing right now, comes back unchanged rather than being posted twice. That claim is taken before any network call, which is what makes a double submit safe.  The two failure shapes differ on purpose. Having no connected account for the channel is the caller&#39;s to fix, so it is recorded ON the post as failed with the reason and answers normally. A deployment that lacks the network&#39;s own credentials cannot publish for anyone, so that is a 503 naming exactly what is missing.
      * @param id ID is the account or post to act on, taken from the path. (required)
-     * @return SocialPost
+     * @return SocialSocialPost
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SocialPost postSocialPostsByIdPublish(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<SocialPost> localVarResp = postSocialPostsByIdPublishWithHttpInfo(id);
+    public SocialSocialPost postSocialPostsByIdPublish(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SocialSocialPost> localVarResp = postSocialPostsByIdPublishWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1424,18 +1478,19 @@ public class SocialApi {
      * Publishes the post immediately to the connected accounts on its channel and answers with the updated row, carrying the account and external id it published under.
      * Publishes the post immediately to the connected accounts on its channel and answers with the updated row, carrying the account and external id it published under.  It is IDEMPOTENT: a post that has already published, or that another caller is publishing right now, comes back unchanged rather than being posted twice. That claim is taken before any network call, which is what makes a double submit safe.  The two failure shapes differ on purpose. Having no connected account for the channel is the caller&#39;s to fix, so it is recorded ON the post as failed with the reason and answers normally. A deployment that lacks the network&#39;s own credentials cannot publish for anyone, so that is a 503 naming exactly what is missing.
      * @param id ID is the account or post to act on, taken from the path. (required)
-     * @return ApiResponse&lt;SocialPost&gt;
+     * @return ApiResponse&lt;SocialSocialPost&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SocialPost> postSocialPostsByIdPublishWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<SocialSocialPost> postSocialPostsByIdPublishWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postSocialPostsByIdPublishValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<SocialPost>(){}.getType();
+        Type localVarReturnType = new TypeToken<SocialSocialPost>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1451,19 +1506,20 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSocialPostsByIdPublishAsync(@javax.annotation.Nonnull String id, final ApiCallback<SocialPost> _callback) throws ApiException {
+    public okhttp3.Call postSocialPostsByIdPublishAsync(@javax.annotation.Nonnull String id, final ApiCallback<SocialSocialPost> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postSocialPostsByIdPublishValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<SocialPost>(){}.getType();
+        Type localVarReturnType = new TypeToken<SocialSocialPost>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putSocialAccountsById
      * @param id  (required)
-     * @param socialAccountWrite  (required)
+     * @param socialSocialAccountWrite  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1472,9 +1528,10 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putSocialAccountsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialAccountWrite socialAccountWrite, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putSocialAccountsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialSocialAccountWrite socialSocialAccountWrite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1488,7 +1545,7 @@ public class SocialApi {
             basePath = null;
         }
 
-        Object localVarPostBody = socialAccountWrite;
+        Object localVarPostBody = socialSocialAccountWrite;
 
         // create path and map variables
         String localVarPath = "/v1/social/accounts/{id}"
@@ -1501,7 +1558,8 @@ public class SocialApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1521,18 +1579,18 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putSocialAccountsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialAccountWrite socialAccountWrite, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putSocialAccountsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialSocialAccountWrite socialSocialAccountWrite, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling putSocialAccountsById(Async)");
         }
 
-        // verify the required parameter 'socialAccountWrite' is set
-        if (socialAccountWrite == null) {
-            throw new ApiException("Missing the required parameter 'socialAccountWrite' when calling putSocialAccountsById(Async)");
+        // verify the required parameter 'socialSocialAccountWrite' is set
+        if (socialSocialAccountWrite == null) {
+            throw new ApiException("Missing the required parameter 'socialSocialAccountWrite' when calling putSocialAccountsById(Async)");
         }
 
-        return putSocialAccountsByIdCall(id, socialAccountWrite, _callback);
+        return putSocialAccountsByIdCall(id, socialSocialAccountWrite, _callback);
 
     }
 
@@ -1540,18 +1598,19 @@ public class SocialApi {
      * Replaces the account&#39;s network, handle and status with what the body carries, and answers with the stored row.
      * Replaces the account&#39;s network, handle and status with what the body carries, and answers with the stored row.  This is a REPLACEMENT, not a merge, which is the rule most easily got wrong: a field the body omits is written as its default, so leaving out the handle blanks it and leaving out the status resets it to connected. Send the whole record. The same vocabularies as create apply, and an unknown network or status is refused rather than coerced.
      * @param id  (required)
-     * @param socialAccountWrite  (required)
-     * @return SocialAccount
+     * @param socialSocialAccountWrite  (required)
+     * @return SocialSocialAccount
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SocialAccount putSocialAccountsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialAccountWrite socialAccountWrite) throws ApiException {
-        ApiResponse<SocialAccount> localVarResp = putSocialAccountsByIdWithHttpInfo(id, socialAccountWrite);
+    public SocialSocialAccount putSocialAccountsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialSocialAccountWrite socialSocialAccountWrite) throws ApiException {
+        ApiResponse<SocialSocialAccount> localVarResp = putSocialAccountsByIdWithHttpInfo(id, socialSocialAccountWrite);
         return localVarResp.getData();
     }
 
@@ -1559,19 +1618,20 @@ public class SocialApi {
      * Replaces the account&#39;s network, handle and status with what the body carries, and answers with the stored row.
      * Replaces the account&#39;s network, handle and status with what the body carries, and answers with the stored row.  This is a REPLACEMENT, not a merge, which is the rule most easily got wrong: a field the body omits is written as its default, so leaving out the handle blanks it and leaving out the status resets it to connected. Send the whole record. The same vocabularies as create apply, and an unknown network or status is refused rather than coerced.
      * @param id  (required)
-     * @param socialAccountWrite  (required)
-     * @return ApiResponse&lt;SocialAccount&gt;
+     * @param socialSocialAccountWrite  (required)
+     * @return ApiResponse&lt;SocialSocialAccount&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SocialAccount> putSocialAccountsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialAccountWrite socialAccountWrite) throws ApiException {
-        okhttp3.Call localVarCall = putSocialAccountsByIdValidateBeforeCall(id, socialAccountWrite, null);
-        Type localVarReturnType = new TypeToken<SocialAccount>(){}.getType();
+    public ApiResponse<SocialSocialAccount> putSocialAccountsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialSocialAccountWrite socialSocialAccountWrite) throws ApiException {
+        okhttp3.Call localVarCall = putSocialAccountsByIdValidateBeforeCall(id, socialSocialAccountWrite, null);
+        Type localVarReturnType = new TypeToken<SocialSocialAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1579,7 +1639,7 @@ public class SocialApi {
      * Replaces the account&#39;s network, handle and status with what the body carries, and answers with the stored row. (asynchronously)
      * Replaces the account&#39;s network, handle and status with what the body carries, and answers with the stored row.  This is a REPLACEMENT, not a merge, which is the rule most easily got wrong: a field the body omits is written as its default, so leaving out the handle blanks it and leaving out the status resets it to connected. Send the whole record. The same vocabularies as create apply, and an unknown network or status is refused rather than coerced.
      * @param id  (required)
-     * @param socialAccountWrite  (required)
+     * @param socialSocialAccountWrite  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1588,19 +1648,20 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putSocialAccountsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialAccountWrite socialAccountWrite, final ApiCallback<SocialAccount> _callback) throws ApiException {
+    public okhttp3.Call putSocialAccountsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialSocialAccountWrite socialSocialAccountWrite, final ApiCallback<SocialSocialAccount> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putSocialAccountsByIdValidateBeforeCall(id, socialAccountWrite, _callback);
-        Type localVarReturnType = new TypeToken<SocialAccount>(){}.getType();
+        okhttp3.Call localVarCall = putSocialAccountsByIdValidateBeforeCall(id, socialSocialAccountWrite, _callback);
+        Type localVarReturnType = new TypeToken<SocialSocialAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putSocialPostsById
      * @param id  (required)
-     * @param socialPostWrite  (required)
+     * @param socialSocialPostWrite  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1609,9 +1670,10 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putSocialPostsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialPostWrite socialPostWrite, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putSocialPostsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialSocialPostWrite socialSocialPostWrite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1625,7 +1687,7 @@ public class SocialApi {
             basePath = null;
         }
 
-        Object localVarPostBody = socialPostWrite;
+        Object localVarPostBody = socialSocialPostWrite;
 
         // create path and map variables
         String localVarPath = "/v1/social/posts/{id}"
@@ -1638,7 +1700,8 @@ public class SocialApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1658,18 +1721,18 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putSocialPostsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialPostWrite socialPostWrite, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putSocialPostsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialSocialPostWrite socialSocialPostWrite, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling putSocialPostsById(Async)");
         }
 
-        // verify the required parameter 'socialPostWrite' is set
-        if (socialPostWrite == null) {
-            throw new ApiException("Missing the required parameter 'socialPostWrite' when calling putSocialPostsById(Async)");
+        // verify the required parameter 'socialSocialPostWrite' is set
+        if (socialSocialPostWrite == null) {
+            throw new ApiException("Missing the required parameter 'socialSocialPostWrite' when calling putSocialPostsById(Async)");
         }
 
-        return putSocialPostsByIdCall(id, socialPostWrite, _callback);
+        return putSocialPostsByIdCall(id, socialSocialPostWrite, _callback);
 
     }
 
@@ -1677,18 +1740,19 @@ public class SocialApi {
      * Replaces the post&#39;s content, channel, status, scheduled time and media with what the body carries, and answers with the stored row.
      * Replaces the post&#39;s content, channel, status, scheduled time and media with what the body carries, and answers with the stored row.  A REPLACEMENT, not a merge: an omitted field is written as its default, so omitting media clears it and omitting the status resets the post to draft. &#x60;content&#x60; is required on every update. Unlike create, this never triggers a publish — moving a post&#39;s scheduled time into the past here leaves it for the scheduler; publish now is its own operation.
      * @param id  (required)
-     * @param socialPostWrite  (required)
-     * @return SocialPost
+     * @param socialSocialPostWrite  (required)
+     * @return SocialSocialPost
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SocialPost putSocialPostsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialPostWrite socialPostWrite) throws ApiException {
-        ApiResponse<SocialPost> localVarResp = putSocialPostsByIdWithHttpInfo(id, socialPostWrite);
+    public SocialSocialPost putSocialPostsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialSocialPostWrite socialSocialPostWrite) throws ApiException {
+        ApiResponse<SocialSocialPost> localVarResp = putSocialPostsByIdWithHttpInfo(id, socialSocialPostWrite);
         return localVarResp.getData();
     }
 
@@ -1696,19 +1760,20 @@ public class SocialApi {
      * Replaces the post&#39;s content, channel, status, scheduled time and media with what the body carries, and answers with the stored row.
      * Replaces the post&#39;s content, channel, status, scheduled time and media with what the body carries, and answers with the stored row.  A REPLACEMENT, not a merge: an omitted field is written as its default, so omitting media clears it and omitting the status resets the post to draft. &#x60;content&#x60; is required on every update. Unlike create, this never triggers a publish — moving a post&#39;s scheduled time into the past here leaves it for the scheduler; publish now is its own operation.
      * @param id  (required)
-     * @param socialPostWrite  (required)
-     * @return ApiResponse&lt;SocialPost&gt;
+     * @param socialSocialPostWrite  (required)
+     * @return ApiResponse&lt;SocialSocialPost&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SocialPost> putSocialPostsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialPostWrite socialPostWrite) throws ApiException {
-        okhttp3.Call localVarCall = putSocialPostsByIdValidateBeforeCall(id, socialPostWrite, null);
-        Type localVarReturnType = new TypeToken<SocialPost>(){}.getType();
+    public ApiResponse<SocialSocialPost> putSocialPostsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialSocialPostWrite socialSocialPostWrite) throws ApiException {
+        okhttp3.Call localVarCall = putSocialPostsByIdValidateBeforeCall(id, socialSocialPostWrite, null);
+        Type localVarReturnType = new TypeToken<SocialSocialPost>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1716,7 +1781,7 @@ public class SocialApi {
      * Replaces the post&#39;s content, channel, status, scheduled time and media with what the body carries, and answers with the stored row. (asynchronously)
      * Replaces the post&#39;s content, channel, status, scheduled time and media with what the body carries, and answers with the stored row.  A REPLACEMENT, not a merge: an omitted field is written as its default, so omitting media clears it and omitting the status resets the post to draft. &#x60;content&#x60; is required on every update. Unlike create, this never triggers a publish — moving a post&#39;s scheduled time into the past here leaves it for the scheduler; publish now is its own operation.
      * @param id  (required)
-     * @param socialPostWrite  (required)
+     * @param socialSocialPostWrite  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1725,12 +1790,13 @@ public class SocialApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putSocialPostsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialPostWrite socialPostWrite, final ApiCallback<SocialPost> _callback) throws ApiException {
+    public okhttp3.Call putSocialPostsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SocialSocialPostWrite socialSocialPostWrite, final ApiCallback<SocialSocialPost> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putSocialPostsByIdValidateBeforeCall(id, socialPostWrite, _callback);
-        Type localVarReturnType = new TypeToken<SocialPost>(){}.getType();
+        okhttp3.Call localVarCall = putSocialPostsByIdValidateBeforeCall(id, socialSocialPostWrite, _callback);
+        Type localVarReturnType = new TypeToken<SocialSocialPost>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

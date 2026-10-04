@@ -27,8 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.NotifyHealth;
-import ai.hanzo.cloud.model.NotifySend;
+import ai.hanzo.cloud.model.NotifyNotifyCredential;
+import ai.hanzo.cloud.model.NotifyNotifyHealth;
+import ai.hanzo.cloud.model.NotifyNotifySend;
+import ai.hanzo.cloud.model.NotifyNotifyStored;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -74,6 +77,143 @@ public class NotifyApi {
     }
 
     /**
+     * Build call for deleteNotifyCredentialsByProviderByKey
+     * @param provider Provider is the delivery provider the credential is for. (required)
+     * @param key Key is the credential&#39;s name within that provider. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteNotifyCredentialsByProviderByKeyCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/notify/credentials/{provider}/{key}"
+            .replace("{" + "provider" + "}", localVarApiClient.escapeString(provider.toString()))
+            .replace("{" + "key" + "}", localVarApiClient.escapeString(key.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteNotifyCredentialsByProviderByKeyValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'provider' is set
+        if (provider == null) {
+            throw new ApiException("Missing the required parameter 'provider' when calling deleteNotifyCredentialsByProviderByKey(Async)");
+        }
+
+        // verify the required parameter 'key' is set
+        if (key == null) {
+            throw new ApiException("Missing the required parameter 'key' when calling deleteNotifyCredentialsByProviderByKey(Async)");
+        }
+
+        return deleteNotifyCredentialsByProviderByKeyCall(provider, key, _callback);
+
+    }
+
+    /**
+     * Removes one of your org&#39;s notify provider credentials.
+     * Removes one of your org&#39;s notify provider credentials.  The value is forgotten in KMS. A provider missing a key it cannot send without is no longer picked for its channel, and a send that pins it fails with the key it lacks. Removing a key that is not set succeeds, since what was asked for is already true. Org admin only.
+     * @param provider Provider is the delivery provider the credential is for. (required)
+     * @param key Key is the credential&#39;s name within that provider. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteNotifyCredentialsByProviderByKey(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String key) throws ApiException {
+        deleteNotifyCredentialsByProviderByKeyWithHttpInfo(provider, key);
+    }
+
+    /**
+     * Removes one of your org&#39;s notify provider credentials.
+     * Removes one of your org&#39;s notify provider credentials.  The value is forgotten in KMS. A provider missing a key it cannot send without is no longer picked for its channel, and a send that pins it fails with the key it lacks. Removing a key that is not set succeeds, since what was asked for is already true. Org admin only.
+     * @param provider Provider is the delivery provider the credential is for. (required)
+     * @param key Key is the credential&#39;s name within that provider. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteNotifyCredentialsByProviderByKeyWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = deleteNotifyCredentialsByProviderByKeyValidateBeforeCall(provider, key, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Removes one of your org&#39;s notify provider credentials. (asynchronously)
+     * Removes one of your org&#39;s notify provider credentials.  The value is forgotten in KMS. A provider missing a key it cannot send without is no longer picked for its channel, and a send that pins it fails with the key it lacks. Removing a key that is not set succeeds, since what was asked for is already true. Org admin only.
+     * @param provider Provider is the delivery provider the credential is for. (required)
+     * @param key Key is the credential&#39;s name within that provider. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteNotifyCredentialsByProviderByKeyAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteNotifyCredentialsByProviderByKeyValidateBeforeCall(provider, key, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getNotifyHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -83,6 +223,7 @@ public class NotifyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getNotifyHealthCall(final ApiCallback _callback) throws ApiException {
@@ -111,7 +252,8 @@ public class NotifyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -138,35 +280,37 @@ public class NotifyApi {
     /**
      * Reports that the notify send surface is mounted.
      * Reports that the notify send surface is mounted.  It is a pure liveness probe: it answers 200 whenever this subsystem is mounted and checks nothing downstream, so an \&quot;ok\&quot; here says the routes are reachable, not that any provider credential is configured. The body is notifyd&#39;s verbatim, so probes and clients that keyed on the standalone service keep working unchanged.
-     * @return NotifyHealth
+     * @return NotifyNotifyHealth
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public NotifyHealth getNotifyHealth() throws ApiException {
-        ApiResponse<NotifyHealth> localVarResp = getNotifyHealthWithHttpInfo();
+    public NotifyNotifyHealth getNotifyHealth() throws ApiException {
+        ApiResponse<NotifyNotifyHealth> localVarResp = getNotifyHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports that the notify send surface is mounted.
      * Reports that the notify send surface is mounted.  It is a pure liveness probe: it answers 200 whenever this subsystem is mounted and checks nothing downstream, so an \&quot;ok\&quot; here says the routes are reachable, not that any provider credential is configured. The body is notifyd&#39;s verbatim, so probes and clients that keyed on the standalone service keep working unchanged.
-     * @return ApiResponse&lt;NotifyHealth&gt;
+     * @return ApiResponse&lt;NotifyNotifyHealth&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NotifyHealth> getNotifyHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<NotifyNotifyHealth> getNotifyHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getNotifyHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<NotifyHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<NotifyNotifyHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -181,18 +325,19 @@ public class NotifyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getNotifyHealthAsync(final ApiCallback<NotifyHealth> _callback) throws ApiException {
+    public okhttp3.Call getNotifyHealthAsync(final ApiCallback<NotifyNotifyHealth> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getNotifyHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<NotifyHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<NotifyNotifyHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postNotifySend
-     * @param notifySend  (required)
+     * @param notifyNotifySend  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -201,9 +346,10 @@ public class NotifyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postNotifySendCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postNotifySendCall(@javax.annotation.Nonnull NotifyNotifySend notifyNotifySend, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -217,7 +363,7 @@ public class NotifyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = notifySend;
+        Object localVarPostBody = notifyNotifySend;
 
         // create path and map variables
         String localVarPath = "/v1/notify/send";
@@ -229,7 +375,8 @@ public class NotifyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -249,20 +396,20 @@ public class NotifyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postNotifySendValidateBeforeCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'notifySend' is set
-        if (notifySend == null) {
-            throw new ApiException("Missing the required parameter 'notifySend' when calling postNotifySend(Async)");
+    private okhttp3.Call postNotifySendValidateBeforeCall(@javax.annotation.Nonnull NotifyNotifySend notifyNotifySend, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'notifyNotifySend' is set
+        if (notifyNotifySend == null) {
+            throw new ApiException("Missing the required parameter 'notifyNotifySend' when calling postNotifySend(Async)");
         }
 
-        return postNotifySendCall(notifySend, _callback);
+        return postNotifySendCall(notifyNotifySend, _callback);
 
     }
 
     /**
      * Delivers one transactional message by email or SMS through the caller org&#39;s own provider credential.
      * Delivers one transactional message by email or SMS through the caller org&#39;s own provider credential.  The channel comes from the body — sms or email — and the provider credential is read from KMS at orgs/&lt;org&gt;/notify/&lt;service&gt;/&lt;key&gt;, never from the environment. The org is the validated principal&#39;s, never a client-supplied value, so a caller can only ever send as their own tenant; an unauthenticated caller gets 401. Naming no provider picks the one whose credentials are actually configured (Twilio, then Plivo for SMS; Twilio Email, then SMTP for email) and fails closed when none is. Delivery is synchronous and per recipient: one recipient answers the bare {message_id,status} outcome, several answer the {items:[…]} envelope. A terminal provider failure is a 200 whose status is failed with the reason in error, never a transport error. sync&#x3D;true is REQUIRED — an async dispatch answers 503, because the queue plane that would run it is owned elsewhere. The message body wins verbatim when present; otherwise template_id (or the event name) selects a built-in template rendered against template_vars.
-     * @param notifySend  (required)
+     * @param notifyNotifySend  (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -270,17 +417,18 @@ public class NotifyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Object postNotifySend(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
-        ApiResponse<Object> localVarResp = postNotifySendWithHttpInfo(notifySend);
+    public Object postNotifySend(@javax.annotation.Nonnull NotifyNotifySend notifyNotifySend) throws ApiException {
+        ApiResponse<Object> localVarResp = postNotifySendWithHttpInfo(notifyNotifySend);
         return localVarResp.getData();
     }
 
     /**
      * Delivers one transactional message by email or SMS through the caller org&#39;s own provider credential.
      * Delivers one transactional message by email or SMS through the caller org&#39;s own provider credential.  The channel comes from the body — sms or email — and the provider credential is read from KMS at orgs/&lt;org&gt;/notify/&lt;service&gt;/&lt;key&gt;, never from the environment. The org is the validated principal&#39;s, never a client-supplied value, so a caller can only ever send as their own tenant; an unauthenticated caller gets 401. Naming no provider picks the one whose credentials are actually configured (Twilio, then Plivo for SMS; Twilio Email, then SMTP for email) and fails closed when none is. Delivery is synchronous and per recipient: one recipient answers the bare {message_id,status} outcome, several answer the {items:[…]} envelope. A terminal provider failure is a 200 whose status is failed with the reason in error, never a transport error. sync&#x3D;true is REQUIRED — an async dispatch answers 503, because the queue plane that would run it is owned elsewhere. The message body wins verbatim when present; otherwise template_id (or the event name) selects a built-in template rendered against template_vars.
-     * @param notifySend  (required)
+     * @param notifyNotifySend  (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -288,10 +436,11 @@ public class NotifyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postNotifySendWithHttpInfo(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
-        okhttp3.Call localVarCall = postNotifySendValidateBeforeCall(notifySend, null);
+    public ApiResponse<Object> postNotifySendWithHttpInfo(@javax.annotation.Nonnull NotifyNotifySend notifyNotifySend) throws ApiException {
+        okhttp3.Call localVarCall = postNotifySendValidateBeforeCall(notifyNotifySend, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -299,7 +448,7 @@ public class NotifyApi {
     /**
      * Delivers one transactional message by email or SMS through the caller org&#39;s own provider credential. (asynchronously)
      * Delivers one transactional message by email or SMS through the caller org&#39;s own provider credential.  The channel comes from the body — sms or email — and the provider credential is read from KMS at orgs/&lt;org&gt;/notify/&lt;service&gt;/&lt;key&gt;, never from the environment. The org is the validated principal&#39;s, never a client-supplied value, so a caller can only ever send as their own tenant; an unauthenticated caller gets 401. Naming no provider picks the one whose credentials are actually configured (Twilio, then Plivo for SMS; Twilio Email, then SMTP for email) and fails closed when none is. Delivery is synchronous and per recipient: one recipient answers the bare {message_id,status} outcome, several answer the {items:[…]} envelope. A terminal provider failure is a 200 whose status is failed with the reason in error, never a transport error. sync&#x3D;true is REQUIRED — an async dispatch answers 503, because the queue plane that would run it is owned elsewhere. The message body wins verbatim when present; otherwise template_id (or the event name) selects a built-in template rendered against template_vars.
-     * @param notifySend  (required)
+     * @param notifyNotifySend  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -308,18 +457,19 @@ public class NotifyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postNotifySendAsync(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postNotifySendAsync(@javax.annotation.Nonnull NotifyNotifySend notifyNotifySend, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postNotifySendValidateBeforeCall(notifySend, _callback);
+        okhttp3.Call localVarCall = postNotifySendValidateBeforeCall(notifyNotifySend, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postNotifySendEmail
-     * @param notifySend  (required)
+     * @param notifyNotifySend  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -328,9 +478,10 @@ public class NotifyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postNotifySendEmailCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postNotifySendEmailCall(@javax.annotation.Nonnull NotifyNotifySend notifyNotifySend, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -344,7 +495,7 @@ public class NotifyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = notifySend;
+        Object localVarPostBody = notifyNotifySend;
 
         // create path and map variables
         String localVarPath = "/v1/notify/send/email";
@@ -356,7 +507,8 @@ public class NotifyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -376,20 +528,20 @@ public class NotifyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postNotifySendEmailValidateBeforeCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'notifySend' is set
-        if (notifySend == null) {
-            throw new ApiException("Missing the required parameter 'notifySend' when calling postNotifySendEmail(Async)");
+    private okhttp3.Call postNotifySendEmailValidateBeforeCall(@javax.annotation.Nonnull NotifyNotifySend notifyNotifySend, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'notifyNotifySend' is set
+        if (notifyNotifySend == null) {
+            throw new ApiException("Missing the required parameter 'notifyNotifySend' when calling postNotifySendEmail(Async)");
         }
 
-        return postNotifySendEmailCall(notifySend, _callback);
+        return postNotifySendEmailCall(notifyNotifySend, _callback);
 
     }
 
     /**
      * Delivers one transactional email through the caller org&#39;s own provider credential.
      * Delivers one transactional email through the caller org&#39;s own provider credential.  It is the channel-pinned form of the generic send: identical in every respect except that the channel is fixed to email, OVERRIDING whatever the body names — so a body that says sms still goes out as mail. The provider is the org&#39;s own email credential from KMS (Twilio Email, then SMTP), resolved for the validated principal&#39;s org; an unauthenticated caller gets 401. Subject is carried on the email channel only.
-     * @param notifySend  (required)
+     * @param notifyNotifySend  (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -397,17 +549,18 @@ public class NotifyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Object postNotifySendEmail(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
-        ApiResponse<Object> localVarResp = postNotifySendEmailWithHttpInfo(notifySend);
+    public Object postNotifySendEmail(@javax.annotation.Nonnull NotifyNotifySend notifyNotifySend) throws ApiException {
+        ApiResponse<Object> localVarResp = postNotifySendEmailWithHttpInfo(notifyNotifySend);
         return localVarResp.getData();
     }
 
     /**
      * Delivers one transactional email through the caller org&#39;s own provider credential.
      * Delivers one transactional email through the caller org&#39;s own provider credential.  It is the channel-pinned form of the generic send: identical in every respect except that the channel is fixed to email, OVERRIDING whatever the body names — so a body that says sms still goes out as mail. The provider is the org&#39;s own email credential from KMS (Twilio Email, then SMTP), resolved for the validated principal&#39;s org; an unauthenticated caller gets 401. Subject is carried on the email channel only.
-     * @param notifySend  (required)
+     * @param notifyNotifySend  (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -415,10 +568,11 @@ public class NotifyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postNotifySendEmailWithHttpInfo(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
-        okhttp3.Call localVarCall = postNotifySendEmailValidateBeforeCall(notifySend, null);
+    public ApiResponse<Object> postNotifySendEmailWithHttpInfo(@javax.annotation.Nonnull NotifyNotifySend notifyNotifySend) throws ApiException {
+        okhttp3.Call localVarCall = postNotifySendEmailValidateBeforeCall(notifyNotifySend, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -426,7 +580,7 @@ public class NotifyApi {
     /**
      * Delivers one transactional email through the caller org&#39;s own provider credential. (asynchronously)
      * Delivers one transactional email through the caller org&#39;s own provider credential.  It is the channel-pinned form of the generic send: identical in every respect except that the channel is fixed to email, OVERRIDING whatever the body names — so a body that says sms still goes out as mail. The provider is the org&#39;s own email credential from KMS (Twilio Email, then SMTP), resolved for the validated principal&#39;s org; an unauthenticated caller gets 401. Subject is carried on the email channel only.
-     * @param notifySend  (required)
+     * @param notifyNotifySend  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -435,18 +589,19 @@ public class NotifyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postNotifySendEmailAsync(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postNotifySendEmailAsync(@javax.annotation.Nonnull NotifyNotifySend notifyNotifySend, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postNotifySendEmailValidateBeforeCall(notifySend, _callback);
+        okhttp3.Call localVarCall = postNotifySendEmailValidateBeforeCall(notifyNotifySend, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postNotifySendSms
-     * @param notifySend  (required)
+     * @param notifyNotifySend  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -455,9 +610,10 @@ public class NotifyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postNotifySendSmsCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postNotifySendSmsCall(@javax.annotation.Nonnull NotifyNotifySend notifyNotifySend, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -471,7 +627,7 @@ public class NotifyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = notifySend;
+        Object localVarPostBody = notifyNotifySend;
 
         // create path and map variables
         String localVarPath = "/v1/notify/send/sms";
@@ -483,7 +639,8 @@ public class NotifyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -503,20 +660,20 @@ public class NotifyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postNotifySendSmsValidateBeforeCall(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'notifySend' is set
-        if (notifySend == null) {
-            throw new ApiException("Missing the required parameter 'notifySend' when calling postNotifySendSms(Async)");
+    private okhttp3.Call postNotifySendSmsValidateBeforeCall(@javax.annotation.Nonnull NotifyNotifySend notifyNotifySend, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'notifyNotifySend' is set
+        if (notifyNotifySend == null) {
+            throw new ApiException("Missing the required parameter 'notifyNotifySend' when calling postNotifySendSms(Async)");
         }
 
-        return postNotifySendSmsCall(notifySend, _callback);
+        return postNotifySendSmsCall(notifyNotifySend, _callback);
 
     }
 
     /**
      * Delivers one transactional SMS through the caller org&#39;s own provider credential.
      * Delivers one transactional SMS through the caller org&#39;s own provider credential.  It is the channel-pinned form of the generic send: identical in every respect except that the channel is fixed to sms, OVERRIDING whatever the body names — so a body that says email still goes out as a text message. The provider is the org&#39;s own SMS credential from KMS (Twilio, then Plivo), resolved for the validated principal&#39;s org; an unauthenticated caller gets 401.
-     * @param notifySend  (required)
+     * @param notifyNotifySend  (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -524,17 +681,18 @@ public class NotifyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Object postNotifySendSms(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
-        ApiResponse<Object> localVarResp = postNotifySendSmsWithHttpInfo(notifySend);
+    public Object postNotifySendSms(@javax.annotation.Nonnull NotifyNotifySend notifyNotifySend) throws ApiException {
+        ApiResponse<Object> localVarResp = postNotifySendSmsWithHttpInfo(notifyNotifySend);
         return localVarResp.getData();
     }
 
     /**
      * Delivers one transactional SMS through the caller org&#39;s own provider credential.
      * Delivers one transactional SMS through the caller org&#39;s own provider credential.  It is the channel-pinned form of the generic send: identical in every respect except that the channel is fixed to sms, OVERRIDING whatever the body names — so a body that says email still goes out as a text message. The provider is the org&#39;s own SMS credential from KMS (Twilio, then Plivo), resolved for the validated principal&#39;s org; an unauthenticated caller gets 401.
-     * @param notifySend  (required)
+     * @param notifyNotifySend  (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -542,10 +700,11 @@ public class NotifyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postNotifySendSmsWithHttpInfo(@javax.annotation.Nonnull NotifySend notifySend) throws ApiException {
-        okhttp3.Call localVarCall = postNotifySendSmsValidateBeforeCall(notifySend, null);
+    public ApiResponse<Object> postNotifySendSmsWithHttpInfo(@javax.annotation.Nonnull NotifyNotifySend notifyNotifySend) throws ApiException {
+        okhttp3.Call localVarCall = postNotifySendSmsValidateBeforeCall(notifyNotifySend, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -553,7 +712,7 @@ public class NotifyApi {
     /**
      * Delivers one transactional SMS through the caller org&#39;s own provider credential. (asynchronously)
      * Delivers one transactional SMS through the caller org&#39;s own provider credential.  It is the channel-pinned form of the generic send: identical in every respect except that the channel is fixed to sms, OVERRIDING whatever the body names — so a body that says email still goes out as a text message. The provider is the org&#39;s own SMS credential from KMS (Twilio, then Plivo), resolved for the validated principal&#39;s org; an unauthenticated caller gets 401.
-     * @param notifySend  (required)
+     * @param notifyNotifySend  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -562,12 +721,165 @@ public class NotifyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postNotifySendSmsAsync(@javax.annotation.Nonnull NotifySend notifySend, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postNotifySendSmsAsync(@javax.annotation.Nonnull NotifyNotifySend notifyNotifySend, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postNotifySendSmsValidateBeforeCall(notifySend, _callback);
+        okhttp3.Call localVarCall = postNotifySendSmsValidateBeforeCall(notifyNotifySend, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putNotifyCredentialsByProviderByKey
+     * @param provider Provider is the delivery provider the credential is for: twilio, plivo, twilio_email or mail. (required)
+     * @param key Key is one of the credentials that provider reads, such as auth-token or smtp-host. A key the provider does not read is refused. (required)
+     * @param notifyNotifyCredential  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putNotifyCredentialsByProviderByKeyCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull NotifyNotifyCredential notifyNotifyCredential, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = notifyNotifyCredential;
+
+        // create path and map variables
+        String localVarPath = "/v1/notify/credentials/{provider}/{key}"
+            .replace("{" + "provider" + "}", localVarApiClient.escapeString(provider.toString()))
+            .replace("{" + "key" + "}", localVarApiClient.escapeString(key.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putNotifyCredentialsByProviderByKeyValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull NotifyNotifyCredential notifyNotifyCredential, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'provider' is set
+        if (provider == null) {
+            throw new ApiException("Missing the required parameter 'provider' when calling putNotifyCredentialsByProviderByKey(Async)");
+        }
+
+        // verify the required parameter 'key' is set
+        if (key == null) {
+            throw new ApiException("Missing the required parameter 'key' when calling putNotifyCredentialsByProviderByKey(Async)");
+        }
+
+        // verify the required parameter 'notifyNotifyCredential' is set
+        if (notifyNotifyCredential == null) {
+            throw new ApiException("Missing the required parameter 'notifyNotifyCredential' when calling putNotifyCredentialsByProviderByKey(Async)");
+        }
+
+        return putNotifyCredentialsByProviderByKeyCall(provider, key, notifyNotifyCredential, _callback);
+
+    }
+
+    /**
+     * Sets one of your org&#39;s notify provider credentials.
+     * Sets one of your org&#39;s notify provider credentials.  The value is sealed in KMS under your org and read by notify alone, at the moment it sends; no route answers it back, this one included. Setting a key that is already set replaces it, which is how a credential is rotated, and the next send uses the new value. The key must be one the provider reads — Twilio&#39;s account-sid, auth-token and from-number, say — and anything else is a 400 naming the keys it does read. An unknown provider is a 404.  Org admin only: a credential set here is what every message the org sends goes out with.
+     * @param provider Provider is the delivery provider the credential is for: twilio, plivo, twilio_email or mail. (required)
+     * @param key Key is one of the credentials that provider reads, such as auth-token or smtp-host. A key the provider does not read is refused. (required)
+     * @param notifyNotifyCredential  (required)
+     * @return NotifyNotifyStored
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public NotifyNotifyStored putNotifyCredentialsByProviderByKey(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull NotifyNotifyCredential notifyNotifyCredential) throws ApiException {
+        ApiResponse<NotifyNotifyStored> localVarResp = putNotifyCredentialsByProviderByKeyWithHttpInfo(provider, key, notifyNotifyCredential);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Sets one of your org&#39;s notify provider credentials.
+     * Sets one of your org&#39;s notify provider credentials.  The value is sealed in KMS under your org and read by notify alone, at the moment it sends; no route answers it back, this one included. Setting a key that is already set replaces it, which is how a credential is rotated, and the next send uses the new value. The key must be one the provider reads — Twilio&#39;s account-sid, auth-token and from-number, say — and anything else is a 400 naming the keys it does read. An unknown provider is a 404.  Org admin only: a credential set here is what every message the org sends goes out with.
+     * @param provider Provider is the delivery provider the credential is for: twilio, plivo, twilio_email or mail. (required)
+     * @param key Key is one of the credentials that provider reads, such as auth-token or smtp-host. A key the provider does not read is refused. (required)
+     * @param notifyNotifyCredential  (required)
+     * @return ApiResponse&lt;NotifyNotifyStored&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<NotifyNotifyStored> putNotifyCredentialsByProviderByKeyWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull NotifyNotifyCredential notifyNotifyCredential) throws ApiException {
+        okhttp3.Call localVarCall = putNotifyCredentialsByProviderByKeyValidateBeforeCall(provider, key, notifyNotifyCredential, null);
+        Type localVarReturnType = new TypeToken<NotifyNotifyStored>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Sets one of your org&#39;s notify provider credentials. (asynchronously)
+     * Sets one of your org&#39;s notify provider credentials.  The value is sealed in KMS under your org and read by notify alone, at the moment it sends; no route answers it back, this one included. Setting a key that is already set replaces it, which is how a credential is rotated, and the next send uses the new value. The key must be one the provider reads — Twilio&#39;s account-sid, auth-token and from-number, say — and anything else is a 400 naming the keys it does read. An unknown provider is a 404.  Org admin only: a credential set here is what every message the org sends goes out with.
+     * @param provider Provider is the delivery provider the credential is for: twilio, plivo, twilio_email or mail. (required)
+     * @param key Key is one of the credentials that provider reads, such as auth-token or smtp-host. A key the provider does not read is refused. (required)
+     * @param notifyNotifyCredential  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putNotifyCredentialsByProviderByKeyAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull NotifyNotifyCredential notifyNotifyCredential, final ApiCallback<NotifyNotifyStored> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putNotifyCredentialsByProviderByKeyValidateBeforeCall(provider, key, notifyNotifyCredential, _callback);
+        Type localVarReturnType = new TypeToken<NotifyNotifyStored>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

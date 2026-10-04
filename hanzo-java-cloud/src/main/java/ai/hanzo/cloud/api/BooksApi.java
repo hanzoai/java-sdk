@@ -27,31 +27,33 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Account;
-import ai.hanzo.cloud.model.AskRequest;
-import ai.hanzo.cloud.model.AskResponse;
-import ai.hanzo.cloud.model.BalanceSheet;
 import ai.hanzo.cloud.model.BankTally;
-import ai.hanzo.cloud.model.BankTxnRow;
-import ai.hanzo.cloud.model.BookRequest;
-import ai.hanzo.cloud.model.BookResponse;
+import ai.hanzo.cloud.model.BooksAccount;
+import ai.hanzo.cloud.model.BooksAskRequest;
+import ai.hanzo.cloud.model.BooksAskResponse;
+import ai.hanzo.cloud.model.BooksBalanceSheet;
+import ai.hanzo.cloud.model.BooksBankTally;
+import ai.hanzo.cloud.model.BooksBankTxnRow;
+import ai.hanzo.cloud.model.BooksBookRequest;
+import ai.hanzo.cloud.model.BooksBookResponse;
+import ai.hanzo.cloud.model.BooksFinancialPackage;
+import ai.hanzo.cloud.model.BooksGLRow;
+import ai.hanzo.cloud.model.BooksInboxOut;
+import ai.hanzo.cloud.model.BooksMetricsResponse;
+import ai.hanzo.cloud.model.BooksPnL;
+import ai.hanzo.cloud.model.BooksQuestionsResponse;
+import ai.hanzo.cloud.model.BooksRule;
+import ai.hanzo.cloud.model.BooksRulesOut;
+import ai.hanzo.cloud.model.BooksSyncTally;
+import ai.hanzo.cloud.model.BooksTransactionsOut;
+import ai.hanzo.cloud.model.BooksTrialBalance;
+import ai.hanzo.cloud.model.BooksUnreconciledOut;
+import ai.hanzo.cloud.model.BooksVendorRow;
+import ai.hanzo.cloud.model.BooksVendorsOut;
 import java.io.File;
-import ai.hanzo.cloud.model.FinancialPackage;
-import ai.hanzo.cloud.model.GLRow;
 import ai.hanzo.cloud.model.InboxItem;
-import ai.hanzo.cloud.model.InboxOut;
-import ai.hanzo.cloud.model.MetricsResponse;
-import ai.hanzo.cloud.model.PnL;
-import ai.hanzo.cloud.model.QuestionsResponse;
-import ai.hanzo.cloud.model.Rule;
-import ai.hanzo.cloud.model.RulesOut;
+import ai.hanzo.cloud.model.ProblemDetails;
 import ai.hanzo.cloud.model.ScanDraft;
-import ai.hanzo.cloud.model.SyncTally;
-import ai.hanzo.cloud.model.TransactionsOut;
-import ai.hanzo.cloud.model.TrialBalance;
-import ai.hanzo.cloud.model.UnreconciledOut;
-import ai.hanzo.cloud.model.VendorRow;
-import ai.hanzo.cloud.model.VendorsOut;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -107,6 +109,7 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBooksAccountsCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
@@ -139,7 +142,8 @@ public class BooksApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -167,17 +171,18 @@ public class BooksApi {
      * Returns the org&#39;s chart of accounts — the seeded fixed chart every posting key in the ledger refers to.
      * Returns the org&#39;s chart of accounts — the seeded fixed chart every posting key in the ledger refers to.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
-     * @return List&lt;Account&gt;
+     * @return List&lt;BooksAccount&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<Account> getBooksAccounts(@javax.annotation.Nullable String sandbox) throws ApiException {
-        ApiResponse<List<Account>> localVarResp = getBooksAccountsWithHttpInfo(sandbox);
+    public List<BooksAccount> getBooksAccounts(@javax.annotation.Nullable String sandbox) throws ApiException {
+        ApiResponse<List<BooksAccount>> localVarResp = getBooksAccountsWithHttpInfo(sandbox);
         return localVarResp.getData();
     }
 
@@ -185,18 +190,19 @@ public class BooksApi {
      * Returns the org&#39;s chart of accounts — the seeded fixed chart every posting key in the ledger refers to.
      * Returns the org&#39;s chart of accounts — the seeded fixed chart every posting key in the ledger refers to.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
-     * @return ApiResponse&lt;List&lt;Account&gt;&gt;
+     * @return ApiResponse&lt;List&lt;BooksAccount&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<Account>> getBooksAccountsWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
+    public ApiResponse<List<BooksAccount>> getBooksAccountsWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
         okhttp3.Call localVarCall = getBooksAccountsValidateBeforeCall(sandbox, null);
-        Type localVarReturnType = new TypeToken<List<Account>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BooksAccount>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -212,12 +218,13 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksAccountsAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<List<Account>> _callback) throws ApiException {
+    public okhttp3.Call getBooksAccountsAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<List<BooksAccount>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksAccountsValidateBeforeCall(sandbox, _callback);
-        Type localVarReturnType = new TypeToken<List<Account>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BooksAccount>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -233,6 +240,7 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBooksBankTransactionsCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -269,7 +277,8 @@ public class BooksApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -298,17 +307,18 @@ public class BooksApi {
      * Returns the org&#39;s normalized bank transactions, newest first — every row the import and connector paths have ingested, with its amount in exact cents, its direction, and whether it has been matched to a voucher yet.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param limit Limit caps how many rows come back; 500 when absent or not positive. (optional)
-     * @return List&lt;BankTxnRow&gt;
+     * @return List&lt;BooksBankTxnRow&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<BankTxnRow> getBooksBankTransactions(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<List<BankTxnRow>> localVarResp = getBooksBankTransactionsWithHttpInfo(sandbox, limit);
+    public List<BooksBankTxnRow> getBooksBankTransactions(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<List<BooksBankTxnRow>> localVarResp = getBooksBankTransactionsWithHttpInfo(sandbox, limit);
         return localVarResp.getData();
     }
 
@@ -317,18 +327,19 @@ public class BooksApi {
      * Returns the org&#39;s normalized bank transactions, newest first — every row the import and connector paths have ingested, with its amount in exact cents, its direction, and whether it has been matched to a voucher yet.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param limit Limit caps how many rows come back; 500 when absent or not positive. (optional)
-     * @return ApiResponse&lt;List&lt;BankTxnRow&gt;&gt;
+     * @return ApiResponse&lt;List&lt;BooksBankTxnRow&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<BankTxnRow>> getBooksBankTransactionsWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<List<BooksBankTxnRow>> getBooksBankTransactionsWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getBooksBankTransactionsValidateBeforeCall(sandbox, limit, null);
-        Type localVarReturnType = new TypeToken<List<BankTxnRow>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BooksBankTxnRow>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -345,12 +356,13 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksBankTransactionsAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit, final ApiCallback<List<BankTxnRow>> _callback) throws ApiException {
+    public okhttp3.Call getBooksBankTransactionsAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit, final ApiCallback<List<BooksBankTxnRow>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksBankTransactionsValidateBeforeCall(sandbox, limit, _callback);
-        Type localVarReturnType = new TypeToken<List<BankTxnRow>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BooksBankTxnRow>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -365,6 +377,7 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBooksBankUnreconciledCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
@@ -397,7 +410,8 @@ public class BooksApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -425,17 +439,18 @@ public class BooksApi {
      * Returns the org&#39;s unmatched bank inflows and their open clarifying questions — the queue a human answers so an unexplained deposit is never guessed into revenue.
      * Returns the org&#39;s unmatched bank inflows and their open clarifying questions — the queue a human answers so an unexplained deposit is never guessed into revenue.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
-     * @return UnreconciledOut
+     * @return BooksUnreconciledOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public UnreconciledOut getBooksBankUnreconciled(@javax.annotation.Nullable String sandbox) throws ApiException {
-        ApiResponse<UnreconciledOut> localVarResp = getBooksBankUnreconciledWithHttpInfo(sandbox);
+    public BooksUnreconciledOut getBooksBankUnreconciled(@javax.annotation.Nullable String sandbox) throws ApiException {
+        ApiResponse<BooksUnreconciledOut> localVarResp = getBooksBankUnreconciledWithHttpInfo(sandbox);
         return localVarResp.getData();
     }
 
@@ -443,18 +458,19 @@ public class BooksApi {
      * Returns the org&#39;s unmatched bank inflows and their open clarifying questions — the queue a human answers so an unexplained deposit is never guessed into revenue.
      * Returns the org&#39;s unmatched bank inflows and their open clarifying questions — the queue a human answers so an unexplained deposit is never guessed into revenue.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
-     * @return ApiResponse&lt;UnreconciledOut&gt;
+     * @return ApiResponse&lt;BooksUnreconciledOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UnreconciledOut> getBooksBankUnreconciledWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
+    public ApiResponse<BooksUnreconciledOut> getBooksBankUnreconciledWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
         okhttp3.Call localVarCall = getBooksBankUnreconciledValidateBeforeCall(sandbox, null);
-        Type localVarReturnType = new TypeToken<UnreconciledOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksUnreconciledOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -470,12 +486,13 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksBankUnreconciledAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<UnreconciledOut> _callback) throws ApiException {
+    public okhttp3.Call getBooksBankUnreconciledAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<BooksUnreconciledOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksBankUnreconciledValidateBeforeCall(sandbox, _callback);
-        Type localVarReturnType = new TypeToken<UnreconciledOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksUnreconciledOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -494,6 +511,7 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBooksExportCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -542,7 +560,8 @@ public class BooksApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -574,17 +593,18 @@ public class BooksApi {
      * @param to To is the RFC3339 end of the window, inclusive. Empty means up to now. (optional)
      * @param format Format is the export encoding. Only \&quot;json\&quot; is supported; empty means json. (optional)
      * @param limit Limit caps the GL detail rows included as the audit trail; 5000 when absent or not positive. (optional)
-     * @return FinancialPackage
+     * @return BooksFinancialPackage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FinancialPackage getBooksExport(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<FinancialPackage> localVarResp = getBooksExportWithHttpInfo(sandbox, from, to, format, limit);
+    public BooksFinancialPackage getBooksExport(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<BooksFinancialPackage> localVarResp = getBooksExportWithHttpInfo(sandbox, from, to, format, limit);
         return localVarResp.getData();
     }
 
@@ -596,18 +616,19 @@ public class BooksApi {
      * @param to To is the RFC3339 end of the window, inclusive. Empty means up to now. (optional)
      * @param format Format is the export encoding. Only \&quot;json\&quot; is supported; empty means json. (optional)
      * @param limit Limit caps the GL detail rows included as the audit trail; 5000 when absent or not positive. (optional)
-     * @return ApiResponse&lt;FinancialPackage&gt;
+     * @return ApiResponse&lt;BooksFinancialPackage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FinancialPackage> getBooksExportWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<BooksFinancialPackage> getBooksExportWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getBooksExportValidateBeforeCall(sandbox, from, to, format, limit, null);
-        Type localVarReturnType = new TypeToken<FinancialPackage>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksFinancialPackage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -627,12 +648,13 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksExportAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Long limit, final ApiCallback<FinancialPackage> _callback) throws ApiException {
+    public okhttp3.Call getBooksExportAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Long limit, final ApiCallback<BooksFinancialPackage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksExportValidateBeforeCall(sandbox, from, to, format, limit, _callback);
-        Type localVarReturnType = new TypeToken<FinancialPackage>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksFinancialPackage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -648,6 +670,7 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBooksGlCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -684,7 +707,8 @@ public class BooksApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -709,47 +733,49 @@ public class BooksApi {
     }
 
     /**
-     * ListGL returns the org&#39;s most recent GL Entry rows, newest first.
-     * ListGL returns the org&#39;s most recent GL Entry rows, newest first. This is the raw double-entry detail behind every statement: one row per leg, with its debit, credit, posting time and the source that booked it.
+     * Returns the org&#39;s most recent GL Entry rows, newest first.
+     * Returns the org&#39;s most recent GL Entry rows, newest first. This is the raw double-entry detail behind every statement: one row per leg, with its debit, credit, posting time and the source that booked it.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param limit Limit caps how many rows come back; 500 when absent or not positive. (optional)
-     * @return List&lt;GLRow&gt;
+     * @return List&lt;BooksGLRow&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<GLRow> getBooksGl(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<List<GLRow>> localVarResp = getBooksGlWithHttpInfo(sandbox, limit);
+    public List<BooksGLRow> getBooksGl(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<List<BooksGLRow>> localVarResp = getBooksGlWithHttpInfo(sandbox, limit);
         return localVarResp.getData();
     }
 
     /**
-     * ListGL returns the org&#39;s most recent GL Entry rows, newest first.
-     * ListGL returns the org&#39;s most recent GL Entry rows, newest first. This is the raw double-entry detail behind every statement: one row per leg, with its debit, credit, posting time and the source that booked it.
+     * Returns the org&#39;s most recent GL Entry rows, newest first.
+     * Returns the org&#39;s most recent GL Entry rows, newest first. This is the raw double-entry detail behind every statement: one row per leg, with its debit, credit, posting time and the source that booked it.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param limit Limit caps how many rows come back; 500 when absent or not positive. (optional)
-     * @return ApiResponse&lt;List&lt;GLRow&gt;&gt;
+     * @return ApiResponse&lt;List&lt;BooksGLRow&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<GLRow>> getBooksGlWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<List<BooksGLRow>> getBooksGlWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getBooksGlValidateBeforeCall(sandbox, limit, null);
-        Type localVarReturnType = new TypeToken<List<GLRow>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BooksGLRow>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * ListGL returns the org&#39;s most recent GL Entry rows, newest first. (asynchronously)
-     * ListGL returns the org&#39;s most recent GL Entry rows, newest first. This is the raw double-entry detail behind every statement: one row per leg, with its debit, credit, posting time and the source that booked it.
+     * Returns the org&#39;s most recent GL Entry rows, newest first. (asynchronously)
+     * Returns the org&#39;s most recent GL Entry rows, newest first. This is the raw double-entry detail behind every statement: one row per leg, with its debit, credit, posting time and the source that booked it.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param limit Limit caps how many rows come back; 500 when absent or not positive. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -760,12 +786,13 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksGlAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit, final ApiCallback<List<GLRow>> _callback) throws ApiException {
+    public okhttp3.Call getBooksGlAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit, final ApiCallback<List<BooksGLRow>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksGlValidateBeforeCall(sandbox, limit, _callback);
-        Type localVarReturnType = new TypeToken<List<GLRow>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BooksGLRow>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -780,6 +807,7 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBooksInboxCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
@@ -812,7 +840,8 @@ public class BooksApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -840,17 +869,18 @@ public class BooksApi {
      * Returns the org&#39;s open document queue — everything uploaded but not yet booked, newest first, each with its extracted summary and the confidence the scanner resolved its category at.
      * Returns the org&#39;s open document queue — everything uploaded but not yet booked, newest first, each with its extracted summary and the confidence the scanner resolved its category at. A booked document drops out of the queue.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
-     * @return InboxOut
+     * @return BooksInboxOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public InboxOut getBooksInbox(@javax.annotation.Nullable String sandbox) throws ApiException {
-        ApiResponse<InboxOut> localVarResp = getBooksInboxWithHttpInfo(sandbox);
+    public BooksInboxOut getBooksInbox(@javax.annotation.Nullable String sandbox) throws ApiException {
+        ApiResponse<BooksInboxOut> localVarResp = getBooksInboxWithHttpInfo(sandbox);
         return localVarResp.getData();
     }
 
@@ -858,18 +888,19 @@ public class BooksApi {
      * Returns the org&#39;s open document queue — everything uploaded but not yet booked, newest first, each with its extracted summary and the confidence the scanner resolved its category at.
      * Returns the org&#39;s open document queue — everything uploaded but not yet booked, newest first, each with its extracted summary and the confidence the scanner resolved its category at. A booked document drops out of the queue.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
-     * @return ApiResponse&lt;InboxOut&gt;
+     * @return ApiResponse&lt;BooksInboxOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InboxOut> getBooksInboxWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
+    public ApiResponse<BooksInboxOut> getBooksInboxWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
         okhttp3.Call localVarCall = getBooksInboxValidateBeforeCall(sandbox, null);
-        Type localVarReturnType = new TypeToken<InboxOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksInboxOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -885,12 +916,13 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksInboxAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<InboxOut> _callback) throws ApiException {
+    public okhttp3.Call getBooksInboxAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<BooksInboxOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksInboxValidateBeforeCall(sandbox, _callback);
-        Type localVarReturnType = new TypeToken<InboxOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksInboxOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -907,6 +939,7 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBooksMetricsCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
@@ -947,7 +980,8 @@ public class BooksApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -972,49 +1006,51 @@ public class BooksApi {
     }
 
     /**
-     * Metrics returns the org&#39;s deterministic SaaS-metrics snapshot over an optional (from, to] window — MRR, ARR, revenue, COGS, burn, gross margin, net income, cash, deferred revenue, monthly burn and runway — as raw int64-cent figures AND the same figures already formatted.
-     * Metrics returns the org&#39;s deterministic SaaS-metrics snapshot over an optional (from, to] window — MRR, ARR, revenue, COGS, burn, gross margin, net income, cash, deferred revenue, monthly burn and runway — as raw int64-cent figures AND the same figures already formatted. Every number is the ledger, aggregated the one way the books define it, never a guess; it is the grounded read the unified /v1/ask advisor replays.
+     * Returns the org&#39;s deterministic SaaS-metrics snapshot over an optional (from, to] window — MRR, ARR, revenue, COGS, burn, gross margin, net income, cash, deferred revenue, monthly burn and runway — as raw int64-cent figures AND the same figures already formatted.
+     * Returns the org&#39;s deterministic SaaS-metrics snapshot over an optional (from, to] window — MRR, ARR, revenue, COGS, burn, gross margin, net income, cash, deferred revenue, monthly burn and runway — as raw int64-cent figures AND the same figures already formatted. Every number is the ledger, aggregated the one way the books define it, never a guess; it is the grounded read the unified /v1/ask advisor replays.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param from From is the RFC3339 start of the window, exclusive. Empty means all time. (optional)
      * @param to To is the RFC3339 end of the window, inclusive. Empty means up to now. (optional)
-     * @return MetricsResponse
+     * @return BooksMetricsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MetricsResponse getBooksMetrics(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
-        ApiResponse<MetricsResponse> localVarResp = getBooksMetricsWithHttpInfo(sandbox, from, to);
+    public BooksMetricsResponse getBooksMetrics(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+        ApiResponse<BooksMetricsResponse> localVarResp = getBooksMetricsWithHttpInfo(sandbox, from, to);
         return localVarResp.getData();
     }
 
     /**
-     * Metrics returns the org&#39;s deterministic SaaS-metrics snapshot over an optional (from, to] window — MRR, ARR, revenue, COGS, burn, gross margin, net income, cash, deferred revenue, monthly burn and runway — as raw int64-cent figures AND the same figures already formatted.
-     * Metrics returns the org&#39;s deterministic SaaS-metrics snapshot over an optional (from, to] window — MRR, ARR, revenue, COGS, burn, gross margin, net income, cash, deferred revenue, monthly burn and runway — as raw int64-cent figures AND the same figures already formatted. Every number is the ledger, aggregated the one way the books define it, never a guess; it is the grounded read the unified /v1/ask advisor replays.
+     * Returns the org&#39;s deterministic SaaS-metrics snapshot over an optional (from, to] window — MRR, ARR, revenue, COGS, burn, gross margin, net income, cash, deferred revenue, monthly burn and runway — as raw int64-cent figures AND the same figures already formatted.
+     * Returns the org&#39;s deterministic SaaS-metrics snapshot over an optional (from, to] window — MRR, ARR, revenue, COGS, burn, gross margin, net income, cash, deferred revenue, monthly burn and runway — as raw int64-cent figures AND the same figures already formatted. Every number is the ledger, aggregated the one way the books define it, never a guess; it is the grounded read the unified /v1/ask advisor replays.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param from From is the RFC3339 start of the window, exclusive. Empty means all time. (optional)
      * @param to To is the RFC3339 end of the window, inclusive. Empty means up to now. (optional)
-     * @return ApiResponse&lt;MetricsResponse&gt;
+     * @return ApiResponse&lt;BooksMetricsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MetricsResponse> getBooksMetricsWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+    public ApiResponse<BooksMetricsResponse> getBooksMetricsWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
         okhttp3.Call localVarCall = getBooksMetricsValidateBeforeCall(sandbox, from, to, null);
-        Type localVarReturnType = new TypeToken<MetricsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksMetricsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Metrics returns the org&#39;s deterministic SaaS-metrics snapshot over an optional (from, to] window — MRR, ARR, revenue, COGS, burn, gross margin, net income, cash, deferred revenue, monthly burn and runway — as raw int64-cent figures AND the same figures already formatted. (asynchronously)
-     * Metrics returns the org&#39;s deterministic SaaS-metrics snapshot over an optional (from, to] window — MRR, ARR, revenue, COGS, burn, gross margin, net income, cash, deferred revenue, monthly burn and runway — as raw int64-cent figures AND the same figures already formatted. Every number is the ledger, aggregated the one way the books define it, never a guess; it is the grounded read the unified /v1/ask advisor replays.
+     * Returns the org&#39;s deterministic SaaS-metrics snapshot over an optional (from, to] window — MRR, ARR, revenue, COGS, burn, gross margin, net income, cash, deferred revenue, monthly burn and runway — as raw int64-cent figures AND the same figures already formatted. (asynchronously)
+     * Returns the org&#39;s deterministic SaaS-metrics snapshot over an optional (from, to] window — MRR, ARR, revenue, COGS, burn, gross margin, net income, cash, deferred revenue, monthly burn and runway — as raw int64-cent figures AND the same figures already formatted. Every number is the ledger, aggregated the one way the books define it, never a guess; it is the grounded read the unified /v1/ask advisor replays.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param from From is the RFC3339 start of the window, exclusive. Empty means all time. (optional)
      * @param to To is the RFC3339 end of the window, inclusive. Empty means up to now. (optional)
@@ -1026,12 +1062,13 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksMetricsAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<MetricsResponse> _callback) throws ApiException {
+    public okhttp3.Call getBooksMetricsAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<BooksMetricsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksMetricsValidateBeforeCall(sandbox, from, to, _callback);
-        Type localVarReturnType = new TypeToken<MetricsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksMetricsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1048,6 +1085,7 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBooksPnlCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
@@ -1088,7 +1126,8 @@ public class BooksApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1118,17 +1157,18 @@ public class BooksApi {
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param from From is the RFC3339 start of the window, exclusive. Empty means all time. (optional)
      * @param to To is the RFC3339 end of the window, inclusive. Empty means up to now. (optional)
-     * @return PnL
+     * @return BooksPnL
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PnL getBooksPnl(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
-        ApiResponse<PnL> localVarResp = getBooksPnlWithHttpInfo(sandbox, from, to);
+    public BooksPnL getBooksPnl(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+        ApiResponse<BooksPnL> localVarResp = getBooksPnlWithHttpInfo(sandbox, from, to);
         return localVarResp.getData();
     }
 
@@ -1138,18 +1178,19 @@ public class BooksApi {
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param from From is the RFC3339 start of the window, exclusive. Empty means all time. (optional)
      * @param to To is the RFC3339 end of the window, inclusive. Empty means up to now. (optional)
-     * @return ApiResponse&lt;PnL&gt;
+     * @return ApiResponse&lt;BooksPnL&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PnL> getBooksPnlWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+    public ApiResponse<BooksPnL> getBooksPnlWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
         okhttp3.Call localVarCall = getBooksPnlValidateBeforeCall(sandbox, from, to, null);
-        Type localVarReturnType = new TypeToken<PnL>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksPnL>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1167,12 +1208,13 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksPnlAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<PnL> _callback) throws ApiException {
+    public okhttp3.Call getBooksPnlAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<BooksPnL> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksPnlValidateBeforeCall(sandbox, from, to, _callback);
-        Type localVarReturnType = new TypeToken<PnL>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksPnL>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1188,6 +1230,7 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBooksPositionCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
@@ -1224,7 +1267,8 @@ public class BooksApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1253,17 +1297,18 @@ public class BooksApi {
      * Returns the org&#39;s Balance Sheet as of &#x60;to&#x60; (empty &#x3D; all time), with the Assets &#x3D;&#x3D; Liabilities + Equity equation proof.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param to To is the RFC3339 instant the statement is struck as of. Empty means all time. (optional)
-     * @return BalanceSheet
+     * @return BooksBalanceSheet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BalanceSheet getBooksPosition(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to) throws ApiException {
-        ApiResponse<BalanceSheet> localVarResp = getBooksPositionWithHttpInfo(sandbox, to);
+    public BooksBalanceSheet getBooksPosition(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to) throws ApiException {
+        ApiResponse<BooksBalanceSheet> localVarResp = getBooksPositionWithHttpInfo(sandbox, to);
         return localVarResp.getData();
     }
 
@@ -1272,18 +1317,19 @@ public class BooksApi {
      * Returns the org&#39;s Balance Sheet as of &#x60;to&#x60; (empty &#x3D; all time), with the Assets &#x3D;&#x3D; Liabilities + Equity equation proof.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param to To is the RFC3339 instant the statement is struck as of. Empty means all time. (optional)
-     * @return ApiResponse&lt;BalanceSheet&gt;
+     * @return ApiResponse&lt;BooksBalanceSheet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BalanceSheet> getBooksPositionWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to) throws ApiException {
+    public ApiResponse<BooksBalanceSheet> getBooksPositionWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to) throws ApiException {
         okhttp3.Call localVarCall = getBooksPositionValidateBeforeCall(sandbox, to, null);
-        Type localVarReturnType = new TypeToken<BalanceSheet>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksBalanceSheet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1300,12 +1346,13 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksPositionAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to, final ApiCallback<BalanceSheet> _callback) throws ApiException {
+    public okhttp3.Call getBooksPositionAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String to, final ApiCallback<BooksBalanceSheet> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksPositionValidateBeforeCall(sandbox, to, _callback);
-        Type localVarReturnType = new TypeToken<BalanceSheet>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksBalanceSheet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1320,6 +1367,7 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBooksQuestionsCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
@@ -1352,7 +1400,8 @@ public class BooksApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1380,17 +1429,18 @@ public class BooksApi {
      * Returns the clarifying questions the caller&#39;s own recent GL raises — the unusual postings a founder should look at (outliers, reversals, round-offs, uncosted revenue, an overdrawn wallet), sharpest first.
      * Returns the clarifying questions the caller&#39;s own recent GL raises — the unusual postings a founder should look at (outliers, reversals, round-offs, uncosted revenue, an overdrawn wallet), sharpest first. An empty list means the books look clean; the detector is deterministic over the ledger and invents nothing.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
-     * @return QuestionsResponse
+     * @return BooksQuestionsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public QuestionsResponse getBooksQuestions(@javax.annotation.Nullable String sandbox) throws ApiException {
-        ApiResponse<QuestionsResponse> localVarResp = getBooksQuestionsWithHttpInfo(sandbox);
+    public BooksQuestionsResponse getBooksQuestions(@javax.annotation.Nullable String sandbox) throws ApiException {
+        ApiResponse<BooksQuestionsResponse> localVarResp = getBooksQuestionsWithHttpInfo(sandbox);
         return localVarResp.getData();
     }
 
@@ -1398,18 +1448,19 @@ public class BooksApi {
      * Returns the clarifying questions the caller&#39;s own recent GL raises — the unusual postings a founder should look at (outliers, reversals, round-offs, uncosted revenue, an overdrawn wallet), sharpest first.
      * Returns the clarifying questions the caller&#39;s own recent GL raises — the unusual postings a founder should look at (outliers, reversals, round-offs, uncosted revenue, an overdrawn wallet), sharpest first. An empty list means the books look clean; the detector is deterministic over the ledger and invents nothing.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
-     * @return ApiResponse&lt;QuestionsResponse&gt;
+     * @return ApiResponse&lt;BooksQuestionsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<QuestionsResponse> getBooksQuestionsWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
+    public ApiResponse<BooksQuestionsResponse> getBooksQuestionsWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
         okhttp3.Call localVarCall = getBooksQuestionsValidateBeforeCall(sandbox, null);
-        Type localVarReturnType = new TypeToken<QuestionsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksQuestionsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1425,12 +1476,13 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksQuestionsAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<QuestionsResponse> _callback) throws ApiException {
+    public okhttp3.Call getBooksQuestionsAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<BooksQuestionsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksQuestionsValidateBeforeCall(sandbox, _callback);
-        Type localVarReturnType = new TypeToken<QuestionsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksQuestionsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1445,6 +1497,7 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBooksRulesCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
@@ -1477,7 +1530,8 @@ public class BooksApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1505,17 +1559,18 @@ public class BooksApi {
      * Returns the org&#39;s auto-categorization rules, highest priority first.
      * Returns the org&#39;s auto-categorization rules, highest priority first. A rule is a standing instruction — \&quot;anything whose merchant contains X books to category Y\&quot; — and it overrides a vendor&#39;s default category, so this is the list that decides how a future bill classifies itself.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
-     * @return RulesOut
+     * @return BooksRulesOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RulesOut getBooksRules(@javax.annotation.Nullable String sandbox) throws ApiException {
-        ApiResponse<RulesOut> localVarResp = getBooksRulesWithHttpInfo(sandbox);
+    public BooksRulesOut getBooksRules(@javax.annotation.Nullable String sandbox) throws ApiException {
+        ApiResponse<BooksRulesOut> localVarResp = getBooksRulesWithHttpInfo(sandbox);
         return localVarResp.getData();
     }
 
@@ -1523,18 +1578,19 @@ public class BooksApi {
      * Returns the org&#39;s auto-categorization rules, highest priority first.
      * Returns the org&#39;s auto-categorization rules, highest priority first. A rule is a standing instruction — \&quot;anything whose merchant contains X books to category Y\&quot; — and it overrides a vendor&#39;s default category, so this is the list that decides how a future bill classifies itself.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
-     * @return ApiResponse&lt;RulesOut&gt;
+     * @return ApiResponse&lt;BooksRulesOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RulesOut> getBooksRulesWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
+    public ApiResponse<BooksRulesOut> getBooksRulesWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
         okhttp3.Call localVarCall = getBooksRulesValidateBeforeCall(sandbox, null);
-        Type localVarReturnType = new TypeToken<RulesOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksRulesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1550,12 +1606,13 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksRulesAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<RulesOut> _callback) throws ApiException {
+    public okhttp3.Call getBooksRulesAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<BooksRulesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksRulesValidateBeforeCall(sandbox, _callback);
-        Type localVarReturnType = new TypeToken<RulesOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksRulesOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1575,6 +1632,7 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBooksTransactionsCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -1627,7 +1685,8 @@ public class BooksApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1660,17 +1719,18 @@ public class BooksApi {
      * @param category Category filters to one COA account, named by number (\&quot;5300\&quot;) or by category slug (\&quot;software\&quot;). (optional)
      * @param vendor Vendor filters to rows whose vendor or description contains this text, case-insensitively. (optional)
      * @param limit Limit caps how many rows come back; 200 when absent or not positive. (optional)
-     * @return TransactionsOut
+     * @return BooksTransactionsOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TransactionsOut getBooksTransactions(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<TransactionsOut> localVarResp = getBooksTransactionsWithHttpInfo(sandbox, from, to, category, vendor, limit);
+    public BooksTransactionsOut getBooksTransactions(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<BooksTransactionsOut> localVarResp = getBooksTransactionsWithHttpInfo(sandbox, from, to, category, vendor, limit);
         return localVarResp.getData();
     }
 
@@ -1683,18 +1743,19 @@ public class BooksApi {
      * @param category Category filters to one COA account, named by number (\&quot;5300\&quot;) or by category slug (\&quot;software\&quot;). (optional)
      * @param vendor Vendor filters to rows whose vendor or description contains this text, case-insensitively. (optional)
      * @param limit Limit caps how many rows come back; 200 when absent or not positive. (optional)
-     * @return ApiResponse&lt;TransactionsOut&gt;
+     * @return ApiResponse&lt;BooksTransactionsOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TransactionsOut> getBooksTransactionsWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<BooksTransactionsOut> getBooksTransactionsWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getBooksTransactionsValidateBeforeCall(sandbox, from, to, category, vendor, limit, null);
-        Type localVarReturnType = new TypeToken<TransactionsOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksTransactionsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1715,12 +1776,13 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksTransactionsAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Long limit, final ApiCallback<TransactionsOut> _callback) throws ApiException {
+    public okhttp3.Call getBooksTransactionsAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Long limit, final ApiCallback<BooksTransactionsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksTransactionsValidateBeforeCall(sandbox, from, to, category, vendor, limit, _callback);
-        Type localVarReturnType = new TypeToken<TransactionsOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksTransactionsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1737,6 +1799,7 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBooksTrialCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
@@ -1777,7 +1840,8 @@ public class BooksApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1807,17 +1871,18 @@ public class BooksApi {
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param from From is the RFC3339 start of the window, exclusive. Empty means all time. (optional)
      * @param to To is the RFC3339 end of the window, inclusive. Empty means up to now. (optional)
-     * @return TrialBalance
+     * @return BooksTrialBalance
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TrialBalance getBooksTrial(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
-        ApiResponse<TrialBalance> localVarResp = getBooksTrialWithHttpInfo(sandbox, from, to);
+    public BooksTrialBalance getBooksTrial(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+        ApiResponse<BooksTrialBalance> localVarResp = getBooksTrialWithHttpInfo(sandbox, from, to);
         return localVarResp.getData();
     }
 
@@ -1827,18 +1892,19 @@ public class BooksApi {
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;. (optional)
      * @param from From is the RFC3339 start of the window, exclusive. Empty means all time. (optional)
      * @param to To is the RFC3339 end of the window, inclusive. Empty means up to now. (optional)
-     * @return ApiResponse&lt;TrialBalance&gt;
+     * @return ApiResponse&lt;BooksTrialBalance&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TrialBalance> getBooksTrialWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+    public ApiResponse<BooksTrialBalance> getBooksTrialWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
         okhttp3.Call localVarCall = getBooksTrialValidateBeforeCall(sandbox, from, to, null);
-        Type localVarReturnType = new TypeToken<TrialBalance>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksTrialBalance>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1856,12 +1922,13 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksTrialAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<TrialBalance> _callback) throws ApiException {
+    public okhttp3.Call getBooksTrialAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<BooksTrialBalance> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksTrialValidateBeforeCall(sandbox, from, to, _callback);
-        Type localVarReturnType = new TypeToken<TrialBalance>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksTrialBalance>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1876,6 +1943,7 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBooksVendorsCall(@javax.annotation.Nullable String sandbox, final ApiCallback _callback) throws ApiException {
@@ -1908,7 +1976,8 @@ public class BooksApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1936,17 +2005,18 @@ public class BooksApi {
      * Returns the org&#39;s vendor book: each canonical vendor, the alias spellings a receipt may print it under, and the expense account new bills from it default to.
      * Returns the org&#39;s vendor book: each canonical vendor, the alias spellings a receipt may print it under, and the expense account new bills from it default to. A vendor here is what makes a scanned bill self-classify instead of asking again.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
-     * @return VendorsOut
+     * @return BooksVendorsOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public VendorsOut getBooksVendors(@javax.annotation.Nullable String sandbox) throws ApiException {
-        ApiResponse<VendorsOut> localVarResp = getBooksVendorsWithHttpInfo(sandbox);
+    public BooksVendorsOut getBooksVendors(@javax.annotation.Nullable String sandbox) throws ApiException {
+        ApiResponse<BooksVendorsOut> localVarResp = getBooksVendorsWithHttpInfo(sandbox);
         return localVarResp.getData();
     }
 
@@ -1954,18 +2024,19 @@ public class BooksApi {
      * Returns the org&#39;s vendor book: each canonical vendor, the alias spellings a receipt may print it under, and the expense account new bills from it default to.
      * Returns the org&#39;s vendor book: each canonical vendor, the alias spellings a receipt may print it under, and the expense account new bills from it default to. A vendor here is what makes a scanned bill self-classify instead of asking again.
      * @param sandbox Sandbox reads the org&#39;s SANDBOX ledger when it is exactly \&quot;true\&quot;; anything else reads the live one. (optional)
-     * @return ApiResponse&lt;VendorsOut&gt;
+     * @return ApiResponse&lt;BooksVendorsOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VendorsOut> getBooksVendorsWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
+    public ApiResponse<BooksVendorsOut> getBooksVendorsWithHttpInfo(@javax.annotation.Nullable String sandbox) throws ApiException {
         okhttp3.Call localVarCall = getBooksVendorsValidateBeforeCall(sandbox, null);
-        Type localVarReturnType = new TypeToken<VendorsOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksVendorsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1981,18 +2052,19 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksVendorsAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<VendorsOut> _callback) throws ApiException {
+    public okhttp3.Call getBooksVendorsAsync(@javax.annotation.Nullable String sandbox, final ApiCallback<BooksVendorsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksVendorsValidateBeforeCall(sandbox, _callback);
-        Type localVarReturnType = new TypeToken<VendorsOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksVendorsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postBooksAsk
-     * @param askRequest  (required)
+     * @param booksAskRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2001,9 +2073,10 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBooksAskCall(@javax.annotation.Nonnull AskRequest askRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBooksAskCall(@javax.annotation.Nonnull BooksAskRequest booksAskRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2017,7 +2090,7 @@ public class BooksApi {
             basePath = null;
         }
 
-        Object localVarPostBody = askRequest;
+        Object localVarPostBody = booksAskRequest;
 
         // create path and map variables
         String localVarPath = "/v1/books/ask";
@@ -2029,7 +2102,8 @@ public class BooksApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2049,57 +2123,59 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBooksAskValidateBeforeCall(@javax.annotation.Nonnull AskRequest askRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'askRequest' is set
-        if (askRequest == null) {
-            throw new ApiException("Missing the required parameter 'askRequest' when calling postBooksAsk(Async)");
+    private okhttp3.Call postBooksAskValidateBeforeCall(@javax.annotation.Nonnull BooksAskRequest booksAskRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'booksAskRequest' is set
+        if (booksAskRequest == null) {
+            throw new ApiException("Missing the required parameter 'booksAskRequest' when calling postBooksAsk(Async)");
         }
 
-        return postBooksAskCall(askRequest, _callback);
+        return postBooksAskCall(booksAskRequest, _callback);
 
     }
 
     /**
      * Answers a plain-language question about the caller&#39;s own books — \&quot;what is my MRR?\&quot;, \&quot;how long is my runway?\&quot; — with figures taken from their ledger, never a guessed number.
      * Answers a plain-language question about the caller&#39;s own books — \&quot;what is my MRR?\&quot;, \&quot;how long is my runway?\&quot; — with figures taken from their ledger, never a guessed number. A deterministic keyword router picks the intent and reads the real metrics, and those figures, followups and report sources are computed BEFORE any model call and are never altered by one: the optional narration client only rephrases the sentence, and it degrades silently to the templated answer when no AI plane is wired. It is strictly read-only — it restates the books, it never posts to them.
-     * @param askRequest  (required)
-     * @return AskResponse
+     * @param booksAskRequest  (required)
+     * @return BooksAskResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AskResponse postBooksAsk(@javax.annotation.Nonnull AskRequest askRequest) throws ApiException {
-        ApiResponse<AskResponse> localVarResp = postBooksAskWithHttpInfo(askRequest);
+    public BooksAskResponse postBooksAsk(@javax.annotation.Nonnull BooksAskRequest booksAskRequest) throws ApiException {
+        ApiResponse<BooksAskResponse> localVarResp = postBooksAskWithHttpInfo(booksAskRequest);
         return localVarResp.getData();
     }
 
     /**
      * Answers a plain-language question about the caller&#39;s own books — \&quot;what is my MRR?\&quot;, \&quot;how long is my runway?\&quot; — with figures taken from their ledger, never a guessed number.
      * Answers a plain-language question about the caller&#39;s own books — \&quot;what is my MRR?\&quot;, \&quot;how long is my runway?\&quot; — with figures taken from their ledger, never a guessed number. A deterministic keyword router picks the intent and reads the real metrics, and those figures, followups and report sources are computed BEFORE any model call and are never altered by one: the optional narration client only rephrases the sentence, and it degrades silently to the templated answer when no AI plane is wired. It is strictly read-only — it restates the books, it never posts to them.
-     * @param askRequest  (required)
-     * @return ApiResponse&lt;AskResponse&gt;
+     * @param booksAskRequest  (required)
+     * @return ApiResponse&lt;BooksAskResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AskResponse> postBooksAskWithHttpInfo(@javax.annotation.Nonnull AskRequest askRequest) throws ApiException {
-        okhttp3.Call localVarCall = postBooksAskValidateBeforeCall(askRequest, null);
-        Type localVarReturnType = new TypeToken<AskResponse>(){}.getType();
+    public ApiResponse<BooksAskResponse> postBooksAskWithHttpInfo(@javax.annotation.Nonnull BooksAskRequest booksAskRequest) throws ApiException {
+        okhttp3.Call localVarCall = postBooksAskValidateBeforeCall(booksAskRequest, null);
+        Type localVarReturnType = new TypeToken<BooksAskResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Answers a plain-language question about the caller&#39;s own books — \&quot;what is my MRR?\&quot;, \&quot;how long is my runway?\&quot; — with figures taken from their ledger, never a guessed number. (asynchronously)
      * Answers a plain-language question about the caller&#39;s own books — \&quot;what is my MRR?\&quot;, \&quot;how long is my runway?\&quot; — with figures taken from their ledger, never a guessed number. A deterministic keyword router picks the intent and reads the real metrics, and those figures, followups and report sources are computed BEFORE any model call and are never altered by one: the optional narration client only rephrases the sentence, and it degrades silently to the templated answer when no AI plane is wired. It is strictly read-only — it restates the books, it never posts to them.
-     * @param askRequest  (required)
+     * @param booksAskRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2108,101 +2184,14 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBooksAskAsync(@javax.annotation.Nonnull AskRequest askRequest, final ApiCallback<AskResponse> _callback) throws ApiException {
+    public okhttp3.Call postBooksAskAsync(@javax.annotation.Nonnull BooksAskRequest booksAskRequest, final ApiCallback<BooksAskResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postBooksAskValidateBeforeCall(askRequest, _callback);
-        Type localVarReturnType = new TypeToken<AskResponse>(){}.getType();
+        okhttp3.Call localVarCall = postBooksAskValidateBeforeCall(booksAskRequest, _callback);
+        Type localVarReturnType = new TypeToken<BooksAskResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postBooksBankExchange
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postBooksBankExchangeCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/books/bank/exchange";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBooksBankExchangeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postBooksBankExchangeCall(_callback);
-
-    }
-
-    /**
-     * Finish connecting a bank account (not yet available)
-     * ANSWERS 501 UNCONDITIONALLY. It is the intended second hop of the bank-linking handshake — trade the provider&#39;s short-lived public token for the durable access credential and seal that credential into KMS — and nothing on the HTTP path reaches an implementation today.  The durable bank credential is the reason this hop exists: it is meant to be sealed server-side and never handed back to the caller. Since the route never succeeds, no credential is stored by it and no bank is connected through it.  Documented as refusing rather than declared with a success body, for the same reason as the first hop: it has never sent one, and stating a shape it has never produced would put a return type in every SDK for a call that always fails. A caller with no principal gets 401 before the 501.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postBooksBankExchange() throws ApiException {
-        postBooksBankExchangeWithHttpInfo();
-    }
-
-    /**
-     * Finish connecting a bank account (not yet available)
-     * ANSWERS 501 UNCONDITIONALLY. It is the intended second hop of the bank-linking handshake — trade the provider&#39;s short-lived public token for the durable access credential and seal that credential into KMS — and nothing on the HTTP path reaches an implementation today.  The durable bank credential is the reason this hop exists: it is meant to be sealed server-side and never handed back to the caller. Since the route never succeeds, no credential is stored by it and no bank is connected through it.  Documented as refusing rather than declared with a success body, for the same reason as the first hop: it has never sent one, and stating a shape it has never produced would put a return type in every SDK for a call that always fails. A caller with no principal gets 401 before the 501.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postBooksBankExchangeWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postBooksBankExchangeValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Finish connecting a bank account (not yet available) (asynchronously)
-     * ANSWERS 501 UNCONDITIONALLY. It is the intended second hop of the bank-linking handshake — trade the provider&#39;s short-lived public token for the durable access credential and seal that credential into KMS — and nothing on the HTTP path reaches an implementation today.  The durable bank credential is the reason this hop exists: it is meant to be sealed server-side and never handed back to the caller. Since the route never succeeds, no credential is stored by it and no bank is connected through it.  Documented as refusing rather than declared with a success body, for the same reason as the first hop: it has never sent one, and stating a shape it has never produced would put a return type in every SDK for a call that always fails. A caller with no principal gets 401 before the 501.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postBooksBankExchangeAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postBooksBankExchangeValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -2337,6 +2326,7 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postBooksBankSyncCall(final ApiCallback _callback) throws ApiException {
@@ -2365,7 +2355,8 @@ public class BooksApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2392,35 +2383,37 @@ public class BooksApi {
     /**
      * Pulls every connected bank (Plaid/Teller) for the caller&#39;s org, maps each fetched transaction to a posting and books it idempotently, then advances that connector&#39;s cursor so the next sync resumes where this one stopped.
      * Pulls every connected bank (Plaid/Teller) for the caller&#39;s org, maps each fetched transaction to a posting and books it idempotently, then advances that connector&#39;s cursor so the next sync resumes where this one stopped. One connector&#39;s outage is skipped rather than failing the whole sync. It reports the batch: how many transactions were seen, how many vouchers posted, how many inflows reconciled against the processor clearing account, how many raised a question, how many were own-account transfers, and how many were already-processed no-ops. It is READ-ONLY against the bank — it ingests, it never sends money.
-     * @return BankTally
+     * @return BooksBankTally
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BankTally postBooksBankSync() throws ApiException {
-        ApiResponse<BankTally> localVarResp = postBooksBankSyncWithHttpInfo();
+    public BooksBankTally postBooksBankSync() throws ApiException {
+        ApiResponse<BooksBankTally> localVarResp = postBooksBankSyncWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Pulls every connected bank (Plaid/Teller) for the caller&#39;s org, maps each fetched transaction to a posting and books it idempotently, then advances that connector&#39;s cursor so the next sync resumes where this one stopped.
      * Pulls every connected bank (Plaid/Teller) for the caller&#39;s org, maps each fetched transaction to a posting and books it idempotently, then advances that connector&#39;s cursor so the next sync resumes where this one stopped. One connector&#39;s outage is skipped rather than failing the whole sync. It reports the batch: how many transactions were seen, how many vouchers posted, how many inflows reconciled against the processor clearing account, how many raised a question, how many were own-account transfers, and how many were already-processed no-ops. It is READ-ONLY against the bank — it ingests, it never sends money.
-     * @return ApiResponse&lt;BankTally&gt;
+     * @return ApiResponse&lt;BooksBankTally&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BankTally> postBooksBankSyncWithHttpInfo() throws ApiException {
+    public ApiResponse<BooksBankTally> postBooksBankSyncWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = postBooksBankSyncValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<BankTally>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksBankTally>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2435,101 +2428,14 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBooksBankSyncAsync(final ApiCallback<BankTally> _callback) throws ApiException {
+    public okhttp3.Call postBooksBankSyncAsync(final ApiCallback<BooksBankTally> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postBooksBankSyncValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<BankTally>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksBankTally>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postBooksBankToken
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postBooksBankTokenCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/books/bank/token";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBooksBankTokenValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postBooksBankTokenCall(_callback);
-
-    }
-
-    /**
-     * Begin connecting a bank account (not yet available)
-     * ANSWERS 501 UNCONDITIONALLY. It is the intended first hop of the bank-linking handshake — mint the short-lived session token a browser hands to the provider&#39;s link widget — and nothing on the HTTP path reaches an implementation today.  The connectors behind it are written and tested; only the wiring is missing, so an org cannot connect a bank through the API at all. Until that lands, bank data reaches the books by statement import.  It is documented as refusing rather than declared with a success body precisely because it has never sent one. A response schema here would be invention: every generated SDK would carry a return type for a call that has only ever failed. A caller with no principal gets 401 before the 501.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postBooksBankToken() throws ApiException {
-        postBooksBankTokenWithHttpInfo();
-    }
-
-    /**
-     * Begin connecting a bank account (not yet available)
-     * ANSWERS 501 UNCONDITIONALLY. It is the intended first hop of the bank-linking handshake — mint the short-lived session token a browser hands to the provider&#39;s link widget — and nothing on the HTTP path reaches an implementation today.  The connectors behind it are written and tested; only the wiring is missing, so an org cannot connect a bank through the API at all. Until that lands, bank data reaches the books by statement import.  It is documented as refusing rather than declared with a success body precisely because it has never sent one. A response schema here would be invention: every generated SDK would carry a return type for a call that has only ever failed. A caller with no principal gets 401 before the 501.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postBooksBankTokenWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postBooksBankTokenValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Begin connecting a bank account (not yet available) (asynchronously)
-     * ANSWERS 501 UNCONDITIONALLY. It is the intended first hop of the bank-linking handshake — mint the short-lived session token a browser hands to the provider&#39;s link widget — and nothing on the HTTP path reaches an implementation today.  The connectors behind it are written and tested; only the wiring is missing, so an org cannot connect a bank through the API at all. Until that lands, bank data reaches the books by statement import.  It is documented as refusing rather than declared with a success body precisely because it has never sent one. A response schema here would be invention: every generated SDK would carry a return type for a call that has only ever failed. A caller with no principal gets 401 before the 501.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postBooksBankTokenAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postBooksBankTokenValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -2656,7 +2562,7 @@ public class BooksApi {
     }
     /**
      * Build call for postBooksRules
-     * @param rule  (required)
+     * @param booksRule  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2665,9 +2571,10 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBooksRulesCall(@javax.annotation.Nonnull Rule rule, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBooksRulesCall(@javax.annotation.Nonnull BooksRule booksRule, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2681,7 +2588,7 @@ public class BooksApi {
             basePath = null;
         }
 
-        Object localVarPostBody = rule;
+        Object localVarPostBody = booksRule;
 
         // create path and map variables
         String localVarPath = "/v1/books/rules";
@@ -2693,7 +2600,8 @@ public class BooksApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2713,57 +2621,59 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBooksRulesValidateBeforeCall(@javax.annotation.Nonnull Rule rule, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'rule' is set
-        if (rule == null) {
-            throw new ApiException("Missing the required parameter 'rule' when calling postBooksRules(Async)");
+    private okhttp3.Call postBooksRulesValidateBeforeCall(@javax.annotation.Nonnull BooksRule booksRule, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'booksRule' is set
+        if (booksRule == null) {
+            throw new ApiException("Missing the required parameter 'booksRule' when calling postBooksRules(Async)");
         }
 
-        return postBooksRulesCall(rule, _callback);
+        return postBooksRulesCall(booksRule, _callback);
 
     }
 
     /**
      * Creates or updates one auto-categorization rule, keyed by its pattern — writing a pattern that already exists REPLACES that row&#39;s category and priority.
      * Creates or updates one auto-categorization rule, keyed by its pattern — writing a pattern that already exists REPLACES that row&#39;s category and priority. The category is normalized to a real COA expense account, and anything unrecognized becomes 5900 Uncategorized rather than a guessed real account. It answers the row exactly as stored, so the caller sees the normalization. A rule overrides a vendor&#39;s default category, so this is the standing instruction that decides how a future bill classifies.
-     * @param rule  (required)
-     * @return Rule
+     * @param booksRule  (required)
+     * @return BooksRule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Rule postBooksRules(@javax.annotation.Nonnull Rule rule) throws ApiException {
-        ApiResponse<Rule> localVarResp = postBooksRulesWithHttpInfo(rule);
+    public BooksRule postBooksRules(@javax.annotation.Nonnull BooksRule booksRule) throws ApiException {
+        ApiResponse<BooksRule> localVarResp = postBooksRulesWithHttpInfo(booksRule);
         return localVarResp.getData();
     }
 
     /**
      * Creates or updates one auto-categorization rule, keyed by its pattern — writing a pattern that already exists REPLACES that row&#39;s category and priority.
      * Creates or updates one auto-categorization rule, keyed by its pattern — writing a pattern that already exists REPLACES that row&#39;s category and priority. The category is normalized to a real COA expense account, and anything unrecognized becomes 5900 Uncategorized rather than a guessed real account. It answers the row exactly as stored, so the caller sees the normalization. A rule overrides a vendor&#39;s default category, so this is the standing instruction that decides how a future bill classifies.
-     * @param rule  (required)
-     * @return ApiResponse&lt;Rule&gt;
+     * @param booksRule  (required)
+     * @return ApiResponse&lt;BooksRule&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Rule> postBooksRulesWithHttpInfo(@javax.annotation.Nonnull Rule rule) throws ApiException {
-        okhttp3.Call localVarCall = postBooksRulesValidateBeforeCall(rule, null);
-        Type localVarReturnType = new TypeToken<Rule>(){}.getType();
+    public ApiResponse<BooksRule> postBooksRulesWithHttpInfo(@javax.annotation.Nonnull BooksRule booksRule) throws ApiException {
+        okhttp3.Call localVarCall = postBooksRulesValidateBeforeCall(booksRule, null);
+        Type localVarReturnType = new TypeToken<BooksRule>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Creates or updates one auto-categorization rule, keyed by its pattern — writing a pattern that already exists REPLACES that row&#39;s category and priority. (asynchronously)
      * Creates or updates one auto-categorization rule, keyed by its pattern — writing a pattern that already exists REPLACES that row&#39;s category and priority. The category is normalized to a real COA expense account, and anything unrecognized becomes 5900 Uncategorized rather than a guessed real account. It answers the row exactly as stored, so the caller sees the normalization. A rule overrides a vendor&#39;s default category, so this is the standing instruction that decides how a future bill classifies.
-     * @param rule  (required)
+     * @param booksRule  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2772,12 +2682,13 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBooksRulesAsync(@javax.annotation.Nonnull Rule rule, final ApiCallback<Rule> _callback) throws ApiException {
+    public okhttp3.Call postBooksRulesAsync(@javax.annotation.Nonnull BooksRule booksRule, final ApiCallback<BooksRule> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postBooksRulesValidateBeforeCall(rule, _callback);
-        Type localVarReturnType = new TypeToken<Rule>(){}.getType();
+        okhttp3.Call localVarCall = postBooksRulesValidateBeforeCall(booksRule, _callback);
+        Type localVarReturnType = new TypeToken<BooksRule>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2905,7 +2816,7 @@ public class BooksApi {
     }
     /**
      * Build call for postBooksScanBook
-     * @param bookRequest  (required)
+     * @param booksBookRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2914,9 +2825,10 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBooksScanBookCall(@javax.annotation.Nonnull BookRequest bookRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBooksScanBookCall(@javax.annotation.Nonnull BooksBookRequest booksBookRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2930,7 +2842,7 @@ public class BooksApi {
             basePath = null;
         }
 
-        Object localVarPostBody = bookRequest;
+        Object localVarPostBody = booksBookRequest;
 
         // create path and map variables
         String localVarPath = "/v1/books/scan/book";
@@ -2942,7 +2854,8 @@ public class BooksApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2962,57 +2875,59 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBooksScanBookValidateBeforeCall(@javax.annotation.Nonnull BookRequest bookRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'bookRequest' is set
-        if (bookRequest == null) {
-            throw new ApiException("Missing the required parameter 'bookRequest' when calling postBooksScanBook(Async)");
+    private okhttp3.Call postBooksScanBookValidateBeforeCall(@javax.annotation.Nonnull BooksBookRequest booksBookRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'booksBookRequest' is set
+        if (booksBookRequest == null) {
+            throw new ApiException("Missing the required parameter 'booksBookRequest' when calling postBooksScanBook(Async)");
         }
 
-        return postBooksScanBookCall(bookRequest, _callback);
+        return postBooksScanBookCall(booksBookRequest, _callback);
 
     }
 
     /**
      * Posts a reviewed scanned bill to the ledger.
      * Posts a reviewed scanned bill to the ledger. It is the scanner&#39;s ONLY write: the voucher goes through the same post() choke point every other source uses, so it is checked to balance (Σdebit &#x3D;&#x3D; Σcredit) and is idempotent by (scan, scanId) — re-booking the same scan answers posted&#x3D;false and writes nothing. A bill whose economic identity (vendor, total, issue date) already posted under a DIFFERENT scan is refused 409 unless override is set, which is what stops the same receipt re-scanned into a new file hash from double-booking. An unbalanced voucher is refused 400.
-     * @param bookRequest  (required)
-     * @return BookResponse
+     * @param booksBookRequest  (required)
+     * @return BooksBookResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BookResponse postBooksScanBook(@javax.annotation.Nonnull BookRequest bookRequest) throws ApiException {
-        ApiResponse<BookResponse> localVarResp = postBooksScanBookWithHttpInfo(bookRequest);
+    public BooksBookResponse postBooksScanBook(@javax.annotation.Nonnull BooksBookRequest booksBookRequest) throws ApiException {
+        ApiResponse<BooksBookResponse> localVarResp = postBooksScanBookWithHttpInfo(booksBookRequest);
         return localVarResp.getData();
     }
 
     /**
      * Posts a reviewed scanned bill to the ledger.
      * Posts a reviewed scanned bill to the ledger. It is the scanner&#39;s ONLY write: the voucher goes through the same post() choke point every other source uses, so it is checked to balance (Σdebit &#x3D;&#x3D; Σcredit) and is idempotent by (scan, scanId) — re-booking the same scan answers posted&#x3D;false and writes nothing. A bill whose economic identity (vendor, total, issue date) already posted under a DIFFERENT scan is refused 409 unless override is set, which is what stops the same receipt re-scanned into a new file hash from double-booking. An unbalanced voucher is refused 400.
-     * @param bookRequest  (required)
-     * @return ApiResponse&lt;BookResponse&gt;
+     * @param booksBookRequest  (required)
+     * @return ApiResponse&lt;BooksBookResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BookResponse> postBooksScanBookWithHttpInfo(@javax.annotation.Nonnull BookRequest bookRequest) throws ApiException {
-        okhttp3.Call localVarCall = postBooksScanBookValidateBeforeCall(bookRequest, null);
-        Type localVarReturnType = new TypeToken<BookResponse>(){}.getType();
+    public ApiResponse<BooksBookResponse> postBooksScanBookWithHttpInfo(@javax.annotation.Nonnull BooksBookRequest booksBookRequest) throws ApiException {
+        okhttp3.Call localVarCall = postBooksScanBookValidateBeforeCall(booksBookRequest, null);
+        Type localVarReturnType = new TypeToken<BooksBookResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Posts a reviewed scanned bill to the ledger. (asynchronously)
      * Posts a reviewed scanned bill to the ledger. It is the scanner&#39;s ONLY write: the voucher goes through the same post() choke point every other source uses, so it is checked to balance (Σdebit &#x3D;&#x3D; Σcredit) and is idempotent by (scan, scanId) — re-booking the same scan answers posted&#x3D;false and writes nothing. A bill whose economic identity (vendor, total, issue date) already posted under a DIFFERENT scan is refused 409 unless override is set, which is what stops the same receipt re-scanned into a new file hash from double-booking. An unbalanced voucher is refused 400.
-     * @param bookRequest  (required)
+     * @param booksBookRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3021,12 +2936,13 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBooksScanBookAsync(@javax.annotation.Nonnull BookRequest bookRequest, final ApiCallback<BookResponse> _callback) throws ApiException {
+    public okhttp3.Call postBooksScanBookAsync(@javax.annotation.Nonnull BooksBookRequest booksBookRequest, final ApiCallback<BooksBookResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postBooksScanBookValidateBeforeCall(bookRequest, _callback);
-        Type localVarReturnType = new TypeToken<BookResponse>(){}.getType();
+        okhttp3.Call localVarCall = postBooksScanBookValidateBeforeCall(booksBookRequest, _callback);
+        Type localVarReturnType = new TypeToken<BooksBookResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3040,6 +2956,7 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postBooksSyncCall(final ApiCallback _callback) throws ApiException {
@@ -3068,7 +2985,8 @@ public class BooksApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3093,43 +3011,45 @@ public class BooksApi {
     }
 
     /**
-     * Sync ingests the caller&#39;s OWN org from commerce into BOTH ledgers (live and sandbox) and reports how many new vouchers posted to each.
-     * Sync ingests the caller&#39;s OWN org from commerce into BOTH ledgers (live and sandbox) and reports how many new vouchers posted to each. It is idempotent — money that has already been booked posts nothing on a repeat — and it is read-only against commerce: it never mints a deposit, a credit or a payout, only the accounting twin of money that already moved.
-     * @return SyncTally
+     * Ingests the caller&#39;s OWN org from commerce into BOTH ledgers (live and sandbox) and reports how many new vouchers posted to each.
+     * Ingests the caller&#39;s OWN org from commerce into BOTH ledgers (live and sandbox) and reports how many new vouchers posted to each. It is idempotent — money that has already been booked posts nothing on a repeat — and it is read-only against commerce: it never mints a deposit, a credit or a payout, only the accounting twin of money that already moved.
+     * @return BooksSyncTally
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SyncTally postBooksSync() throws ApiException {
-        ApiResponse<SyncTally> localVarResp = postBooksSyncWithHttpInfo();
+    public BooksSyncTally postBooksSync() throws ApiException {
+        ApiResponse<BooksSyncTally> localVarResp = postBooksSyncWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Sync ingests the caller&#39;s OWN org from commerce into BOTH ledgers (live and sandbox) and reports how many new vouchers posted to each.
-     * Sync ingests the caller&#39;s OWN org from commerce into BOTH ledgers (live and sandbox) and reports how many new vouchers posted to each. It is idempotent — money that has already been booked posts nothing on a repeat — and it is read-only against commerce: it never mints a deposit, a credit or a payout, only the accounting twin of money that already moved.
-     * @return ApiResponse&lt;SyncTally&gt;
+     * Ingests the caller&#39;s OWN org from commerce into BOTH ledgers (live and sandbox) and reports how many new vouchers posted to each.
+     * Ingests the caller&#39;s OWN org from commerce into BOTH ledgers (live and sandbox) and reports how many new vouchers posted to each. It is idempotent — money that has already been booked posts nothing on a repeat — and it is read-only against commerce: it never mints a deposit, a credit or a payout, only the accounting twin of money that already moved.
+     * @return ApiResponse&lt;BooksSyncTally&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SyncTally> postBooksSyncWithHttpInfo() throws ApiException {
+    public ApiResponse<BooksSyncTally> postBooksSyncWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = postBooksSyncValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<SyncTally>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksSyncTally>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Sync ingests the caller&#39;s OWN org from commerce into BOTH ledgers (live and sandbox) and reports how many new vouchers posted to each. (asynchronously)
-     * Sync ingests the caller&#39;s OWN org from commerce into BOTH ledgers (live and sandbox) and reports how many new vouchers posted to each. It is idempotent — money that has already been booked posts nothing on a repeat — and it is read-only against commerce: it never mints a deposit, a credit or a payout, only the accounting twin of money that already moved.
+     * Ingests the caller&#39;s OWN org from commerce into BOTH ledgers (live and sandbox) and reports how many new vouchers posted to each. (asynchronously)
+     * Ingests the caller&#39;s OWN org from commerce into BOTH ledgers (live and sandbox) and reports how many new vouchers posted to each. It is idempotent — money that has already been booked posts nothing on a repeat — and it is read-only against commerce: it never mints a deposit, a credit or a payout, only the accounting twin of money that already moved.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3138,18 +3058,19 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBooksSyncAsync(final ApiCallback<SyncTally> _callback) throws ApiException {
+    public okhttp3.Call postBooksSyncAsync(final ApiCallback<BooksSyncTally> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postBooksSyncValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<SyncTally>(){}.getType();
+        Type localVarReturnType = new TypeToken<BooksSyncTally>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postBooksVendors
-     * @param vendorRow  (required)
+     * @param booksVendorRow  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3158,9 +3079,10 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBooksVendorsCall(@javax.annotation.Nonnull VendorRow vendorRow, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBooksVendorsCall(@javax.annotation.Nonnull BooksVendorRow booksVendorRow, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3174,7 +3096,7 @@ public class BooksApi {
             basePath = null;
         }
 
-        Object localVarPostBody = vendorRow;
+        Object localVarPostBody = booksVendorRow;
 
         // create path and map variables
         String localVarPath = "/v1/books/vendors";
@@ -3186,7 +3108,8 @@ public class BooksApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3206,57 +3129,59 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBooksVendorsValidateBeforeCall(@javax.annotation.Nonnull VendorRow vendorRow, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'vendorRow' is set
-        if (vendorRow == null) {
-            throw new ApiException("Missing the required parameter 'vendorRow' when calling postBooksVendors(Async)");
+    private okhttp3.Call postBooksVendorsValidateBeforeCall(@javax.annotation.Nonnull BooksVendorRow booksVendorRow, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'booksVendorRow' is set
+        if (booksVendorRow == null) {
+            throw new ApiException("Missing the required parameter 'booksVendorRow' when calling postBooksVendors(Async)");
         }
 
-        return postBooksVendorsCall(vendorRow, _callback);
+        return postBooksVendorsCall(booksVendorRow, _callback);
 
     }
 
     /**
      * Creates or updates one vendor in the org&#39;s vendor book, keyed by its canonical name — writing a canonical name that already exists REPLACES that row&#39;s aliases and default category.
      * Creates or updates one vendor in the org&#39;s vendor book, keyed by its canonical name — writing a canonical name that already exists REPLACES that row&#39;s aliases and default category. A category given as a slug (\&quot;software\&quot;) is normalized to its real COA expense account, and anything unrecognized becomes 5900 Uncategorized rather than a guessed real account. It answers the row exactly as stored, so the caller sees the normalization. Recording a vendor is what makes future bills from it self-classify instead of asking again.
-     * @param vendorRow  (required)
-     * @return VendorRow
+     * @param booksVendorRow  (required)
+     * @return BooksVendorRow
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public VendorRow postBooksVendors(@javax.annotation.Nonnull VendorRow vendorRow) throws ApiException {
-        ApiResponse<VendorRow> localVarResp = postBooksVendorsWithHttpInfo(vendorRow);
+    public BooksVendorRow postBooksVendors(@javax.annotation.Nonnull BooksVendorRow booksVendorRow) throws ApiException {
+        ApiResponse<BooksVendorRow> localVarResp = postBooksVendorsWithHttpInfo(booksVendorRow);
         return localVarResp.getData();
     }
 
     /**
      * Creates or updates one vendor in the org&#39;s vendor book, keyed by its canonical name — writing a canonical name that already exists REPLACES that row&#39;s aliases and default category.
      * Creates or updates one vendor in the org&#39;s vendor book, keyed by its canonical name — writing a canonical name that already exists REPLACES that row&#39;s aliases and default category. A category given as a slug (\&quot;software\&quot;) is normalized to its real COA expense account, and anything unrecognized becomes 5900 Uncategorized rather than a guessed real account. It answers the row exactly as stored, so the caller sees the normalization. Recording a vendor is what makes future bills from it self-classify instead of asking again.
-     * @param vendorRow  (required)
-     * @return ApiResponse&lt;VendorRow&gt;
+     * @param booksVendorRow  (required)
+     * @return ApiResponse&lt;BooksVendorRow&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VendorRow> postBooksVendorsWithHttpInfo(@javax.annotation.Nonnull VendorRow vendorRow) throws ApiException {
-        okhttp3.Call localVarCall = postBooksVendorsValidateBeforeCall(vendorRow, null);
-        Type localVarReturnType = new TypeToken<VendorRow>(){}.getType();
+    public ApiResponse<BooksVendorRow> postBooksVendorsWithHttpInfo(@javax.annotation.Nonnull BooksVendorRow booksVendorRow) throws ApiException {
+        okhttp3.Call localVarCall = postBooksVendorsValidateBeforeCall(booksVendorRow, null);
+        Type localVarReturnType = new TypeToken<BooksVendorRow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Creates or updates one vendor in the org&#39;s vendor book, keyed by its canonical name — writing a canonical name that already exists REPLACES that row&#39;s aliases and default category. (asynchronously)
      * Creates or updates one vendor in the org&#39;s vendor book, keyed by its canonical name — writing a canonical name that already exists REPLACES that row&#39;s aliases and default category. A category given as a slug (\&quot;software\&quot;) is normalized to its real COA expense account, and anything unrecognized becomes 5900 Uncategorized rather than a guessed real account. It answers the row exactly as stored, so the caller sees the normalization. Recording a vendor is what makes future bills from it self-classify instead of asking again.
-     * @param vendorRow  (required)
+     * @param booksVendorRow  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3265,12 +3190,13 @@ public class BooksApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBooksVendorsAsync(@javax.annotation.Nonnull VendorRow vendorRow, final ApiCallback<VendorRow> _callback) throws ApiException {
+    public okhttp3.Call postBooksVendorsAsync(@javax.annotation.Nonnull BooksVendorRow booksVendorRow, final ApiCallback<BooksVendorRow> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postBooksVendorsValidateBeforeCall(vendorRow, _callback);
-        Type localVarReturnType = new TypeToken<VendorRow>(){}.getType();
+        okhttp3.Call localVarCall = postBooksVendorsValidateBeforeCall(booksVendorRow, _callback);
+        Type localVarReturnType = new TypeToken<BooksVendorRow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

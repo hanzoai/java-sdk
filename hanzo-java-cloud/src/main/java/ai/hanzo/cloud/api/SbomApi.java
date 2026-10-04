@@ -27,9 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.SbomHealth;
-import ai.hanzo.cloud.model.SbomIngest;
-import ai.hanzo.cloud.model.SbomIngested;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.SbomSbomHealth;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -84,6 +83,7 @@ public class SbomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSbomHealthCall(final ApiCallback _callback) throws ApiException {
@@ -112,7 +112,8 @@ public class SbomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -139,35 +140,37 @@ public class SbomApi {
     /**
      * Health is a pure liveness probe: the service is up; datastore reflects whether the datastore store is connected.
      * Health is a pure liveness probe: the service is up; datastore reflects whether the datastore store is connected. Not JWT-gated, always 200 (a disconnected datastore is degraded-but-alive; the data endpoints report that as 503).
-     * @return SbomHealth
+     * @return SbomSbomHealth
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SbomHealth getSbomHealth() throws ApiException {
-        ApiResponse<SbomHealth> localVarResp = getSbomHealthWithHttpInfo();
+    public SbomSbomHealth getSbomHealth() throws ApiException {
+        ApiResponse<SbomSbomHealth> localVarResp = getSbomHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Health is a pure liveness probe: the service is up; datastore reflects whether the datastore store is connected.
      * Health is a pure liveness probe: the service is up; datastore reflects whether the datastore store is connected. Not JWT-gated, always 200 (a disconnected datastore is degraded-but-alive; the data endpoints report that as 503).
-     * @return ApiResponse&lt;SbomHealth&gt;
+     * @return ApiResponse&lt;SbomSbomHealth&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SbomHealth> getSbomHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<SbomSbomHealth> getSbomHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getSbomHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<SbomHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<SbomSbomHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -182,139 +185,13 @@ public class SbomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSbomHealthAsync(final ApiCallback<SbomHealth> _callback) throws ApiException {
+    public okhttp3.Call getSbomHealthAsync(final ApiCallback<SbomSbomHealth> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSbomHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<SbomHealth>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postSbom
-     * @param sbomIngest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postSbomCall(@javax.annotation.Nonnull SbomIngest sbomIngest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = sbomIngest;
-
-        // create path and map variables
-        String localVarPath = "/v1/sbom";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postSbomValidateBeforeCall(@javax.annotation.Nonnull SbomIngest sbomIngest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'sbomIngest' is set
-        if (sbomIngest == null) {
-            throw new ApiException("Missing the required parameter 'sbomIngest' when calling postSbom(Async)");
-        }
-
-        return postSbomCall(sbomIngest, _callback);
-
-    }
-
-    /**
-     * Ingest persists a CycloneDX SBOM&#39;s components keyed by image digest.
-     * Ingest persists a CycloneDX SBOM&#39;s components keyed by image digest. Gated to a validated SuperAdmin (owner &#x3D;&#x3D; AdminOrg) — the canonical cloud super-admin check, which the build fleet / CI carries. Re-ingest is idempotent: rows share the (digest, name, version, purl) ORDER BY, so ReplacingMergeTree keeps the latest by ingested_at (and resolve reads FINAL).
-     * @param sbomIngest  (required)
-     * @return SbomIngested
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public SbomIngested postSbom(@javax.annotation.Nonnull SbomIngest sbomIngest) throws ApiException {
-        ApiResponse<SbomIngested> localVarResp = postSbomWithHttpInfo(sbomIngest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Ingest persists a CycloneDX SBOM&#39;s components keyed by image digest.
-     * Ingest persists a CycloneDX SBOM&#39;s components keyed by image digest. Gated to a validated SuperAdmin (owner &#x3D;&#x3D; AdminOrg) — the canonical cloud super-admin check, which the build fleet / CI carries. Re-ingest is idempotent: rows share the (digest, name, version, purl) ORDER BY, so ReplacingMergeTree keeps the latest by ingested_at (and resolve reads FINAL).
-     * @param sbomIngest  (required)
-     * @return ApiResponse&lt;SbomIngested&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<SbomIngested> postSbomWithHttpInfo(@javax.annotation.Nonnull SbomIngest sbomIngest) throws ApiException {
-        okhttp3.Call localVarCall = postSbomValidateBeforeCall(sbomIngest, null);
-        Type localVarReturnType = new TypeToken<SbomIngested>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Ingest persists a CycloneDX SBOM&#39;s components keyed by image digest. (asynchronously)
-     * Ingest persists a CycloneDX SBOM&#39;s components keyed by image digest. Gated to a validated SuperAdmin (owner &#x3D;&#x3D; AdminOrg) — the canonical cloud super-admin check, which the build fleet / CI carries. Re-ingest is idempotent: rows share the (digest, name, version, purl) ORDER BY, so ReplacingMergeTree keeps the latest by ingested_at (and resolve reads FINAL).
-     * @param sbomIngest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postSbomAsync(@javax.annotation.Nonnull SbomIngest sbomIngest, final ApiCallback<SbomIngested> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postSbomValidateBeforeCall(sbomIngest, _callback);
-        Type localVarReturnType = new TypeToken<SbomIngested>(){}.getType();
+        Type localVarReturnType = new TypeToken<SbomSbomHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

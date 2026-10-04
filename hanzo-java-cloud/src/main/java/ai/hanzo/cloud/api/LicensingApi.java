@@ -36,10 +36,9 @@ import ai.hanzo.cloud.model.LicensingPubkeyView;
 import ai.hanzo.cloud.model.LicensingRelease;
 import ai.hanzo.cloud.model.LicensingReleaseAsset;
 import ai.hanzo.cloud.model.LicensingReleaseList;
-import ai.hanzo.cloud.model.LicensingRevokeRequest;
-import ai.hanzo.cloud.model.LicensingRevokeResponse;
 import ai.hanzo.cloud.model.LicensingVerifyRequest;
 import ai.hanzo.cloud.model.LicensingVerifyResponse;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -97,6 +96,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicensingDownloadByReleaseCall(@javax.annotation.Nonnull String release, @javax.annotation.Nullable String xLicenseToken, @javax.annotation.Nullable String token, final ApiCallback _callback) throws ApiException {
@@ -130,7 +130,8 @@ public class LicensingApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -177,6 +178,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public LicensingReleaseAsset getLicensingDownloadByRelease(@javax.annotation.Nonnull String release, @javax.annotation.Nullable String xLicenseToken, @javax.annotation.Nullable String token) throws ApiException {
@@ -197,6 +199,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<LicensingReleaseAsset> getLicensingDownloadByReleaseWithHttpInfo(@javax.annotation.Nonnull String release, @javax.annotation.Nullable String xLicenseToken, @javax.annotation.Nullable String token) throws ApiException {
@@ -219,6 +222,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicensingDownloadByReleaseAsync(@javax.annotation.Nonnull String release, @javax.annotation.Nullable String xLicenseToken, @javax.annotation.Nullable String token, final ApiCallback<LicensingReleaseAsset> _callback) throws ApiException {
@@ -238,6 +242,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicensingHealthzCall(final ApiCallback _callback) throws ApiException {
@@ -266,7 +271,8 @@ public class LicensingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -292,7 +298,7 @@ public class LicensingApi {
 
     /**
      * Health reports which signer this deployment mints with, and in which env.
-     * Health reports which signer this deployment mints with, and in which env.  It answers 200 whenever the process is up: there is nothing downstream to probe, since the KMS is reached only when a token is actually minted. Its value is the &#x60;signer&#x60; field — &#x60;\&quot;signer\&quot;:\&quot;local\&quot;&#x60; on a production host says that deployment is signing licenses with a development key, which is a misconfiguration worth paging on rather than a healthy 200.
+     * Health reports which signer this deployment mints with, and in which env.  It answers 200 whenever the process is up: there is nothing downstream to probe, since KMS is read only when a token is actually minted. Its value is the &#x60;signer&#x60; field — &#x60;\&quot;signer\&quot;:\&quot;local\&quot;&#x60; on a production host says that deployment is signing licenses with a development key, which is a misconfiguration worth paging on rather than a healthy 200.
      * @return LicensingHealthView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -300,6 +306,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public LicensingHealthView getLicensingHealthz() throws ApiException {
@@ -309,7 +316,7 @@ public class LicensingApi {
 
     /**
      * Health reports which signer this deployment mints with, and in which env.
-     * Health reports which signer this deployment mints with, and in which env.  It answers 200 whenever the process is up: there is nothing downstream to probe, since the KMS is reached only when a token is actually minted. Its value is the &#x60;signer&#x60; field — &#x60;\&quot;signer\&quot;:\&quot;local\&quot;&#x60; on a production host says that deployment is signing licenses with a development key, which is a misconfiguration worth paging on rather than a healthy 200.
+     * Health reports which signer this deployment mints with, and in which env.  It answers 200 whenever the process is up: there is nothing downstream to probe, since KMS is read only when a token is actually minted. Its value is the &#x60;signer&#x60; field — &#x60;\&quot;signer\&quot;:\&quot;local\&quot;&#x60; on a production host says that deployment is signing licenses with a development key, which is a misconfiguration worth paging on rather than a healthy 200.
      * @return ApiResponse&lt;LicensingHealthView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -317,6 +324,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<LicensingHealthView> getLicensingHealthzWithHttpInfo() throws ApiException {
@@ -327,7 +335,7 @@ public class LicensingApi {
 
     /**
      * Health reports which signer this deployment mints with, and in which env. (asynchronously)
-     * Health reports which signer this deployment mints with, and in which env.  It answers 200 whenever the process is up: there is nothing downstream to probe, since the KMS is reached only when a token is actually minted. Its value is the &#x60;signer&#x60; field — &#x60;\&quot;signer\&quot;:\&quot;local\&quot;&#x60; on a production host says that deployment is signing licenses with a development key, which is a misconfiguration worth paging on rather than a healthy 200.
+     * Health reports which signer this deployment mints with, and in which env.  It answers 200 whenever the process is up: there is nothing downstream to probe, since KMS is read only when a token is actually minted. Its value is the &#x60;signer&#x60; field — &#x60;\&quot;signer\&quot;:\&quot;local\&quot;&#x60; on a production host says that deployment is signing licenses with a development key, which is a misconfiguration worth paging on rather than a healthy 200.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -336,6 +344,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicensingHealthzAsync(final ApiCallback<LicensingHealthView> _callback) throws ApiException {
@@ -355,6 +364,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicensingJwksCall(final ApiCallback _callback) throws ApiException {
@@ -383,7 +393,8 @@ public class LicensingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -409,7 +420,7 @@ public class LicensingApi {
 
     /**
      * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks.
-     * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks.  This is the only public-safe surface here and the reason the whole scheme works offline: the engine embeds or fetches this key once and then verifies every license itself, with no call home per launch. The private half never enters this process — it lives in the KMS — so nothing served here is a secret. &#x60;provider&#x60; names the KMS holding that half; &#x60;\&quot;local\&quot;&#x60; means a development key, and a token signed by one is not a production credential.
+     * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks.  This is the only public-safe surface here and the reason the whole scheme works offline: the engine embeds or fetches this key once and then verifies every license itself, with no call home per launch. The private half lives in KMS, so nothing served here is a secret. &#x60;provider&#x60; names where that half lives: &#x60;\&quot;kms\&quot;&#x60; is the production key every engine embeds; &#x60;\&quot;local\&quot;&#x60; is a development key, and a token signed by one is not a production credential.
      * @return LicensingPubkeyView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -417,6 +428,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public LicensingPubkeyView getLicensingJwks() throws ApiException {
@@ -426,7 +438,7 @@ public class LicensingApi {
 
     /**
      * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks.
-     * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks.  This is the only public-safe surface here and the reason the whole scheme works offline: the engine embeds or fetches this key once and then verifies every license itself, with no call home per launch. The private half never enters this process — it lives in the KMS — so nothing served here is a secret. &#x60;provider&#x60; names the KMS holding that half; &#x60;\&quot;local\&quot;&#x60; means a development key, and a token signed by one is not a production credential.
+     * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks.  This is the only public-safe surface here and the reason the whole scheme works offline: the engine embeds or fetches this key once and then verifies every license itself, with no call home per launch. The private half lives in KMS, so nothing served here is a secret. &#x60;provider&#x60; names where that half lives: &#x60;\&quot;kms\&quot;&#x60; is the production key every engine embeds; &#x60;\&quot;local\&quot;&#x60; is a development key, and a token signed by one is not a production credential.
      * @return ApiResponse&lt;LicensingPubkeyView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -434,6 +446,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<LicensingPubkeyView> getLicensingJwksWithHttpInfo() throws ApiException {
@@ -444,7 +457,7 @@ public class LicensingApi {
 
     /**
      * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks. (asynchronously)
-     * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks.  This is the only public-safe surface here and the reason the whole scheme works offline: the engine embeds or fetches this key once and then verifies every license itself, with no call home per launch. The private half never enters this process — it lives in the KMS — so nothing served here is a secret. &#x60;provider&#x60; names the KMS holding that half; &#x60;\&quot;local\&quot;&#x60; means a development key, and a token signed by one is not a production credential.
+     * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks.  This is the only public-safe surface here and the reason the whole scheme works offline: the engine embeds or fetches this key once and then verifies every license itself, with no call home per launch. The private half lives in KMS, so nothing served here is a secret. &#x60;provider&#x60; names where that half lives: &#x60;\&quot;kms\&quot;&#x60; is the production key every engine embeds; &#x60;\&quot;local\&quot;&#x60; is a development key, and a token signed by one is not a production credential.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -453,6 +466,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicensingJwksAsync(final ApiCallback<LicensingPubkeyView> _callback) throws ApiException {
@@ -472,6 +486,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicensingPubkeyCall(final ApiCallback _callback) throws ApiException {
@@ -500,7 +515,8 @@ public class LicensingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -526,7 +542,7 @@ public class LicensingApi {
 
     /**
      * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks.
-     * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks.  This is the only public-safe surface here and the reason the whole scheme works offline: the engine embeds or fetches this key once and then verifies every license itself, with no call home per launch. The private half never enters this process — it lives in the KMS — so nothing served here is a secret. &#x60;provider&#x60; names the KMS holding that half; &#x60;\&quot;local\&quot;&#x60; means a development key, and a token signed by one is not a production credential.
+     * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks.  This is the only public-safe surface here and the reason the whole scheme works offline: the engine embeds or fetches this key once and then verifies every license itself, with no call home per launch. The private half lives in KMS, so nothing served here is a secret. &#x60;provider&#x60; names where that half lives: &#x60;\&quot;kms\&quot;&#x60; is the production key every engine embeds; &#x60;\&quot;local\&quot;&#x60; is a development key, and a token signed by one is not a production credential.
      * @return LicensingPubkeyView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -534,6 +550,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public LicensingPubkeyView getLicensingPubkey() throws ApiException {
@@ -543,7 +560,7 @@ public class LicensingApi {
 
     /**
      * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks.
-     * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks.  This is the only public-safe surface here and the reason the whole scheme works offline: the engine embeds or fetches this key once and then verifies every license itself, with no call home per launch. The private half never enters this process — it lives in the KMS — so nothing served here is a secret. &#x60;provider&#x60; names the KMS holding that half; &#x60;\&quot;local\&quot;&#x60; means a development key, and a token signed by one is not a production credential.
+     * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks.  This is the only public-safe surface here and the reason the whole scheme works offline: the engine embeds or fetches this key once and then verifies every license itself, with no call home per launch. The private half lives in KMS, so nothing served here is a secret. &#x60;provider&#x60; names where that half lives: &#x60;\&quot;kms\&quot;&#x60; is the production key every engine embeds; &#x60;\&quot;local\&quot;&#x60; is a development key, and a token signed by one is not a production credential.
      * @return ApiResponse&lt;LicensingPubkeyView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -551,6 +568,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<LicensingPubkeyView> getLicensingPubkeyWithHttpInfo() throws ApiException {
@@ -561,7 +579,7 @@ public class LicensingApi {
 
     /**
      * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks. (asynchronously)
-     * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks.  This is the only public-safe surface here and the reason the whole scheme works offline: the engine embeds or fetches this key once and then verifies every license itself, with no call home per launch. The private half never enters this process — it lives in the KMS — so nothing served here is a secret. &#x60;provider&#x60; names the KMS holding that half; &#x60;\&quot;local\&quot;&#x60; means a development key, and a token signed by one is not a production credential.
+     * Pubkey publishes the Ed25519 PUBLIC verification key, at both /pubkey and /jwks.  This is the only public-safe surface here and the reason the whole scheme works offline: the engine embeds or fetches this key once and then verifies every license itself, with no call home per launch. The private half lives in KMS, so nothing served here is a secret. &#x60;provider&#x60; names where that half lives: &#x60;\&quot;kms\&quot;&#x60; is the production key every engine embeds; &#x60;\&quot;local\&quot;&#x60; is a development key, and a token signed by one is not a production credential.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -570,6 +588,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicensingPubkeyAsync(final ApiCallback<LicensingPubkeyView> _callback) throws ApiException {
@@ -589,6 +608,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicensingReleasesCall(final ApiCallback _callback) throws ApiException {
@@ -617,7 +637,8 @@ public class LicensingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -651,6 +672,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public LicensingReleaseList getLicensingReleases() throws ApiException {
@@ -668,6 +690,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<LicensingReleaseList> getLicensingReleasesWithHttpInfo() throws ApiException {
@@ -687,6 +710,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicensingReleasesAsync(final ApiCallback<LicensingReleaseList> _callback) throws ApiException {
@@ -707,6 +731,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicensingReleasesByReleaseCall(@javax.annotation.Nonnull String release, final ApiCallback _callback) throws ApiException {
@@ -736,7 +761,8 @@ public class LicensingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -776,6 +802,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public LicensingRelease getLicensingReleasesByRelease(@javax.annotation.Nonnull String release) throws ApiException {
@@ -794,6 +821,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<LicensingRelease> getLicensingReleasesByReleaseWithHttpInfo(@javax.annotation.Nonnull String release) throws ApiException {
@@ -814,6 +842,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLicensingReleasesByReleaseAsync(@javax.annotation.Nonnull String release, final ApiCallback<LicensingRelease> _callback) throws ApiException {
@@ -834,6 +863,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postLicensingFingerprintCall(@javax.annotation.Nonnull LicensingFingerprintRequest licensingFingerprintRequest, final ApiCallback _callback) throws ApiException {
@@ -862,7 +892,8 @@ public class LicensingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -903,6 +934,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public LicensingFingerprintResponse postLicensingFingerprint(@javax.annotation.Nonnull LicensingFingerprintRequest licensingFingerprintRequest) throws ApiException {
@@ -921,6 +953,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<LicensingFingerprintResponse> postLicensingFingerprintWithHttpInfo(@javax.annotation.Nonnull LicensingFingerprintRequest licensingFingerprintRequest) throws ApiException {
@@ -941,6 +974,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postLicensingFingerprintAsync(@javax.annotation.Nonnull LicensingFingerprintRequest licensingFingerprintRequest, final ApiCallback<LicensingFingerprintResponse> _callback) throws ApiException {
@@ -961,6 +995,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postLicensingIssueCall(@javax.annotation.Nonnull LicensingIssueRequest licensingIssueRequest, final ApiCallback _callback) throws ApiException {
@@ -989,7 +1024,8 @@ public class LicensingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1021,7 +1057,7 @@ public class LicensingApi {
 
     /**
      * Issue mints a signed license token for a product the caller&#39;s org already pays for.
-     * Issue mints a signed license token for a product the caller&#39;s org already pays for.  The order is the whole security argument: the caller is an IAM-validated principal, commerce is then asked whether that principal&#39;s ORG holds an ACTIVE entitlement for the product, and only then is a token signed — by the KMS, never by key material in this process. A product the org does not own answers 403 and no token. The signed features are the plan&#39;s features verbatim, so the engine enforces exactly what was bought, and the expiry is clamped to the entitlement&#39;s so a token cannot outlive the subscription that paid for it.  The token is the credential the engine runs on. Treat it as a secret.
+     * Issue mints a signed license token for a product the caller&#39;s org already pays for.  The order is the whole security argument: the caller is an IAM-validated principal, commerce is then asked whether that principal&#39;s ORG holds an ACTIVE entitlement for the product, and only then is a token signed, with the production key KMS holds. A product the org does not own answers 403 and no token. The signed features are the plan&#39;s features verbatim, so the engine enforces exactly what was bought, and the expiry is clamped to the entitlement&#39;s so a token cannot outlive the subscription that paid for it.  The token is the credential the engine runs on. Treat it as a secret.
      * @param licensingIssueRequest  (required)
      * @return LicensingIssueResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1030,6 +1066,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public LicensingIssueResponse postLicensingIssue(@javax.annotation.Nonnull LicensingIssueRequest licensingIssueRequest) throws ApiException {
@@ -1039,7 +1076,7 @@ public class LicensingApi {
 
     /**
      * Issue mints a signed license token for a product the caller&#39;s org already pays for.
-     * Issue mints a signed license token for a product the caller&#39;s org already pays for.  The order is the whole security argument: the caller is an IAM-validated principal, commerce is then asked whether that principal&#39;s ORG holds an ACTIVE entitlement for the product, and only then is a token signed — by the KMS, never by key material in this process. A product the org does not own answers 403 and no token. The signed features are the plan&#39;s features verbatim, so the engine enforces exactly what was bought, and the expiry is clamped to the entitlement&#39;s so a token cannot outlive the subscription that paid for it.  The token is the credential the engine runs on. Treat it as a secret.
+     * Issue mints a signed license token for a product the caller&#39;s org already pays for.  The order is the whole security argument: the caller is an IAM-validated principal, commerce is then asked whether that principal&#39;s ORG holds an ACTIVE entitlement for the product, and only then is a token signed, with the production key KMS holds. A product the org does not own answers 403 and no token. The signed features are the plan&#39;s features verbatim, so the engine enforces exactly what was bought, and the expiry is clamped to the entitlement&#39;s so a token cannot outlive the subscription that paid for it.  The token is the credential the engine runs on. Treat it as a secret.
      * @param licensingIssueRequest  (required)
      * @return ApiResponse&lt;LicensingIssueResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1048,6 +1085,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<LicensingIssueResponse> postLicensingIssueWithHttpInfo(@javax.annotation.Nonnull LicensingIssueRequest licensingIssueRequest) throws ApiException {
@@ -1058,7 +1096,7 @@ public class LicensingApi {
 
     /**
      * Issue mints a signed license token for a product the caller&#39;s org already pays for. (asynchronously)
-     * Issue mints a signed license token for a product the caller&#39;s org already pays for.  The order is the whole security argument: the caller is an IAM-validated principal, commerce is then asked whether that principal&#39;s ORG holds an ACTIVE entitlement for the product, and only then is a token signed — by the KMS, never by key material in this process. A product the org does not own answers 403 and no token. The signed features are the plan&#39;s features verbatim, so the engine enforces exactly what was bought, and the expiry is clamped to the entitlement&#39;s so a token cannot outlive the subscription that paid for it.  The token is the credential the engine runs on. Treat it as a secret.
+     * Issue mints a signed license token for a product the caller&#39;s org already pays for.  The order is the whole security argument: the caller is an IAM-validated principal, commerce is then asked whether that principal&#39;s ORG holds an ACTIVE entitlement for the product, and only then is a token signed, with the production key KMS holds. A product the org does not own answers 403 and no token. The signed features are the plan&#39;s features verbatim, so the engine enforces exactly what was bought, and the expiry is clamped to the entitlement&#39;s so a token cannot outlive the subscription that paid for it.  The token is the credential the engine runs on. Treat it as a secret.
      * @param licensingIssueRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1068,266 +1106,13 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postLicensingIssueAsync(@javax.annotation.Nonnull LicensingIssueRequest licensingIssueRequest, final ApiCallback<LicensingIssueResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postLicensingIssueValidateBeforeCall(licensingIssueRequest, _callback);
         Type localVarReturnType = new TypeToken<LicensingIssueResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postLicensingReleases
-     * @param licensingRelease  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postLicensingReleasesCall(@javax.annotation.Nonnull LicensingRelease licensingRelease, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = licensingRelease;
-
-        // create path and map variables
-        String localVarPath = "/v1/licensing/releases";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postLicensingReleasesValidateBeforeCall(@javax.annotation.Nonnull LicensingRelease licensingRelease, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'licensingRelease' is set
-        if (licensingRelease == null) {
-            throw new ApiException("Missing the required parameter 'licensingRelease' when calling postLicensingReleases(Async)");
-        }
-
-        return postLicensingReleasesCall(licensingRelease, _callback);
-
-    }
-
-    /**
-     * Publishes a signed binary release, answering 201 Created.
-     * Publishes a signed binary release, answering 201 Created.  Outside dev a release MUST carry its cosign signature: this is how a binary becomes downloadable, so accepting an unsigned one would let an unverifiable artifact into the distribution path. Org-admin only — publishing is an operator action, not something a licensee does.
-     * @param licensingRelease  (required)
-     * @return LicensingRelease
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public LicensingRelease postLicensingReleases(@javax.annotation.Nonnull LicensingRelease licensingRelease) throws ApiException {
-        ApiResponse<LicensingRelease> localVarResp = postLicensingReleasesWithHttpInfo(licensingRelease);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Publishes a signed binary release, answering 201 Created.
-     * Publishes a signed binary release, answering 201 Created.  Outside dev a release MUST carry its cosign signature: this is how a binary becomes downloadable, so accepting an unsigned one would let an unverifiable artifact into the distribution path. Org-admin only — publishing is an operator action, not something a licensee does.
-     * @param licensingRelease  (required)
-     * @return ApiResponse&lt;LicensingRelease&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<LicensingRelease> postLicensingReleasesWithHttpInfo(@javax.annotation.Nonnull LicensingRelease licensingRelease) throws ApiException {
-        okhttp3.Call localVarCall = postLicensingReleasesValidateBeforeCall(licensingRelease, null);
-        Type localVarReturnType = new TypeToken<LicensingRelease>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Publishes a signed binary release, answering 201 Created. (asynchronously)
-     * Publishes a signed binary release, answering 201 Created.  Outside dev a release MUST carry its cosign signature: this is how a binary becomes downloadable, so accepting an unsigned one would let an unverifiable artifact into the distribution path. Org-admin only — publishing is an operator action, not something a licensee does.
-     * @param licensingRelease  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postLicensingReleasesAsync(@javax.annotation.Nonnull LicensingRelease licensingRelease, final ApiCallback<LicensingRelease> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postLicensingReleasesValidateBeforeCall(licensingRelease, _callback);
-        Type localVarReturnType = new TypeToken<LicensingRelease>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postLicensingRevoke
-     * @param licensingRevokeRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postLicensingRevokeCall(@javax.annotation.Nonnull LicensingRevokeRequest licensingRevokeRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = licensingRevokeRequest;
-
-        // create path and map variables
-        String localVarPath = "/v1/licensing/revoke";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postLicensingRevokeValidateBeforeCall(@javax.annotation.Nonnull LicensingRevokeRequest licensingRevokeRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'licensingRevokeRequest' is set
-        if (licensingRevokeRequest == null) {
-            throw new ApiException("Missing the required parameter 'licensingRevokeRequest' when calling postLicensingRevoke(Async)");
-        }
-
-        return postLicensingRevokeCall(licensingRevokeRequest, _callback);
-
-    }
-
-    /**
-     * Revoke turns off tokens that have already been issued.
-     * Revoke turns off tokens that have already been issued.  A signed token cannot be un-signed, so revocation is the only way to withdraw one: this appends an entry that verify and the license-gated download both consult. It is a POST rather than a DELETE because it APPENDS a durable, attributed record — the entry names the admin who recorded it and when — rather than removing one.  Org-admin only. Scope it as narrowly as the incident allows: \&quot;nonce\&quot; for one leaked token, \&quot;holder\&quot; for one compromised account, \&quot;fingerprint\&quot; for one stolen machine, \&quot;release\&quot; when a whole build is bad.
-     * @param licensingRevokeRequest  (required)
-     * @return LicensingRevokeResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public LicensingRevokeResponse postLicensingRevoke(@javax.annotation.Nonnull LicensingRevokeRequest licensingRevokeRequest) throws ApiException {
-        ApiResponse<LicensingRevokeResponse> localVarResp = postLicensingRevokeWithHttpInfo(licensingRevokeRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Revoke turns off tokens that have already been issued.
-     * Revoke turns off tokens that have already been issued.  A signed token cannot be un-signed, so revocation is the only way to withdraw one: this appends an entry that verify and the license-gated download both consult. It is a POST rather than a DELETE because it APPENDS a durable, attributed record — the entry names the admin who recorded it and when — rather than removing one.  Org-admin only. Scope it as narrowly as the incident allows: \&quot;nonce\&quot; for one leaked token, \&quot;holder\&quot; for one compromised account, \&quot;fingerprint\&quot; for one stolen machine, \&quot;release\&quot; when a whole build is bad.
-     * @param licensingRevokeRequest  (required)
-     * @return ApiResponse&lt;LicensingRevokeResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<LicensingRevokeResponse> postLicensingRevokeWithHttpInfo(@javax.annotation.Nonnull LicensingRevokeRequest licensingRevokeRequest) throws ApiException {
-        okhttp3.Call localVarCall = postLicensingRevokeValidateBeforeCall(licensingRevokeRequest, null);
-        Type localVarReturnType = new TypeToken<LicensingRevokeResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Revoke turns off tokens that have already been issued. (asynchronously)
-     * Revoke turns off tokens that have already been issued.  A signed token cannot be un-signed, so revocation is the only way to withdraw one: this appends an entry that verify and the license-gated download both consult. It is a POST rather than a DELETE because it APPENDS a durable, attributed record — the entry names the admin who recorded it and when — rather than removing one.  Org-admin only. Scope it as narrowly as the incident allows: \&quot;nonce\&quot; for one leaked token, \&quot;holder\&quot; for one compromised account, \&quot;fingerprint\&quot; for one stolen machine, \&quot;release\&quot; when a whole build is bad.
-     * @param licensingRevokeRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postLicensingRevokeAsync(@javax.annotation.Nonnull LicensingRevokeRequest licensingRevokeRequest, final ApiCallback<LicensingRevokeResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postLicensingRevokeValidateBeforeCall(licensingRevokeRequest, _callback);
-        Type localVarReturnType = new TypeToken<LicensingRevokeResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1342,6 +1127,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postLicensingVerifyCall(@javax.annotation.Nonnull LicensingVerifyRequest licensingVerifyRequest, final ApiCallback _callback) throws ApiException {
@@ -1370,7 +1156,8 @@ public class LicensingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1411,6 +1198,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public LicensingVerifyResponse postLicensingVerify(@javax.annotation.Nonnull LicensingVerifyRequest licensingVerifyRequest) throws ApiException {
@@ -1429,6 +1217,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<LicensingVerifyResponse> postLicensingVerifyWithHttpInfo(@javax.annotation.Nonnull LicensingVerifyRequest licensingVerifyRequest) throws ApiException {
@@ -1449,6 +1238,7 @@ public class LicensingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postLicensingVerifyAsync(@javax.annotation.Nonnull LicensingVerifyRequest licensingVerifyRequest, final ApiCallback<LicensingVerifyResponse> _callback) throws ApiException {

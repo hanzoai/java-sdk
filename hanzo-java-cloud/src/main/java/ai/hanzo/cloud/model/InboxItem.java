@@ -100,7 +100,7 @@ public class InboxItem {
   }
 
   /**
-   * Category is the expense account the scanner proposed, as a chart number — a PROPOSAL, not a posting: nothing is booked until it is accepted.
+   * Get category
    * @return category
    */
   @javax.annotation.Nullable
@@ -119,7 +119,7 @@ public class InboxItem {
   }
 
   /**
-   * Confidence is how sure the scanner is of that reading, and is the signal for whether a person needs to check it before it is booked.
+   * Get confidence
    * @return confidence
    */
   @javax.annotation.Nullable
@@ -138,7 +138,7 @@ public class InboxItem {
   }
 
   /**
-   * CreatedAt is when the document was uploaded.
+   * Get createdAt
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -157,7 +157,7 @@ public class InboxItem {
   }
 
   /**
-   * Extracted is what the scanner read off the document. Absent until it has been scanned, so its absence is \&quot;not read yet\&quot;, never \&quot;nothing on it\&quot;.
+   * Get extracted
    * @return extracted
    */
   @javax.annotation.Nullable
@@ -176,7 +176,7 @@ public class InboxItem {
   }
 
   /**
-   * Filename is the name the document was uploaded under, for a person to recognise it by. It is not part of the item&#39;s identity.
+   * Get filename
    * @return filename
    */
   @javax.annotation.Nullable
@@ -195,7 +195,7 @@ public class InboxItem {
   }
 
   /**
-   * ID is the CONTENT HASH of the uploaded bytes, which is what makes the queue idempotent: re-uploading the same document returns this item rather than adding a second one. It is also the id the scan of this document carries.
+   * Get id
    * @return id
    */
   @javax.annotation.Nullable
@@ -214,7 +214,7 @@ public class InboxItem {
   }
 
   /**
-   * Status is where the document is in the queue — unsorted until the scanner has read it, and thereafter whether it is waiting on a person or has been booked.
+   * Get status
    * @return status
    */
   @javax.annotation.Nullable
@@ -233,7 +233,7 @@ public class InboxItem {
   }
 
   /**
-   * Vendor is the supplier the scanner identified, surfaced beside the item so a queue renders without opening each document.
+   * Get vendor
    * @return vendor
    */
   @javax.annotation.Nullable

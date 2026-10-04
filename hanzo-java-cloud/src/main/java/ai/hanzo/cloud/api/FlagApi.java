@@ -27,12 +27,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.ActivityOut;
-import ai.hanzo.cloud.model.DefRow;
-import ai.hanzo.cloud.model.DefsOut;
-import ai.hanzo.cloud.model.DeletedOut;
-import ai.hanzo.cloud.model.EvaluateIn;
-import ai.hanzo.cloud.model.HealthOut;
+import ai.hanzo.cloud.model.FlagActivityOut;
+import ai.hanzo.cloud.model.FlagDefRow;
+import ai.hanzo.cloud.model.FlagDefsOut;
+import ai.hanzo.cloud.model.FlagDeletedOut;
+import ai.hanzo.cloud.model.FlagEvaluateIn;
+import ai.hanzo.cloud.model.FlagHealthOut;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -88,6 +89,7 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteFlagDefsByKeyCall(@javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
@@ -117,7 +119,8 @@ public class FlagApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -148,44 +151,46 @@ public class FlagApi {
 
     /**
      * Removes one flag definition by key and records the deletion in the change log.
-     * Removes one flag definition by key and records the deletion in the change log. A key the caller&#39;s store does not hold is a 404.
+     * Removes one flag definition by key and records the deletion in the change log. A key the caller&#39;s store does not hold is a 404. A staged capability&#39;s key is a SuperAdmin&#39;s to remove, as it is to set, and every other key an owner&#39;s or admin&#39;s of the org.
      * @param key Key is the flag key to act on, from the path. (required)
-     * @return DeletedOut
+     * @return FlagDeletedOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DeletedOut deleteFlagDefsByKey(@javax.annotation.Nonnull String key) throws ApiException {
-        ApiResponse<DeletedOut> localVarResp = deleteFlagDefsByKeyWithHttpInfo(key);
+    public FlagDeletedOut deleteFlagDefsByKey(@javax.annotation.Nonnull String key) throws ApiException {
+        ApiResponse<FlagDeletedOut> localVarResp = deleteFlagDefsByKeyWithHttpInfo(key);
         return localVarResp.getData();
     }
 
     /**
      * Removes one flag definition by key and records the deletion in the change log.
-     * Removes one flag definition by key and records the deletion in the change log. A key the caller&#39;s store does not hold is a 404.
+     * Removes one flag definition by key and records the deletion in the change log. A key the caller&#39;s store does not hold is a 404. A staged capability&#39;s key is a SuperAdmin&#39;s to remove, as it is to set, and every other key an owner&#39;s or admin&#39;s of the org.
      * @param key Key is the flag key to act on, from the path. (required)
-     * @return ApiResponse&lt;DeletedOut&gt;
+     * @return ApiResponse&lt;FlagDeletedOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeletedOut> deleteFlagDefsByKeyWithHttpInfo(@javax.annotation.Nonnull String key) throws ApiException {
+    public ApiResponse<FlagDeletedOut> deleteFlagDefsByKeyWithHttpInfo(@javax.annotation.Nonnull String key) throws ApiException {
         okhttp3.Call localVarCall = deleteFlagDefsByKeyValidateBeforeCall(key, null);
-        Type localVarReturnType = new TypeToken<DeletedOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<FlagDeletedOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Removes one flag definition by key and records the deletion in the change log. (asynchronously)
-     * Removes one flag definition by key and records the deletion in the change log. A key the caller&#39;s store does not hold is a 404.
+     * Removes one flag definition by key and records the deletion in the change log. A key the caller&#39;s store does not hold is a 404. A staged capability&#39;s key is a SuperAdmin&#39;s to remove, as it is to set, and every other key an owner&#39;s or admin&#39;s of the org.
      * @param key Key is the flag key to act on, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -195,12 +200,13 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteFlagDefsByKeyAsync(@javax.annotation.Nonnull String key, final ApiCallback<DeletedOut> _callback) throws ApiException {
+    public okhttp3.Call deleteFlagDefsByKeyAsync(@javax.annotation.Nonnull String key, final ApiCallback<FlagDeletedOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteFlagDefsByKeyValidateBeforeCall(key, _callback);
-        Type localVarReturnType = new TypeToken<DeletedOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<FlagDeletedOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -215,6 +221,7 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFlagActivityCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -247,7 +254,8 @@ public class FlagApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -275,17 +283,18 @@ public class FlagApi {
      * Returns the caller&#39;s flag change log newest-first: every create, update and delete, with the actor and the time.
      * Returns the caller&#39;s flag change log newest-first: every create, update and delete, with the actor and the time.
      * @param limit Limit caps the rows returned. 1–500; anything else takes the default 100. (optional)
-     * @return ActivityOut
+     * @return FlagActivityOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ActivityOut getFlagActivity(@javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<ActivityOut> localVarResp = getFlagActivityWithHttpInfo(limit);
+    public FlagActivityOut getFlagActivity(@javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<FlagActivityOut> localVarResp = getFlagActivityWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -293,18 +302,19 @@ public class FlagApi {
      * Returns the caller&#39;s flag change log newest-first: every create, update and delete, with the actor and the time.
      * Returns the caller&#39;s flag change log newest-first: every create, update and delete, with the actor and the time.
      * @param limit Limit caps the rows returned. 1–500; anything else takes the default 100. (optional)
-     * @return ApiResponse&lt;ActivityOut&gt;
+     * @return ApiResponse&lt;FlagActivityOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ActivityOut> getFlagActivityWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<FlagActivityOut> getFlagActivityWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getFlagActivityValidateBeforeCall(limit, null);
-        Type localVarReturnType = new TypeToken<ActivityOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<FlagActivityOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -320,12 +330,13 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFlagActivityAsync(@javax.annotation.Nullable Long limit, final ApiCallback<ActivityOut> _callback) throws ApiException {
+    public okhttp3.Call getFlagActivityAsync(@javax.annotation.Nullable Long limit, final ApiCallback<FlagActivityOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFlagActivityValidateBeforeCall(limit, _callback);
-        Type localVarReturnType = new TypeToken<ActivityOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<FlagActivityOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -339,6 +350,7 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFlagDefsCall(final ApiCallback _callback) throws ApiException {
@@ -367,7 +379,8 @@ public class FlagApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -394,35 +407,37 @@ public class FlagApi {
     /**
      * Returns every flag definition in the caller&#39;s (org, project) store, by key, with its version and who last changed it.
      * Returns every flag definition in the caller&#39;s (org, project) store, by key, with its version and who last changed it.
-     * @return DefsOut
+     * @return FlagDefsOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DefsOut getFlagDefs() throws ApiException {
-        ApiResponse<DefsOut> localVarResp = getFlagDefsWithHttpInfo();
+    public FlagDefsOut getFlagDefs() throws ApiException {
+        ApiResponse<FlagDefsOut> localVarResp = getFlagDefsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns every flag definition in the caller&#39;s (org, project) store, by key, with its version and who last changed it.
      * Returns every flag definition in the caller&#39;s (org, project) store, by key, with its version and who last changed it.
-     * @return ApiResponse&lt;DefsOut&gt;
+     * @return ApiResponse&lt;FlagDefsOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DefsOut> getFlagDefsWithHttpInfo() throws ApiException {
+    public ApiResponse<FlagDefsOut> getFlagDefsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getFlagDefsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<DefsOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<FlagDefsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -437,12 +452,13 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFlagDefsAsync(final ApiCallback<DefsOut> _callback) throws ApiException {
+    public okhttp3.Call getFlagDefsAsync(final ApiCallback<FlagDefsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFlagDefsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<DefsOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<FlagDefsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -457,6 +473,7 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFlagDefsByKeyCall(@javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
@@ -486,7 +503,8 @@ public class FlagApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -519,17 +537,18 @@ public class FlagApi {
      * Returns one flag definition by key, or 404 when the caller&#39;s store has none under that key.
      * Returns one flag definition by key, or 404 when the caller&#39;s store has none under that key.
      * @param key Key is the flag key to act on, from the path. (required)
-     * @return DefRow
+     * @return FlagDefRow
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DefRow getFlagDefsByKey(@javax.annotation.Nonnull String key) throws ApiException {
-        ApiResponse<DefRow> localVarResp = getFlagDefsByKeyWithHttpInfo(key);
+    public FlagDefRow getFlagDefsByKey(@javax.annotation.Nonnull String key) throws ApiException {
+        ApiResponse<FlagDefRow> localVarResp = getFlagDefsByKeyWithHttpInfo(key);
         return localVarResp.getData();
     }
 
@@ -537,18 +556,19 @@ public class FlagApi {
      * Returns one flag definition by key, or 404 when the caller&#39;s store has none under that key.
      * Returns one flag definition by key, or 404 when the caller&#39;s store has none under that key.
      * @param key Key is the flag key to act on, from the path. (required)
-     * @return ApiResponse&lt;DefRow&gt;
+     * @return ApiResponse&lt;FlagDefRow&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DefRow> getFlagDefsByKeyWithHttpInfo(@javax.annotation.Nonnull String key) throws ApiException {
+    public ApiResponse<FlagDefRow> getFlagDefsByKeyWithHttpInfo(@javax.annotation.Nonnull String key) throws ApiException {
         okhttp3.Call localVarCall = getFlagDefsByKeyValidateBeforeCall(key, null);
-        Type localVarReturnType = new TypeToken<DefRow>(){}.getType();
+        Type localVarReturnType = new TypeToken<FlagDefRow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -564,12 +584,13 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFlagDefsByKeyAsync(@javax.annotation.Nonnull String key, final ApiCallback<DefRow> _callback) throws ApiException {
+    public okhttp3.Call getFlagDefsByKeyAsync(@javax.annotation.Nonnull String key, final ApiCallback<FlagDefRow> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFlagDefsByKeyValidateBeforeCall(key, _callback);
-        Type localVarReturnType = new TypeToken<DefRow>(){}.getType();
+        Type localVarReturnType = new TypeToken<FlagDefRow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -583,6 +604,7 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFlagHealthCall(final ApiCallback _callback) throws ApiException {
@@ -611,7 +633,8 @@ public class FlagApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -636,43 +659,45 @@ public class FlagApi {
     }
 
     /**
-     * Health reports that the flag engine is serving.
-     * Health reports that the flag engine is serving. It is not gated: liveness must be probe-able without a token.
-     * @return HealthOut
+     * Reports that the flag engine is serving.
+     * Reports that the flag engine is serving. It is not gated: liveness must be probe-able without a token.
+     * @return FlagHealthOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public HealthOut getFlagHealth() throws ApiException {
-        ApiResponse<HealthOut> localVarResp = getFlagHealthWithHttpInfo();
+    public FlagHealthOut getFlagHealth() throws ApiException {
+        ApiResponse<FlagHealthOut> localVarResp = getFlagHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Health reports that the flag engine is serving.
-     * Health reports that the flag engine is serving. It is not gated: liveness must be probe-able without a token.
-     * @return ApiResponse&lt;HealthOut&gt;
+     * Reports that the flag engine is serving.
+     * Reports that the flag engine is serving. It is not gated: liveness must be probe-able without a token.
+     * @return ApiResponse&lt;FlagHealthOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<HealthOut> getFlagHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<FlagHealthOut> getFlagHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getFlagHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<HealthOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<FlagHealthOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Health reports that the flag engine is serving. (asynchronously)
-     * Health reports that the flag engine is serving. It is not gated: liveness must be probe-able without a token.
+     * Reports that the flag engine is serving. (asynchronously)
+     * Reports that the flag engine is serving. It is not gated: liveness must be probe-able without a token.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -681,18 +706,19 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFlagHealthAsync(final ApiCallback<HealthOut> _callback) throws ApiException {
+    public okhttp3.Call getFlagHealthAsync(final ApiCallback<FlagHealthOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFlagHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<HealthOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<FlagHealthOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postFlag
-     * @param evaluateIn  (required)
+     * @param flagEvaluateIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -701,9 +727,10 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFlagCall(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFlagCall(@javax.annotation.Nonnull FlagEvaluateIn flagEvaluateIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -717,7 +744,7 @@ public class FlagApi {
             basePath = null;
         }
 
-        Object localVarPostBody = evaluateIn;
+        Object localVarPostBody = flagEvaluateIn;
 
         // create path and map variables
         String localVarPath = "/v1/flag";
@@ -729,7 +756,8 @@ public class FlagApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -749,20 +777,20 @@ public class FlagApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postFlagValidateBeforeCall(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'evaluateIn' is set
-        if (evaluateIn == null) {
-            throw new ApiException("Missing the required parameter 'evaluateIn' when calling postFlag(Async)");
+    private okhttp3.Call postFlagValidateBeforeCall(@javax.annotation.Nonnull FlagEvaluateIn flagEvaluateIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'flagEvaluateIn' is set
+        if (flagEvaluateIn == null) {
+            throw new ApiException("Missing the required parameter 'flagEvaluateIn' when calling postFlag(Async)");
         }
 
-        return postFlagCall(evaluateIn, _callback);
+        return postFlagCall(flagEvaluateIn, _callback);
 
     }
 
     /**
-     * Evaluate runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute.
-     * Evaluate runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute. Evaluation is in-process over the caller&#39;s own (org, project) definitions — no network hop, no shared KV — so a tenant can only ever evaluate its own flags.
-     * @param evaluateIn  (required)
+     * Runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute.
+     * Runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute. Evaluation is in-process over the caller&#39;s own (org, project) definitions — no network hop, no shared KV — so a tenant can only ever evaluate its own flags.
+     * @param flagEvaluateIn  (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -770,17 +798,18 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Object postFlag(@javax.annotation.Nonnull EvaluateIn evaluateIn) throws ApiException {
-        ApiResponse<Object> localVarResp = postFlagWithHttpInfo(evaluateIn);
+    public Object postFlag(@javax.annotation.Nonnull FlagEvaluateIn flagEvaluateIn) throws ApiException {
+        ApiResponse<Object> localVarResp = postFlagWithHttpInfo(flagEvaluateIn);
         return localVarResp.getData();
     }
 
     /**
-     * Evaluate runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute.
-     * Evaluate runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute. Evaluation is in-process over the caller&#39;s own (org, project) definitions — no network hop, no shared KV — so a tenant can only ever evaluate its own flags.
-     * @param evaluateIn  (required)
+     * Runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute.
+     * Runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute. Evaluation is in-process over the caller&#39;s own (org, project) definitions — no network hop, no shared KV — so a tenant can only ever evaluate its own flags.
+     * @param flagEvaluateIn  (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -788,18 +817,19 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postFlagWithHttpInfo(@javax.annotation.Nonnull EvaluateIn evaluateIn) throws ApiException {
-        okhttp3.Call localVarCall = postFlagValidateBeforeCall(evaluateIn, null);
+    public ApiResponse<Object> postFlagWithHttpInfo(@javax.annotation.Nonnull FlagEvaluateIn flagEvaluateIn) throws ApiException {
+        okhttp3.Call localVarCall = postFlagValidateBeforeCall(flagEvaluateIn, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Evaluate runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute. (asynchronously)
-     * Evaluate runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute. Evaluation is in-process over the caller&#39;s own (org, project) definitions — no network hop, no shared KV — so a tenant can only ever evaluate its own flags.
-     * @param evaluateIn  (required)
+     * Runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute. (asynchronously)
+     * Runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute. Evaluation is in-process over the caller&#39;s own (org, project) definitions — no network hop, no shared KV — so a tenant can only ever evaluate its own flags.
+     * @param flagEvaluateIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -808,18 +838,19 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFlagAsync(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postFlagAsync(@javax.annotation.Nonnull FlagEvaluateIn flagEvaluateIn, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postFlagValidateBeforeCall(evaluateIn, _callback);
+        okhttp3.Call localVarCall = postFlagValidateBeforeCall(flagEvaluateIn, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postFlagDecide
-     * @param evaluateIn  (required)
+     * @param flagEvaluateIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -828,9 +859,10 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFlagDecideCall(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFlagDecideCall(@javax.annotation.Nonnull FlagEvaluateIn flagEvaluateIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -844,7 +876,7 @@ public class FlagApi {
             basePath = null;
         }
 
-        Object localVarPostBody = evaluateIn;
+        Object localVarPostBody = flagEvaluateIn;
 
         // create path and map variables
         String localVarPath = "/v1/flag/decide";
@@ -856,7 +888,8 @@ public class FlagApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -876,20 +909,20 @@ public class FlagApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postFlagDecideValidateBeforeCall(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'evaluateIn' is set
-        if (evaluateIn == null) {
-            throw new ApiException("Missing the required parameter 'evaluateIn' when calling postFlagDecide(Async)");
+    private okhttp3.Call postFlagDecideValidateBeforeCall(@javax.annotation.Nonnull FlagEvaluateIn flagEvaluateIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'flagEvaluateIn' is set
+        if (flagEvaluateIn == null) {
+            throw new ApiException("Missing the required parameter 'flagEvaluateIn' when calling postFlagDecide(Async)");
         }
 
-        return postFlagDecideCall(evaluateIn, _callback);
+        return postFlagDecideCall(flagEvaluateIn, _callback);
 
     }
 
     /**
-     * Evaluate runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute.
-     * Evaluate runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute. Evaluation is in-process over the caller&#39;s own (org, project) definitions — no network hop, no shared KV — so a tenant can only ever evaluate its own flags.
-     * @param evaluateIn  (required)
+     * Runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute.
+     * Runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute. Evaluation is in-process over the caller&#39;s own (org, project) definitions — no network hop, no shared KV — so a tenant can only ever evaluate its own flags.
+     * @param flagEvaluateIn  (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -897,17 +930,18 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Object postFlagDecide(@javax.annotation.Nonnull EvaluateIn evaluateIn) throws ApiException {
-        ApiResponse<Object> localVarResp = postFlagDecideWithHttpInfo(evaluateIn);
+    public Object postFlagDecide(@javax.annotation.Nonnull FlagEvaluateIn flagEvaluateIn) throws ApiException {
+        ApiResponse<Object> localVarResp = postFlagDecideWithHttpInfo(flagEvaluateIn);
         return localVarResp.getData();
     }
 
     /**
-     * Evaluate runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute.
-     * Evaluate runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute. Evaluation is in-process over the caller&#39;s own (org, project) definitions — no network hop, no shared KV — so a tenant can only ever evaluate its own flags.
-     * @param evaluateIn  (required)
+     * Runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute.
+     * Runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute. Evaluation is in-process over the caller&#39;s own (org, project) definitions — no network hop, no shared KV — so a tenant can only ever evaluate its own flags.
+     * @param flagEvaluateIn  (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -915,18 +949,19 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postFlagDecideWithHttpInfo(@javax.annotation.Nonnull EvaluateIn evaluateIn) throws ApiException {
-        okhttp3.Call localVarCall = postFlagDecideValidateBeforeCall(evaluateIn, null);
+    public ApiResponse<Object> postFlagDecideWithHttpInfo(@javax.annotation.Nonnull FlagEvaluateIn flagEvaluateIn) throws ApiException {
+        okhttp3.Call localVarCall = postFlagDecideValidateBeforeCall(flagEvaluateIn, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Evaluate runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute. (asynchronously)
-     * Evaluate runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute. Evaluation is in-process over the caller&#39;s own (org, project) definitions — no network hop, no shared KV — so a tenant can only ever evaluate its own flags.
-     * @param evaluateIn  (required)
+     * Runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute. (asynchronously)
+     * Runs the caller&#39;s flag definitions for one identity and returns the flag verdict: which flags are on (or which variant), their payloads, and whether any definition failed to compute. Evaluation is in-process over the caller&#39;s own (org, project) definitions — no network hop, no shared KV — so a tenant can only ever evaluate its own flags.
+     * @param flagEvaluateIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -935,11 +970,12 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFlagDecideAsync(@javax.annotation.Nonnull EvaluateIn evaluateIn, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postFlagDecideAsync(@javax.annotation.Nonnull FlagEvaluateIn flagEvaluateIn, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postFlagDecideValidateBeforeCall(evaluateIn, _callback);
+        okhttp3.Call localVarCall = postFlagDecideValidateBeforeCall(flagEvaluateIn, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -956,6 +992,7 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call putFlagDefsByKeyCall(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body, final ApiCallback _callback) throws ApiException {
@@ -985,7 +1022,8 @@ public class FlagApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1022,46 +1060,48 @@ public class FlagApi {
 
     /**
      * Creates or replaces the flag definition at the path&#39;s key and returns the stored row.
-     * Creates or replaces the flag definition at the path&#39;s key and returns the stored row. The BODY IS THE DEFINITION DOCUMENT — the flag-definition JSON object the evaluator consumes — and it is stored verbatim except that its \&quot;key\&quot; is forced to the key in the URL, so a document can never be filed under a name other than the one it was addressed by. Every write bumps the version and appends to the change log under the caller&#39;s identity.
+     * Creates or replaces the flag definition at the path&#39;s key and returns the stored row. The BODY IS THE DEFINITION DOCUMENT — the flag-definition JSON object the evaluator consumes — and it is stored verbatim except that its \&quot;key\&quot; is forced to the key in the URL, so a document can never be filed under a name other than the one it was addressed by. Every write bumps the version and appends to the change log under the caller&#39;s identity. A key that lets an org into a capability that is not ga — research, machines — is a SuperAdmin&#39;s to set, never an org admin&#39;s, and its write is on the audit trail before it lands; every other key is an owner&#39;s or admin&#39;s of the org, never a member&#39;s.
      * @param key Key is the flag key to write, from the path. (required)
      * @param body  (required)
-     * @return DefRow
+     * @return FlagDefRow
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DefRow putFlagDefsByKey(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body) throws ApiException {
-        ApiResponse<DefRow> localVarResp = putFlagDefsByKeyWithHttpInfo(key, body);
+    public FlagDefRow putFlagDefsByKey(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body) throws ApiException {
+        ApiResponse<FlagDefRow> localVarResp = putFlagDefsByKeyWithHttpInfo(key, body);
         return localVarResp.getData();
     }
 
     /**
      * Creates or replaces the flag definition at the path&#39;s key and returns the stored row.
-     * Creates or replaces the flag definition at the path&#39;s key and returns the stored row. The BODY IS THE DEFINITION DOCUMENT — the flag-definition JSON object the evaluator consumes — and it is stored verbatim except that its \&quot;key\&quot; is forced to the key in the URL, so a document can never be filed under a name other than the one it was addressed by. Every write bumps the version and appends to the change log under the caller&#39;s identity.
+     * Creates or replaces the flag definition at the path&#39;s key and returns the stored row. The BODY IS THE DEFINITION DOCUMENT — the flag-definition JSON object the evaluator consumes — and it is stored verbatim except that its \&quot;key\&quot; is forced to the key in the URL, so a document can never be filed under a name other than the one it was addressed by. Every write bumps the version and appends to the change log under the caller&#39;s identity. A key that lets an org into a capability that is not ga — research, machines — is a SuperAdmin&#39;s to set, never an org admin&#39;s, and its write is on the audit trail before it lands; every other key is an owner&#39;s or admin&#39;s of the org, never a member&#39;s.
      * @param key Key is the flag key to write, from the path. (required)
      * @param body  (required)
-     * @return ApiResponse&lt;DefRow&gt;
+     * @return ApiResponse&lt;FlagDefRow&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DefRow> putFlagDefsByKeyWithHttpInfo(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body) throws ApiException {
+    public ApiResponse<FlagDefRow> putFlagDefsByKeyWithHttpInfo(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body) throws ApiException {
         okhttp3.Call localVarCall = putFlagDefsByKeyValidateBeforeCall(key, body, null);
-        Type localVarReturnType = new TypeToken<DefRow>(){}.getType();
+        Type localVarReturnType = new TypeToken<FlagDefRow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Creates or replaces the flag definition at the path&#39;s key and returns the stored row. (asynchronously)
-     * Creates or replaces the flag definition at the path&#39;s key and returns the stored row. The BODY IS THE DEFINITION DOCUMENT — the flag-definition JSON object the evaluator consumes — and it is stored verbatim except that its \&quot;key\&quot; is forced to the key in the URL, so a document can never be filed under a name other than the one it was addressed by. Every write bumps the version and appends to the change log under the caller&#39;s identity.
+     * Creates or replaces the flag definition at the path&#39;s key and returns the stored row. The BODY IS THE DEFINITION DOCUMENT — the flag-definition JSON object the evaluator consumes — and it is stored verbatim except that its \&quot;key\&quot; is forced to the key in the URL, so a document can never be filed under a name other than the one it was addressed by. Every write bumps the version and appends to the change log under the caller&#39;s identity. A key that lets an org into a capability that is not ga — research, machines — is a SuperAdmin&#39;s to set, never an org admin&#39;s, and its write is on the audit trail before it lands; every other key is an owner&#39;s or admin&#39;s of the org, never a member&#39;s.
      * @param key Key is the flag key to write, from the path. (required)
      * @param body  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1072,12 +1112,13 @@ public class FlagApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putFlagDefsByKeyAsync(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body, final ApiCallback<DefRow> _callback) throws ApiException {
+    public okhttp3.Call putFlagDefsByKeyAsync(@javax.annotation.Nonnull String key, @javax.annotation.Nullable Object body, final ApiCallback<FlagDefRow> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = putFlagDefsByKeyValidateBeforeCall(key, body, _callback);
-        Type localVarReturnType = new TypeToken<DefRow>(){}.getType();
+        Type localVarReturnType = new TypeToken<FlagDefRow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

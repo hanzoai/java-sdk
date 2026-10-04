@@ -3,6 +3,12 @@ package ai.hanzo.cloud.examples;
 import ai.hanzo.Hanzo;
 import ai.hanzo.cloud.ApiException;
 import ai.hanzo.cloud.api.AiApi;
+import ai.hanzo.cloud.model.OpenaiChatCompletionChoice;
+import ai.hanzo.cloud.model.OpenaiChatCompletionMessage;
+import ai.hanzo.cloud.model.OpenaiChatCompletionRequest;
+import ai.hanzo.cloud.model.OpenaiChatCompletionResponse;
+
+import java.util.List;
 
 /**
  * chat — one completion.
@@ -14,20 +20,9 @@ import ai.hanzo.cloud.api.AiApi;
  * generated client hands back as an opaque body, so demonstrating it here would
  * teach the wrong shape.
  *
- * <p>THE ROUTE IS UNTYPED AT THE SOURCE, so the generated method takes no
- * argument and returns {@code void}: there is no request schema to carry a
- * prompt and no response schema to read a reply from. That is a hanzoai/cloud
- * gap — the route is not a {@code zip.Get[In, Out]} yet, so its emitter has no
- * shape to publish — and the one thing this example must not do is invent one.
- * A request hand-rolled inside a generated client is precisely the second
- * authority these SDKs exist to remove; it would compile, look right, and be an
- * opinion about the API rather than a projection of it.
- *
- * <p>So the flow calls the operation the document declares and prints what the
- * route answered. When the shapes land, this becomes
- * {@code chat.postChatCompletions(request)} and prints
- * {@code choices[0].message.content} — a regeneration away, with no decision
- * left in this file.
+ * <p>The document types the route — {@code OpenaiChatCompletionRequest} in,
+ * {@code OpenaiChatCompletionResponse} out — so the prompt goes in as a value
+ * and the reply is {@code choices[0].message.content}.
  *
  * <pre>
  *   HANZO_API_KEY=hk-... ./gradlew :examples:chat
@@ -35,10 +30,27 @@ import ai.hanzo.cloud.api.AiApi;
  */
 public final class Chat {
 
+    /** A model the gateway serves. {@code HANZO_MODEL} overrides it. */
+    private static final String DEFAULT_MODEL = "zen5";
+
     public static void main(String[] args) {
-        AiApi chat = new AiApi(Hanzo.client());
+        AiApi ai = new AiApi(Hanzo.client());
+        String model = System.getenv("HANZO_MODEL");
+        if (model == null || model.trim().isEmpty()) {
+            model = DEFAULT_MODEL;
+        }
         try {
-            System.out.printf("completion  HTTP %d%n", chat.postChatCompletionsWithHttpInfo().getStatusCode());
+            OpenaiChatCompletionResponse reply = ai.postChatCompletions(new OpenaiChatCompletionRequest()
+                    .model(model)
+                    .messages(List.of(new OpenaiChatCompletionMessage()
+                            .role("user")
+                            .content("Say hello in one short sentence."))));
+            List<OpenaiChatCompletionChoice> choices = reply.getChoices();
+            String content = choices == null || choices.isEmpty() || choices.get(0).getMessage() == null
+                    ? ""
+                    : choices.get(0).getMessage().getContent();
+            System.out.printf("model    %s%n", reply.getModel());
+            System.out.printf("reply    %s%n", content);
         } catch (ApiException e) {
             System.err.printf("chat failed: HTTP %d %s%n", e.getCode(), e.getResponseBody());
             System.exit(1);

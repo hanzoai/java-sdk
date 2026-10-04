@@ -27,33 +27,33 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.AdvanceIn;
-import ai.hanzo.cloud.model.BeginIn;
-import ai.hanzo.cloud.model.DecisionIn;
+import ai.hanzo.cloud.model.CompanyAdvanceIn;
+import ai.hanzo.cloud.model.CompanyBeginIn;
+import ai.hanzo.cloud.model.CompanyEIN;
+import ai.hanzo.cloud.model.CompanyEinIn;
+import ai.hanzo.cloud.model.CompanyEsignCompleteIn;
+import ai.hanzo.cloud.model.CompanyEsignOut;
+import ai.hanzo.cloud.model.CompanyFormationView;
+import ai.hanzo.cloud.model.CompanyFoundersIn;
+import ai.hanzo.cloud.model.CompanyImportCapTableIn;
+import ai.hanzo.cloud.model.CompanyImportCapTableOut;
+import ai.hanzo.cloud.model.CompanyImportDocumentsIn;
+import ai.hanzo.cloud.model.CompanyImportDocumentsOut;
+import ai.hanzo.cloud.model.CompanyKycRefreshOut;
+import ai.hanzo.cloud.model.CompanyKycStartOut;
+import ai.hanzo.cloud.model.CompanyRegisterCounts;
+import ai.hanzo.cloud.model.CompanyRegisterPage;
+import ai.hanzo.cloud.model.CompanyReviewQueue;
+import ai.hanzo.cloud.model.CompanyRoundInput;
+import ai.hanzo.cloud.model.CompanyRoundOut;
+import ai.hanzo.cloud.model.CompanySafeIn;
+import ai.hanzo.cloud.model.CompanySafeOut;
+import ai.hanzo.cloud.model.CompanyStructureIn;
+import ai.hanzo.cloud.model.CompanyTariff;
+import ai.hanzo.cloud.model.CompanyTariffIn;
 import ai.hanzo.cloud.model.DeckOut;
-import ai.hanzo.cloud.model.EIN;
-import ai.hanzo.cloud.model.EinIn;
-import ai.hanzo.cloud.model.EsignCompleteIn;
-import ai.hanzo.cloud.model.EsignOut;
 import java.io.File;
-import ai.hanzo.cloud.model.FormationView;
-import ai.hanzo.cloud.model.FoundersIn;
-import ai.hanzo.cloud.model.ImportCapTableIn;
-import ai.hanzo.cloud.model.ImportCapTableOut;
-import ai.hanzo.cloud.model.ImportDocumentsIn;
-import ai.hanzo.cloud.model.ImportDocumentsOut;
-import ai.hanzo.cloud.model.KycRefreshOut;
-import ai.hanzo.cloud.model.KycStartOut;
-import ai.hanzo.cloud.model.RegisterCounts;
-import ai.hanzo.cloud.model.RegisterPage;
-import ai.hanzo.cloud.model.ReviewQueue;
-import ai.hanzo.cloud.model.RoundInput;
-import ai.hanzo.cloud.model.RoundOut;
-import ai.hanzo.cloud.model.SafeIn;
-import ai.hanzo.cloud.model.SafeOut;
-import ai.hanzo.cloud.model.StructureIn;
-import ai.hanzo.cloud.model.Tariff;
-import ai.hanzo.cloud.model.TariffIn;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -108,6 +108,7 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCompanyCall(final ApiCallback _callback) throws ApiException {
@@ -136,7 +137,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -161,43 +163,45 @@ public class CompanyApi {
     }
 
     /**
-     * Get returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.
-     * Get returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.
-     * @return FormationView
+     * Returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.
+     * Returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.
+     * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView getCompany() throws ApiException {
-        ApiResponse<FormationView> localVarResp = getCompanyWithHttpInfo();
+    public CompanyFormationView getCompany() throws ApiException {
+        ApiResponse<CompanyFormationView> localVarResp = getCompanyWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Get returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.
-     * Get returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.
-     * @return ApiResponse&lt;FormationView&gt;
+     * Returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.
+     * Returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.
+     * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> getCompanyWithHttpInfo() throws ApiException {
+    public ApiResponse<CompanyFormationView> getCompanyWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getCompanyValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one. (asynchronously)
-     * Get returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.
+     * Returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one. (asynchronously)
+     * Returns the caller org&#39;s formation and the stages reachable from it, or 404 when the org has not begun one.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -206,12 +210,13 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCompanyAsync(final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call getCompanyAsync(final ApiCallback<CompanyFormationView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCompanyValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -229,6 +234,7 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCompanyRegisterCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback _callback) throws ApiException {
@@ -273,7 +279,8 @@ public class CompanyApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -304,17 +311,18 @@ public class CompanyApi {
      * @param structure Structure keeps only formations of that entity kind. Empty means any. (optional)
      * @param limit Limit bounds the page; 0 or less means the default of 200. (optional)
      * @param offset Offset skips that many rows. (optional)
-     * @return RegisterPage
+     * @return CompanyRegisterPage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RegisterPage getCompanyRegister(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset) throws ApiException {
-        ApiResponse<RegisterPage> localVarResp = getCompanyRegisterWithHttpInfo(stage, structure, limit, offset);
+    public CompanyRegisterPage getCompanyRegister(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset) throws ApiException {
+        ApiResponse<CompanyRegisterPage> localVarResp = getCompanyRegisterWithHttpInfo(stage, structure, limit, offset);
         return localVarResp.getData();
     }
 
@@ -325,18 +333,19 @@ public class CompanyApi {
      * @param structure Structure keeps only formations of that entity kind. Empty means any. (optional)
      * @param limit Limit bounds the page; 0 or less means the default of 200. (optional)
      * @param offset Offset skips that many rows. (optional)
-     * @return ApiResponse&lt;RegisterPage&gt;
+     * @return ApiResponse&lt;CompanyRegisterPage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegisterPage> getCompanyRegisterWithHttpInfo(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset) throws ApiException {
+    public ApiResponse<CompanyRegisterPage> getCompanyRegisterWithHttpInfo(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset) throws ApiException {
         okhttp3.Call localVarCall = getCompanyRegisterValidateBeforeCall(stage, structure, limit, offset, null);
-        Type localVarReturnType = new TypeToken<RegisterPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyRegisterPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -355,12 +364,13 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCompanyRegisterAsync(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback<RegisterPage> _callback) throws ApiException {
+    public okhttp3.Call getCompanyRegisterAsync(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback<CompanyRegisterPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCompanyRegisterValidateBeforeCall(stage, structure, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<RegisterPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyRegisterPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -374,6 +384,7 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCompanyRegisterSummaryCall(final ApiCallback _callback) throws ApiException {
@@ -402,7 +413,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -429,35 +441,37 @@ public class CompanyApi {
     /**
      * Counts the platform&#39;s formations by stage — the register&#39;s shape in one read, so a queue that is growing is visible as a number rather than inferred by paging the list.
      * Counts the platform&#39;s formations by stage — the register&#39;s shape in one read, so a queue that is growing is visible as a number rather than inferred by paging the list. A Hanzo platform operation: a caller who is not a platform reviewer gets 403.
-     * @return RegisterCounts
+     * @return CompanyRegisterCounts
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RegisterCounts getCompanyRegisterSummary() throws ApiException {
-        ApiResponse<RegisterCounts> localVarResp = getCompanyRegisterSummaryWithHttpInfo();
+    public CompanyRegisterCounts getCompanyRegisterSummary() throws ApiException {
+        ApiResponse<CompanyRegisterCounts> localVarResp = getCompanyRegisterSummaryWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Counts the platform&#39;s formations by stage — the register&#39;s shape in one read, so a queue that is growing is visible as a number rather than inferred by paging the list.
      * Counts the platform&#39;s formations by stage — the register&#39;s shape in one read, so a queue that is growing is visible as a number rather than inferred by paging the list. A Hanzo platform operation: a caller who is not a platform reviewer gets 403.
-     * @return ApiResponse&lt;RegisterCounts&gt;
+     * @return ApiResponse&lt;CompanyRegisterCounts&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegisterCounts> getCompanyRegisterSummaryWithHttpInfo() throws ApiException {
+    public ApiResponse<CompanyRegisterCounts> getCompanyRegisterSummaryWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getCompanyRegisterSummaryValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<RegisterCounts>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyRegisterCounts>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -472,12 +486,13 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCompanyRegisterSummaryAsync(final ApiCallback<RegisterCounts> _callback) throws ApiException {
+    public okhttp3.Call getCompanyRegisterSummaryAsync(final ApiCallback<CompanyRegisterCounts> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCompanyRegisterSummaryValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<RegisterCounts>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyRegisterCounts>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -492,6 +507,7 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCompanyReviewCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -524,7 +540,8 @@ public class CompanyApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -552,17 +569,18 @@ public class CompanyApi {
      * Reports the founders whose KYC is not yet settled, oldest formation first, so the queue drains in the order founders have been waiting.
      * Reports the founders whose KYC is not yet settled, oldest formation first, so the queue drains in the order founders have been waiting. A Hanzo platform operation: a caller who is not a platform reviewer gets 403.  It only says who is waiting; the decision itself is POST /v1/company/kyc/decision.
      * @param limit Limit bounds how many formations are scanned; 0 or less means the default of 200. (optional)
-     * @return ReviewQueue
+     * @return CompanyReviewQueue
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ReviewQueue getCompanyReview(@javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<ReviewQueue> localVarResp = getCompanyReviewWithHttpInfo(limit);
+    public CompanyReviewQueue getCompanyReview(@javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<CompanyReviewQueue> localVarResp = getCompanyReviewWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -570,18 +588,19 @@ public class CompanyApi {
      * Reports the founders whose KYC is not yet settled, oldest formation first, so the queue drains in the order founders have been waiting.
      * Reports the founders whose KYC is not yet settled, oldest formation first, so the queue drains in the order founders have been waiting. A Hanzo platform operation: a caller who is not a platform reviewer gets 403.  It only says who is waiting; the decision itself is POST /v1/company/kyc/decision.
      * @param limit Limit bounds how many formations are scanned; 0 or less means the default of 200. (optional)
-     * @return ApiResponse&lt;ReviewQueue&gt;
+     * @return ApiResponse&lt;CompanyReviewQueue&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReviewQueue> getCompanyReviewWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<CompanyReviewQueue> getCompanyReviewWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getCompanyReviewValidateBeforeCall(limit, null);
-        Type localVarReturnType = new TypeToken<ReviewQueue>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyReviewQueue>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -597,18 +616,19 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCompanyReviewAsync(@javax.annotation.Nullable Long limit, final ApiCallback<ReviewQueue> _callback) throws ApiException {
+    public okhttp3.Call getCompanyReviewAsync(@javax.annotation.Nullable Long limit, final ApiCallback<CompanyReviewQueue> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCompanyReviewValidateBeforeCall(limit, _callback);
-        Type localVarReturnType = new TypeToken<ReviewQueue>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyReviewQueue>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCompany
-     * @param beginIn  (required)
+     * @param companyBeginIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -617,9 +637,10 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyCall(@javax.annotation.Nonnull BeginIn beginIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyCall(@javax.annotation.Nonnull CompanyBeginIn companyBeginIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -633,7 +654,7 @@ public class CompanyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = beginIn;
+        Object localVarPostBody = companyBeginIn;
 
         // create path and map variables
         String localVarPath = "/v1/company";
@@ -645,7 +666,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -665,57 +687,59 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCompanyValidateBeforeCall(@javax.annotation.Nonnull BeginIn beginIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'beginIn' is set
-        if (beginIn == null) {
-            throw new ApiException("Missing the required parameter 'beginIn' when calling postCompany(Async)");
+    private okhttp3.Call postCompanyValidateBeforeCall(@javax.annotation.Nonnull CompanyBeginIn companyBeginIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'companyBeginIn' is set
+        if (companyBeginIn == null) {
+            throw new ApiException("Missing the required parameter 'companyBeginIn' when calling postCompany(Async)");
         }
 
-        return postCompanyCall(beginIn, _callback);
+        return postCompanyCall(companyBeginIn, _callback);
 
     }
 
     /**
-     * Begin starts the org&#39;s one formation and returns it with the stages reachable from it.
-     * Begin starts the org&#39;s one formation and returns it with the stages reachable from it. It is idempotent: an org that already has a formation gets that one back with 200, while a first call creates it and answers 201.
-     * @param beginIn  (required)
-     * @return FormationView
+     * Starts the org&#39;s one formation and returns it with the stages reachable from it.
+     * Starts the org&#39;s one formation and returns it with the stages reachable from it. It is idempotent: an org that already has a formation gets that one back with 200, while a first call creates it and answers 201.
+     * @param companyBeginIn  (required)
+     * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postCompany(@javax.annotation.Nonnull BeginIn beginIn) throws ApiException {
-        ApiResponse<FormationView> localVarResp = postCompanyWithHttpInfo(beginIn);
+    public CompanyFormationView postCompany(@javax.annotation.Nonnull CompanyBeginIn companyBeginIn) throws ApiException {
+        ApiResponse<CompanyFormationView> localVarResp = postCompanyWithHttpInfo(companyBeginIn);
         return localVarResp.getData();
     }
 
     /**
-     * Begin starts the org&#39;s one formation and returns it with the stages reachable from it.
-     * Begin starts the org&#39;s one formation and returns it with the stages reachable from it. It is idempotent: an org that already has a formation gets that one back with 200, while a first call creates it and answers 201.
-     * @param beginIn  (required)
-     * @return ApiResponse&lt;FormationView&gt;
+     * Starts the org&#39;s one formation and returns it with the stages reachable from it.
+     * Starts the org&#39;s one formation and returns it with the stages reachable from it. It is idempotent: an org that already has a formation gets that one back with 200, while a first call creates it and answers 201.
+     * @param companyBeginIn  (required)
+     * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postCompanyWithHttpInfo(@javax.annotation.Nonnull BeginIn beginIn) throws ApiException {
-        okhttp3.Call localVarCall = postCompanyValidateBeforeCall(beginIn, null);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+    public ApiResponse<CompanyFormationView> postCompanyWithHttpInfo(@javax.annotation.Nonnull CompanyBeginIn companyBeginIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyValidateBeforeCall(companyBeginIn, null);
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Begin starts the org&#39;s one formation and returns it with the stages reachable from it. (asynchronously)
-     * Begin starts the org&#39;s one formation and returns it with the stages reachable from it. It is idempotent: an org that already has a formation gets that one back with 200, while a first call creates it and answers 201.
-     * @param beginIn  (required)
+     * Starts the org&#39;s one formation and returns it with the stages reachable from it. (asynchronously)
+     * Starts the org&#39;s one formation and returns it with the stages reachable from it. It is idempotent: an org that already has a formation gets that one back with 200, while a first call creates it and answers 201.
+     * @param companyBeginIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -724,18 +748,19 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyAsync(@javax.annotation.Nonnull BeginIn beginIn, final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanyAsync(@javax.annotation.Nonnull CompanyBeginIn companyBeginIn, final ApiCallback<CompanyFormationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCompanyValidateBeforeCall(beginIn, _callback);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        okhttp3.Call localVarCall = postCompanyValidateBeforeCall(companyBeginIn, _callback);
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCompanyAdvance
-     * @param advanceIn  (required)
+     * @param companyAdvanceIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -744,9 +769,10 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyAdvanceCall(@javax.annotation.Nonnull AdvanceIn advanceIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyAdvanceCall(@javax.annotation.Nonnull CompanyAdvanceIn companyAdvanceIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -760,7 +786,7 @@ public class CompanyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = advanceIn;
+        Object localVarPostBody = companyAdvanceIn;
 
         // create path and map variables
         String localVarPath = "/v1/company/advance";
@@ -772,7 +798,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -792,57 +819,59 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCompanyAdvanceValidateBeforeCall(@javax.annotation.Nonnull AdvanceIn advanceIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'advanceIn' is set
-        if (advanceIn == null) {
-            throw new ApiException("Missing the required parameter 'advanceIn' when calling postCompanyAdvance(Async)");
+    private okhttp3.Call postCompanyAdvanceValidateBeforeCall(@javax.annotation.Nonnull CompanyAdvanceIn companyAdvanceIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'companyAdvanceIn' is set
+        if (companyAdvanceIn == null) {
+            throw new ApiException("Missing the required parameter 'companyAdvanceIn' when calling postCompanyAdvance(Async)");
         }
 
-        return postCompanyAdvanceCall(advanceIn, _callback);
+        return postCompanyAdvanceCall(companyAdvanceIn, _callback);
 
     }
 
     /**
-     * Advance runs the ONE guarded transition of the formation machine.
-     * Advance runs the ONE guarded transition of the formation machine. It is the only endpoint between stages: the actions populate data, this decides ordering.  An edge the machine does not define answers 409; an edge whose guard is not yet satisfied answers 422 naming what is missing. Reaching the terminal &#x60;company&#x60; stage also records the incorporation on the canonical cap table, and that must succeed before the transition is persisted.
-     * @param advanceIn  (required)
-     * @return FormationView
+     * Runs the ONE guarded transition of the formation machine.
+     * Runs the ONE guarded transition of the formation machine. It is the only endpoint between stages: the actions populate data, this decides ordering.  An edge the machine does not define answers 409; an edge whose guard is not yet satisfied answers 422 naming what is missing. Reaching the terminal &#x60;company&#x60; stage also records the incorporation on the canonical cap table, and that must succeed before the transition is persisted.
+     * @param companyAdvanceIn  (required)
+     * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postCompanyAdvance(@javax.annotation.Nonnull AdvanceIn advanceIn) throws ApiException {
-        ApiResponse<FormationView> localVarResp = postCompanyAdvanceWithHttpInfo(advanceIn);
+    public CompanyFormationView postCompanyAdvance(@javax.annotation.Nonnull CompanyAdvanceIn companyAdvanceIn) throws ApiException {
+        ApiResponse<CompanyFormationView> localVarResp = postCompanyAdvanceWithHttpInfo(companyAdvanceIn);
         return localVarResp.getData();
     }
 
     /**
-     * Advance runs the ONE guarded transition of the formation machine.
-     * Advance runs the ONE guarded transition of the formation machine. It is the only endpoint between stages: the actions populate data, this decides ordering.  An edge the machine does not define answers 409; an edge whose guard is not yet satisfied answers 422 naming what is missing. Reaching the terminal &#x60;company&#x60; stage also records the incorporation on the canonical cap table, and that must succeed before the transition is persisted.
-     * @param advanceIn  (required)
-     * @return ApiResponse&lt;FormationView&gt;
+     * Runs the ONE guarded transition of the formation machine.
+     * Runs the ONE guarded transition of the formation machine. It is the only endpoint between stages: the actions populate data, this decides ordering.  An edge the machine does not define answers 409; an edge whose guard is not yet satisfied answers 422 naming what is missing. Reaching the terminal &#x60;company&#x60; stage also records the incorporation on the canonical cap table, and that must succeed before the transition is persisted.
+     * @param companyAdvanceIn  (required)
+     * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postCompanyAdvanceWithHttpInfo(@javax.annotation.Nonnull AdvanceIn advanceIn) throws ApiException {
-        okhttp3.Call localVarCall = postCompanyAdvanceValidateBeforeCall(advanceIn, null);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+    public ApiResponse<CompanyFormationView> postCompanyAdvanceWithHttpInfo(@javax.annotation.Nonnull CompanyAdvanceIn companyAdvanceIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyAdvanceValidateBeforeCall(companyAdvanceIn, null);
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Advance runs the ONE guarded transition of the formation machine. (asynchronously)
-     * Advance runs the ONE guarded transition of the formation machine. It is the only endpoint between stages: the actions populate data, this decides ordering.  An edge the machine does not define answers 409; an edge whose guard is not yet satisfied answers 422 naming what is missing. Reaching the terminal &#x60;company&#x60; stage also records the incorporation on the canonical cap table, and that must succeed before the transition is persisted.
-     * @param advanceIn  (required)
+     * Runs the ONE guarded transition of the formation machine. (asynchronously)
+     * Runs the ONE guarded transition of the formation machine. It is the only endpoint between stages: the actions populate data, this decides ordering.  An edge the machine does not define answers 409; an edge whose guard is not yet satisfied answers 422 naming what is missing. Reaching the terminal &#x60;company&#x60; stage also records the incorporation on the canonical cap table, and that must succeed before the transition is persisted.
+     * @param companyAdvanceIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -851,12 +880,13 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyAdvanceAsync(@javax.annotation.Nonnull AdvanceIn advanceIn, final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanyAdvanceAsync(@javax.annotation.Nonnull CompanyAdvanceIn companyAdvanceIn, final ApiCallback<CompanyFormationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCompanyAdvanceValidateBeforeCall(advanceIn, _callback);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        okhttp3.Call localVarCall = postCompanyAdvanceValidateBeforeCall(companyAdvanceIn, _callback);
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -870,6 +900,7 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postCompanyDocumentsCall(final ApiCallback _callback) throws ApiException {
@@ -898,7 +929,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -925,35 +957,37 @@ public class CompanyApi {
     /**
      * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.
      * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.  With no filing partner wired the filing is recorded honestly as \&quot;manual\&quot; — no filing id is fabricated. Available only at the documents stage.
-     * @return FormationView
+     * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postCompanyDocuments() throws ApiException {
-        ApiResponse<FormationView> localVarResp = postCompanyDocumentsWithHttpInfo();
+    public CompanyFormationView postCompanyDocuments() throws ApiException {
+        ApiResponse<CompanyFormationView> localVarResp = postCompanyDocumentsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.
      * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.  With no filing partner wired the filing is recorded honestly as \&quot;manual\&quot; — no filing id is fabricated. Available only at the documents stage.
-     * @return ApiResponse&lt;FormationView&gt;
+     * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postCompanyDocumentsWithHttpInfo() throws ApiException {
+    public ApiResponse<CompanyFormationView> postCompanyDocumentsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = postCompanyDocumentsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -968,18 +1002,19 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyDocumentsAsync(final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanyDocumentsAsync(final ApiCallback<CompanyFormationView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCompanyDocumentsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCompanyEin
-     * @param einIn  (required)
+     * @param companyEinIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -988,9 +1023,10 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyEinCall(@javax.annotation.Nonnull EinIn einIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyEinCall(@javax.annotation.Nonnull CompanyEinIn companyEinIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1004,7 +1040,7 @@ public class CompanyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = einIn;
+        Object localVarPostBody = companyEinIn;
 
         // create path and map variables
         String localVarPath = "/v1/company/ein";
@@ -1016,7 +1052,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1036,57 +1073,59 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCompanyEinValidateBeforeCall(@javax.annotation.Nonnull EinIn einIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'einIn' is set
-        if (einIn == null) {
-            throw new ApiException("Missing the required parameter 'einIn' when calling postCompanyEin(Async)");
+    private okhttp3.Call postCompanyEinValidateBeforeCall(@javax.annotation.Nonnull CompanyEinIn companyEinIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'companyEinIn' is set
+        if (companyEinIn == null) {
+            throw new ApiException("Missing the required parameter 'companyEinIn' when calling postCompanyEin(Async)");
         }
 
-        return postCompanyEinCall(einIn, _callback);
+        return postCompanyEinCall(companyEinIn, _callback);
 
     }
 
     /**
      * Opens the EIN application and answers what it owes.
      * Opens the EIN application and answers what it owes.  The answer states whether it can be filed ONLINE, because that is the fact deciding whether the customer waits a sitting or several weeks — and it names each form with what that form is for, so nobody has to already know what an SS-4 is to understand why they are signing one.
-     * @param einIn  (required)
-     * @return EIN
+     * @param companyEinIn  (required)
+     * @return CompanyEIN
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EIN postCompanyEin(@javax.annotation.Nonnull EinIn einIn) throws ApiException {
-        ApiResponse<EIN> localVarResp = postCompanyEinWithHttpInfo(einIn);
+    public CompanyEIN postCompanyEin(@javax.annotation.Nonnull CompanyEinIn companyEinIn) throws ApiException {
+        ApiResponse<CompanyEIN> localVarResp = postCompanyEinWithHttpInfo(companyEinIn);
         return localVarResp.getData();
     }
 
     /**
      * Opens the EIN application and answers what it owes.
      * Opens the EIN application and answers what it owes.  The answer states whether it can be filed ONLINE, because that is the fact deciding whether the customer waits a sitting or several weeks — and it names each form with what that form is for, so nobody has to already know what an SS-4 is to understand why they are signing one.
-     * @param einIn  (required)
-     * @return ApiResponse&lt;EIN&gt;
+     * @param companyEinIn  (required)
+     * @return ApiResponse&lt;CompanyEIN&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EIN> postCompanyEinWithHttpInfo(@javax.annotation.Nonnull EinIn einIn) throws ApiException {
-        okhttp3.Call localVarCall = postCompanyEinValidateBeforeCall(einIn, null);
-        Type localVarReturnType = new TypeToken<EIN>(){}.getType();
+    public ApiResponse<CompanyEIN> postCompanyEinWithHttpInfo(@javax.annotation.Nonnull CompanyEinIn companyEinIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyEinValidateBeforeCall(companyEinIn, null);
+        Type localVarReturnType = new TypeToken<CompanyEIN>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Opens the EIN application and answers what it owes. (asynchronously)
      * Opens the EIN application and answers what it owes.  The answer states whether it can be filed ONLINE, because that is the fact deciding whether the customer waits a sitting or several weeks — and it names each form with what that form is for, so nobody has to already know what an SS-4 is to understand why they are signing one.
-     * @param einIn  (required)
+     * @param companyEinIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1095,12 +1134,13 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyEinAsync(@javax.annotation.Nonnull EinIn einIn, final ApiCallback<EIN> _callback) throws ApiException {
+    public okhttp3.Call postCompanyEinAsync(@javax.annotation.Nonnull CompanyEinIn companyEinIn, final ApiCallback<CompanyEIN> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCompanyEinValidateBeforeCall(einIn, _callback);
-        Type localVarReturnType = new TypeToken<EIN>(){}.getType();
+        okhttp3.Call localVarCall = postCompanyEinValidateBeforeCall(companyEinIn, _callback);
+        Type localVarReturnType = new TypeToken<CompanyEIN>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1114,6 +1154,7 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postCompanyEsignCall(final ApiCallback _callback) throws ApiException {
@@ -1142,7 +1183,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1169,35 +1211,37 @@ public class CompanyApi {
     /**
      * Sends the generated formation documents for signature by every founder and records the provider&#39;s reference on the formation.
      * Sends the generated formation documents for signature by every founder and records the provider&#39;s reference on the formation. Available only at the esign stage.
-     * @return EsignOut
+     * @return CompanyEsignOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EsignOut postCompanyEsign() throws ApiException {
-        ApiResponse<EsignOut> localVarResp = postCompanyEsignWithHttpInfo();
+    public CompanyEsignOut postCompanyEsign() throws ApiException {
+        ApiResponse<CompanyEsignOut> localVarResp = postCompanyEsignWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Sends the generated formation documents for signature by every founder and records the provider&#39;s reference on the formation.
      * Sends the generated formation documents for signature by every founder and records the provider&#39;s reference on the formation. Available only at the esign stage.
-     * @return ApiResponse&lt;EsignOut&gt;
+     * @return ApiResponse&lt;CompanyEsignOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EsignOut> postCompanyEsignWithHttpInfo() throws ApiException {
+    public ApiResponse<CompanyEsignOut> postCompanyEsignWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = postCompanyEsignValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<EsignOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyEsignOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1212,18 +1256,19 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyEsignAsync(final ApiCallback<EsignOut> _callback) throws ApiException {
+    public okhttp3.Call postCompanyEsignAsync(final ApiCallback<CompanyEsignOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCompanyEsignValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<EsignOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyEsignOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCompanyEsignComplete
-     * @param esignCompleteIn  (required)
+     * @param companyEsignCompleteIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1232,9 +1277,10 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyEsignCompleteCall(@javax.annotation.Nonnull EsignCompleteIn esignCompleteIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyEsignCompleteCall(@javax.annotation.Nonnull CompanyEsignCompleteIn companyEsignCompleteIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1248,7 +1294,7 @@ public class CompanyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = esignCompleteIn;
+        Object localVarPostBody = companyEsignCompleteIn;
 
         // create path and map variables
         String localVarPath = "/v1/company/esign/complete";
@@ -1260,7 +1306,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1280,57 +1327,59 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCompanyEsignCompleteValidateBeforeCall(@javax.annotation.Nonnull EsignCompleteIn esignCompleteIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'esignCompleteIn' is set
-        if (esignCompleteIn == null) {
-            throw new ApiException("Missing the required parameter 'esignCompleteIn' when calling postCompanyEsignComplete(Async)");
+    private okhttp3.Call postCompanyEsignCompleteValidateBeforeCall(@javax.annotation.Nonnull CompanyEsignCompleteIn companyEsignCompleteIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'companyEsignCompleteIn' is set
+        if (companyEsignCompleteIn == null) {
+            throw new ApiException("Missing the required parameter 'companyEsignCompleteIn' when calling postCompanyEsignComplete(Async)");
         }
 
-        return postCompanyEsignCompleteCall(esignCompleteIn, _callback);
+        return postCompanyEsignCompleteCall(companyEsignCompleteIn, _callback);
 
     }
 
     /**
      * Records whether the formation documents have been signed.
      * Records whether the formation documents have been signed. It consults the e-signature provider, which a real provider&#39;s webhook drives; the signal is idempotent.  An explicit &#x60;signed&#x60; in the request overrides the provider&#39;s answer, which is the manual path for the stub provider that never self-completes.
-     * @param esignCompleteIn  (required)
-     * @return FormationView
+     * @param companyEsignCompleteIn  (required)
+     * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postCompanyEsignComplete(@javax.annotation.Nonnull EsignCompleteIn esignCompleteIn) throws ApiException {
-        ApiResponse<FormationView> localVarResp = postCompanyEsignCompleteWithHttpInfo(esignCompleteIn);
+    public CompanyFormationView postCompanyEsignComplete(@javax.annotation.Nonnull CompanyEsignCompleteIn companyEsignCompleteIn) throws ApiException {
+        ApiResponse<CompanyFormationView> localVarResp = postCompanyEsignCompleteWithHttpInfo(companyEsignCompleteIn);
         return localVarResp.getData();
     }
 
     /**
      * Records whether the formation documents have been signed.
      * Records whether the formation documents have been signed. It consults the e-signature provider, which a real provider&#39;s webhook drives; the signal is idempotent.  An explicit &#x60;signed&#x60; in the request overrides the provider&#39;s answer, which is the manual path for the stub provider that never self-completes.
-     * @param esignCompleteIn  (required)
-     * @return ApiResponse&lt;FormationView&gt;
+     * @param companyEsignCompleteIn  (required)
+     * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postCompanyEsignCompleteWithHttpInfo(@javax.annotation.Nonnull EsignCompleteIn esignCompleteIn) throws ApiException {
-        okhttp3.Call localVarCall = postCompanyEsignCompleteValidateBeforeCall(esignCompleteIn, null);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+    public ApiResponse<CompanyFormationView> postCompanyEsignCompleteWithHttpInfo(@javax.annotation.Nonnull CompanyEsignCompleteIn companyEsignCompleteIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyEsignCompleteValidateBeforeCall(companyEsignCompleteIn, null);
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Records whether the formation documents have been signed. (asynchronously)
      * Records whether the formation documents have been signed. It consults the e-signature provider, which a real provider&#39;s webhook drives; the signal is idempotent.  An explicit &#x60;signed&#x60; in the request overrides the provider&#39;s answer, which is the manual path for the stub provider that never self-completes.
-     * @param esignCompleteIn  (required)
+     * @param companyEsignCompleteIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1339,18 +1388,19 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyEsignCompleteAsync(@javax.annotation.Nonnull EsignCompleteIn esignCompleteIn, final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanyEsignCompleteAsync(@javax.annotation.Nonnull CompanyEsignCompleteIn companyEsignCompleteIn, final ApiCallback<CompanyFormationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCompanyEsignCompleteValidateBeforeCall(esignCompleteIn, _callback);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        okhttp3.Call localVarCall = postCompanyEsignCompleteValidateBeforeCall(companyEsignCompleteIn, _callback);
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCompanyFounders
-     * @param foundersIn  (required)
+     * @param companyFoundersIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1359,9 +1409,10 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyFoundersCall(@javax.annotation.Nonnull FoundersIn foundersIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyFoundersCall(@javax.annotation.Nonnull CompanyFoundersIn companyFoundersIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1375,7 +1426,7 @@ public class CompanyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = foundersIn;
+        Object localVarPostBody = companyFoundersIn;
 
         // create path and map variables
         String localVarPath = "/v1/company/founders";
@@ -1387,7 +1438,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1407,57 +1459,59 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCompanyFoundersValidateBeforeCall(@javax.annotation.Nonnull FoundersIn foundersIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'foundersIn' is set
-        if (foundersIn == null) {
-            throw new ApiException("Missing the required parameter 'foundersIn' when calling postCompanyFounders(Async)");
+    private okhttp3.Call postCompanyFoundersValidateBeforeCall(@javax.annotation.Nonnull CompanyFoundersIn companyFoundersIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'companyFoundersIn' is set
+        if (companyFoundersIn == null) {
+            throw new ApiException("Missing the required parameter 'companyFoundersIn' when calling postCompanyFounders(Async)");
         }
 
-        return postCompanyFoundersCall(foundersIn, _callback);
+        return postCompanyFoundersCall(companyFoundersIn, _callback);
 
     }
 
     /**
      * Replaces the formation&#39;s founders.
      * Replaces the formation&#39;s founders. Each founder needs a name, an email and an equity share in basis points; every founder is (re)set to pending KYC, so a previously settled decision does not survive a change of the list.
-     * @param foundersIn  (required)
-     * @return FormationView
+     * @param companyFoundersIn  (required)
+     * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postCompanyFounders(@javax.annotation.Nonnull FoundersIn foundersIn) throws ApiException {
-        ApiResponse<FormationView> localVarResp = postCompanyFoundersWithHttpInfo(foundersIn);
+    public CompanyFormationView postCompanyFounders(@javax.annotation.Nonnull CompanyFoundersIn companyFoundersIn) throws ApiException {
+        ApiResponse<CompanyFormationView> localVarResp = postCompanyFoundersWithHttpInfo(companyFoundersIn);
         return localVarResp.getData();
     }
 
     /**
      * Replaces the formation&#39;s founders.
      * Replaces the formation&#39;s founders. Each founder needs a name, an email and an equity share in basis points; every founder is (re)set to pending KYC, so a previously settled decision does not survive a change of the list.
-     * @param foundersIn  (required)
-     * @return ApiResponse&lt;FormationView&gt;
+     * @param companyFoundersIn  (required)
+     * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postCompanyFoundersWithHttpInfo(@javax.annotation.Nonnull FoundersIn foundersIn) throws ApiException {
-        okhttp3.Call localVarCall = postCompanyFoundersValidateBeforeCall(foundersIn, null);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+    public ApiResponse<CompanyFormationView> postCompanyFoundersWithHttpInfo(@javax.annotation.Nonnull CompanyFoundersIn companyFoundersIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyFoundersValidateBeforeCall(companyFoundersIn, null);
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Replaces the formation&#39;s founders. (asynchronously)
      * Replaces the formation&#39;s founders. Each founder needs a name, an email and an equity share in basis points; every founder is (re)set to pending KYC, so a previously settled decision does not survive a change of the list.
-     * @param foundersIn  (required)
+     * @param companyFoundersIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1466,12 +1520,13 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyFoundersAsync(@javax.annotation.Nonnull FoundersIn foundersIn, final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanyFoundersAsync(@javax.annotation.Nonnull CompanyFoundersIn companyFoundersIn, final ApiCallback<CompanyFormationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCompanyFoundersValidateBeforeCall(foundersIn, _callback);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        okhttp3.Call localVarCall = postCompanyFoundersValidateBeforeCall(companyFoundersIn, _callback);
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1599,7 +1654,7 @@ public class CompanyApi {
     }
     /**
      * Build call for postCompanyFundraiseRound
-     * @param roundInput  (required)
+     * @param companyRoundInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1608,9 +1663,10 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyFundraiseRoundCall(@javax.annotation.Nonnull RoundInput roundInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyFundraiseRoundCall(@javax.annotation.Nonnull CompanyRoundInput companyRoundInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1624,7 +1680,7 @@ public class CompanyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = roundInput;
+        Object localVarPostBody = companyRoundInput;
 
         // create path and map variables
         String localVarPath = "/v1/company/fundraise/round";
@@ -1636,7 +1692,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1656,57 +1713,59 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCompanyFundraiseRoundValidateBeforeCall(@javax.annotation.Nonnull RoundInput roundInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'roundInput' is set
-        if (roundInput == null) {
-            throw new ApiException("Missing the required parameter 'roundInput' when calling postCompanyFundraiseRound(Async)");
+    private okhttp3.Call postCompanyFundraiseRoundValidateBeforeCall(@javax.annotation.Nonnull CompanyRoundInput companyRoundInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'companyRoundInput' is set
+        if (companyRoundInput == null) {
+            throw new ApiException("Missing the required parameter 'companyRoundInput' when calling postCompanyFundraiseRound(Async)");
         }
 
-        return postCompanyFundraiseRoundCall(roundInput, _callback);
+        return postCompanyFundraiseRoundCall(companyRoundInput, _callback);
 
     }
 
     /**
      * Records a fundraising round on the org&#39;s canonical cap table.
      * Records a fundraising round on the org&#39;s canonical cap table. Available only after incorporation (stage company); roundType defaults to PRICED.
-     * @param roundInput  (required)
-     * @return RoundOut
+     * @param companyRoundInput  (required)
+     * @return CompanyRoundOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RoundOut postCompanyFundraiseRound(@javax.annotation.Nonnull RoundInput roundInput) throws ApiException {
-        ApiResponse<RoundOut> localVarResp = postCompanyFundraiseRoundWithHttpInfo(roundInput);
+    public CompanyRoundOut postCompanyFundraiseRound(@javax.annotation.Nonnull CompanyRoundInput companyRoundInput) throws ApiException {
+        ApiResponse<CompanyRoundOut> localVarResp = postCompanyFundraiseRoundWithHttpInfo(companyRoundInput);
         return localVarResp.getData();
     }
 
     /**
      * Records a fundraising round on the org&#39;s canonical cap table.
      * Records a fundraising round on the org&#39;s canonical cap table. Available only after incorporation (stage company); roundType defaults to PRICED.
-     * @param roundInput  (required)
-     * @return ApiResponse&lt;RoundOut&gt;
+     * @param companyRoundInput  (required)
+     * @return ApiResponse&lt;CompanyRoundOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RoundOut> postCompanyFundraiseRoundWithHttpInfo(@javax.annotation.Nonnull RoundInput roundInput) throws ApiException {
-        okhttp3.Call localVarCall = postCompanyFundraiseRoundValidateBeforeCall(roundInput, null);
-        Type localVarReturnType = new TypeToken<RoundOut>(){}.getType();
+    public ApiResponse<CompanyRoundOut> postCompanyFundraiseRoundWithHttpInfo(@javax.annotation.Nonnull CompanyRoundInput companyRoundInput) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyFundraiseRoundValidateBeforeCall(companyRoundInput, null);
+        Type localVarReturnType = new TypeToken<CompanyRoundOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Records a fundraising round on the org&#39;s canonical cap table. (asynchronously)
      * Records a fundraising round on the org&#39;s canonical cap table. Available only after incorporation (stage company); roundType defaults to PRICED.
-     * @param roundInput  (required)
+     * @param companyRoundInput  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1715,18 +1774,19 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyFundraiseRoundAsync(@javax.annotation.Nonnull RoundInput roundInput, final ApiCallback<RoundOut> _callback) throws ApiException {
+    public okhttp3.Call postCompanyFundraiseRoundAsync(@javax.annotation.Nonnull CompanyRoundInput companyRoundInput, final ApiCallback<CompanyRoundOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCompanyFundraiseRoundValidateBeforeCall(roundInput, _callback);
-        Type localVarReturnType = new TypeToken<RoundOut>(){}.getType();
+        okhttp3.Call localVarCall = postCompanyFundraiseRoundValidateBeforeCall(companyRoundInput, _callback);
+        Type localVarReturnType = new TypeToken<CompanyRoundOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCompanyFundraiseSafe
-     * @param safeIn  (required)
+     * @param companySafeIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1735,9 +1795,10 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyFundraiseSafeCall(@javax.annotation.Nonnull SafeIn safeIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyFundraiseSafeCall(@javax.annotation.Nonnull CompanySafeIn companySafeIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1751,7 +1812,7 @@ public class CompanyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = safeIn;
+        Object localVarPostBody = companySafeIn;
 
         // create path and map variables
         String localVarPath = "/v1/company/fundraise/safe";
@@ -1763,7 +1824,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1783,57 +1845,59 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCompanyFundraiseSafeValidateBeforeCall(@javax.annotation.Nonnull SafeIn safeIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'safeIn' is set
-        if (safeIn == null) {
-            throw new ApiException("Missing the required parameter 'safeIn' when calling postCompanyFundraiseSafe(Async)");
+    private okhttp3.Call postCompanyFundraiseSafeValidateBeforeCall(@javax.annotation.Nonnull CompanySafeIn companySafeIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'companySafeIn' is set
+        if (companySafeIn == null) {
+            throw new ApiException("Missing the required parameter 'companySafeIn' when calling postCompanyFundraiseSafe(Async)");
         }
 
-        return postCompanyFundraiseSafeCall(safeIn, _callback);
+        return postCompanyFundraiseSafeCall(companySafeIn, _callback);
 
     }
 
     /**
      * Raises an e-signature request over documents already in the org&#39;s data room — a SAFE, a convertible note, or any other fundraising paper.
      * Raises an e-signature request over documents already in the org&#39;s data room — a SAFE, a convertible note, or any other fundraising paper. Available only after incorporation (stage company).
-     * @param safeIn  (required)
-     * @return SafeOut
+     * @param companySafeIn  (required)
+     * @return CompanySafeOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SafeOut postCompanyFundraiseSafe(@javax.annotation.Nonnull SafeIn safeIn) throws ApiException {
-        ApiResponse<SafeOut> localVarResp = postCompanyFundraiseSafeWithHttpInfo(safeIn);
+    public CompanySafeOut postCompanyFundraiseSafe(@javax.annotation.Nonnull CompanySafeIn companySafeIn) throws ApiException {
+        ApiResponse<CompanySafeOut> localVarResp = postCompanyFundraiseSafeWithHttpInfo(companySafeIn);
         return localVarResp.getData();
     }
 
     /**
      * Raises an e-signature request over documents already in the org&#39;s data room — a SAFE, a convertible note, or any other fundraising paper.
      * Raises an e-signature request over documents already in the org&#39;s data room — a SAFE, a convertible note, or any other fundraising paper. Available only after incorporation (stage company).
-     * @param safeIn  (required)
-     * @return ApiResponse&lt;SafeOut&gt;
+     * @param companySafeIn  (required)
+     * @return ApiResponse&lt;CompanySafeOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SafeOut> postCompanyFundraiseSafeWithHttpInfo(@javax.annotation.Nonnull SafeIn safeIn) throws ApiException {
-        okhttp3.Call localVarCall = postCompanyFundraiseSafeValidateBeforeCall(safeIn, null);
-        Type localVarReturnType = new TypeToken<SafeOut>(){}.getType();
+    public ApiResponse<CompanySafeOut> postCompanyFundraiseSafeWithHttpInfo(@javax.annotation.Nonnull CompanySafeIn companySafeIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyFundraiseSafeValidateBeforeCall(companySafeIn, null);
+        Type localVarReturnType = new TypeToken<CompanySafeOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Raises an e-signature request over documents already in the org&#39;s data room — a SAFE, a convertible note, or any other fundraising paper. (asynchronously)
      * Raises an e-signature request over documents already in the org&#39;s data room — a SAFE, a convertible note, or any other fundraising paper. Available only after incorporation (stage company).
-     * @param safeIn  (required)
+     * @param companySafeIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1842,12 +1906,13 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyFundraiseSafeAsync(@javax.annotation.Nonnull SafeIn safeIn, final ApiCallback<SafeOut> _callback) throws ApiException {
+    public okhttp3.Call postCompanyFundraiseSafeAsync(@javax.annotation.Nonnull CompanySafeIn companySafeIn, final ApiCallback<CompanySafeOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCompanyFundraiseSafeValidateBeforeCall(safeIn, _callback);
-        Type localVarReturnType = new TypeToken<SafeOut>(){}.getType();
+        okhttp3.Call localVarCall = postCompanyFundraiseSafeValidateBeforeCall(companySafeIn, _callback);
+        Type localVarReturnType = new TypeToken<CompanySafeOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1861,6 +1926,7 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postCompanyGenesisCall(final ApiCallback _callback) throws ApiException {
@@ -1889,7 +1955,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1916,35 +1983,37 @@ public class CompanyApi {
     /**
      * Seeds the canonical cap table with the founding allocation (stakeholders, a common share class, issued shares) and anchors the deterministic equity-genesis root on-chain.
      * Seeds the canonical cap table with the founding allocation (stakeholders, a common share class, issued shares) and anchors the deterministic equity-genesis root on-chain.  It is idempotent: once a root is recorded the cap table is NOT re-seeded, which would double-issue founder share certificates. The root is persisted even when the on-chain submit fails, because the root is the tamper-evident witness and must not be recomputed on retry. Available only at the genesis stage.
-     * @return FormationView
+     * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postCompanyGenesis() throws ApiException {
-        ApiResponse<FormationView> localVarResp = postCompanyGenesisWithHttpInfo();
+    public CompanyFormationView postCompanyGenesis() throws ApiException {
+        ApiResponse<CompanyFormationView> localVarResp = postCompanyGenesisWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Seeds the canonical cap table with the founding allocation (stakeholders, a common share class, issued shares) and anchors the deterministic equity-genesis root on-chain.
      * Seeds the canonical cap table with the founding allocation (stakeholders, a common share class, issued shares) and anchors the deterministic equity-genesis root on-chain.  It is idempotent: once a root is recorded the cap table is NOT re-seeded, which would double-issue founder share certificates. The root is persisted even when the on-chain submit fails, because the root is the tamper-evident witness and must not be recomputed on retry. Available only at the genesis stage.
-     * @return ApiResponse&lt;FormationView&gt;
+     * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postCompanyGenesisWithHttpInfo() throws ApiException {
+    public ApiResponse<CompanyFormationView> postCompanyGenesisWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = postCompanyGenesisValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1959,18 +2028,19 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyGenesisAsync(final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanyGenesisAsync(final ApiCallback<CompanyFormationView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCompanyGenesisValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCompanyImportCaptable
-     * @param importCapTableIn  (required)
+     * @param companyImportCapTableIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1979,9 +2049,10 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyImportCaptableCall(@javax.annotation.Nonnull ImportCapTableIn importCapTableIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyImportCaptableCall(@javax.annotation.Nonnull CompanyImportCapTableIn companyImportCapTableIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1995,7 +2066,7 @@ public class CompanyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = importCapTableIn;
+        Object localVarPostBody = companyImportCapTableIn;
 
         // create path and map variables
         String localVarPath = "/v1/company/import/captable";
@@ -2007,7 +2078,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2027,57 +2099,59 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCompanyImportCaptableValidateBeforeCall(@javax.annotation.Nonnull ImportCapTableIn importCapTableIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'importCapTableIn' is set
-        if (importCapTableIn == null) {
-            throw new ApiException("Missing the required parameter 'importCapTableIn' when calling postCompanyImportCaptable(Async)");
+    private okhttp3.Call postCompanyImportCaptableValidateBeforeCall(@javax.annotation.Nonnull CompanyImportCapTableIn companyImportCapTableIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'companyImportCapTableIn' is set
+        if (companyImportCapTableIn == null) {
+            throw new ApiException("Missing the required parameter 'companyImportCapTableIn' when calling postCompanyImportCaptable(Async)");
         }
 
-        return postCompanyImportCaptableCall(importCapTableIn, _callback);
+        return postCompanyImportCaptableCall(companyImportCapTableIn, _callback);
 
     }
 
     /**
      * Reads an existing company&#39;s cap table from a Google Sheet and adds its stakeholders to the canonical cap table.
      * Reads an existing company&#39;s cap table from a Google Sheet and adds its stakeholders to the canonical cap table.  The first row is a header and columns are matched by name (case-insensitive): name and email are required, type/relationship/institution optional. A sheet without name and email columns, or with no usable data rows, is refused with 400. Available only at the import stage.
-     * @param importCapTableIn  (required)
-     * @return ImportCapTableOut
+     * @param companyImportCapTableIn  (required)
+     * @return CompanyImportCapTableOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ImportCapTableOut postCompanyImportCaptable(@javax.annotation.Nonnull ImportCapTableIn importCapTableIn) throws ApiException {
-        ApiResponse<ImportCapTableOut> localVarResp = postCompanyImportCaptableWithHttpInfo(importCapTableIn);
+    public CompanyImportCapTableOut postCompanyImportCaptable(@javax.annotation.Nonnull CompanyImportCapTableIn companyImportCapTableIn) throws ApiException {
+        ApiResponse<CompanyImportCapTableOut> localVarResp = postCompanyImportCaptableWithHttpInfo(companyImportCapTableIn);
         return localVarResp.getData();
     }
 
     /**
      * Reads an existing company&#39;s cap table from a Google Sheet and adds its stakeholders to the canonical cap table.
      * Reads an existing company&#39;s cap table from a Google Sheet and adds its stakeholders to the canonical cap table.  The first row is a header and columns are matched by name (case-insensitive): name and email are required, type/relationship/institution optional. A sheet without name and email columns, or with no usable data rows, is refused with 400. Available only at the import stage.
-     * @param importCapTableIn  (required)
-     * @return ApiResponse&lt;ImportCapTableOut&gt;
+     * @param companyImportCapTableIn  (required)
+     * @return ApiResponse&lt;CompanyImportCapTableOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ImportCapTableOut> postCompanyImportCaptableWithHttpInfo(@javax.annotation.Nonnull ImportCapTableIn importCapTableIn) throws ApiException {
-        okhttp3.Call localVarCall = postCompanyImportCaptableValidateBeforeCall(importCapTableIn, null);
-        Type localVarReturnType = new TypeToken<ImportCapTableOut>(){}.getType();
+    public ApiResponse<CompanyImportCapTableOut> postCompanyImportCaptableWithHttpInfo(@javax.annotation.Nonnull CompanyImportCapTableIn companyImportCapTableIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyImportCaptableValidateBeforeCall(companyImportCapTableIn, null);
+        Type localVarReturnType = new TypeToken<CompanyImportCapTableOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Reads an existing company&#39;s cap table from a Google Sheet and adds its stakeholders to the canonical cap table. (asynchronously)
      * Reads an existing company&#39;s cap table from a Google Sheet and adds its stakeholders to the canonical cap table.  The first row is a header and columns are matched by name (case-insensitive): name and email are required, type/relationship/institution optional. A sheet without name and email columns, or with no usable data rows, is refused with 400. Available only at the import stage.
-     * @param importCapTableIn  (required)
+     * @param companyImportCapTableIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2086,18 +2160,19 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyImportCaptableAsync(@javax.annotation.Nonnull ImportCapTableIn importCapTableIn, final ApiCallback<ImportCapTableOut> _callback) throws ApiException {
+    public okhttp3.Call postCompanyImportCaptableAsync(@javax.annotation.Nonnull CompanyImportCapTableIn companyImportCapTableIn, final ApiCallback<CompanyImportCapTableOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCompanyImportCaptableValidateBeforeCall(importCapTableIn, _callback);
-        Type localVarReturnType = new TypeToken<ImportCapTableOut>(){}.getType();
+        okhttp3.Call localVarCall = postCompanyImportCaptableValidateBeforeCall(companyImportCapTableIn, _callback);
+        Type localVarReturnType = new TypeToken<CompanyImportCapTableOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCompanyImportDocuments
-     * @param importDocumentsIn  (required)
+     * @param companyImportDocumentsIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2106,9 +2181,10 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyImportDocumentsCall(@javax.annotation.Nonnull ImportDocumentsIn importDocumentsIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyImportDocumentsCall(@javax.annotation.Nonnull CompanyImportDocumentsIn companyImportDocumentsIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2122,7 +2198,7 @@ public class CompanyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = importDocumentsIn;
+        Object localVarPostBody = companyImportDocumentsIn;
 
         // create path and map variables
         String localVarPath = "/v1/company/import/documents";
@@ -2134,7 +2210,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2154,57 +2231,59 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCompanyImportDocumentsValidateBeforeCall(@javax.annotation.Nonnull ImportDocumentsIn importDocumentsIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'importDocumentsIn' is set
-        if (importDocumentsIn == null) {
-            throw new ApiException("Missing the required parameter 'importDocumentsIn' when calling postCompanyImportDocuments(Async)");
+    private okhttp3.Call postCompanyImportDocumentsValidateBeforeCall(@javax.annotation.Nonnull CompanyImportDocumentsIn companyImportDocumentsIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'companyImportDocumentsIn' is set
+        if (companyImportDocumentsIn == null) {
+            throw new ApiException("Missing the required parameter 'companyImportDocumentsIn' when calling postCompanyImportDocuments(Async)");
         }
 
-        return postCompanyImportDocumentsCall(importDocumentsIn, _callback);
+        return postCompanyImportDocumentsCall(companyImportDocumentsIn, _callback);
 
     }
 
     /**
      * Ingests an existing company&#39;s corporate documents from a Google Drive folder into the org&#39;s data room.
      * Ingests an existing company&#39;s corporate documents from a Google Drive folder into the org&#39;s data room. The import is shallow — sub-folders are skipped, not walked — and available only at the import stage.
-     * @param importDocumentsIn  (required)
-     * @return ImportDocumentsOut
+     * @param companyImportDocumentsIn  (required)
+     * @return CompanyImportDocumentsOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ImportDocumentsOut postCompanyImportDocuments(@javax.annotation.Nonnull ImportDocumentsIn importDocumentsIn) throws ApiException {
-        ApiResponse<ImportDocumentsOut> localVarResp = postCompanyImportDocumentsWithHttpInfo(importDocumentsIn);
+    public CompanyImportDocumentsOut postCompanyImportDocuments(@javax.annotation.Nonnull CompanyImportDocumentsIn companyImportDocumentsIn) throws ApiException {
+        ApiResponse<CompanyImportDocumentsOut> localVarResp = postCompanyImportDocumentsWithHttpInfo(companyImportDocumentsIn);
         return localVarResp.getData();
     }
 
     /**
      * Ingests an existing company&#39;s corporate documents from a Google Drive folder into the org&#39;s data room.
      * Ingests an existing company&#39;s corporate documents from a Google Drive folder into the org&#39;s data room. The import is shallow — sub-folders are skipped, not walked — and available only at the import stage.
-     * @param importDocumentsIn  (required)
-     * @return ApiResponse&lt;ImportDocumentsOut&gt;
+     * @param companyImportDocumentsIn  (required)
+     * @return ApiResponse&lt;CompanyImportDocumentsOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ImportDocumentsOut> postCompanyImportDocumentsWithHttpInfo(@javax.annotation.Nonnull ImportDocumentsIn importDocumentsIn) throws ApiException {
-        okhttp3.Call localVarCall = postCompanyImportDocumentsValidateBeforeCall(importDocumentsIn, null);
-        Type localVarReturnType = new TypeToken<ImportDocumentsOut>(){}.getType();
+    public ApiResponse<CompanyImportDocumentsOut> postCompanyImportDocumentsWithHttpInfo(@javax.annotation.Nonnull CompanyImportDocumentsIn companyImportDocumentsIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyImportDocumentsValidateBeforeCall(companyImportDocumentsIn, null);
+        Type localVarReturnType = new TypeToken<CompanyImportDocumentsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Ingests an existing company&#39;s corporate documents from a Google Drive folder into the org&#39;s data room. (asynchronously)
      * Ingests an existing company&#39;s corporate documents from a Google Drive folder into the org&#39;s data room. The import is shallow — sub-folders are skipped, not walked — and available only at the import stage.
-     * @param importDocumentsIn  (required)
+     * @param companyImportDocumentsIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2213,12 +2292,13 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyImportDocumentsAsync(@javax.annotation.Nonnull ImportDocumentsIn importDocumentsIn, final ApiCallback<ImportDocumentsOut> _callback) throws ApiException {
+    public okhttp3.Call postCompanyImportDocumentsAsync(@javax.annotation.Nonnull CompanyImportDocumentsIn companyImportDocumentsIn, final ApiCallback<CompanyImportDocumentsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCompanyImportDocumentsValidateBeforeCall(importDocumentsIn, _callback);
-        Type localVarReturnType = new TypeToken<ImportDocumentsOut>(){}.getType();
+        okhttp3.Call localVarCall = postCompanyImportDocumentsValidateBeforeCall(companyImportDocumentsIn, _callback);
+        Type localVarReturnType = new TypeToken<CompanyImportDocumentsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2232,6 +2312,7 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postCompanyKycCall(final ApiCallback _callback) throws ApiException {
@@ -2260,7 +2341,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2285,43 +2367,45 @@ public class CompanyApi {
     }
 
     /**
-     * StartKYC opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.
-     * StartKYC opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.  A start is never a decision: any terminal status the provider reports at inquiry time is clamped back to pending, so the payment gate can never open here. A terminal status arrives only from POST /v1/company/kyc/refresh (the provider) or POST /v1/company/kyc/decision (a Hanzo platform reviewer).
-     * @return KycStartOut
+     * Opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.
+     * Opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.  A start is never a decision: any terminal status the provider reports at inquiry time is clamped back to pending, so the payment gate can never open here. A terminal status arrives only from POST /v1/company/kyc/refresh (the provider) or POST /v1/company/kyc/decision (a Hanzo platform reviewer).
+     * @return CompanyKycStartOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public KycStartOut postCompanyKyc() throws ApiException {
-        ApiResponse<KycStartOut> localVarResp = postCompanyKycWithHttpInfo();
+    public CompanyKycStartOut postCompanyKyc() throws ApiException {
+        ApiResponse<CompanyKycStartOut> localVarResp = postCompanyKycWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * StartKYC opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.
-     * StartKYC opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.  A start is never a decision: any terminal status the provider reports at inquiry time is clamped back to pending, so the payment gate can never open here. A terminal status arrives only from POST /v1/company/kyc/refresh (the provider) or POST /v1/company/kyc/decision (a Hanzo platform reviewer).
-     * @return ApiResponse&lt;KycStartOut&gt;
+     * Opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.
+     * Opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.  A start is never a decision: any terminal status the provider reports at inquiry time is clamped back to pending, so the payment gate can never open here. A terminal status arrives only from POST /v1/company/kyc/refresh (the provider) or POST /v1/company/kyc/decision (a Hanzo platform reviewer).
+     * @return ApiResponse&lt;CompanyKycStartOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KycStartOut> postCompanyKycWithHttpInfo() throws ApiException {
+    public ApiResponse<CompanyKycStartOut> postCompanyKycWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = postCompanyKycValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<KycStartOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyKycStartOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * StartKYC opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation. (asynchronously)
-     * StartKYC opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.  A start is never a decision: any terminal status the provider reports at inquiry time is clamped back to pending, so the payment gate can never open here. A terminal status arrives only from POST /v1/company/kyc/refresh (the provider) or POST /v1/company/kyc/decision (a Hanzo platform reviewer).
+     * Opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation. (asynchronously)
+     * Opens an identity-verification session for every founder with the wired provider and records each session&#39;s reference on the formation.  A start is never a decision: any terminal status the provider reports at inquiry time is clamped back to pending, so the payment gate can never open here. A terminal status arrives only from POST /v1/company/kyc/refresh (the provider) or POST /v1/company/kyc/decision (a Hanzo platform reviewer).
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2330,139 +2414,13 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyKycAsync(final ApiCallback<KycStartOut> _callback) throws ApiException {
+    public okhttp3.Call postCompanyKycAsync(final ApiCallback<CompanyKycStartOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCompanyKycValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<KycStartOut>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postCompanyKycDecision
-     * @param decisionIn  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postCompanyKycDecisionCall(@javax.annotation.Nonnull DecisionIn decisionIn, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = decisionIn;
-
-        // create path and map variables
-        String localVarPath = "/v1/company/kyc/decision";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCompanyKycDecisionValidateBeforeCall(@javax.annotation.Nonnull DecisionIn decisionIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'decisionIn' is set
-        if (decisionIn == null) {
-            throw new ApiException("Missing the required parameter 'decisionIn' when calling postCompanyKycDecision(Async)");
-        }
-
-        return postCompanyKycDecisionCall(decisionIn, _callback);
-
-    }
-
-    /**
-     * DecideKYC records a privileged reviewer&#39;s MANUAL decision on a founder&#39;s KYC — the human-in-the-loop path, and the ONLY route to a pass when no real provider is wired.
-     * DecideKYC records a privileged reviewer&#39;s MANUAL decision on a founder&#39;s KYC — the human-in-the-loop path, and the ONLY route to a pass when no real provider is wired. It produces a DISTINCT reviewer_confirmed, never a provider \&quot;verified\&quot;.  Because Hanzo forms the entity and carries the formation KYC/AML obligation, the reviewer is a HANZO platform reviewer (SuperAdmin), and the decision is ATTRIBUTED to them.
-     * @param decisionIn  (required)
-     * @return FormationView
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public FormationView postCompanyKycDecision(@javax.annotation.Nonnull DecisionIn decisionIn) throws ApiException {
-        ApiResponse<FormationView> localVarResp = postCompanyKycDecisionWithHttpInfo(decisionIn);
-        return localVarResp.getData();
-    }
-
-    /**
-     * DecideKYC records a privileged reviewer&#39;s MANUAL decision on a founder&#39;s KYC — the human-in-the-loop path, and the ONLY route to a pass when no real provider is wired.
-     * DecideKYC records a privileged reviewer&#39;s MANUAL decision on a founder&#39;s KYC — the human-in-the-loop path, and the ONLY route to a pass when no real provider is wired. It produces a DISTINCT reviewer_confirmed, never a provider \&quot;verified\&quot;.  Because Hanzo forms the entity and carries the formation KYC/AML obligation, the reviewer is a HANZO platform reviewer (SuperAdmin), and the decision is ATTRIBUTED to them.
-     * @param decisionIn  (required)
-     * @return ApiResponse&lt;FormationView&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<FormationView> postCompanyKycDecisionWithHttpInfo(@javax.annotation.Nonnull DecisionIn decisionIn) throws ApiException {
-        okhttp3.Call localVarCall = postCompanyKycDecisionValidateBeforeCall(decisionIn, null);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * DecideKYC records a privileged reviewer&#39;s MANUAL decision on a founder&#39;s KYC — the human-in-the-loop path, and the ONLY route to a pass when no real provider is wired. (asynchronously)
-     * DecideKYC records a privileged reviewer&#39;s MANUAL decision on a founder&#39;s KYC — the human-in-the-loop path, and the ONLY route to a pass when no real provider is wired. It produces a DISTINCT reviewer_confirmed, never a provider \&quot;verified\&quot;.  Because Hanzo forms the entity and carries the formation KYC/AML obligation, the reviewer is a HANZO platform reviewer (SuperAdmin), and the decision is ATTRIBUTED to them.
-     * @param decisionIn  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postCompanyKycDecisionAsync(@javax.annotation.Nonnull DecisionIn decisionIn, final ApiCallback<FormationView> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postCompanyKycDecisionValidateBeforeCall(decisionIn, _callback);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyKycStartOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2476,6 +2434,7 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postCompanyKycRefreshCall(final ApiCallback _callback) throws ApiException {
@@ -2504,7 +2463,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2531,35 +2491,37 @@ public class CompanyApi {
     /**
      * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status.
      * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status. For the manual provider the check stays pending; for a real provider it reflects the settled decision, ATTRIBUTED to the provider.  It NEVER trusts a client-asserted status — the status comes from the PROVIDER — so a client cannot force a pass here, and an already-passing founder (e.g. a reviewer confirmation) is left untouched.
-     * @return KycRefreshOut
+     * @return CompanyKycRefreshOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public KycRefreshOut postCompanyKycRefresh() throws ApiException {
-        ApiResponse<KycRefreshOut> localVarResp = postCompanyKycRefreshWithHttpInfo();
+    public CompanyKycRefreshOut postCompanyKycRefresh() throws ApiException {
+        ApiResponse<CompanyKycRefreshOut> localVarResp = postCompanyKycRefreshWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status.
      * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status. For the manual provider the check stays pending; for a real provider it reflects the settled decision, ATTRIBUTED to the provider.  It NEVER trusts a client-asserted status — the status comes from the PROVIDER — so a client cannot force a pass here, and an already-passing founder (e.g. a reviewer confirmation) is left untouched.
-     * @return ApiResponse&lt;KycRefreshOut&gt;
+     * @return ApiResponse&lt;CompanyKycRefreshOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KycRefreshOut> postCompanyKycRefreshWithHttpInfo() throws ApiException {
+    public ApiResponse<CompanyKycRefreshOut> postCompanyKycRefreshWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = postCompanyKycRefreshValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<KycRefreshOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyKycRefreshOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2574,12 +2536,13 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyKycRefreshAsync(final ApiCallback<KycRefreshOut> _callback) throws ApiException {
+    public okhttp3.Call postCompanyKycRefreshAsync(final ApiCallback<CompanyKycRefreshOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCompanyKycRefreshValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<KycRefreshOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyKycRefreshOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2593,6 +2556,7 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postCompanyPaymentCall(final ApiCallback _callback) throws ApiException {
@@ -2621,7 +2585,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2648,35 +2613,37 @@ public class CompanyApi {
     /**
      * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.
      * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.  It is $999 unless the deployment sets another, and the answer is the formation record carrying its paid flag and the charge reference. It takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A denial answers the fleet-wide billing contract — 402 insufficient_balance, 402 spend_cap_exceeded, 503 balance_unavailable — carried by cloud.Denied, which is the money wire&#39;s own {\&quot;error\&quot;:{\&quot;code\&quot;,\&quot;message\&quot;}} body rather than a second vocabulary invented for this surface.  The gate is the LAST thing it does, after the stage check and the paid short-circuit, so a caller the machine is about to refuse is never charged. That ordering is why the gate cannot lift into middleware, where it would run first. Both facts are pinned: TestPaymentDenialWire, TestPaymentChargesLast.
-     * @return FormationView
+     * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postCompanyPayment() throws ApiException {
-        ApiResponse<FormationView> localVarResp = postCompanyPaymentWithHttpInfo();
+    public CompanyFormationView postCompanyPayment() throws ApiException {
+        ApiResponse<CompanyFormationView> localVarResp = postCompanyPaymentWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.
      * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.  It is $999 unless the deployment sets another, and the answer is the formation record carrying its paid flag and the charge reference. It takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A denial answers the fleet-wide billing contract — 402 insufficient_balance, 402 spend_cap_exceeded, 503 balance_unavailable — carried by cloud.Denied, which is the money wire&#39;s own {\&quot;error\&quot;:{\&quot;code\&quot;,\&quot;message\&quot;}} body rather than a second vocabulary invented for this surface.  The gate is the LAST thing it does, after the stage check and the paid short-circuit, so a caller the machine is about to refuse is never charged. That ordering is why the gate cannot lift into middleware, where it would run first. Both facts are pinned: TestPaymentDenialWire, TestPaymentChargesLast.
-     * @return ApiResponse&lt;FormationView&gt;
+     * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postCompanyPaymentWithHttpInfo() throws ApiException {
+    public ApiResponse<CompanyFormationView> postCompanyPaymentWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = postCompanyPaymentValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2691,12 +2658,13 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyPaymentAsync(final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanyPaymentAsync(final ApiCallback<CompanyFormationView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCompanyPaymentValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2710,6 +2678,7 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postCompanySkipCall(final ApiCallback _callback) throws ApiException {
@@ -2738,7 +2707,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2763,43 +2733,45 @@ public class CompanyApi {
     }
 
     /**
-     * Skip marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity.
-     * Skip marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity. Available only at the structure stage.
-     * @return FormationView
+     * Marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity.
+     * Marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity. Available only at the structure stage.
+     * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postCompanySkip() throws ApiException {
-        ApiResponse<FormationView> localVarResp = postCompanySkipWithHttpInfo();
+    public CompanyFormationView postCompanySkip() throws ApiException {
+        ApiResponse<CompanyFormationView> localVarResp = postCompanySkipWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Skip marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity.
-     * Skip marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity. Available only at the structure stage.
-     * @return ApiResponse&lt;FormationView&gt;
+     * Marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity.
+     * Marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity. Available only at the structure stage.
+     * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postCompanySkipWithHttpInfo() throws ApiException {
+    public ApiResponse<CompanyFormationView> postCompanySkipWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = postCompanySkipValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Skip marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity. (asynchronously)
-     * Skip marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity. Available only at the structure stage.
+     * Marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity. (asynchronously)
+     * Marks the org as already incorporated and moves it onto the import path, so an existing company brings its documents and cap table in instead of forming a new entity. Available only at the structure stage.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2808,18 +2780,19 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanySkipAsync(final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanySkipAsync(final ApiCallback<CompanyFormationView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCompanySkipValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCompanyTariff
-     * @param tariffIn  (required)
+     * @param companyTariffIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2828,9 +2801,10 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyTariffCall(@javax.annotation.Nonnull TariffIn tariffIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyTariffCall(@javax.annotation.Nonnull CompanyTariffIn companyTariffIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2844,7 +2818,7 @@ public class CompanyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = tariffIn;
+        Object localVarPostBody = companyTariffIn;
 
         // create path and map variables
         String localVarPath = "/v1/company/tariff";
@@ -2856,7 +2830,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2876,57 +2851,59 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCompanyTariffValidateBeforeCall(@javax.annotation.Nonnull TariffIn tariffIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'tariffIn' is set
-        if (tariffIn == null) {
-            throw new ApiException("Missing the required parameter 'tariffIn' when calling postCompanyTariff(Async)");
+    private okhttp3.Call postCompanyTariffValidateBeforeCall(@javax.annotation.Nonnull CompanyTariffIn companyTariffIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'companyTariffIn' is set
+        if (companyTariffIn == null) {
+            throw new ApiException("Missing the required parameter 'companyTariffIn' when calling postCompanyTariff(Async)");
         }
 
-        return postCompanyTariffCall(tariffIn, _callback);
+        return postCompanyTariffCall(companyTariffIn, _callback);
 
     }
 
     /**
      * Itemises what a formation costs before anyone commits to it.
      * Itemises what a formation costs before anyone commits to it.  It answers what is due now and what recurs, as separate figures, and marks the state&#39;s filing fee as money we collect and remit rather than keep. A caller can therefore show a payer the whole bill — which is the point of quoting at all, and was impossible while the fee was one number in an error string.  A jurisdiction whose filing fee this deployment has not been told REFUSES, naming the setting that fixes it. Quoting our half as though it were the total is the one answer that would be worse than no answer.
-     * @param tariffIn  (required)
-     * @return Tariff
+     * @param companyTariffIn  (required)
+     * @return CompanyTariff
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Tariff postCompanyTariff(@javax.annotation.Nonnull TariffIn tariffIn) throws ApiException {
-        ApiResponse<Tariff> localVarResp = postCompanyTariffWithHttpInfo(tariffIn);
+    public CompanyTariff postCompanyTariff(@javax.annotation.Nonnull CompanyTariffIn companyTariffIn) throws ApiException {
+        ApiResponse<CompanyTariff> localVarResp = postCompanyTariffWithHttpInfo(companyTariffIn);
         return localVarResp.getData();
     }
 
     /**
      * Itemises what a formation costs before anyone commits to it.
      * Itemises what a formation costs before anyone commits to it.  It answers what is due now and what recurs, as separate figures, and marks the state&#39;s filing fee as money we collect and remit rather than keep. A caller can therefore show a payer the whole bill — which is the point of quoting at all, and was impossible while the fee was one number in an error string.  A jurisdiction whose filing fee this deployment has not been told REFUSES, naming the setting that fixes it. Quoting our half as though it were the total is the one answer that would be worse than no answer.
-     * @param tariffIn  (required)
-     * @return ApiResponse&lt;Tariff&gt;
+     * @param companyTariffIn  (required)
+     * @return ApiResponse&lt;CompanyTariff&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Tariff> postCompanyTariffWithHttpInfo(@javax.annotation.Nonnull TariffIn tariffIn) throws ApiException {
-        okhttp3.Call localVarCall = postCompanyTariffValidateBeforeCall(tariffIn, null);
-        Type localVarReturnType = new TypeToken<Tariff>(){}.getType();
+    public ApiResponse<CompanyTariff> postCompanyTariffWithHttpInfo(@javax.annotation.Nonnull CompanyTariffIn companyTariffIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyTariffValidateBeforeCall(companyTariffIn, null);
+        Type localVarReturnType = new TypeToken<CompanyTariff>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Itemises what a formation costs before anyone commits to it. (asynchronously)
      * Itemises what a formation costs before anyone commits to it.  It answers what is due now and what recurs, as separate figures, and marks the state&#39;s filing fee as money we collect and remit rather than keep. A caller can therefore show a payer the whole bill — which is the point of quoting at all, and was impossible while the fee was one number in an error string.  A jurisdiction whose filing fee this deployment has not been told REFUSES, naming the setting that fixes it. Quoting our half as though it were the total is the one answer that would be worse than no answer.
-     * @param tariffIn  (required)
+     * @param companyTariffIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2935,18 +2912,19 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompanyTariffAsync(@javax.annotation.Nonnull TariffIn tariffIn, final ApiCallback<Tariff> _callback) throws ApiException {
+    public okhttp3.Call postCompanyTariffAsync(@javax.annotation.Nonnull CompanyTariffIn companyTariffIn, final ApiCallback<CompanyTariff> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCompanyTariffValidateBeforeCall(tariffIn, _callback);
-        Type localVarReturnType = new TypeToken<Tariff>(){}.getType();
+        okhttp3.Call localVarCall = postCompanyTariffValidateBeforeCall(companyTariffIn, _callback);
+        Type localVarReturnType = new TypeToken<CompanyTariff>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putCompanyStructure
-     * @param structureIn  (required)
+     * @param companyStructureIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2955,9 +2933,10 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putCompanyStructureCall(@javax.annotation.Nonnull StructureIn structureIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCompanyStructureCall(@javax.annotation.Nonnull CompanyStructureIn companyStructureIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2971,7 +2950,7 @@ public class CompanyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = structureIn;
+        Object localVarPostBody = companyStructureIn;
 
         // create path and map variables
         String localVarPath = "/v1/company/structure";
@@ -2983,7 +2962,8 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3003,57 +2983,59 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putCompanyStructureValidateBeforeCall(@javax.annotation.Nonnull StructureIn structureIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'structureIn' is set
-        if (structureIn == null) {
-            throw new ApiException("Missing the required parameter 'structureIn' when calling putCompanyStructure(Async)");
+    private okhttp3.Call putCompanyStructureValidateBeforeCall(@javax.annotation.Nonnull CompanyStructureIn companyStructureIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'companyStructureIn' is set
+        if (companyStructureIn == null) {
+            throw new ApiException("Missing the required parameter 'companyStructureIn' when calling putCompanyStructure(Async)");
         }
 
-        return putCompanyStructureCall(structureIn, _callback);
+        return putCompanyStructureCall(companyStructureIn, _callback);
 
     }
 
     /**
      * Records the entity kind, the state of formation and the proposed name.
      * Records the entity kind, the state of formation and the proposed name. Available only at the structure stage; an unknown structure or jurisdiction, or an empty name, is refused with 400.
-     * @param structureIn  (required)
-     * @return FormationView
+     * @param companyStructureIn  (required)
+     * @return CompanyFormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView putCompanyStructure(@javax.annotation.Nonnull StructureIn structureIn) throws ApiException {
-        ApiResponse<FormationView> localVarResp = putCompanyStructureWithHttpInfo(structureIn);
+    public CompanyFormationView putCompanyStructure(@javax.annotation.Nonnull CompanyStructureIn companyStructureIn) throws ApiException {
+        ApiResponse<CompanyFormationView> localVarResp = putCompanyStructureWithHttpInfo(companyStructureIn);
         return localVarResp.getData();
     }
 
     /**
      * Records the entity kind, the state of formation and the proposed name.
      * Records the entity kind, the state of formation and the proposed name. Available only at the structure stage; an unknown structure or jurisdiction, or an empty name, is refused with 400.
-     * @param structureIn  (required)
-     * @return ApiResponse&lt;FormationView&gt;
+     * @param companyStructureIn  (required)
+     * @return ApiResponse&lt;CompanyFormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> putCompanyStructureWithHttpInfo(@javax.annotation.Nonnull StructureIn structureIn) throws ApiException {
-        okhttp3.Call localVarCall = putCompanyStructureValidateBeforeCall(structureIn, null);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+    public ApiResponse<CompanyFormationView> putCompanyStructureWithHttpInfo(@javax.annotation.Nonnull CompanyStructureIn companyStructureIn) throws ApiException {
+        okhttp3.Call localVarCall = putCompanyStructureValidateBeforeCall(companyStructureIn, null);
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Records the entity kind, the state of formation and the proposed name. (asynchronously)
      * Records the entity kind, the state of formation and the proposed name. Available only at the structure stage; an unknown structure or jurisdiction, or an empty name, is refused with 400.
-     * @param structureIn  (required)
+     * @param companyStructureIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3062,12 +3044,13 @@ public class CompanyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putCompanyStructureAsync(@javax.annotation.Nonnull StructureIn structureIn, final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call putCompanyStructureAsync(@javax.annotation.Nonnull CompanyStructureIn companyStructureIn, final ApiCallback<CompanyFormationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putCompanyStructureValidateBeforeCall(structureIn, _callback);
-        Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        okhttp3.Call localVarCall = putCompanyStructureValidateBeforeCall(companyStructureIn, _callback);
+        Type localVarReturnType = new TypeToken<CompanyFormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

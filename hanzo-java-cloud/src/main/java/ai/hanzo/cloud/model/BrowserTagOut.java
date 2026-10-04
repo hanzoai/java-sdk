@@ -21,6 +21,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,6 +52,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class BrowserTagOut {
+  public static final String SERIALIZED_NAME_EVENTS = "events";
+  @SerializedName(SERIALIZED_NAME_EVENTS)
+  @javax.annotation.Nullable
+  private Map<String, String> events = new HashMap<>();
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
@@ -67,6 +74,33 @@ public class BrowserTagOut {
 
   public BrowserTagOut() {
   }
+
+  public BrowserTagOut events(@javax.annotation.Nullable Map<String, String> events) {
+    this.events = events;
+    return this;
+  }
+
+  public BrowserTagOut putEventsItem(String key, String eventsItem) {
+    if (this.events == null) {
+      this.events = new HashMap<>();
+    }
+    this.events.put(key, eventsItem);
+    return this;
+  }
+
+  /**
+   * Get events
+   * @return events
+   */
+  @javax.annotation.Nullable
+  public Map<String, String> getEvents() {
+    return events;
+  }
+
+  public void setEvents(@javax.annotation.Nullable Map<String, String> events) {
+    this.events = events;
+  }
+
 
   public BrowserTagOut id(@javax.annotation.Nullable String id) {
     this.id = id;
@@ -179,7 +213,8 @@ public class BrowserTagOut {
       return false;
     }
     BrowserTagOut browserTagOut = (BrowserTagOut) o;
-    return Objects.equals(this.id, browserTagOut.id) &&
+    return Objects.equals(this.events, browserTagOut.events) &&
+        Objects.equals(this.id, browserTagOut.id) &&
         Objects.equals(this.platform, browserTagOut.platform) &&
         Objects.equals(this.type, browserTagOut.type)&&
         Objects.equals(this.additionalProperties, browserTagOut.additionalProperties);
@@ -187,13 +222,14 @@ public class BrowserTagOut {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, platform, type, additionalProperties);
+    return Objects.hash(events, id, platform, type, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BrowserTagOut {\n");
+    sb.append("    events: ").append(toIndentedString(events)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
@@ -219,7 +255,7 @@ public class BrowserTagOut {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("id", "platform", "type"));
+    openapiFields = new HashSet<String>(Arrays.asList("events", "id", "platform", "type"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

@@ -27,8 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Answer;
-import ai.hanzo.cloud.model.Query;
+import ai.hanzo.cloud.model.LspAnswer;
+import ai.hanzo.cloud.model.LspQuery;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -75,7 +76,7 @@ public class LspApi {
 
     /**
      * Build call for postLspComplete
-     * @param query  (required)
+     * @param lspQuery  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,9 +85,10 @@ public class LspApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postLspCompleteCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postLspCompleteCall(@javax.annotation.Nonnull LspQuery lspQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -100,7 +102,7 @@ public class LspApi {
             basePath = null;
         }
 
-        Object localVarPostBody = query;
+        Object localVarPostBody = lspQuery;
 
         // create path and map variables
         String localVarPath = "/v1/lsp/complete";
@@ -112,7 +114,8 @@ public class LspApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -132,57 +135,59 @@ public class LspApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postLspCompleteValidateBeforeCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'query' is set
-        if (query == null) {
-            throw new ApiException("Missing the required parameter 'query' when calling postLspComplete(Async)");
+    private okhttp3.Call postLspCompleteValidateBeforeCall(@javax.annotation.Nonnull LspQuery lspQuery, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lspQuery' is set
+        if (lspQuery == null) {
+            throw new ApiException("Missing the required parameter 'lspQuery' when calling postLspComplete(Async)");
         }
 
-        return postLspCompleteCall(query, _callback);
+        return postLspCompleteCall(lspQuery, _callback);
 
     }
 
     /**
      * Offers the candidates a language server has at a position, typed and resolved through the repository&#39;s dependencies rather than guessed from text.
      * Offers the candidates a language server has at a position, typed and resolved through the repository&#39;s dependencies rather than guessed from text.
-     * @param query  (required)
-     * @return Answer
+     * @param lspQuery  (required)
+     * @return LspAnswer
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Answer postLspComplete(@javax.annotation.Nonnull Query query) throws ApiException {
-        ApiResponse<Answer> localVarResp = postLspCompleteWithHttpInfo(query);
+    public LspAnswer postLspComplete(@javax.annotation.Nonnull LspQuery lspQuery) throws ApiException {
+        ApiResponse<LspAnswer> localVarResp = postLspCompleteWithHttpInfo(lspQuery);
         return localVarResp.getData();
     }
 
     /**
      * Offers the candidates a language server has at a position, typed and resolved through the repository&#39;s dependencies rather than guessed from text.
      * Offers the candidates a language server has at a position, typed and resolved through the repository&#39;s dependencies rather than guessed from text.
-     * @param query  (required)
-     * @return ApiResponse&lt;Answer&gt;
+     * @param lspQuery  (required)
+     * @return ApiResponse&lt;LspAnswer&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Answer> postLspCompleteWithHttpInfo(@javax.annotation.Nonnull Query query) throws ApiException {
-        okhttp3.Call localVarCall = postLspCompleteValidateBeforeCall(query, null);
-        Type localVarReturnType = new TypeToken<Answer>(){}.getType();
+    public ApiResponse<LspAnswer> postLspCompleteWithHttpInfo(@javax.annotation.Nonnull LspQuery lspQuery) throws ApiException {
+        okhttp3.Call localVarCall = postLspCompleteValidateBeforeCall(lspQuery, null);
+        Type localVarReturnType = new TypeToken<LspAnswer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Offers the candidates a language server has at a position, typed and resolved through the repository&#39;s dependencies rather than guessed from text. (asynchronously)
      * Offers the candidates a language server has at a position, typed and resolved through the repository&#39;s dependencies rather than guessed from text.
-     * @param query  (required)
+     * @param lspQuery  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -191,18 +196,19 @@ public class LspApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postLspCompleteAsync(@javax.annotation.Nonnull Query query, final ApiCallback<Answer> _callback) throws ApiException {
+    public okhttp3.Call postLspCompleteAsync(@javax.annotation.Nonnull LspQuery lspQuery, final ApiCallback<LspAnswer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postLspCompleteValidateBeforeCall(query, _callback);
-        Type localVarReturnType = new TypeToken<Answer>(){}.getType();
+        okhttp3.Call localVarCall = postLspCompleteValidateBeforeCall(lspQuery, _callback);
+        Type localVarReturnType = new TypeToken<LspAnswer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postLspDiagnostics
-     * @param query  (required)
+     * @param lspQuery  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -211,9 +217,10 @@ public class LspApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postLspDiagnosticsCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postLspDiagnosticsCall(@javax.annotation.Nonnull LspQuery lspQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -227,7 +234,7 @@ public class LspApi {
             basePath = null;
         }
 
-        Object localVarPostBody = query;
+        Object localVarPostBody = lspQuery;
 
         // create path and map variables
         String localVarPath = "/v1/lsp/diagnostics";
@@ -239,7 +246,8 @@ public class LspApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -259,57 +267,59 @@ public class LspApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postLspDiagnosticsValidateBeforeCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'query' is set
-        if (query == null) {
-            throw new ApiException("Missing the required parameter 'query' when calling postLspDiagnostics(Async)");
+    private okhttp3.Call postLspDiagnosticsValidateBeforeCall(@javax.annotation.Nonnull LspQuery lspQuery, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lspQuery' is set
+        if (lspQuery == null) {
+            throw new ApiException("Missing the required parameter 'lspQuery' when calling postLspDiagnostics(Async)");
         }
 
-        return postLspDiagnosticsCall(query, _callback);
+        return postLspDiagnosticsCall(lspQuery, _callback);
 
     }
 
     /**
      * Reports every problem the language server finds in one file — compile errors, type errors and lints, each with its span and its severity (1 error, 2 warning, 3 information, 4 hint).
      * Reports every problem the language server finds in one file — compile errors, type errors and lints, each with its span and its severity (1 error, 2 warning, 3 information, 4 hint). The position is ignored.
-     * @param query  (required)
-     * @return Answer
+     * @param lspQuery  (required)
+     * @return LspAnswer
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Answer postLspDiagnostics(@javax.annotation.Nonnull Query query) throws ApiException {
-        ApiResponse<Answer> localVarResp = postLspDiagnosticsWithHttpInfo(query);
+    public LspAnswer postLspDiagnostics(@javax.annotation.Nonnull LspQuery lspQuery) throws ApiException {
+        ApiResponse<LspAnswer> localVarResp = postLspDiagnosticsWithHttpInfo(lspQuery);
         return localVarResp.getData();
     }
 
     /**
      * Reports every problem the language server finds in one file — compile errors, type errors and lints, each with its span and its severity (1 error, 2 warning, 3 information, 4 hint).
      * Reports every problem the language server finds in one file — compile errors, type errors and lints, each with its span and its severity (1 error, 2 warning, 3 information, 4 hint). The position is ignored.
-     * @param query  (required)
-     * @return ApiResponse&lt;Answer&gt;
+     * @param lspQuery  (required)
+     * @return ApiResponse&lt;LspAnswer&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Answer> postLspDiagnosticsWithHttpInfo(@javax.annotation.Nonnull Query query) throws ApiException {
-        okhttp3.Call localVarCall = postLspDiagnosticsValidateBeforeCall(query, null);
-        Type localVarReturnType = new TypeToken<Answer>(){}.getType();
+    public ApiResponse<LspAnswer> postLspDiagnosticsWithHttpInfo(@javax.annotation.Nonnull LspQuery lspQuery) throws ApiException {
+        okhttp3.Call localVarCall = postLspDiagnosticsValidateBeforeCall(lspQuery, null);
+        Type localVarReturnType = new TypeToken<LspAnswer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Reports every problem the language server finds in one file — compile errors, type errors and lints, each with its span and its severity (1 error, 2 warning, 3 information, 4 hint). (asynchronously)
      * Reports every problem the language server finds in one file — compile errors, type errors and lints, each with its span and its severity (1 error, 2 warning, 3 information, 4 hint). The position is ignored.
-     * @param query  (required)
+     * @param lspQuery  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -318,18 +328,19 @@ public class LspApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postLspDiagnosticsAsync(@javax.annotation.Nonnull Query query, final ApiCallback<Answer> _callback) throws ApiException {
+    public okhttp3.Call postLspDiagnosticsAsync(@javax.annotation.Nonnull LspQuery lspQuery, final ApiCallback<LspAnswer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postLspDiagnosticsValidateBeforeCall(query, _callback);
-        Type localVarReturnType = new TypeToken<Answer>(){}.getType();
+        okhttp3.Call localVarCall = postLspDiagnosticsValidateBeforeCall(lspQuery, _callback);
+        Type localVarReturnType = new TypeToken<LspAnswer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postLspHover
-     * @param query  (required)
+     * @param lspQuery  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -338,9 +349,10 @@ public class LspApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postLspHoverCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postLspHoverCall(@javax.annotation.Nonnull LspQuery lspQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -354,7 +366,7 @@ public class LspApi {
             basePath = null;
         }
 
-        Object localVarPostBody = query;
+        Object localVarPostBody = lspQuery;
 
         // create path and map variables
         String localVarPath = "/v1/lsp/hover";
@@ -366,7 +378,8 @@ public class LspApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -386,57 +399,59 @@ public class LspApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postLspHoverValidateBeforeCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'query' is set
-        if (query == null) {
-            throw new ApiException("Missing the required parameter 'query' when calling postLspHover(Async)");
+    private okhttp3.Call postLspHoverValidateBeforeCall(@javax.annotation.Nonnull LspQuery lspQuery, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lspQuery' is set
+        if (lspQuery == null) {
+            throw new ApiException("Missing the required parameter 'lspQuery' when calling postLspHover(Async)");
         }
 
-        return postLspHoverCall(query, _callback);
+        return postLspHoverCall(lspQuery, _callback);
 
     }
 
     /**
      * Renders the type and documentation of the symbol at a position, as the language server itself renders it.
      * Renders the type and documentation of the symbol at a position, as the language server itself renders it.  Positions are the LSP&#39;s: line and character are 0-BASED and character counts UTF-16 code units, so an editor&#39;s 1-based line must have 1 subtracted before it is sent. The repository is named by slug and is always one in the caller&#39;s own org; rev pins a branch, tag or commit sha, and empty means the default branch.
-     * @param query  (required)
-     * @return Answer
+     * @param lspQuery  (required)
+     * @return LspAnswer
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Answer postLspHover(@javax.annotation.Nonnull Query query) throws ApiException {
-        ApiResponse<Answer> localVarResp = postLspHoverWithHttpInfo(query);
+    public LspAnswer postLspHover(@javax.annotation.Nonnull LspQuery lspQuery) throws ApiException {
+        ApiResponse<LspAnswer> localVarResp = postLspHoverWithHttpInfo(lspQuery);
         return localVarResp.getData();
     }
 
     /**
      * Renders the type and documentation of the symbol at a position, as the language server itself renders it.
      * Renders the type and documentation of the symbol at a position, as the language server itself renders it.  Positions are the LSP&#39;s: line and character are 0-BASED and character counts UTF-16 code units, so an editor&#39;s 1-based line must have 1 subtracted before it is sent. The repository is named by slug and is always one in the caller&#39;s own org; rev pins a branch, tag or commit sha, and empty means the default branch.
-     * @param query  (required)
-     * @return ApiResponse&lt;Answer&gt;
+     * @param lspQuery  (required)
+     * @return ApiResponse&lt;LspAnswer&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Answer> postLspHoverWithHttpInfo(@javax.annotation.Nonnull Query query) throws ApiException {
-        okhttp3.Call localVarCall = postLspHoverValidateBeforeCall(query, null);
-        Type localVarReturnType = new TypeToken<Answer>(){}.getType();
+    public ApiResponse<LspAnswer> postLspHoverWithHttpInfo(@javax.annotation.Nonnull LspQuery lspQuery) throws ApiException {
+        okhttp3.Call localVarCall = postLspHoverValidateBeforeCall(lspQuery, null);
+        Type localVarReturnType = new TypeToken<LspAnswer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Renders the type and documentation of the symbol at a position, as the language server itself renders it. (asynchronously)
      * Renders the type and documentation of the symbol at a position, as the language server itself renders it.  Positions are the LSP&#39;s: line and character are 0-BASED and character counts UTF-16 code units, so an editor&#39;s 1-based line must have 1 subtracted before it is sent. The repository is named by slug and is always one in the caller&#39;s own org; rev pins a branch, tag or commit sha, and empty means the default branch.
-     * @param query  (required)
+     * @param lspQuery  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -445,18 +460,19 @@ public class LspApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postLspHoverAsync(@javax.annotation.Nonnull Query query, final ApiCallback<Answer> _callback) throws ApiException {
+    public okhttp3.Call postLspHoverAsync(@javax.annotation.Nonnull LspQuery lspQuery, final ApiCallback<LspAnswer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postLspHoverValidateBeforeCall(query, _callback);
-        Type localVarReturnType = new TypeToken<Answer>(){}.getType();
+        okhttp3.Call localVarCall = postLspHoverValidateBeforeCall(lspQuery, _callback);
+        Type localVarReturnType = new TypeToken<LspAnswer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postLspLocate
-     * @param query  (required)
+     * @param lspQuery  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -465,9 +481,10 @@ public class LspApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postLspLocateCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postLspLocateCall(@javax.annotation.Nonnull LspQuery lspQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -481,7 +498,7 @@ public class LspApi {
             basePath = null;
         }
 
-        Object localVarPostBody = query;
+        Object localVarPostBody = lspQuery;
 
         // create path and map variables
         String localVarPath = "/v1/lsp/locate";
@@ -493,7 +510,8 @@ public class LspApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -513,57 +531,59 @@ public class LspApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postLspLocateValidateBeforeCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'query' is set
-        if (query == null) {
-            throw new ApiException("Missing the required parameter 'query' when calling postLspLocate(Async)");
+    private okhttp3.Call postLspLocateValidateBeforeCall(@javax.annotation.Nonnull LspQuery lspQuery, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lspQuery' is set
+        if (lspQuery == null) {
+            throw new ApiException("Missing the required parameter 'lspQuery' when calling postLspLocate(Async)");
         }
 
-        return postLspLocateCall(query, _callback);
+        return postLspLocateCall(lspQuery, _callback);
 
     }
 
     /**
      * Finds where a symbol lives: its definition, its references, its type or its implementations, chosen by relation (definition, reference, type, implementation — empty means definition).
      * Finds where a symbol lives: its definition, its references, its type or its implementations, chosen by relation (definition, reference, type, implementation — empty means definition).  It resolves THROUGH dependencies. An answer whose external flag is set left the repository, and its path is then the module coordinate it landed in — which is the question a static index cannot answer and this service exists for.
-     * @param query  (required)
-     * @return Answer
+     * @param lspQuery  (required)
+     * @return LspAnswer
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Answer postLspLocate(@javax.annotation.Nonnull Query query) throws ApiException {
-        ApiResponse<Answer> localVarResp = postLspLocateWithHttpInfo(query);
+    public LspAnswer postLspLocate(@javax.annotation.Nonnull LspQuery lspQuery) throws ApiException {
+        ApiResponse<LspAnswer> localVarResp = postLspLocateWithHttpInfo(lspQuery);
         return localVarResp.getData();
     }
 
     /**
      * Finds where a symbol lives: its definition, its references, its type or its implementations, chosen by relation (definition, reference, type, implementation — empty means definition).
      * Finds where a symbol lives: its definition, its references, its type or its implementations, chosen by relation (definition, reference, type, implementation — empty means definition).  It resolves THROUGH dependencies. An answer whose external flag is set left the repository, and its path is then the module coordinate it landed in — which is the question a static index cannot answer and this service exists for.
-     * @param query  (required)
-     * @return ApiResponse&lt;Answer&gt;
+     * @param lspQuery  (required)
+     * @return ApiResponse&lt;LspAnswer&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Answer> postLspLocateWithHttpInfo(@javax.annotation.Nonnull Query query) throws ApiException {
-        okhttp3.Call localVarCall = postLspLocateValidateBeforeCall(query, null);
-        Type localVarReturnType = new TypeToken<Answer>(){}.getType();
+    public ApiResponse<LspAnswer> postLspLocateWithHttpInfo(@javax.annotation.Nonnull LspQuery lspQuery) throws ApiException {
+        okhttp3.Call localVarCall = postLspLocateValidateBeforeCall(lspQuery, null);
+        Type localVarReturnType = new TypeToken<LspAnswer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Finds where a symbol lives: its definition, its references, its type or its implementations, chosen by relation (definition, reference, type, implementation — empty means definition). (asynchronously)
      * Finds where a symbol lives: its definition, its references, its type or its implementations, chosen by relation (definition, reference, type, implementation — empty means definition).  It resolves THROUGH dependencies. An answer whose external flag is set left the repository, and its path is then the module coordinate it landed in — which is the question a static index cannot answer and this service exists for.
-     * @param query  (required)
+     * @param lspQuery  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -572,18 +592,19 @@ public class LspApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postLspLocateAsync(@javax.annotation.Nonnull Query query, final ApiCallback<Answer> _callback) throws ApiException {
+    public okhttp3.Call postLspLocateAsync(@javax.annotation.Nonnull LspQuery lspQuery, final ApiCallback<LspAnswer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postLspLocateValidateBeforeCall(query, _callback);
-        Type localVarReturnType = new TypeToken<Answer>(){}.getType();
+        okhttp3.Call localVarCall = postLspLocateValidateBeforeCall(lspQuery, _callback);
+        Type localVarReturnType = new TypeToken<LspAnswer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postLspSymbols
-     * @param query  (required)
+     * @param lspQuery  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -592,9 +613,10 @@ public class LspApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postLspSymbolsCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postLspSymbolsCall(@javax.annotation.Nonnull LspQuery lspQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -608,7 +630,7 @@ public class LspApi {
             basePath = null;
         }
 
-        Object localVarPostBody = query;
+        Object localVarPostBody = lspQuery;
 
         // create path and map variables
         String localVarPath = "/v1/lsp/symbols";
@@ -620,7 +642,8 @@ public class LspApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -640,57 +663,59 @@ public class LspApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postLspSymbolsValidateBeforeCall(@javax.annotation.Nonnull Query query, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'query' is set
-        if (query == null) {
-            throw new ApiException("Missing the required parameter 'query' when calling postLspSymbols(Async)");
+    private okhttp3.Call postLspSymbolsValidateBeforeCall(@javax.annotation.Nonnull LspQuery lspQuery, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'lspQuery' is set
+        if (lspQuery == null) {
+            throw new ApiException("Missing the required parameter 'lspQuery' when calling postLspSymbols(Async)");
         }
 
-        return postLspSymbolsCall(query, _callback);
+        return postLspSymbolsCall(lspQuery, _callback);
 
     }
 
     /**
      * Outlines one file: every declaration in it, with its kind and its span.
      * Outlines one file: every declaration in it, with its kind and its span. The position is ignored — the answer is the whole file.
-     * @param query  (required)
-     * @return Answer
+     * @param lspQuery  (required)
+     * @return LspAnswer
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Answer postLspSymbols(@javax.annotation.Nonnull Query query) throws ApiException {
-        ApiResponse<Answer> localVarResp = postLspSymbolsWithHttpInfo(query);
+    public LspAnswer postLspSymbols(@javax.annotation.Nonnull LspQuery lspQuery) throws ApiException {
+        ApiResponse<LspAnswer> localVarResp = postLspSymbolsWithHttpInfo(lspQuery);
         return localVarResp.getData();
     }
 
     /**
      * Outlines one file: every declaration in it, with its kind and its span.
      * Outlines one file: every declaration in it, with its kind and its span. The position is ignored — the answer is the whole file.
-     * @param query  (required)
-     * @return ApiResponse&lt;Answer&gt;
+     * @param lspQuery  (required)
+     * @return ApiResponse&lt;LspAnswer&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Answer> postLspSymbolsWithHttpInfo(@javax.annotation.Nonnull Query query) throws ApiException {
-        okhttp3.Call localVarCall = postLspSymbolsValidateBeforeCall(query, null);
-        Type localVarReturnType = new TypeToken<Answer>(){}.getType();
+    public ApiResponse<LspAnswer> postLspSymbolsWithHttpInfo(@javax.annotation.Nonnull LspQuery lspQuery) throws ApiException {
+        okhttp3.Call localVarCall = postLspSymbolsValidateBeforeCall(lspQuery, null);
+        Type localVarReturnType = new TypeToken<LspAnswer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Outlines one file: every declaration in it, with its kind and its span. (asynchronously)
      * Outlines one file: every declaration in it, with its kind and its span. The position is ignored — the answer is the whole file.
-     * @param query  (required)
+     * @param lspQuery  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -699,12 +724,13 @@ public class LspApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postLspSymbolsAsync(@javax.annotation.Nonnull Query query, final ApiCallback<Answer> _callback) throws ApiException {
+    public okhttp3.Call postLspSymbolsAsync(@javax.annotation.Nonnull LspQuery lspQuery, final ApiCallback<LspAnswer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postLspSymbolsValidateBeforeCall(query, _callback);
-        Type localVarReturnType = new TypeToken<Answer>(){}.getType();
+        okhttp3.Call localVarCall = postLspSymbolsValidateBeforeCall(lspQuery, _callback);
+        Type localVarReturnType = new TypeToken<LspAnswer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

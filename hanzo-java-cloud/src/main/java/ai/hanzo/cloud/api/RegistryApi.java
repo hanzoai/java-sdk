@@ -27,13 +27,14 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.RegistryImageList;
-import ai.hanzo.cloud.model.RegistryMint;
-import ai.hanzo.cloud.model.RegistryPackageList;
-import ai.hanzo.cloud.model.RegistryProjectList;
-import ai.hanzo.cloud.model.RegistryStatus;
-import ai.hanzo.cloud.model.RegistryTagList;
-import ai.hanzo.cloud.model.RegistryToken;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.RegistryRegistryImageList;
+import ai.hanzo.cloud.model.RegistryRegistryMint;
+import ai.hanzo.cloud.model.RegistryRegistryPackageList;
+import ai.hanzo.cloud.model.RegistryRegistryProjectList;
+import ai.hanzo.cloud.model.RegistryRegistryStatus;
+import ai.hanzo.cloud.model.RegistryRegistryTagList;
+import ai.hanzo.cloud.model.RegistryRegistryToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -88,6 +89,7 @@ public class RegistryApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getRegistryImagesCall(final ApiCallback _callback) throws ApiException {
@@ -116,7 +118,8 @@ public class RegistryApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -141,43 +144,45 @@ public class RegistryApi {
     }
 
     /**
-     * Images lists the org&#39;s container repositories, read live from the OCI catalog and filtered server-side to the org&#39;s namespace — the page can only ever hold the caller&#39;s own images.
-     * Images lists the org&#39;s container repositories, read live from the OCI catalog and filtered server-side to the org&#39;s namespace — the page can only ever hold the caller&#39;s own images.
-     * @return RegistryImageList
+     * Lists the org&#39;s container repositories, read live from the OCI catalog and filtered server-side to the org&#39;s namespace — the page can only ever hold the caller&#39;s own images.
+     * Lists the org&#39;s container repositories, read live from the OCI catalog and filtered server-side to the org&#39;s namespace — the page can only ever hold the caller&#39;s own images.
+     * @return RegistryRegistryImageList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RegistryImageList getRegistryImages() throws ApiException {
-        ApiResponse<RegistryImageList> localVarResp = getRegistryImagesWithHttpInfo();
+    public RegistryRegistryImageList getRegistryImages() throws ApiException {
+        ApiResponse<RegistryRegistryImageList> localVarResp = getRegistryImagesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Images lists the org&#39;s container repositories, read live from the OCI catalog and filtered server-side to the org&#39;s namespace — the page can only ever hold the caller&#39;s own images.
-     * Images lists the org&#39;s container repositories, read live from the OCI catalog and filtered server-side to the org&#39;s namespace — the page can only ever hold the caller&#39;s own images.
-     * @return ApiResponse&lt;RegistryImageList&gt;
+     * Lists the org&#39;s container repositories, read live from the OCI catalog and filtered server-side to the org&#39;s namespace — the page can only ever hold the caller&#39;s own images.
+     * Lists the org&#39;s container repositories, read live from the OCI catalog and filtered server-side to the org&#39;s namespace — the page can only ever hold the caller&#39;s own images.
+     * @return ApiResponse&lt;RegistryRegistryImageList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegistryImageList> getRegistryImagesWithHttpInfo() throws ApiException {
+    public ApiResponse<RegistryRegistryImageList> getRegistryImagesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getRegistryImagesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<RegistryImageList>(){}.getType();
+        Type localVarReturnType = new TypeToken<RegistryRegistryImageList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Images lists the org&#39;s container repositories, read live from the OCI catalog and filtered server-side to the org&#39;s namespace — the page can only ever hold the caller&#39;s own images. (asynchronously)
-     * Images lists the org&#39;s container repositories, read live from the OCI catalog and filtered server-side to the org&#39;s namespace — the page can only ever hold the caller&#39;s own images.
+     * Lists the org&#39;s container repositories, read live from the OCI catalog and filtered server-side to the org&#39;s namespace — the page can only ever hold the caller&#39;s own images. (asynchronously)
+     * Lists the org&#39;s container repositories, read live from the OCI catalog and filtered server-side to the org&#39;s namespace — the page can only ever hold the caller&#39;s own images.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -186,12 +191,13 @@ public class RegistryApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRegistryImagesAsync(final ApiCallback<RegistryImageList> _callback) throws ApiException {
+    public okhttp3.Call getRegistryImagesAsync(final ApiCallback<RegistryRegistryImageList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRegistryImagesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<RegistryImageList>(){}.getType();
+        Type localVarReturnType = new TypeToken<RegistryRegistryImageList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -206,6 +212,7 @@ public class RegistryApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getRegistryPackagesCall(@javax.annotation.Nullable String query, final ApiCallback _callback) throws ApiException {
@@ -238,7 +245,8 @@ public class RegistryApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -263,45 +271,47 @@ public class RegistryApi {
     }
 
     /**
-     * Packages lists the org&#39;s npm packages — &#x60;&lt;org&gt;&#x60; and &#x60;@&lt;org&gt;/…&#x60; — from the npm registry&#39;s search index, optionally narrowed by a query within that scope.
-     * Packages lists the org&#39;s npm packages — &#x60;&lt;org&gt;&#x60; and &#x60;@&lt;org&gt;/…&#x60; — from the npm registry&#39;s search index, optionally narrowed by a query within that scope. The org boundary is applied server-side after the search, so a query can never widen it.
+     * Lists the org&#39;s npm packages — &#x60;&lt;org&gt;&#x60; and &#x60;@&lt;org&gt;/…&#x60; — from the npm registry&#39;s search index, optionally narrowed by a query within that scope.
+     * Lists the org&#39;s npm packages — &#x60;&lt;org&gt;&#x60; and &#x60;@&lt;org&gt;/…&#x60; — from the npm registry&#39;s search index, optionally narrowed by a query within that scope. The org boundary is applied server-side after the search, so a query can never widen it.
      * @param query Query narrows the listing within the org&#39;s scope when present; the org boundary itself is never widened by it. It rides the query string. (optional)
-     * @return RegistryPackageList
+     * @return RegistryRegistryPackageList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RegistryPackageList getRegistryPackages(@javax.annotation.Nullable String query) throws ApiException {
-        ApiResponse<RegistryPackageList> localVarResp = getRegistryPackagesWithHttpInfo(query);
+    public RegistryRegistryPackageList getRegistryPackages(@javax.annotation.Nullable String query) throws ApiException {
+        ApiResponse<RegistryRegistryPackageList> localVarResp = getRegistryPackagesWithHttpInfo(query);
         return localVarResp.getData();
     }
 
     /**
-     * Packages lists the org&#39;s npm packages — &#x60;&lt;org&gt;&#x60; and &#x60;@&lt;org&gt;/…&#x60; — from the npm registry&#39;s search index, optionally narrowed by a query within that scope.
-     * Packages lists the org&#39;s npm packages — &#x60;&lt;org&gt;&#x60; and &#x60;@&lt;org&gt;/…&#x60; — from the npm registry&#39;s search index, optionally narrowed by a query within that scope. The org boundary is applied server-side after the search, so a query can never widen it.
+     * Lists the org&#39;s npm packages — &#x60;&lt;org&gt;&#x60; and &#x60;@&lt;org&gt;/…&#x60; — from the npm registry&#39;s search index, optionally narrowed by a query within that scope.
+     * Lists the org&#39;s npm packages — &#x60;&lt;org&gt;&#x60; and &#x60;@&lt;org&gt;/…&#x60; — from the npm registry&#39;s search index, optionally narrowed by a query within that scope. The org boundary is applied server-side after the search, so a query can never widen it.
      * @param query Query narrows the listing within the org&#39;s scope when present; the org boundary itself is never widened by it. It rides the query string. (optional)
-     * @return ApiResponse&lt;RegistryPackageList&gt;
+     * @return ApiResponse&lt;RegistryRegistryPackageList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegistryPackageList> getRegistryPackagesWithHttpInfo(@javax.annotation.Nullable String query) throws ApiException {
+    public ApiResponse<RegistryRegistryPackageList> getRegistryPackagesWithHttpInfo(@javax.annotation.Nullable String query) throws ApiException {
         okhttp3.Call localVarCall = getRegistryPackagesValidateBeforeCall(query, null);
-        Type localVarReturnType = new TypeToken<RegistryPackageList>(){}.getType();
+        Type localVarReturnType = new TypeToken<RegistryRegistryPackageList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Packages lists the org&#39;s npm packages — &#x60;&lt;org&gt;&#x60; and &#x60;@&lt;org&gt;/…&#x60; — from the npm registry&#39;s search index, optionally narrowed by a query within that scope. (asynchronously)
-     * Packages lists the org&#39;s npm packages — &#x60;&lt;org&gt;&#x60; and &#x60;@&lt;org&gt;/…&#x60; — from the npm registry&#39;s search index, optionally narrowed by a query within that scope. The org boundary is applied server-side after the search, so a query can never widen it.
+     * Lists the org&#39;s npm packages — &#x60;&lt;org&gt;&#x60; and &#x60;@&lt;org&gt;/…&#x60; — from the npm registry&#39;s search index, optionally narrowed by a query within that scope. (asynchronously)
+     * Lists the org&#39;s npm packages — &#x60;&lt;org&gt;&#x60; and &#x60;@&lt;org&gt;/…&#x60; — from the npm registry&#39;s search index, optionally narrowed by a query within that scope. The org boundary is applied server-side after the search, so a query can never widen it.
      * @param query Query narrows the listing within the org&#39;s scope when present; the org boundary itself is never widened by it. It rides the query string. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -311,12 +321,13 @@ public class RegistryApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRegistryPackagesAsync(@javax.annotation.Nullable String query, final ApiCallback<RegistryPackageList> _callback) throws ApiException {
+    public okhttp3.Call getRegistryPackagesAsync(@javax.annotation.Nullable String query, final ApiCallback<RegistryRegistryPackageList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRegistryPackagesValidateBeforeCall(query, _callback);
-        Type localVarReturnType = new TypeToken<RegistryPackageList>(){}.getType();
+        Type localVarReturnType = new TypeToken<RegistryRegistryPackageList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -330,6 +341,7 @@ public class RegistryApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getRegistryProjectsCall(final ApiCallback _callback) throws ApiException {
@@ -358,7 +370,8 @@ public class RegistryApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -383,43 +396,45 @@ public class RegistryApi {
     }
 
     /**
-     * Projects lists the namespaces the caller can see with what each holds: the org&#39;s slug, its repository count on the OCI catalog, and its package count on the npm registry.
-     * Projects lists the namespaces the caller can see with what each holds: the org&#39;s slug, its repository count on the OCI catalog, and its package count on the npm registry. Today that is exactly one row — the caller&#39;s org.
-     * @return RegistryProjectList
+     * Lists the namespaces the caller can see with what each holds: the org&#39;s slug, its repository count on the OCI catalog, and its package count on the npm registry.
+     * Lists the namespaces the caller can see with what each holds: the org&#39;s slug, its repository count on the OCI catalog, and its package count on the npm registry. Today that is exactly one row — the caller&#39;s org.
+     * @return RegistryRegistryProjectList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RegistryProjectList getRegistryProjects() throws ApiException {
-        ApiResponse<RegistryProjectList> localVarResp = getRegistryProjectsWithHttpInfo();
+    public RegistryRegistryProjectList getRegistryProjects() throws ApiException {
+        ApiResponse<RegistryRegistryProjectList> localVarResp = getRegistryProjectsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Projects lists the namespaces the caller can see with what each holds: the org&#39;s slug, its repository count on the OCI catalog, and its package count on the npm registry.
-     * Projects lists the namespaces the caller can see with what each holds: the org&#39;s slug, its repository count on the OCI catalog, and its package count on the npm registry. Today that is exactly one row — the caller&#39;s org.
-     * @return ApiResponse&lt;RegistryProjectList&gt;
+     * Lists the namespaces the caller can see with what each holds: the org&#39;s slug, its repository count on the OCI catalog, and its package count on the npm registry.
+     * Lists the namespaces the caller can see with what each holds: the org&#39;s slug, its repository count on the OCI catalog, and its package count on the npm registry. Today that is exactly one row — the caller&#39;s org.
+     * @return ApiResponse&lt;RegistryRegistryProjectList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegistryProjectList> getRegistryProjectsWithHttpInfo() throws ApiException {
+    public ApiResponse<RegistryRegistryProjectList> getRegistryProjectsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getRegistryProjectsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<RegistryProjectList>(){}.getType();
+        Type localVarReturnType = new TypeToken<RegistryRegistryProjectList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Projects lists the namespaces the caller can see with what each holds: the org&#39;s slug, its repository count on the OCI catalog, and its package count on the npm registry. (asynchronously)
-     * Projects lists the namespaces the caller can see with what each holds: the org&#39;s slug, its repository count on the OCI catalog, and its package count on the npm registry. Today that is exactly one row — the caller&#39;s org.
+     * Lists the namespaces the caller can see with what each holds: the org&#39;s slug, its repository count on the OCI catalog, and its package count on the npm registry. (asynchronously)
+     * Lists the namespaces the caller can see with what each holds: the org&#39;s slug, its repository count on the OCI catalog, and its package count on the npm registry. Today that is exactly one row — the caller&#39;s org.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -428,12 +443,13 @@ public class RegistryApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRegistryProjectsAsync(final ApiCallback<RegistryProjectList> _callback) throws ApiException {
+    public okhttp3.Call getRegistryProjectsAsync(final ApiCallback<RegistryRegistryProjectList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRegistryProjectsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<RegistryProjectList>(){}.getType();
+        Type localVarReturnType = new TypeToken<RegistryRegistryProjectList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -447,6 +463,7 @@ public class RegistryApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getRegistryStatusCall(final ApiCallback _callback) throws ApiException {
@@ -475,7 +492,8 @@ public class RegistryApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -500,43 +518,45 @@ public class RegistryApi {
     }
 
     /**
-     * Status reports whether the OCI and npm registries are reachable and, when the OCI half is auth-gated, which token realm its challenge advertises — an honest lens for \&quot;is the registry plane up\&quot;, never a fabricated ok.
-     * Status reports whether the OCI and npm registries are reachable and, when the OCI half is auth-gated, which token realm its challenge advertises — an honest lens for \&quot;is the registry plane up\&quot;, never a fabricated ok.
-     * @return RegistryStatus
+     * Reports whether the OCI and npm registries are reachable and, when the OCI half is auth-gated, which token realm its challenge advertises — an honest lens for \&quot;is the registry plane up\&quot;, never a fabricated ok.
+     * Reports whether the OCI and npm registries are reachable and, when the OCI half is auth-gated, which token realm its challenge advertises — an honest lens for \&quot;is the registry plane up\&quot;, never a fabricated ok.
+     * @return RegistryRegistryStatus
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RegistryStatus getRegistryStatus() throws ApiException {
-        ApiResponse<RegistryStatus> localVarResp = getRegistryStatusWithHttpInfo();
+    public RegistryRegistryStatus getRegistryStatus() throws ApiException {
+        ApiResponse<RegistryRegistryStatus> localVarResp = getRegistryStatusWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Status reports whether the OCI and npm registries are reachable and, when the OCI half is auth-gated, which token realm its challenge advertises — an honest lens for \&quot;is the registry plane up\&quot;, never a fabricated ok.
-     * Status reports whether the OCI and npm registries are reachable and, when the OCI half is auth-gated, which token realm its challenge advertises — an honest lens for \&quot;is the registry plane up\&quot;, never a fabricated ok.
-     * @return ApiResponse&lt;RegistryStatus&gt;
+     * Reports whether the OCI and npm registries are reachable and, when the OCI half is auth-gated, which token realm its challenge advertises — an honest lens for \&quot;is the registry plane up\&quot;, never a fabricated ok.
+     * Reports whether the OCI and npm registries are reachable and, when the OCI half is auth-gated, which token realm its challenge advertises — an honest lens for \&quot;is the registry plane up\&quot;, never a fabricated ok.
+     * @return ApiResponse&lt;RegistryRegistryStatus&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegistryStatus> getRegistryStatusWithHttpInfo() throws ApiException {
+    public ApiResponse<RegistryRegistryStatus> getRegistryStatusWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getRegistryStatusValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<RegistryStatus>(){}.getType();
+        Type localVarReturnType = new TypeToken<RegistryRegistryStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Status reports whether the OCI and npm registries are reachable and, when the OCI half is auth-gated, which token realm its challenge advertises — an honest lens for \&quot;is the registry plane up\&quot;, never a fabricated ok. (asynchronously)
-     * Status reports whether the OCI and npm registries are reachable and, when the OCI half is auth-gated, which token realm its challenge advertises — an honest lens for \&quot;is the registry plane up\&quot;, never a fabricated ok.
+     * Reports whether the OCI and npm registries are reachable and, when the OCI half is auth-gated, which token realm its challenge advertises — an honest lens for \&quot;is the registry plane up\&quot;, never a fabricated ok. (asynchronously)
+     * Reports whether the OCI and npm registries are reachable and, when the OCI half is auth-gated, which token realm its challenge advertises — an honest lens for \&quot;is the registry plane up\&quot;, never a fabricated ok.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -545,12 +565,13 @@ public class RegistryApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRegistryStatusAsync(final ApiCallback<RegistryStatus> _callback) throws ApiException {
+    public okhttp3.Call getRegistryStatusAsync(final ApiCallback<RegistryRegistryStatus> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRegistryStatusValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<RegistryStatus>(){}.getType();
+        Type localVarReturnType = new TypeToken<RegistryRegistryStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -565,6 +586,7 @@ public class RegistryApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getRegistryTagsCall(@javax.annotation.Nullable String image, final ApiCallback _callback) throws ApiException {
@@ -597,7 +619,8 @@ public class RegistryApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -622,45 +645,47 @@ public class RegistryApi {
     }
 
     /**
-     * Tags lists one org-owned repository&#39;s tags, read live from the OCI registry.
-     * Tags lists one org-owned repository&#39;s tags, read live from the OCI registry. The repository is addressed inside the org&#39;s namespace — a name outside it cannot be expressed, and an unknown one answers 404.
+     * Lists one org-owned repository&#39;s tags, read live from the OCI registry.
+     * Lists one org-owned repository&#39;s tags, read live from the OCI registry. The repository is addressed inside the org&#39;s namespace — a name outside it cannot be expressed, and an unknown one answers 404.
      * @param image Image is the repository name inside the org&#39;s namespace, as returned by the images op. It rides the query string. (optional)
-     * @return RegistryTagList
+     * @return RegistryRegistryTagList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RegistryTagList getRegistryTags(@javax.annotation.Nullable String image) throws ApiException {
-        ApiResponse<RegistryTagList> localVarResp = getRegistryTagsWithHttpInfo(image);
+    public RegistryRegistryTagList getRegistryTags(@javax.annotation.Nullable String image) throws ApiException {
+        ApiResponse<RegistryRegistryTagList> localVarResp = getRegistryTagsWithHttpInfo(image);
         return localVarResp.getData();
     }
 
     /**
-     * Tags lists one org-owned repository&#39;s tags, read live from the OCI registry.
-     * Tags lists one org-owned repository&#39;s tags, read live from the OCI registry. The repository is addressed inside the org&#39;s namespace — a name outside it cannot be expressed, and an unknown one answers 404.
+     * Lists one org-owned repository&#39;s tags, read live from the OCI registry.
+     * Lists one org-owned repository&#39;s tags, read live from the OCI registry. The repository is addressed inside the org&#39;s namespace — a name outside it cannot be expressed, and an unknown one answers 404.
      * @param image Image is the repository name inside the org&#39;s namespace, as returned by the images op. It rides the query string. (optional)
-     * @return ApiResponse&lt;RegistryTagList&gt;
+     * @return ApiResponse&lt;RegistryRegistryTagList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegistryTagList> getRegistryTagsWithHttpInfo(@javax.annotation.Nullable String image) throws ApiException {
+    public ApiResponse<RegistryRegistryTagList> getRegistryTagsWithHttpInfo(@javax.annotation.Nullable String image) throws ApiException {
         okhttp3.Call localVarCall = getRegistryTagsValidateBeforeCall(image, null);
-        Type localVarReturnType = new TypeToken<RegistryTagList>(){}.getType();
+        Type localVarReturnType = new TypeToken<RegistryRegistryTagList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Tags lists one org-owned repository&#39;s tags, read live from the OCI registry. (asynchronously)
-     * Tags lists one org-owned repository&#39;s tags, read live from the OCI registry. The repository is addressed inside the org&#39;s namespace — a name outside it cannot be expressed, and an unknown one answers 404.
+     * Lists one org-owned repository&#39;s tags, read live from the OCI registry. (asynchronously)
+     * Lists one org-owned repository&#39;s tags, read live from the OCI registry. The repository is addressed inside the org&#39;s namespace — a name outside it cannot be expressed, and an unknown one answers 404.
      * @param image Image is the repository name inside the org&#39;s namespace, as returned by the images op. It rides the query string. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -670,18 +695,19 @@ public class RegistryApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRegistryTagsAsync(@javax.annotation.Nullable String image, final ApiCallback<RegistryTagList> _callback) throws ApiException {
+    public okhttp3.Call getRegistryTagsAsync(@javax.annotation.Nullable String image, final ApiCallback<RegistryRegistryTagList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRegistryTagsValidateBeforeCall(image, _callback);
-        Type localVarReturnType = new TypeToken<RegistryTagList>(){}.getType();
+        Type localVarReturnType = new TypeToken<RegistryRegistryTagList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postRegistryToken
-     * @param registryMint  (required)
+     * @param registryRegistryMint  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -690,9 +716,10 @@ public class RegistryApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postRegistryTokenCall(@javax.annotation.Nonnull RegistryMint registryMint, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postRegistryTokenCall(@javax.annotation.Nonnull RegistryRegistryMint registryRegistryMint, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -706,7 +733,7 @@ public class RegistryApi {
             basePath = null;
         }
 
-        Object localVarPostBody = registryMint;
+        Object localVarPostBody = registryRegistryMint;
 
         // create path and map variables
         String localVarPath = "/v1/registry/token";
@@ -718,7 +745,8 @@ public class RegistryApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -738,57 +766,59 @@ public class RegistryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postRegistryTokenValidateBeforeCall(@javax.annotation.Nonnull RegistryMint registryMint, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'registryMint' is set
-        if (registryMint == null) {
-            throw new ApiException("Missing the required parameter 'registryMint' when calling postRegistryToken(Async)");
+    private okhttp3.Call postRegistryTokenValidateBeforeCall(@javax.annotation.Nonnull RegistryRegistryMint registryRegistryMint, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'registryRegistryMint' is set
+        if (registryRegistryMint == null) {
+            throw new ApiException("Missing the required parameter 'registryRegistryMint' when calling postRegistryToken(Async)");
         }
 
-        return postRegistryTokenCall(registryMint, _callback);
+        return postRegistryTokenCall(registryRegistryMint, _callback);
 
     }
 
     /**
-     * Token mints a short-lived, pull-only registry token for exactly one of the org&#39;s images, through the same IAM realm the docker CLI authenticates against.
-     * Token mints a short-lived, pull-only registry token for exactly one of the org&#39;s images, through the same IAM realm the docker CLI authenticates against. The scope is pinned server-side to &#x60;&lt;org&gt;/&lt;image&gt;&#x60; with the &#x60;pull&#x60; action — no field exists to name another org&#39;s image or ask for push. Use it as &#x60;Authorization: Bearer …&#x60; on the OCI wire; it expires in minutes.
-     * @param registryMint  (required)
-     * @return RegistryToken
+     * Mints a short-lived, pull-only registry token for exactly one of the org&#39;s images, through the same IAM realm the docker CLI authenticates against.
+     * Mints a short-lived, pull-only registry token for exactly one of the org&#39;s images, through the same IAM realm the docker CLI authenticates against. The scope is pinned server-side to &#x60;&lt;org&gt;/&lt;image&gt;&#x60; with the &#x60;pull&#x60; action — no field exists to name another org&#39;s image or ask for push. Use it as &#x60;Authorization: Bearer …&#x60; on the OCI wire; it expires in minutes.
+     * @param registryRegistryMint  (required)
+     * @return RegistryRegistryToken
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RegistryToken postRegistryToken(@javax.annotation.Nonnull RegistryMint registryMint) throws ApiException {
-        ApiResponse<RegistryToken> localVarResp = postRegistryTokenWithHttpInfo(registryMint);
+    public RegistryRegistryToken postRegistryToken(@javax.annotation.Nonnull RegistryRegistryMint registryRegistryMint) throws ApiException {
+        ApiResponse<RegistryRegistryToken> localVarResp = postRegistryTokenWithHttpInfo(registryRegistryMint);
         return localVarResp.getData();
     }
 
     /**
-     * Token mints a short-lived, pull-only registry token for exactly one of the org&#39;s images, through the same IAM realm the docker CLI authenticates against.
-     * Token mints a short-lived, pull-only registry token for exactly one of the org&#39;s images, through the same IAM realm the docker CLI authenticates against. The scope is pinned server-side to &#x60;&lt;org&gt;/&lt;image&gt;&#x60; with the &#x60;pull&#x60; action — no field exists to name another org&#39;s image or ask for push. Use it as &#x60;Authorization: Bearer …&#x60; on the OCI wire; it expires in minutes.
-     * @param registryMint  (required)
-     * @return ApiResponse&lt;RegistryToken&gt;
+     * Mints a short-lived, pull-only registry token for exactly one of the org&#39;s images, through the same IAM realm the docker CLI authenticates against.
+     * Mints a short-lived, pull-only registry token for exactly one of the org&#39;s images, through the same IAM realm the docker CLI authenticates against. The scope is pinned server-side to &#x60;&lt;org&gt;/&lt;image&gt;&#x60; with the &#x60;pull&#x60; action — no field exists to name another org&#39;s image or ask for push. Use it as &#x60;Authorization: Bearer …&#x60; on the OCI wire; it expires in minutes.
+     * @param registryRegistryMint  (required)
+     * @return ApiResponse&lt;RegistryRegistryToken&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegistryToken> postRegistryTokenWithHttpInfo(@javax.annotation.Nonnull RegistryMint registryMint) throws ApiException {
-        okhttp3.Call localVarCall = postRegistryTokenValidateBeforeCall(registryMint, null);
-        Type localVarReturnType = new TypeToken<RegistryToken>(){}.getType();
+    public ApiResponse<RegistryRegistryToken> postRegistryTokenWithHttpInfo(@javax.annotation.Nonnull RegistryRegistryMint registryRegistryMint) throws ApiException {
+        okhttp3.Call localVarCall = postRegistryTokenValidateBeforeCall(registryRegistryMint, null);
+        Type localVarReturnType = new TypeToken<RegistryRegistryToken>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Token mints a short-lived, pull-only registry token for exactly one of the org&#39;s images, through the same IAM realm the docker CLI authenticates against. (asynchronously)
-     * Token mints a short-lived, pull-only registry token for exactly one of the org&#39;s images, through the same IAM realm the docker CLI authenticates against. The scope is pinned server-side to &#x60;&lt;org&gt;/&lt;image&gt;&#x60; with the &#x60;pull&#x60; action — no field exists to name another org&#39;s image or ask for push. Use it as &#x60;Authorization: Bearer …&#x60; on the OCI wire; it expires in minutes.
-     * @param registryMint  (required)
+     * Mints a short-lived, pull-only registry token for exactly one of the org&#39;s images, through the same IAM realm the docker CLI authenticates against. (asynchronously)
+     * Mints a short-lived, pull-only registry token for exactly one of the org&#39;s images, through the same IAM realm the docker CLI authenticates against. The scope is pinned server-side to &#x60;&lt;org&gt;/&lt;image&gt;&#x60; with the &#x60;pull&#x60; action — no field exists to name another org&#39;s image or ask for push. Use it as &#x60;Authorization: Bearer …&#x60; on the OCI wire; it expires in minutes.
+     * @param registryRegistryMint  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -797,12 +827,13 @@ public class RegistryApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postRegistryTokenAsync(@javax.annotation.Nonnull RegistryMint registryMint, final ApiCallback<RegistryToken> _callback) throws ApiException {
+    public okhttp3.Call postRegistryTokenAsync(@javax.annotation.Nonnull RegistryRegistryMint registryRegistryMint, final ApiCallback<RegistryRegistryToken> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postRegistryTokenValidateBeforeCall(registryMint, _callback);
-        Type localVarReturnType = new TypeToken<RegistryToken>(){}.getType();
+        okhttp3.Call localVarCall = postRegistryTokenValidateBeforeCall(registryRegistryMint, _callback);
+        Type localVarReturnType = new TypeToken<RegistryRegistryToken>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

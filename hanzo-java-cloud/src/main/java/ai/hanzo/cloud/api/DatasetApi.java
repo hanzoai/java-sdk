@@ -27,13 +27,14 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.RiskDataset;
-import ai.hanzo.cloud.model.RiskDatasetDisposal;
-import ai.hanzo.cloud.model.RiskDatasetList;
-import ai.hanzo.cloud.model.RiskDatasetRows;
-import ai.hanzo.cloud.model.RiskDatasetSpec;
-import ai.hanzo.cloud.model.RiskDatasetVersions;
-import ai.hanzo.cloud.model.RiskLineage;
+import ai.hanzo.cloud.model.DatasetRiskDataset;
+import ai.hanzo.cloud.model.DatasetRiskDatasetDisposal;
+import ai.hanzo.cloud.model.DatasetRiskDatasetList;
+import ai.hanzo.cloud.model.DatasetRiskDatasetRows;
+import ai.hanzo.cloud.model.DatasetRiskDatasetSpec;
+import ai.hanzo.cloud.model.DatasetRiskDatasetVersions;
+import ai.hanzo.cloud.model.DatasetRiskLineage;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -80,7 +81,7 @@ public class DatasetApi {
 
     /**
      * Build call for riskCreateDataset
-     * @param riskDatasetSpec  (required)
+     * @param datasetRiskDatasetSpec  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -89,9 +90,10 @@ public class DatasetApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskCreateDatasetCall(@javax.annotation.Nonnull RiskDatasetSpec riskDatasetSpec, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskCreateDatasetCall(@javax.annotation.Nonnull DatasetRiskDatasetSpec datasetRiskDatasetSpec, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -105,7 +107,7 @@ public class DatasetApi {
             basePath = null;
         }
 
-        Object localVarPostBody = riskDatasetSpec;
+        Object localVarPostBody = datasetRiskDatasetSpec;
 
         // create path and map variables
         String localVarPath = "/v1/dataset";
@@ -117,7 +119,8 @@ public class DatasetApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -137,57 +140,59 @@ public class DatasetApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskCreateDatasetValidateBeforeCall(@javax.annotation.Nonnull RiskDatasetSpec riskDatasetSpec, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'riskDatasetSpec' is set
-        if (riskDatasetSpec == null) {
-            throw new ApiException("Missing the required parameter 'riskDatasetSpec' when calling riskCreateDataset(Async)");
+    private okhttp3.Call riskCreateDatasetValidateBeforeCall(@javax.annotation.Nonnull DatasetRiskDatasetSpec datasetRiskDatasetSpec, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'datasetRiskDatasetSpec' is set
+        if (datasetRiskDatasetSpec == null) {
+            throw new ApiException("Missing the required parameter 'datasetRiskDatasetSpec' when calling riskCreateDataset(Async)");
         }
 
-        return riskCreateDatasetCall(riskDatasetSpec, _callback);
+        return riskCreateDatasetCall(datasetRiskDatasetSpec, _callback);
 
     }
 
     /**
      * Declare the next version of a dataset
      * Declares the next version of a dataset from a bound query over this org&#39;s own feature surface.  It mints a VERSION and writes no rows: a version is declared, then materialised once, then never rewritten. Version numbers are monotone and never reused, so \&quot;version 3 of signups\&quot; means one thing forever — which is the whole reason a model can cite one.  The window is bounded by the source&#39;s retention, the horizon by a year, the rows by the plane&#39;s cap, and the number of datasets and versions per org by their own limits. Every refusal names which bound it hit.
-     * @param riskDatasetSpec  (required)
-     * @return RiskDataset
+     * @param datasetRiskDatasetSpec  (required)
+     * @return DatasetRiskDataset
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskDataset riskCreateDataset(@javax.annotation.Nonnull RiskDatasetSpec riskDatasetSpec) throws ApiException {
-        ApiResponse<RiskDataset> localVarResp = riskCreateDatasetWithHttpInfo(riskDatasetSpec);
+    public DatasetRiskDataset riskCreateDataset(@javax.annotation.Nonnull DatasetRiskDatasetSpec datasetRiskDatasetSpec) throws ApiException {
+        ApiResponse<DatasetRiskDataset> localVarResp = riskCreateDatasetWithHttpInfo(datasetRiskDatasetSpec);
         return localVarResp.getData();
     }
 
     /**
      * Declare the next version of a dataset
      * Declares the next version of a dataset from a bound query over this org&#39;s own feature surface.  It mints a VERSION and writes no rows: a version is declared, then materialised once, then never rewritten. Version numbers are monotone and never reused, so \&quot;version 3 of signups\&quot; means one thing forever — which is the whole reason a model can cite one.  The window is bounded by the source&#39;s retention, the horizon by a year, the rows by the plane&#39;s cap, and the number of datasets and versions per org by their own limits. Every refusal names which bound it hit.
-     * @param riskDatasetSpec  (required)
-     * @return ApiResponse&lt;RiskDataset&gt;
+     * @param datasetRiskDatasetSpec  (required)
+     * @return ApiResponse&lt;DatasetRiskDataset&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskDataset> riskCreateDatasetWithHttpInfo(@javax.annotation.Nonnull RiskDatasetSpec riskDatasetSpec) throws ApiException {
-        okhttp3.Call localVarCall = riskCreateDatasetValidateBeforeCall(riskDatasetSpec, null);
-        Type localVarReturnType = new TypeToken<RiskDataset>(){}.getType();
+    public ApiResponse<DatasetRiskDataset> riskCreateDatasetWithHttpInfo(@javax.annotation.Nonnull DatasetRiskDatasetSpec datasetRiskDatasetSpec) throws ApiException {
+        okhttp3.Call localVarCall = riskCreateDatasetValidateBeforeCall(datasetRiskDatasetSpec, null);
+        Type localVarReturnType = new TypeToken<DatasetRiskDataset>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Declare the next version of a dataset (asynchronously)
      * Declares the next version of a dataset from a bound query over this org&#39;s own feature surface.  It mints a VERSION and writes no rows: a version is declared, then materialised once, then never rewritten. Version numbers are monotone and never reused, so \&quot;version 3 of signups\&quot; means one thing forever — which is the whole reason a model can cite one.  The window is bounded by the source&#39;s retention, the horizon by a year, the rows by the plane&#39;s cap, and the number of datasets and versions per org by their own limits. Every refusal names which bound it hit.
-     * @param riskDatasetSpec  (required)
+     * @param datasetRiskDatasetSpec  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -196,12 +201,13 @@ public class DatasetApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskCreateDatasetAsync(@javax.annotation.Nonnull RiskDatasetSpec riskDatasetSpec, final ApiCallback<RiskDataset> _callback) throws ApiException {
+    public okhttp3.Call riskCreateDatasetAsync(@javax.annotation.Nonnull DatasetRiskDatasetSpec datasetRiskDatasetSpec, final ApiCallback<DatasetRiskDataset> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = riskCreateDatasetValidateBeforeCall(riskDatasetSpec, _callback);
-        Type localVarReturnType = new TypeToken<RiskDataset>(){}.getType();
+        okhttp3.Call localVarCall = riskCreateDatasetValidateBeforeCall(datasetRiskDatasetSpec, _callback);
+        Type localVarReturnType = new TypeToken<DatasetRiskDataset>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -216,6 +222,7 @@ public class DatasetApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskDatasetCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -245,7 +252,8 @@ public class DatasetApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -278,17 +286,18 @@ public class DatasetApi {
      * Describe every version of one dataset
      * Dataset describes every version of one dataset, newest first — the whole history, because the point of a version is that the older ones are still there and a model fitted last quarter cites one of them.  A name this org does not own answers 404, exactly as an unknown name does, so a probe learns nothing about another tenant&#39;s datasets.
      * @param name Name is the dataset, from the path. (required)
-     * @return RiskDatasetVersions
+     * @return DatasetRiskDatasetVersions
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskDatasetVersions riskDataset(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<RiskDatasetVersions> localVarResp = riskDatasetWithHttpInfo(name);
+    public DatasetRiskDatasetVersions riskDataset(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<DatasetRiskDatasetVersions> localVarResp = riskDatasetWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -296,18 +305,19 @@ public class DatasetApi {
      * Describe every version of one dataset
      * Dataset describes every version of one dataset, newest first — the whole history, because the point of a version is that the older ones are still there and a model fitted last quarter cites one of them.  A name this org does not own answers 404, exactly as an unknown name does, so a probe learns nothing about another tenant&#39;s datasets.
      * @param name Name is the dataset, from the path. (required)
-     * @return ApiResponse&lt;RiskDatasetVersions&gt;
+     * @return ApiResponse&lt;DatasetRiskDatasetVersions&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskDatasetVersions> riskDatasetWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<DatasetRiskDatasetVersions> riskDatasetWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = riskDatasetValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<RiskDatasetVersions>(){}.getType();
+        Type localVarReturnType = new TypeToken<DatasetRiskDatasetVersions>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -323,12 +333,13 @@ public class DatasetApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskDatasetAsync(@javax.annotation.Nonnull String name, final ApiCallback<RiskDatasetVersions> _callback) throws ApiException {
+    public okhttp3.Call riskDatasetAsync(@javax.annotation.Nonnull String name, final ApiCallback<DatasetRiskDatasetVersions> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskDatasetValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<RiskDatasetVersions>(){}.getType();
+        Type localVarReturnType = new TypeToken<DatasetRiskDatasetVersions>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -344,6 +355,7 @@ public class DatasetApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskDatasetLineageCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, final ApiCallback _callback) throws ApiException {
@@ -377,7 +389,8 @@ public class DatasetApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -411,17 +424,18 @@ public class DatasetApi {
      * Shows where a version&#39;s rows came from and whether that can still be demonstrated.  The answer is MEASURED, not recalled: the plane asks the source the same bounded question again and compares it to the fingerprint taken when the version was built. Anything but exact agreement is reported as drift — the source is fed by a rollup that runs behind the events, so \&quot;it holds more now\&quot; is the ordinary case and it means re-running the spec would not reproduce this version. An admitted gap is actionable; an unfalsifiable claim is not.  IT IS A PRICED, BOUNDED READ, because it is the same statement a materialisation is charged for: an exact distinct-count over up to 400 days of this org&#39;s feature surface. It takes the org&#39;s ONE source-scan slot, so a tenant looping it spends one scan and not a thousand; it counts against the plane&#39;s ceiling, so the fleet&#39;s warehouse is bounded too; and it runs under this plane&#39;s own deadline rather than the caller&#39;s patience.
      * @param name Name is the dataset, from the path. (required)
      * @param version Version is the version to trace. Zero takes the newest published one. (optional)
-     * @return RiskLineage
+     * @return DatasetRiskLineage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskLineage riskDatasetLineage(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version) throws ApiException {
-        ApiResponse<RiskLineage> localVarResp = riskDatasetLineageWithHttpInfo(name, version);
+    public DatasetRiskLineage riskDatasetLineage(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version) throws ApiException {
+        ApiResponse<DatasetRiskLineage> localVarResp = riskDatasetLineageWithHttpInfo(name, version);
         return localVarResp.getData();
     }
 
@@ -430,18 +444,19 @@ public class DatasetApi {
      * Shows where a version&#39;s rows came from and whether that can still be demonstrated.  The answer is MEASURED, not recalled: the plane asks the source the same bounded question again and compares it to the fingerprint taken when the version was built. Anything but exact agreement is reported as drift — the source is fed by a rollup that runs behind the events, so \&quot;it holds more now\&quot; is the ordinary case and it means re-running the spec would not reproduce this version. An admitted gap is actionable; an unfalsifiable claim is not.  IT IS A PRICED, BOUNDED READ, because it is the same statement a materialisation is charged for: an exact distinct-count over up to 400 days of this org&#39;s feature surface. It takes the org&#39;s ONE source-scan slot, so a tenant looping it spends one scan and not a thousand; it counts against the plane&#39;s ceiling, so the fleet&#39;s warehouse is bounded too; and it runs under this plane&#39;s own deadline rather than the caller&#39;s patience.
      * @param name Name is the dataset, from the path. (required)
      * @param version Version is the version to trace. Zero takes the newest published one. (optional)
-     * @return ApiResponse&lt;RiskLineage&gt;
+     * @return ApiResponse&lt;DatasetRiskLineage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskLineage> riskDatasetLineageWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version) throws ApiException {
+    public ApiResponse<DatasetRiskLineage> riskDatasetLineageWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version) throws ApiException {
         okhttp3.Call localVarCall = riskDatasetLineageValidateBeforeCall(name, version, null);
-        Type localVarReturnType = new TypeToken<RiskLineage>(){}.getType();
+        Type localVarReturnType = new TypeToken<DatasetRiskLineage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -458,12 +473,13 @@ public class DatasetApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskDatasetLineageAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, final ApiCallback<RiskLineage> _callback) throws ApiException {
+    public okhttp3.Call riskDatasetLineageAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, final ApiCallback<DatasetRiskLineage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskDatasetLineageValidateBeforeCall(name, version, _callback);
-        Type localVarReturnType = new TypeToken<RiskLineage>(){}.getType();
+        Type localVarReturnType = new TypeToken<DatasetRiskLineage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -477,6 +493,7 @@ public class DatasetApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskDatasetsCall(final ApiCallback _callback) throws ApiException {
@@ -505,7 +522,8 @@ public class DatasetApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -532,35 +550,37 @@ public class DatasetApi {
     /**
      * List this org&#39;s datasets
      * Datasets lists this org&#39;s datasets, each with its newest version. An org that has declared none gets an empty list; a store that cannot be reached gets a refusal, never an empty list, because the two read identically and only one of them is true.
-     * @return RiskDatasetList
+     * @return DatasetRiskDatasetList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskDatasetList riskDatasets() throws ApiException {
-        ApiResponse<RiskDatasetList> localVarResp = riskDatasetsWithHttpInfo();
+    public DatasetRiskDatasetList riskDatasets() throws ApiException {
+        ApiResponse<DatasetRiskDatasetList> localVarResp = riskDatasetsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * List this org&#39;s datasets
      * Datasets lists this org&#39;s datasets, each with its newest version. An org that has declared none gets an empty list; a store that cannot be reached gets a refusal, never an empty list, because the two read identically and only one of them is true.
-     * @return ApiResponse&lt;RiskDatasetList&gt;
+     * @return ApiResponse&lt;DatasetRiskDatasetList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskDatasetList> riskDatasetsWithHttpInfo() throws ApiException {
+    public ApiResponse<DatasetRiskDatasetList> riskDatasetsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = riskDatasetsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<RiskDatasetList>(){}.getType();
+        Type localVarReturnType = new TypeToken<DatasetRiskDatasetList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -575,12 +595,13 @@ public class DatasetApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskDatasetsAsync(final ApiCallback<RiskDatasetList> _callback) throws ApiException {
+    public okhttp3.Call riskDatasetsAsync(final ApiCallback<DatasetRiskDatasetList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskDatasetsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<RiskDatasetList>(){}.getType();
+        Type localVarReturnType = new TypeToken<DatasetRiskDatasetList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -595,6 +616,7 @@ public class DatasetApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskDeleteDatasetCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -624,7 +646,8 @@ public class DatasetApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -657,17 +680,18 @@ public class DatasetApi {
      * Dispose of one dataset and every version of it
      * Disposes of one dataset and every version of it: the rows are dropped and the register is marked with what went.  This is the ONLY expiry in this plane. Neither table carries a TTL, deliberately: a table TTL is a fleet-wide clock no tenant can hold longer or shorten, which is the opposite of a retention decision belonging to the tenant whose records they are. The drop is a partition drop on (org, dataset), so the tenant is the first component of the thing being dropped and a disposal cannot be spelled across one.  The BYTES are what goes. The register keeps one &#x60;disposed&#x60; row per version — the name, the number, the spec, the digest and who disposed of it when — for two reasons: a retention obligation is answered by a record of the deletion, not by silence; and version numbers must stay monotone, so that after &#x60;orders&#x60; is disposed of and declared again the next version is 4 and not 1. A number that could be reused would make every citation of &#x60;orders v3&#x60; ambiguous forever.  It is not reversible and there is no soft state in between. A version a model cited has no rows once this returns, and every read of it says so.
      * @param name Name is the dataset, from the path. (required)
-     * @return RiskDatasetDisposal
+     * @return DatasetRiskDatasetDisposal
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskDatasetDisposal riskDeleteDataset(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<RiskDatasetDisposal> localVarResp = riskDeleteDatasetWithHttpInfo(name);
+    public DatasetRiskDatasetDisposal riskDeleteDataset(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<DatasetRiskDatasetDisposal> localVarResp = riskDeleteDatasetWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -675,18 +699,19 @@ public class DatasetApi {
      * Dispose of one dataset and every version of it
      * Disposes of one dataset and every version of it: the rows are dropped and the register is marked with what went.  This is the ONLY expiry in this plane. Neither table carries a TTL, deliberately: a table TTL is a fleet-wide clock no tenant can hold longer or shorten, which is the opposite of a retention decision belonging to the tenant whose records they are. The drop is a partition drop on (org, dataset), so the tenant is the first component of the thing being dropped and a disposal cannot be spelled across one.  The BYTES are what goes. The register keeps one &#x60;disposed&#x60; row per version — the name, the number, the spec, the digest and who disposed of it when — for two reasons: a retention obligation is answered by a record of the deletion, not by silence; and version numbers must stay monotone, so that after &#x60;orders&#x60; is disposed of and declared again the next version is 4 and not 1. A number that could be reused would make every citation of &#x60;orders v3&#x60; ambiguous forever.  It is not reversible and there is no soft state in between. A version a model cited has no rows once this returns, and every read of it says so.
      * @param name Name is the dataset, from the path. (required)
-     * @return ApiResponse&lt;RiskDatasetDisposal&gt;
+     * @return ApiResponse&lt;DatasetRiskDatasetDisposal&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskDatasetDisposal> riskDeleteDatasetWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<DatasetRiskDatasetDisposal> riskDeleteDatasetWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = riskDeleteDatasetValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<RiskDatasetDisposal>(){}.getType();
+        Type localVarReturnType = new TypeToken<DatasetRiskDatasetDisposal>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -702,12 +727,13 @@ public class DatasetApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskDeleteDatasetAsync(@javax.annotation.Nonnull String name, final ApiCallback<RiskDatasetDisposal> _callback) throws ApiException {
+    public okhttp3.Call riskDeleteDatasetAsync(@javax.annotation.Nonnull String name, final ApiCallback<DatasetRiskDatasetDisposal> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskDeleteDatasetValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<RiskDatasetDisposal>(){}.getType();
+        Type localVarReturnType = new TypeToken<DatasetRiskDatasetDisposal>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -726,6 +752,7 @@ public class DatasetApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskExportDatasetCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -771,7 +798,8 @@ public class DatasetApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -808,17 +836,18 @@ public class DatasetApi {
      * @param split Split narrows to train, val or test. Empty reads every split. (optional)
      * @param offset Offset is where the page starts, in the version&#39;s own row order (by id, which is derived from the row and therefore stable forever). (optional)
      * @param limit Limit is how many rows to return. Zero and anything above the plane&#39;s bound take the bound. (optional)
-     * @return RiskDatasetRows
+     * @return DatasetRiskDatasetRows
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskDatasetRows riskExportDataset(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<RiskDatasetRows> localVarResp = riskExportDatasetWithHttpInfo(name, version, split, offset, limit);
+    public DatasetRiskDatasetRows riskExportDataset(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<DatasetRiskDatasetRows> localVarResp = riskExportDatasetWithHttpInfo(name, version, split, offset, limit);
         return localVarResp.getData();
     }
 
@@ -830,18 +859,19 @@ public class DatasetApi {
      * @param split Split narrows to train, val or test. Empty reads every split. (optional)
      * @param offset Offset is where the page starts, in the version&#39;s own row order (by id, which is derived from the row and therefore stable forever). (optional)
      * @param limit Limit is how many rows to return. Zero and anything above the plane&#39;s bound take the bound. (optional)
-     * @return ApiResponse&lt;RiskDatasetRows&gt;
+     * @return ApiResponse&lt;DatasetRiskDatasetRows&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskDatasetRows> riskExportDatasetWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<DatasetRiskDatasetRows> riskExportDatasetWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = riskExportDatasetValidateBeforeCall(name, version, split, offset, limit, null);
-        Type localVarReturnType = new TypeToken<RiskDatasetRows>(){}.getType();
+        Type localVarReturnType = new TypeToken<DatasetRiskDatasetRows>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -861,12 +891,13 @@ public class DatasetApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskExportDatasetAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback<RiskDatasetRows> _callback) throws ApiException {
+    public okhttp3.Call riskExportDatasetAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback<DatasetRiskDatasetRows> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskExportDatasetValidateBeforeCall(name, version, split, offset, limit, _callback);
-        Type localVarReturnType = new TypeToken<RiskDatasetRows>(){}.getType();
+        Type localVarReturnType = new TypeToken<DatasetRiskDatasetRows>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -881,6 +912,7 @@ public class DatasetApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskMaterializeDatasetCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -910,7 +942,8 @@ public class DatasetApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -943,17 +976,18 @@ public class DatasetApi {
      * Materialise the declared version into immutable rows
      * Builds the declared version into immutable rows and answers 202 as soon as the attempt is on record.  It never holds the request open for the work: a materialisation is a bounded warehouse scan, and letting an HTTP client&#39;s timeout be a data plane&#39;s timeout is how one tenant&#39;s retry loop becomes everyone&#39;s outage. ONE materialisation runs per org at a time; a second is refused rather than queued, because a queue admits the same work later and the honest answer to \&quot;again\&quot; while one is running is that one is running.  Only a DECLARED version is admitted. A published version is immutable, and a version whose earlier attempt did not complete is never re-attempted — that would union two runs&#39; rows under one number and make the digest a lie. In both cases the answer is to declare a new version, which is what a second run over a moving source honestly is.
      * @param name Name is the dataset, from the path. (required)
-     * @return RiskDataset
+     * @return DatasetRiskDataset
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskDataset riskMaterializeDataset(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<RiskDataset> localVarResp = riskMaterializeDatasetWithHttpInfo(name);
+    public DatasetRiskDataset riskMaterializeDataset(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<DatasetRiskDataset> localVarResp = riskMaterializeDatasetWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -961,18 +995,19 @@ public class DatasetApi {
      * Materialise the declared version into immutable rows
      * Builds the declared version into immutable rows and answers 202 as soon as the attempt is on record.  It never holds the request open for the work: a materialisation is a bounded warehouse scan, and letting an HTTP client&#39;s timeout be a data plane&#39;s timeout is how one tenant&#39;s retry loop becomes everyone&#39;s outage. ONE materialisation runs per org at a time; a second is refused rather than queued, because a queue admits the same work later and the honest answer to \&quot;again\&quot; while one is running is that one is running.  Only a DECLARED version is admitted. A published version is immutable, and a version whose earlier attempt did not complete is never re-attempted — that would union two runs&#39; rows under one number and make the digest a lie. In both cases the answer is to declare a new version, which is what a second run over a moving source honestly is.
      * @param name Name is the dataset, from the path. (required)
-     * @return ApiResponse&lt;RiskDataset&gt;
+     * @return ApiResponse&lt;DatasetRiskDataset&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskDataset> riskMaterializeDatasetWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<DatasetRiskDataset> riskMaterializeDatasetWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = riskMaterializeDatasetValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<RiskDataset>(){}.getType();
+        Type localVarReturnType = new TypeToken<DatasetRiskDataset>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -988,12 +1023,13 @@ public class DatasetApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskMaterializeDatasetAsync(@javax.annotation.Nonnull String name, final ApiCallback<RiskDataset> _callback) throws ApiException {
+    public okhttp3.Call riskMaterializeDatasetAsync(@javax.annotation.Nonnull String name, final ApiCallback<DatasetRiskDataset> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskMaterializeDatasetValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<RiskDataset>(){}.getType();
+        Type localVarReturnType = new TypeToken<DatasetRiskDataset>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

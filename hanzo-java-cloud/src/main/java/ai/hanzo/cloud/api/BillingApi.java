@@ -27,41 +27,44 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Accounts;
-import ai.hanzo.cloud.model.Alert;
-import ai.hanzo.cloud.model.AlertPatch;
-import ai.hanzo.cloud.model.AlertSpec;
-import ai.hanzo.cloud.model.AutoRecharge;
-import ai.hanzo.cloud.model.AutoRechargeEdit;
-import ai.hanzo.cloud.model.BillingAccount;
-import ai.hanzo.cloud.model.CapVerdict;
-import ai.hanzo.cloud.model.Charged;
-import ai.hanzo.cloud.model.Collected;
-import ai.hanzo.cloud.model.CreditBalance;
-import ai.hanzo.cloud.model.CreditGrants;
-import ai.hanzo.cloud.model.CryptoAsset;
-import ai.hanzo.cloud.model.CryptoDeposit;
-import ai.hanzo.cloud.model.CryptoOptions;
-import ai.hanzo.cloud.model.Detachment;
-import ai.hanzo.cloud.model.FinanceLedgerEntry;
-import ai.hanzo.cloud.model.Holder;
-import ai.hanzo.cloud.model.Invoice;
-import ai.hanzo.cloud.model.Invoices;
-import ai.hanzo.cloud.model.Mode;
-import ai.hanzo.cloud.model.ModeIn;
-import ai.hanzo.cloud.model.PaymentConfig;
-import ai.hanzo.cloud.model.Payout;
-import ai.hanzo.cloud.model.RaiseIn;
-import ai.hanzo.cloud.model.Recharge;
-import ai.hanzo.cloud.model.Rollup;
-import ai.hanzo.cloud.model.Subscription;
-import ai.hanzo.cloud.model.SubscriptionRef;
-import ai.hanzo.cloud.model.Subscriptions;
-import ai.hanzo.cloud.model.Tier;
-import ai.hanzo.cloud.model.TopupIn;
-import ai.hanzo.cloud.model.Transaction;
-import ai.hanzo.cloud.model.Transactions;
-import ai.hanzo.cloud.model.WireInstructions;
+import ai.hanzo.cloud.model.BillingAccounts;
+import ai.hanzo.cloud.model.BillingAlert;
+import ai.hanzo.cloud.model.BillingAlertPatch;
+import ai.hanzo.cloud.model.BillingAlertSpec;
+import ai.hanzo.cloud.model.BillingAutoRecharge;
+import ai.hanzo.cloud.model.BillingAutoRechargeEdit;
+import ai.hanzo.cloud.model.BillingBillingAccount;
+import ai.hanzo.cloud.model.BillingCapVerdict;
+import ai.hanzo.cloud.model.BillingCharged;
+import ai.hanzo.cloud.model.BillingCollected;
+import ai.hanzo.cloud.model.BillingCreditBalance;
+import ai.hanzo.cloud.model.BillingCreditGrants;
+import ai.hanzo.cloud.model.BillingCryptoAsset;
+import ai.hanzo.cloud.model.BillingCryptoDeposit;
+import ai.hanzo.cloud.model.BillingCryptoOptions;
+import ai.hanzo.cloud.model.BillingDetachment;
+import ai.hanzo.cloud.model.BillingFinanceLedgerEntry;
+import ai.hanzo.cloud.model.BillingHolder;
+import ai.hanzo.cloud.model.BillingInvoice;
+import ai.hanzo.cloud.model.BillingInvoices;
+import ai.hanzo.cloud.model.BillingMode;
+import ai.hanzo.cloud.model.BillingModeIn;
+import ai.hanzo.cloud.model.BillingPaymentConfig;
+import ai.hanzo.cloud.model.BillingPayout;
+import ai.hanzo.cloud.model.BillingRaiseIn;
+import ai.hanzo.cloud.model.BillingRecharge;
+import ai.hanzo.cloud.model.BillingRollup;
+import ai.hanzo.cloud.model.BillingSubscription;
+import ai.hanzo.cloud.model.BillingSubscriptionRef;
+import ai.hanzo.cloud.model.BillingSubscriptions;
+import ai.hanzo.cloud.model.BillingTier;
+import ai.hanzo.cloud.model.BillingTopupIn;
+import ai.hanzo.cloud.model.BillingTransaction;
+import ai.hanzo.cloud.model.BillingTransactions;
+import ai.hanzo.cloud.model.BillingUsageReceipt;
+import ai.hanzo.cloud.model.BillingUsageReport;
+import ai.hanzo.cloud.model.BillingWireInstructions;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -109,7 +112,7 @@ public class BillingApi {
     /**
      * Build call for cancelSubscription
      * @param id  (required)
-     * @param subscriptionRef  (required)
+     * @param billingSubscriptionRef  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -118,9 +121,10 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cancelSubscriptionCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SubscriptionRef subscriptionRef, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cancelSubscriptionCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BillingSubscriptionRef billingSubscriptionRef, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,7 +138,7 @@ public class BillingApi {
             basePath = null;
         }
 
-        Object localVarPostBody = subscriptionRef;
+        Object localVarPostBody = billingSubscriptionRef;
 
         // create path and map variables
         String localVarPath = "/v1/billing/subscriptions/{id}/cancel"
@@ -147,7 +151,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -167,18 +172,18 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cancelSubscriptionValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SubscriptionRef subscriptionRef, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cancelSubscriptionValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BillingSubscriptionRef billingSubscriptionRef, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling cancelSubscription(Async)");
         }
 
-        // verify the required parameter 'subscriptionRef' is set
-        if (subscriptionRef == null) {
-            throw new ApiException("Missing the required parameter 'subscriptionRef' when calling cancelSubscription(Async)");
+        // verify the required parameter 'billingSubscriptionRef' is set
+        if (billingSubscriptionRef == null) {
+            throw new ApiException("Missing the required parameter 'billingSubscriptionRef' when calling cancelSubscription(Async)");
         }
 
-        return cancelSubscriptionCall(id, subscriptionRef, _callback);
+        return cancelSubscriptionCall(id, billingSubscriptionRef, _callback);
 
     }
 
@@ -186,18 +191,19 @@ public class BillingApi {
      * End a subscription
      * Ends a subscription.  It cancels at the END OF THE PAID PERIOD by default, because a customer who cancels has already paid for the period they are in and taking it away is taking money for nothing. &#x60;atPeriodEnd: false&#x60; ends it at once, which is the caller asking for that.  A subscription from another org is not found rather than refused, so an id cannot be probed for existence.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id  (required)
-     * @param subscriptionRef  (required)
-     * @return Subscription
+     * @param billingSubscriptionRef  (required)
+     * @return BillingSubscription
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Subscription cancelSubscription(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SubscriptionRef subscriptionRef) throws ApiException {
-        ApiResponse<Subscription> localVarResp = cancelSubscriptionWithHttpInfo(id, subscriptionRef);
+    public BillingSubscription cancelSubscription(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BillingSubscriptionRef billingSubscriptionRef) throws ApiException {
+        ApiResponse<BillingSubscription> localVarResp = cancelSubscriptionWithHttpInfo(id, billingSubscriptionRef);
         return localVarResp.getData();
     }
 
@@ -205,19 +211,20 @@ public class BillingApi {
      * End a subscription
      * Ends a subscription.  It cancels at the END OF THE PAID PERIOD by default, because a customer who cancels has already paid for the period they are in and taking it away is taking money for nothing. &#x60;atPeriodEnd: false&#x60; ends it at once, which is the caller asking for that.  A subscription from another org is not found rather than refused, so an id cannot be probed for existence.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id  (required)
-     * @param subscriptionRef  (required)
-     * @return ApiResponse&lt;Subscription&gt;
+     * @param billingSubscriptionRef  (required)
+     * @return ApiResponse&lt;BillingSubscription&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Subscription> cancelSubscriptionWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SubscriptionRef subscriptionRef) throws ApiException {
-        okhttp3.Call localVarCall = cancelSubscriptionValidateBeforeCall(id, subscriptionRef, null);
-        Type localVarReturnType = new TypeToken<Subscription>(){}.getType();
+    public ApiResponse<BillingSubscription> cancelSubscriptionWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BillingSubscriptionRef billingSubscriptionRef) throws ApiException {
+        okhttp3.Call localVarCall = cancelSubscriptionValidateBeforeCall(id, billingSubscriptionRef, null);
+        Type localVarReturnType = new TypeToken<BillingSubscription>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -225,7 +232,7 @@ public class BillingApi {
      * End a subscription (asynchronously)
      * Ends a subscription.  It cancels at the END OF THE PAID PERIOD by default, because a customer who cancels has already paid for the period they are in and taking it away is taking money for nothing. &#x60;atPeriodEnd: false&#x60; ends it at once, which is the caller asking for that.  A subscription from another org is not found rather than refused, so an id cannot be probed for existence.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id  (required)
-     * @param subscriptionRef  (required)
+     * @param billingSubscriptionRef  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -234,12 +241,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cancelSubscriptionAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SubscriptionRef subscriptionRef, final ApiCallback<Subscription> _callback) throws ApiException {
+    public okhttp3.Call cancelSubscriptionAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BillingSubscriptionRef billingSubscriptionRef, final ApiCallback<BillingSubscription> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cancelSubscriptionValidateBeforeCall(id, subscriptionRef, _callback);
-        Type localVarReturnType = new TypeToken<Subscription>(){}.getType();
+        okhttp3.Call localVarCall = cancelSubscriptionValidateBeforeCall(id, billingSubscriptionRef, _callback);
+        Type localVarReturnType = new TypeToken<BillingSubscription>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -254,6 +262,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call collectInvoiceCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -283,7 +292,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -314,44 +324,46 @@ public class BillingApi {
 
     /**
      * Collect an issued invoice from credits, balance, then card
-     * Collects an issued invoice: credit grants first, then prepaid balance, then the card on file — the same waterfall the dunning workflow runs.  A DECLINE IS NOT AN ERROR. It answers with paid&#x3D;false, a reason, and the invoice still open, because a declined collection is a normal business outcome that must remain retryable — and because sealing it as a failure would wedge dunning behind a replayed decline. Only a successful collection is sealed, so a retry of a paid invoice replays the receipt instead of charging again.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * Collects an issued invoice: credit grants first, then prepaid balance, then the card on file — the same waterfall the dunning workflow runs. It spends the named customer&#39;s money, so it is the org admin&#39;s act; a member is refused 403.  A DECLINE IS NOT AN ERROR. It answers with paid&#x3D;false, a reason, and the invoice still open, because a declined collection is a normal business outcome that must remain retryable — and because sealing it as a failure would wedge dunning behind a replayed decline. Only a successful collection is sealed, so a retry of a paid invoice replays the receipt instead of charging again.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id ID is the invoice id. (required)
-     * @return Collected
+     * @return BillingCollected
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Collected collectInvoice(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Collected> localVarResp = collectInvoiceWithHttpInfo(id);
+    public BillingCollected collectInvoice(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<BillingCollected> localVarResp = collectInvoiceWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
      * Collect an issued invoice from credits, balance, then card
-     * Collects an issued invoice: credit grants first, then prepaid balance, then the card on file — the same waterfall the dunning workflow runs.  A DECLINE IS NOT AN ERROR. It answers with paid&#x3D;false, a reason, and the invoice still open, because a declined collection is a normal business outcome that must remain retryable — and because sealing it as a failure would wedge dunning behind a replayed decline. Only a successful collection is sealed, so a retry of a paid invoice replays the receipt instead of charging again.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * Collects an issued invoice: credit grants first, then prepaid balance, then the card on file — the same waterfall the dunning workflow runs. It spends the named customer&#39;s money, so it is the org admin&#39;s act; a member is refused 403.  A DECLINE IS NOT AN ERROR. It answers with paid&#x3D;false, a reason, and the invoice still open, because a declined collection is a normal business outcome that must remain retryable — and because sealing it as a failure would wedge dunning behind a replayed decline. Only a successful collection is sealed, so a retry of a paid invoice replays the receipt instead of charging again.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id ID is the invoice id. (required)
-     * @return ApiResponse&lt;Collected&gt;
+     * @return ApiResponse&lt;BillingCollected&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Collected> collectInvoiceWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<BillingCollected> collectInvoiceWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = collectInvoiceValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Collected>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingCollected>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Collect an issued invoice from credits, balance, then card (asynchronously)
-     * Collects an issued invoice: credit grants first, then prepaid balance, then the card on file — the same waterfall the dunning workflow runs.  A DECLINE IS NOT AN ERROR. It answers with paid&#x3D;false, a reason, and the invoice still open, because a declined collection is a normal business outcome that must remain retryable — and because sealing it as a failure would wedge dunning behind a replayed decline. Only a successful collection is sealed, so a retry of a paid invoice replays the receipt instead of charging again.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * Collects an issued invoice: credit grants first, then prepaid balance, then the card on file — the same waterfall the dunning workflow runs. It spends the named customer&#39;s money, so it is the org admin&#39;s act; a member is refused 403.  A DECLINE IS NOT AN ERROR. It answers with paid&#x3D;false, a reason, and the invoice still open, because a declined collection is a normal business outcome that must remain retryable — and because sealing it as a failure would wedge dunning behind a replayed decline. Only a successful collection is sealed, so a retry of a paid invoice replays the receipt instead of charging again.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id ID is the invoice id. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -361,12 +373,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call collectInvoiceAsync(@javax.annotation.Nonnull String id, final ApiCallback<Collected> _callback) throws ApiException {
+    public okhttp3.Call collectInvoiceAsync(@javax.annotation.Nonnull String id, final ApiCallback<BillingCollected> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = collectInvoiceValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Collected>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingCollected>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -381,6 +394,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteBillingAlertsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -410,6 +424,7 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -448,6 +463,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteBillingAlertsById(@javax.annotation.Nonnull String id) throws ApiException {
@@ -465,6 +481,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteBillingAlertsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -484,6 +501,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteBillingAlertsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -503,6 +521,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteBillingMethodsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -532,7 +551,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -565,17 +585,18 @@ public class BillingApi {
      * Removes one card or account the caller has saved.
      * Removes one card or account the caller has saved.  It detaches only the CALLER&#39;S own — the wallet this request bills from, resolved server-side — so an id belonging to another customer of the same org is not something this operation can reach. A platform or service caller detaches on the subject&#39;s behalf, and that authority is decided HERE, where the credential is, and travels as a value: authority decided twice is authority that eventually disagrees with itself.  The card is vaulted at the processor, so what goes is our token for it.
      * @param id ID is the saved method to detach, from the path. (required)
-     * @return Detachment
+     * @return BillingDetachment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Detachment deleteBillingMethodsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Detachment> localVarResp = deleteBillingMethodsByIdWithHttpInfo(id);
+    public BillingDetachment deleteBillingMethodsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<BillingDetachment> localVarResp = deleteBillingMethodsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -583,18 +604,19 @@ public class BillingApi {
      * Removes one card or account the caller has saved.
      * Removes one card or account the caller has saved.  It detaches only the CALLER&#39;S own — the wallet this request bills from, resolved server-side — so an id belonging to another customer of the same org is not something this operation can reach. A platform or service caller detaches on the subject&#39;s behalf, and that authority is decided HERE, where the credential is, and travels as a value: authority decided twice is authority that eventually disagrees with itself.  The card is vaulted at the processor, so what goes is our token for it.
      * @param id ID is the saved method to detach, from the path. (required)
-     * @return ApiResponse&lt;Detachment&gt;
+     * @return ApiResponse&lt;BillingDetachment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Detachment> deleteBillingMethodsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<BillingDetachment> deleteBillingMethodsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteBillingMethodsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Detachment>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingDetachment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -610,12 +632,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteBillingMethodsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Detachment> _callback) throws ApiException {
+    public okhttp3.Call deleteBillingMethodsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<BillingDetachment> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteBillingMethodsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Detachment>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingDetachment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -630,6 +653,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteBillingPortalMethodsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -659,7 +683,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -689,45 +714,47 @@ public class BillingApi {
     }
 
     /**
-     * DetachPortalMethod is DetachMethod at the address a hosted checkout addresses it by.
-     * DetachPortalMethod is DetachMethod at the address a hosted checkout addresses it by. One set of rows, two spellings: a card detached at either is gone from both, because there is one store behind them.
+     * Removes one card or account the caller has saved, at the address a hosted checkout reaches it by.
+     * Removes one card or account the caller has saved, at the address a hosted checkout reaches it by. One set of rows, two spellings: a card detached at either is gone from both, because there is one store behind them.
      * @param id ID is the saved method to detach, from the path. (required)
-     * @return Detachment
+     * @return BillingDetachment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Detachment deleteBillingPortalMethodsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Detachment> localVarResp = deleteBillingPortalMethodsByIdWithHttpInfo(id);
+    public BillingDetachment deleteBillingPortalMethodsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<BillingDetachment> localVarResp = deleteBillingPortalMethodsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
-     * DetachPortalMethod is DetachMethod at the address a hosted checkout addresses it by.
-     * DetachPortalMethod is DetachMethod at the address a hosted checkout addresses it by. One set of rows, two spellings: a card detached at either is gone from both, because there is one store behind them.
+     * Removes one card or account the caller has saved, at the address a hosted checkout reaches it by.
+     * Removes one card or account the caller has saved, at the address a hosted checkout reaches it by. One set of rows, two spellings: a card detached at either is gone from both, because there is one store behind them.
      * @param id ID is the saved method to detach, from the path. (required)
-     * @return ApiResponse&lt;Detachment&gt;
+     * @return ApiResponse&lt;BillingDetachment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Detachment> deleteBillingPortalMethodsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<BillingDetachment> deleteBillingPortalMethodsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteBillingPortalMethodsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Detachment>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingDetachment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * DetachPortalMethod is DetachMethod at the address a hosted checkout addresses it by. (asynchronously)
-     * DetachPortalMethod is DetachMethod at the address a hosted checkout addresses it by. One set of rows, two spellings: a card detached at either is gone from both, because there is one store behind them.
+     * Removes one card or account the caller has saved, at the address a hosted checkout reaches it by. (asynchronously)
+     * Removes one card or account the caller has saved, at the address a hosted checkout reaches it by. One set of rows, two spellings: a card detached at either is gone from both, because there is one store behind them.
      * @param id ID is the saved method to detach, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -737,12 +764,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteBillingPortalMethodsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Detachment> _callback) throws ApiException {
+    public okhttp3.Call deleteBillingPortalMethodsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<BillingDetachment> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteBillingPortalMethodsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Detachment>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingDetachment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -756,6 +784,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingAccountsCall(final ApiCallback _callback) throws ApiException {
@@ -784,7 +813,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -811,35 +841,37 @@ public class BillingApi {
     /**
      * Answers the caller&#39;s billing accounts: the org itself, its currency, when it was opened, and the caller&#39;s own standing in it.
      * Answers the caller&#39;s billing accounts: the org itself, its currency, when it was opened, and the caller&#39;s own standing in it.  The standing is the caller&#39;s, resolved from the validated principal here and sent to the store rather than looked up there — the membership roster is IAM&#39;s and commerce keeps none, so a callee that answered \&quot;what role is this\&quot; would be inventing it. An anonymous read gets the account with no role rather than an implied membership.  Scoped to the caller&#39;s own org, which is the whole tenancy story: there is no org field on the wire and none on the input.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return List&lt;BillingAccount&gt;
+     * @return List&lt;BillingBillingAccount&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<BillingAccount> getBillingAccounts() throws ApiException {
-        ApiResponse<List<BillingAccount>> localVarResp = getBillingAccountsWithHttpInfo();
+    public List<BillingBillingAccount> getBillingAccounts() throws ApiException {
+        ApiResponse<List<BillingBillingAccount>> localVarResp = getBillingAccountsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Answers the caller&#39;s billing accounts: the org itself, its currency, when it was opened, and the caller&#39;s own standing in it.
      * Answers the caller&#39;s billing accounts: the org itself, its currency, when it was opened, and the caller&#39;s own standing in it.  The standing is the caller&#39;s, resolved from the validated principal here and sent to the store rather than looked up there — the membership roster is IAM&#39;s and commerce keeps none, so a callee that answered \&quot;what role is this\&quot; would be inventing it. An anonymous read gets the account with no role rather than an implied membership.  Scoped to the caller&#39;s own org, which is the whole tenancy story: there is no org field on the wire and none on the input.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return ApiResponse&lt;List&lt;BillingAccount&gt;&gt;
+     * @return ApiResponse&lt;List&lt;BillingBillingAccount&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<BillingAccount>> getBillingAccountsWithHttpInfo() throws ApiException {
+    public ApiResponse<List<BillingBillingAccount>> getBillingAccountsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBillingAccountsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<BillingAccount>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BillingBillingAccount>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -854,12 +886,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingAccountsAsync(final ApiCallback<List<BillingAccount>> _callback) throws ApiException {
+    public okhttp3.Call getBillingAccountsAsync(final ApiCallback<List<BillingBillingAccount>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingAccountsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<BillingAccount>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BillingBillingAccount>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -874,6 +907,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingAccountsByIdMembersCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -903,7 +937,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -936,17 +971,18 @@ public class BillingApi {
      * Answers one billing account&#39;s roster.
      * Answers one billing account&#39;s roster.  commerce stores no roster — that is IAM&#39;s — so the only member it can name is the caller, and that is what comes back. What it does enforce is that the account named in the path is the caller&#39;s own: a foreign id is 403, not an empty list, because \&quot;no members\&quot; and \&quot;not your account\&quot; are different answers.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id ID is the billing account id, which for this store is the org&#39;s own id. (required)
-     * @return List&lt;Holder&gt;
+     * @return List&lt;BillingHolder&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<Holder> getBillingAccountsByIdMembers(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<List<Holder>> localVarResp = getBillingAccountsByIdMembersWithHttpInfo(id);
+    public List<BillingHolder> getBillingAccountsByIdMembers(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<List<BillingHolder>> localVarResp = getBillingAccountsByIdMembersWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -954,18 +990,19 @@ public class BillingApi {
      * Answers one billing account&#39;s roster.
      * Answers one billing account&#39;s roster.  commerce stores no roster — that is IAM&#39;s — so the only member it can name is the caller, and that is what comes back. What it does enforce is that the account named in the path is the caller&#39;s own: a foreign id is 403, not an empty list, because \&quot;no members\&quot; and \&quot;not your account\&quot; are different answers.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id ID is the billing account id, which for this store is the org&#39;s own id. (required)
-     * @return ApiResponse&lt;List&lt;Holder&gt;&gt;
+     * @return ApiResponse&lt;List&lt;BillingHolder&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<Holder>> getBillingAccountsByIdMembersWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<List<BillingHolder>> getBillingAccountsByIdMembersWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getBillingAccountsByIdMembersValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<List<Holder>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BillingHolder>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -981,12 +1018,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingAccountsByIdMembersAsync(@javax.annotation.Nonnull String id, final ApiCallback<List<Holder>> _callback) throws ApiException {
+    public okhttp3.Call getBillingAccountsByIdMembersAsync(@javax.annotation.Nonnull String id, final ApiCallback<List<BillingHolder>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingAccountsByIdMembersValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<List<Holder>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BillingHolder>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1000,6 +1038,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingAlertsCall(final ApiCallback _callback) throws ApiException {
@@ -1028,7 +1067,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1055,35 +1095,37 @@ public class BillingApi {
     /**
      * Lists this org&#39;s spend caps: the ceiling, its scope, whether it enforces, and how much of it has been spent this period.
      * Lists this org&#39;s spend caps: the ceiling, its scope, whether it enforces, and how much of it has been spent this period.  &#x60;periodSpentCents&#x60;, &#x60;over&#x60; and &#x60;warn&#x60; are ABSENT rather than zero when the spend could not be read, because \&quot;nothing spent\&quot; and \&quot;spend unknown\&quot; are different answers and a customer acting on the first when the second is true would be reading a ceiling that is not there. The policy row is reported either way.  The period is the UTC calendar month and &#x60;resetsAt&#x60; is when the count starts again, so a surface can say \&quot;resets on\&quot; without a second call.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return List&lt;Alert&gt;
+     * @return List&lt;BillingAlert&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<Alert> getBillingAlerts() throws ApiException {
-        ApiResponse<List<Alert>> localVarResp = getBillingAlertsWithHttpInfo();
+    public List<BillingAlert> getBillingAlerts() throws ApiException {
+        ApiResponse<List<BillingAlert>> localVarResp = getBillingAlertsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists this org&#39;s spend caps: the ceiling, its scope, whether it enforces, and how much of it has been spent this period.
      * Lists this org&#39;s spend caps: the ceiling, its scope, whether it enforces, and how much of it has been spent this period.  &#x60;periodSpentCents&#x60;, &#x60;over&#x60; and &#x60;warn&#x60; are ABSENT rather than zero when the spend could not be read, because \&quot;nothing spent\&quot; and \&quot;spend unknown\&quot; are different answers and a customer acting on the first when the second is true would be reading a ceiling that is not there. The policy row is reported either way.  The period is the UTC calendar month and &#x60;resetsAt&#x60; is when the count starts again, so a surface can say \&quot;resets on\&quot; without a second call.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return ApiResponse&lt;List&lt;Alert&gt;&gt;
+     * @return ApiResponse&lt;List&lt;BillingAlert&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<Alert>> getBillingAlertsWithHttpInfo() throws ApiException {
+    public ApiResponse<List<BillingAlert>> getBillingAlertsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBillingAlertsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<Alert>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BillingAlert>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1098,12 +1140,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingAlertsAsync(final ApiCallback<List<Alert>> _callback) throws ApiException {
+    public okhttp3.Call getBillingAlertsAsync(final ApiCallback<List<BillingAlert>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingAlertsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<Alert>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BillingAlert>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1121,6 +1164,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingAlertsAuthorizeCall(@javax.annotation.Nullable String project, @javax.annotation.Nullable String service, @javax.annotation.Nullable String amount, @javax.annotation.Nullable String pv, final ApiCallback _callback) throws ApiException {
@@ -1165,7 +1209,8 @@ public class BillingApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1191,50 +1236,52 @@ public class BillingApi {
 
     /**
      * Answers whether one proposed spend fits inside this org&#39;s caps.
-     * Answers whether one proposed spend fits inside this org&#39;s caps.  It is the per-request verdict the metering edge consumes before every priced call, and its caller is a SERVICE rather than a person: a service token plus the gateway-pinned org, with no user behind it. So this admits that principal where the CRUD beside it does not.  Every covering row is evaluated, most-restrictive-wins, and the tightest one is what &#x60;capCents&#x60;, &#x60;spentCents&#x60; and &#x60;reason&#x60; describe. Soft rows never deny; nor does a project-scoped enforcing row whose project axis the caller could not establish — &#x60;pv&#x3D;1&#x60; is how a caller states that it did, and an unproven claim must not be able to refuse traffic.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * Answers whether one proposed spend fits inside this org&#39;s caps.  It is the per-request verdict the metering edge consumes before every priced call, and its caller is a SERVICE rather than a person: the platform, stating the org over the plane, with no user behind it. So this admits that principal where the CRUD beside it does not.  Every covering row is evaluated, most-restrictive-wins, and the tightest one is what &#x60;capCents&#x60;, &#x60;spentCents&#x60; and &#x60;reason&#x60; describe. Soft rows never deny; nor does a project-scoped enforcing row whose project axis the caller could not establish — &#x60;pv&#x3D;1&#x60; is how a caller states that it did, and an unproven claim must not be able to refuse traffic.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param project Project narrows the verdict to one project&#39;s caps. Empty is the org-wide row. (optional)
      * @param service Service narrows it to one service&#39;s caps. Empty is every service. (optional)
      * @param amount Amount is the proposed spend in cents. (optional)
      * @param pv PV is \&quot;1\&quot; when the caller ESTABLISHED the project rather than merely carrying a claim of one. An unproven project may not deny traffic. (optional)
-     * @return CapVerdict
+     * @return BillingCapVerdict
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CapVerdict getBillingAlertsAuthorize(@javax.annotation.Nullable String project, @javax.annotation.Nullable String service, @javax.annotation.Nullable String amount, @javax.annotation.Nullable String pv) throws ApiException {
-        ApiResponse<CapVerdict> localVarResp = getBillingAlertsAuthorizeWithHttpInfo(project, service, amount, pv);
+    public BillingCapVerdict getBillingAlertsAuthorize(@javax.annotation.Nullable String project, @javax.annotation.Nullable String service, @javax.annotation.Nullable String amount, @javax.annotation.Nullable String pv) throws ApiException {
+        ApiResponse<BillingCapVerdict> localVarResp = getBillingAlertsAuthorizeWithHttpInfo(project, service, amount, pv);
         return localVarResp.getData();
     }
 
     /**
      * Answers whether one proposed spend fits inside this org&#39;s caps.
-     * Answers whether one proposed spend fits inside this org&#39;s caps.  It is the per-request verdict the metering edge consumes before every priced call, and its caller is a SERVICE rather than a person: a service token plus the gateway-pinned org, with no user behind it. So this admits that principal where the CRUD beside it does not.  Every covering row is evaluated, most-restrictive-wins, and the tightest one is what &#x60;capCents&#x60;, &#x60;spentCents&#x60; and &#x60;reason&#x60; describe. Soft rows never deny; nor does a project-scoped enforcing row whose project axis the caller could not establish — &#x60;pv&#x3D;1&#x60; is how a caller states that it did, and an unproven claim must not be able to refuse traffic.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * Answers whether one proposed spend fits inside this org&#39;s caps.  It is the per-request verdict the metering edge consumes before every priced call, and its caller is a SERVICE rather than a person: the platform, stating the org over the plane, with no user behind it. So this admits that principal where the CRUD beside it does not.  Every covering row is evaluated, most-restrictive-wins, and the tightest one is what &#x60;capCents&#x60;, &#x60;spentCents&#x60; and &#x60;reason&#x60; describe. Soft rows never deny; nor does a project-scoped enforcing row whose project axis the caller could not establish — &#x60;pv&#x3D;1&#x60; is how a caller states that it did, and an unproven claim must not be able to refuse traffic.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param project Project narrows the verdict to one project&#39;s caps. Empty is the org-wide row. (optional)
      * @param service Service narrows it to one service&#39;s caps. Empty is every service. (optional)
      * @param amount Amount is the proposed spend in cents. (optional)
      * @param pv PV is \&quot;1\&quot; when the caller ESTABLISHED the project rather than merely carrying a claim of one. An unproven project may not deny traffic. (optional)
-     * @return ApiResponse&lt;CapVerdict&gt;
+     * @return ApiResponse&lt;BillingCapVerdict&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CapVerdict> getBillingAlertsAuthorizeWithHttpInfo(@javax.annotation.Nullable String project, @javax.annotation.Nullable String service, @javax.annotation.Nullable String amount, @javax.annotation.Nullable String pv) throws ApiException {
+    public ApiResponse<BillingCapVerdict> getBillingAlertsAuthorizeWithHttpInfo(@javax.annotation.Nullable String project, @javax.annotation.Nullable String service, @javax.annotation.Nullable String amount, @javax.annotation.Nullable String pv) throws ApiException {
         okhttp3.Call localVarCall = getBillingAlertsAuthorizeValidateBeforeCall(project, service, amount, pv, null);
-        Type localVarReturnType = new TypeToken<CapVerdict>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingCapVerdict>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Answers whether one proposed spend fits inside this org&#39;s caps. (asynchronously)
-     * Answers whether one proposed spend fits inside this org&#39;s caps.  It is the per-request verdict the metering edge consumes before every priced call, and its caller is a SERVICE rather than a person: a service token plus the gateway-pinned org, with no user behind it. So this admits that principal where the CRUD beside it does not.  Every covering row is evaluated, most-restrictive-wins, and the tightest one is what &#x60;capCents&#x60;, &#x60;spentCents&#x60; and &#x60;reason&#x60; describe. Soft rows never deny; nor does a project-scoped enforcing row whose project axis the caller could not establish — &#x60;pv&#x3D;1&#x60; is how a caller states that it did, and an unproven claim must not be able to refuse traffic.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * Answers whether one proposed spend fits inside this org&#39;s caps.  It is the per-request verdict the metering edge consumes before every priced call, and its caller is a SERVICE rather than a person: the platform, stating the org over the plane, with no user behind it. So this admits that principal where the CRUD beside it does not.  Every covering row is evaluated, most-restrictive-wins, and the tightest one is what &#x60;capCents&#x60;, &#x60;spentCents&#x60; and &#x60;reason&#x60; describe. Soft rows never deny; nor does a project-scoped enforcing row whose project axis the caller could not establish — &#x60;pv&#x3D;1&#x60; is how a caller states that it did, and an unproven claim must not be able to refuse traffic.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param project Project narrows the verdict to one project&#39;s caps. Empty is the org-wide row. (optional)
      * @param service Service narrows it to one service&#39;s caps. Empty is every service. (optional)
      * @param amount Amount is the proposed spend in cents. (optional)
@@ -1247,12 +1294,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingAlertsAuthorizeAsync(@javax.annotation.Nullable String project, @javax.annotation.Nullable String service, @javax.annotation.Nullable String amount, @javax.annotation.Nullable String pv, final ApiCallback<CapVerdict> _callback) throws ApiException {
+    public okhttp3.Call getBillingAlertsAuthorizeAsync(@javax.annotation.Nullable String project, @javax.annotation.Nullable String service, @javax.annotation.Nullable String amount, @javax.annotation.Nullable String pv, final ApiCallback<BillingCapVerdict> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingAlertsAuthorizeValidateBeforeCall(project, service, amount, pv, _callback);
-        Type localVarReturnType = new TypeToken<CapVerdict>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingCapVerdict>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1313,7 +1361,7 @@ public class BillingApi {
 
     /**
      * Prepaid credit the caller&#39;s org can still spend
-     * Answers the spendable prepaid balance of the wallet this caller bills from — the same wallet the AI prepaid gate reads before admitting a paid request, the edge meter debits, and a top-up credits.  The wallet is an ADDRESS, not an org: &#x60;account&#x60; echoes the key resolved within the ledger — the org&#39;s shared pool for a tenant org, a personal account for a member of the shared signup org. The echo is the point. A browser could only GUESS its own payer by decoding its own token, and a guess that disagrees with the server is how money lands in an account the gate never reads.  &#x60;balance&#x60;, &#x60;holds&#x60; and &#x60;available&#x60; are whole USD cents, ROUNDED from the ledger&#39;s exact 18-decimal value. On the co-resident ledger &#x60;holds&#x60; is 0 and &#x60;available&#x60; equals &#x60;balance&#x60;: the gate&#39;s reservations live in its own pod and are never posted, so the settled balance IS the spendable one.  The ledger is the caller&#39;s own org, taken from the VALIDATED IAM owner claim and never from a client header. No validated principal is 401 — with one exception, the trusted in-process service token the AI gate itself presents, which reads the gateway-pinned org and nothing it could name. A balance that cannot be READ is 502, never 0: unknown is not broke.
+     * Answers the spendable prepaid balance of the wallet this caller bills from — the same wallet the AI prepaid gate reads before admitting a paid request, the edge meter debits, and a top-up credits.  The wallet is an ADDRESS, not an org: &#x60;account&#x60; echoes the key resolved within the ledger — the org&#39;s shared pool for a tenant org, a personal account for a member of the shared signup org. The echo is the point. A browser could only GUESS its own payer by decoding its own token, and a guess that disagrees with the server is how money lands in an account the gate never reads.  &#x60;balance&#x60;, &#x60;holds&#x60; and &#x60;available&#x60; are whole USD cents, ROUNDED from the ledger&#39;s exact 18-decimal value. On the co-resident ledger &#x60;holds&#x60; is 0 and &#x60;available&#x60; equals &#x60;balance&#x60;: the gate&#39;s reservations live in its own pod and are never posted, so the settled balance IS the spendable one.  &#x60;cash&#x60; and &#x60;credit&#x60; say where &#x60;available&#x60; came from, and add up to it. &#x60;cash&#x60; is money the customer paid — a settled card payment or a recorded wire. &#x60;credit&#x60; is money Hanzo minted: signup and promotional credit, admin grants. Both pay for any call, and every debit draws cash first.  The ledger is the caller&#39;s own org, taken from the VALIDATED IAM owner claim and never from a client header. No validated principal is 401. A balance that cannot be READ is 502, never 0: unknown is not broke.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void getBillingBalance() throws ApiException {
@@ -1322,7 +1370,7 @@ public class BillingApi {
 
     /**
      * Prepaid credit the caller&#39;s org can still spend
-     * Answers the spendable prepaid balance of the wallet this caller bills from — the same wallet the AI prepaid gate reads before admitting a paid request, the edge meter debits, and a top-up credits.  The wallet is an ADDRESS, not an org: &#x60;account&#x60; echoes the key resolved within the ledger — the org&#39;s shared pool for a tenant org, a personal account for a member of the shared signup org. The echo is the point. A browser could only GUESS its own payer by decoding its own token, and a guess that disagrees with the server is how money lands in an account the gate never reads.  &#x60;balance&#x60;, &#x60;holds&#x60; and &#x60;available&#x60; are whole USD cents, ROUNDED from the ledger&#39;s exact 18-decimal value. On the co-resident ledger &#x60;holds&#x60; is 0 and &#x60;available&#x60; equals &#x60;balance&#x60;: the gate&#39;s reservations live in its own pod and are never posted, so the settled balance IS the spendable one.  The ledger is the caller&#39;s own org, taken from the VALIDATED IAM owner claim and never from a client header. No validated principal is 401 — with one exception, the trusted in-process service token the AI gate itself presents, which reads the gateway-pinned org and nothing it could name. A balance that cannot be READ is 502, never 0: unknown is not broke.
+     * Answers the spendable prepaid balance of the wallet this caller bills from — the same wallet the AI prepaid gate reads before admitting a paid request, the edge meter debits, and a top-up credits.  The wallet is an ADDRESS, not an org: &#x60;account&#x60; echoes the key resolved within the ledger — the org&#39;s shared pool for a tenant org, a personal account for a member of the shared signup org. The echo is the point. A browser could only GUESS its own payer by decoding its own token, and a guess that disagrees with the server is how money lands in an account the gate never reads.  &#x60;balance&#x60;, &#x60;holds&#x60; and &#x60;available&#x60; are whole USD cents, ROUNDED from the ledger&#39;s exact 18-decimal value. On the co-resident ledger &#x60;holds&#x60; is 0 and &#x60;available&#x60; equals &#x60;balance&#x60;: the gate&#39;s reservations live in its own pod and are never posted, so the settled balance IS the spendable one.  &#x60;cash&#x60; and &#x60;credit&#x60; say where &#x60;available&#x60; came from, and add up to it. &#x60;cash&#x60; is money the customer paid — a settled card payment or a recorded wire. &#x60;credit&#x60; is money Hanzo minted: signup and promotional credit, admin grants. Both pay for any call, and every debit draws cash first.  The ledger is the caller&#39;s own org, taken from the VALIDATED IAM owner claim and never from a client header. No validated principal is 401. A balance that cannot be READ is 502, never 0: unknown is not broke.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1333,7 +1381,7 @@ public class BillingApi {
 
     /**
      * Prepaid credit the caller&#39;s org can still spend (asynchronously)
-     * Answers the spendable prepaid balance of the wallet this caller bills from — the same wallet the AI prepaid gate reads before admitting a paid request, the edge meter debits, and a top-up credits.  The wallet is an ADDRESS, not an org: &#x60;account&#x60; echoes the key resolved within the ledger — the org&#39;s shared pool for a tenant org, a personal account for a member of the shared signup org. The echo is the point. A browser could only GUESS its own payer by decoding its own token, and a guess that disagrees with the server is how money lands in an account the gate never reads.  &#x60;balance&#x60;, &#x60;holds&#x60; and &#x60;available&#x60; are whole USD cents, ROUNDED from the ledger&#39;s exact 18-decimal value. On the co-resident ledger &#x60;holds&#x60; is 0 and &#x60;available&#x60; equals &#x60;balance&#x60;: the gate&#39;s reservations live in its own pod and are never posted, so the settled balance IS the spendable one.  The ledger is the caller&#39;s own org, taken from the VALIDATED IAM owner claim and never from a client header. No validated principal is 401 — with one exception, the trusted in-process service token the AI gate itself presents, which reads the gateway-pinned org and nothing it could name. A balance that cannot be READ is 502, never 0: unknown is not broke.
+     * Answers the spendable prepaid balance of the wallet this caller bills from — the same wallet the AI prepaid gate reads before admitting a paid request, the edge meter debits, and a top-up credits.  The wallet is an ADDRESS, not an org: &#x60;account&#x60; echoes the key resolved within the ledger — the org&#39;s shared pool for a tenant org, a personal account for a member of the shared signup org. The echo is the point. A browser could only GUESS its own payer by decoding its own token, and a guess that disagrees with the server is how money lands in an account the gate never reads.  &#x60;balance&#x60;, &#x60;holds&#x60; and &#x60;available&#x60; are whole USD cents, ROUNDED from the ledger&#39;s exact 18-decimal value. On the co-resident ledger &#x60;holds&#x60; is 0 and &#x60;available&#x60; equals &#x60;balance&#x60;: the gate&#39;s reservations live in its own pod and are never posted, so the settled balance IS the spendable one.  &#x60;cash&#x60; and &#x60;credit&#x60; say where &#x60;available&#x60; came from, and add up to it. &#x60;cash&#x60; is money the customer paid — a settled card payment or a recorded wire. &#x60;credit&#x60; is money Hanzo minted: signup and promotional credit, admin grants. Both pay for any call, and every debit draws cash first.  The ledger is the caller&#39;s own org, taken from the VALIDATED IAM owner claim and never from a client header. No validated principal is 401. A balance that cannot be READ is 502, never 0: unknown is not broke.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1354,6 +1402,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingCreditBalanceCall(final ApiCallback _callback) throws ApiException {
@@ -1382,7 +1431,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1409,35 +1459,37 @@ public class BillingApi {
     /**
      * Answers what the caller can spend right now, one entry per currency.
      * Answers what the caller can spend right now, one entry per currency.  Only ACTIVE grants count: a voided, exhausted or lapsed grant contributes nothing, which is why this number can be smaller than the grant list suggests and why the two reads exist separately. It is credit, not prepaid balance — /v1/billing/balance is the wallet, and the two are added by the gate, never by a reader.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return CreditBalance
+     * @return BillingCreditBalance
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CreditBalance getBillingCreditBalance() throws ApiException {
-        ApiResponse<CreditBalance> localVarResp = getBillingCreditBalanceWithHttpInfo();
+    public BillingCreditBalance getBillingCreditBalance() throws ApiException {
+        ApiResponse<BillingCreditBalance> localVarResp = getBillingCreditBalanceWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Answers what the caller can spend right now, one entry per currency.
      * Answers what the caller can spend right now, one entry per currency.  Only ACTIVE grants count: a voided, exhausted or lapsed grant contributes nothing, which is why this number can be smaller than the grant list suggests and why the two reads exist separately. It is credit, not prepaid balance — /v1/billing/balance is the wallet, and the two are added by the gate, never by a reader.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return ApiResponse&lt;CreditBalance&gt;
+     * @return ApiResponse&lt;BillingCreditBalance&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreditBalance> getBillingCreditBalanceWithHttpInfo() throws ApiException {
+    public ApiResponse<BillingCreditBalance> getBillingCreditBalanceWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBillingCreditBalanceValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CreditBalance>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingCreditBalance>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1452,12 +1504,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingCreditBalanceAsync(final ApiCallback<CreditBalance> _callback) throws ApiException {
+    public okhttp3.Call getBillingCreditBalanceAsync(final ApiCallback<BillingCreditBalance> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingCreditBalanceValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CreditBalance>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingCreditBalance>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1471,6 +1524,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingCreditBalanceBreakdownCall(final ApiCallback _callback) throws ApiException {
@@ -1499,7 +1553,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1533,6 +1588,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Object getBillingCreditBalanceBreakdown() throws ApiException {
@@ -1550,6 +1606,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> getBillingCreditBalanceBreakdownWithHttpInfo() throws ApiException {
@@ -1569,6 +1626,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingCreditBalanceBreakdownAsync(final ApiCallback<Object> _callback) throws ApiException {
@@ -1588,6 +1646,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingCreditsCall(final ApiCallback _callback) throws ApiException {
@@ -1616,7 +1675,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1643,35 +1703,37 @@ public class BillingApi {
     /**
      * Lists the caller&#39;s credit grants — every one of them, spent and lapsed and voided included.
      * Lists the caller&#39;s credit grants — every one of them, spent and lapsed and voided included.  That is deliberate and it is what makes the list useful: a grant list is a LEDGER, and one that hid its spent rows could not be reconciled against a burn-down. What is spendable right now is the sibling read, /v1/billing/ credit-balance, and the two are different questions.  Scoped to the caller&#39;s own wallet, resolved server-side.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return CreditGrants
+     * @return BillingCreditGrants
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CreditGrants getBillingCredits() throws ApiException {
-        ApiResponse<CreditGrants> localVarResp = getBillingCreditsWithHttpInfo();
+    public BillingCreditGrants getBillingCredits() throws ApiException {
+        ApiResponse<BillingCreditGrants> localVarResp = getBillingCreditsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the caller&#39;s credit grants — every one of them, spent and lapsed and voided included.
      * Lists the caller&#39;s credit grants — every one of them, spent and lapsed and voided included.  That is deliberate and it is what makes the list useful: a grant list is a LEDGER, and one that hid its spent rows could not be reconciled against a burn-down. What is spendable right now is the sibling read, /v1/billing/ credit-balance, and the two are different questions.  Scoped to the caller&#39;s own wallet, resolved server-side.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return ApiResponse&lt;CreditGrants&gt;
+     * @return ApiResponse&lt;BillingCreditGrants&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CreditGrants> getBillingCreditsWithHttpInfo() throws ApiException {
+    public ApiResponse<BillingCreditGrants> getBillingCreditsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBillingCreditsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CreditGrants>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingCreditGrants>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1686,12 +1748,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingCreditsAsync(final ApiCallback<CreditGrants> _callback) throws ApiException {
+    public okhttp3.Call getBillingCreditsAsync(final ApiCallback<BillingCreditGrants> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingCreditsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CreditGrants>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingCreditGrants>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1706,6 +1769,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingCryptoDepositByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1735,7 +1799,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1768,17 +1833,18 @@ public class BillingApi {
      * Reads one of the caller&#39;s own deposit intents back — pending, confirming, or succeeded.
      * Reads one of the caller&#39;s own deposit intents back — pending, confirming, or succeeded.  An intent belonging to another payer answers 404, exactly as an id that names nothing, so a guessed id cannot confirm that somebody else&#39;s deposit exists.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id ID is the deposit intent id. (required)
-     * @return CryptoDeposit
+     * @return BillingCryptoDeposit
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CryptoDeposit getBillingCryptoDepositById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CryptoDeposit> localVarResp = getBillingCryptoDepositByIdWithHttpInfo(id);
+    public BillingCryptoDeposit getBillingCryptoDepositById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<BillingCryptoDeposit> localVarResp = getBillingCryptoDepositByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1786,18 +1852,19 @@ public class BillingApi {
      * Reads one of the caller&#39;s own deposit intents back — pending, confirming, or succeeded.
      * Reads one of the caller&#39;s own deposit intents back — pending, confirming, or succeeded.  An intent belonging to another payer answers 404, exactly as an id that names nothing, so a guessed id cannot confirm that somebody else&#39;s deposit exists.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id ID is the deposit intent id. (required)
-     * @return ApiResponse&lt;CryptoDeposit&gt;
+     * @return ApiResponse&lt;BillingCryptoDeposit&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CryptoDeposit> getBillingCryptoDepositByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<BillingCryptoDeposit> getBillingCryptoDepositByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getBillingCryptoDepositByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CryptoDeposit>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingCryptoDeposit>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1813,12 +1880,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingCryptoDepositByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CryptoDeposit> _callback) throws ApiException {
+    public okhttp3.Call getBillingCryptoDepositByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<BillingCryptoDeposit> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingCryptoDepositByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CryptoDeposit>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingCryptoDeposit>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1832,6 +1900,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingCryptoOptionsCall(final ApiCallback _callback) throws ApiException {
@@ -1860,7 +1929,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1887,35 +1957,37 @@ public class BillingApi {
     /**
      * Answers which chains and tokens the crypto rail accepts — what an asset picker renders.
      * Answers which chains and tokens the crypto rail accepts — what an asset picker renders.  It is the intersection of two live facts rather than a configured list: an asset appears only if something is WATCHING it and the custody processor supports it. An address nobody watches credits nobody, so offering one would take a customer&#39;s money and lose it. A rail with nothing armed answers 503, not an empty menu — \&quot;no rail\&quot; and \&quot;no assets\&quot; are different, and only one of them means try again later.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return CryptoOptions
+     * @return BillingCryptoOptions
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CryptoOptions getBillingCryptoOptions() throws ApiException {
-        ApiResponse<CryptoOptions> localVarResp = getBillingCryptoOptionsWithHttpInfo();
+    public BillingCryptoOptions getBillingCryptoOptions() throws ApiException {
+        ApiResponse<BillingCryptoOptions> localVarResp = getBillingCryptoOptionsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Answers which chains and tokens the crypto rail accepts — what an asset picker renders.
      * Answers which chains and tokens the crypto rail accepts — what an asset picker renders.  It is the intersection of two live facts rather than a configured list: an asset appears only if something is WATCHING it and the custody processor supports it. An address nobody watches credits nobody, so offering one would take a customer&#39;s money and lose it. A rail with nothing armed answers 503, not an empty menu — \&quot;no rail\&quot; and \&quot;no assets\&quot; are different, and only one of them means try again later.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return ApiResponse&lt;CryptoOptions&gt;
+     * @return ApiResponse&lt;BillingCryptoOptions&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CryptoOptions> getBillingCryptoOptionsWithHttpInfo() throws ApiException {
+    public ApiResponse<BillingCryptoOptions> getBillingCryptoOptionsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBillingCryptoOptionsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CryptoOptions>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingCryptoOptions>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1930,17 +2002,23 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingCryptoOptionsAsync(final ApiCallback<CryptoOptions> _callback) throws ApiException {
+    public okhttp3.Call getBillingCryptoOptionsAsync(final ApiCallback<BillingCryptoOptions> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingCryptoOptionsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CryptoOptions>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingCryptoOptions>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for getBillingInvoices
+     * @param subject  (optional)
+     * @param status  (optional)
+     * @param subscriptionId  (optional)
+     * @param limit  (optional)
+     * @param cursor  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1949,9 +2027,10 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingInvoicesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBillingInvoicesCall(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String status, @javax.annotation.Nullable String subscriptionId, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String cursor, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1976,8 +2055,29 @@ public class BillingApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (subject != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("subject", subject));
+        }
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (subscriptionId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("subscriptionId", subscriptionId));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (cursor != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
+        }
+
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1996,49 +2096,66 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBillingInvoicesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getBillingInvoicesCall(_callback);
+    private okhttp3.Call getBillingInvoicesValidateBeforeCall(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String status, @javax.annotation.Nullable String subscriptionId, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String cursor, final ApiCallback _callback) throws ApiException {
+        return getBillingInvoicesCall(subject, status, subscriptionId, limit, cursor, _callback);
 
     }
 
     /**
      * Lists the caller&#39;s invoices, newest first, with the count beside them.
      * Lists the caller&#39;s invoices, newest first, with the count beside them.  It is scoped to the caller&#39;s own billing subject — the wallet this request bills from, resolved server-side — so a query cannot widen it to another customer of the same org. An org with no invoices is an empty list, not a refusal.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return Invoices
+     * @param subject  (optional)
+     * @param status  (optional)
+     * @param subscriptionId  (optional)
+     * @param limit  (optional)
+     * @param cursor  (optional)
+     * @return BillingInvoices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Invoices getBillingInvoices() throws ApiException {
-        ApiResponse<Invoices> localVarResp = getBillingInvoicesWithHttpInfo();
+    public BillingInvoices getBillingInvoices(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String status, @javax.annotation.Nullable String subscriptionId, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String cursor) throws ApiException {
+        ApiResponse<BillingInvoices> localVarResp = getBillingInvoicesWithHttpInfo(subject, status, subscriptionId, limit, cursor);
         return localVarResp.getData();
     }
 
     /**
      * Lists the caller&#39;s invoices, newest first, with the count beside them.
      * Lists the caller&#39;s invoices, newest first, with the count beside them.  It is scoped to the caller&#39;s own billing subject — the wallet this request bills from, resolved server-side — so a query cannot widen it to another customer of the same org. An org with no invoices is an empty list, not a refusal.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return ApiResponse&lt;Invoices&gt;
+     * @param subject  (optional)
+     * @param status  (optional)
+     * @param subscriptionId  (optional)
+     * @param limit  (optional)
+     * @param cursor  (optional)
+     * @return ApiResponse&lt;BillingInvoices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Invoices> getBillingInvoicesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getBillingInvoicesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Invoices>(){}.getType();
+    public ApiResponse<BillingInvoices> getBillingInvoicesWithHttpInfo(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String status, @javax.annotation.Nullable String subscriptionId, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String cursor) throws ApiException {
+        okhttp3.Call localVarCall = getBillingInvoicesValidateBeforeCall(subject, status, subscriptionId, limit, cursor, null);
+        Type localVarReturnType = new TypeToken<BillingInvoices>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Lists the caller&#39;s invoices, newest first, with the count beside them. (asynchronously)
      * Lists the caller&#39;s invoices, newest first, with the count beside them.  It is scoped to the caller&#39;s own billing subject — the wallet this request bills from, resolved server-side — so a query cannot widen it to another customer of the same org. An org with no invoices is an empty list, not a refusal.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param subject  (optional)
+     * @param status  (optional)
+     * @param subscriptionId  (optional)
+     * @param limit  (optional)
+     * @param cursor  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2047,12 +2164,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingInvoicesAsync(final ApiCallback<Invoices> _callback) throws ApiException {
+    public okhttp3.Call getBillingInvoicesAsync(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String status, @javax.annotation.Nullable String subscriptionId, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String cursor, final ApiCallback<BillingInvoices> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getBillingInvoicesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Invoices>(){}.getType();
+        okhttp3.Call localVarCall = getBillingInvoicesValidateBeforeCall(subject, status, subscriptionId, limit, cursor, _callback);
+        Type localVarReturnType = new TypeToken<BillingInvoices>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2165,6 +2283,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/billing/usage/accounts. <br>  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingLedgerCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
@@ -2197,7 +2316,8 @@ public class BillingApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2222,45 +2342,47 @@ public class BillingApi {
     }
 
     /**
-     * Answers the org&#39;s own postings inside &#x60;range&#x3D;&#x60;, each as a signed entry: a DEPOSIT CREDITS the wallet (positive, account &#x60;credits:&lt;org&gt;&#x60;) and every other posting DEBITS it (negative, account &#x60;usage:&lt;org&gt;&#x60;), described by its notes or its tags.
-     * Answers the org&#39;s own postings inside &#x60;range&#x3D;&#x60;, each as a signed entry: a DEPOSIT CREDITS the wallet (positive, account &#x60;credits:&lt;org&gt;&#x60;) and every other posting DEBITS it (negative, account &#x60;usage:&lt;org&gt;&#x60;), described by its notes or its tags. The sign is the posting&#39;s own meaning, read through ONE vocabulary shared with the ledger that wrote it — a reader with its own spelling for &#x60;deposit&#x60; rendered a customer&#39;s grant as a charge.  This is the closest projection of the truth. The org&#39;s double-entry postings are the source of record — balanced, only ever appended, one file per org — and this lane is that list, wider than either half of it: the deposits are the grants /v1/billing/credits lists and the debits are the spend /v1/billing/usage rolls up. It answers 503 where this deployment runs no ledger, rather than reporting an empty wallet.  A row whose timestamp will not parse is KEPT rather than dropped — a malformed date must show up in a money list, not vanish from it. &#x60;balanceCents&#x60; is omitted: these are MOVEMENTS, and the standing balance is /v1/billing/balance.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD. Scoped to the caller&#39;s own org, where the org&#39;s ledger file is the tenant boundary; 401 without a validated principal.
+     * Answers the org&#39;s own postings inside &#x60;range&#x3D;&#x60;, each as a signed entry: a DEPOSIT CREDITS the wallet (positive, account &#x60;credits:&lt;org&gt;&#x60;), a HOLD sets money aside for a payment agreed and not yet made (negative, account &#x60;held:&lt;org&gt;&#x60;) and its return gives it back (positive), and every other posting DEBITS it (negative, account &#x60;usage:&lt;org&gt;&#x60;), described by its notes or its tags.
+     * Answers the org&#39;s own postings inside &#x60;range&#x3D;&#x60;, each as a signed entry: a DEPOSIT CREDITS the wallet (positive, account &#x60;credits:&lt;org&gt;&#x60;), a HOLD sets money aside for a payment agreed and not yet made (negative, account &#x60;held:&lt;org&gt;&#x60;) and its return gives it back (positive), and every other posting DEBITS it (negative, account &#x60;usage:&lt;org&gt;&#x60;), described by its notes or its tags. The sign is the posting&#39;s own meaning, read through ONE vocabulary shared with the ledger that wrote it — a reader with its own spelling for &#x60;deposit&#x60; rendered a customer&#39;s grant as a charge.  This is the closest projection of the truth. The org&#39;s double-entry postings are the source of record — balanced, only ever appended, one file per org — and this lane is that list, wider than either half of it: the deposits are the grants /v1/billing/credits lists and the debits are the spend /v1/billing/usage rolls up. It answers 503 where this deployment runs no ledger, rather than reporting an empty wallet.  A row whose timestamp will not parse is KEPT rather than dropped — a malformed date must show up in a money list, not vanish from it. &#x60;balanceCents&#x60; is omitted: these are MOVEMENTS, and the standing balance is /v1/billing/balance.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD. Scoped to the caller&#39;s own org, where the org&#39;s ledger file is the tenant boundary; 401 without a validated principal.
      * @param range Range is the window: 24h, 7d, 30d or 90d. Anything else — including absent — is 30d, so a typo silently widens the window to a month rather than failing. (optional)
-     * @return List&lt;FinanceLedgerEntry&gt;
+     * @return List&lt;BillingFinanceLedgerEntry&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/billing/usage/accounts. <br>  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<FinanceLedgerEntry> getBillingLedger(@javax.annotation.Nullable String range) throws ApiException {
-        ApiResponse<List<FinanceLedgerEntry>> localVarResp = getBillingLedgerWithHttpInfo(range);
+    public List<BillingFinanceLedgerEntry> getBillingLedger(@javax.annotation.Nullable String range) throws ApiException {
+        ApiResponse<List<BillingFinanceLedgerEntry>> localVarResp = getBillingLedgerWithHttpInfo(range);
         return localVarResp.getData();
     }
 
     /**
-     * Answers the org&#39;s own postings inside &#x60;range&#x3D;&#x60;, each as a signed entry: a DEPOSIT CREDITS the wallet (positive, account &#x60;credits:&lt;org&gt;&#x60;) and every other posting DEBITS it (negative, account &#x60;usage:&lt;org&gt;&#x60;), described by its notes or its tags.
-     * Answers the org&#39;s own postings inside &#x60;range&#x3D;&#x60;, each as a signed entry: a DEPOSIT CREDITS the wallet (positive, account &#x60;credits:&lt;org&gt;&#x60;) and every other posting DEBITS it (negative, account &#x60;usage:&lt;org&gt;&#x60;), described by its notes or its tags. The sign is the posting&#39;s own meaning, read through ONE vocabulary shared with the ledger that wrote it — a reader with its own spelling for &#x60;deposit&#x60; rendered a customer&#39;s grant as a charge.  This is the closest projection of the truth. The org&#39;s double-entry postings are the source of record — balanced, only ever appended, one file per org — and this lane is that list, wider than either half of it: the deposits are the grants /v1/billing/credits lists and the debits are the spend /v1/billing/usage rolls up. It answers 503 where this deployment runs no ledger, rather than reporting an empty wallet.  A row whose timestamp will not parse is KEPT rather than dropped — a malformed date must show up in a money list, not vanish from it. &#x60;balanceCents&#x60; is omitted: these are MOVEMENTS, and the standing balance is /v1/billing/balance.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD. Scoped to the caller&#39;s own org, where the org&#39;s ledger file is the tenant boundary; 401 without a validated principal.
+     * Answers the org&#39;s own postings inside &#x60;range&#x3D;&#x60;, each as a signed entry: a DEPOSIT CREDITS the wallet (positive, account &#x60;credits:&lt;org&gt;&#x60;), a HOLD sets money aside for a payment agreed and not yet made (negative, account &#x60;held:&lt;org&gt;&#x60;) and its return gives it back (positive), and every other posting DEBITS it (negative, account &#x60;usage:&lt;org&gt;&#x60;), described by its notes or its tags.
+     * Answers the org&#39;s own postings inside &#x60;range&#x3D;&#x60;, each as a signed entry: a DEPOSIT CREDITS the wallet (positive, account &#x60;credits:&lt;org&gt;&#x60;), a HOLD sets money aside for a payment agreed and not yet made (negative, account &#x60;held:&lt;org&gt;&#x60;) and its return gives it back (positive), and every other posting DEBITS it (negative, account &#x60;usage:&lt;org&gt;&#x60;), described by its notes or its tags. The sign is the posting&#39;s own meaning, read through ONE vocabulary shared with the ledger that wrote it — a reader with its own spelling for &#x60;deposit&#x60; rendered a customer&#39;s grant as a charge.  This is the closest projection of the truth. The org&#39;s double-entry postings are the source of record — balanced, only ever appended, one file per org — and this lane is that list, wider than either half of it: the deposits are the grants /v1/billing/credits lists and the debits are the spend /v1/billing/usage rolls up. It answers 503 where this deployment runs no ledger, rather than reporting an empty wallet.  A row whose timestamp will not parse is KEPT rather than dropped — a malformed date must show up in a money list, not vanish from it. &#x60;balanceCents&#x60; is omitted: these are MOVEMENTS, and the standing balance is /v1/billing/balance.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD. Scoped to the caller&#39;s own org, where the org&#39;s ledger file is the tenant boundary; 401 without a validated principal.
      * @param range Range is the window: 24h, 7d, 30d or 90d. Anything else — including absent — is 30d, so a typo silently widens the window to a month rather than failing. (optional)
-     * @return ApiResponse&lt;List&lt;FinanceLedgerEntry&gt;&gt;
+     * @return ApiResponse&lt;List&lt;BillingFinanceLedgerEntry&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/billing/usage/accounts. <br>  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<FinanceLedgerEntry>> getBillingLedgerWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
+    public ApiResponse<List<BillingFinanceLedgerEntry>> getBillingLedgerWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
         okhttp3.Call localVarCall = getBillingLedgerValidateBeforeCall(range, null);
-        Type localVarReturnType = new TypeToken<List<FinanceLedgerEntry>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BillingFinanceLedgerEntry>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Answers the org&#39;s own postings inside &#x60;range&#x3D;&#x60;, each as a signed entry: a DEPOSIT CREDITS the wallet (positive, account &#x60;credits:&lt;org&gt;&#x60;) and every other posting DEBITS it (negative, account &#x60;usage:&lt;org&gt;&#x60;), described by its notes or its tags. (asynchronously)
-     * Answers the org&#39;s own postings inside &#x60;range&#x3D;&#x60;, each as a signed entry: a DEPOSIT CREDITS the wallet (positive, account &#x60;credits:&lt;org&gt;&#x60;) and every other posting DEBITS it (negative, account &#x60;usage:&lt;org&gt;&#x60;), described by its notes or its tags. The sign is the posting&#39;s own meaning, read through ONE vocabulary shared with the ledger that wrote it — a reader with its own spelling for &#x60;deposit&#x60; rendered a customer&#39;s grant as a charge.  This is the closest projection of the truth. The org&#39;s double-entry postings are the source of record — balanced, only ever appended, one file per org — and this lane is that list, wider than either half of it: the deposits are the grants /v1/billing/credits lists and the debits are the spend /v1/billing/usage rolls up. It answers 503 where this deployment runs no ledger, rather than reporting an empty wallet.  A row whose timestamp will not parse is KEPT rather than dropped — a malformed date must show up in a money list, not vanish from it. &#x60;balanceCents&#x60; is omitted: these are MOVEMENTS, and the standing balance is /v1/billing/balance.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD. Scoped to the caller&#39;s own org, where the org&#39;s ledger file is the tenant boundary; 401 without a validated principal.
+     * Answers the org&#39;s own postings inside &#x60;range&#x3D;&#x60;, each as a signed entry: a DEPOSIT CREDITS the wallet (positive, account &#x60;credits:&lt;org&gt;&#x60;), a HOLD sets money aside for a payment agreed and not yet made (negative, account &#x60;held:&lt;org&gt;&#x60;) and its return gives it back (positive), and every other posting DEBITS it (negative, account &#x60;usage:&lt;org&gt;&#x60;), described by its notes or its tags. (asynchronously)
+     * Answers the org&#39;s own postings inside &#x60;range&#x3D;&#x60;, each as a signed entry: a DEPOSIT CREDITS the wallet (positive, account &#x60;credits:&lt;org&gt;&#x60;), a HOLD sets money aside for a payment agreed and not yet made (negative, account &#x60;held:&lt;org&gt;&#x60;) and its return gives it back (positive), and every other posting DEBITS it (negative, account &#x60;usage:&lt;org&gt;&#x60;), described by its notes or its tags. The sign is the posting&#39;s own meaning, read through ONE vocabulary shared with the ledger that wrote it — a reader with its own spelling for &#x60;deposit&#x60; rendered a customer&#39;s grant as a charge.  This is the closest projection of the truth. The org&#39;s double-entry postings are the source of record — balanced, only ever appended, one file per org — and this lane is that list, wider than either half of it: the deposits are the grants /v1/billing/credits lists and the debits are the spend /v1/billing/usage rolls up. It answers 503 where this deployment runs no ledger, rather than reporting an empty wallet.  A row whose timestamp will not parse is KEPT rather than dropped — a malformed date must show up in a money list, not vanish from it. &#x60;balanceCents&#x60; is omitted: these are MOVEMENTS, and the standing balance is /v1/billing/balance.  Cents are ROUNDED from the ledger&#39;s exact 18-decimal USD. Scoped to the caller&#39;s own org, where the org&#39;s ledger file is the tenant boundary; 401 without a validated principal.
      * @param range Range is the window: 24h, 7d, 30d or 90d. Anything else — including absent — is 30d, so a typo silently widens the window to a month rather than failing. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2270,12 +2392,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/billing/usage/accounts. <br>  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingLedgerAsync(@javax.annotation.Nullable String range, final ApiCallback<List<FinanceLedgerEntry>> _callback) throws ApiException {
+    public okhttp3.Call getBillingLedgerAsync(@javax.annotation.Nullable String range, final ApiCallback<List<BillingFinanceLedgerEntry>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingLedgerValidateBeforeCall(range, _callback);
-        Type localVarReturnType = new TypeToken<List<FinanceLedgerEntry>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BillingFinanceLedgerEntry>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2377,6 +2500,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingPayoutsCall(final ApiCallback _callback) throws ApiException {
@@ -2405,7 +2529,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2432,35 +2557,37 @@ public class BillingApi {
     /**
      * Answers the org&#39;s outbound payouts, newest first — amount, destination, status, and the failure reason where one applies.
      * Answers the org&#39;s outbound payouts, newest first — amount, destination, status, and the failure reason where one applies.  A payout is ORG-scoped rather than subject-scoped, so there is nothing to pin beyond the tenant the caller already is, and no query can widen it.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return List&lt;Payout&gt;
+     * @return List&lt;BillingPayout&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<Payout> getBillingPayouts() throws ApiException {
-        ApiResponse<List<Payout>> localVarResp = getBillingPayoutsWithHttpInfo();
+    public List<BillingPayout> getBillingPayouts() throws ApiException {
+        ApiResponse<List<BillingPayout>> localVarResp = getBillingPayoutsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Answers the org&#39;s outbound payouts, newest first — amount, destination, status, and the failure reason where one applies.
      * Answers the org&#39;s outbound payouts, newest first — amount, destination, status, and the failure reason where one applies.  A payout is ORG-scoped rather than subject-scoped, so there is nothing to pin beyond the tenant the caller already is, and no query can widen it.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return ApiResponse&lt;List&lt;Payout&gt;&gt;
+     * @return ApiResponse&lt;List&lt;BillingPayout&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<Payout>> getBillingPayoutsWithHttpInfo() throws ApiException {
+    public ApiResponse<List<BillingPayout>> getBillingPayoutsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBillingPayoutsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<Payout>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BillingPayout>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2475,12 +2602,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingPayoutsAsync(final ApiCallback<List<Payout>> _callback) throws ApiException {
+    public okhttp3.Call getBillingPayoutsAsync(final ApiCallback<List<BillingPayout>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingPayoutsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<Payout>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BillingPayout>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2541,7 +2669,7 @@ public class BillingApi {
 
     /**
      * The plan catalog, priced with whatever offer is in force
-     * Answers every plan on sale — its price, what it includes, and the limits it carries — optionally narrowed to one &#x60;?category&#x3D;&#x60;.  The prices are what the CHECKOUT will charge: any active promotion is applied before they leave the store, so a reader never applies a discount a second time and a quote can never disagree with the sale.  It is the public catalog and needs no tenant: this is what anyone may buy.
+     * Answers every plan on sale — its price, what it includes, and the limits it carries — optionally narrowed to one &#x60;?category&#x3D;&#x60;.  The prices are what the CHECKOUT will charge: any active promotion is applied before they leave the store, so a reader never applies a discount a second time and a quote can never disagree with the sale.  It is public and needs no tenant, and it is the catalog of the brand the request&#39;s host resolves to — the same brand &#x60;/v1/commerce/org&#x60; answers there. A brand that publishes no plans answers an empty list.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void getBillingPlans() throws ApiException {
@@ -2550,7 +2678,7 @@ public class BillingApi {
 
     /**
      * The plan catalog, priced with whatever offer is in force
-     * Answers every plan on sale — its price, what it includes, and the limits it carries — optionally narrowed to one &#x60;?category&#x3D;&#x60;.  The prices are what the CHECKOUT will charge: any active promotion is applied before they leave the store, so a reader never applies a discount a second time and a quote can never disagree with the sale.  It is the public catalog and needs no tenant: this is what anyone may buy.
+     * Answers every plan on sale — its price, what it includes, and the limits it carries — optionally narrowed to one &#x60;?category&#x3D;&#x60;.  The prices are what the CHECKOUT will charge: any active promotion is applied before they leave the store, so a reader never applies a discount a second time and a quote can never disagree with the sale.  It is public and needs no tenant, and it is the catalog of the brand the request&#39;s host resolves to — the same brand &#x60;/v1/commerce/org&#x60; answers there. A brand that publishes no plans answers an empty list.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -2561,7 +2689,7 @@ public class BillingApi {
 
     /**
      * The plan catalog, priced with whatever offer is in force (asynchronously)
-     * Answers every plan on sale — its price, what it includes, and the limits it carries — optionally narrowed to one &#x60;?category&#x3D;&#x60;.  The prices are what the CHECKOUT will charge: any active promotion is applied before they leave the store, so a reader never applies a discount a second time and a quote can never disagree with the sale.  It is the public catalog and needs no tenant: this is what anyone may buy.
+     * Answers every plan on sale — its price, what it includes, and the limits it carries — optionally narrowed to one &#x60;?category&#x3D;&#x60;.  The prices are what the CHECKOUT will charge: any active promotion is applied before they leave the store, so a reader never applies a discount a second time and a quote can never disagree with the sale.  It is public and needs no tenant, and it is the catalog of the brand the request&#39;s host resolves to — the same brand &#x60;/v1/commerce/org&#x60; answers there. A brand that publishes no plans answers an empty list.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2670,6 +2798,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingRechargeCall(final ApiCallback _callback) throws ApiException {
@@ -2698,7 +2827,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2725,35 +2855,37 @@ public class BillingApi {
     /**
      * Reads the caller&#39;s auto-reload rule: top the balance up by &#x60;amountCents&#x60; whenever it falls below &#x60;thresholdCents&#x60;, charging the card on file off-session.
      * Reads the caller&#39;s auto-reload rule: top the balance up by &#x60;amountCents&#x60; whenever it falls below &#x60;thresholdCents&#x60;, charging the card on file off-session. It is the same setting every prepaid AI account calls auto-reload.  An org that has never set one reads as disabled with zeroes rather than as an error — \&quot;no rule\&quot; answers the question — and &#x60;stored&#x60; is how a caller tells never-configured from deliberately-off.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return AutoRecharge
+     * @return BillingAutoRecharge
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AutoRecharge getBillingRecharge() throws ApiException {
-        ApiResponse<AutoRecharge> localVarResp = getBillingRechargeWithHttpInfo();
+    public BillingAutoRecharge getBillingRecharge() throws ApiException {
+        ApiResponse<BillingAutoRecharge> localVarResp = getBillingRechargeWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reads the caller&#39;s auto-reload rule: top the balance up by &#x60;amountCents&#x60; whenever it falls below &#x60;thresholdCents&#x60;, charging the card on file off-session.
      * Reads the caller&#39;s auto-reload rule: top the balance up by &#x60;amountCents&#x60; whenever it falls below &#x60;thresholdCents&#x60;, charging the card on file off-session. It is the same setting every prepaid AI account calls auto-reload.  An org that has never set one reads as disabled with zeroes rather than as an error — \&quot;no rule\&quot; answers the question — and &#x60;stored&#x60; is how a caller tells never-configured from deliberately-off.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return ApiResponse&lt;AutoRecharge&gt;
+     * @return ApiResponse&lt;BillingAutoRecharge&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AutoRecharge> getBillingRechargeWithHttpInfo() throws ApiException {
+    public ApiResponse<BillingAutoRecharge> getBillingRechargeWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBillingRechargeValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<AutoRecharge>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingAutoRecharge>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2768,12 +2900,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingRechargeAsync(final ApiCallback<AutoRecharge> _callback) throws ApiException {
+    public okhttp3.Call getBillingRechargeAsync(final ApiCallback<BillingAutoRecharge> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingRechargeValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<AutoRecharge>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingAutoRecharge>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2787,6 +2920,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingSettingsCall(final ApiCallback _callback) throws ApiException {
@@ -2815,7 +2949,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2842,35 +2977,37 @@ public class BillingApi {
     /**
      * Answers the PUBLIC half of this org&#39;s processor configuration — the ids a browser needs to tokenize a card, and the environment it must tokenize against.
      * Answers the PUBLIC half of this org&#39;s processor configuration — the ids a browser needs to tokenize a card, and the environment it must tokenize against.  It carries no secret: an application id is published to every checkout page by design. What matters is that it names the SAME processor account the charge will be made on, because a card vaulted against one account and charged against another is a card that saves and then cannot be used.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return PaymentConfig
+     * @return BillingPaymentConfig
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PaymentConfig getBillingSettings() throws ApiException {
-        ApiResponse<PaymentConfig> localVarResp = getBillingSettingsWithHttpInfo();
+    public BillingPaymentConfig getBillingSettings() throws ApiException {
+        ApiResponse<BillingPaymentConfig> localVarResp = getBillingSettingsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Answers the PUBLIC half of this org&#39;s processor configuration — the ids a browser needs to tokenize a card, and the environment it must tokenize against.
      * Answers the PUBLIC half of this org&#39;s processor configuration — the ids a browser needs to tokenize a card, and the environment it must tokenize against.  It carries no secret: an application id is published to every checkout page by design. What matters is that it names the SAME processor account the charge will be made on, because a card vaulted against one account and charged against another is a card that saves and then cannot be used.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return ApiResponse&lt;PaymentConfig&gt;
+     * @return ApiResponse&lt;BillingPaymentConfig&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PaymentConfig> getBillingSettingsWithHttpInfo() throws ApiException {
+    public ApiResponse<BillingPaymentConfig> getBillingSettingsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBillingSettingsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PaymentConfig>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingPaymentConfig>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2885,12 +3022,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingSettingsAsync(final ApiCallback<PaymentConfig> _callback) throws ApiException {
+    public okhttp3.Call getBillingSettingsAsync(final ApiCallback<BillingPaymentConfig> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingSettingsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PaymentConfig>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingPaymentConfig>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2904,6 +3042,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingSubscriptionsCall(final ApiCallback _callback) throws ApiException {
@@ -2932,7 +3071,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2959,35 +3099,37 @@ public class BillingApi {
     /**
      * Lists the plans the caller holds, with the count beside them.
      * Lists the plans the caller holds, with the count beside them.  It is scoped to the caller&#39;s own org, so a query cannot widen it to another customer&#39;s. An org on nothing is an empty list, not a refusal — being on no plan is an answer.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return Subscriptions
+     * @return BillingSubscriptions
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Subscriptions getBillingSubscriptions() throws ApiException {
-        ApiResponse<Subscriptions> localVarResp = getBillingSubscriptionsWithHttpInfo();
+    public BillingSubscriptions getBillingSubscriptions() throws ApiException {
+        ApiResponse<BillingSubscriptions> localVarResp = getBillingSubscriptionsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the plans the caller holds, with the count beside them.
      * Lists the plans the caller holds, with the count beside them.  It is scoped to the caller&#39;s own org, so a query cannot widen it to another customer&#39;s. An org on nothing is an empty list, not a refusal — being on no plan is an answer.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return ApiResponse&lt;Subscriptions&gt;
+     * @return ApiResponse&lt;BillingSubscriptions&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Subscriptions> getBillingSubscriptionsWithHttpInfo() throws ApiException {
+    public ApiResponse<BillingSubscriptions> getBillingSubscriptionsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBillingSubscriptionsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Subscriptions>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingSubscriptions>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3002,12 +3144,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingSubscriptionsAsync(final ApiCallback<Subscriptions> _callback) throws ApiException {
+    public okhttp3.Call getBillingSubscriptionsAsync(final ApiCallback<BillingSubscriptions> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingSubscriptionsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Subscriptions>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingSubscriptions>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3021,6 +3164,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingTierCall(final ApiCallback _callback) throws ApiException {
@@ -3049,7 +3193,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3076,35 +3221,37 @@ public class BillingApi {
     /**
      * Answers which tier the caller is on, what it allows, and what is left to spend.
      * Answers which tier the caller is on, what it allows, and what is left to spend.  &#x60;effectiveAvailable&#x60; is the ONLY figure to compare against zero. The others are its parts — prepaid money, granted credits and the daily term are three sources of one spend, not three balances to add up a second time.  A tier that cannot be READ is an error, never Free. The router in front of the models maps any non-2xx to Free, so answering Free from a question nobody could answer would pin every paying customer to the most restrictive row with nothing anywhere to find.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return Tier
+     * @return BillingTier
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Tier getBillingTier() throws ApiException {
-        ApiResponse<Tier> localVarResp = getBillingTierWithHttpInfo();
+    public BillingTier getBillingTier() throws ApiException {
+        ApiResponse<BillingTier> localVarResp = getBillingTierWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Answers which tier the caller is on, what it allows, and what is left to spend.
      * Answers which tier the caller is on, what it allows, and what is left to spend.  &#x60;effectiveAvailable&#x60; is the ONLY figure to compare against zero. The others are its parts — prepaid money, granted credits and the daily term are three sources of one spend, not three balances to add up a second time.  A tier that cannot be READ is an error, never Free. The router in front of the models maps any non-2xx to Free, so answering Free from a question nobody could answer would pin every paying customer to the most restrictive row with nothing anywhere to find.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return ApiResponse&lt;Tier&gt;
+     * @return ApiResponse&lt;BillingTier&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Tier> getBillingTierWithHttpInfo() throws ApiException {
+    public ApiResponse<BillingTier> getBillingTierWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBillingTierValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Tier>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingTier>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3119,12 +3266,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingTierAsync(final ApiCallback<Tier> _callback) throws ApiException {
+    public okhttp3.Call getBillingTierAsync(final ApiCallback<BillingTier> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingTierValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Tier>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingTier>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3141,6 +3289,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingTransactionsCall(@javax.annotation.Nullable String currency, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback _callback) throws ApiException {
@@ -3181,7 +3330,8 @@ public class BillingApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3211,17 +3361,18 @@ public class BillingApi {
      * @param currency Currency filters to one currency. Empty reads every currency. (optional)
      * @param limit Limit is the page size; absent or non-positive takes the default 100. (optional)
      * @param offset Offset is how far into the history the page starts. (optional)
-     * @return Transactions
+     * @return BillingTransactions
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Transactions getBillingTransactions(@javax.annotation.Nullable String currency, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
-        ApiResponse<Transactions> localVarResp = getBillingTransactionsWithHttpInfo(currency, limit, offset);
+    public BillingTransactions getBillingTransactions(@javax.annotation.Nullable String currency, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
+        ApiResponse<BillingTransactions> localVarResp = getBillingTransactionsWithHttpInfo(currency, limit, offset);
         return localVarResp.getData();
     }
 
@@ -3231,18 +3382,19 @@ public class BillingApi {
      * @param currency Currency filters to one currency. Empty reads every currency. (optional)
      * @param limit Limit is the page size; absent or non-positive takes the default 100. (optional)
      * @param offset Offset is how far into the history the page starts. (optional)
-     * @return ApiResponse&lt;Transactions&gt;
+     * @return ApiResponse&lt;BillingTransactions&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Transactions> getBillingTransactionsWithHttpInfo(@javax.annotation.Nullable String currency, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
+    public ApiResponse<BillingTransactions> getBillingTransactionsWithHttpInfo(@javax.annotation.Nullable String currency, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
         okhttp3.Call localVarCall = getBillingTransactionsValidateBeforeCall(currency, limit, offset, null);
-        Type localVarReturnType = new TypeToken<Transactions>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingTransactions>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3260,12 +3412,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingTransactionsAsync(@javax.annotation.Nullable String currency, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback<Transactions> _callback) throws ApiException {
+    public okhttp3.Call getBillingTransactionsAsync(@javax.annotation.Nullable String currency, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback<BillingTransactions> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingTransactionsValidateBeforeCall(currency, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<Transactions>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingTransactions>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3280,6 +3433,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingTransactionsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -3309,7 +3463,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3342,17 +3497,18 @@ public class BillingApi {
      * Reads one ledger entry by its id.
      * Reads one ledger entry by its id.  It is the MEMBER of the collection beside it rather than a second way to ask — the same rows GET /v1/billing/transactions lists, addressed one at a time. A top-up receipt is read here, because a receipt IS a ledger entry: the id this takes is the &#x60;transactionId&#x60; a top-up hands back.  The read is narrower than the list: commerce&#39;s core loads the row and refuses anything that is not a deposit, so a row that exists but is not a top-up answers 404. That asymmetry is stated rather than closed, because widening a money read to make two shapes match is not a change worth making for symmetry.  The books are the caller&#39;s own and cannot be named, so a guessed id misses rather than reaching another tenant&#39;s ledger.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id  (required)
-     * @return Transaction
+     * @return BillingTransaction
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Transaction getBillingTransactionsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Transaction> localVarResp = getBillingTransactionsByIdWithHttpInfo(id);
+    public BillingTransaction getBillingTransactionsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<BillingTransaction> localVarResp = getBillingTransactionsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -3360,18 +3516,19 @@ public class BillingApi {
      * Reads one ledger entry by its id.
      * Reads one ledger entry by its id.  It is the MEMBER of the collection beside it rather than a second way to ask — the same rows GET /v1/billing/transactions lists, addressed one at a time. A top-up receipt is read here, because a receipt IS a ledger entry: the id this takes is the &#x60;transactionId&#x60; a top-up hands back.  The read is narrower than the list: commerce&#39;s core loads the row and refuses anything that is not a deposit, so a row that exists but is not a top-up answers 404. That asymmetry is stated rather than closed, because widening a money read to make two shapes match is not a change worth making for symmetry.  The books are the caller&#39;s own and cannot be named, so a guessed id misses rather than reaching another tenant&#39;s ledger.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id  (required)
-     * @return ApiResponse&lt;Transaction&gt;
+     * @return ApiResponse&lt;BillingTransaction&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Transaction> getBillingTransactionsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<BillingTransaction> getBillingTransactionsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getBillingTransactionsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Transaction>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3387,12 +3544,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingTransactionsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Transaction> _callback) throws ApiException {
+    public okhttp3.Call getBillingTransactionsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<BillingTransaction> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingTransactionsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Transaction>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3494,6 +3652,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/billing/usage/accounts. <br>  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingUsageAccountsCall(final ApiCallback _callback) throws ApiException {
@@ -3522,7 +3681,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3549,35 +3709,37 @@ public class BillingApi {
     /**
      * Answers per-account totals for the linked provider accounts the gateway ROUTED this caller&#39;s traffic through — requests, prompt and completion tokens, recorded cost — plus their honest sum.
      * Answers per-account totals for the linked provider accounts the gateway ROUTED this caller&#39;s traffic through — requests, prompt and completion tokens, recorded cost — plus their honest sum.  This is the one read in the billing namespace scoped to the PERSON, not the org. Rows are keyed on (validated org, validated user), so a caller sees the accounts THEY linked and never a colleague&#39;s, even inside one org — everything else under /v1/billing is org-wide. Neither key is ever read from the request body or the query.  It is a ROUTING counter, not the money ledger. &#x60;costCents&#x60; is 0 for an account billed by its own subscription, where the plan pays the provider directly, so these totals do not reconcile against what the org was charged. /v1/billing/usage is the charged ledger.  401 without a validated principal. Where the linked-account plane is not resident the answer is an honest 501 — never an empty breakdown, which would read as no usage.
-     * @return Accounts
+     * @return BillingAccounts
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/billing/usage/accounts. <br>  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Accounts getBillingUsageAccounts() throws ApiException {
-        ApiResponse<Accounts> localVarResp = getBillingUsageAccountsWithHttpInfo();
+    public BillingAccounts getBillingUsageAccounts() throws ApiException {
+        ApiResponse<BillingAccounts> localVarResp = getBillingUsageAccountsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Answers per-account totals for the linked provider accounts the gateway ROUTED this caller&#39;s traffic through — requests, prompt and completion tokens, recorded cost — plus their honest sum.
      * Answers per-account totals for the linked provider accounts the gateway ROUTED this caller&#39;s traffic through — requests, prompt and completion tokens, recorded cost — plus their honest sum.  This is the one read in the billing namespace scoped to the PERSON, not the org. Rows are keyed on (validated org, validated user), so a caller sees the accounts THEY linked and never a colleague&#39;s, even inside one org — everything else under /v1/billing is org-wide. Neither key is ever read from the request body or the query.  It is a ROUTING counter, not the money ledger. &#x60;costCents&#x60; is 0 for an account billed by its own subscription, where the plan pays the provider directly, so these totals do not reconcile against what the org was charged. /v1/billing/usage is the charged ledger.  401 without a validated principal. Where the linked-account plane is not resident the answer is an honest 501 — never an empty breakdown, which would read as no usage.
-     * @return ApiResponse&lt;Accounts&gt;
+     * @return ApiResponse&lt;BillingAccounts&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/billing/usage/accounts. <br>  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Accounts> getBillingUsageAccountsWithHttpInfo() throws ApiException {
+    public ApiResponse<BillingAccounts> getBillingUsageAccountsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBillingUsageAccountsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Accounts>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingAccounts>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3592,12 +3754,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/billing/usage/accounts. <br>  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingUsageAccountsAsync(final ApiCallback<Accounts> _callback) throws ApiException {
+    public okhttp3.Call getBillingUsageAccountsAsync(final ApiCallback<BillingAccounts> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingUsageAccountsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Accounts>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingAccounts>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3611,6 +3774,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingUsageRollupCall(final ApiCallback _callback) throws ApiException {
@@ -3639,7 +3803,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3666,35 +3831,37 @@ public class BillingApi {
     /**
      * Answers the caller&#39;s month: what their plan includes, what has been consumed against it, and the wallet beside it.
      * Answers the caller&#39;s month: what their plan includes, what has been consumed against it, and the wallet beside it.  The two blocks are SEPARATE monies and are never added. One is usage a plan granted; the other is prepaid credit bought with a card. Their sum is not a number anyone holds, and a reader that formed it would be inventing a balance.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return Rollup
+     * @return BillingRollup
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Rollup getBillingUsageRollup() throws ApiException {
-        ApiResponse<Rollup> localVarResp = getBillingUsageRollupWithHttpInfo();
+    public BillingRollup getBillingUsageRollup() throws ApiException {
+        ApiResponse<BillingRollup> localVarResp = getBillingUsageRollupWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Answers the caller&#39;s month: what their plan includes, what has been consumed against it, and the wallet beside it.
      * Answers the caller&#39;s month: what their plan includes, what has been consumed against it, and the wallet beside it.  The two blocks are SEPARATE monies and are never added. One is usage a plan granted; the other is prepaid credit bought with a card. Their sum is not a number anyone holds, and a reader that formed it would be inventing a balance.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return ApiResponse&lt;Rollup&gt;
+     * @return ApiResponse&lt;BillingRollup&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Rollup> getBillingUsageRollupWithHttpInfo() throws ApiException {
+    public ApiResponse<BillingRollup> getBillingUsageRollupWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBillingUsageRollupValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Rollup>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingRollup>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3709,12 +3876,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingUsageRollupAsync(final ApiCallback<Rollup> _callback) throws ApiException {
+    public okhttp3.Call getBillingUsageRollupAsync(final ApiCallback<BillingRollup> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingUsageRollupValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Rollup>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingRollup>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3728,6 +3896,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBillingWireCall(final ApiCallback _callback) throws ApiException {
@@ -3756,7 +3925,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3783,35 +3953,37 @@ public class BillingApi {
     /**
      * Answers where to send a wire top-up: the receiving bank details, with the caller&#39;s own payment reference.
      * Answers where to send a wire top-up: the receiving bank details, with the caller&#39;s own payment reference.  The account is the SERVING BRAND&#39;S — resolved from the host the customer is paying on, so paying on one brand never shows another&#39;s bank — and the reference carries the caller&#39;s billing key, which is how an arriving wire names who it credits. Nothing mints here; a receipt is settled by an operator once the bank confirms it.  It is all-or-nothing: no configured account is 503 rather than a partial form, because nobody can wire to three fields out of five.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return WireInstructions
+     * @return BillingWireInstructions
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public WireInstructions getBillingWire() throws ApiException {
-        ApiResponse<WireInstructions> localVarResp = getBillingWireWithHttpInfo();
+    public BillingWireInstructions getBillingWire() throws ApiException {
+        ApiResponse<BillingWireInstructions> localVarResp = getBillingWireWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Answers where to send a wire top-up: the receiving bank details, with the caller&#39;s own payment reference.
      * Answers where to send a wire top-up: the receiving bank details, with the caller&#39;s own payment reference.  The account is the SERVING BRAND&#39;S — resolved from the host the customer is paying on, so paying on one brand never shows another&#39;s bank — and the reference carries the caller&#39;s billing key, which is how an arriving wire names who it credits. Nothing mints here; a receipt is settled by an operator once the bank confirms it.  It is all-or-nothing: no configured account is 503 rather than a partial form, because nobody can wire to three fields out of five.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return ApiResponse&lt;WireInstructions&gt;
+     * @return ApiResponse&lt;BillingWireInstructions&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WireInstructions> getBillingWireWithHttpInfo() throws ApiException {
+    public ApiResponse<BillingWireInstructions> getBillingWireWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBillingWireValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<WireInstructions>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingWireInstructions>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3826,12 +3998,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBillingWireAsync(final ApiCallback<WireInstructions> _callback) throws ApiException {
+    public okhttp3.Call getBillingWireAsync(final ApiCallback<BillingWireInstructions> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBillingWireValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<WireInstructions>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingWireInstructions>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3846,6 +4019,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getInvoiceCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -3875,7 +4049,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3908,17 +4083,18 @@ public class BillingApi {
      * Read one invoice
      * Reads one invoice out of the caller&#39;s org.  The org scopes the read by construction — the store is namespaced to it — so an id belonging to another tenant is not found rather than found and then filtered.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id ID is the invoice id. (required)
-     * @return Invoice
+     * @return BillingInvoice
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Invoice getInvoice(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Invoice> localVarResp = getInvoiceWithHttpInfo(id);
+    public BillingInvoice getInvoice(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<BillingInvoice> localVarResp = getInvoiceWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -3926,18 +4102,19 @@ public class BillingApi {
      * Read one invoice
      * Reads one invoice out of the caller&#39;s org.  The org scopes the read by construction — the store is namespaced to it — so an id belonging to another tenant is not found rather than found and then filtered.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id ID is the invoice id. (required)
-     * @return ApiResponse&lt;Invoice&gt;
+     * @return ApiResponse&lt;BillingInvoice&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Invoice> getInvoiceWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<BillingInvoice> getInvoiceWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getInvoiceValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Invoice>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingInvoice>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3953,12 +4130,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getInvoiceAsync(@javax.annotation.Nonnull String id, final ApiCallback<Invoice> _callback) throws ApiException {
+    public okhttp3.Call getInvoiceAsync(@javax.annotation.Nonnull String id, final ApiCallback<BillingInvoice> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getInvoiceValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Invoice>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingInvoice>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3973,6 +4151,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call issueInvoiceCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -4002,7 +4181,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4033,44 +4213,46 @@ public class BillingApi {
 
     /**
      * Issue a draft invoice, making it collectible
-     * Issues a draft invoice: moves it to OPEN, assigns its number, and makes it collectible.  Only a draft can be issued. An invoice already open, paid or void is refused with the state machine&#39;s own reason rather than being silently re-issued, which would mint a second number for one debt.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * Issues a draft invoice: moves it to OPEN, assigns its number, and makes it collectible. It is the org admin&#39;s act; a member is refused 403.  Only a draft can be issued. An invoice already open, paid or void is refused with the state machine&#39;s own reason rather than being silently re-issued, which would mint a second number for one debt.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id ID is the invoice id. (required)
-     * @return Invoice
+     * @return BillingInvoice
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Invoice issueInvoice(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Invoice> localVarResp = issueInvoiceWithHttpInfo(id);
+    public BillingInvoice issueInvoice(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<BillingInvoice> localVarResp = issueInvoiceWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
      * Issue a draft invoice, making it collectible
-     * Issues a draft invoice: moves it to OPEN, assigns its number, and makes it collectible.  Only a draft can be issued. An invoice already open, paid or void is refused with the state machine&#39;s own reason rather than being silently re-issued, which would mint a second number for one debt.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * Issues a draft invoice: moves it to OPEN, assigns its number, and makes it collectible. It is the org admin&#39;s act; a member is refused 403.  Only a draft can be issued. An invoice already open, paid or void is refused with the state machine&#39;s own reason rather than being silently re-issued, which would mint a second number for one debt.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id ID is the invoice id. (required)
-     * @return ApiResponse&lt;Invoice&gt;
+     * @return ApiResponse&lt;BillingInvoice&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Invoice> issueInvoiceWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<BillingInvoice> issueInvoiceWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = issueInvoiceValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Invoice>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingInvoice>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Issue a draft invoice, making it collectible (asynchronously)
-     * Issues a draft invoice: moves it to OPEN, assigns its number, and makes it collectible.  Only a draft can be issued. An invoice already open, paid or void is refused with the state machine&#39;s own reason rather than being silently re-issued, which would mint a second number for one debt.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * Issues a draft invoice: moves it to OPEN, assigns its number, and makes it collectible. It is the org admin&#39;s act; a member is refused 403.  Only a draft can be issued. An invoice already open, paid or void is refused with the state machine&#39;s own reason rather than being silently re-issued, which would mint a second number for one debt.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id ID is the invoice id. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -4080,19 +4262,20 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call issueInvoiceAsync(@javax.annotation.Nonnull String id, final ApiCallback<Invoice> _callback) throws ApiException {
+    public okhttp3.Call issueInvoiceAsync(@javax.annotation.Nonnull String id, final ApiCallback<BillingInvoice> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = issueInvoiceValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Invoice>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingInvoice>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for patchBillingAlertsById
      * @param id  (required)
-     * @param alertPatch  (required)
+     * @param billingAlertPatch  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4101,9 +4284,10 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchBillingAlertsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AlertPatch alertPatch, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchBillingAlertsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BillingAlertPatch billingAlertPatch, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4117,7 +4301,7 @@ public class BillingApi {
             basePath = null;
         }
 
-        Object localVarPostBody = alertPatch;
+        Object localVarPostBody = billingAlertPatch;
 
         // create path and map variables
         String localVarPath = "/v1/billing/alerts/{id}"
@@ -4130,7 +4314,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4150,18 +4335,18 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchBillingAlertsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AlertPatch alertPatch, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchBillingAlertsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BillingAlertPatch billingAlertPatch, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling patchBillingAlertsById(Async)");
         }
 
-        // verify the required parameter 'alertPatch' is set
-        if (alertPatch == null) {
-            throw new ApiException("Missing the required parameter 'alertPatch' when calling patchBillingAlertsById(Async)");
+        // verify the required parameter 'billingAlertPatch' is set
+        if (billingAlertPatch == null) {
+            throw new ApiException("Missing the required parameter 'billingAlertPatch' when calling patchBillingAlertsById(Async)");
         }
 
-        return patchBillingAlertsByIdCall(id, alertPatch, _callback);
+        return patchBillingAlertsByIdCall(id, billingAlertPatch, _callback);
 
     }
 
@@ -4169,18 +4354,19 @@ public class BillingApi {
      * Changes one spend cap: raise or lower the ceiling, flip enforcement, retune the rate limit.
      * Changes one spend cap: raise or lower the ceiling, flip enforcement, retune the rate limit.  Only the fields the body carries move. Every mutable field is optional, and an absent one is PRESERVED rather than reset — so a change that flips enforcement cannot silently wipe the threshold it enforces.  A cap belonging to another org is a 404, not a 403: a guessed id must not become an oracle for what anyone else holds.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id  (required)
-     * @param alertPatch  (required)
-     * @return Alert
+     * @param billingAlertPatch  (required)
+     * @return BillingAlert
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Alert patchBillingAlertsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AlertPatch alertPatch) throws ApiException {
-        ApiResponse<Alert> localVarResp = patchBillingAlertsByIdWithHttpInfo(id, alertPatch);
+    public BillingAlert patchBillingAlertsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BillingAlertPatch billingAlertPatch) throws ApiException {
+        ApiResponse<BillingAlert> localVarResp = patchBillingAlertsByIdWithHttpInfo(id, billingAlertPatch);
         return localVarResp.getData();
     }
 
@@ -4188,19 +4374,20 @@ public class BillingApi {
      * Changes one spend cap: raise or lower the ceiling, flip enforcement, retune the rate limit.
      * Changes one spend cap: raise or lower the ceiling, flip enforcement, retune the rate limit.  Only the fields the body carries move. Every mutable field is optional, and an absent one is PRESERVED rather than reset — so a change that flips enforcement cannot silently wipe the threshold it enforces.  A cap belonging to another org is a 404, not a 403: a guessed id must not become an oracle for what anyone else holds.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id  (required)
-     * @param alertPatch  (required)
-     * @return ApiResponse&lt;Alert&gt;
+     * @param billingAlertPatch  (required)
+     * @return ApiResponse&lt;BillingAlert&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Alert> patchBillingAlertsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AlertPatch alertPatch) throws ApiException {
-        okhttp3.Call localVarCall = patchBillingAlertsByIdValidateBeforeCall(id, alertPatch, null);
-        Type localVarReturnType = new TypeToken<Alert>(){}.getType();
+    public ApiResponse<BillingAlert> patchBillingAlertsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BillingAlertPatch billingAlertPatch) throws ApiException {
+        okhttp3.Call localVarCall = patchBillingAlertsByIdValidateBeforeCall(id, billingAlertPatch, null);
+        Type localVarReturnType = new TypeToken<BillingAlert>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -4208,7 +4395,7 @@ public class BillingApi {
      * Changes one spend cap: raise or lower the ceiling, flip enforcement, retune the rate limit. (asynchronously)
      * Changes one spend cap: raise or lower the ceiling, flip enforcement, retune the rate limit.  Only the fields the body carries move. Every mutable field is optional, and an absent one is PRESERVED rather than reset — so a change that flips enforcement cannot silently wipe the threshold it enforces.  A cap belonging to another org is a 404, not a 403: a guessed id must not become an oracle for what anyone else holds.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id  (required)
-     * @param alertPatch  (required)
+     * @param billingAlertPatch  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4217,18 +4404,19 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchBillingAlertsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AlertPatch alertPatch, final ApiCallback<Alert> _callback) throws ApiException {
+    public okhttp3.Call patchBillingAlertsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BillingAlertPatch billingAlertPatch, final ApiCallback<BillingAlert> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchBillingAlertsByIdValidateBeforeCall(id, alertPatch, _callback);
-        Type localVarReturnType = new TypeToken<Alert>(){}.getType();
+        okhttp3.Call localVarCall = patchBillingAlertsByIdValidateBeforeCall(id, billingAlertPatch, _callback);
+        Type localVarReturnType = new TypeToken<BillingAlert>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postBillingAlerts
-     * @param alertSpec  (required)
+     * @param billingAlertSpec  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4237,9 +4425,10 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBillingAlertsCall(@javax.annotation.Nonnull AlertSpec alertSpec, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBillingAlertsCall(@javax.annotation.Nonnull BillingAlertSpec billingAlertSpec, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4253,7 +4442,7 @@ public class BillingApi {
             basePath = null;
         }
 
-        Object localVarPostBody = alertSpec;
+        Object localVarPostBody = billingAlertSpec;
 
         // create path and map variables
         String localVarPath = "/v1/billing/alerts";
@@ -4265,7 +4454,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4285,57 +4475,59 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBillingAlertsValidateBeforeCall(@javax.annotation.Nonnull AlertSpec alertSpec, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'alertSpec' is set
-        if (alertSpec == null) {
-            throw new ApiException("Missing the required parameter 'alertSpec' when calling postBillingAlerts(Async)");
+    private okhttp3.Call postBillingAlertsValidateBeforeCall(@javax.annotation.Nonnull BillingAlertSpec billingAlertSpec, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'billingAlertSpec' is set
+        if (billingAlertSpec == null) {
+            throw new ApiException("Missing the required parameter 'billingAlertSpec' when calling postBillingAlerts(Async)");
         }
 
-        return postBillingAlertsCall(alertSpec, _callback);
+        return postBillingAlertsCall(billingAlertSpec, _callback);
 
     }
 
     /**
      * Opens a spend cap on the caller&#39;s own org.
      * Opens a spend cap on the caller&#39;s own org.  At least one limit must mean something: a threshold above zero (a spend cap) or a requests-per-minute above zero (a rate limit). A row that bounds neither is refused rather than stored, because a ceiling nothing measures against is a ceiling a customer believes in and does not have.  The cap is keyed on the caller&#39;s own billing subject, resolved server-side — the SAME key the verdict looks it up under, which is what makes enforcement bind rather than merely record.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @param alertSpec  (required)
-     * @return Alert
+     * @param billingAlertSpec  (required)
+     * @return BillingAlert
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Alert postBillingAlerts(@javax.annotation.Nonnull AlertSpec alertSpec) throws ApiException {
-        ApiResponse<Alert> localVarResp = postBillingAlertsWithHttpInfo(alertSpec);
+    public BillingAlert postBillingAlerts(@javax.annotation.Nonnull BillingAlertSpec billingAlertSpec) throws ApiException {
+        ApiResponse<BillingAlert> localVarResp = postBillingAlertsWithHttpInfo(billingAlertSpec);
         return localVarResp.getData();
     }
 
     /**
      * Opens a spend cap on the caller&#39;s own org.
      * Opens a spend cap on the caller&#39;s own org.  At least one limit must mean something: a threshold above zero (a spend cap) or a requests-per-minute above zero (a rate limit). A row that bounds neither is refused rather than stored, because a ceiling nothing measures against is a ceiling a customer believes in and does not have.  The cap is keyed on the caller&#39;s own billing subject, resolved server-side — the SAME key the verdict looks it up under, which is what makes enforcement bind rather than merely record.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @param alertSpec  (required)
-     * @return ApiResponse&lt;Alert&gt;
+     * @param billingAlertSpec  (required)
+     * @return ApiResponse&lt;BillingAlert&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Alert> postBillingAlertsWithHttpInfo(@javax.annotation.Nonnull AlertSpec alertSpec) throws ApiException {
-        okhttp3.Call localVarCall = postBillingAlertsValidateBeforeCall(alertSpec, null);
-        Type localVarReturnType = new TypeToken<Alert>(){}.getType();
+    public ApiResponse<BillingAlert> postBillingAlertsWithHttpInfo(@javax.annotation.Nonnull BillingAlertSpec billingAlertSpec) throws ApiException {
+        okhttp3.Call localVarCall = postBillingAlertsValidateBeforeCall(billingAlertSpec, null);
+        Type localVarReturnType = new TypeToken<BillingAlert>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Opens a spend cap on the caller&#39;s own org. (asynchronously)
      * Opens a spend cap on the caller&#39;s own org.  At least one limit must mean something: a threshold above zero (a spend cap) or a requests-per-minute above zero (a rate limit). A row that bounds neither is refused rather than stored, because a ceiling nothing measures against is a ceiling a customer believes in and does not have.  The cap is keyed on the caller&#39;s own billing subject, resolved server-side — the SAME key the verdict looks it up under, which is what makes enforcement bind rather than merely record.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @param alertSpec  (required)
+     * @param billingAlertSpec  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4344,18 +4536,19 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBillingAlertsAsync(@javax.annotation.Nonnull AlertSpec alertSpec, final ApiCallback<Alert> _callback) throws ApiException {
+    public okhttp3.Call postBillingAlertsAsync(@javax.annotation.Nonnull BillingAlertSpec billingAlertSpec, final ApiCallback<BillingAlert> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postBillingAlertsValidateBeforeCall(alertSpec, _callback);
-        Type localVarReturnType = new TypeToken<Alert>(){}.getType();
+        okhttp3.Call localVarCall = postBillingAlertsValidateBeforeCall(billingAlertSpec, _callback);
+        Type localVarReturnType = new TypeToken<BillingAlert>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postBillingCryptoDeposit
-     * @param cryptoAsset  (required)
+     * @param billingCryptoAsset  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4364,9 +4557,10 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBillingCryptoDepositCall(@javax.annotation.Nonnull CryptoAsset cryptoAsset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBillingCryptoDepositCall(@javax.annotation.Nonnull BillingCryptoAsset billingCryptoAsset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4380,7 +4574,7 @@ public class BillingApi {
             basePath = null;
         }
 
-        Object localVarPostBody = cryptoAsset;
+        Object localVarPostBody = billingCryptoAsset;
 
         // create path and map variables
         String localVarPath = "/v1/billing/crypto/deposit";
@@ -4392,7 +4586,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4412,57 +4607,59 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBillingCryptoDepositValidateBeforeCall(@javax.annotation.Nonnull CryptoAsset cryptoAsset, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'cryptoAsset' is set
-        if (cryptoAsset == null) {
-            throw new ApiException("Missing the required parameter 'cryptoAsset' when calling postBillingCryptoDeposit(Async)");
+    private okhttp3.Call postBillingCryptoDepositValidateBeforeCall(@javax.annotation.Nonnull BillingCryptoAsset billingCryptoAsset, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'billingCryptoAsset' is set
+        if (billingCryptoAsset == null) {
+            throw new ApiException("Missing the required parameter 'billingCryptoAsset' when calling postBillingCryptoDeposit(Async)");
         }
 
-        return postBillingCryptoDepositCall(cryptoAsset, _callback);
+        return postBillingCryptoDepositCall(billingCryptoAsset, _callback);
 
     }
 
     /**
      * Issues a deposit address the caller can send crypto to, on the asset they ask for.
      * Issues a deposit address the caller can send crypto to, on the asset they ask for.  The address credits the CALLER&#39;S own wallet and nobody else&#39;s: the payer is the validated principal, never a body value. Asking again reuses the caller&#39;s open intent rather than minting a second address, so a refresh cannot spray key generations — and a payer who sent to the address they saw earlier is still credited.  No balance moves here. The chain watcher credits on real confirmations, so what comes back is an address and a status, not a receipt.  An asset this rail cannot mint on is 400 — ask for another. A rail that is shut for that asset is 503 — nothing sent now can be credited.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @param cryptoAsset  (required)
-     * @return CryptoDeposit
+     * @param billingCryptoAsset  (required)
+     * @return BillingCryptoDeposit
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CryptoDeposit postBillingCryptoDeposit(@javax.annotation.Nonnull CryptoAsset cryptoAsset) throws ApiException {
-        ApiResponse<CryptoDeposit> localVarResp = postBillingCryptoDepositWithHttpInfo(cryptoAsset);
+    public BillingCryptoDeposit postBillingCryptoDeposit(@javax.annotation.Nonnull BillingCryptoAsset billingCryptoAsset) throws ApiException {
+        ApiResponse<BillingCryptoDeposit> localVarResp = postBillingCryptoDepositWithHttpInfo(billingCryptoAsset);
         return localVarResp.getData();
     }
 
     /**
      * Issues a deposit address the caller can send crypto to, on the asset they ask for.
      * Issues a deposit address the caller can send crypto to, on the asset they ask for.  The address credits the CALLER&#39;S own wallet and nobody else&#39;s: the payer is the validated principal, never a body value. Asking again reuses the caller&#39;s open intent rather than minting a second address, so a refresh cannot spray key generations — and a payer who sent to the address they saw earlier is still credited.  No balance moves here. The chain watcher credits on real confirmations, so what comes back is an address and a status, not a receipt.  An asset this rail cannot mint on is 400 — ask for another. A rail that is shut for that asset is 503 — nothing sent now can be credited.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @param cryptoAsset  (required)
-     * @return ApiResponse&lt;CryptoDeposit&gt;
+     * @param billingCryptoAsset  (required)
+     * @return ApiResponse&lt;BillingCryptoDeposit&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CryptoDeposit> postBillingCryptoDepositWithHttpInfo(@javax.annotation.Nonnull CryptoAsset cryptoAsset) throws ApiException {
-        okhttp3.Call localVarCall = postBillingCryptoDepositValidateBeforeCall(cryptoAsset, null);
-        Type localVarReturnType = new TypeToken<CryptoDeposit>(){}.getType();
+    public ApiResponse<BillingCryptoDeposit> postBillingCryptoDepositWithHttpInfo(@javax.annotation.Nonnull BillingCryptoAsset billingCryptoAsset) throws ApiException {
+        okhttp3.Call localVarCall = postBillingCryptoDepositValidateBeforeCall(billingCryptoAsset, null);
+        Type localVarReturnType = new TypeToken<BillingCryptoDeposit>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Issues a deposit address the caller can send crypto to, on the asset they ask for. (asynchronously)
      * Issues a deposit address the caller can send crypto to, on the asset they ask for.  The address credits the CALLER&#39;S own wallet and nobody else&#39;s: the payer is the validated principal, never a body value. Asking again reuses the caller&#39;s open intent rather than minting a second address, so a refresh cannot spray key generations — and a payer who sent to the address they saw earlier is still credited.  No balance moves here. The chain watcher credits on real confirmations, so what comes back is an address and a status, not a receipt.  An asset this rail cannot mint on is 400 — ask for another. A rail that is shut for that asset is 503 — nothing sent now can be credited.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @param cryptoAsset  (required)
+     * @param billingCryptoAsset  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4471,12 +4668,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBillingCryptoDepositAsync(@javax.annotation.Nonnull CryptoAsset cryptoAsset, final ApiCallback<CryptoDeposit> _callback) throws ApiException {
+    public okhttp3.Call postBillingCryptoDepositAsync(@javax.annotation.Nonnull BillingCryptoAsset billingCryptoAsset, final ApiCallback<BillingCryptoDeposit> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postBillingCryptoDepositValidateBeforeCall(cryptoAsset, _callback);
-        Type localVarReturnType = new TypeToken<CryptoDeposit>(){}.getType();
+        okhttp3.Call localVarCall = postBillingCryptoDepositValidateBeforeCall(billingCryptoAsset, _callback);
+        Type localVarReturnType = new TypeToken<BillingCryptoDeposit>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4570,7 +4768,7 @@ public class BillingApi {
     }
     /**
      * Build call for postBillingMode
-     * @param modeIn  (required)
+     * @param billingModeIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4579,9 +4777,10 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBillingModeCall(@javax.annotation.Nonnull ModeIn modeIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBillingModeCall(@javax.annotation.Nonnull BillingModeIn billingModeIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4595,7 +4794,7 @@ public class BillingApi {
             basePath = null;
         }
 
-        Object localVarPostBody = modeIn;
+        Object localVarPostBody = billingModeIn;
 
         // create path and map variables
         String localVarPath = "/v1/billing/mode";
@@ -4607,7 +4806,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4627,57 +4827,59 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBillingModeValidateBeforeCall(@javax.annotation.Nonnull ModeIn modeIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'modeIn' is set
-        if (modeIn == null) {
-            throw new ApiException("Missing the required parameter 'modeIn' when calling postBillingMode(Async)");
+    private okhttp3.Call postBillingModeValidateBeforeCall(@javax.annotation.Nonnull BillingModeIn billingModeIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'billingModeIn' is set
+        if (billingModeIn == null) {
+            throw new ApiException("Missing the required parameter 'billingModeIn' when calling postBillingMode(Async)");
         }
 
-        return postBillingModeCall(modeIn, _callback);
+        return postBillingModeCall(billingModeIn, _callback);
 
     }
 
     /**
      * Moves this org between sandbox money and real money.
      * Moves this org between sandbox money and real money.  It decides whether a charge hits a real card, so it is the one posture change that is not self-service: the platform bar, never an org owner, because an org that could put itself in test mode could take priced work for free.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @param modeIn  (required)
-     * @return Mode
+     * @param billingModeIn  (required)
+     * @return BillingMode
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Mode postBillingMode(@javax.annotation.Nonnull ModeIn modeIn) throws ApiException {
-        ApiResponse<Mode> localVarResp = postBillingModeWithHttpInfo(modeIn);
+    public BillingMode postBillingMode(@javax.annotation.Nonnull BillingModeIn billingModeIn) throws ApiException {
+        ApiResponse<BillingMode> localVarResp = postBillingModeWithHttpInfo(billingModeIn);
         return localVarResp.getData();
     }
 
     /**
      * Moves this org between sandbox money and real money.
      * Moves this org between sandbox money and real money.  It decides whether a charge hits a real card, so it is the one posture change that is not self-service: the platform bar, never an org owner, because an org that could put itself in test mode could take priced work for free.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @param modeIn  (required)
-     * @return ApiResponse&lt;Mode&gt;
+     * @param billingModeIn  (required)
+     * @return ApiResponse&lt;BillingMode&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Mode> postBillingModeWithHttpInfo(@javax.annotation.Nonnull ModeIn modeIn) throws ApiException {
-        okhttp3.Call localVarCall = postBillingModeValidateBeforeCall(modeIn, null);
-        Type localVarReturnType = new TypeToken<Mode>(){}.getType();
+    public ApiResponse<BillingMode> postBillingModeWithHttpInfo(@javax.annotation.Nonnull BillingModeIn billingModeIn) throws ApiException {
+        okhttp3.Call localVarCall = postBillingModeValidateBeforeCall(billingModeIn, null);
+        Type localVarReturnType = new TypeToken<BillingMode>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Moves this org between sandbox money and real money. (asynchronously)
      * Moves this org between sandbox money and real money.  It decides whether a charge hits a real card, so it is the one posture change that is not self-service: the platform bar, never an org owner, because an org that could put itself in test mode could take priced work for free.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @param modeIn  (required)
+     * @param billingModeIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4686,12 +4888,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBillingModeAsync(@javax.annotation.Nonnull ModeIn modeIn, final ApiCallback<Mode> _callback) throws ApiException {
+    public okhttp3.Call postBillingModeAsync(@javax.annotation.Nonnull BillingModeIn billingModeIn, final ApiCallback<BillingMode> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postBillingModeValidateBeforeCall(modeIn, _callback);
-        Type localVarReturnType = new TypeToken<Mode>(){}.getType();
+        okhttp3.Call localVarCall = postBillingModeValidateBeforeCall(billingModeIn, _callback);
+        Type localVarReturnType = new TypeToken<BillingMode>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4793,6 +4996,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postBillingRechargeRunAllCall(final ApiCallback _callback) throws ApiException {
@@ -4821,7 +5025,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4848,35 +5053,37 @@ public class BillingApi {
     /**
      * Sweeps every org&#39;s auto-recharge and answers what it did.
      * Sweeps every org&#39;s auto-recharge and answers what it did.  PLATFORM AUTHORITY ONLY. It charges saved cards across every tenant, so an org owner reaching it could sweep-charge the estate; a caller without it is refused before anything is charged.  The answer explains a sweep that charged nobody as readily as one that charged: it names how many orgs were considered and how many needed charging, with a row each.
-     * @return Recharge
+     * @return BillingRecharge
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Recharge postBillingRechargeRunAll() throws ApiException {
-        ApiResponse<Recharge> localVarResp = postBillingRechargeRunAllWithHttpInfo();
+    public BillingRecharge postBillingRechargeRunAll() throws ApiException {
+        ApiResponse<BillingRecharge> localVarResp = postBillingRechargeRunAllWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Sweeps every org&#39;s auto-recharge and answers what it did.
      * Sweeps every org&#39;s auto-recharge and answers what it did.  PLATFORM AUTHORITY ONLY. It charges saved cards across every tenant, so an org owner reaching it could sweep-charge the estate; a caller without it is refused before anything is charged.  The answer explains a sweep that charged nobody as readily as one that charged: it names how many orgs were considered and how many needed charging, with a row each.
-     * @return ApiResponse&lt;Recharge&gt;
+     * @return ApiResponse&lt;BillingRecharge&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Recharge> postBillingRechargeRunAllWithHttpInfo() throws ApiException {
+    public ApiResponse<BillingRecharge> postBillingRechargeRunAllWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = postBillingRechargeRunAllValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Recharge>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingRecharge>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -4891,12 +5098,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBillingRechargeRunAllAsync(final ApiCallback<Recharge> _callback) throws ApiException {
+    public okhttp3.Call postBillingRechargeRunAllAsync(final ApiCallback<BillingRecharge> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postBillingRechargeRunAllValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Recharge>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingRecharge>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4957,7 +5165,7 @@ public class BillingApi {
 
     /**
      * Buy a plan with a card
-     * Vaults the card (or reuses one already on file), charges the plan&#39;s FIRST period at the catalog price, and opens the subscription — one act, all of it server-side.  There is NO AMOUNT in the request. &#x60;level&#x60; picks which of the plan&#39;s published prices to buy at — an index, never a number — so what the card is charged is decided by the catalog and underpaying cannot be expressed.  A fresh sale answers 201 with the receipt. An identical retry answers 200 with the FIRST sale&#39;s body, byte for byte, so a client cannot read a replay as a second subscription having been opened. A caller already on a paid plan is 409 rather than charged again.
+     * Vaults the card (or reuses one already on file), charges the plan&#39;s FIRST period at the catalog price, and opens the subscription — one act, all of it server-side.  There is NO AMOUNT in the request. &#x60;level&#x60; picks which of the plan&#39;s published prices to buy at — an index, never a number — so what the card is charged is decided by the catalog and underpaying cannot be expressed.  &#x60;interval&#x60; picks the term: \&quot;month\&quot; (the default) or \&quot;year\&quot;, which charges the plan&#39;s annual total now and renews yearly. A plan with no annual price refuses \&quot;year\&quot;.  A fresh sale answers 201 with the receipt. An identical retry answers 200 with the FIRST sale&#39;s body, byte for byte, so a client cannot read a replay as a second subscription having been opened. A caller already on a paid plan is 409 rather than charged again.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postBillingSubscribeCard() throws ApiException {
@@ -4966,7 +5174,7 @@ public class BillingApi {
 
     /**
      * Buy a plan with a card
-     * Vaults the card (or reuses one already on file), charges the plan&#39;s FIRST period at the catalog price, and opens the subscription — one act, all of it server-side.  There is NO AMOUNT in the request. &#x60;level&#x60; picks which of the plan&#39;s published prices to buy at — an index, never a number — so what the card is charged is decided by the catalog and underpaying cannot be expressed.  A fresh sale answers 201 with the receipt. An identical retry answers 200 with the FIRST sale&#39;s body, byte for byte, so a client cannot read a replay as a second subscription having been opened. A caller already on a paid plan is 409 rather than charged again.
+     * Vaults the card (or reuses one already on file), charges the plan&#39;s FIRST period at the catalog price, and opens the subscription — one act, all of it server-side.  There is NO AMOUNT in the request. &#x60;level&#x60; picks which of the plan&#39;s published prices to buy at — an index, never a number — so what the card is charged is decided by the catalog and underpaying cannot be expressed.  &#x60;interval&#x60; picks the term: \&quot;month\&quot; (the default) or \&quot;year\&quot;, which charges the plan&#39;s annual total now and renews yearly. A plan with no annual price refuses \&quot;year\&quot;.  A fresh sale answers 201 with the receipt. An identical retry answers 200 with the FIRST sale&#39;s body, byte for byte, so a client cannot read a replay as a second subscription having been opened. A caller already on a paid plan is 409 rather than charged again.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -4977,7 +5185,7 @@ public class BillingApi {
 
     /**
      * Buy a plan with a card (asynchronously)
-     * Vaults the card (or reuses one already on file), charges the plan&#39;s FIRST period at the catalog price, and opens the subscription — one act, all of it server-side.  There is NO AMOUNT in the request. &#x60;level&#x60; picks which of the plan&#39;s published prices to buy at — an index, never a number — so what the card is charged is decided by the catalog and underpaying cannot be expressed.  A fresh sale answers 201 with the receipt. An identical retry answers 200 with the FIRST sale&#39;s body, byte for byte, so a client cannot read a replay as a second subscription having been opened. A caller already on a paid plan is 409 rather than charged again.
+     * Vaults the card (or reuses one already on file), charges the plan&#39;s FIRST period at the catalog price, and opens the subscription — one act, all of it server-side.  There is NO AMOUNT in the request. &#x60;level&#x60; picks which of the plan&#39;s published prices to buy at — an index, never a number — so what the card is charged is decided by the catalog and underpaying cannot be expressed.  &#x60;interval&#x60; picks the term: \&quot;month\&quot; (the default) or \&quot;year\&quot;, which charges the plan&#39;s annual total now and renews yearly. A plan with no annual price refuses \&quot;year\&quot;.  A fresh sale answers 201 with the receipt. An identical retry answers 200 with the FIRST sale&#39;s body, byte for byte, so a client cannot read a replay as a second subscription having been opened. A caller already on a paid plan is 409 rather than charged again.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4990,7 +5198,7 @@ public class BillingApi {
     }
     /**
      * Build call for postBillingTopup
-     * @param topupIn  (required)
+     * @param billingTopupIn  (required)
      * @param xIdempotencyKey  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -5000,9 +5208,10 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBillingTopupCall(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBillingTopupCall(@javax.annotation.Nonnull BillingTopupIn billingTopupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5016,7 +5225,7 @@ public class BillingApi {
             basePath = null;
         }
 
-        Object localVarPostBody = topupIn;
+        Object localVarPostBody = billingTopupIn;
 
         // create path and map variables
         String localVarPath = "/v1/billing/topup";
@@ -5028,7 +5237,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -5053,59 +5263,61 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBillingTopupValidateBeforeCall(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'topupIn' is set
-        if (topupIn == null) {
-            throw new ApiException("Missing the required parameter 'topupIn' when calling postBillingTopup(Async)");
+    private okhttp3.Call postBillingTopupValidateBeforeCall(@javax.annotation.Nonnull BillingTopupIn billingTopupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'billingTopupIn' is set
+        if (billingTopupIn == null) {
+            throw new ApiException("Missing the required parameter 'billingTopupIn' when calling postBillingTopup(Async)");
         }
 
-        return postBillingTopupCall(topupIn, xIdempotencyKey, _callback);
+        return postBillingTopupCall(billingTopupIn, xIdempotencyKey, _callback);
 
     }
 
     /**
      * Charges a card the caller already saved and credits the balance.
      * Charges a card the caller already saved and credits the balance. Same receipt and the same retry safety as the token endpoint; the only difference is which card, so a caller topping up from a saved method never re-enters one.
-     * @param topupIn  (required)
+     * @param billingTopupIn  (required)
      * @param xIdempotencyKey  (optional)
-     * @return Charged
+     * @return BillingCharged
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Charged postBillingTopup(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey) throws ApiException {
-        ApiResponse<Charged> localVarResp = postBillingTopupWithHttpInfo(topupIn, xIdempotencyKey);
+    public BillingCharged postBillingTopup(@javax.annotation.Nonnull BillingTopupIn billingTopupIn, @javax.annotation.Nullable String xIdempotencyKey) throws ApiException {
+        ApiResponse<BillingCharged> localVarResp = postBillingTopupWithHttpInfo(billingTopupIn, xIdempotencyKey);
         return localVarResp.getData();
     }
 
     /**
      * Charges a card the caller already saved and credits the balance.
      * Charges a card the caller already saved and credits the balance. Same receipt and the same retry safety as the token endpoint; the only difference is which card, so a caller topping up from a saved method never re-enters one.
-     * @param topupIn  (required)
+     * @param billingTopupIn  (required)
      * @param xIdempotencyKey  (optional)
-     * @return ApiResponse&lt;Charged&gt;
+     * @return ApiResponse&lt;BillingCharged&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Charged> postBillingTopupWithHttpInfo(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey) throws ApiException {
-        okhttp3.Call localVarCall = postBillingTopupValidateBeforeCall(topupIn, xIdempotencyKey, null);
-        Type localVarReturnType = new TypeToken<Charged>(){}.getType();
+    public ApiResponse<BillingCharged> postBillingTopupWithHttpInfo(@javax.annotation.Nonnull BillingTopupIn billingTopupIn, @javax.annotation.Nullable String xIdempotencyKey) throws ApiException {
+        okhttp3.Call localVarCall = postBillingTopupValidateBeforeCall(billingTopupIn, xIdempotencyKey, null);
+        Type localVarReturnType = new TypeToken<BillingCharged>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Charges a card the caller already saved and credits the balance. (asynchronously)
      * Charges a card the caller already saved and credits the balance. Same receipt and the same retry safety as the token endpoint; the only difference is which card, so a caller topping up from a saved method never re-enters one.
-     * @param topupIn  (required)
+     * @param billingTopupIn  (required)
      * @param xIdempotencyKey  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5115,18 +5327,19 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBillingTopupAsync(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback<Charged> _callback) throws ApiException {
+    public okhttp3.Call postBillingTopupAsync(@javax.annotation.Nonnull BillingTopupIn billingTopupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback<BillingCharged> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postBillingTopupValidateBeforeCall(topupIn, xIdempotencyKey, _callback);
-        Type localVarReturnType = new TypeToken<Charged>(){}.getType();
+        okhttp3.Call localVarCall = postBillingTopupValidateBeforeCall(billingTopupIn, xIdempotencyKey, _callback);
+        Type localVarReturnType = new TypeToken<BillingCharged>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postBillingTopupToken
-     * @param topupIn  (required)
+     * @param billingTopupIn  (required)
      * @param xIdempotencyKey  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -5136,9 +5349,10 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBillingTopupTokenCall(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBillingTopupTokenCall(@javax.annotation.Nonnull BillingTopupIn billingTopupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5152,7 +5366,7 @@ public class BillingApi {
             basePath = null;
         }
 
-        Object localVarPostBody = topupIn;
+        Object localVarPostBody = billingTopupIn;
 
         // create path and map variables
         String localVarPath = "/v1/billing/topup/token";
@@ -5164,7 +5378,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -5189,59 +5404,61 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBillingTopupTokenValidateBeforeCall(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'topupIn' is set
-        if (topupIn == null) {
-            throw new ApiException("Missing the required parameter 'topupIn' when calling postBillingTopupToken(Async)");
+    private okhttp3.Call postBillingTopupTokenValidateBeforeCall(@javax.annotation.Nonnull BillingTopupIn billingTopupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'billingTopupIn' is set
+        if (billingTopupIn == null) {
+            throw new ApiException("Missing the required parameter 'billingTopupIn' when calling postBillingTopupToken(Async)");
         }
 
-        return postBillingTopupTokenCall(topupIn, xIdempotencyKey, _callback);
+        return postBillingTopupTokenCall(billingTopupIn, xIdempotencyKey, _callback);
 
     }
 
     /**
      * Charges a single-use card token and credits the caller&#39;s balance.
      * Charges a single-use card token and credits the caller&#39;s balance.  The token comes from the payment form and is vaulted as part of the charge, so no card number reaches this service and none is stored here. The receipt names the ledger entry, the new balance, and the PROCESSOR&#39;s own reference — which is the only field that proves money moved at the gateway rather than only in our ledger.  Retry-safe on X-Idempotency-Key: the same key settles one charge and returns the first receipt.
-     * @param topupIn  (required)
+     * @param billingTopupIn  (required)
      * @param xIdempotencyKey  (optional)
-     * @return Charged
+     * @return BillingCharged
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Charged postBillingTopupToken(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey) throws ApiException {
-        ApiResponse<Charged> localVarResp = postBillingTopupTokenWithHttpInfo(topupIn, xIdempotencyKey);
+    public BillingCharged postBillingTopupToken(@javax.annotation.Nonnull BillingTopupIn billingTopupIn, @javax.annotation.Nullable String xIdempotencyKey) throws ApiException {
+        ApiResponse<BillingCharged> localVarResp = postBillingTopupTokenWithHttpInfo(billingTopupIn, xIdempotencyKey);
         return localVarResp.getData();
     }
 
     /**
      * Charges a single-use card token and credits the caller&#39;s balance.
      * Charges a single-use card token and credits the caller&#39;s balance.  The token comes from the payment form and is vaulted as part of the charge, so no card number reaches this service and none is stored here. The receipt names the ledger entry, the new balance, and the PROCESSOR&#39;s own reference — which is the only field that proves money moved at the gateway rather than only in our ledger.  Retry-safe on X-Idempotency-Key: the same key settles one charge and returns the first receipt.
-     * @param topupIn  (required)
+     * @param billingTopupIn  (required)
      * @param xIdempotencyKey  (optional)
-     * @return ApiResponse&lt;Charged&gt;
+     * @return ApiResponse&lt;BillingCharged&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Charged> postBillingTopupTokenWithHttpInfo(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey) throws ApiException {
-        okhttp3.Call localVarCall = postBillingTopupTokenValidateBeforeCall(topupIn, xIdempotencyKey, null);
-        Type localVarReturnType = new TypeToken<Charged>(){}.getType();
+    public ApiResponse<BillingCharged> postBillingTopupTokenWithHttpInfo(@javax.annotation.Nonnull BillingTopupIn billingTopupIn, @javax.annotation.Nullable String xIdempotencyKey) throws ApiException {
+        okhttp3.Call localVarCall = postBillingTopupTokenValidateBeforeCall(billingTopupIn, xIdempotencyKey, null);
+        Type localVarReturnType = new TypeToken<BillingCharged>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Charges a single-use card token and credits the caller&#39;s balance. (asynchronously)
      * Charges a single-use card token and credits the caller&#39;s balance.  The token comes from the payment form and is vaulted as part of the charge, so no card number reaches this service and none is stored here. The receipt names the ledger entry, the new balance, and the PROCESSOR&#39;s own reference — which is the only field that proves money moved at the gateway rather than only in our ledger.  Retry-safe on X-Idempotency-Key: the same key settles one charge and returns the first receipt.
-     * @param topupIn  (required)
+     * @param billingTopupIn  (required)
      * @param xIdempotencyKey  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5251,18 +5468,19 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postBillingTopupTokenAsync(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback<Charged> _callback) throws ApiException {
+    public okhttp3.Call postBillingTopupTokenAsync(@javax.annotation.Nonnull BillingTopupIn billingTopupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback<BillingCharged> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postBillingTopupTokenValidateBeforeCall(topupIn, xIdempotencyKey, _callback);
-        Type localVarReturnType = new TypeToken<Charged>(){}.getType();
+        okhttp3.Call localVarCall = postBillingTopupTokenValidateBeforeCall(billingTopupIn, xIdempotencyKey, _callback);
+        Type localVarReturnType = new TypeToken<BillingCharged>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putBillingRecharge
-     * @param autoRechargeEdit  (required)
+     * Build call for postBillingUsage
+     * @param billingUsageReport  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -5271,9 +5489,10 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putBillingRechargeCall(@javax.annotation.Nonnull AutoRechargeEdit autoRechargeEdit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBillingUsageCall(@javax.annotation.Nonnull BillingUsageReport billingUsageReport, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5287,7 +5506,139 @@ public class BillingApi {
             basePath = null;
         }
 
-        Object localVarPostBody = autoRechargeEdit;
+        Object localVarPostBody = billingUsageReport;
+
+        // create path and map variables
+        String localVarPath = "/v1/billing/usage";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postBillingUsageValidateBeforeCall(@javax.annotation.Nonnull BillingUsageReport billingUsageReport, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'billingUsageReport' is set
+        if (billingUsageReport == null) {
+            throw new ApiException("Missing the required parameter 'billingUsageReport' when calling postBillingUsage(Async)");
+        }
+
+        return postBillingUsageCall(billingUsageReport, _callback);
+
+    }
+
+    /**
+     * Debits one act an application metered to the org it acts for, and answers the receipt.
+     * Debits one act an application metered to the org it acts for, and answers the receipt.  The caller is an application acting as itself — an IAM client_credentials token — and the org is the one that token acts in: the application&#39;s own, or one that granted it membership, selected with X-Org-Id and named again in &#x60;org&#x60;. A person, an API key, an unauthenticated caller, and a body naming an org the token does not act in are all refused before anything is debited.  The debit lands in the same ledger every other meter writes, in the wallet GET /v1/billing/balance reports for the same caller. It is exactly-once on &#x60;id&#x60;: a retry answers the same receipt, and the same id for a different amount is 409. Recording does not gate — the work already happened — so a caller that must refuse unfunded work asks GET /v1/billing/balance and GET /v1/billing/alerts/authorize first.
+     * @param billingUsageReport  (required)
+     * @return BillingUsageReceipt
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public BillingUsageReceipt postBillingUsage(@javax.annotation.Nonnull BillingUsageReport billingUsageReport) throws ApiException {
+        ApiResponse<BillingUsageReceipt> localVarResp = postBillingUsageWithHttpInfo(billingUsageReport);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Debits one act an application metered to the org it acts for, and answers the receipt.
+     * Debits one act an application metered to the org it acts for, and answers the receipt.  The caller is an application acting as itself — an IAM client_credentials token — and the org is the one that token acts in: the application&#39;s own, or one that granted it membership, selected with X-Org-Id and named again in &#x60;org&#x60;. A person, an API key, an unauthenticated caller, and a body naming an org the token does not act in are all refused before anything is debited.  The debit lands in the same ledger every other meter writes, in the wallet GET /v1/billing/balance reports for the same caller. It is exactly-once on &#x60;id&#x60;: a retry answers the same receipt, and the same id for a different amount is 409. Recording does not gate — the work already happened — so a caller that must refuse unfunded work asks GET /v1/billing/balance and GET /v1/billing/alerts/authorize first.
+     * @param billingUsageReport  (required)
+     * @return ApiResponse&lt;BillingUsageReceipt&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BillingUsageReceipt> postBillingUsageWithHttpInfo(@javax.annotation.Nonnull BillingUsageReport billingUsageReport) throws ApiException {
+        okhttp3.Call localVarCall = postBillingUsageValidateBeforeCall(billingUsageReport, null);
+        Type localVarReturnType = new TypeToken<BillingUsageReceipt>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Debits one act an application metered to the org it acts for, and answers the receipt. (asynchronously)
+     * Debits one act an application metered to the org it acts for, and answers the receipt.  The caller is an application acting as itself — an IAM client_credentials token — and the org is the one that token acts in: the application&#39;s own, or one that granted it membership, selected with X-Org-Id and named again in &#x60;org&#x60;. A person, an API key, an unauthenticated caller, and a body naming an org the token does not act in are all refused before anything is debited.  The debit lands in the same ledger every other meter writes, in the wallet GET /v1/billing/balance reports for the same caller. It is exactly-once on &#x60;id&#x60;: a retry answers the same receipt, and the same id for a different amount is 409. Recording does not gate — the work already happened — so a caller that must refuse unfunded work asks GET /v1/billing/balance and GET /v1/billing/alerts/authorize first.
+     * @param billingUsageReport  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postBillingUsageAsync(@javax.annotation.Nonnull BillingUsageReport billingUsageReport, final ApiCallback<BillingUsageReceipt> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postBillingUsageValidateBeforeCall(billingUsageReport, _callback);
+        Type localVarReturnType = new TypeToken<BillingUsageReceipt>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putBillingRecharge
+     * @param billingAutoRechargeEdit  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putBillingRechargeCall(@javax.annotation.Nonnull BillingAutoRechargeEdit billingAutoRechargeEdit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = billingAutoRechargeEdit;
 
         // create path and map variables
         String localVarPath = "/v1/billing/recharge";
@@ -5299,7 +5650,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -5319,57 +5671,59 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putBillingRechargeValidateBeforeCall(@javax.annotation.Nonnull AutoRechargeEdit autoRechargeEdit, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'autoRechargeEdit' is set
-        if (autoRechargeEdit == null) {
-            throw new ApiException("Missing the required parameter 'autoRechargeEdit' when calling putBillingRecharge(Async)");
+    private okhttp3.Call putBillingRechargeValidateBeforeCall(@javax.annotation.Nonnull BillingAutoRechargeEdit billingAutoRechargeEdit, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'billingAutoRechargeEdit' is set
+        if (billingAutoRechargeEdit == null) {
+            throw new ApiException("Missing the required parameter 'billingAutoRechargeEdit' when calling putBillingRecharge(Async)");
         }
 
-        return putBillingRechargeCall(autoRechargeEdit, _callback);
+        return putBillingRechargeCall(billingAutoRechargeEdit, _callback);
 
     }
 
     /**
      * Sets the caller&#39;s auto-reload rule, and answers with the rule as stored.
      * Sets the caller&#39;s auto-reload rule, and answers with the rule as stored.  ENABLING REQUIRES A CARD ON FILE (400), because the sweep charges off-session: a rule naming no chargeable method is a promise the schedule cannot keep. A non-positive amount and a negative threshold are refused the same way, each naming the field that was wrong.  The rule is the caller&#39;s OWN. The org comes from the validated principal and the body names none, so there is no field a write could be steered through onto another tenant&#39;s schedule.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @param autoRechargeEdit  (required)
-     * @return AutoRecharge
+     * @param billingAutoRechargeEdit  (required)
+     * @return BillingAutoRecharge
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AutoRecharge putBillingRecharge(@javax.annotation.Nonnull AutoRechargeEdit autoRechargeEdit) throws ApiException {
-        ApiResponse<AutoRecharge> localVarResp = putBillingRechargeWithHttpInfo(autoRechargeEdit);
+    public BillingAutoRecharge putBillingRecharge(@javax.annotation.Nonnull BillingAutoRechargeEdit billingAutoRechargeEdit) throws ApiException {
+        ApiResponse<BillingAutoRecharge> localVarResp = putBillingRechargeWithHttpInfo(billingAutoRechargeEdit);
         return localVarResp.getData();
     }
 
     /**
      * Sets the caller&#39;s auto-reload rule, and answers with the rule as stored.
      * Sets the caller&#39;s auto-reload rule, and answers with the rule as stored.  ENABLING REQUIRES A CARD ON FILE (400), because the sweep charges off-session: a rule naming no chargeable method is a promise the schedule cannot keep. A non-positive amount and a negative threshold are refused the same way, each naming the field that was wrong.  The rule is the caller&#39;s OWN. The org comes from the validated principal and the body names none, so there is no field a write could be steered through onto another tenant&#39;s schedule.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @param autoRechargeEdit  (required)
-     * @return ApiResponse&lt;AutoRecharge&gt;
+     * @param billingAutoRechargeEdit  (required)
+     * @return ApiResponse&lt;BillingAutoRecharge&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AutoRecharge> putBillingRechargeWithHttpInfo(@javax.annotation.Nonnull AutoRechargeEdit autoRechargeEdit) throws ApiException {
-        okhttp3.Call localVarCall = putBillingRechargeValidateBeforeCall(autoRechargeEdit, null);
-        Type localVarReturnType = new TypeToken<AutoRecharge>(){}.getType();
+    public ApiResponse<BillingAutoRecharge> putBillingRechargeWithHttpInfo(@javax.annotation.Nonnull BillingAutoRechargeEdit billingAutoRechargeEdit) throws ApiException {
+        okhttp3.Call localVarCall = putBillingRechargeValidateBeforeCall(billingAutoRechargeEdit, null);
+        Type localVarReturnType = new TypeToken<BillingAutoRecharge>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Sets the caller&#39;s auto-reload rule, and answers with the rule as stored. (asynchronously)
      * Sets the caller&#39;s auto-reload rule, and answers with the rule as stored.  ENABLING REQUIRES A CARD ON FILE (400), because the sweep charges off-session: a rule naming no chargeable method is a promise the schedule cannot keep. A non-positive amount and a negative threshold are refused the same way, each naming the field that was wrong.  The rule is the caller&#39;s OWN. The org comes from the validated principal and the body names none, so there is no field a write could be steered through onto another tenant&#39;s schedule.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @param autoRechargeEdit  (required)
+     * @param billingAutoRechargeEdit  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5378,18 +5732,19 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putBillingRechargeAsync(@javax.annotation.Nonnull AutoRechargeEdit autoRechargeEdit, final ApiCallback<AutoRecharge> _callback) throws ApiException {
+    public okhttp3.Call putBillingRechargeAsync(@javax.annotation.Nonnull BillingAutoRechargeEdit billingAutoRechargeEdit, final ApiCallback<BillingAutoRecharge> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putBillingRechargeValidateBeforeCall(autoRechargeEdit, _callback);
-        Type localVarReturnType = new TypeToken<AutoRecharge>(){}.getType();
+        okhttp3.Call localVarCall = putBillingRechargeValidateBeforeCall(billingAutoRechargeEdit, _callback);
+        Type localVarReturnType = new TypeToken<BillingAutoRecharge>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for raiseInvoice
-     * @param raiseIn  (required)
+     * @param billingRaiseIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -5398,9 +5753,10 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call raiseInvoiceCall(@javax.annotation.Nonnull RaiseIn raiseIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call raiseInvoiceCall(@javax.annotation.Nonnull BillingRaiseIn billingRaiseIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5414,7 +5770,7 @@ public class BillingApi {
             basePath = null;
         }
 
-        Object localVarPostBody = raiseIn;
+        Object localVarPostBody = billingRaiseIn;
 
         // create path and map variables
         String localVarPath = "/v1/billing/invoices";
@@ -5426,7 +5782,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -5446,57 +5803,59 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call raiseInvoiceValidateBeforeCall(@javax.annotation.Nonnull RaiseIn raiseIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'raiseIn' is set
-        if (raiseIn == null) {
-            throw new ApiException("Missing the required parameter 'raiseIn' when calling raiseInvoice(Async)");
+    private okhttp3.Call raiseInvoiceValidateBeforeCall(@javax.annotation.Nonnull BillingRaiseIn billingRaiseIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'billingRaiseIn' is set
+        if (billingRaiseIn == null) {
+            throw new ApiException("Missing the required parameter 'billingRaiseIn' when calling raiseInvoice(Async)");
         }
 
-        return raiseInvoiceCall(raiseIn, _callback);
+        return raiseInvoiceCall(billingRaiseIn, _callback);
 
     }
 
     /**
      * Raise a draft invoice against a customer
-     * Raises a DRAFT invoice against a customer in the caller&#39;s own org.  The invoice is not collectible yet: a draft exists so it can be read and corrected, and issueInvoice is the separate act that turns it into a demand for payment. The subtotal and amount due are computed from the lines, so there is no total to send and none to get wrong.  The billing org is the caller&#39;s, taken from the validated principal, so an invoice can only ever be raised on the caller&#39;s own books.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @param raiseIn  (required)
-     * @return Invoice
+     * Raises a DRAFT invoice against a customer in the caller&#39;s own org. It is the org admin&#39;s act; a member is refused 403.  The invoice is not collectible yet: a draft exists so it can be read and corrected, and issueInvoice is the separate act that turns it into a demand for payment. The subtotal and amount due are computed from the lines, so there is no total to send and none to get wrong.  The billing org is the caller&#39;s, taken from the validated principal, so an invoice can only ever be raised on the caller&#39;s own books.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param billingRaiseIn  (required)
+     * @return BillingInvoice
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Invoice raiseInvoice(@javax.annotation.Nonnull RaiseIn raiseIn) throws ApiException {
-        ApiResponse<Invoice> localVarResp = raiseInvoiceWithHttpInfo(raiseIn);
+    public BillingInvoice raiseInvoice(@javax.annotation.Nonnull BillingRaiseIn billingRaiseIn) throws ApiException {
+        ApiResponse<BillingInvoice> localVarResp = raiseInvoiceWithHttpInfo(billingRaiseIn);
         return localVarResp.getData();
     }
 
     /**
      * Raise a draft invoice against a customer
-     * Raises a DRAFT invoice against a customer in the caller&#39;s own org.  The invoice is not collectible yet: a draft exists so it can be read and corrected, and issueInvoice is the separate act that turns it into a demand for payment. The subtotal and amount due are computed from the lines, so there is no total to send and none to get wrong.  The billing org is the caller&#39;s, taken from the validated principal, so an invoice can only ever be raised on the caller&#39;s own books.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @param raiseIn  (required)
-     * @return ApiResponse&lt;Invoice&gt;
+     * Raises a DRAFT invoice against a customer in the caller&#39;s own org. It is the org admin&#39;s act; a member is refused 403.  The invoice is not collectible yet: a draft exists so it can be read and corrected, and issueInvoice is the separate act that turns it into a demand for payment. The subtotal and amount due are computed from the lines, so there is no total to send and none to get wrong.  The billing org is the caller&#39;s, taken from the validated principal, so an invoice can only ever be raised on the caller&#39;s own books.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param billingRaiseIn  (required)
+     * @return ApiResponse&lt;BillingInvoice&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Invoice> raiseInvoiceWithHttpInfo(@javax.annotation.Nonnull RaiseIn raiseIn) throws ApiException {
-        okhttp3.Call localVarCall = raiseInvoiceValidateBeforeCall(raiseIn, null);
-        Type localVarReturnType = new TypeToken<Invoice>(){}.getType();
+    public ApiResponse<BillingInvoice> raiseInvoiceWithHttpInfo(@javax.annotation.Nonnull BillingRaiseIn billingRaiseIn) throws ApiException {
+        okhttp3.Call localVarCall = raiseInvoiceValidateBeforeCall(billingRaiseIn, null);
+        Type localVarReturnType = new TypeToken<BillingInvoice>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Raise a draft invoice against a customer (asynchronously)
-     * Raises a DRAFT invoice against a customer in the caller&#39;s own org.  The invoice is not collectible yet: a draft exists so it can be read and corrected, and issueInvoice is the separate act that turns it into a demand for payment. The subtotal and amount due are computed from the lines, so there is no total to send and none to get wrong.  The billing org is the caller&#39;s, taken from the validated principal, so an invoice can only ever be raised on the caller&#39;s own books.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @param raiseIn  (required)
+     * Raises a DRAFT invoice against a customer in the caller&#39;s own org. It is the org admin&#39;s act; a member is refused 403.  The invoice is not collectible yet: a draft exists so it can be read and corrected, and issueInvoice is the separate act that turns it into a demand for payment. The subtotal and amount due are computed from the lines, so there is no total to send and none to get wrong.  The billing org is the caller&#39;s, taken from the validated principal, so an invoice can only ever be raised on the caller&#39;s own books.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param billingRaiseIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5505,19 +5864,20 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call raiseInvoiceAsync(@javax.annotation.Nonnull RaiseIn raiseIn, final ApiCallback<Invoice> _callback) throws ApiException {
+    public okhttp3.Call raiseInvoiceAsync(@javax.annotation.Nonnull BillingRaiseIn billingRaiseIn, final ApiCallback<BillingInvoice> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = raiseInvoiceValidateBeforeCall(raiseIn, _callback);
-        Type localVarReturnType = new TypeToken<Invoice>(){}.getType();
+        okhttp3.Call localVarCall = raiseInvoiceValidateBeforeCall(billingRaiseIn, _callback);
+        Type localVarReturnType = new TypeToken<BillingInvoice>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for reactivateSubscription
      * @param id  (required)
-     * @param subscriptionRef  (required)
+     * @param billingSubscriptionRef  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -5526,9 +5886,10 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reactivateSubscriptionCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SubscriptionRef subscriptionRef, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call reactivateSubscriptionCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BillingSubscriptionRef billingSubscriptionRef, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5542,7 +5903,7 @@ public class BillingApi {
             basePath = null;
         }
 
-        Object localVarPostBody = subscriptionRef;
+        Object localVarPostBody = billingSubscriptionRef;
 
         // create path and map variables
         String localVarPath = "/v1/billing/subscriptions/{id}/reactivate"
@@ -5555,7 +5916,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -5575,18 +5937,18 @@ public class BillingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call reactivateSubscriptionValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SubscriptionRef subscriptionRef, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call reactivateSubscriptionValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BillingSubscriptionRef billingSubscriptionRef, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling reactivateSubscription(Async)");
         }
 
-        // verify the required parameter 'subscriptionRef' is set
-        if (subscriptionRef == null) {
-            throw new ApiException("Missing the required parameter 'subscriptionRef' when calling reactivateSubscription(Async)");
+        // verify the required parameter 'billingSubscriptionRef' is set
+        if (billingSubscriptionRef == null) {
+            throw new ApiException("Missing the required parameter 'billingSubscriptionRef' when calling reactivateSubscription(Async)");
         }
 
-        return reactivateSubscriptionCall(id, subscriptionRef, _callback);
+        return reactivateSubscriptionCall(id, billingSubscriptionRef, _callback);
 
     }
 
@@ -5594,18 +5956,19 @@ public class BillingApi {
      * Put a canceled subscription back on its plan
      * Puts a canceled subscription back on its plan.  What asks for this is usually a recovered payment method or a support tool rather than a browser, which is most of the argument for it having an address at all. The engine decides whether the move is legal; a row it will not reactivate comes back with its own reason.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id  (required)
-     * @param subscriptionRef  (required)
-     * @return Subscription
+     * @param billingSubscriptionRef  (required)
+     * @return BillingSubscription
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Subscription reactivateSubscription(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SubscriptionRef subscriptionRef) throws ApiException {
-        ApiResponse<Subscription> localVarResp = reactivateSubscriptionWithHttpInfo(id, subscriptionRef);
+    public BillingSubscription reactivateSubscription(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BillingSubscriptionRef billingSubscriptionRef) throws ApiException {
+        ApiResponse<BillingSubscription> localVarResp = reactivateSubscriptionWithHttpInfo(id, billingSubscriptionRef);
         return localVarResp.getData();
     }
 
@@ -5613,19 +5976,20 @@ public class BillingApi {
      * Put a canceled subscription back on its plan
      * Puts a canceled subscription back on its plan.  What asks for this is usually a recovered payment method or a support tool rather than a browser, which is most of the argument for it having an address at all. The engine decides whether the move is legal; a row it will not reactivate comes back with its own reason.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id  (required)
-     * @param subscriptionRef  (required)
-     * @return ApiResponse&lt;Subscription&gt;
+     * @param billingSubscriptionRef  (required)
+     * @return ApiResponse&lt;BillingSubscription&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Subscription> reactivateSubscriptionWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SubscriptionRef subscriptionRef) throws ApiException {
-        okhttp3.Call localVarCall = reactivateSubscriptionValidateBeforeCall(id, subscriptionRef, null);
-        Type localVarReturnType = new TypeToken<Subscription>(){}.getType();
+    public ApiResponse<BillingSubscription> reactivateSubscriptionWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BillingSubscriptionRef billingSubscriptionRef) throws ApiException {
+        okhttp3.Call localVarCall = reactivateSubscriptionValidateBeforeCall(id, billingSubscriptionRef, null);
+        Type localVarReturnType = new TypeToken<BillingSubscription>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -5633,7 +5997,7 @@ public class BillingApi {
      * Put a canceled subscription back on its plan (asynchronously)
      * Puts a canceled subscription back on its plan.  What asks for this is usually a recovered payment method or a support tool rather than a browser, which is most of the argument for it having an address at all. The engine decides whether the move is legal; a row it will not reactivate comes back with its own reason.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id  (required)
-     * @param subscriptionRef  (required)
+     * @param billingSubscriptionRef  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5642,12 +6006,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reactivateSubscriptionAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SubscriptionRef subscriptionRef, final ApiCallback<Subscription> _callback) throws ApiException {
+    public okhttp3.Call reactivateSubscriptionAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BillingSubscriptionRef billingSubscriptionRef, final ApiCallback<BillingSubscription> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = reactivateSubscriptionValidateBeforeCall(id, subscriptionRef, _callback);
-        Type localVarReturnType = new TypeToken<Subscription>(){}.getType();
+        okhttp3.Call localVarCall = reactivateSubscriptionValidateBeforeCall(id, billingSubscriptionRef, _callback);
+        Type localVarReturnType = new TypeToken<BillingSubscription>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -5662,6 +6027,7 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call voidInvoiceCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -5691,7 +6057,8 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -5722,44 +6089,46 @@ public class BillingApi {
 
     /**
      * Void a draft or issued invoice
-     * Voids a draft or issued invoice — the cancel.  A paid invoice cannot be voided: money has moved, and the correction for that is a refund, not an erasure. The state machine refuses it and that refusal is the answer.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * Voids a draft or issued invoice — the cancel. It is the org admin&#39;s act; a member is refused 403.  A paid invoice cannot be voided: money has moved, and the correction for that is a refund, not an erasure. The state machine refuses it and that refusal is the answer.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id ID is the invoice id. (required)
-     * @return Invoice
+     * @return BillingInvoice
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Invoice voidInvoice(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Invoice> localVarResp = voidInvoiceWithHttpInfo(id);
+    public BillingInvoice voidInvoice(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<BillingInvoice> localVarResp = voidInvoiceWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
      * Void a draft or issued invoice
-     * Voids a draft or issued invoice — the cancel.  A paid invoice cannot be voided: money has moved, and the correction for that is a refund, not an erasure. The state machine refuses it and that refusal is the answer.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * Voids a draft or issued invoice — the cancel. It is the org admin&#39;s act; a member is refused 403.  A paid invoice cannot be voided: money has moved, and the correction for that is a refund, not an erasure. The state machine refuses it and that refusal is the answer.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id ID is the invoice id. (required)
-     * @return ApiResponse&lt;Invoice&gt;
+     * @return ApiResponse&lt;BillingInvoice&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Invoice> voidInvoiceWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<BillingInvoice> voidInvoiceWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = voidInvoiceValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Invoice>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingInvoice>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Void a draft or issued invoice (asynchronously)
-     * Voids a draft or issued invoice — the cancel.  A paid invoice cannot be voided: money has moved, and the correction for that is a refund, not an erasure. The state machine refuses it and that refusal is the answer.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * Voids a draft or issued invoice — the cancel. It is the org admin&#39;s act; a member is refused 403.  A paid invoice cannot be voided: money has moved, and the correction for that is a refund, not an erasure. The state machine refuses it and that refusal is the answer.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param id ID is the invoice id. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5769,12 +6138,13 @@ public class BillingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call voidInvoiceAsync(@javax.annotation.Nonnull String id, final ApiCallback<Invoice> _callback) throws ApiException {
+    public okhttp3.Call voidInvoiceAsync(@javax.annotation.Nonnull String id, final ApiCallback<BillingInvoice> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = voidInvoiceValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Invoice>(){}.getType();
+        Type localVarReturnType = new TypeToken<BillingInvoice>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

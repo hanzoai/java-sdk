@@ -27,8 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.BaseHealth;
-import ai.hanzo.cloud.model.BaseView;
+import ai.hanzo.cloud.model.BaseBaseHealth;
+import ai.hanzo.cloud.model.BaseBaseView;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -83,6 +84,7 @@ public class BaseApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBaseBasesCall(final ApiCallback _callback) throws ApiException {
@@ -111,7 +113,8 @@ public class BaseApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -138,35 +141,37 @@ public class BaseApi {
     /**
      * Lists every Base the caller can reach, one per org their token carries.
      * Lists every Base the caller can reach, one per org their token carries.  The orgs come from IAM&#39;s signed membership set, so the list is exactly the orgs the caller is a member of and cannot be widened by asking. It is the account-wide view: a Base is per org, so this is one entry per org and there is nothing to page.  A caller with no membership set — a machine credential, an API key — reaches no Base and receives an empty list rather than a refusal, because holding no membership is an answer and not a failure.
-     * @return List&lt;BaseView&gt;
+     * @return List&lt;BaseBaseView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<BaseView> getBaseBases() throws ApiException {
-        ApiResponse<List<BaseView>> localVarResp = getBaseBasesWithHttpInfo();
+    public List<BaseBaseView> getBaseBases() throws ApiException {
+        ApiResponse<List<BaseBaseView>> localVarResp = getBaseBasesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists every Base the caller can reach, one per org their token carries.
      * Lists every Base the caller can reach, one per org their token carries.  The orgs come from IAM&#39;s signed membership set, so the list is exactly the orgs the caller is a member of and cannot be widened by asking. It is the account-wide view: a Base is per org, so this is one entry per org and there is nothing to page.  A caller with no membership set — a machine credential, an API key — reaches no Base and receives an empty list rather than a refusal, because holding no membership is an answer and not a failure.
-     * @return ApiResponse&lt;List&lt;BaseView&gt;&gt;
+     * @return ApiResponse&lt;List&lt;BaseBaseView&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<BaseView>> getBaseBasesWithHttpInfo() throws ApiException {
+    public ApiResponse<List<BaseBaseView>> getBaseBasesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBaseBasesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<BaseView>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BaseBaseView>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -181,12 +186,13 @@ public class BaseApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBaseBasesAsync(final ApiCallback<List<BaseView>> _callback) throws ApiException {
+    public okhttp3.Call getBaseBasesAsync(final ApiCallback<List<BaseBaseView>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBaseBasesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<BaseView>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<BaseBaseView>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -201,6 +207,7 @@ public class BaseApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBaseBasesByOrgCall(@javax.annotation.Nonnull String org, final ApiCallback _callback) throws ApiException {
@@ -230,7 +237,8 @@ public class BaseApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -263,17 +271,18 @@ public class BaseApi {
      * Describes ONE org&#39;s Base — whether its store exists, and what it occupies.
      * Describes ONE org&#39;s Base — whether its store exists, and what it occupies.  The org must be one the caller&#39;s token carries; any other is not found, so this cannot be used to learn which orgs exist. That check is the same membership set the listing is built from, which is why the two can never disagree about what a caller may see.
      * @param org Org is the org whose Base to describe, from the path. An org the caller&#39;s token does not carry is not found — the same answer a nonexistent one gets, so the listing cannot be used to discover which orgs exist. (required)
-     * @return BaseView
+     * @return BaseBaseView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BaseView getBaseBasesByOrg(@javax.annotation.Nonnull String org) throws ApiException {
-        ApiResponse<BaseView> localVarResp = getBaseBasesByOrgWithHttpInfo(org);
+    public BaseBaseView getBaseBasesByOrg(@javax.annotation.Nonnull String org) throws ApiException {
+        ApiResponse<BaseBaseView> localVarResp = getBaseBasesByOrgWithHttpInfo(org);
         return localVarResp.getData();
     }
 
@@ -281,18 +290,19 @@ public class BaseApi {
      * Describes ONE org&#39;s Base — whether its store exists, and what it occupies.
      * Describes ONE org&#39;s Base — whether its store exists, and what it occupies.  The org must be one the caller&#39;s token carries; any other is not found, so this cannot be used to learn which orgs exist. That check is the same membership set the listing is built from, which is why the two can never disagree about what a caller may see.
      * @param org Org is the org whose Base to describe, from the path. An org the caller&#39;s token does not carry is not found — the same answer a nonexistent one gets, so the listing cannot be used to discover which orgs exist. (required)
-     * @return ApiResponse&lt;BaseView&gt;
+     * @return ApiResponse&lt;BaseBaseView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BaseView> getBaseBasesByOrgWithHttpInfo(@javax.annotation.Nonnull String org) throws ApiException {
+    public ApiResponse<BaseBaseView> getBaseBasesByOrgWithHttpInfo(@javax.annotation.Nonnull String org) throws ApiException {
         okhttp3.Call localVarCall = getBaseBasesByOrgValidateBeforeCall(org, null);
-        Type localVarReturnType = new TypeToken<BaseView>(){}.getType();
+        Type localVarReturnType = new TypeToken<BaseBaseView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -308,12 +318,13 @@ public class BaseApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBaseBasesByOrgAsync(@javax.annotation.Nonnull String org, final ApiCallback<BaseView> _callback) throws ApiException {
+    public okhttp3.Call getBaseBasesByOrgAsync(@javax.annotation.Nonnull String org, final ApiCallback<BaseBaseView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBaseBasesByOrgValidateBeforeCall(org, _callback);
-        Type localVarReturnType = new TypeToken<BaseView>(){}.getType();
+        Type localVarReturnType = new TypeToken<BaseBaseView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -327,6 +338,7 @@ public class BaseApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBaseHealthCall(final ApiCallback _callback) throws ApiException {
@@ -355,7 +367,8 @@ public class BaseApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -382,35 +395,37 @@ public class BaseApi {
     /**
      * Reports that the base subsystem is serving.
      * Reports that the base subsystem is serving.  It is deliberately INDEPENDENT of whether this deployment actually embeds the Base engine: the route answers before the CLOUD_BASE_EMBED gate and before the /v1/base/_* wildcard, so a liveness probe measures the process rather than an optional feature, and the wildcard can never shadow it. It reads no tenant, so a prober that sends no principal is answered rather than refused.
-     * @return BaseHealth
+     * @return BaseBaseHealth
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BaseHealth getBaseHealth() throws ApiException {
-        ApiResponse<BaseHealth> localVarResp = getBaseHealthWithHttpInfo();
+    public BaseBaseHealth getBaseHealth() throws ApiException {
+        ApiResponse<BaseBaseHealth> localVarResp = getBaseHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports that the base subsystem is serving.
      * Reports that the base subsystem is serving.  It is deliberately INDEPENDENT of whether this deployment actually embeds the Base engine: the route answers before the CLOUD_BASE_EMBED gate and before the /v1/base/_* wildcard, so a liveness probe measures the process rather than an optional feature, and the wildcard can never shadow it. It reads no tenant, so a prober that sends no principal is answered rather than refused.
-     * @return ApiResponse&lt;BaseHealth&gt;
+     * @return ApiResponse&lt;BaseBaseHealth&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BaseHealth> getBaseHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<BaseBaseHealth> getBaseHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBaseHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<BaseHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<BaseBaseHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -425,12 +440,13 @@ public class BaseApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBaseHealthAsync(final ApiCallback<BaseHealth> _callback) throws ApiException {
+    public okhttp3.Call getBaseHealthAsync(final ApiCallback<BaseBaseHealth> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBaseHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<BaseHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<BaseBaseHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

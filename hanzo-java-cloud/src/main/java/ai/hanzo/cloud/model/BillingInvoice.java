@@ -14,7 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.InvoiceLineItem;
+import ai.hanzo.cloud.model.BillingInvoiceLine;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -53,30 +53,20 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class BillingInvoice {
-  public static final String SERIALIZED_NAME_AMOUNT_DUE = "amountDue";
-  @SerializedName(SERIALIZED_NAME_AMOUNT_DUE)
+  public static final String SERIALIZED_NAME_AMOUNT_DUE_CENTS = "amountDueCents";
+  @SerializedName(SERIALIZED_NAME_AMOUNT_DUE_CENTS)
   @javax.annotation.Nullable
-  private Long amountDue;
+  private Long amountDueCents;
 
-  public static final String SERIALIZED_NAME_AMOUNT_PAID = "amountPaid";
-  @SerializedName(SERIALIZED_NAME_AMOUNT_PAID)
+  public static final String SERIALIZED_NAME_AMOUNT_PAID_CENTS = "amountPaidCents";
+  @SerializedName(SERIALIZED_NAME_AMOUNT_PAID_CENTS)
   @javax.annotation.Nullable
-  private Long amountPaid;
-
-  public static final String SERIALIZED_NAME_ATTEMPT_COUNT = "attemptCount";
-  @SerializedName(SERIALIZED_NAME_ATTEMPT_COUNT)
-  @javax.annotation.Nullable
-  private Long attemptCount;
+  private Long amountPaidCents;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
   private String createdAt;
-
-  public static final String SERIALIZED_NAME_CREDIT_APPLIED = "creditApplied";
-  @SerializedName(SERIALIZED_NAME_CREDIT_APPLIED)
-  @javax.annotation.Nullable
-  private Long creditApplied;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
@@ -88,153 +78,79 @@ public class BillingInvoice {
   @javax.annotation.Nullable
   private String customerEmail;
 
-  public static final String SERIALIZED_NAME_DISCOUNT = "discount";
-  @SerializedName(SERIALIZED_NAME_DISCOUNT)
-  @javax.annotation.Nullable
-  private Long discount;
-
-  public static final String SERIALIZED_NAME_DUE_DATE = "dueDate";
-  @SerializedName(SERIALIZED_NAME_DUE_DATE)
-  @javax.annotation.Nullable
-  private String dueDate;
-
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
   private String id;
 
-  public static final String SERIALIZED_NAME_LINE_ITEMS = "lineItems";
-  @SerializedName(SERIALIZED_NAME_LINE_ITEMS)
+  public static final String SERIALIZED_NAME_LINES = "lines";
+  @SerializedName(SERIALIZED_NAME_LINES)
   @javax.annotation.Nullable
-  private List<InvoiceLineItem> lineItems = new ArrayList<>();
+  private List<BillingInvoiceLine> lines = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_NUMBER = "number";
   @SerializedName(SERIALIZED_NAME_NUMBER)
   @javax.annotation.Nullable
-  private Long number;
-
-  public static final String SERIALIZED_NAME_NUMBER_STR = "numberStr";
-  @SerializedName(SERIALIZED_NAME_NUMBER_STR)
-  @javax.annotation.Nullable
-  private String numberStr;
-
-  public static final String SERIALIZED_NAME_PAID_AT = "paidAt";
-  @SerializedName(SERIALIZED_NAME_PAID_AT)
-  @javax.annotation.Nullable
-  private String paidAt;
-
-  public static final String SERIALIZED_NAME_PAYMENT_METHOD = "paymentMethod";
-  @SerializedName(SERIALIZED_NAME_PAYMENT_METHOD)
-  @javax.annotation.Nullable
-  private String paymentMethod;
+  private String number;
 
   public static final String SERIALIZED_NAME_PAYMENT_REF = "paymentRef";
   @SerializedName(SERIALIZED_NAME_PAYMENT_REF)
   @javax.annotation.Nullable
   private String paymentRef;
 
-  public static final String SERIALIZED_NAME_PERIOD_END = "periodEnd";
-  @SerializedName(SERIALIZED_NAME_PERIOD_END)
-  @javax.annotation.Nullable
-  private String periodEnd;
-
-  public static final String SERIALIZED_NAME_PERIOD_START = "periodStart";
-  @SerializedName(SERIALIZED_NAME_PERIOD_START)
-  @javax.annotation.Nullable
-  private String periodStart;
-
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   @javax.annotation.Nullable
   private String status;
 
-  public static final String SERIALIZED_NAME_SUBSCRIPTION_ID = "subscriptionId";
-  @SerializedName(SERIALIZED_NAME_SUBSCRIPTION_ID)
+  public static final String SERIALIZED_NAME_SUBTOTAL_CENTS = "subtotalCents";
+  @SerializedName(SERIALIZED_NAME_SUBTOTAL_CENTS)
   @javax.annotation.Nullable
-  private String subscriptionId;
-
-  public static final String SERIALIZED_NAME_SUBTOTAL = "subtotal";
-  @SerializedName(SERIALIZED_NAME_SUBTOTAL)
-  @javax.annotation.Nullable
-  private Long subtotal;
-
-  public static final String SERIALIZED_NAME_TAX = "tax";
-  @SerializedName(SERIALIZED_NAME_TAX)
-  @javax.annotation.Nullable
-  private Long tax;
-
-  public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
-  @SerializedName(SERIALIZED_NAME_UPDATED_AT)
-  @javax.annotation.Nullable
-  private String updatedAt;
+  private Long subtotalCents;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
   @javax.annotation.Nullable
   private String userId;
 
-  public static final String SERIALIZED_NAME_VOIDED_AT = "voidedAt";
-  @SerializedName(SERIALIZED_NAME_VOIDED_AT)
-  @javax.annotation.Nullable
-  private String voidedAt;
-
   public BillingInvoice() {
   }
 
-  public BillingInvoice amountDue(@javax.annotation.Nullable Long amountDue) {
-    this.amountDue = amountDue;
+  public BillingInvoice amountDueCents(@javax.annotation.Nullable Long amountDueCents) {
+    this.amountDueCents = amountDueCents;
     return this;
   }
 
   /**
-   * Get amountDue
-   * @return amountDue
+   * AmountDueCents is what remains collectible.
+   * @return amountDueCents
    */
   @javax.annotation.Nullable
-  public Long getAmountDue() {
-    return amountDue;
+  public Long getAmountDueCents() {
+    return amountDueCents;
   }
 
-  public void setAmountDue(@javax.annotation.Nullable Long amountDue) {
-    this.amountDue = amountDue;
+  public void setAmountDueCents(@javax.annotation.Nullable Long amountDueCents) {
+    this.amountDueCents = amountDueCents;
   }
 
 
-  public BillingInvoice amountPaid(@javax.annotation.Nullable Long amountPaid) {
-    this.amountPaid = amountPaid;
+  public BillingInvoice amountPaidCents(@javax.annotation.Nullable Long amountPaidCents) {
+    this.amountPaidCents = amountPaidCents;
     return this;
   }
 
   /**
-   * Get amountPaid
-   * @return amountPaid
+   * AmountPaidCents is what has been collected so far.
+   * @return amountPaidCents
    */
   @javax.annotation.Nullable
-  public Long getAmountPaid() {
-    return amountPaid;
+  public Long getAmountPaidCents() {
+    return amountPaidCents;
   }
 
-  public void setAmountPaid(@javax.annotation.Nullable Long amountPaid) {
-    this.amountPaid = amountPaid;
-  }
-
-
-  public BillingInvoice attemptCount(@javax.annotation.Nullable Long attemptCount) {
-    this.attemptCount = attemptCount;
-    return this;
-  }
-
-  /**
-   * Get attemptCount
-   * @return attemptCount
-   */
-  @javax.annotation.Nullable
-  public Long getAttemptCount() {
-    return attemptCount;
-  }
-
-  public void setAttemptCount(@javax.annotation.Nullable Long attemptCount) {
-    this.attemptCount = attemptCount;
+  public void setAmountPaidCents(@javax.annotation.Nullable Long amountPaidCents) {
+    this.amountPaidCents = amountPaidCents;
   }
 
 
@@ -244,7 +160,7 @@ public class BillingInvoice {
   }
 
   /**
-   * Get createdAt
+   * CreatedAt is when the draft was raised, RFC3339.
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -257,32 +173,13 @@ public class BillingInvoice {
   }
 
 
-  public BillingInvoice creditApplied(@javax.annotation.Nullable Long creditApplied) {
-    this.creditApplied = creditApplied;
-    return this;
-  }
-
-  /**
-   * Get creditApplied
-   * @return creditApplied
-   */
-  @javax.annotation.Nullable
-  public Long getCreditApplied() {
-    return creditApplied;
-  }
-
-  public void setCreditApplied(@javax.annotation.Nullable Long creditApplied) {
-    this.creditApplied = creditApplied;
-  }
-
-
   public BillingInvoice currency(@javax.annotation.Nullable String currency) {
     this.currency = currency;
     return this;
   }
 
   /**
-   * Get currency
+   * Currency is the ISO 4217 code.
    * @return currency
    */
   @javax.annotation.Nullable
@@ -301,7 +198,7 @@ public class BillingInvoice {
   }
 
   /**
-   * Get customerEmail
+   * CustomerEmail is where it is sent.
    * @return customerEmail
    */
   @javax.annotation.Nullable
@@ -314,51 +211,13 @@ public class BillingInvoice {
   }
 
 
-  public BillingInvoice discount(@javax.annotation.Nullable Long discount) {
-    this.discount = discount;
-    return this;
-  }
-
-  /**
-   * Get discount
-   * @return discount
-   */
-  @javax.annotation.Nullable
-  public Long getDiscount() {
-    return discount;
-  }
-
-  public void setDiscount(@javax.annotation.Nullable Long discount) {
-    this.discount = discount;
-  }
-
-
-  public BillingInvoice dueDate(@javax.annotation.Nullable String dueDate) {
-    this.dueDate = dueDate;
-    return this;
-  }
-
-  /**
-   * Get dueDate
-   * @return dueDate
-   */
-  @javax.annotation.Nullable
-  public String getDueDate() {
-    return dueDate;
-  }
-
-  public void setDueDate(@javax.annotation.Nullable String dueDate) {
-    this.dueDate = dueDate;
-  }
-
-
   public BillingInvoice id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
 
   /**
-   * Get id
+   * ID is the invoice id — what the issue, collect and void ops address.
    * @return id
    */
   @javax.annotation.Nullable
@@ -371,106 +230,49 @@ public class BillingInvoice {
   }
 
 
-  public BillingInvoice lineItems(@javax.annotation.Nullable List<InvoiceLineItem> lineItems) {
-    this.lineItems = lineItems;
+  public BillingInvoice lines(@javax.annotation.Nullable List<BillingInvoiceLine> lines) {
+    this.lines = lines;
     return this;
   }
 
-  public BillingInvoice addLineItemsItem(InvoiceLineItem lineItemsItem) {
-    if (this.lineItems == null) {
-      this.lineItems = new ArrayList<>();
+  public BillingInvoice addLinesItem(BillingInvoiceLine linesItem) {
+    if (this.lines == null) {
+      this.lines = new ArrayList<>();
     }
-    this.lineItems.add(lineItemsItem);
+    this.lines.add(linesItem);
     return this;
   }
 
   /**
-   * LineItems carries no omitempty and is never allocated empty, because the wire it reproduces sends &#x60;null&#x60; for an invoice with no lines. An empty array there would be a different answer to \&quot;were there lines\&quot;.
-   * @return lineItems
+   * Lines are the charges on the invoice.
+   * @return lines
    */
   @javax.annotation.Nullable
-  public List<InvoiceLineItem> getLineItems() {
-    return lineItems;
+  public List<BillingInvoiceLine> getLines() {
+    return lines;
   }
 
-  public void setLineItems(@javax.annotation.Nullable List<InvoiceLineItem> lineItems) {
-    this.lineItems = lineItems;
+  public void setLines(@javax.annotation.Nullable List<BillingInvoiceLine> lines) {
+    this.lines = lines;
   }
 
 
-  public BillingInvoice number(@javax.annotation.Nullable Long number) {
+  public BillingInvoice number(@javax.annotation.Nullable String number) {
     this.number = number;
     return this;
   }
 
   /**
-   * Get number
+   * Number is the human-facing invoice number, e.g. \&quot;INV-0042\&quot;. A draft has none; issuing assigns it.
    * @return number
    */
   @javax.annotation.Nullable
-  public Long getNumber() {
+  public String getNumber() {
     return number;
   }
 
-  public void setNumber(@javax.annotation.Nullable Long number) {
+  public void setNumber(@javax.annotation.Nullable String number) {
     this.number = number;
-  }
-
-
-  public BillingInvoice numberStr(@javax.annotation.Nullable String numberStr) {
-    this.numberStr = numberStr;
-    return this;
-  }
-
-  /**
-   * Get numberStr
-   * @return numberStr
-   */
-  @javax.annotation.Nullable
-  public String getNumberStr() {
-    return numberStr;
-  }
-
-  public void setNumberStr(@javax.annotation.Nullable String numberStr) {
-    this.numberStr = numberStr;
-  }
-
-
-  public BillingInvoice paidAt(@javax.annotation.Nullable String paidAt) {
-    this.paidAt = paidAt;
-    return this;
-  }
-
-  /**
-   * Get paidAt
-   * @return paidAt
-   */
-  @javax.annotation.Nullable
-  public String getPaidAt() {
-    return paidAt;
-  }
-
-  public void setPaidAt(@javax.annotation.Nullable String paidAt) {
-    this.paidAt = paidAt;
-  }
-
-
-  public BillingInvoice paymentMethod(@javax.annotation.Nullable String paymentMethod) {
-    this.paymentMethod = paymentMethod;
-    return this;
-  }
-
-  /**
-   * Get paymentMethod
-   * @return paymentMethod
-   */
-  @javax.annotation.Nullable
-  public String getPaymentMethod() {
-    return paymentMethod;
-  }
-
-  public void setPaymentMethod(@javax.annotation.Nullable String paymentMethod) {
-    this.paymentMethod = paymentMethod;
   }
 
 
@@ -480,7 +282,7 @@ public class BillingInvoice {
   }
 
   /**
-   * Get paymentRef
+   * PaymentRef is the processor reference for the collection, once paid.
    * @return paymentRef
    */
   @javax.annotation.Nullable
@@ -493,51 +295,13 @@ public class BillingInvoice {
   }
 
 
-  public BillingInvoice periodEnd(@javax.annotation.Nullable String periodEnd) {
-    this.periodEnd = periodEnd;
-    return this;
-  }
-
-  /**
-   * Get periodEnd
-   * @return periodEnd
-   */
-  @javax.annotation.Nullable
-  public String getPeriodEnd() {
-    return periodEnd;
-  }
-
-  public void setPeriodEnd(@javax.annotation.Nullable String periodEnd) {
-    this.periodEnd = periodEnd;
-  }
-
-
-  public BillingInvoice periodStart(@javax.annotation.Nullable String periodStart) {
-    this.periodStart = periodStart;
-    return this;
-  }
-
-  /**
-   * Get periodStart
-   * @return periodStart
-   */
-  @javax.annotation.Nullable
-  public String getPeriodStart() {
-    return periodStart;
-  }
-
-  public void setPeriodStart(@javax.annotation.Nullable String periodStart) {
-    this.periodStart = periodStart;
-  }
-
-
   public BillingInvoice status(@javax.annotation.Nullable String status) {
     this.status = status;
     return this;
   }
 
   /**
-   * Get status
+   * Status is draft, open, paid, void or uncollectible. A draft is not collectible; issuing moves it to open.
    * @return status
    */
   @javax.annotation.Nullable
@@ -550,79 +314,22 @@ public class BillingInvoice {
   }
 
 
-  public BillingInvoice subscriptionId(@javax.annotation.Nullable String subscriptionId) {
-    this.subscriptionId = subscriptionId;
+  public BillingInvoice subtotalCents(@javax.annotation.Nullable Long subtotalCents) {
+    this.subtotalCents = subtotalCents;
     return this;
   }
 
   /**
-   * Get subscriptionId
-   * @return subscriptionId
+   * SubtotalCents is the sum of the lines.
+   * @return subtotalCents
    */
   @javax.annotation.Nullable
-  public String getSubscriptionId() {
-    return subscriptionId;
+  public Long getSubtotalCents() {
+    return subtotalCents;
   }
 
-  public void setSubscriptionId(@javax.annotation.Nullable String subscriptionId) {
-    this.subscriptionId = subscriptionId;
-  }
-
-
-  public BillingInvoice subtotal(@javax.annotation.Nullable Long subtotal) {
-    this.subtotal = subtotal;
-    return this;
-  }
-
-  /**
-   * Get subtotal
-   * @return subtotal
-   */
-  @javax.annotation.Nullable
-  public Long getSubtotal() {
-    return subtotal;
-  }
-
-  public void setSubtotal(@javax.annotation.Nullable Long subtotal) {
-    this.subtotal = subtotal;
-  }
-
-
-  public BillingInvoice tax(@javax.annotation.Nullable Long tax) {
-    this.tax = tax;
-    return this;
-  }
-
-  /**
-   * Get tax
-   * @return tax
-   */
-  @javax.annotation.Nullable
-  public Long getTax() {
-    return tax;
-  }
-
-  public void setTax(@javax.annotation.Nullable Long tax) {
-    this.tax = tax;
-  }
-
-
-  public BillingInvoice updatedAt(@javax.annotation.Nullable String updatedAt) {
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-  /**
-   * Get updatedAt
-   * @return updatedAt
-   */
-  @javax.annotation.Nullable
-  public String getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public void setUpdatedAt(@javax.annotation.Nullable String updatedAt) {
-    this.updatedAt = updatedAt;
+  public void setSubtotalCents(@javax.annotation.Nullable Long subtotalCents) {
+    this.subtotalCents = subtotalCents;
   }
 
 
@@ -632,7 +339,7 @@ public class BillingInvoice {
   }
 
   /**
-   * Get userId
+   * UserID is the customer billed.
    * @return userId
    */
   @javax.annotation.Nullable
@@ -642,25 +349,6 @@ public class BillingInvoice {
 
   public void setUserId(@javax.annotation.Nullable String userId) {
     this.userId = userId;
-  }
-
-
-  public BillingInvoice voidedAt(@javax.annotation.Nullable String voidedAt) {
-    this.voidedAt = voidedAt;
-    return this;
-  }
-
-  /**
-   * Get voidedAt
-   * @return voidedAt
-   */
-  @javax.annotation.Nullable
-  public String getVoidedAt() {
-    return voidedAt;
-  }
-
-  public void setVoidedAt(@javax.annotation.Nullable String voidedAt) {
-    this.voidedAt = voidedAt;
   }
 
   /**
@@ -718,68 +406,42 @@ public class BillingInvoice {
       return false;
     }
     BillingInvoice billingInvoice = (BillingInvoice) o;
-    return Objects.equals(this.amountDue, billingInvoice.amountDue) &&
-        Objects.equals(this.amountPaid, billingInvoice.amountPaid) &&
-        Objects.equals(this.attemptCount, billingInvoice.attemptCount) &&
+    return Objects.equals(this.amountDueCents, billingInvoice.amountDueCents) &&
+        Objects.equals(this.amountPaidCents, billingInvoice.amountPaidCents) &&
         Objects.equals(this.createdAt, billingInvoice.createdAt) &&
-        Objects.equals(this.creditApplied, billingInvoice.creditApplied) &&
         Objects.equals(this.currency, billingInvoice.currency) &&
         Objects.equals(this.customerEmail, billingInvoice.customerEmail) &&
-        Objects.equals(this.discount, billingInvoice.discount) &&
-        Objects.equals(this.dueDate, billingInvoice.dueDate) &&
         Objects.equals(this.id, billingInvoice.id) &&
-        Objects.equals(this.lineItems, billingInvoice.lineItems) &&
+        Objects.equals(this.lines, billingInvoice.lines) &&
         Objects.equals(this.number, billingInvoice.number) &&
-        Objects.equals(this.numberStr, billingInvoice.numberStr) &&
-        Objects.equals(this.paidAt, billingInvoice.paidAt) &&
-        Objects.equals(this.paymentMethod, billingInvoice.paymentMethod) &&
         Objects.equals(this.paymentRef, billingInvoice.paymentRef) &&
-        Objects.equals(this.periodEnd, billingInvoice.periodEnd) &&
-        Objects.equals(this.periodStart, billingInvoice.periodStart) &&
         Objects.equals(this.status, billingInvoice.status) &&
-        Objects.equals(this.subscriptionId, billingInvoice.subscriptionId) &&
-        Objects.equals(this.subtotal, billingInvoice.subtotal) &&
-        Objects.equals(this.tax, billingInvoice.tax) &&
-        Objects.equals(this.updatedAt, billingInvoice.updatedAt) &&
-        Objects.equals(this.userId, billingInvoice.userId) &&
-        Objects.equals(this.voidedAt, billingInvoice.voidedAt)&&
+        Objects.equals(this.subtotalCents, billingInvoice.subtotalCents) &&
+        Objects.equals(this.userId, billingInvoice.userId)&&
         Objects.equals(this.additionalProperties, billingInvoice.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amountDue, amountPaid, attemptCount, createdAt, creditApplied, currency, customerEmail, discount, dueDate, id, lineItems, number, numberStr, paidAt, paymentMethod, paymentRef, periodEnd, periodStart, status, subscriptionId, subtotal, tax, updatedAt, userId, voidedAt, additionalProperties);
+    return Objects.hash(amountDueCents, amountPaidCents, createdAt, currency, customerEmail, id, lines, number, paymentRef, status, subtotalCents, userId, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BillingInvoice {\n");
-    sb.append("    amountDue: ").append(toIndentedString(amountDue)).append("\n");
-    sb.append("    amountPaid: ").append(toIndentedString(amountPaid)).append("\n");
-    sb.append("    attemptCount: ").append(toIndentedString(attemptCount)).append("\n");
+    sb.append("    amountDueCents: ").append(toIndentedString(amountDueCents)).append("\n");
+    sb.append("    amountPaidCents: ").append(toIndentedString(amountPaidCents)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    creditApplied: ").append(toIndentedString(creditApplied)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    customerEmail: ").append(toIndentedString(customerEmail)).append("\n");
-    sb.append("    discount: ").append(toIndentedString(discount)).append("\n");
-    sb.append("    dueDate: ").append(toIndentedString(dueDate)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");
+    sb.append("    lines: ").append(toIndentedString(lines)).append("\n");
     sb.append("    number: ").append(toIndentedString(number)).append("\n");
-    sb.append("    numberStr: ").append(toIndentedString(numberStr)).append("\n");
-    sb.append("    paidAt: ").append(toIndentedString(paidAt)).append("\n");
-    sb.append("    paymentMethod: ").append(toIndentedString(paymentMethod)).append("\n");
     sb.append("    paymentRef: ").append(toIndentedString(paymentRef)).append("\n");
-    sb.append("    periodEnd: ").append(toIndentedString(periodEnd)).append("\n");
-    sb.append("    periodStart: ").append(toIndentedString(periodStart)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    subscriptionId: ").append(toIndentedString(subscriptionId)).append("\n");
-    sb.append("    subtotal: ").append(toIndentedString(subtotal)).append("\n");
-    sb.append("    tax: ").append(toIndentedString(tax)).append("\n");
-    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+    sb.append("    subtotalCents: ").append(toIndentedString(subtotalCents)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    voidedAt: ").append(toIndentedString(voidedAt)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -802,7 +464,7 @@ public class BillingInvoice {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("amountDue", "amountPaid", "attemptCount", "createdAt", "creditApplied", "currency", "customerEmail", "discount", "dueDate", "id", "lineItems", "number", "numberStr", "paidAt", "paymentMethod", "paymentRef", "periodEnd", "periodStart", "status", "subscriptionId", "subtotal", "tax", "updatedAt", "userId", "voidedAt"));
+    openapiFields = new HashSet<String>(Arrays.asList("amountDueCents", "amountPaidCents", "createdAt", "currency", "customerEmail", "id", "lines", "number", "paymentRef", "status", "subtotalCents", "userId"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -830,58 +492,34 @@ public class BillingInvoice {
       if ((jsonObj.get("customerEmail") != null && !jsonObj.get("customerEmail").isJsonNull()) && !jsonObj.get("customerEmail").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `customerEmail` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customerEmail").toString()));
       }
-      if ((jsonObj.get("dueDate") != null && !jsonObj.get("dueDate").isJsonNull()) && !jsonObj.get("dueDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `dueDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dueDate").toString()));
-      }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (jsonObj.get("lineItems") != null && !jsonObj.get("lineItems").isJsonNull()) {
-        JsonArray jsonArraylineItems = jsonObj.getAsJsonArray("lineItems");
-        if (jsonArraylineItems != null) {
+      if (jsonObj.get("lines") != null && !jsonObj.get("lines").isJsonNull()) {
+        JsonArray jsonArraylines = jsonObj.getAsJsonArray("lines");
+        if (jsonArraylines != null) {
           // ensure the json data is an array
-          if (!jsonObj.get("lineItems").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `lineItems` to be an array in the JSON string but got `%s`", jsonObj.get("lineItems").toString()));
+          if (!jsonObj.get("lines").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `lines` to be an array in the JSON string but got `%s`", jsonObj.get("lines").toString()));
           }
 
-          // validate the optional field `lineItems` (array)
-          for (int i = 0; i < jsonArraylineItems.size(); i++) {
-            InvoiceLineItem.validateJsonElement(jsonArraylineItems.get(i));
+          // validate the optional field `lines` (array)
+          for (int i = 0; i < jsonArraylines.size(); i++) {
+            BillingInvoiceLine.validateJsonElement(jsonArraylines.get(i));
           };
         }
       }
-      if ((jsonObj.get("numberStr") != null && !jsonObj.get("numberStr").isJsonNull()) && !jsonObj.get("numberStr").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `numberStr` to be a primitive type in the JSON string but got `%s`", jsonObj.get("numberStr").toString()));
-      }
-      if ((jsonObj.get("paidAt") != null && !jsonObj.get("paidAt").isJsonNull()) && !jsonObj.get("paidAt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `paidAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("paidAt").toString()));
-      }
-      if ((jsonObj.get("paymentMethod") != null && !jsonObj.get("paymentMethod").isJsonNull()) && !jsonObj.get("paymentMethod").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `paymentMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("paymentMethod").toString()));
+      if ((jsonObj.get("number") != null && !jsonObj.get("number").isJsonNull()) && !jsonObj.get("number").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `number` to be a primitive type in the JSON string but got `%s`", jsonObj.get("number").toString()));
       }
       if ((jsonObj.get("paymentRef") != null && !jsonObj.get("paymentRef").isJsonNull()) && !jsonObj.get("paymentRef").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `paymentRef` to be a primitive type in the JSON string but got `%s`", jsonObj.get("paymentRef").toString()));
       }
-      if ((jsonObj.get("periodEnd") != null && !jsonObj.get("periodEnd").isJsonNull()) && !jsonObj.get("periodEnd").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `periodEnd` to be a primitive type in the JSON string but got `%s`", jsonObj.get("periodEnd").toString()));
-      }
-      if ((jsonObj.get("periodStart") != null && !jsonObj.get("periodStart").isJsonNull()) && !jsonObj.get("periodStart").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `periodStart` to be a primitive type in the JSON string but got `%s`", jsonObj.get("periodStart").toString()));
-      }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
-      if ((jsonObj.get("subscriptionId") != null && !jsonObj.get("subscriptionId").isJsonNull()) && !jsonObj.get("subscriptionId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `subscriptionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subscriptionId").toString()));
-      }
-      if ((jsonObj.get("updatedAt") != null && !jsonObj.get("updatedAt").isJsonNull()) && !jsonObj.get("updatedAt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `updatedAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updatedAt").toString()));
-      }
       if ((jsonObj.get("userId") != null && !jsonObj.get("userId").isJsonNull()) && !jsonObj.get("userId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `userId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userId").toString()));
-      }
-      if ((jsonObj.get("voidedAt") != null && !jsonObj.get("voidedAt").isJsonNull()) && !jsonObj.get("voidedAt").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `voidedAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("voidedAt").toString()));
       }
   }
 

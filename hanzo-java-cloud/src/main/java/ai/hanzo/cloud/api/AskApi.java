@@ -27,9 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.AskReport;
 import ai.hanzo.cloud.model.AskRequest;
-import ai.hanzo.cloud.model.Report;
-import ai.hanzo.cloud.model.WebQuestion;
+import ai.hanzo.cloud.model.AskWebQuestion;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -169,7 +170,7 @@ public class AskApi {
     }
     /**
      * Build call for researchWeb
-     * @param webQuestion  (required)
+     * @param askWebQuestion  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -178,9 +179,10 @@ public class AskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call researchWebCall(@javax.annotation.Nonnull WebQuestion webQuestion, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call researchWebCall(@javax.annotation.Nonnull AskWebQuestion askWebQuestion, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -194,7 +196,7 @@ public class AskApi {
             basePath = null;
         }
 
-        Object localVarPostBody = webQuestion;
+        Object localVarPostBody = askWebQuestion;
 
         // create path and map variables
         String localVarPath = "/v1/ask/web";
@@ -206,7 +208,8 @@ public class AskApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -226,57 +229,59 @@ public class AskApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call researchWebValidateBeforeCall(@javax.annotation.Nonnull WebQuestion webQuestion, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'webQuestion' is set
-        if (webQuestion == null) {
-            throw new ApiException("Missing the required parameter 'webQuestion' when calling researchWeb(Async)");
+    private okhttp3.Call researchWebValidateBeforeCall(@javax.annotation.Nonnull AskWebQuestion askWebQuestion, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'askWebQuestion' is set
+        if (askWebQuestion == null) {
+            throw new ApiException("Missing the required parameter 'askWebQuestion' when calling researchWeb(Async)");
         }
 
-        return researchWebCall(webQuestion, _callback);
+        return researchWebCall(askWebQuestion, _callback);
 
     }
 
     /**
      * Research a question on the live web and answer it with sources cited
      * Researches a question on the live web and answers it with its sources cited.  This is the DEEP one. It plans the question into topics, runs several web searches, FETCHES AND READS the pages it finds, ranks them, and writes a grounded answer with inline markdown citations. Use it for anything that needs evidence, comparison or current fact — \&quot;what changed in X\&quot;, \&quot;compare A and B\&quot;, \&quot;is this claim true\&quot;. For a plain list of links, use search_web instead; for one page you already have the URL of, use read_page.  &#x60;mode&#x60; buys depth: &#x60;search&#x60; is a single fast pass, &#x60;news&#x60; biases to recency, &#x60;research&#x60; plans and iterates, &#x60;deep&#x60; surveys widest. &#x60;sources&#x60; narrows the evidence to &#x60;web&#x60;, &#x60;news&#x60;, &#x60;academic&#x60;, &#x60;github&#x60;, &#x60;reddit&#x60; or &#x60;x&#x60; — each becomes a site-scoped search, which is how this reaches X/Twitter posts.  EVERY CITATION IS A PAGE THIS CALL FETCHED. That is a property of the text and not an instruction to the model: each source is fenced with a per-request nonce so a crawled page cannot print itself a source number, and every markdown link in the answer is checked against the gathered set before it is returned. So a link in &#x60;answer&#x60; always appears in &#x60;sources&#x60;, and a page that was not read cannot be cited.  It is BOUNDED and it degrades rather than failing: a mode&#39;s rounds, wall clock and token ceiling all cap it, and a search that finds little or a page that will not load yields a thinner answer, never an error. A validated principal is required, and the answer is billed once to that principal&#39;s org.
-     * @param webQuestion  (required)
-     * @return Report
+     * @param askWebQuestion  (required)
+     * @return AskReport
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Report researchWeb(@javax.annotation.Nonnull WebQuestion webQuestion) throws ApiException {
-        ApiResponse<Report> localVarResp = researchWebWithHttpInfo(webQuestion);
+    public AskReport researchWeb(@javax.annotation.Nonnull AskWebQuestion askWebQuestion) throws ApiException {
+        ApiResponse<AskReport> localVarResp = researchWebWithHttpInfo(askWebQuestion);
         return localVarResp.getData();
     }
 
     /**
      * Research a question on the live web and answer it with sources cited
      * Researches a question on the live web and answers it with its sources cited.  This is the DEEP one. It plans the question into topics, runs several web searches, FETCHES AND READS the pages it finds, ranks them, and writes a grounded answer with inline markdown citations. Use it for anything that needs evidence, comparison or current fact — \&quot;what changed in X\&quot;, \&quot;compare A and B\&quot;, \&quot;is this claim true\&quot;. For a plain list of links, use search_web instead; for one page you already have the URL of, use read_page.  &#x60;mode&#x60; buys depth: &#x60;search&#x60; is a single fast pass, &#x60;news&#x60; biases to recency, &#x60;research&#x60; plans and iterates, &#x60;deep&#x60; surveys widest. &#x60;sources&#x60; narrows the evidence to &#x60;web&#x60;, &#x60;news&#x60;, &#x60;academic&#x60;, &#x60;github&#x60;, &#x60;reddit&#x60; or &#x60;x&#x60; — each becomes a site-scoped search, which is how this reaches X/Twitter posts.  EVERY CITATION IS A PAGE THIS CALL FETCHED. That is a property of the text and not an instruction to the model: each source is fenced with a per-request nonce so a crawled page cannot print itself a source number, and every markdown link in the answer is checked against the gathered set before it is returned. So a link in &#x60;answer&#x60; always appears in &#x60;sources&#x60;, and a page that was not read cannot be cited.  It is BOUNDED and it degrades rather than failing: a mode&#39;s rounds, wall clock and token ceiling all cap it, and a search that finds little or a page that will not load yields a thinner answer, never an error. A validated principal is required, and the answer is billed once to that principal&#39;s org.
-     * @param webQuestion  (required)
-     * @return ApiResponse&lt;Report&gt;
+     * @param askWebQuestion  (required)
+     * @return ApiResponse&lt;AskReport&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Report> researchWebWithHttpInfo(@javax.annotation.Nonnull WebQuestion webQuestion) throws ApiException {
-        okhttp3.Call localVarCall = researchWebValidateBeforeCall(webQuestion, null);
-        Type localVarReturnType = new TypeToken<Report>(){}.getType();
+    public ApiResponse<AskReport> researchWebWithHttpInfo(@javax.annotation.Nonnull AskWebQuestion askWebQuestion) throws ApiException {
+        okhttp3.Call localVarCall = researchWebValidateBeforeCall(askWebQuestion, null);
+        Type localVarReturnType = new TypeToken<AskReport>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Research a question on the live web and answer it with sources cited (asynchronously)
      * Researches a question on the live web and answers it with its sources cited.  This is the DEEP one. It plans the question into topics, runs several web searches, FETCHES AND READS the pages it finds, ranks them, and writes a grounded answer with inline markdown citations. Use it for anything that needs evidence, comparison or current fact — \&quot;what changed in X\&quot;, \&quot;compare A and B\&quot;, \&quot;is this claim true\&quot;. For a plain list of links, use search_web instead; for one page you already have the URL of, use read_page.  &#x60;mode&#x60; buys depth: &#x60;search&#x60; is a single fast pass, &#x60;news&#x60; biases to recency, &#x60;research&#x60; plans and iterates, &#x60;deep&#x60; surveys widest. &#x60;sources&#x60; narrows the evidence to &#x60;web&#x60;, &#x60;news&#x60;, &#x60;academic&#x60;, &#x60;github&#x60;, &#x60;reddit&#x60; or &#x60;x&#x60; — each becomes a site-scoped search, which is how this reaches X/Twitter posts.  EVERY CITATION IS A PAGE THIS CALL FETCHED. That is a property of the text and not an instruction to the model: each source is fenced with a per-request nonce so a crawled page cannot print itself a source number, and every markdown link in the answer is checked against the gathered set before it is returned. So a link in &#x60;answer&#x60; always appears in &#x60;sources&#x60;, and a page that was not read cannot be cited.  It is BOUNDED and it degrades rather than failing: a mode&#39;s rounds, wall clock and token ceiling all cap it, and a search that finds little or a page that will not load yields a thinner answer, never an error. A validated principal is required, and the answer is billed once to that principal&#39;s org.
-     * @param webQuestion  (required)
+     * @param askWebQuestion  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -285,12 +290,13 @@ public class AskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call researchWebAsync(@javax.annotation.Nonnull WebQuestion webQuestion, final ApiCallback<Report> _callback) throws ApiException {
+    public okhttp3.Call researchWebAsync(@javax.annotation.Nonnull AskWebQuestion askWebQuestion, final ApiCallback<AskReport> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = researchWebValidateBeforeCall(webQuestion, _callback);
-        Type localVarReturnType = new TypeToken<Report>(){}.getType();
+        okhttp3.Call localVarCall = researchWebValidateBeforeCall(askWebQuestion, _callback);
+        Type localVarReturnType = new TypeToken<AskReport>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

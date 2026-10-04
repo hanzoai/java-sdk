@@ -14,13 +14,16 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.AiCacheWrites;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,10 +53,30 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class AiAnthropicUsage {
+  public static final String SERIALIZED_NAME_CACHE_CREATION = "cache_creation";
+  @SerializedName(SERIALIZED_NAME_CACHE_CREATION)
+  @javax.annotation.Nullable
+  private AiCacheWrites cacheCreation;
+
+  public static final String SERIALIZED_NAME_CACHE_CREATION_INPUT_TOKENS = "cache_creation_input_tokens";
+  @SerializedName(SERIALIZED_NAME_CACHE_CREATION_INPUT_TOKENS)
+  @javax.annotation.Nullable
+  private Integer cacheCreationInputTokens;
+
+  public static final String SERIALIZED_NAME_CACHE_READ_INPUT_TOKENS = "cache_read_input_tokens";
+  @SerializedName(SERIALIZED_NAME_CACHE_READ_INPUT_TOKENS)
+  @javax.annotation.Nullable
+  private Integer cacheReadInputTokens;
+
   public static final String SERIALIZED_NAME_INPUT_TOKENS = "input_tokens";
   @SerializedName(SERIALIZED_NAME_INPUT_TOKENS)
   @javax.annotation.Nullable
   private Integer inputTokens;
+
+  public static final String SERIALIZED_NAME_ITERATIONS = "iterations";
+  @SerializedName(SERIALIZED_NAME_ITERATIONS)
+  @javax.annotation.Nullable
+  private List<AiAnthropicUsage> iterations = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_OUTPUT_TOKENS = "output_tokens";
   @SerializedName(SERIALIZED_NAME_OUTPUT_TOKENS)
@@ -62,6 +85,63 @@ public class AiAnthropicUsage {
 
   public AiAnthropicUsage() {
   }
+
+  public AiAnthropicUsage cacheCreation(@javax.annotation.Nullable AiCacheWrites cacheCreation) {
+    this.cacheCreation = cacheCreation;
+    return this;
+  }
+
+  /**
+   * Get cacheCreation
+   * @return cacheCreation
+   */
+  @javax.annotation.Nullable
+  public AiCacheWrites getCacheCreation() {
+    return cacheCreation;
+  }
+
+  public void setCacheCreation(@javax.annotation.Nullable AiCacheWrites cacheCreation) {
+    this.cacheCreation = cacheCreation;
+  }
+
+
+  public AiAnthropicUsage cacheCreationInputTokens(@javax.annotation.Nullable Integer cacheCreationInputTokens) {
+    this.cacheCreationInputTokens = cacheCreationInputTokens;
+    return this;
+  }
+
+  /**
+   * Get cacheCreationInputTokens
+   * @return cacheCreationInputTokens
+   */
+  @javax.annotation.Nullable
+  public Integer getCacheCreationInputTokens() {
+    return cacheCreationInputTokens;
+  }
+
+  public void setCacheCreationInputTokens(@javax.annotation.Nullable Integer cacheCreationInputTokens) {
+    this.cacheCreationInputTokens = cacheCreationInputTokens;
+  }
+
+
+  public AiAnthropicUsage cacheReadInputTokens(@javax.annotation.Nullable Integer cacheReadInputTokens) {
+    this.cacheReadInputTokens = cacheReadInputTokens;
+    return this;
+  }
+
+  /**
+   * Get cacheReadInputTokens
+   * @return cacheReadInputTokens
+   */
+  @javax.annotation.Nullable
+  public Integer getCacheReadInputTokens() {
+    return cacheReadInputTokens;
+  }
+
+  public void setCacheReadInputTokens(@javax.annotation.Nullable Integer cacheReadInputTokens) {
+    this.cacheReadInputTokens = cacheReadInputTokens;
+  }
+
 
   public AiAnthropicUsage inputTokens(@javax.annotation.Nullable Integer inputTokens) {
     this.inputTokens = inputTokens;
@@ -79,6 +159,33 @@ public class AiAnthropicUsage {
 
   public void setInputTokens(@javax.annotation.Nullable Integer inputTokens) {
     this.inputTokens = inputTokens;
+  }
+
+
+  public AiAnthropicUsage iterations(@javax.annotation.Nullable List<AiAnthropicUsage> iterations) {
+    this.iterations = iterations;
+    return this;
+  }
+
+  public AiAnthropicUsage addIterationsItem(AiAnthropicUsage iterationsItem) {
+    if (this.iterations == null) {
+      this.iterations = new ArrayList<>();
+    }
+    this.iterations.add(iterationsItem);
+    return this;
+  }
+
+  /**
+   * Get iterations
+   * @return iterations
+   */
+  @javax.annotation.Nullable
+  public List<AiAnthropicUsage> getIterations() {
+    return iterations;
+  }
+
+  public void setIterations(@javax.annotation.Nullable List<AiAnthropicUsage> iterations) {
+    this.iterations = iterations;
   }
 
 
@@ -155,21 +262,29 @@ public class AiAnthropicUsage {
       return false;
     }
     AiAnthropicUsage aiAnthropicUsage = (AiAnthropicUsage) o;
-    return Objects.equals(this.inputTokens, aiAnthropicUsage.inputTokens) &&
+    return Objects.equals(this.cacheCreation, aiAnthropicUsage.cacheCreation) &&
+        Objects.equals(this.cacheCreationInputTokens, aiAnthropicUsage.cacheCreationInputTokens) &&
+        Objects.equals(this.cacheReadInputTokens, aiAnthropicUsage.cacheReadInputTokens) &&
+        Objects.equals(this.inputTokens, aiAnthropicUsage.inputTokens) &&
+        Objects.equals(this.iterations, aiAnthropicUsage.iterations) &&
         Objects.equals(this.outputTokens, aiAnthropicUsage.outputTokens)&&
         Objects.equals(this.additionalProperties, aiAnthropicUsage.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inputTokens, outputTokens, additionalProperties);
+    return Objects.hash(cacheCreation, cacheCreationInputTokens, cacheReadInputTokens, inputTokens, iterations, outputTokens, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AiAnthropicUsage {\n");
+    sb.append("    cacheCreation: ").append(toIndentedString(cacheCreation)).append("\n");
+    sb.append("    cacheCreationInputTokens: ").append(toIndentedString(cacheCreationInputTokens)).append("\n");
+    sb.append("    cacheReadInputTokens: ").append(toIndentedString(cacheReadInputTokens)).append("\n");
     sb.append("    inputTokens: ").append(toIndentedString(inputTokens)).append("\n");
+    sb.append("    iterations: ").append(toIndentedString(iterations)).append("\n");
     sb.append("    outputTokens: ").append(toIndentedString(outputTokens)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -193,7 +308,7 @@ public class AiAnthropicUsage {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("input_tokens", "output_tokens"));
+    openapiFields = new HashSet<String>(Arrays.asList("cache_creation", "cache_creation_input_tokens", "cache_read_input_tokens", "input_tokens", "iterations", "output_tokens"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -212,6 +327,24 @@ public class AiAnthropicUsage {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `cache_creation`
+      if (jsonObj.get("cache_creation") != null && !jsonObj.get("cache_creation").isJsonNull()) {
+        AiCacheWrites.validateJsonElement(jsonObj.get("cache_creation"));
+      }
+      if (jsonObj.get("iterations") != null && !jsonObj.get("iterations").isJsonNull()) {
+        JsonArray jsonArrayiterations = jsonObj.getAsJsonArray("iterations");
+        if (jsonArrayiterations != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("iterations").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `iterations` to be an array in the JSON string but got `%s`", jsonObj.get("iterations").toString()));
+          }
+
+          // validate the optional field `iterations` (array)
+          for (int i = 0; i < jsonArrayiterations.size(); i++) {
+            AiAnthropicUsage.validateJsonElement(jsonArrayiterations.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

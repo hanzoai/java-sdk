@@ -14,7 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.IamAuditLog;
+import ai.hanzo.cloud.model.IamUser;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -53,45 +53,18 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class IamListOutput {
-  public static final String SERIALIZED_NAME_AUDIT_LOGS = "auditLogs";
-  @SerializedName(SERIALIZED_NAME_AUDIT_LOGS)
-  @javax.annotation.Nullable
-  private List<IamAuditLog> auditLogs = new ArrayList<>();
-
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
   private Long total;
 
+  public static final String SERIALIZED_NAME_USERS = "users";
+  @SerializedName(SERIALIZED_NAME_USERS)
+  @javax.annotation.Nullable
+  private List<IamUser> users = new ArrayList<>();
+
   public IamListOutput() {
   }
-
-  public IamListOutput auditLogs(@javax.annotation.Nullable List<IamAuditLog> auditLogs) {
-    this.auditLogs = auditLogs;
-    return this;
-  }
-
-  public IamListOutput addAuditLogsItem(IamAuditLog auditLogsItem) {
-    if (this.auditLogs == null) {
-      this.auditLogs = new ArrayList<>();
-    }
-    this.auditLogs.add(auditLogsItem);
-    return this;
-  }
-
-  /**
-   * Get auditLogs
-   * @return auditLogs
-   */
-  @javax.annotation.Nullable
-  public List<IamAuditLog> getAuditLogs() {
-    return auditLogs;
-  }
-
-  public void setAuditLogs(@javax.annotation.Nullable List<IamAuditLog> auditLogs) {
-    this.auditLogs = auditLogs;
-  }
-
 
   public IamListOutput total(@javax.annotation.Nullable Long total) {
     this.total = total;
@@ -109,6 +82,33 @@ public class IamListOutput {
 
   public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
+  }
+
+
+  public IamListOutput users(@javax.annotation.Nullable List<IamUser> users) {
+    this.users = users;
+    return this;
+  }
+
+  public IamListOutput addUsersItem(IamUser usersItem) {
+    if (this.users == null) {
+      this.users = new ArrayList<>();
+    }
+    this.users.add(usersItem);
+    return this;
+  }
+
+  /**
+   * Get users
+   * @return users
+   */
+  @javax.annotation.Nullable
+  public List<IamUser> getUsers() {
+    return users;
+  }
+
+  public void setUsers(@javax.annotation.Nullable List<IamUser> users) {
+    this.users = users;
   }
 
   /**
@@ -166,22 +166,22 @@ public class IamListOutput {
       return false;
     }
     IamListOutput iamListOutput = (IamListOutput) o;
-    return Objects.equals(this.auditLogs, iamListOutput.auditLogs) &&
-        Objects.equals(this.total, iamListOutput.total)&&
+    return Objects.equals(this.total, iamListOutput.total) &&
+        Objects.equals(this.users, iamListOutput.users)&&
         Objects.equals(this.additionalProperties, iamListOutput.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(auditLogs, total, additionalProperties);
+    return Objects.hash(total, users, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IamListOutput {\n");
-    sb.append("    auditLogs: ").append(toIndentedString(auditLogs)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
+    sb.append("    users: ").append(toIndentedString(users)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -204,7 +204,7 @@ public class IamListOutput {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("auditLogs", "total"));
+    openapiFields = new HashSet<String>(Arrays.asList("total", "users"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -223,17 +223,17 @@ public class IamListOutput {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("auditLogs") != null && !jsonObj.get("auditLogs").isJsonNull()) {
-        JsonArray jsonArrayauditLogs = jsonObj.getAsJsonArray("auditLogs");
-        if (jsonArrayauditLogs != null) {
+      if (jsonObj.get("users") != null && !jsonObj.get("users").isJsonNull()) {
+        JsonArray jsonArrayusers = jsonObj.getAsJsonArray("users");
+        if (jsonArrayusers != null) {
           // ensure the json data is an array
-          if (!jsonObj.get("auditLogs").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `auditLogs` to be an array in the JSON string but got `%s`", jsonObj.get("auditLogs").toString()));
+          if (!jsonObj.get("users").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `users` to be an array in the JSON string but got `%s`", jsonObj.get("users").toString()));
           }
 
-          // validate the optional field `auditLogs` (array)
-          for (int i = 0; i < jsonArrayauditLogs.size(); i++) {
-            IamAuditLog.validateJsonElement(jsonArrayauditLogs.get(i));
+          // validate the optional field `users` (array)
+          for (int i = 0; i < jsonArrayusers.size(); i++) {
+            IamUser.validateJsonElement(jsonArrayusers.get(i));
           };
         }
       }

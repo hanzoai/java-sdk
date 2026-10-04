@@ -27,10 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.DestinationDisconnected;
-import ai.hanzo.cloud.model.DestinationList;
+import ai.hanzo.cloud.model.DestinationDestinationDisconnected;
+import ai.hanzo.cloud.model.DestinationDestinationList;
+import ai.hanzo.cloud.model.DestinationDestinationStatus;
+import ai.hanzo.cloud.model.DestinationDestinationTest;
 import ai.hanzo.cloud.model.DestinationStatus;
-import ai.hanzo.cloud.model.DestinationTest;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -77,7 +79,7 @@ public class DestinationApi {
 
     /**
      * Build call for deleteDestinationByPlatform
-     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights | analytics. (required)
+     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -86,6 +88,7 @@ public class DestinationApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteDestinationByPlatformCall(@javax.annotation.Nonnull String platform, final ApiCallback _callback) throws ApiException {
@@ -115,7 +118,8 @@ public class DestinationApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -147,44 +151,46 @@ public class DestinationApi {
     /**
      * Forgets a destination for the caller&#39;s org: every credential held in KMS, then the stored config.
      * Forgets a destination for the caller&#39;s org: every credential held in KMS, then the stored config. Idempotent, and it requires org admin.
-     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights | analytics. (required)
-     * @return DestinationDisconnected
+     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights. (required)
+     * @return DestinationDestinationDisconnected
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DestinationDisconnected deleteDestinationByPlatform(@javax.annotation.Nonnull String platform) throws ApiException {
-        ApiResponse<DestinationDisconnected> localVarResp = deleteDestinationByPlatformWithHttpInfo(platform);
+    public DestinationDestinationDisconnected deleteDestinationByPlatform(@javax.annotation.Nonnull String platform) throws ApiException {
+        ApiResponse<DestinationDestinationDisconnected> localVarResp = deleteDestinationByPlatformWithHttpInfo(platform);
         return localVarResp.getData();
     }
 
     /**
      * Forgets a destination for the caller&#39;s org: every credential held in KMS, then the stored config.
      * Forgets a destination for the caller&#39;s org: every credential held in KMS, then the stored config. Idempotent, and it requires org admin.
-     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights | analytics. (required)
-     * @return ApiResponse&lt;DestinationDisconnected&gt;
+     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights. (required)
+     * @return ApiResponse&lt;DestinationDestinationDisconnected&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DestinationDisconnected> deleteDestinationByPlatformWithHttpInfo(@javax.annotation.Nonnull String platform) throws ApiException {
+    public ApiResponse<DestinationDestinationDisconnected> deleteDestinationByPlatformWithHttpInfo(@javax.annotation.Nonnull String platform) throws ApiException {
         okhttp3.Call localVarCall = deleteDestinationByPlatformValidateBeforeCall(platform, null);
-        Type localVarReturnType = new TypeToken<DestinationDisconnected>(){}.getType();
+        Type localVarReturnType = new TypeToken<DestinationDestinationDisconnected>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Forgets a destination for the caller&#39;s org: every credential held in KMS, then the stored config. (asynchronously)
      * Forgets a destination for the caller&#39;s org: every credential held in KMS, then the stored config. Idempotent, and it requires org admin.
-     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights | analytics. (required)
+     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -193,12 +199,13 @@ public class DestinationApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteDestinationByPlatformAsync(@javax.annotation.Nonnull String platform, final ApiCallback<DestinationDisconnected> _callback) throws ApiException {
+    public okhttp3.Call deleteDestinationByPlatformAsync(@javax.annotation.Nonnull String platform, final ApiCallback<DestinationDestinationDisconnected> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteDestinationByPlatformValidateBeforeCall(platform, _callback);
-        Type localVarReturnType = new TypeToken<DestinationDisconnected>(){}.getType();
+        Type localVarReturnType = new TypeToken<DestinationDestinationDisconnected>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -212,6 +219,7 @@ public class DestinationApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDestinationCall(final ApiCallback _callback) throws ApiException {
@@ -240,7 +248,8 @@ public class DestinationApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -267,35 +276,37 @@ public class DestinationApi {
     /**
      * Reports every destination this deployment can forward to, each with the caller org&#39;s connection state: whether it is connected, whether it is enabled, whether a credential resolves right now, and the config fields the console renders for it.
      * Reports every destination this deployment can forward to, each with the caller org&#39;s connection state: whether it is connected, whether it is enabled, whether a credential resolves right now, and the config fields the console renders for it.
-     * @return DestinationList
+     * @return DestinationDestinationList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DestinationList getDestination() throws ApiException {
-        ApiResponse<DestinationList> localVarResp = getDestinationWithHttpInfo();
+    public DestinationDestinationList getDestination() throws ApiException {
+        ApiResponse<DestinationDestinationList> localVarResp = getDestinationWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports every destination this deployment can forward to, each with the caller org&#39;s connection state: whether it is connected, whether it is enabled, whether a credential resolves right now, and the config fields the console renders for it.
      * Reports every destination this deployment can forward to, each with the caller org&#39;s connection state: whether it is connected, whether it is enabled, whether a credential resolves right now, and the config fields the console renders for it.
-     * @return ApiResponse&lt;DestinationList&gt;
+     * @return ApiResponse&lt;DestinationDestinationList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DestinationList> getDestinationWithHttpInfo() throws ApiException {
+    public ApiResponse<DestinationDestinationList> getDestinationWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDestinationValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<DestinationList>(){}.getType();
+        Type localVarReturnType = new TypeToken<DestinationDestinationList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -310,18 +321,19 @@ public class DestinationApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDestinationAsync(final ApiCallback<DestinationList> _callback) throws ApiException {
+    public okhttp3.Call getDestinationAsync(final ApiCallback<DestinationDestinationList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDestinationValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<DestinationList>(){}.getType();
+        Type localVarReturnType = new TypeToken<DestinationDestinationList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for getDestinationByPlatform
-     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights | analytics. (required)
+     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -330,6 +342,7 @@ public class DestinationApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDestinationByPlatformCall(@javax.annotation.Nonnull String platform, final ApiCallback _callback) throws ApiException {
@@ -359,7 +372,8 @@ public class DestinationApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -391,44 +405,46 @@ public class DestinationApi {
     /**
      * Reports one destination&#39;s card for the caller&#39;s org — its config fields, its connection state, and whether a credential resolves right now.
      * Reports one destination&#39;s card for the caller&#39;s org — its config fields, its connection state, and whether a credential resolves right now. A platform this deployment does not carry is not found.
-     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights | analytics. (required)
-     * @return DestinationStatus
+     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights. (required)
+     * @return DestinationDestinationStatus
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DestinationStatus getDestinationByPlatform(@javax.annotation.Nonnull String platform) throws ApiException {
-        ApiResponse<DestinationStatus> localVarResp = getDestinationByPlatformWithHttpInfo(platform);
+    public DestinationDestinationStatus getDestinationByPlatform(@javax.annotation.Nonnull String platform) throws ApiException {
+        ApiResponse<DestinationDestinationStatus> localVarResp = getDestinationByPlatformWithHttpInfo(platform);
         return localVarResp.getData();
     }
 
     /**
      * Reports one destination&#39;s card for the caller&#39;s org — its config fields, its connection state, and whether a credential resolves right now.
      * Reports one destination&#39;s card for the caller&#39;s org — its config fields, its connection state, and whether a credential resolves right now. A platform this deployment does not carry is not found.
-     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights | analytics. (required)
-     * @return ApiResponse&lt;DestinationStatus&gt;
+     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights. (required)
+     * @return ApiResponse&lt;DestinationDestinationStatus&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DestinationStatus> getDestinationByPlatformWithHttpInfo(@javax.annotation.Nonnull String platform) throws ApiException {
+    public ApiResponse<DestinationDestinationStatus> getDestinationByPlatformWithHttpInfo(@javax.annotation.Nonnull String platform) throws ApiException {
         okhttp3.Call localVarCall = getDestinationByPlatformValidateBeforeCall(platform, null);
-        Type localVarReturnType = new TypeToken<DestinationStatus>(){}.getType();
+        Type localVarReturnType = new TypeToken<DestinationDestinationStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Reports one destination&#39;s card for the caller&#39;s org — its config fields, its connection state, and whether a credential resolves right now. (asynchronously)
      * Reports one destination&#39;s card for the caller&#39;s org — its config fields, its connection state, and whether a credential resolves right now. A platform this deployment does not carry is not found.
-     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights | analytics. (required)
+     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -437,12 +453,13 @@ public class DestinationApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDestinationByPlatformAsync(@javax.annotation.Nonnull String platform, final ApiCallback<DestinationStatus> _callback) throws ApiException {
+    public okhttp3.Call getDestinationByPlatformAsync(@javax.annotation.Nonnull String platform, final ApiCallback<DestinationDestinationStatus> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDestinationByPlatformValidateBeforeCall(platform, _callback);
-        Type localVarReturnType = new TypeToken<DestinationStatus>(){}.getType();
+        Type localVarReturnType = new TypeToken<DestinationDestinationStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -580,7 +597,7 @@ public class DestinationApi {
     }
     /**
      * Build call for postDestinationByPlatformTest
-     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights | analytics. (required)
+     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -589,6 +606,7 @@ public class DestinationApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postDestinationByPlatformTestCall(@javax.annotation.Nonnull String platform, final ApiCallback _callback) throws ApiException {
@@ -618,7 +636,8 @@ public class DestinationApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -648,46 +667,48 @@ public class DestinationApi {
     }
 
     /**
-     * Sends ONE synthetic pageview through the connected destination end to end and reports what the platform said.
-     * Sends ONE synthetic pageview through the connected destination end to end and reports what the platform said. A send the platform refuses is reported as data — {\&quot;ok\&quot;: false, \&quot;error\&quot;: …} at 200 — so the console shows the platform&#39;s own words rather than an error about Hanzo. It requires org admin.
-     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights | analytics. (required)
-     * @return DestinationTest
+     * Sends ONE synthetic conversion through the connected destination end to end and reports what the platform said.
+     * Sends ONE synthetic conversion through the connected destination end to end and reports what the platform said. Where the platform can check one without recording it, it is a lead and nothing is kept: GA4 answers from its validation server, Google Ads validates without importing, and Meta files it under the connection&#39;s Test Event Code (and is refused without one). Anywhere else it is a page view. A send the platform refuses is reported as data — {\&quot;ok\&quot;: false, \&quot;error\&quot;: …} at 200 — so the console shows the platform&#39;s own words rather than an error about Hanzo. It requires org admin.
+     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights. (required)
+     * @return DestinationDestinationTest
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DestinationTest postDestinationByPlatformTest(@javax.annotation.Nonnull String platform) throws ApiException {
-        ApiResponse<DestinationTest> localVarResp = postDestinationByPlatformTestWithHttpInfo(platform);
+    public DestinationDestinationTest postDestinationByPlatformTest(@javax.annotation.Nonnull String platform) throws ApiException {
+        ApiResponse<DestinationDestinationTest> localVarResp = postDestinationByPlatformTestWithHttpInfo(platform);
         return localVarResp.getData();
     }
 
     /**
-     * Sends ONE synthetic pageview through the connected destination end to end and reports what the platform said.
-     * Sends ONE synthetic pageview through the connected destination end to end and reports what the platform said. A send the platform refuses is reported as data — {\&quot;ok\&quot;: false, \&quot;error\&quot;: …} at 200 — so the console shows the platform&#39;s own words rather than an error about Hanzo. It requires org admin.
-     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights | analytics. (required)
-     * @return ApiResponse&lt;DestinationTest&gt;
+     * Sends ONE synthetic conversion through the connected destination end to end and reports what the platform said.
+     * Sends ONE synthetic conversion through the connected destination end to end and reports what the platform said. Where the platform can check one without recording it, it is a lead and nothing is kept: GA4 answers from its validation server, Google Ads validates without importing, and Meta files it under the connection&#39;s Test Event Code (and is refused without one). Anywhere else it is a page view. A send the platform refuses is reported as data — {\&quot;ok\&quot;: false, \&quot;error\&quot;: …} at 200 — so the console shows the platform&#39;s own words rather than an error about Hanzo. It requires org admin.
+     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights. (required)
+     * @return ApiResponse&lt;DestinationDestinationTest&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DestinationTest> postDestinationByPlatformTestWithHttpInfo(@javax.annotation.Nonnull String platform) throws ApiException {
+    public ApiResponse<DestinationDestinationTest> postDestinationByPlatformTestWithHttpInfo(@javax.annotation.Nonnull String platform) throws ApiException {
         okhttp3.Call localVarCall = postDestinationByPlatformTestValidateBeforeCall(platform, null);
-        Type localVarReturnType = new TypeToken<DestinationTest>(){}.getType();
+        Type localVarReturnType = new TypeToken<DestinationDestinationTest>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Sends ONE synthetic pageview through the connected destination end to end and reports what the platform said. (asynchronously)
-     * Sends ONE synthetic pageview through the connected destination end to end and reports what the platform said. A send the platform refuses is reported as data — {\&quot;ok\&quot;: false, \&quot;error\&quot;: …} at 200 — so the console shows the platform&#39;s own words rather than an error about Hanzo. It requires org admin.
-     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights | analytics. (required)
+     * Sends ONE synthetic conversion through the connected destination end to end and reports what the platform said. (asynchronously)
+     * Sends ONE synthetic conversion through the connected destination end to end and reports what the platform said. Where the platform can check one without recording it, it is a lead and nothing is kept: GA4 answers from its validation server, Google Ads validates without importing, and Meta files it under the connection&#39;s Test Event Code (and is refused without one). Anywhere else it is a page view. A send the platform refuses is reported as data — {\&quot;ok\&quot;: false, \&quot;error\&quot;: …} at 200 — so the console shows the platform&#39;s own words rather than an error about Hanzo. It requires org admin.
+     * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | insights. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -696,12 +717,13 @@ public class DestinationApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDestinationByPlatformTestAsync(@javax.annotation.Nonnull String platform, final ApiCallback<DestinationTest> _callback) throws ApiException {
+    public okhttp3.Call postDestinationByPlatformTestAsync(@javax.annotation.Nonnull String platform, final ApiCallback<DestinationDestinationTest> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postDestinationByPlatformTestValidateBeforeCall(platform, _callback);
-        Type localVarReturnType = new TypeToken<DestinationTest>(){}.getType();
+        Type localVarReturnType = new TypeToken<DestinationDestinationTest>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

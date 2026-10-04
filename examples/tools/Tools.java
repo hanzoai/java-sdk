@@ -2,16 +2,16 @@ package ai.hanzo.cloud.examples;
 
 import ai.hanzo.Hanzo;
 import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.ToolsApi;
-import ai.hanzo.cloud.model.Tool;
-import ai.hanzo.cloud.model.ToolList;
+import ai.hanzo.cloud.api.ToolApi;
+import ai.hanzo.cloud.model.ToolTool;
+import ai.hanzo.cloud.model.ToolToolList;
 
 import java.util.List;
 
 /**
  * tools — list the tools this key can reach.
  *
- * <p>Operation: {@code get_tools} — GET /v1/tools.
+ * <p>Operation: {@code get_tool} — GET /v1/tool.
  *
  * <p>The catalogue is per-key: it composes the typed product operations with
  * whatever external servers the caller's org has enabled, so two keys in two
@@ -21,7 +21,7 @@ import java.util.List;
  *
  * <p>(POST /v1/mcp is the JSON-RPC door onto the same catalogue and answers 200
  * with the tool list, but the document does not declare it, so it is not a
- * generated method. GET /v1/tools is the REST view that is.)
+ * generated method. GET /v1/tool is the REST view that is.)
  *
  * <pre>
  *   HANZO_API_KEY=hk-... ./gradlew :examples:tools
@@ -30,16 +30,16 @@ import java.util.List;
 public final class Tools {
 
     public static void main(String[] args) {
-        ToolsApi tools = new ToolsApi(Hanzo.client());
+        ToolApi tools = new ToolApi(Hanzo.client());
 
         try {
-            ToolList catalog = tools.getTools(null, null);
-            List<Tool> listed = catalog.getTools();
+            ToolToolList catalog = tools.getTool(null, null);
+            List<ToolTool> listed = catalog.getTools();
             if (listed == null || listed.isEmpty()) {
                 System.out.println("no tools reachable with this key");
                 return;
             }
-            for (Tool tool : listed) {
+            for (ToolTool tool : listed) {
                 System.out.printf("%-32s %-12s %s%n",
                         tool.getName(),
                         tool.getSource(),

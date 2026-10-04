@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -65,7 +66,7 @@ public class O11yO11yPreference {
   public static final String SERIALIZED_NAME_DEFAULT_VALUE = "defaultValue";
   @SerializedName(SERIALIZED_NAME_DEFAULT_VALUE)
   @javax.annotation.Nullable
-  private Object defaultValue;
+  private Object defaultValue = null;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -80,7 +81,7 @@ public class O11yO11yPreference {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   @javax.annotation.Nullable
-  private Object value;
+  private Object value = null;
 
   public static final String SERIALIZED_NAME_VALUE_TYPE = "valueType";
   @SerializedName(SERIALIZED_NAME_VALUE_TYPE)
@@ -150,7 +151,7 @@ public class O11yO11yPreference {
   }
 
   /**
-   * DefaultValue is the value before anyone set one.
+   * Get defaultValue
    * @return defaultValue
    */
   @javax.annotation.Nullable
@@ -207,7 +208,7 @@ public class O11yO11yPreference {
   }
 
   /**
-   * Value is the current value.
+   * Get value
    * @return value
    */
   @javax.annotation.Nullable
@@ -303,9 +304,20 @@ public class O11yO11yPreference {
         Objects.equals(this.additionalProperties, o11yO11yPreference.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(allowedScopes, allowedValues, defaultValue, description, name, value, valueType, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

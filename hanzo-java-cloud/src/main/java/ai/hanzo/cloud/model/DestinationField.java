@@ -79,7 +79,7 @@ public class DestinationField {
   }
 
   /**
-   * a sample value of the right shape (\&quot;G-XXXXXXX\&quot;), when one helps
+   * Get example
    * @return example
    */
   @javax.annotation.Nullable
@@ -98,7 +98,7 @@ public class DestinationField {
   }
 
   /**
-   * the camelCase key on both the connect body and the stored config
+   * Get key
    * @return key
    */
   @javax.annotation.Nullable
@@ -117,7 +117,7 @@ public class DestinationField {
   }
 
   /**
-   * human label for the console card&#39;s input
+   * Get label
    * @return label
    */
   @javax.annotation.Nullable
@@ -136,7 +136,7 @@ public class DestinationField {
   }
 
   /**
-   * when true, a connect that leaves it empty is refused 400
+   * Get required
    * @return required
    */
   @javax.annotation.Nullable

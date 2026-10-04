@@ -27,13 +27,14 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.ActivityView;
-import ai.hanzo.cloud.model.LeaderboardView;
-import ai.hanzo.cloud.model.OptinView;
-import ai.hanzo.cloud.model.OrgOptinReq;
-import ai.hanzo.cloud.model.OrgOptinView;
-import ai.hanzo.cloud.model.UserOptinReq;
-import ai.hanzo.cloud.model.UserOptinView;
+import ai.hanzo.cloud.model.LeaderboardActivityView;
+import ai.hanzo.cloud.model.LeaderboardLeaderboardView;
+import ai.hanzo.cloud.model.LeaderboardOptinView;
+import ai.hanzo.cloud.model.LeaderboardOrgOptinReq;
+import ai.hanzo.cloud.model.LeaderboardOrgOptinView;
+import ai.hanzo.cloud.model.LeaderboardUserOptinReq;
+import ai.hanzo.cloud.model.LeaderboardUserOptinView;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -92,6 +93,7 @@ public class LeaderboardApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLeaderboardCall(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -136,7 +138,8 @@ public class LeaderboardApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -161,51 +164,53 @@ public class LeaderboardApi {
     }
 
     /**
-     * Leaderboard ranks AI usage over a window, either the users of the caller&#39;s own org or organizations against each other, and always reports the caller&#39;s own standing even when it falls outside the returned page.
-     * Leaderboard ranks AI usage over a window, either the users of the caller&#39;s own org or organizations against each other, and always reports the caller&#39;s own standing even when it falls outside the returned page. Identities are private by default: a caller sees themselves, plus the peers or orgs that opted into public listing, and only an admin sees their own org&#39;s members named. Cross-org spend is restricted to platform admins. When the warehouse is not connected the board answers empty with available&#x3D;false rather than a fabricated rank.
+     * Ranks AI usage over a window, either the users of the caller&#39;s own org or organizations against each other, and always reports the caller&#39;s own standing even when it falls outside the returned page.
+     * Ranks AI usage over a window, either the users of the caller&#39;s own org or organizations against each other, and always reports the caller&#39;s own standing even when it falls outside the returned page. Identities are private by default: a caller sees themselves, plus the peers or orgs that opted into public listing, and only an admin sees their own org&#39;s members named. Cross-org spend is restricted to platform admins. When the warehouse is not connected the board answers empty with available&#x3D;false rather than a fabricated rank.
      * @param scope Scope picks the board: \&quot;personal\&quot; (default) ranks the caller among their own org&#39;s users, \&quot;org\&quot; is that same org board named for an admin, \&quot;global\&quot; ranks organizations against each other. (optional)
      * @param metric Metric is the value ranked: tokens (default), requests, or cost. (optional)
      * @param period Period is the window ranked: day, week, month (default) or all. (optional)
      * @param limit Limit caps the rows returned, clamped to 100. Defaults to 10, which is also what a non-positive or unparseable value takes. (optional)
-     * @return LeaderboardView
+     * @return LeaderboardLeaderboardView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public LeaderboardView getLeaderboard(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<LeaderboardView> localVarResp = getLeaderboardWithHttpInfo(scope, metric, period, limit);
+    public LeaderboardLeaderboardView getLeaderboard(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<LeaderboardLeaderboardView> localVarResp = getLeaderboardWithHttpInfo(scope, metric, period, limit);
         return localVarResp.getData();
     }
 
     /**
-     * Leaderboard ranks AI usage over a window, either the users of the caller&#39;s own org or organizations against each other, and always reports the caller&#39;s own standing even when it falls outside the returned page.
-     * Leaderboard ranks AI usage over a window, either the users of the caller&#39;s own org or organizations against each other, and always reports the caller&#39;s own standing even when it falls outside the returned page. Identities are private by default: a caller sees themselves, plus the peers or orgs that opted into public listing, and only an admin sees their own org&#39;s members named. Cross-org spend is restricted to platform admins. When the warehouse is not connected the board answers empty with available&#x3D;false rather than a fabricated rank.
+     * Ranks AI usage over a window, either the users of the caller&#39;s own org or organizations against each other, and always reports the caller&#39;s own standing even when it falls outside the returned page.
+     * Ranks AI usage over a window, either the users of the caller&#39;s own org or organizations against each other, and always reports the caller&#39;s own standing even when it falls outside the returned page. Identities are private by default: a caller sees themselves, plus the peers or orgs that opted into public listing, and only an admin sees their own org&#39;s members named. Cross-org spend is restricted to platform admins. When the warehouse is not connected the board answers empty with available&#x3D;false rather than a fabricated rank.
      * @param scope Scope picks the board: \&quot;personal\&quot; (default) ranks the caller among their own org&#39;s users, \&quot;org\&quot; is that same org board named for an admin, \&quot;global\&quot; ranks organizations against each other. (optional)
      * @param metric Metric is the value ranked: tokens (default), requests, or cost. (optional)
      * @param period Period is the window ranked: day, week, month (default) or all. (optional)
      * @param limit Limit caps the rows returned, clamped to 100. Defaults to 10, which is also what a non-positive or unparseable value takes. (optional)
-     * @return ApiResponse&lt;LeaderboardView&gt;
+     * @return ApiResponse&lt;LeaderboardLeaderboardView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LeaderboardView> getLeaderboardWithHttpInfo(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<LeaderboardLeaderboardView> getLeaderboardWithHttpInfo(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getLeaderboardValidateBeforeCall(scope, metric, period, limit, null);
-        Type localVarReturnType = new TypeToken<LeaderboardView>(){}.getType();
+        Type localVarReturnType = new TypeToken<LeaderboardLeaderboardView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Leaderboard ranks AI usage over a window, either the users of the caller&#39;s own org or organizations against each other, and always reports the caller&#39;s own standing even when it falls outside the returned page. (asynchronously)
-     * Leaderboard ranks AI usage over a window, either the users of the caller&#39;s own org or organizations against each other, and always reports the caller&#39;s own standing even when it falls outside the returned page. Identities are private by default: a caller sees themselves, plus the peers or orgs that opted into public listing, and only an admin sees their own org&#39;s members named. Cross-org spend is restricted to platform admins. When the warehouse is not connected the board answers empty with available&#x3D;false rather than a fabricated rank.
+     * Ranks AI usage over a window, either the users of the caller&#39;s own org or organizations against each other, and always reports the caller&#39;s own standing even when it falls outside the returned page. (asynchronously)
+     * Ranks AI usage over a window, either the users of the caller&#39;s own org or organizations against each other, and always reports the caller&#39;s own standing even when it falls outside the returned page. Identities are private by default: a caller sees themselves, plus the peers or orgs that opted into public listing, and only an admin sees their own org&#39;s members named. Cross-org spend is restricted to platform admins. When the warehouse is not connected the board answers empty with available&#x3D;false rather than a fabricated rank.
      * @param scope Scope picks the board: \&quot;personal\&quot; (default) ranks the caller among their own org&#39;s users, \&quot;org\&quot; is that same org board named for an admin, \&quot;global\&quot; ranks organizations against each other. (optional)
      * @param metric Metric is the value ranked: tokens (default), requests, or cost. (optional)
      * @param period Period is the window ranked: day, week, month (default) or all. (optional)
@@ -218,12 +223,13 @@ public class LeaderboardApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLeaderboardAsync(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit, final ApiCallback<LeaderboardView> _callback) throws ApiException {
+    public okhttp3.Call getLeaderboardAsync(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit, final ApiCallback<LeaderboardLeaderboardView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLeaderboardValidateBeforeCall(scope, metric, period, limit, _callback);
-        Type localVarReturnType = new TypeToken<LeaderboardView>(){}.getType();
+        Type localVarReturnType = new TypeToken<LeaderboardLeaderboardView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -241,6 +247,7 @@ public class LeaderboardApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLeaderboardActivityCall(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback _callback) throws ApiException {
@@ -285,7 +292,8 @@ public class LeaderboardApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -310,51 +318,53 @@ public class LeaderboardApi {
     }
 
     /**
-     * Activity returns the per-day usage series for ONE authorized subject — the points a contribution heatmap and a timeline are drawn from, gap-filled so every day in the range is present.
-     * Activity returns the per-day usage series for ONE authorized subject — the points a contribution heatmap and a timeline are drawn from, gap-filled so every day in the range is present. Authorization is resolved server-side from the validated principal, so a caller can never widen the subject past what they are entitled to: a non-admin reads only themselves and their own org. subject&#x3D;project answers empty with a note, because the usage ledger records no project column yet. When the warehouse is not connected the series answers empty with available&#x3D;false rather than fabricated days.
+     * Returns the per-day usage series for ONE authorized subject — the points a contribution heatmap and a timeline are drawn from, gap-filled so every day in the range is present.
+     * Returns the per-day usage series for ONE authorized subject — the points a contribution heatmap and a timeline are drawn from, gap-filled so every day in the range is present. Authorization is resolved server-side from the validated principal, so a caller can never widen the subject past what they are entitled to: a non-admin reads only themselves and their own org. subject&#x3D;project answers empty with a note, because the usage ledger records no project column yet. When the warehouse is not connected the series answers empty with available&#x3D;false rather than fabricated days.
      * @param subject Subject is what the series is about: \&quot;user\&quot; (default), \&quot;org\&quot; or \&quot;project\&quot;. (optional)
      * @param id ID names the subject within what the caller is entitled to see. Omitted (or \&quot;me\&quot;) it is the caller themselves, or their own org. Another user requires org admin and must belong to the caller&#39;s org; another org requires a SuperAdmin. (optional)
      * @param from From is the first day of the range, \&quot;2006-01-02\&quot;. Defaults to 90 days back. (optional)
      * @param to To is the last day of the range, \&quot;2006-01-02\&quot;. Defaults to today; the span is clamped to 366 days. (optional)
-     * @return ActivityView
+     * @return LeaderboardActivityView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ActivityView getLeaderboardActivity(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
-        ApiResponse<ActivityView> localVarResp = getLeaderboardActivityWithHttpInfo(subject, id, from, to);
+    public LeaderboardActivityView getLeaderboardActivity(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+        ApiResponse<LeaderboardActivityView> localVarResp = getLeaderboardActivityWithHttpInfo(subject, id, from, to);
         return localVarResp.getData();
     }
 
     /**
-     * Activity returns the per-day usage series for ONE authorized subject — the points a contribution heatmap and a timeline are drawn from, gap-filled so every day in the range is present.
-     * Activity returns the per-day usage series for ONE authorized subject — the points a contribution heatmap and a timeline are drawn from, gap-filled so every day in the range is present. Authorization is resolved server-side from the validated principal, so a caller can never widen the subject past what they are entitled to: a non-admin reads only themselves and their own org. subject&#x3D;project answers empty with a note, because the usage ledger records no project column yet. When the warehouse is not connected the series answers empty with available&#x3D;false rather than fabricated days.
+     * Returns the per-day usage series for ONE authorized subject — the points a contribution heatmap and a timeline are drawn from, gap-filled so every day in the range is present.
+     * Returns the per-day usage series for ONE authorized subject — the points a contribution heatmap and a timeline are drawn from, gap-filled so every day in the range is present. Authorization is resolved server-side from the validated principal, so a caller can never widen the subject past what they are entitled to: a non-admin reads only themselves and their own org. subject&#x3D;project answers empty with a note, because the usage ledger records no project column yet. When the warehouse is not connected the series answers empty with available&#x3D;false rather than fabricated days.
      * @param subject Subject is what the series is about: \&quot;user\&quot; (default), \&quot;org\&quot; or \&quot;project\&quot;. (optional)
      * @param id ID names the subject within what the caller is entitled to see. Omitted (or \&quot;me\&quot;) it is the caller themselves, or their own org. Another user requires org admin and must belong to the caller&#39;s org; another org requires a SuperAdmin. (optional)
      * @param from From is the first day of the range, \&quot;2006-01-02\&quot;. Defaults to 90 days back. (optional)
      * @param to To is the last day of the range, \&quot;2006-01-02\&quot;. Defaults to today; the span is clamped to 366 days. (optional)
-     * @return ApiResponse&lt;ActivityView&gt;
+     * @return ApiResponse&lt;LeaderboardActivityView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ActivityView> getLeaderboardActivityWithHttpInfo(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
+    public ApiResponse<LeaderboardActivityView> getLeaderboardActivityWithHttpInfo(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to) throws ApiException {
         okhttp3.Call localVarCall = getLeaderboardActivityValidateBeforeCall(subject, id, from, to, null);
-        Type localVarReturnType = new TypeToken<ActivityView>(){}.getType();
+        Type localVarReturnType = new TypeToken<LeaderboardActivityView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Activity returns the per-day usage series for ONE authorized subject — the points a contribution heatmap and a timeline are drawn from, gap-filled so every day in the range is present. (asynchronously)
-     * Activity returns the per-day usage series for ONE authorized subject — the points a contribution heatmap and a timeline are drawn from, gap-filled so every day in the range is present. Authorization is resolved server-side from the validated principal, so a caller can never widen the subject past what they are entitled to: a non-admin reads only themselves and their own org. subject&#x3D;project answers empty with a note, because the usage ledger records no project column yet. When the warehouse is not connected the series answers empty with available&#x3D;false rather than fabricated days.
+     * Returns the per-day usage series for ONE authorized subject — the points a contribution heatmap and a timeline are drawn from, gap-filled so every day in the range is present. (asynchronously)
+     * Returns the per-day usage series for ONE authorized subject — the points a contribution heatmap and a timeline are drawn from, gap-filled so every day in the range is present. Authorization is resolved server-side from the validated principal, so a caller can never widen the subject past what they are entitled to: a non-admin reads only themselves and their own org. subject&#x3D;project answers empty with a note, because the usage ledger records no project column yet. When the warehouse is not connected the series answers empty with available&#x3D;false rather than fabricated days.
      * @param subject Subject is what the series is about: \&quot;user\&quot; (default), \&quot;org\&quot; or \&quot;project\&quot;. (optional)
      * @param id ID names the subject within what the caller is entitled to see. Omitted (or \&quot;me\&quot;) it is the caller themselves, or their own org. Another user requires org admin and must belong to the caller&#39;s org; another org requires a SuperAdmin. (optional)
      * @param from From is the first day of the range, \&quot;2006-01-02\&quot;. Defaults to 90 days back. (optional)
@@ -367,12 +377,13 @@ public class LeaderboardApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLeaderboardActivityAsync(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<ActivityView> _callback) throws ApiException {
+    public okhttp3.Call getLeaderboardActivityAsync(@javax.annotation.Nullable String subject, @javax.annotation.Nullable String id, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, final ApiCallback<LeaderboardActivityView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLeaderboardActivityValidateBeforeCall(subject, id, from, to, _callback);
-        Type localVarReturnType = new TypeToken<ActivityView>(){}.getType();
+        Type localVarReturnType = new TypeToken<LeaderboardActivityView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -386,6 +397,7 @@ public class LeaderboardApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLeaderboardOptinCall(final ApiCallback _callback) throws ApiException {
@@ -414,7 +426,8 @@ public class LeaderboardApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -441,35 +454,37 @@ public class LeaderboardApi {
     /**
      * Returns the caller&#39;s own public-listing preference and their org&#39;s, each with whether the caller may change it.
      * Returns the caller&#39;s own public-listing preference and their org&#39;s, each with whether the caller may change it. Public listing is opt-in and private by default, so a fresh caller reads listed&#x3D;false for both.
-     * @return OptinView
+     * @return LeaderboardOptinView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public OptinView getLeaderboardOptin() throws ApiException {
-        ApiResponse<OptinView> localVarResp = getLeaderboardOptinWithHttpInfo();
+    public LeaderboardOptinView getLeaderboardOptin() throws ApiException {
+        ApiResponse<LeaderboardOptinView> localVarResp = getLeaderboardOptinWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller&#39;s own public-listing preference and their org&#39;s, each with whether the caller may change it.
      * Returns the caller&#39;s own public-listing preference and their org&#39;s, each with whether the caller may change it. Public listing is opt-in and private by default, so a fresh caller reads listed&#x3D;false for both.
-     * @return ApiResponse&lt;OptinView&gt;
+     * @return ApiResponse&lt;LeaderboardOptinView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OptinView> getLeaderboardOptinWithHttpInfo() throws ApiException {
+    public ApiResponse<LeaderboardOptinView> getLeaderboardOptinWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getLeaderboardOptinValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<OptinView>(){}.getType();
+        Type localVarReturnType = new TypeToken<LeaderboardOptinView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -484,18 +499,19 @@ public class LeaderboardApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLeaderboardOptinAsync(final ApiCallback<OptinView> _callback) throws ApiException {
+    public okhttp3.Call getLeaderboardOptinAsync(final ApiCallback<LeaderboardOptinView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLeaderboardOptinValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<OptinView>(){}.getType();
+        Type localVarReturnType = new TypeToken<LeaderboardOptinView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putLeaderboardOptin
-     * @param userOptinReq  (required)
+     * @param leaderboardUserOptinReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -504,9 +520,10 @@ public class LeaderboardApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putLeaderboardOptinCall(@javax.annotation.Nonnull UserOptinReq userOptinReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putLeaderboardOptinCall(@javax.annotation.Nonnull LeaderboardUserOptinReq leaderboardUserOptinReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -520,7 +537,7 @@ public class LeaderboardApi {
             basePath = null;
         }
 
-        Object localVarPostBody = userOptinReq;
+        Object localVarPostBody = leaderboardUserOptinReq;
 
         // create path and map variables
         String localVarPath = "/v1/leaderboard/optin";
@@ -532,7 +549,8 @@ public class LeaderboardApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -552,57 +570,59 @@ public class LeaderboardApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putLeaderboardOptinValidateBeforeCall(@javax.annotation.Nonnull UserOptinReq userOptinReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'userOptinReq' is set
-        if (userOptinReq == null) {
-            throw new ApiException("Missing the required parameter 'userOptinReq' when calling putLeaderboardOptin(Async)");
+    private okhttp3.Call putLeaderboardOptinValidateBeforeCall(@javax.annotation.Nonnull LeaderboardUserOptinReq leaderboardUserOptinReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'leaderboardUserOptinReq' is set
+        if (leaderboardUserOptinReq == null) {
+            throw new ApiException("Missing the required parameter 'leaderboardUserOptinReq' when calling putLeaderboardOptin(Async)");
         }
 
-        return putLeaderboardOptinCall(userOptinReq, _callback);
+        return putLeaderboardOptinCall(leaderboardUserOptinReq, _callback);
 
     }
 
     /**
      * Sets the CALLER&#39;s own public-listing preference on the leaderboard.
      * Sets the CALLER&#39;s own public-listing preference on the leaderboard. Self only: the row written is keyed by the caller&#39;s validated ledger identity, so this can never edit another member&#39;s visibility whatever the request says. A caller opting in with no handle is given their username, so a listed row never renders as \&quot;Anonymous\&quot; to its own owner.
-     * @param userOptinReq  (required)
-     * @return UserOptinView
+     * @param leaderboardUserOptinReq  (required)
+     * @return LeaderboardUserOptinView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public UserOptinView putLeaderboardOptin(@javax.annotation.Nonnull UserOptinReq userOptinReq) throws ApiException {
-        ApiResponse<UserOptinView> localVarResp = putLeaderboardOptinWithHttpInfo(userOptinReq);
+    public LeaderboardUserOptinView putLeaderboardOptin(@javax.annotation.Nonnull LeaderboardUserOptinReq leaderboardUserOptinReq) throws ApiException {
+        ApiResponse<LeaderboardUserOptinView> localVarResp = putLeaderboardOptinWithHttpInfo(leaderboardUserOptinReq);
         return localVarResp.getData();
     }
 
     /**
      * Sets the CALLER&#39;s own public-listing preference on the leaderboard.
      * Sets the CALLER&#39;s own public-listing preference on the leaderboard. Self only: the row written is keyed by the caller&#39;s validated ledger identity, so this can never edit another member&#39;s visibility whatever the request says. A caller opting in with no handle is given their username, so a listed row never renders as \&quot;Anonymous\&quot; to its own owner.
-     * @param userOptinReq  (required)
-     * @return ApiResponse&lt;UserOptinView&gt;
+     * @param leaderboardUserOptinReq  (required)
+     * @return ApiResponse&lt;LeaderboardUserOptinView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UserOptinView> putLeaderboardOptinWithHttpInfo(@javax.annotation.Nonnull UserOptinReq userOptinReq) throws ApiException {
-        okhttp3.Call localVarCall = putLeaderboardOptinValidateBeforeCall(userOptinReq, null);
-        Type localVarReturnType = new TypeToken<UserOptinView>(){}.getType();
+    public ApiResponse<LeaderboardUserOptinView> putLeaderboardOptinWithHttpInfo(@javax.annotation.Nonnull LeaderboardUserOptinReq leaderboardUserOptinReq) throws ApiException {
+        okhttp3.Call localVarCall = putLeaderboardOptinValidateBeforeCall(leaderboardUserOptinReq, null);
+        Type localVarReturnType = new TypeToken<LeaderboardUserOptinView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Sets the CALLER&#39;s own public-listing preference on the leaderboard. (asynchronously)
      * Sets the CALLER&#39;s own public-listing preference on the leaderboard. Self only: the row written is keyed by the caller&#39;s validated ledger identity, so this can never edit another member&#39;s visibility whatever the request says. A caller opting in with no handle is given their username, so a listed row never renders as \&quot;Anonymous\&quot; to its own owner.
-     * @param userOptinReq  (required)
+     * @param leaderboardUserOptinReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -611,18 +631,19 @@ public class LeaderboardApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putLeaderboardOptinAsync(@javax.annotation.Nonnull UserOptinReq userOptinReq, final ApiCallback<UserOptinView> _callback) throws ApiException {
+    public okhttp3.Call putLeaderboardOptinAsync(@javax.annotation.Nonnull LeaderboardUserOptinReq leaderboardUserOptinReq, final ApiCallback<LeaderboardUserOptinView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putLeaderboardOptinValidateBeforeCall(userOptinReq, _callback);
-        Type localVarReturnType = new TypeToken<UserOptinView>(){}.getType();
+        okhttp3.Call localVarCall = putLeaderboardOptinValidateBeforeCall(leaderboardUserOptinReq, _callback);
+        Type localVarReturnType = new TypeToken<LeaderboardUserOptinView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putLeaderboardOptinOrg
-     * @param orgOptinReq  (required)
+     * @param leaderboardOrgOptinReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -631,9 +652,10 @@ public class LeaderboardApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putLeaderboardOptinOrgCall(@javax.annotation.Nonnull OrgOptinReq orgOptinReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putLeaderboardOptinOrgCall(@javax.annotation.Nonnull LeaderboardOrgOptinReq leaderboardOrgOptinReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -647,7 +669,7 @@ public class LeaderboardApi {
             basePath = null;
         }
 
-        Object localVarPostBody = orgOptinReq;
+        Object localVarPostBody = leaderboardOrgOptinReq;
 
         // create path and map variables
         String localVarPath = "/v1/leaderboard/optin/org";
@@ -659,7 +681,8 @@ public class LeaderboardApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -679,57 +702,59 @@ public class LeaderboardApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putLeaderboardOptinOrgValidateBeforeCall(@javax.annotation.Nonnull OrgOptinReq orgOptinReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'orgOptinReq' is set
-        if (orgOptinReq == null) {
-            throw new ApiException("Missing the required parameter 'orgOptinReq' when calling putLeaderboardOptinOrg(Async)");
+    private okhttp3.Call putLeaderboardOptinOrgValidateBeforeCall(@javax.annotation.Nonnull LeaderboardOrgOptinReq leaderboardOrgOptinReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'leaderboardOrgOptinReq' is set
+        if (leaderboardOrgOptinReq == null) {
+            throw new ApiException("Missing the required parameter 'leaderboardOrgOptinReq' when calling putLeaderboardOptinOrg(Async)");
         }
 
-        return putLeaderboardOptinOrgCall(orgOptinReq, _callback);
+        return putLeaderboardOptinOrgCall(leaderboardOrgOptinReq, _callback);
 
     }
 
     /**
      * Sets the ORG&#39;s listing on the cross-org global board.
      * Sets the ORG&#39;s listing on the cross-org global board. Only an admin of the caller&#39;s own org — an org admin or a platform SuperAdmin — may change it, and the org written is the caller&#39;s validated tenant, never a value from the request. Listing consents to publishing the org&#39;s usage VOLUME; cross-org spend stays restricted to platform admins regardless.
-     * @param orgOptinReq  (required)
-     * @return OrgOptinView
+     * @param leaderboardOrgOptinReq  (required)
+     * @return LeaderboardOrgOptinView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public OrgOptinView putLeaderboardOptinOrg(@javax.annotation.Nonnull OrgOptinReq orgOptinReq) throws ApiException {
-        ApiResponse<OrgOptinView> localVarResp = putLeaderboardOptinOrgWithHttpInfo(orgOptinReq);
+    public LeaderboardOrgOptinView putLeaderboardOptinOrg(@javax.annotation.Nonnull LeaderboardOrgOptinReq leaderboardOrgOptinReq) throws ApiException {
+        ApiResponse<LeaderboardOrgOptinView> localVarResp = putLeaderboardOptinOrgWithHttpInfo(leaderboardOrgOptinReq);
         return localVarResp.getData();
     }
 
     /**
      * Sets the ORG&#39;s listing on the cross-org global board.
      * Sets the ORG&#39;s listing on the cross-org global board. Only an admin of the caller&#39;s own org — an org admin or a platform SuperAdmin — may change it, and the org written is the caller&#39;s validated tenant, never a value from the request. Listing consents to publishing the org&#39;s usage VOLUME; cross-org spend stays restricted to platform admins regardless.
-     * @param orgOptinReq  (required)
-     * @return ApiResponse&lt;OrgOptinView&gt;
+     * @param leaderboardOrgOptinReq  (required)
+     * @return ApiResponse&lt;LeaderboardOrgOptinView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OrgOptinView> putLeaderboardOptinOrgWithHttpInfo(@javax.annotation.Nonnull OrgOptinReq orgOptinReq) throws ApiException {
-        okhttp3.Call localVarCall = putLeaderboardOptinOrgValidateBeforeCall(orgOptinReq, null);
-        Type localVarReturnType = new TypeToken<OrgOptinView>(){}.getType();
+    public ApiResponse<LeaderboardOrgOptinView> putLeaderboardOptinOrgWithHttpInfo(@javax.annotation.Nonnull LeaderboardOrgOptinReq leaderboardOrgOptinReq) throws ApiException {
+        okhttp3.Call localVarCall = putLeaderboardOptinOrgValidateBeforeCall(leaderboardOrgOptinReq, null);
+        Type localVarReturnType = new TypeToken<LeaderboardOrgOptinView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Sets the ORG&#39;s listing on the cross-org global board. (asynchronously)
      * Sets the ORG&#39;s listing on the cross-org global board. Only an admin of the caller&#39;s own org — an org admin or a platform SuperAdmin — may change it, and the org written is the caller&#39;s validated tenant, never a value from the request. Listing consents to publishing the org&#39;s usage VOLUME; cross-org spend stays restricted to platform admins regardless.
-     * @param orgOptinReq  (required)
+     * @param leaderboardOrgOptinReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -738,12 +763,13 @@ public class LeaderboardApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putLeaderboardOptinOrgAsync(@javax.annotation.Nonnull OrgOptinReq orgOptinReq, final ApiCallback<OrgOptinView> _callback) throws ApiException {
+    public okhttp3.Call putLeaderboardOptinOrgAsync(@javax.annotation.Nonnull LeaderboardOrgOptinReq leaderboardOrgOptinReq, final ApiCallback<LeaderboardOrgOptinView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putLeaderboardOptinOrgValidateBeforeCall(orgOptinReq, _callback);
-        Type localVarReturnType = new TypeToken<OrgOptinView>(){}.getType();
+        okhttp3.Call localVarCall = putLeaderboardOptinOrgValidateBeforeCall(leaderboardOrgOptinReq, _callback);
+        Type localVarReturnType = new TypeToken<LeaderboardOrgOptinView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

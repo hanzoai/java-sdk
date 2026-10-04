@@ -27,14 +27,15 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Analysis;
-import ai.hanzo.cloud.model.AnalyzeQuery;
-import ai.hanzo.cloud.model.Assignment;
-import ai.hanzo.cloud.model.CreateBody;
-import ai.hanzo.cloud.model.DecideBody;
-import ai.hanzo.cloud.model.ExperimentList;
-import ai.hanzo.cloud.model.Health;
-import ai.hanzo.cloud.model.Trial;
+import ai.hanzo.cloud.model.ExperimentAnalysis;
+import ai.hanzo.cloud.model.ExperimentAnalyzeQuery;
+import ai.hanzo.cloud.model.ExperimentAssignment;
+import ai.hanzo.cloud.model.ExperimentCreateBody;
+import ai.hanzo.cloud.model.ExperimentDecideBody;
+import ai.hanzo.cloud.model.ExperimentExperimentList;
+import ai.hanzo.cloud.model.ExperimentHealth;
+import ai.hanzo.cloud.model.ExperimentTrial;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -89,6 +90,7 @@ public class ExperimentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getExperimentCall(final ApiCallback _callback) throws ApiException {
@@ -117,7 +119,8 @@ public class ExperimentApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -144,35 +147,37 @@ public class ExperimentApi {
     /**
      * Is every experiment in the caller&#39;s org, with its variants, status and decision, ordered by project then id.
      * Is every experiment in the caller&#39;s org, with its variants, status and decision, ordered by project then id.  Scoped to the org resolved from the validated principal — a distinct org is a distinct physical store, so no query here can reach another tenant&#39;s rows — and further narrowed to the caller&#39;s project scope when the credential carries one. A principal with NO project scope sees the org&#39;s experiments across all of its projects, which is the answer a reader most often expects to be filtered and is not.  Requires a validated principal; refuses without one rather than answering an empty list.
-     * @return ExperimentList
+     * @return ExperimentExperimentList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ExperimentList getExperiment() throws ApiException {
-        ApiResponse<ExperimentList> localVarResp = getExperimentWithHttpInfo();
+    public ExperimentExperimentList getExperiment() throws ApiException {
+        ApiResponse<ExperimentExperimentList> localVarResp = getExperimentWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Is every experiment in the caller&#39;s org, with its variants, status and decision, ordered by project then id.
      * Is every experiment in the caller&#39;s org, with its variants, status and decision, ordered by project then id.  Scoped to the org resolved from the validated principal — a distinct org is a distinct physical store, so no query here can reach another tenant&#39;s rows — and further narrowed to the caller&#39;s project scope when the credential carries one. A principal with NO project scope sees the org&#39;s experiments across all of its projects, which is the answer a reader most often expects to be filtered and is not.  Requires a validated principal; refuses without one rather than answering an empty list.
-     * @return ApiResponse&lt;ExperimentList&gt;
+     * @return ApiResponse&lt;ExperimentExperimentList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ExperimentList> getExperimentWithHttpInfo() throws ApiException {
+    public ApiResponse<ExperimentExperimentList> getExperimentWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getExperimentValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ExperimentList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExperimentExperimentList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -187,12 +192,13 @@ public class ExperimentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getExperimentAsync(final ApiCallback<ExperimentList> _callback) throws ApiException {
+    public okhttp3.Call getExperimentAsync(final ApiCallback<ExperimentExperimentList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getExperimentValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ExperimentList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExperimentExperimentList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -207,6 +213,7 @@ public class ExperimentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getExperimentByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -236,7 +243,8 @@ public class ExperimentApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -269,17 +277,18 @@ public class ExperimentApi {
      * Is one experiment&#39;s definition and lifecycle: variants, weights, control arm, status and winner.
      * Is one experiment&#39;s definition and lifecycle: variants, weights, control arm, status and winner.  It reads the registry row only — the definition and the decision, never live measurements. Assignment lives in the flags plane and outcomes in analytics; this is the value that names both.  Scoped to the caller&#39;s org and project from the validated principal, so another tenant&#39;s experiment of the same id is simply not found. An id that is not a legal slug is answered the same way, without a store read — the shape check and the existence check are one answer, so neither leaks the other.
      * @param id ID is the experiment the URL names. (required)
-     * @return Trial
+     * @return ExperimentTrial
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Trial getExperimentById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Trial> localVarResp = getExperimentByIdWithHttpInfo(id);
+    public ExperimentTrial getExperimentById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ExperimentTrial> localVarResp = getExperimentByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -287,18 +296,19 @@ public class ExperimentApi {
      * Is one experiment&#39;s definition and lifecycle: variants, weights, control arm, status and winner.
      * Is one experiment&#39;s definition and lifecycle: variants, weights, control arm, status and winner.  It reads the registry row only — the definition and the decision, never live measurements. Assignment lives in the flags plane and outcomes in analytics; this is the value that names both.  Scoped to the caller&#39;s org and project from the validated principal, so another tenant&#39;s experiment of the same id is simply not found. An id that is not a legal slug is answered the same way, without a store read — the shape check and the existence check are one answer, so neither leaks the other.
      * @param id ID is the experiment the URL names. (required)
-     * @return ApiResponse&lt;Trial&gt;
+     * @return ApiResponse&lt;ExperimentTrial&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Trial> getExperimentByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<ExperimentTrial> getExperimentByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getExperimentByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Trial>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExperimentTrial>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -314,12 +324,13 @@ public class ExperimentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getExperimentByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Trial> _callback) throws ApiException {
+    public okhttp3.Call getExperimentByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<ExperimentTrial> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getExperimentByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Trial>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExperimentTrial>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -336,6 +347,7 @@ public class ExperimentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getExperimentByIdAssignCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props, final ApiCallback _callback) throws ApiException {
@@ -373,7 +385,8 @@ public class ExperimentApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -413,17 +426,18 @@ public class ExperimentApi {
      * @param id ID is the experiment the URL names. (required)
      * @param subject Subject is the unit to bucket — a user, org, session or audience key, matching the experiment&#39;s subjectKind. (required)
      * @param props Props is a JSON object of person properties for targeting. A value that is not valid JSON is dropped rather than refused, so a malformed one changes the bucketing without saying so. (optional)
-     * @return Assignment
+     * @return ExperimentAssignment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Assignment getExperimentByIdAssign(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props) throws ApiException {
-        ApiResponse<Assignment> localVarResp = getExperimentByIdAssignWithHttpInfo(id, subject, props);
+    public ExperimentAssignment getExperimentByIdAssign(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props) throws ApiException {
+        ApiResponse<ExperimentAssignment> localVarResp = getExperimentByIdAssignWithHttpInfo(id, subject, props);
         return localVarResp.getData();
     }
 
@@ -433,18 +447,19 @@ public class ExperimentApi {
      * @param id ID is the experiment the URL names. (required)
      * @param subject Subject is the unit to bucket — a user, org, session or audience key, matching the experiment&#39;s subjectKind. (required)
      * @param props Props is a JSON object of person properties for targeting. A value that is not valid JSON is dropped rather than refused, so a malformed one changes the bucketing without saying so. (optional)
-     * @return ApiResponse&lt;Assignment&gt;
+     * @return ApiResponse&lt;ExperimentAssignment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Assignment> getExperimentByIdAssignWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props) throws ApiException {
+    public ApiResponse<ExperimentAssignment> getExperimentByIdAssignWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props) throws ApiException {
         okhttp3.Call localVarCall = getExperimentByIdAssignValidateBeforeCall(id, subject, props, null);
-        Type localVarReturnType = new TypeToken<Assignment>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExperimentAssignment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -462,12 +477,13 @@ public class ExperimentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getExperimentByIdAssignAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props, final ApiCallback<Assignment> _callback) throws ApiException {
+    public okhttp3.Call getExperimentByIdAssignAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props, final ApiCallback<ExperimentAssignment> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getExperimentByIdAssignValidateBeforeCall(id, subject, props, _callback);
-        Type localVarReturnType = new TypeToken<Assignment>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExperimentAssignment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -481,6 +497,7 @@ public class ExperimentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getExperimentHealthCall(final ApiCallback _callback) throws ApiException {
@@ -509,7 +526,8 @@ public class ExperimentApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -536,35 +554,37 @@ public class ExperimentApi {
     /**
      * Is whether the experiments subsystem is mounted and serving in this process.
      * Is whether the experiments subsystem is mounted and serving in this process.  It answers unconditionally. It proves exactly one thing — that this binary registered the experiments routes and is dispatching them — and deliberately no more: it reads no principal, opens no per-org registry, and touches neither the flags engine nor the analytics plane, so a 200 here says nothing about whether a given tenant&#39;s store will open or whether an analysis can run. It is the only route on this surface that needs no org.  The static path is registered ahead of the /:id read, so it always wins the first-match scan. \&quot;health\&quot; is a legal experiment id, which means an experiment created under that id can never be fetched by id — pick another.
-     * @return Health
+     * @return ExperimentHealth
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Health getExperimentHealth() throws ApiException {
-        ApiResponse<Health> localVarResp = getExperimentHealthWithHttpInfo();
+    public ExperimentHealth getExperimentHealth() throws ApiException {
+        ApiResponse<ExperimentHealth> localVarResp = getExperimentHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Is whether the experiments subsystem is mounted and serving in this process.
      * Is whether the experiments subsystem is mounted and serving in this process.  It answers unconditionally. It proves exactly one thing — that this binary registered the experiments routes and is dispatching them — and deliberately no more: it reads no principal, opens no per-org registry, and touches neither the flags engine nor the analytics plane, so a 200 here says nothing about whether a given tenant&#39;s store will open or whether an analysis can run. It is the only route on this surface that needs no org.  The static path is registered ahead of the /:id read, so it always wins the first-match scan. \&quot;health\&quot; is a legal experiment id, which means an experiment created under that id can never be fetched by id — pick another.
-     * @return ApiResponse&lt;Health&gt;
+     * @return ApiResponse&lt;ExperimentHealth&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Health> getExperimentHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<ExperimentHealth> getExperimentHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getExperimentHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Health>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExperimentHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -579,18 +599,19 @@ public class ExperimentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getExperimentHealthAsync(final ApiCallback<Health> _callback) throws ApiException {
+    public okhttp3.Call getExperimentHealthAsync(final ApiCallback<ExperimentHealth> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getExperimentHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Health>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExperimentHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postExperiment
-     * @param createBody  (required)
+     * @param experimentCreateBody  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -599,9 +620,10 @@ public class ExperimentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postExperimentCall(@javax.annotation.Nonnull CreateBody createBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postExperimentCall(@javax.annotation.Nonnull ExperimentCreateBody experimentCreateBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -615,7 +637,7 @@ public class ExperimentApi {
             basePath = null;
         }
 
-        Object localVarPostBody = createBody;
+        Object localVarPostBody = experimentCreateBody;
 
         // create path and map variables
         String localVarPath = "/v1/experiment";
@@ -627,7 +649,8 @@ public class ExperimentApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -647,57 +670,59 @@ public class ExperimentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postExperimentValidateBeforeCall(@javax.annotation.Nonnull CreateBody createBody, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'createBody' is set
-        if (createBody == null) {
-            throw new ApiException("Missing the required parameter 'createBody' when calling postExperiment(Async)");
+    private okhttp3.Call postExperimentValidateBeforeCall(@javax.annotation.Nonnull ExperimentCreateBody experimentCreateBody, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'experimentCreateBody' is set
+        if (experimentCreateBody == null) {
+            throw new ApiException("Missing the required parameter 'experimentCreateBody' when calling postExperiment(Async)");
         }
 
-        return postExperimentCall(createBody, _callback);
+        return postExperimentCall(experimentCreateBody, _callback);
 
     }
 
     /**
      * Registers a controlled experiment AND puts its assignment flag live, in that order, so the arms start bucketing subjects the moment this returns 201 — the flag is created active at 100% rollout, with each variant weighted as declared.
      * Registers a controlled experiment AND puts its assignment flag live, in that order, so the arms start bucketing subjects the moment this returns 201 — the flag is created active at 100% rollout, with each variant weighted as declared. There is no separate start call; creating IS starting.  A variant carries an opaque payload this primitive never interprets: a feature config, an ad-creative id, a subject line, a model id.  Requires a validated principal, and refuses without one. The org and project are taken from that principal and the creator is stamped from the credential — none of the three is a body field, so an experiment cannot be filed against another tenant. An id already used in this project is a conflict, never a silent overwrite: re-creating would stomp the assignment flag of a run in progress.  It fails closed on the flag write. An experiment whose assignment flag does not exist would assign nobody, so if that write fails nothing is registered.
-     * @param createBody  (required)
-     * @return Trial
+     * @param experimentCreateBody  (required)
+     * @return ExperimentTrial
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Trial postExperiment(@javax.annotation.Nonnull CreateBody createBody) throws ApiException {
-        ApiResponse<Trial> localVarResp = postExperimentWithHttpInfo(createBody);
+    public ExperimentTrial postExperiment(@javax.annotation.Nonnull ExperimentCreateBody experimentCreateBody) throws ApiException {
+        ApiResponse<ExperimentTrial> localVarResp = postExperimentWithHttpInfo(experimentCreateBody);
         return localVarResp.getData();
     }
 
     /**
      * Registers a controlled experiment AND puts its assignment flag live, in that order, so the arms start bucketing subjects the moment this returns 201 — the flag is created active at 100% rollout, with each variant weighted as declared.
      * Registers a controlled experiment AND puts its assignment flag live, in that order, so the arms start bucketing subjects the moment this returns 201 — the flag is created active at 100% rollout, with each variant weighted as declared. There is no separate start call; creating IS starting.  A variant carries an opaque payload this primitive never interprets: a feature config, an ad-creative id, a subject line, a model id.  Requires a validated principal, and refuses without one. The org and project are taken from that principal and the creator is stamped from the credential — none of the three is a body field, so an experiment cannot be filed against another tenant. An id already used in this project is a conflict, never a silent overwrite: re-creating would stomp the assignment flag of a run in progress.  It fails closed on the flag write. An experiment whose assignment flag does not exist would assign nobody, so if that write fails nothing is registered.
-     * @param createBody  (required)
-     * @return ApiResponse&lt;Trial&gt;
+     * @param experimentCreateBody  (required)
+     * @return ApiResponse&lt;ExperimentTrial&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Trial> postExperimentWithHttpInfo(@javax.annotation.Nonnull CreateBody createBody) throws ApiException {
-        okhttp3.Call localVarCall = postExperimentValidateBeforeCall(createBody, null);
-        Type localVarReturnType = new TypeToken<Trial>(){}.getType();
+    public ApiResponse<ExperimentTrial> postExperimentWithHttpInfo(@javax.annotation.Nonnull ExperimentCreateBody experimentCreateBody) throws ApiException {
+        okhttp3.Call localVarCall = postExperimentValidateBeforeCall(experimentCreateBody, null);
+        Type localVarReturnType = new TypeToken<ExperimentTrial>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Registers a controlled experiment AND puts its assignment flag live, in that order, so the arms start bucketing subjects the moment this returns 201 — the flag is created active at 100% rollout, with each variant weighted as declared. (asynchronously)
      * Registers a controlled experiment AND puts its assignment flag live, in that order, so the arms start bucketing subjects the moment this returns 201 — the flag is created active at 100% rollout, with each variant weighted as declared. There is no separate start call; creating IS starting.  A variant carries an opaque payload this primitive never interprets: a feature config, an ad-creative id, a subject line, a model id.  Requires a validated principal, and refuses without one. The org and project are taken from that principal and the creator is stamped from the credential — none of the three is a body field, so an experiment cannot be filed against another tenant. An id already used in this project is a conflict, never a silent overwrite: re-creating would stomp the assignment flag of a run in progress.  It fails closed on the flag write. An experiment whose assignment flag does not exist would assign nobody, so if that write fails nothing is registered.
-     * @param createBody  (required)
+     * @param experimentCreateBody  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -706,19 +731,20 @@ public class ExperimentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postExperimentAsync(@javax.annotation.Nonnull CreateBody createBody, final ApiCallback<Trial> _callback) throws ApiException {
+    public okhttp3.Call postExperimentAsync(@javax.annotation.Nonnull ExperimentCreateBody experimentCreateBody, final ApiCallback<ExperimentTrial> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postExperimentValidateBeforeCall(createBody, _callback);
-        Type localVarReturnType = new TypeToken<Trial>(){}.getType();
+        okhttp3.Call localVarCall = postExperimentValidateBeforeCall(experimentCreateBody, _callback);
+        Type localVarReturnType = new TypeToken<ExperimentTrial>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postExperimentByIdAnalyze
      * @param id ID is the experiment the URL names. (required)
-     * @param analyzeQuery  (required)
+     * @param experimentAnalyzeQuery  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -727,9 +753,10 @@ public class ExperimentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postExperimentByIdAnalyzeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AnalyzeQuery analyzeQuery, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postExperimentByIdAnalyzeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExperimentAnalyzeQuery experimentAnalyzeQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -743,7 +770,7 @@ public class ExperimentApi {
             basePath = null;
         }
 
-        Object localVarPostBody = analyzeQuery;
+        Object localVarPostBody = experimentAnalyzeQuery;
 
         // create path and map variables
         String localVarPath = "/v1/experiment/{id}/analyze"
@@ -756,7 +783,8 @@ public class ExperimentApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -776,18 +804,18 @@ public class ExperimentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postExperimentByIdAnalyzeValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AnalyzeQuery analyzeQuery, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postExperimentByIdAnalyzeValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExperimentAnalyzeQuery experimentAnalyzeQuery, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postExperimentByIdAnalyze(Async)");
         }
 
-        // verify the required parameter 'analyzeQuery' is set
-        if (analyzeQuery == null) {
-            throw new ApiException("Missing the required parameter 'analyzeQuery' when calling postExperimentByIdAnalyze(Async)");
+        // verify the required parameter 'experimentAnalyzeQuery' is set
+        if (experimentAnalyzeQuery == null) {
+            throw new ApiException("Missing the required parameter 'experimentAnalyzeQuery' when calling postExperimentByIdAnalyze(Async)");
         }
 
-        return postExperimentByIdAnalyzeCall(id, analyzeQuery, _callback);
+        return postExperimentByIdAnalyzeCall(id, experimentAnalyzeQuery, _callback);
 
     }
 
@@ -795,18 +823,19 @@ public class ExperimentApi {
      * Is per-variant conversion, lift and statistical significance against the control arm.
      * Is per-variant conversion, lift and statistical significance against the control arm.  It reads per-subject outcomes from the analytics plane over a window, folds them into per-variant samples, and returns each arm&#39;s exposed count, conversions, rate, lift versus control, two-proportion z, two-tailed p-value and whether it clears alpha. Arms with no data still appear with zero exposed, so the read is complete over the experiment&#39;s declared arms; the control arm sorts first. The pooled-variance estimator is used and the p-value is exact; a degenerate comparison (an empty arm, no variance) answers z 0 and p 1 — not significant, never an error.  Only EXPOSED subjects are counted, and each is joined to its arm by re-evaluating the assignment flag AT ANALYSIS TIME — not from what was in force during the window. That is the one rule to get right: analyzing an experiment after its winner has been promoted re-buckets every subject into the promoted arm, collapsing the control to zero exposed and making the result meaningless. Read the analysis before deciding. A subject the flag cannot place is dropped rather than allowed to poison the fold.  The winner in the response is ADVISORY — the significant, control-beating arm with the highest rate, or empty when inconclusive. It promotes nothing; the decision is a separate, explicit act.  Every plane read is scoped to the caller&#39;s org. Per-variant samples are also written to the research evidence plane as immutable ab rows, best-effort: the analysis is still returned if that write fails, because the samples are recomputable, and the failure is logged rather than swallowed.
      * @param id ID is the experiment the URL names. (required)
-     * @param analyzeQuery  (required)
-     * @return Analysis
+     * @param experimentAnalyzeQuery  (required)
+     * @return ExperimentAnalysis
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Analysis postExperimentByIdAnalyze(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AnalyzeQuery analyzeQuery) throws ApiException {
-        ApiResponse<Analysis> localVarResp = postExperimentByIdAnalyzeWithHttpInfo(id, analyzeQuery);
+    public ExperimentAnalysis postExperimentByIdAnalyze(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExperimentAnalyzeQuery experimentAnalyzeQuery) throws ApiException {
+        ApiResponse<ExperimentAnalysis> localVarResp = postExperimentByIdAnalyzeWithHttpInfo(id, experimentAnalyzeQuery);
         return localVarResp.getData();
     }
 
@@ -814,19 +843,20 @@ public class ExperimentApi {
      * Is per-variant conversion, lift and statistical significance against the control arm.
      * Is per-variant conversion, lift and statistical significance against the control arm.  It reads per-subject outcomes from the analytics plane over a window, folds them into per-variant samples, and returns each arm&#39;s exposed count, conversions, rate, lift versus control, two-proportion z, two-tailed p-value and whether it clears alpha. Arms with no data still appear with zero exposed, so the read is complete over the experiment&#39;s declared arms; the control arm sorts first. The pooled-variance estimator is used and the p-value is exact; a degenerate comparison (an empty arm, no variance) answers z 0 and p 1 — not significant, never an error.  Only EXPOSED subjects are counted, and each is joined to its arm by re-evaluating the assignment flag AT ANALYSIS TIME — not from what was in force during the window. That is the one rule to get right: analyzing an experiment after its winner has been promoted re-buckets every subject into the promoted arm, collapsing the control to zero exposed and making the result meaningless. Read the analysis before deciding. A subject the flag cannot place is dropped rather than allowed to poison the fold.  The winner in the response is ADVISORY — the significant, control-beating arm with the highest rate, or empty when inconclusive. It promotes nothing; the decision is a separate, explicit act.  Every plane read is scoped to the caller&#39;s org. Per-variant samples are also written to the research evidence plane as immutable ab rows, best-effort: the analysis is still returned if that write fails, because the samples are recomputable, and the failure is logged rather than swallowed.
      * @param id ID is the experiment the URL names. (required)
-     * @param analyzeQuery  (required)
-     * @return ApiResponse&lt;Analysis&gt;
+     * @param experimentAnalyzeQuery  (required)
+     * @return ApiResponse&lt;ExperimentAnalysis&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Analysis> postExperimentByIdAnalyzeWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AnalyzeQuery analyzeQuery) throws ApiException {
-        okhttp3.Call localVarCall = postExperimentByIdAnalyzeValidateBeforeCall(id, analyzeQuery, null);
-        Type localVarReturnType = new TypeToken<Analysis>(){}.getType();
+    public ApiResponse<ExperimentAnalysis> postExperimentByIdAnalyzeWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExperimentAnalyzeQuery experimentAnalyzeQuery) throws ApiException {
+        okhttp3.Call localVarCall = postExperimentByIdAnalyzeValidateBeforeCall(id, experimentAnalyzeQuery, null);
+        Type localVarReturnType = new TypeToken<ExperimentAnalysis>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -834,7 +864,7 @@ public class ExperimentApi {
      * Is per-variant conversion, lift and statistical significance against the control arm. (asynchronously)
      * Is per-variant conversion, lift and statistical significance against the control arm.  It reads per-subject outcomes from the analytics plane over a window, folds them into per-variant samples, and returns each arm&#39;s exposed count, conversions, rate, lift versus control, two-proportion z, two-tailed p-value and whether it clears alpha. Arms with no data still appear with zero exposed, so the read is complete over the experiment&#39;s declared arms; the control arm sorts first. The pooled-variance estimator is used and the p-value is exact; a degenerate comparison (an empty arm, no variance) answers z 0 and p 1 — not significant, never an error.  Only EXPOSED subjects are counted, and each is joined to its arm by re-evaluating the assignment flag AT ANALYSIS TIME — not from what was in force during the window. That is the one rule to get right: analyzing an experiment after its winner has been promoted re-buckets every subject into the promoted arm, collapsing the control to zero exposed and making the result meaningless. Read the analysis before deciding. A subject the flag cannot place is dropped rather than allowed to poison the fold.  The winner in the response is ADVISORY — the significant, control-beating arm with the highest rate, or empty when inconclusive. It promotes nothing; the decision is a separate, explicit act.  Every plane read is scoped to the caller&#39;s org. Per-variant samples are also written to the research evidence plane as immutable ab rows, best-effort: the analysis is still returned if that write fails, because the samples are recomputable, and the failure is logged rather than swallowed.
      * @param id ID is the experiment the URL names. (required)
-     * @param analyzeQuery  (required)
+     * @param experimentAnalyzeQuery  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -843,19 +873,20 @@ public class ExperimentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postExperimentByIdAnalyzeAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AnalyzeQuery analyzeQuery, final ApiCallback<Analysis> _callback) throws ApiException {
+    public okhttp3.Call postExperimentByIdAnalyzeAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExperimentAnalyzeQuery experimentAnalyzeQuery, final ApiCallback<ExperimentAnalysis> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postExperimentByIdAnalyzeValidateBeforeCall(id, analyzeQuery, _callback);
-        Type localVarReturnType = new TypeToken<Analysis>(){}.getType();
+        okhttp3.Call localVarCall = postExperimentByIdAnalyzeValidateBeforeCall(id, experimentAnalyzeQuery, _callback);
+        Type localVarReturnType = new TypeToken<ExperimentAnalysis>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postExperimentByIdDecide
      * @param id  (required)
-     * @param decideBody  (required)
+     * @param experimentDecideBody  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -864,9 +895,10 @@ public class ExperimentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postExperimentByIdDecideCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DecideBody decideBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postExperimentByIdDecideCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExperimentDecideBody experimentDecideBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -880,7 +912,7 @@ public class ExperimentApi {
             basePath = null;
         }
 
-        Object localVarPostBody = decideBody;
+        Object localVarPostBody = experimentDecideBody;
 
         // create path and map variables
         String localVarPath = "/v1/experiment/{id}/decide"
@@ -893,7 +925,8 @@ public class ExperimentApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -913,18 +946,18 @@ public class ExperimentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postExperimentByIdDecideValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DecideBody decideBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postExperimentByIdDecideValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExperimentDecideBody experimentDecideBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postExperimentByIdDecide(Async)");
         }
 
-        // verify the required parameter 'decideBody' is set
-        if (decideBody == null) {
-            throw new ApiException("Missing the required parameter 'decideBody' when calling postExperimentByIdDecide(Async)");
+        // verify the required parameter 'experimentDecideBody' is set
+        if (experimentDecideBody == null) {
+            throw new ApiException("Missing the required parameter 'experimentDecideBody' when calling postExperimentByIdDecide(Async)");
         }
 
-        return postExperimentByIdDecideCall(id, decideBody, _callback);
+        return postExperimentByIdDecideCall(id, experimentDecideBody, _callback);
 
     }
 
@@ -932,18 +965,19 @@ public class ExperimentApi {
      * Promotes one variant to the whole rollout and records who decided.
      * Promotes one variant to the whole rollout and records who decided.  It rewrites the assignment flag so the named winner serves 100% of the rollout and every other arm 0%, preserving the flag&#39;s targeting groups and payloads, then stamps the experiment decided with the winner, the deciding credential and the time. This is a production behaviour change that takes effect immediately for every subject the flag evaluates.  It requires an ORG ADMIN of the caller&#39;s own org — a stricter gate than the rest of this surface, matching the flags write plane, because promoting is a flag write. The admin check runs AFTER the experiment is found, so a caller from another tenant is answered not-found rather than forbidden and learns nothing about what exists.  An experiment whose assignment flag has gone missing is a conflict rather than a silent no-op — there is nothing to promote.  Deciding is NOT terminal. A second call re-promotes a different variant and re-stamps the row; the status stays decided and the previous winner is overwritten with no record that it was ever chosen. Nothing here reverts the flag to its original weights either, so an experiment cannot be un-decided through this route — restoring a split means writing the flag definition back through the flags plane.
      * @param id  (required)
-     * @param decideBody  (required)
-     * @return Trial
+     * @param experimentDecideBody  (required)
+     * @return ExperimentTrial
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Trial postExperimentByIdDecide(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DecideBody decideBody) throws ApiException {
-        ApiResponse<Trial> localVarResp = postExperimentByIdDecideWithHttpInfo(id, decideBody);
+    public ExperimentTrial postExperimentByIdDecide(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExperimentDecideBody experimentDecideBody) throws ApiException {
+        ApiResponse<ExperimentTrial> localVarResp = postExperimentByIdDecideWithHttpInfo(id, experimentDecideBody);
         return localVarResp.getData();
     }
 
@@ -951,19 +985,20 @@ public class ExperimentApi {
      * Promotes one variant to the whole rollout and records who decided.
      * Promotes one variant to the whole rollout and records who decided.  It rewrites the assignment flag so the named winner serves 100% of the rollout and every other arm 0%, preserving the flag&#39;s targeting groups and payloads, then stamps the experiment decided with the winner, the deciding credential and the time. This is a production behaviour change that takes effect immediately for every subject the flag evaluates.  It requires an ORG ADMIN of the caller&#39;s own org — a stricter gate than the rest of this surface, matching the flags write plane, because promoting is a flag write. The admin check runs AFTER the experiment is found, so a caller from another tenant is answered not-found rather than forbidden and learns nothing about what exists.  An experiment whose assignment flag has gone missing is a conflict rather than a silent no-op — there is nothing to promote.  Deciding is NOT terminal. A second call re-promotes a different variant and re-stamps the row; the status stays decided and the previous winner is overwritten with no record that it was ever chosen. Nothing here reverts the flag to its original weights either, so an experiment cannot be un-decided through this route — restoring a split means writing the flag definition back through the flags plane.
      * @param id  (required)
-     * @param decideBody  (required)
-     * @return ApiResponse&lt;Trial&gt;
+     * @param experimentDecideBody  (required)
+     * @return ApiResponse&lt;ExperimentTrial&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Trial> postExperimentByIdDecideWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DecideBody decideBody) throws ApiException {
-        okhttp3.Call localVarCall = postExperimentByIdDecideValidateBeforeCall(id, decideBody, null);
-        Type localVarReturnType = new TypeToken<Trial>(){}.getType();
+    public ApiResponse<ExperimentTrial> postExperimentByIdDecideWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExperimentDecideBody experimentDecideBody) throws ApiException {
+        okhttp3.Call localVarCall = postExperimentByIdDecideValidateBeforeCall(id, experimentDecideBody, null);
+        Type localVarReturnType = new TypeToken<ExperimentTrial>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -971,7 +1006,7 @@ public class ExperimentApi {
      * Promotes one variant to the whole rollout and records who decided. (asynchronously)
      * Promotes one variant to the whole rollout and records who decided.  It rewrites the assignment flag so the named winner serves 100% of the rollout and every other arm 0%, preserving the flag&#39;s targeting groups and payloads, then stamps the experiment decided with the winner, the deciding credential and the time. This is a production behaviour change that takes effect immediately for every subject the flag evaluates.  It requires an ORG ADMIN of the caller&#39;s own org — a stricter gate than the rest of this surface, matching the flags write plane, because promoting is a flag write. The admin check runs AFTER the experiment is found, so a caller from another tenant is answered not-found rather than forbidden and learns nothing about what exists.  An experiment whose assignment flag has gone missing is a conflict rather than a silent no-op — there is nothing to promote.  Deciding is NOT terminal. A second call re-promotes a different variant and re-stamps the row; the status stays decided and the previous winner is overwritten with no record that it was ever chosen. Nothing here reverts the flag to its original weights either, so an experiment cannot be un-decided through this route — restoring a split means writing the flag definition back through the flags plane.
      * @param id  (required)
-     * @param decideBody  (required)
+     * @param experimentDecideBody  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -980,12 +1015,13 @@ public class ExperimentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postExperimentByIdDecideAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DecideBody decideBody, final ApiCallback<Trial> _callback) throws ApiException {
+    public okhttp3.Call postExperimentByIdDecideAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExperimentDecideBody experimentDecideBody, final ApiCallback<ExperimentTrial> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postExperimentByIdDecideValidateBeforeCall(id, decideBody, _callback);
-        Type localVarReturnType = new TypeToken<Trial>(){}.getType();
+        okhttp3.Call localVarCall = postExperimentByIdDecideValidateBeforeCall(id, experimentDecideBody, _callback);
+        Type localVarReturnType = new TypeToken<ExperimentTrial>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

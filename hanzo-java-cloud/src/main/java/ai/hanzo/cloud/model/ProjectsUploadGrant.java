@@ -52,10 +52,15 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class ProjectsUploadGrant {
+  public static final String SERIALIZED_NAME_COPY = "copy";
+  @SerializedName(SERIALIZED_NAME_COPY)
+  @javax.annotation.Nullable
+  private Boolean copy;
+
   public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
   @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
   @javax.annotation.Nullable
-  private Long expiresAt;
+  private Integer expiresAt;
 
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
@@ -65,7 +70,7 @@ public class ProjectsUploadGrant {
   public static final String SERIALIZED_NAME_MAX_BYTES = "maxBytes";
   @SerializedName(SERIALIZED_NAME_MAX_BYTES)
   @javax.annotation.Nullable
-  private Long maxBytes;
+  private Integer maxBytes;
 
   public static final String SERIALIZED_NAME_PREFIX = "prefix";
   @SerializedName(SERIALIZED_NAME_PREFIX)
@@ -80,21 +85,40 @@ public class ProjectsUploadGrant {
   public ProjectsUploadGrant() {
   }
 
-  public ProjectsUploadGrant expiresAt(@javax.annotation.Nullable Long expiresAt) {
+  public ProjectsUploadGrant copy(@javax.annotation.Nullable Boolean copy) {
+    this.copy = copy;
+    return this;
+  }
+
+  /**
+   * Get copy
+   * @return copy
+   */
+  @javax.annotation.Nullable
+  public Boolean getCopy() {
+    return copy;
+  }
+
+  public void setCopy(@javax.annotation.Nullable Boolean copy) {
+    this.copy = copy;
+  }
+
+
+  public ProjectsUploadGrant expiresAt(@javax.annotation.Nullable Integer expiresAt) {
     this.expiresAt = expiresAt;
     return this;
   }
 
   /**
-   * ExpiresAt is when the grant stops being accepted, as Unix seconds. It is short-lived by design and is handed out ONCE, on the response that queues the deployment — a later read of that deployment does not carry it, so a grant cannot be fetched again after the build it was minted for.
+   * Get expiresAt
    * @return expiresAt
    */
   @javax.annotation.Nullable
-  public Long getExpiresAt() {
+  public Integer getExpiresAt() {
     return expiresAt;
   }
 
-  public void setExpiresAt(@javax.annotation.Nullable Long expiresAt) {
+  public void setExpiresAt(@javax.annotation.Nullable Integer expiresAt) {
     this.expiresAt = expiresAt;
   }
 
@@ -113,7 +137,7 @@ public class ProjectsUploadGrant {
   }
 
   /**
-   * Fields are form values every POST must carry VERBATIM, alongside &#x60;key&#x60; and &#x60;file&#x60;. The signature covers them, so altering any one of them — including widening the key to reach outside the prefix — invalidates the grant rather than extending it.
+   * Get fields
    * @return fields
    */
   @javax.annotation.Nullable
@@ -126,21 +150,21 @@ public class ProjectsUploadGrant {
   }
 
 
-  public ProjectsUploadGrant maxBytes(@javax.annotation.Nullable Long maxBytes) {
+  public ProjectsUploadGrant maxBytes(@javax.annotation.Nullable Integer maxBytes) {
     this.maxBytes = maxBytes;
     return this;
   }
 
   /**
-   * MaxBytes bounds ONE object, not the upload as a whole.
+   * Get maxBytes
    * @return maxBytes
    */
   @javax.annotation.Nullable
-  public Long getMaxBytes() {
+  public Integer getMaxBytes() {
     return maxBytes;
   }
 
-  public void setMaxBytes(@javax.annotation.Nullable Long maxBytes) {
+  public void setMaxBytes(@javax.annotation.Nullable Integer maxBytes) {
     this.maxBytes = maxBytes;
   }
 
@@ -151,7 +175,7 @@ public class ProjectsUploadGrant {
   }
 
   /**
-   * Prefix is the only place this grant can write: the deployment&#39;s own key prefix. It authorizes WRITES ONLY, which is why completing a deployment reconciles the prefix against a manifest instead of letting CI delete.
+   * Get prefix
    * @return prefix
    */
   @javax.annotation.Nullable
@@ -170,7 +194,7 @@ public class ProjectsUploadGrant {
   }
 
   /**
-   * URL is the address to POST each object to. It is signed for the PUBLIC endpoint, because the signature covers the host and CI posts from outside the cluster.
+   * Get url
    * @return url
    */
   @javax.annotation.Nullable
@@ -237,7 +261,8 @@ public class ProjectsUploadGrant {
       return false;
     }
     ProjectsUploadGrant projectsUploadGrant = (ProjectsUploadGrant) o;
-    return Objects.equals(this.expiresAt, projectsUploadGrant.expiresAt) &&
+    return Objects.equals(this.copy, projectsUploadGrant.copy) &&
+        Objects.equals(this.expiresAt, projectsUploadGrant.expiresAt) &&
         Objects.equals(this.fields, projectsUploadGrant.fields) &&
         Objects.equals(this.maxBytes, projectsUploadGrant.maxBytes) &&
         Objects.equals(this.prefix, projectsUploadGrant.prefix) &&
@@ -247,13 +272,14 @@ public class ProjectsUploadGrant {
 
   @Override
   public int hashCode() {
-    return Objects.hash(expiresAt, fields, maxBytes, prefix, url, additionalProperties);
+    return Objects.hash(copy, expiresAt, fields, maxBytes, prefix, url, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProjectsUploadGrant {\n");
+    sb.append("    copy: ").append(toIndentedString(copy)).append("\n");
     sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
     sb.append("    fields: ").append(toIndentedString(fields)).append("\n");
     sb.append("    maxBytes: ").append(toIndentedString(maxBytes)).append("\n");
@@ -281,7 +307,7 @@ public class ProjectsUploadGrant {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("expiresAt", "fields", "maxBytes", "prefix", "url"));
+    openapiFields = new HashSet<String>(Arrays.asList("copy", "expiresAt", "fields", "maxBytes", "prefix", "url"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

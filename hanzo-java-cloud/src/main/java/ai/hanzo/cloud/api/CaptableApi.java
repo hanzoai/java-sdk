@@ -27,36 +27,37 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.CaptableCompany;
-import ai.hanzo.cloud.model.CaptableCompanyUpdate;
-import ai.hanzo.cloud.model.CaptableConvertibleIn;
-import ai.hanzo.cloud.model.CaptableCreated;
-import ai.hanzo.cloud.model.CaptableDeleted;
-import ai.hanzo.cloud.model.CaptableEquityPlanIn;
-import ai.hanzo.cloud.model.CaptableEquityPlans;
-import ai.hanzo.cloud.model.CaptableInvested;
-import ai.hanzo.cloud.model.CaptableInvestmentIn;
-import ai.hanzo.cloud.model.CaptableInvestments;
-import ai.hanzo.cloud.model.CaptableNotes;
-import ai.hanzo.cloud.model.CaptableOptionIn;
-import ai.hanzo.cloud.model.CaptableOptions;
-import ai.hanzo.cloud.model.CaptableRoundCloseRequest;
-import ai.hanzo.cloud.model.CaptableRoundDetail;
-import ai.hanzo.cloud.model.CaptableRoundIn;
-import ai.hanzo.cloud.model.CaptableRounds;
-import ai.hanzo.cloud.model.CaptableSafeIn;
-import ai.hanzo.cloud.model.CaptableSafes;
-import ai.hanzo.cloud.model.CaptableShareClass;
-import ai.hanzo.cloud.model.CaptableShareClassAmend;
-import ai.hanzo.cloud.model.CaptableShareClassIn;
-import ai.hanzo.cloud.model.CaptableShareIn;
-import ai.hanzo.cloud.model.CaptableShareTransfer;
-import ai.hanzo.cloud.model.CaptableShares;
-import ai.hanzo.cloud.model.CaptableStakeholder;
-import ai.hanzo.cloud.model.CaptableStakeholderPatch;
-import ai.hanzo.cloud.model.CaptableSummary;
-import ai.hanzo.cloud.model.CaptableTransferred;
-import ai.hanzo.cloud.model.CaptableUpdated;
+import ai.hanzo.cloud.model.CaptableCaptableCompany;
+import ai.hanzo.cloud.model.CaptableCaptableCompanyUpdate;
+import ai.hanzo.cloud.model.CaptableCaptableConvertibleIn;
+import ai.hanzo.cloud.model.CaptableCaptableCreated;
+import ai.hanzo.cloud.model.CaptableCaptableDeleted;
+import ai.hanzo.cloud.model.CaptableCaptableEquityPlanIn;
+import ai.hanzo.cloud.model.CaptableCaptableEquityPlans;
+import ai.hanzo.cloud.model.CaptableCaptableInvested;
+import ai.hanzo.cloud.model.CaptableCaptableInvestmentIn;
+import ai.hanzo.cloud.model.CaptableCaptableInvestments;
+import ai.hanzo.cloud.model.CaptableCaptableNotes;
+import ai.hanzo.cloud.model.CaptableCaptableOptionIn;
+import ai.hanzo.cloud.model.CaptableCaptableOptions;
+import ai.hanzo.cloud.model.CaptableCaptableRoundCloseRequest;
+import ai.hanzo.cloud.model.CaptableCaptableRoundDetail;
+import ai.hanzo.cloud.model.CaptableCaptableRoundIn;
+import ai.hanzo.cloud.model.CaptableCaptableRounds;
+import ai.hanzo.cloud.model.CaptableCaptableSafeIn;
+import ai.hanzo.cloud.model.CaptableCaptableSafes;
+import ai.hanzo.cloud.model.CaptableCaptableShareClass;
+import ai.hanzo.cloud.model.CaptableCaptableShareClassAmend;
+import ai.hanzo.cloud.model.CaptableCaptableShareClassIn;
+import ai.hanzo.cloud.model.CaptableCaptableShareIn;
+import ai.hanzo.cloud.model.CaptableCaptableShareTransfer;
+import ai.hanzo.cloud.model.CaptableCaptableShares;
+import ai.hanzo.cloud.model.CaptableCaptableStakeholder;
+import ai.hanzo.cloud.model.CaptableCaptableStakeholderPatch;
+import ai.hanzo.cloud.model.CaptableCaptableSummary;
+import ai.hanzo.cloud.model.CaptableCaptableTransferred;
+import ai.hanzo.cloud.model.CaptableCaptableUpdated;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -112,6 +113,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteCaptableConvertiblesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -141,7 +143,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -174,17 +177,18 @@ public class CaptableApi {
      * Removes one of the caller org&#39;s convertible notes, taking its principal out of the cap table&#39;s unconverted-instrument totals.
      * Removes one of the caller org&#39;s convertible notes, taking its principal out of the cap table&#39;s unconverted-instrument totals. An id this org does not hold is not found.
      * @param id ID is the convertible note to delete. (required)
-     * @return CaptableDeleted
+     * @return CaptableCaptableDeleted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableDeleted deleteCaptableConvertiblesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CaptableDeleted> localVarResp = deleteCaptableConvertiblesByIdWithHttpInfo(id);
+    public CaptableCaptableDeleted deleteCaptableConvertiblesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CaptableCaptableDeleted> localVarResp = deleteCaptableConvertiblesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -192,18 +196,19 @@ public class CaptableApi {
      * Removes one of the caller org&#39;s convertible notes, taking its principal out of the cap table&#39;s unconverted-instrument totals.
      * Removes one of the caller org&#39;s convertible notes, taking its principal out of the cap table&#39;s unconverted-instrument totals. An id this org does not hold is not found.
      * @param id ID is the convertible note to delete. (required)
-     * @return ApiResponse&lt;CaptableDeleted&gt;
+     * @return ApiResponse&lt;CaptableCaptableDeleted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableDeleted> deleteCaptableConvertiblesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<CaptableCaptableDeleted> deleteCaptableConvertiblesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteCaptableConvertiblesByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -219,12 +224,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCaptableConvertiblesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableDeleted> _callback) throws ApiException {
+    public okhttp3.Call deleteCaptableConvertiblesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableCaptableDeleted> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCaptableConvertiblesByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -239,6 +245,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteCaptableOptionsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -268,7 +275,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -301,17 +309,18 @@ public class CaptableApi {
      * Removes one of the caller org&#39;s option grants, taking its shares out of the cap table&#39;s granted-options and fully-diluted counts.
      * Removes one of the caller org&#39;s option grants, taking its shares out of the cap table&#39;s granted-options and fully-diluted counts. An id this org does not hold is not found.
      * @param id ID is the option grant to delete. (required)
-     * @return CaptableDeleted
+     * @return CaptableCaptableDeleted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableDeleted deleteCaptableOptionsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CaptableDeleted> localVarResp = deleteCaptableOptionsByIdWithHttpInfo(id);
+    public CaptableCaptableDeleted deleteCaptableOptionsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CaptableCaptableDeleted> localVarResp = deleteCaptableOptionsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -319,18 +328,19 @@ public class CaptableApi {
      * Removes one of the caller org&#39;s option grants, taking its shares out of the cap table&#39;s granted-options and fully-diluted counts.
      * Removes one of the caller org&#39;s option grants, taking its shares out of the cap table&#39;s granted-options and fully-diluted counts. An id this org does not hold is not found.
      * @param id ID is the option grant to delete. (required)
-     * @return ApiResponse&lt;CaptableDeleted&gt;
+     * @return ApiResponse&lt;CaptableCaptableDeleted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableDeleted> deleteCaptableOptionsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<CaptableCaptableDeleted> deleteCaptableOptionsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteCaptableOptionsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -346,12 +356,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCaptableOptionsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableDeleted> _callback) throws ApiException {
+    public okhttp3.Call deleteCaptableOptionsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableCaptableDeleted> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCaptableOptionsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -366,6 +377,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteCaptableSafesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -395,7 +407,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -428,17 +441,18 @@ public class CaptableApi {
      * Removes one of the caller org&#39;s SAFEs, taking its capital out of the cap table&#39;s unconverted-instrument totals.
      * Removes one of the caller org&#39;s SAFEs, taking its capital out of the cap table&#39;s unconverted-instrument totals. An id this org does not hold is not found.
      * @param id ID is the SAFE to delete. (required)
-     * @return CaptableDeleted
+     * @return CaptableCaptableDeleted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableDeleted deleteCaptableSafesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CaptableDeleted> localVarResp = deleteCaptableSafesByIdWithHttpInfo(id);
+    public CaptableCaptableDeleted deleteCaptableSafesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CaptableCaptableDeleted> localVarResp = deleteCaptableSafesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -446,18 +460,19 @@ public class CaptableApi {
      * Removes one of the caller org&#39;s SAFEs, taking its capital out of the cap table&#39;s unconverted-instrument totals.
      * Removes one of the caller org&#39;s SAFEs, taking its capital out of the cap table&#39;s unconverted-instrument totals. An id this org does not hold is not found.
      * @param id ID is the SAFE to delete. (required)
-     * @return ApiResponse&lt;CaptableDeleted&gt;
+     * @return ApiResponse&lt;CaptableCaptableDeleted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableDeleted> deleteCaptableSafesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<CaptableCaptableDeleted> deleteCaptableSafesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteCaptableSafesByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -473,12 +488,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCaptableSafesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableDeleted> _callback) throws ApiException {
+    public okhttp3.Call deleteCaptableSafesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableCaptableDeleted> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCaptableSafesByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -493,6 +509,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteCaptableSharesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -522,7 +539,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -555,17 +573,18 @@ public class CaptableApi {
      * Removes one of the caller org&#39;s share certificates, taking its shares out of the cap table&#39;s outstanding and fully-diluted counts.
      * Removes one of the caller org&#39;s share certificates, taking its shares out of the cap table&#39;s outstanding and fully-diluted counts. An id this org does not hold is not found.
      * @param id ID is the share certificate to delete. (required)
-     * @return CaptableDeleted
+     * @return CaptableCaptableDeleted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableDeleted deleteCaptableSharesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CaptableDeleted> localVarResp = deleteCaptableSharesByIdWithHttpInfo(id);
+    public CaptableCaptableDeleted deleteCaptableSharesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CaptableCaptableDeleted> localVarResp = deleteCaptableSharesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -573,18 +592,19 @@ public class CaptableApi {
      * Removes one of the caller org&#39;s share certificates, taking its shares out of the cap table&#39;s outstanding and fully-diluted counts.
      * Removes one of the caller org&#39;s share certificates, taking its shares out of the cap table&#39;s outstanding and fully-diluted counts. An id this org does not hold is not found.
      * @param id ID is the share certificate to delete. (required)
-     * @return ApiResponse&lt;CaptableDeleted&gt;
+     * @return ApiResponse&lt;CaptableCaptableDeleted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableDeleted> deleteCaptableSharesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<CaptableCaptableDeleted> deleteCaptableSharesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteCaptableSharesByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -600,12 +620,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCaptableSharesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableDeleted> _callback) throws ApiException {
+    public okhttp3.Call deleteCaptableSharesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableCaptableDeleted> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCaptableSharesByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -620,6 +641,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteCaptableStakeholdersByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -649,7 +671,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -682,17 +705,18 @@ public class CaptableApi {
      * Removes one of the caller org&#39;s stakeholders.
      * Removes one of the caller org&#39;s stakeholders. It REFUSES to orphan issued equity: a holder that still holds share certificates or option grants cannot be deleted, and answers 400 saying so — release or transfer the holdings first. An id this org does not hold is not found.
      * @param id ID is the stakeholder to delete. (required)
-     * @return CaptableDeleted
+     * @return CaptableCaptableDeleted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableDeleted deleteCaptableStakeholdersById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CaptableDeleted> localVarResp = deleteCaptableStakeholdersByIdWithHttpInfo(id);
+    public CaptableCaptableDeleted deleteCaptableStakeholdersById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CaptableCaptableDeleted> localVarResp = deleteCaptableStakeholdersByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -700,18 +724,19 @@ public class CaptableApi {
      * Removes one of the caller org&#39;s stakeholders.
      * Removes one of the caller org&#39;s stakeholders. It REFUSES to orphan issued equity: a holder that still holds share certificates or option grants cannot be deleted, and answers 400 saying so — release or transfer the holdings first. An id this org does not hold is not found.
      * @param id ID is the stakeholder to delete. (required)
-     * @return ApiResponse&lt;CaptableDeleted&gt;
+     * @return ApiResponse&lt;CaptableCaptableDeleted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableDeleted> deleteCaptableStakeholdersByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<CaptableCaptableDeleted> deleteCaptableStakeholdersByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteCaptableStakeholdersByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -727,12 +752,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCaptableStakeholdersByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableDeleted> _callback) throws ApiException {
+    public okhttp3.Call deleteCaptableStakeholdersByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableCaptableDeleted> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCaptableStakeholdersByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CaptableDeleted>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -746,6 +772,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCaptableClassesCall(final ApiCallback _callback) throws ApiException {
@@ -774,7 +801,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -801,35 +829,37 @@ public class CaptableApi {
     /**
      * Returns the caller org&#39;s share classes, in creation order.
      * Returns the caller org&#39;s share classes, in creation order. A share class is what a certificate is issued in, and every class the company has authorized appears. The response is a bare JSON array, not an envelope.
-     * @return List&lt;CaptableShareClass&gt;
+     * @return List&lt;CaptableCaptableShareClass&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<CaptableShareClass> getCaptableClasses() throws ApiException {
-        ApiResponse<List<CaptableShareClass>> localVarResp = getCaptableClassesWithHttpInfo();
+    public List<CaptableCaptableShareClass> getCaptableClasses() throws ApiException {
+        ApiResponse<List<CaptableCaptableShareClass>> localVarResp = getCaptableClassesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller org&#39;s share classes, in creation order.
      * Returns the caller org&#39;s share classes, in creation order. A share class is what a certificate is issued in, and every class the company has authorized appears. The response is a bare JSON array, not an envelope.
-     * @return ApiResponse&lt;List&lt;CaptableShareClass&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CaptableCaptableShareClass&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<CaptableShareClass>> getCaptableClassesWithHttpInfo() throws ApiException {
+    public ApiResponse<List<CaptableCaptableShareClass>> getCaptableClassesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getCaptableClassesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<CaptableShareClass>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<CaptableCaptableShareClass>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -844,12 +874,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCaptableClassesAsync(final ApiCallback<List<CaptableShareClass>> _callback) throws ApiException {
+    public okhttp3.Call getCaptableClassesAsync(final ApiCallback<List<CaptableCaptableShareClass>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCaptableClassesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<CaptableShareClass>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<CaptableCaptableShareClass>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -863,6 +894,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCaptableCompanyCall(final ApiCallback _callback) throws ApiException {
@@ -891,7 +923,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -918,35 +951,37 @@ public class CaptableApi {
     /**
      * Returns the caller org&#39;s cap-table company record.
      * Returns the caller org&#39;s cap-table company record. The row is seeded when the tenant&#39;s store first opens, so it always exists; its name and incorporation details are set with PUT /v1/captable/company.
-     * @return CaptableCompany
+     * @return CaptableCaptableCompany
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableCompany getCaptableCompany() throws ApiException {
-        ApiResponse<CaptableCompany> localVarResp = getCaptableCompanyWithHttpInfo();
+    public CaptableCaptableCompany getCaptableCompany() throws ApiException {
+        ApiResponse<CaptableCaptableCompany> localVarResp = getCaptableCompanyWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller org&#39;s cap-table company record.
      * Returns the caller org&#39;s cap-table company record. The row is seeded when the tenant&#39;s store first opens, so it always exists; its name and incorporation details are set with PUT /v1/captable/company.
-     * @return ApiResponse&lt;CaptableCompany&gt;
+     * @return ApiResponse&lt;CaptableCaptableCompany&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableCompany> getCaptableCompanyWithHttpInfo() throws ApiException {
+    public ApiResponse<CaptableCaptableCompany> getCaptableCompanyWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getCaptableCompanyValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CaptableCompany>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableCompany>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -961,12 +996,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCaptableCompanyAsync(final ApiCallback<CaptableCompany> _callback) throws ApiException {
+    public okhttp3.Call getCaptableCompanyAsync(final ApiCallback<CaptableCaptableCompany> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCaptableCompanyValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CaptableCompany>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableCompany>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -980,6 +1016,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCaptableConvertiblesCall(final ApiCallback _callback) throws ApiException {
@@ -1008,7 +1045,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1035,35 +1073,37 @@ public class CaptableApi {
     /**
      * Returns the caller org&#39;s convertible notes, newest first.
      * Returns the caller org&#39;s convertible notes, newest first. A note&#39;s principal sits OUTSIDE issued equity until it converts, so it is not part of the share counts.
-     * @return CaptableNotes
+     * @return CaptableCaptableNotes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableNotes getCaptableConvertibles() throws ApiException {
-        ApiResponse<CaptableNotes> localVarResp = getCaptableConvertiblesWithHttpInfo();
+    public CaptableCaptableNotes getCaptableConvertibles() throws ApiException {
+        ApiResponse<CaptableCaptableNotes> localVarResp = getCaptableConvertiblesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller org&#39;s convertible notes, newest first.
      * Returns the caller org&#39;s convertible notes, newest first. A note&#39;s principal sits OUTSIDE issued equity until it converts, so it is not part of the share counts.
-     * @return ApiResponse&lt;CaptableNotes&gt;
+     * @return ApiResponse&lt;CaptableCaptableNotes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableNotes> getCaptableConvertiblesWithHttpInfo() throws ApiException {
+    public ApiResponse<CaptableCaptableNotes> getCaptableConvertiblesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getCaptableConvertiblesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CaptableNotes>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableNotes>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1078,12 +1118,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCaptableConvertiblesAsync(final ApiCallback<CaptableNotes> _callback) throws ApiException {
+    public okhttp3.Call getCaptableConvertiblesAsync(final ApiCallback<CaptableCaptableNotes> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCaptableConvertiblesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CaptableNotes>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableNotes>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1097,6 +1138,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCaptableInvestmentsCall(final ApiCallback _callback) throws ApiException {
@@ -1125,7 +1167,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1152,35 +1195,37 @@ public class CaptableApi {
     /**
      * Returns the caller org&#39;s investments, newest first.
      * Returns the caller org&#39;s investments, newest first. It spans every round, so it is the flat ledger of cheques written into the company, each naming its investor and the round it went into.
-     * @return CaptableInvestments
+     * @return CaptableCaptableInvestments
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableInvestments getCaptableInvestments() throws ApiException {
-        ApiResponse<CaptableInvestments> localVarResp = getCaptableInvestmentsWithHttpInfo();
+    public CaptableCaptableInvestments getCaptableInvestments() throws ApiException {
+        ApiResponse<CaptableCaptableInvestments> localVarResp = getCaptableInvestmentsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller org&#39;s investments, newest first.
      * Returns the caller org&#39;s investments, newest first. It spans every round, so it is the flat ledger of cheques written into the company, each naming its investor and the round it went into.
-     * @return ApiResponse&lt;CaptableInvestments&gt;
+     * @return ApiResponse&lt;CaptableCaptableInvestments&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableInvestments> getCaptableInvestmentsWithHttpInfo() throws ApiException {
+    public ApiResponse<CaptableCaptableInvestments> getCaptableInvestmentsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getCaptableInvestmentsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CaptableInvestments>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableInvestments>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1195,12 +1240,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCaptableInvestmentsAsync(final ApiCallback<CaptableInvestments> _callback) throws ApiException {
+    public okhttp3.Call getCaptableInvestmentsAsync(final ApiCallback<CaptableCaptableInvestments> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCaptableInvestmentsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CaptableInvestments>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableInvestments>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1214,6 +1260,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCaptableOptionsCall(final ApiCallback _callback) throws ApiException {
@@ -1242,7 +1289,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1269,35 +1317,37 @@ public class CaptableApi {
     /**
      * Returns the caller org&#39;s option grants, newest first.
      * Returns the caller org&#39;s option grants, newest first. Each row is joined to its grantee and its equity plan. Grants that are EXERCISED, EXPIRED or CANCELLED are listed here but do not dilute the cap table.
-     * @return CaptableOptions
+     * @return CaptableCaptableOptions
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableOptions getCaptableOptions() throws ApiException {
-        ApiResponse<CaptableOptions> localVarResp = getCaptableOptionsWithHttpInfo();
+    public CaptableCaptableOptions getCaptableOptions() throws ApiException {
+        ApiResponse<CaptableCaptableOptions> localVarResp = getCaptableOptionsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller org&#39;s option grants, newest first.
      * Returns the caller org&#39;s option grants, newest first. Each row is joined to its grantee and its equity plan. Grants that are EXERCISED, EXPIRED or CANCELLED are listed here but do not dilute the cap table.
-     * @return ApiResponse&lt;CaptableOptions&gt;
+     * @return ApiResponse&lt;CaptableCaptableOptions&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableOptions> getCaptableOptionsWithHttpInfo() throws ApiException {
+    public ApiResponse<CaptableCaptableOptions> getCaptableOptionsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getCaptableOptionsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CaptableOptions>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableOptions>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1312,12 +1362,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCaptableOptionsAsync(final ApiCallback<CaptableOptions> _callback) throws ApiException {
+    public okhttp3.Call getCaptableOptionsAsync(final ApiCallback<CaptableCaptableOptions> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCaptableOptionsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CaptableOptions>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableOptions>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1331,6 +1382,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCaptablePlansCall(final ApiCallback _callback) throws ApiException {
@@ -1359,7 +1411,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1386,35 +1439,37 @@ public class CaptableApi {
     /**
      * Returns the caller org&#39;s equity plans, newest first.
      * Returns the caller org&#39;s equity plans, newest first. An equity plan is an option pool: a reserve of shares, drawn from one share class, that option grants are written against.
-     * @return CaptableEquityPlans
+     * @return CaptableCaptableEquityPlans
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableEquityPlans getCaptablePlans() throws ApiException {
-        ApiResponse<CaptableEquityPlans> localVarResp = getCaptablePlansWithHttpInfo();
+    public CaptableCaptableEquityPlans getCaptablePlans() throws ApiException {
+        ApiResponse<CaptableCaptableEquityPlans> localVarResp = getCaptablePlansWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller org&#39;s equity plans, newest first.
      * Returns the caller org&#39;s equity plans, newest first. An equity plan is an option pool: a reserve of shares, drawn from one share class, that option grants are written against.
-     * @return ApiResponse&lt;CaptableEquityPlans&gt;
+     * @return ApiResponse&lt;CaptableCaptableEquityPlans&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableEquityPlans> getCaptablePlansWithHttpInfo() throws ApiException {
+    public ApiResponse<CaptableCaptableEquityPlans> getCaptablePlansWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getCaptablePlansValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CaptableEquityPlans>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableEquityPlans>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1429,12 +1484,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCaptablePlansAsync(final ApiCallback<CaptableEquityPlans> _callback) throws ApiException {
+    public okhttp3.Call getCaptablePlansAsync(final ApiCallback<CaptableCaptableEquityPlans> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCaptablePlansValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CaptableEquityPlans>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableEquityPlans>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1448,6 +1504,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCaptableRoundsCall(final ApiCallback _callback) throws ApiException {
@@ -1476,7 +1533,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1503,35 +1561,37 @@ public class CaptableApi {
     /**
      * Returns the caller org&#39;s fundraising rounds, newest first.
      * Returns the caller org&#39;s fundraising rounds, newest first. A round groups a fundraising event; a PRICED round also carries the share class and price per share it issues at.
-     * @return CaptableRounds
+     * @return CaptableCaptableRounds
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableRounds getCaptableRounds() throws ApiException {
-        ApiResponse<CaptableRounds> localVarResp = getCaptableRoundsWithHttpInfo();
+    public CaptableCaptableRounds getCaptableRounds() throws ApiException {
+        ApiResponse<CaptableCaptableRounds> localVarResp = getCaptableRoundsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller org&#39;s fundraising rounds, newest first.
      * Returns the caller org&#39;s fundraising rounds, newest first. A round groups a fundraising event; a PRICED round also carries the share class and price per share it issues at.
-     * @return ApiResponse&lt;CaptableRounds&gt;
+     * @return ApiResponse&lt;CaptableCaptableRounds&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableRounds> getCaptableRoundsWithHttpInfo() throws ApiException {
+    public ApiResponse<CaptableCaptableRounds> getCaptableRoundsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getCaptableRoundsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CaptableRounds>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableRounds>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1546,12 +1606,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCaptableRoundsAsync(final ApiCallback<CaptableRounds> _callback) throws ApiException {
+    public okhttp3.Call getCaptableRoundsAsync(final ApiCallback<CaptableCaptableRounds> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCaptableRoundsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CaptableRounds>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableRounds>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1566,6 +1627,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCaptableRoundsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1595,7 +1657,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1628,17 +1691,18 @@ public class CaptableApi {
      * Returns one of the caller org&#39;s fundraising rounds together with every investment written into it, oldest first.
      * Returns one of the caller org&#39;s fundraising rounds together with every investment written into it, oldest first. A round id that does not exist in the caller&#39;s org is not found — including one that exists in another tenant, since the org comes from the caller&#39;s principal and is part of the lookup.
      * @param id ID is the round to read. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @return CaptableRoundDetail
+     * @return CaptableCaptableRoundDetail
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableRoundDetail getCaptableRoundsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CaptableRoundDetail> localVarResp = getCaptableRoundsByIdWithHttpInfo(id);
+    public CaptableCaptableRoundDetail getCaptableRoundsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CaptableCaptableRoundDetail> localVarResp = getCaptableRoundsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1646,18 +1710,19 @@ public class CaptableApi {
      * Returns one of the caller org&#39;s fundraising rounds together with every investment written into it, oldest first.
      * Returns one of the caller org&#39;s fundraising rounds together with every investment written into it, oldest first. A round id that does not exist in the caller&#39;s org is not found — including one that exists in another tenant, since the org comes from the caller&#39;s principal and is part of the lookup.
      * @param id ID is the round to read. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @return ApiResponse&lt;CaptableRoundDetail&gt;
+     * @return ApiResponse&lt;CaptableCaptableRoundDetail&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableRoundDetail> getCaptableRoundsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<CaptableCaptableRoundDetail> getCaptableRoundsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getCaptableRoundsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CaptableRoundDetail>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableRoundDetail>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1673,12 +1738,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCaptableRoundsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableRoundDetail> _callback) throws ApiException {
+    public okhttp3.Call getCaptableRoundsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CaptableCaptableRoundDetail> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCaptableRoundsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CaptableRoundDetail>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableRoundDetail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1692,6 +1758,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCaptableSafesCall(final ApiCallback _callback) throws ApiException {
@@ -1720,7 +1787,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1747,35 +1815,37 @@ public class CaptableApi {
     /**
      * Returns the caller org&#39;s SAFEs, newest first.
      * Returns the caller org&#39;s SAFEs, newest first. A SAFE is a simple agreement for future equity: its capital sits OUTSIDE issued equity until it converts, so it is not part of the share counts.
-     * @return CaptableSafes
+     * @return CaptableCaptableSafes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableSafes getCaptableSafes() throws ApiException {
-        ApiResponse<CaptableSafes> localVarResp = getCaptableSafesWithHttpInfo();
+    public CaptableCaptableSafes getCaptableSafes() throws ApiException {
+        ApiResponse<CaptableCaptableSafes> localVarResp = getCaptableSafesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller org&#39;s SAFEs, newest first.
      * Returns the caller org&#39;s SAFEs, newest first. A SAFE is a simple agreement for future equity: its capital sits OUTSIDE issued equity until it converts, so it is not part of the share counts.
-     * @return ApiResponse&lt;CaptableSafes&gt;
+     * @return ApiResponse&lt;CaptableCaptableSafes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableSafes> getCaptableSafesWithHttpInfo() throws ApiException {
+    public ApiResponse<CaptableCaptableSafes> getCaptableSafesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getCaptableSafesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CaptableSafes>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableSafes>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1790,12 +1860,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCaptableSafesAsync(final ApiCallback<CaptableSafes> _callback) throws ApiException {
+    public okhttp3.Call getCaptableSafesAsync(final ApiCallback<CaptableCaptableSafes> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCaptableSafesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CaptableSafes>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableSafes>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1809,6 +1880,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCaptableSharesCall(final ApiCallback _callback) throws ApiException {
@@ -1837,7 +1909,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1864,35 +1937,37 @@ public class CaptableApi {
     /**
      * Returns the caller org&#39;s share certificates, newest first.
      * Returns the caller org&#39;s share certificates, newest first. Each row is joined to its holder and its share class, so a certificate names who holds it and what class it is in without a second call.
-     * @return CaptableShares
+     * @return CaptableCaptableShares
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableShares getCaptableShares() throws ApiException {
-        ApiResponse<CaptableShares> localVarResp = getCaptableSharesWithHttpInfo();
+    public CaptableCaptableShares getCaptableShares() throws ApiException {
+        ApiResponse<CaptableCaptableShares> localVarResp = getCaptableSharesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller org&#39;s share certificates, newest first.
      * Returns the caller org&#39;s share certificates, newest first. Each row is joined to its holder and its share class, so a certificate names who holds it and what class it is in without a second call.
-     * @return ApiResponse&lt;CaptableShares&gt;
+     * @return ApiResponse&lt;CaptableCaptableShares&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableShares> getCaptableSharesWithHttpInfo() throws ApiException {
+    public ApiResponse<CaptableCaptableShares> getCaptableSharesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getCaptableSharesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CaptableShares>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableShares>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1907,12 +1982,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCaptableSharesAsync(final ApiCallback<CaptableShares> _callback) throws ApiException {
+    public okhttp3.Call getCaptableSharesAsync(final ApiCallback<CaptableCaptableShares> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCaptableSharesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CaptableShares>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableShares>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1926,6 +2002,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCaptableStakeholdersCall(final ApiCallback _callback) throws ApiException {
@@ -1954,7 +2031,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1981,35 +2059,37 @@ public class CaptableApi {
     /**
      * Returns the caller org&#39;s stakeholders, newest first.
      * Returns the caller org&#39;s stakeholders, newest first. The response is a bare JSON array, not an envelope. Each row carries the holder&#39;s contact and address fields alongside the company&#39;s name.
-     * @return List&lt;CaptableStakeholder&gt;
+     * @return List&lt;CaptableCaptableStakeholder&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<CaptableStakeholder> getCaptableStakeholders() throws ApiException {
-        ApiResponse<List<CaptableStakeholder>> localVarResp = getCaptableStakeholdersWithHttpInfo();
+    public List<CaptableCaptableStakeholder> getCaptableStakeholders() throws ApiException {
+        ApiResponse<List<CaptableCaptableStakeholder>> localVarResp = getCaptableStakeholdersWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller org&#39;s stakeholders, newest first.
      * Returns the caller org&#39;s stakeholders, newest first. The response is a bare JSON array, not an envelope. Each row carries the holder&#39;s contact and address fields alongside the company&#39;s name.
-     * @return ApiResponse&lt;List&lt;CaptableStakeholder&gt;&gt;
+     * @return ApiResponse&lt;List&lt;CaptableCaptableStakeholder&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<CaptableStakeholder>> getCaptableStakeholdersWithHttpInfo() throws ApiException {
+    public ApiResponse<List<CaptableCaptableStakeholder>> getCaptableStakeholdersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getCaptableStakeholdersValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<CaptableStakeholder>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<CaptableCaptableStakeholder>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2024,12 +2104,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCaptableStakeholdersAsync(final ApiCallback<List<CaptableStakeholder>> _callback) throws ApiException {
+    public okhttp3.Call getCaptableStakeholdersAsync(final ApiCallback<List<CaptableCaptableStakeholder>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCaptableStakeholdersValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<CaptableStakeholder>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<CaptableCaptableStakeholder>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2043,6 +2124,7 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCaptableSummaryCall(final ApiCallback _callback) throws ApiException {
@@ -2071,7 +2153,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2098,35 +2181,37 @@ public class CaptableApi {
     /**
      * Computes the caller org&#39;s cap table.
      * Computes the caller org&#39;s cap table. It answers who owns what on a fully-diluted basis: outstanding shares, granted options, per-stakeholder ownership percentages, each share class&#39;s authorized versus issued position, and the capital sitting on SAFEs and convertible notes that have not yet converted. Only non-terminal option grants dilute — EXERCISED, EXPIRED and CANCELLED grants are excluded, so equity issued through an exercised option is never counted twice.
-     * @return CaptableSummary
+     * @return CaptableCaptableSummary
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableSummary getCaptableSummary() throws ApiException {
-        ApiResponse<CaptableSummary> localVarResp = getCaptableSummaryWithHttpInfo();
+    public CaptableCaptableSummary getCaptableSummary() throws ApiException {
+        ApiResponse<CaptableCaptableSummary> localVarResp = getCaptableSummaryWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Computes the caller org&#39;s cap table.
      * Computes the caller org&#39;s cap table. It answers who owns what on a fully-diluted basis: outstanding shares, granted options, per-stakeholder ownership percentages, each share class&#39;s authorized versus issued position, and the capital sitting on SAFEs and convertible notes that have not yet converted. Only non-terminal option grants dilute — EXERCISED, EXPIRED and CANCELLED grants are excluded, so equity issued through an exercised option is never counted twice.
-     * @return ApiResponse&lt;CaptableSummary&gt;
+     * @return ApiResponse&lt;CaptableCaptableSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableSummary> getCaptableSummaryWithHttpInfo() throws ApiException {
+    public ApiResponse<CaptableCaptableSummary> getCaptableSummaryWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getCaptableSummaryValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CaptableSummary>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2141,19 +2226,20 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCaptableSummaryAsync(final ApiCallback<CaptableSummary> _callback) throws ApiException {
+    public okhttp3.Call getCaptableSummaryAsync(final ApiCallback<CaptableCaptableSummary> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCaptableSummaryValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CaptableSummary>(){}.getType();
+        Type localVarReturnType = new TypeToken<CaptableCaptableSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for patchCaptableClassesById
      * @param id ID addresses the resource. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which row is written whatever a body claims. (required)
-     * @param captableShareClassAmend  (required)
+     * @param captableCaptableShareClassAmend  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2162,9 +2248,10 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchCaptableClassesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableShareClassAmend captableShareClassAmend, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCaptableClassesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableShareClassAmend captableCaptableShareClassAmend, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2178,7 +2265,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = captableShareClassAmend;
+        Object localVarPostBody = captableCaptableShareClassAmend;
 
         // create path and map variables
         String localVarPath = "/v1/captable/classes/{id}"
@@ -2191,7 +2278,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2211,18 +2299,18 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchCaptableClassesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableShareClassAmend captableShareClassAmend, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCaptableClassesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableShareClassAmend captableCaptableShareClassAmend, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling patchCaptableClassesById(Async)");
         }
 
-        // verify the required parameter 'captableShareClassAmend' is set
-        if (captableShareClassAmend == null) {
-            throw new ApiException("Missing the required parameter 'captableShareClassAmend' when calling patchCaptableClassesById(Async)");
+        // verify the required parameter 'captableCaptableShareClassAmend' is set
+        if (captableCaptableShareClassAmend == null) {
+            throw new ApiException("Missing the required parameter 'captableCaptableShareClassAmend' when calling patchCaptableClassesById(Async)");
         }
 
-        return patchCaptableClassesByIdCall(id, captableShareClassAmend, _callback);
+        return patchCaptableClassesByIdCall(id, captableCaptableShareClassAmend, _callback);
 
     }
 
@@ -2230,18 +2318,19 @@ public class CaptableApi {
      * Replaces one share class&#39;s terms.
      * Replaces one share class&#39;s terms.  It is a full REPLACE and not a merge, despite the PATCH: every field is written as sent, so a field omitted is written empty rather than left alone. Send the whole class. The method is PATCH because the resource is addressed by id, not because the body is partial — and getting that backwards silently blanks terms every later issuance prices against.
      * @param id ID addresses the resource. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which row is written whatever a body claims. (required)
-     * @param captableShareClassAmend  (required)
-     * @return CaptableUpdated
+     * @param captableCaptableShareClassAmend  (required)
+     * @return CaptableCaptableUpdated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableUpdated patchCaptableClassesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableShareClassAmend captableShareClassAmend) throws ApiException {
-        ApiResponse<CaptableUpdated> localVarResp = patchCaptableClassesByIdWithHttpInfo(id, captableShareClassAmend);
+    public CaptableCaptableUpdated patchCaptableClassesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableShareClassAmend captableCaptableShareClassAmend) throws ApiException {
+        ApiResponse<CaptableCaptableUpdated> localVarResp = patchCaptableClassesByIdWithHttpInfo(id, captableCaptableShareClassAmend);
         return localVarResp.getData();
     }
 
@@ -2249,19 +2338,20 @@ public class CaptableApi {
      * Replaces one share class&#39;s terms.
      * Replaces one share class&#39;s terms.  It is a full REPLACE and not a merge, despite the PATCH: every field is written as sent, so a field omitted is written empty rather than left alone. Send the whole class. The method is PATCH because the resource is addressed by id, not because the body is partial — and getting that backwards silently blanks terms every later issuance prices against.
      * @param id ID addresses the resource. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which row is written whatever a body claims. (required)
-     * @param captableShareClassAmend  (required)
-     * @return ApiResponse&lt;CaptableUpdated&gt;
+     * @param captableCaptableShareClassAmend  (required)
+     * @return ApiResponse&lt;CaptableCaptableUpdated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableUpdated> patchCaptableClassesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableShareClassAmend captableShareClassAmend) throws ApiException {
-        okhttp3.Call localVarCall = patchCaptableClassesByIdValidateBeforeCall(id, captableShareClassAmend, null);
-        Type localVarReturnType = new TypeToken<CaptableUpdated>(){}.getType();
+    public ApiResponse<CaptableCaptableUpdated> patchCaptableClassesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableShareClassAmend captableCaptableShareClassAmend) throws ApiException {
+        okhttp3.Call localVarCall = patchCaptableClassesByIdValidateBeforeCall(id, captableCaptableShareClassAmend, null);
+        Type localVarReturnType = new TypeToken<CaptableCaptableUpdated>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2269,7 +2359,7 @@ public class CaptableApi {
      * Replaces one share class&#39;s terms. (asynchronously)
      * Replaces one share class&#39;s terms.  It is a full REPLACE and not a merge, despite the PATCH: every field is written as sent, so a field omitted is written empty rather than left alone. Send the whole class. The method is PATCH because the resource is addressed by id, not because the body is partial — and getting that backwards silently blanks terms every later issuance prices against.
      * @param id ID addresses the resource. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which row is written whatever a body claims. (required)
-     * @param captableShareClassAmend  (required)
+     * @param captableCaptableShareClassAmend  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2278,19 +2368,20 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchCaptableClassesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableShareClassAmend captableShareClassAmend, final ApiCallback<CaptableUpdated> _callback) throws ApiException {
+    public okhttp3.Call patchCaptableClassesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableShareClassAmend captableCaptableShareClassAmend, final ApiCallback<CaptableCaptableUpdated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchCaptableClassesByIdValidateBeforeCall(id, captableShareClassAmend, _callback);
-        Type localVarReturnType = new TypeToken<CaptableUpdated>(){}.getType();
+        okhttp3.Call localVarCall = patchCaptableClassesByIdValidateBeforeCall(id, captableCaptableShareClassAmend, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCaptableUpdated>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for patchCaptableStakeholdersById
      * @param id ID is the stakeholder to update. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @param captableStakeholderPatch  (required)
+     * @param captableCaptableStakeholderPatch  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2299,9 +2390,10 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchCaptableStakeholdersByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableStakeholderPatch captableStakeholderPatch, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCaptableStakeholdersByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableStakeholderPatch captableCaptableStakeholderPatch, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2315,7 +2407,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = captableStakeholderPatch;
+        Object localVarPostBody = captableCaptableStakeholderPatch;
 
         // create path and map variables
         String localVarPath = "/v1/captable/stakeholders/{id}"
@@ -2328,7 +2420,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2348,18 +2441,18 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchCaptableStakeholdersByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableStakeholderPatch captableStakeholderPatch, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCaptableStakeholdersByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableStakeholderPatch captableCaptableStakeholderPatch, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling patchCaptableStakeholdersById(Async)");
         }
 
-        // verify the required parameter 'captableStakeholderPatch' is set
-        if (captableStakeholderPatch == null) {
-            throw new ApiException("Missing the required parameter 'captableStakeholderPatch' when calling patchCaptableStakeholdersById(Async)");
+        // verify the required parameter 'captableCaptableStakeholderPatch' is set
+        if (captableCaptableStakeholderPatch == null) {
+            throw new ApiException("Missing the required parameter 'captableCaptableStakeholderPatch' when calling patchCaptableStakeholdersById(Async)");
         }
 
-        return patchCaptableStakeholdersByIdCall(id, captableStakeholderPatch, _callback);
+        return patchCaptableStakeholdersByIdCall(id, captableCaptableStakeholderPatch, _callback);
 
     }
 
@@ -2367,18 +2460,19 @@ public class CaptableApi {
      * Changes one of the caller org&#39;s stakeholders.
      * Changes one of the caller org&#39;s stakeholders. It is a PARTIAL update: only the fields the request names are written, and a field sent as null clears that column. A request that names no updatable field is refused, and an id this org does not hold is not found.  The values are stored as sent. Unlike adding a stakeholder, this route does not check the email&#39;s shape or the type and relationship vocabularies, so it can record a value that adding one would have rejected.
      * @param id ID is the stakeholder to update. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @param captableStakeholderPatch  (required)
-     * @return CaptableUpdated
+     * @param captableCaptableStakeholderPatch  (required)
+     * @return CaptableCaptableUpdated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableUpdated patchCaptableStakeholdersById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableStakeholderPatch captableStakeholderPatch) throws ApiException {
-        ApiResponse<CaptableUpdated> localVarResp = patchCaptableStakeholdersByIdWithHttpInfo(id, captableStakeholderPatch);
+    public CaptableCaptableUpdated patchCaptableStakeholdersById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableStakeholderPatch captableCaptableStakeholderPatch) throws ApiException {
+        ApiResponse<CaptableCaptableUpdated> localVarResp = patchCaptableStakeholdersByIdWithHttpInfo(id, captableCaptableStakeholderPatch);
         return localVarResp.getData();
     }
 
@@ -2386,19 +2480,20 @@ public class CaptableApi {
      * Changes one of the caller org&#39;s stakeholders.
      * Changes one of the caller org&#39;s stakeholders. It is a PARTIAL update: only the fields the request names are written, and a field sent as null clears that column. A request that names no updatable field is refused, and an id this org does not hold is not found.  The values are stored as sent. Unlike adding a stakeholder, this route does not check the email&#39;s shape or the type and relationship vocabularies, so it can record a value that adding one would have rejected.
      * @param id ID is the stakeholder to update. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @param captableStakeholderPatch  (required)
-     * @return ApiResponse&lt;CaptableUpdated&gt;
+     * @param captableCaptableStakeholderPatch  (required)
+     * @return ApiResponse&lt;CaptableCaptableUpdated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableUpdated> patchCaptableStakeholdersByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableStakeholderPatch captableStakeholderPatch) throws ApiException {
-        okhttp3.Call localVarCall = patchCaptableStakeholdersByIdValidateBeforeCall(id, captableStakeholderPatch, null);
-        Type localVarReturnType = new TypeToken<CaptableUpdated>(){}.getType();
+    public ApiResponse<CaptableCaptableUpdated> patchCaptableStakeholdersByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableStakeholderPatch captableCaptableStakeholderPatch) throws ApiException {
+        okhttp3.Call localVarCall = patchCaptableStakeholdersByIdValidateBeforeCall(id, captableCaptableStakeholderPatch, null);
+        Type localVarReturnType = new TypeToken<CaptableCaptableUpdated>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2406,7 +2501,7 @@ public class CaptableApi {
      * Changes one of the caller org&#39;s stakeholders. (asynchronously)
      * Changes one of the caller org&#39;s stakeholders. It is a PARTIAL update: only the fields the request names are written, and a field sent as null clears that column. A request that names no updatable field is refused, and an id this org does not hold is not found.  The values are stored as sent. Unlike adding a stakeholder, this route does not check the email&#39;s shape or the type and relationship vocabularies, so it can record a value that adding one would have rejected.
      * @param id ID is the stakeholder to update. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @param captableStakeholderPatch  (required)
+     * @param captableCaptableStakeholderPatch  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2415,18 +2510,19 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchCaptableStakeholdersByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableStakeholderPatch captableStakeholderPatch, final ApiCallback<CaptableUpdated> _callback) throws ApiException {
+    public okhttp3.Call patchCaptableStakeholdersByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableStakeholderPatch captableCaptableStakeholderPatch, final ApiCallback<CaptableCaptableUpdated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchCaptableStakeholdersByIdValidateBeforeCall(id, captableStakeholderPatch, _callback);
-        Type localVarReturnType = new TypeToken<CaptableUpdated>(){}.getType();
+        okhttp3.Call localVarCall = patchCaptableStakeholdersByIdValidateBeforeCall(id, captableCaptableStakeholderPatch, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCaptableUpdated>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptableClasses
-     * @param captableShareClassIn  (required)
+     * @param captableCaptableShareClassIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2435,9 +2531,10 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableClassesCall(@javax.annotation.Nonnull CaptableShareClassIn captableShareClassIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableClassesCall(@javax.annotation.Nonnull CaptableCaptableShareClassIn captableCaptableShareClassIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2451,7 +2548,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = captableShareClassIn;
+        Object localVarPostBody = captableCaptableShareClassIn;
 
         // create path and map variables
         String localVarPath = "/v1/captable/classes";
@@ -2463,7 +2560,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2483,57 +2581,59 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableClassesValidateBeforeCall(@javax.annotation.Nonnull CaptableShareClassIn captableShareClassIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'captableShareClassIn' is set
-        if (captableShareClassIn == null) {
-            throw new ApiException("Missing the required parameter 'captableShareClassIn' when calling postCaptableClasses(Async)");
+    private okhttp3.Call postCaptableClassesValidateBeforeCall(@javax.annotation.Nonnull CaptableCaptableShareClassIn captableCaptableShareClassIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableCaptableShareClassIn' is set
+        if (captableCaptableShareClassIn == null) {
+            throw new ApiException("Missing the required parameter 'captableCaptableShareClassIn' when calling postCaptableClasses(Async)");
         }
 
-        return postCaptableClassesCall(captableShareClassIn, _callback);
+        return postCaptableClassesCall(captableCaptableShareClassIn, _callback);
 
     }
 
     /**
      * Defines a new class of shares.
      * Defines a new class of shares.  Every field but convertsToShareClassId is required — a class is the instrument every later issuance prices against, so a partially-specified one would silently mis-value every share issued into it. &#x60;seniority&#x60; orders liquidation preference with LOWER first.
-     * @param captableShareClassIn  (required)
-     * @return CaptableCreated
+     * @param captableCaptableShareClassIn  (required)
+     * @return CaptableCaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableCreated postCaptableClasses(@javax.annotation.Nonnull CaptableShareClassIn captableShareClassIn) throws ApiException {
-        ApiResponse<CaptableCreated> localVarResp = postCaptableClassesWithHttpInfo(captableShareClassIn);
+    public CaptableCaptableCreated postCaptableClasses(@javax.annotation.Nonnull CaptableCaptableShareClassIn captableCaptableShareClassIn) throws ApiException {
+        ApiResponse<CaptableCaptableCreated> localVarResp = postCaptableClassesWithHttpInfo(captableCaptableShareClassIn);
         return localVarResp.getData();
     }
 
     /**
      * Defines a new class of shares.
      * Defines a new class of shares.  Every field but convertsToShareClassId is required — a class is the instrument every later issuance prices against, so a partially-specified one would silently mis-value every share issued into it. &#x60;seniority&#x60; orders liquidation preference with LOWER first.
-     * @param captableShareClassIn  (required)
-     * @return ApiResponse&lt;CaptableCreated&gt;
+     * @param captableCaptableShareClassIn  (required)
+     * @return ApiResponse&lt;CaptableCaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableCreated> postCaptableClassesWithHttpInfo(@javax.annotation.Nonnull CaptableShareClassIn captableShareClassIn) throws ApiException {
-        okhttp3.Call localVarCall = postCaptableClassesValidateBeforeCall(captableShareClassIn, null);
-        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+    public ApiResponse<CaptableCaptableCreated> postCaptableClassesWithHttpInfo(@javax.annotation.Nonnull CaptableCaptableShareClassIn captableCaptableShareClassIn) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableClassesValidateBeforeCall(captableCaptableShareClassIn, null);
+        Type localVarReturnType = new TypeToken<CaptableCaptableCreated>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Defines a new class of shares. (asynchronously)
      * Defines a new class of shares.  Every field but convertsToShareClassId is required — a class is the instrument every later issuance prices against, so a partially-specified one would silently mis-value every share issued into it. &#x60;seniority&#x60; orders liquidation preference with LOWER first.
-     * @param captableShareClassIn  (required)
+     * @param captableCaptableShareClassIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2542,18 +2642,19 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableClassesAsync(@javax.annotation.Nonnull CaptableShareClassIn captableShareClassIn, final ApiCallback<CaptableCreated> _callback) throws ApiException {
+    public okhttp3.Call postCaptableClassesAsync(@javax.annotation.Nonnull CaptableCaptableShareClassIn captableCaptableShareClassIn, final ApiCallback<CaptableCaptableCreated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableClassesValidateBeforeCall(captableShareClassIn, _callback);
-        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        okhttp3.Call localVarCall = postCaptableClassesValidateBeforeCall(captableCaptableShareClassIn, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCaptableCreated>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptableConvertibles
-     * @param captableConvertibleIn  (required)
+     * @param captableCaptableConvertibleIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2562,9 +2663,10 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableConvertiblesCall(@javax.annotation.Nonnull CaptableConvertibleIn captableConvertibleIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableConvertiblesCall(@javax.annotation.Nonnull CaptableCaptableConvertibleIn captableCaptableConvertibleIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2578,7 +2680,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = captableConvertibleIn;
+        Object localVarPostBody = captableCaptableConvertibleIn;
 
         // create path and map variables
         String localVarPath = "/v1/captable/convertibles";
@@ -2590,7 +2692,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2610,57 +2713,59 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableConvertiblesValidateBeforeCall(@javax.annotation.Nonnull CaptableConvertibleIn captableConvertibleIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'captableConvertibleIn' is set
-        if (captableConvertibleIn == null) {
-            throw new ApiException("Missing the required parameter 'captableConvertibleIn' when calling postCaptableConvertibles(Async)");
+    private okhttp3.Call postCaptableConvertiblesValidateBeforeCall(@javax.annotation.Nonnull CaptableCaptableConvertibleIn captableCaptableConvertibleIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableCaptableConvertibleIn' is set
+        if (captableCaptableConvertibleIn == null) {
+            throw new ApiException("Missing the required parameter 'captableCaptableConvertibleIn' when calling postCaptableConvertibles(Async)");
         }
 
-        return postCaptableConvertiblesCall(captableConvertibleIn, _callback);
+        return postCaptableConvertiblesCall(captableCaptableConvertibleIn, _callback);
 
     }
 
     /**
      * Records a convertible note.
      * Records a convertible note.
-     * @param captableConvertibleIn  (required)
-     * @return CaptableCreated
+     * @param captableCaptableConvertibleIn  (required)
+     * @return CaptableCaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableCreated postCaptableConvertibles(@javax.annotation.Nonnull CaptableConvertibleIn captableConvertibleIn) throws ApiException {
-        ApiResponse<CaptableCreated> localVarResp = postCaptableConvertiblesWithHttpInfo(captableConvertibleIn);
+    public CaptableCaptableCreated postCaptableConvertibles(@javax.annotation.Nonnull CaptableCaptableConvertibleIn captableCaptableConvertibleIn) throws ApiException {
+        ApiResponse<CaptableCaptableCreated> localVarResp = postCaptableConvertiblesWithHttpInfo(captableCaptableConvertibleIn);
         return localVarResp.getData();
     }
 
     /**
      * Records a convertible note.
      * Records a convertible note.
-     * @param captableConvertibleIn  (required)
-     * @return ApiResponse&lt;CaptableCreated&gt;
+     * @param captableCaptableConvertibleIn  (required)
+     * @return ApiResponse&lt;CaptableCaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableCreated> postCaptableConvertiblesWithHttpInfo(@javax.annotation.Nonnull CaptableConvertibleIn captableConvertibleIn) throws ApiException {
-        okhttp3.Call localVarCall = postCaptableConvertiblesValidateBeforeCall(captableConvertibleIn, null);
-        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+    public ApiResponse<CaptableCaptableCreated> postCaptableConvertiblesWithHttpInfo(@javax.annotation.Nonnull CaptableCaptableConvertibleIn captableCaptableConvertibleIn) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableConvertiblesValidateBeforeCall(captableCaptableConvertibleIn, null);
+        Type localVarReturnType = new TypeToken<CaptableCaptableCreated>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Records a convertible note. (asynchronously)
      * Records a convertible note.
-     * @param captableConvertibleIn  (required)
+     * @param captableCaptableConvertibleIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2669,18 +2774,19 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableConvertiblesAsync(@javax.annotation.Nonnull CaptableConvertibleIn captableConvertibleIn, final ApiCallback<CaptableCreated> _callback) throws ApiException {
+    public okhttp3.Call postCaptableConvertiblesAsync(@javax.annotation.Nonnull CaptableCaptableConvertibleIn captableCaptableConvertibleIn, final ApiCallback<CaptableCaptableCreated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableConvertiblesValidateBeforeCall(captableConvertibleIn, _callback);
-        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        okhttp3.Call localVarCall = postCaptableConvertiblesValidateBeforeCall(captableCaptableConvertibleIn, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCaptableCreated>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptableOptions
-     * @param captableOptionIn  (required)
+     * @param captableCaptableOptionIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2689,9 +2795,10 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableOptionsCall(@javax.annotation.Nonnull CaptableOptionIn captableOptionIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableOptionsCall(@javax.annotation.Nonnull CaptableCaptableOptionIn captableCaptableOptionIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2705,7 +2812,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = captableOptionIn;
+        Object localVarPostBody = captableCaptableOptionIn;
 
         // create path and map variables
         String localVarPath = "/v1/captable/options";
@@ -2717,7 +2824,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2737,57 +2845,59 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableOptionsValidateBeforeCall(@javax.annotation.Nonnull CaptableOptionIn captableOptionIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'captableOptionIn' is set
-        if (captableOptionIn == null) {
-            throw new ApiException("Missing the required parameter 'captableOptionIn' when calling postCaptableOptions(Async)");
+    private okhttp3.Call postCaptableOptionsValidateBeforeCall(@javax.annotation.Nonnull CaptableCaptableOptionIn captableCaptableOptionIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableCaptableOptionIn' is set
+        if (captableCaptableOptionIn == null) {
+            throw new ApiException("Missing the required parameter 'captableCaptableOptionIn' when calling postCaptableOptions(Async)");
         }
 
-        return postCaptableOptionsCall(captableOptionIn, _callback);
+        return postCaptableOptionsCall(captableCaptableOptionIn, _callback);
 
     }
 
     /**
      * Grants options to a stakeholder from an equity plan.
      * Grants options to a stakeholder from an equity plan.
-     * @param captableOptionIn  (required)
-     * @return CaptableCreated
+     * @param captableCaptableOptionIn  (required)
+     * @return CaptableCaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableCreated postCaptableOptions(@javax.annotation.Nonnull CaptableOptionIn captableOptionIn) throws ApiException {
-        ApiResponse<CaptableCreated> localVarResp = postCaptableOptionsWithHttpInfo(captableOptionIn);
+    public CaptableCaptableCreated postCaptableOptions(@javax.annotation.Nonnull CaptableCaptableOptionIn captableCaptableOptionIn) throws ApiException {
+        ApiResponse<CaptableCaptableCreated> localVarResp = postCaptableOptionsWithHttpInfo(captableCaptableOptionIn);
         return localVarResp.getData();
     }
 
     /**
      * Grants options to a stakeholder from an equity plan.
      * Grants options to a stakeholder from an equity plan.
-     * @param captableOptionIn  (required)
-     * @return ApiResponse&lt;CaptableCreated&gt;
+     * @param captableCaptableOptionIn  (required)
+     * @return ApiResponse&lt;CaptableCaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableCreated> postCaptableOptionsWithHttpInfo(@javax.annotation.Nonnull CaptableOptionIn captableOptionIn) throws ApiException {
-        okhttp3.Call localVarCall = postCaptableOptionsValidateBeforeCall(captableOptionIn, null);
-        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+    public ApiResponse<CaptableCaptableCreated> postCaptableOptionsWithHttpInfo(@javax.annotation.Nonnull CaptableCaptableOptionIn captableCaptableOptionIn) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableOptionsValidateBeforeCall(captableCaptableOptionIn, null);
+        Type localVarReturnType = new TypeToken<CaptableCaptableCreated>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Grants options to a stakeholder from an equity plan. (asynchronously)
      * Grants options to a stakeholder from an equity plan.
-     * @param captableOptionIn  (required)
+     * @param captableCaptableOptionIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2796,18 +2906,19 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableOptionsAsync(@javax.annotation.Nonnull CaptableOptionIn captableOptionIn, final ApiCallback<CaptableCreated> _callback) throws ApiException {
+    public okhttp3.Call postCaptableOptionsAsync(@javax.annotation.Nonnull CaptableCaptableOptionIn captableCaptableOptionIn, final ApiCallback<CaptableCaptableCreated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableOptionsValidateBeforeCall(captableOptionIn, _callback);
-        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        okhttp3.Call localVarCall = postCaptableOptionsValidateBeforeCall(captableCaptableOptionIn, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCaptableCreated>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptablePlans
-     * @param captableEquityPlanIn  (required)
+     * @param captableCaptableEquityPlanIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2816,9 +2927,10 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptablePlansCall(@javax.annotation.Nonnull CaptableEquityPlanIn captableEquityPlanIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptablePlansCall(@javax.annotation.Nonnull CaptableCaptableEquityPlanIn captableCaptableEquityPlanIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2832,7 +2944,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = captableEquityPlanIn;
+        Object localVarPostBody = captableCaptableEquityPlanIn;
 
         // create path and map variables
         String localVarPath = "/v1/captable/plans";
@@ -2844,7 +2956,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2864,57 +2977,59 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptablePlansValidateBeforeCall(@javax.annotation.Nonnull CaptableEquityPlanIn captableEquityPlanIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'captableEquityPlanIn' is set
-        if (captableEquityPlanIn == null) {
-            throw new ApiException("Missing the required parameter 'captableEquityPlanIn' when calling postCaptablePlans(Async)");
+    private okhttp3.Call postCaptablePlansValidateBeforeCall(@javax.annotation.Nonnull CaptableCaptableEquityPlanIn captableCaptableEquityPlanIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableCaptableEquityPlanIn' is set
+        if (captableCaptableEquityPlanIn == null) {
+            throw new ApiException("Missing the required parameter 'captableCaptableEquityPlanIn' when calling postCaptablePlans(Async)");
         }
 
-        return postCaptablePlansCall(captableEquityPlanIn, _callback);
+        return postCaptablePlansCall(captableCaptableEquityPlanIn, _callback);
 
     }
 
     /**
      * Opens an equity plan that options are granted from.
      * Opens an equity plan that options are granted from.
-     * @param captableEquityPlanIn  (required)
-     * @return CaptableCreated
+     * @param captableCaptableEquityPlanIn  (required)
+     * @return CaptableCaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableCreated postCaptablePlans(@javax.annotation.Nonnull CaptableEquityPlanIn captableEquityPlanIn) throws ApiException {
-        ApiResponse<CaptableCreated> localVarResp = postCaptablePlansWithHttpInfo(captableEquityPlanIn);
+    public CaptableCaptableCreated postCaptablePlans(@javax.annotation.Nonnull CaptableCaptableEquityPlanIn captableCaptableEquityPlanIn) throws ApiException {
+        ApiResponse<CaptableCaptableCreated> localVarResp = postCaptablePlansWithHttpInfo(captableCaptableEquityPlanIn);
         return localVarResp.getData();
     }
 
     /**
      * Opens an equity plan that options are granted from.
      * Opens an equity plan that options are granted from.
-     * @param captableEquityPlanIn  (required)
-     * @return ApiResponse&lt;CaptableCreated&gt;
+     * @param captableCaptableEquityPlanIn  (required)
+     * @return ApiResponse&lt;CaptableCaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableCreated> postCaptablePlansWithHttpInfo(@javax.annotation.Nonnull CaptableEquityPlanIn captableEquityPlanIn) throws ApiException {
-        okhttp3.Call localVarCall = postCaptablePlansValidateBeforeCall(captableEquityPlanIn, null);
-        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+    public ApiResponse<CaptableCaptableCreated> postCaptablePlansWithHttpInfo(@javax.annotation.Nonnull CaptableCaptableEquityPlanIn captableCaptableEquityPlanIn) throws ApiException {
+        okhttp3.Call localVarCall = postCaptablePlansValidateBeforeCall(captableCaptableEquityPlanIn, null);
+        Type localVarReturnType = new TypeToken<CaptableCaptableCreated>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Opens an equity plan that options are granted from. (asynchronously)
      * Opens an equity plan that options are granted from.
-     * @param captableEquityPlanIn  (required)
+     * @param captableCaptableEquityPlanIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2923,18 +3038,19 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptablePlansAsync(@javax.annotation.Nonnull CaptableEquityPlanIn captableEquityPlanIn, final ApiCallback<CaptableCreated> _callback) throws ApiException {
+    public okhttp3.Call postCaptablePlansAsync(@javax.annotation.Nonnull CaptableCaptableEquityPlanIn captableCaptableEquityPlanIn, final ApiCallback<CaptableCaptableCreated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptablePlansValidateBeforeCall(captableEquityPlanIn, _callback);
-        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        okhttp3.Call localVarCall = postCaptablePlansValidateBeforeCall(captableCaptableEquityPlanIn, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCaptableCreated>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptableRounds
-     * @param captableRoundIn  (required)
+     * @param captableCaptableRoundIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2943,9 +3059,10 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableRoundsCall(@javax.annotation.Nonnull CaptableRoundIn captableRoundIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableRoundsCall(@javax.annotation.Nonnull CaptableCaptableRoundIn captableCaptableRoundIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2959,7 +3076,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = captableRoundIn;
+        Object localVarPostBody = captableCaptableRoundIn;
 
         // create path and map variables
         String localVarPath = "/v1/captable/rounds";
@@ -2971,7 +3088,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2991,57 +3109,59 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableRoundsValidateBeforeCall(@javax.annotation.Nonnull CaptableRoundIn captableRoundIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'captableRoundIn' is set
-        if (captableRoundIn == null) {
-            throw new ApiException("Missing the required parameter 'captableRoundIn' when calling postCaptableRounds(Async)");
+    private okhttp3.Call postCaptableRoundsValidateBeforeCall(@javax.annotation.Nonnull CaptableCaptableRoundIn captableCaptableRoundIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableCaptableRoundIn' is set
+        if (captableCaptableRoundIn == null) {
+            throw new ApiException("Missing the required parameter 'captableCaptableRoundIn' when calling postCaptableRounds(Async)");
         }
 
-        return postCaptableRoundsCall(captableRoundIn, _callback);
+        return postCaptableRoundsCall(captableCaptableRoundIn, _callback);
 
     }
 
     /**
      * Opens a priced round that investments can be added to.
      * Opens a priced round that investments can be added to.  The round opens OPEN; investing into a closed one is refused.
-     * @param captableRoundIn  (required)
-     * @return CaptableCreated
+     * @param captableCaptableRoundIn  (required)
+     * @return CaptableCaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableCreated postCaptableRounds(@javax.annotation.Nonnull CaptableRoundIn captableRoundIn) throws ApiException {
-        ApiResponse<CaptableCreated> localVarResp = postCaptableRoundsWithHttpInfo(captableRoundIn);
+    public CaptableCaptableCreated postCaptableRounds(@javax.annotation.Nonnull CaptableCaptableRoundIn captableCaptableRoundIn) throws ApiException {
+        ApiResponse<CaptableCaptableCreated> localVarResp = postCaptableRoundsWithHttpInfo(captableCaptableRoundIn);
         return localVarResp.getData();
     }
 
     /**
      * Opens a priced round that investments can be added to.
      * Opens a priced round that investments can be added to.  The round opens OPEN; investing into a closed one is refused.
-     * @param captableRoundIn  (required)
-     * @return ApiResponse&lt;CaptableCreated&gt;
+     * @param captableCaptableRoundIn  (required)
+     * @return ApiResponse&lt;CaptableCaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableCreated> postCaptableRoundsWithHttpInfo(@javax.annotation.Nonnull CaptableRoundIn captableRoundIn) throws ApiException {
-        okhttp3.Call localVarCall = postCaptableRoundsValidateBeforeCall(captableRoundIn, null);
-        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+    public ApiResponse<CaptableCaptableCreated> postCaptableRoundsWithHttpInfo(@javax.annotation.Nonnull CaptableCaptableRoundIn captableCaptableRoundIn) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableRoundsValidateBeforeCall(captableCaptableRoundIn, null);
+        Type localVarReturnType = new TypeToken<CaptableCaptableCreated>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Opens a priced round that investments can be added to. (asynchronously)
      * Opens a priced round that investments can be added to.  The round opens OPEN; investing into a closed one is refused.
-     * @param captableRoundIn  (required)
+     * @param captableCaptableRoundIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3050,19 +3170,20 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableRoundsAsync(@javax.annotation.Nonnull CaptableRoundIn captableRoundIn, final ApiCallback<CaptableCreated> _callback) throws ApiException {
+    public okhttp3.Call postCaptableRoundsAsync(@javax.annotation.Nonnull CaptableCaptableRoundIn captableCaptableRoundIn, final ApiCallback<CaptableCaptableCreated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableRoundsValidateBeforeCall(captableRoundIn, _callback);
-        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        okhttp3.Call localVarCall = postCaptableRoundsValidateBeforeCall(captableCaptableRoundIn, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCaptableCreated>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptableRoundsByIdClose
      * @param id ID is the round to close. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @param captableRoundCloseRequest  (required)
+     * @param captableCaptableRoundCloseRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3071,9 +3192,10 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableRoundsByIdCloseCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableRoundCloseRequest captableRoundCloseRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableRoundsByIdCloseCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableRoundCloseRequest captableCaptableRoundCloseRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3087,7 +3209,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = captableRoundCloseRequest;
+        Object localVarPostBody = captableCaptableRoundCloseRequest;
 
         // create path and map variables
         String localVarPath = "/v1/captable/rounds/{id}/close"
@@ -3100,7 +3222,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3120,18 +3243,18 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableRoundsByIdCloseValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableRoundCloseRequest captableRoundCloseRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCaptableRoundsByIdCloseValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableRoundCloseRequest captableCaptableRoundCloseRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postCaptableRoundsByIdClose(Async)");
         }
 
-        // verify the required parameter 'captableRoundCloseRequest' is set
-        if (captableRoundCloseRequest == null) {
-            throw new ApiException("Missing the required parameter 'captableRoundCloseRequest' when calling postCaptableRoundsByIdClose(Async)");
+        // verify the required parameter 'captableCaptableRoundCloseRequest' is set
+        if (captableCaptableRoundCloseRequest == null) {
+            throw new ApiException("Missing the required parameter 'captableCaptableRoundCloseRequest' when calling postCaptableRoundsByIdClose(Async)");
         }
 
-        return postCaptableRoundsByIdCloseCall(id, captableRoundCloseRequest, _callback);
+        return postCaptableRoundsByIdCloseCall(id, captableCaptableRoundCloseRequest, _callback);
 
     }
 
@@ -3139,18 +3262,19 @@ public class CaptableApi {
      * Closes one of the caller org&#39;s fundraising rounds, recording the close date and moving its status to CLOSED.
      * Closes one of the caller org&#39;s fundraising rounds, recording the close date and moving its status to CLOSED. Only an OPEN round can be closed: a round that is already closed — like an id this org does not hold — is not found. Closing a round does not change what was invested in it.
      * @param id ID is the round to close. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @param captableRoundCloseRequest  (required)
-     * @return CaptableUpdated
+     * @param captableCaptableRoundCloseRequest  (required)
+     * @return CaptableCaptableUpdated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableUpdated postCaptableRoundsByIdClose(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableRoundCloseRequest captableRoundCloseRequest) throws ApiException {
-        ApiResponse<CaptableUpdated> localVarResp = postCaptableRoundsByIdCloseWithHttpInfo(id, captableRoundCloseRequest);
+    public CaptableCaptableUpdated postCaptableRoundsByIdClose(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableRoundCloseRequest captableCaptableRoundCloseRequest) throws ApiException {
+        ApiResponse<CaptableCaptableUpdated> localVarResp = postCaptableRoundsByIdCloseWithHttpInfo(id, captableCaptableRoundCloseRequest);
         return localVarResp.getData();
     }
 
@@ -3158,19 +3282,20 @@ public class CaptableApi {
      * Closes one of the caller org&#39;s fundraising rounds, recording the close date and moving its status to CLOSED.
      * Closes one of the caller org&#39;s fundraising rounds, recording the close date and moving its status to CLOSED. Only an OPEN round can be closed: a round that is already closed — like an id this org does not hold — is not found. Closing a round does not change what was invested in it.
      * @param id ID is the round to close. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @param captableRoundCloseRequest  (required)
-     * @return ApiResponse&lt;CaptableUpdated&gt;
+     * @param captableCaptableRoundCloseRequest  (required)
+     * @return ApiResponse&lt;CaptableCaptableUpdated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableUpdated> postCaptableRoundsByIdCloseWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableRoundCloseRequest captableRoundCloseRequest) throws ApiException {
-        okhttp3.Call localVarCall = postCaptableRoundsByIdCloseValidateBeforeCall(id, captableRoundCloseRequest, null);
-        Type localVarReturnType = new TypeToken<CaptableUpdated>(){}.getType();
+    public ApiResponse<CaptableCaptableUpdated> postCaptableRoundsByIdCloseWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableRoundCloseRequest captableCaptableRoundCloseRequest) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableRoundsByIdCloseValidateBeforeCall(id, captableCaptableRoundCloseRequest, null);
+        Type localVarReturnType = new TypeToken<CaptableCaptableUpdated>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3178,7 +3303,7 @@ public class CaptableApi {
      * Closes one of the caller org&#39;s fundraising rounds, recording the close date and moving its status to CLOSED. (asynchronously)
      * Closes one of the caller org&#39;s fundraising rounds, recording the close date and moving its status to CLOSED. Only an OPEN round can be closed: a round that is already closed — like an id this org does not hold — is not found. Closing a round does not change what was invested in it.
      * @param id ID is the round to close. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @param captableRoundCloseRequest  (required)
+     * @param captableCaptableRoundCloseRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3187,19 +3312,20 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableRoundsByIdCloseAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableRoundCloseRequest captableRoundCloseRequest, final ApiCallback<CaptableUpdated> _callback) throws ApiException {
+    public okhttp3.Call postCaptableRoundsByIdCloseAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableRoundCloseRequest captableCaptableRoundCloseRequest, final ApiCallback<CaptableCaptableUpdated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableRoundsByIdCloseValidateBeforeCall(id, captableRoundCloseRequest, _callback);
-        Type localVarReturnType = new TypeToken<CaptableUpdated>(){}.getType();
+        okhttp3.Call localVarCall = postCaptableRoundsByIdCloseValidateBeforeCall(id, captableCaptableRoundCloseRequest, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCaptableUpdated>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptableRoundsByIdInvestments
      * @param id ID is the round to invest in. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which round is written whatever a body claims. (required)
-     * @param captableInvestmentIn  (required)
+     * @param captableCaptableInvestmentIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3208,9 +3334,10 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableRoundsByIdInvestmentsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableInvestmentIn captableInvestmentIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableRoundsByIdInvestmentsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableInvestmentIn captableCaptableInvestmentIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3224,7 +3351,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = captableInvestmentIn;
+        Object localVarPostBody = captableCaptableInvestmentIn;
 
         // create path and map variables
         String localVarPath = "/v1/captable/rounds/{id}/investments"
@@ -3237,7 +3364,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3257,18 +3385,18 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableRoundsByIdInvestmentsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableInvestmentIn captableInvestmentIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCaptableRoundsByIdInvestmentsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableInvestmentIn captableCaptableInvestmentIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postCaptableRoundsByIdInvestments(Async)");
         }
 
-        // verify the required parameter 'captableInvestmentIn' is set
-        if (captableInvestmentIn == null) {
-            throw new ApiException("Missing the required parameter 'captableInvestmentIn' when calling postCaptableRoundsByIdInvestments(Async)");
+        // verify the required parameter 'captableCaptableInvestmentIn' is set
+        if (captableCaptableInvestmentIn == null) {
+            throw new ApiException("Missing the required parameter 'captableCaptableInvestmentIn' when calling postCaptableRoundsByIdInvestments(Async)");
         }
 
-        return postCaptableRoundsByIdInvestmentsCall(id, captableInvestmentIn, _callback);
+        return postCaptableRoundsByIdInvestmentsCall(id, captableCaptableInvestmentIn, _callback);
 
     }
 
@@ -3276,18 +3404,19 @@ public class CaptableApi {
      * Records one investor&#39;s money into an open round.
      * Records one investor&#39;s money into an open round.  The round must be OPEN; investing into a closed one is refused. Where the round carries a price per share, the investment also issues the shares it buys and the answer names them.
      * @param id ID is the round to invest in. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which round is written whatever a body claims. (required)
-     * @param captableInvestmentIn  (required)
-     * @return CaptableInvested
+     * @param captableCaptableInvestmentIn  (required)
+     * @return CaptableCaptableInvested
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableInvested postCaptableRoundsByIdInvestments(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableInvestmentIn captableInvestmentIn) throws ApiException {
-        ApiResponse<CaptableInvested> localVarResp = postCaptableRoundsByIdInvestmentsWithHttpInfo(id, captableInvestmentIn);
+    public CaptableCaptableInvested postCaptableRoundsByIdInvestments(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableInvestmentIn captableCaptableInvestmentIn) throws ApiException {
+        ApiResponse<CaptableCaptableInvested> localVarResp = postCaptableRoundsByIdInvestmentsWithHttpInfo(id, captableCaptableInvestmentIn);
         return localVarResp.getData();
     }
 
@@ -3295,19 +3424,20 @@ public class CaptableApi {
      * Records one investor&#39;s money into an open round.
      * Records one investor&#39;s money into an open round.  The round must be OPEN; investing into a closed one is refused. Where the round carries a price per share, the investment also issues the shares it buys and the answer names them.
      * @param id ID is the round to invest in. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which round is written whatever a body claims. (required)
-     * @param captableInvestmentIn  (required)
-     * @return ApiResponse&lt;CaptableInvested&gt;
+     * @param captableCaptableInvestmentIn  (required)
+     * @return ApiResponse&lt;CaptableCaptableInvested&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableInvested> postCaptableRoundsByIdInvestmentsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableInvestmentIn captableInvestmentIn) throws ApiException {
-        okhttp3.Call localVarCall = postCaptableRoundsByIdInvestmentsValidateBeforeCall(id, captableInvestmentIn, null);
-        Type localVarReturnType = new TypeToken<CaptableInvested>(){}.getType();
+    public ApiResponse<CaptableCaptableInvested> postCaptableRoundsByIdInvestmentsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableInvestmentIn captableCaptableInvestmentIn) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableRoundsByIdInvestmentsValidateBeforeCall(id, captableCaptableInvestmentIn, null);
+        Type localVarReturnType = new TypeToken<CaptableCaptableInvested>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3315,7 +3445,7 @@ public class CaptableApi {
      * Records one investor&#39;s money into an open round. (asynchronously)
      * Records one investor&#39;s money into an open round.  The round must be OPEN; investing into a closed one is refused. Where the round carries a price per share, the investment also issues the shares it buys and the answer names them.
      * @param id ID is the round to invest in. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which round is written whatever a body claims. (required)
-     * @param captableInvestmentIn  (required)
+     * @param captableCaptableInvestmentIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3324,18 +3454,19 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableRoundsByIdInvestmentsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableInvestmentIn captableInvestmentIn, final ApiCallback<CaptableInvested> _callback) throws ApiException {
+    public okhttp3.Call postCaptableRoundsByIdInvestmentsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableCaptableInvestmentIn captableCaptableInvestmentIn, final ApiCallback<CaptableCaptableInvested> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableRoundsByIdInvestmentsValidateBeforeCall(id, captableInvestmentIn, _callback);
-        Type localVarReturnType = new TypeToken<CaptableInvested>(){}.getType();
+        okhttp3.Call localVarCall = postCaptableRoundsByIdInvestmentsValidateBeforeCall(id, captableCaptableInvestmentIn, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCaptableInvested>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptableSafes
-     * @param captableSafeIn  (required)
+     * @param captableCaptableSafeIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3344,9 +3475,10 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableSafesCall(@javax.annotation.Nonnull CaptableSafeIn captableSafeIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableSafesCall(@javax.annotation.Nonnull CaptableCaptableSafeIn captableCaptableSafeIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3360,7 +3492,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = captableSafeIn;
+        Object localVarPostBody = captableCaptableSafeIn;
 
         // create path and map variables
         String localVarPath = "/v1/captable/safes";
@@ -3372,7 +3504,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3392,57 +3525,59 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableSafesValidateBeforeCall(@javax.annotation.Nonnull CaptableSafeIn captableSafeIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'captableSafeIn' is set
-        if (captableSafeIn == null) {
-            throw new ApiException("Missing the required parameter 'captableSafeIn' when calling postCaptableSafes(Async)");
+    private okhttp3.Call postCaptableSafesValidateBeforeCall(@javax.annotation.Nonnull CaptableCaptableSafeIn captableCaptableSafeIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableCaptableSafeIn' is set
+        if (captableCaptableSafeIn == null) {
+            throw new ApiException("Missing the required parameter 'captableCaptableSafeIn' when calling postCaptableSafes(Async)");
         }
 
-        return postCaptableSafesCall(captableSafeIn, _callback);
+        return postCaptableSafesCall(captableCaptableSafeIn, _callback);
 
     }
 
     /**
      * Records a SAFE — a simple agreement for future equity.
      * Records a SAFE — a simple agreement for future equity.
-     * @param captableSafeIn  (required)
-     * @return CaptableCreated
+     * @param captableCaptableSafeIn  (required)
+     * @return CaptableCaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableCreated postCaptableSafes(@javax.annotation.Nonnull CaptableSafeIn captableSafeIn) throws ApiException {
-        ApiResponse<CaptableCreated> localVarResp = postCaptableSafesWithHttpInfo(captableSafeIn);
+    public CaptableCaptableCreated postCaptableSafes(@javax.annotation.Nonnull CaptableCaptableSafeIn captableCaptableSafeIn) throws ApiException {
+        ApiResponse<CaptableCaptableCreated> localVarResp = postCaptableSafesWithHttpInfo(captableCaptableSafeIn);
         return localVarResp.getData();
     }
 
     /**
      * Records a SAFE — a simple agreement for future equity.
      * Records a SAFE — a simple agreement for future equity.
-     * @param captableSafeIn  (required)
-     * @return ApiResponse&lt;CaptableCreated&gt;
+     * @param captableCaptableSafeIn  (required)
+     * @return ApiResponse&lt;CaptableCaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableCreated> postCaptableSafesWithHttpInfo(@javax.annotation.Nonnull CaptableSafeIn captableSafeIn) throws ApiException {
-        okhttp3.Call localVarCall = postCaptableSafesValidateBeforeCall(captableSafeIn, null);
-        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+    public ApiResponse<CaptableCaptableCreated> postCaptableSafesWithHttpInfo(@javax.annotation.Nonnull CaptableCaptableSafeIn captableCaptableSafeIn) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableSafesValidateBeforeCall(captableCaptableSafeIn, null);
+        Type localVarReturnType = new TypeToken<CaptableCaptableCreated>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Records a SAFE — a simple agreement for future equity. (asynchronously)
      * Records a SAFE — a simple agreement for future equity.
-     * @param captableSafeIn  (required)
+     * @param captableCaptableSafeIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3451,18 +3586,19 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableSafesAsync(@javax.annotation.Nonnull CaptableSafeIn captableSafeIn, final ApiCallback<CaptableCreated> _callback) throws ApiException {
+    public okhttp3.Call postCaptableSafesAsync(@javax.annotation.Nonnull CaptableCaptableSafeIn captableCaptableSafeIn, final ApiCallback<CaptableCaptableCreated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableSafesValidateBeforeCall(captableSafeIn, _callback);
-        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        okhttp3.Call localVarCall = postCaptableSafesValidateBeforeCall(captableCaptableSafeIn, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCaptableCreated>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptableShares
-     * @param captableShareIn  (required)
+     * @param captableCaptableShareIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3471,9 +3607,10 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableSharesCall(@javax.annotation.Nonnull CaptableShareIn captableShareIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableSharesCall(@javax.annotation.Nonnull CaptableCaptableShareIn captableCaptableShareIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3487,7 +3624,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = captableShareIn;
+        Object localVarPostBody = captableCaptableShareIn;
 
         // create path and map variables
         String localVarPath = "/v1/captable/shares";
@@ -3499,7 +3636,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3519,57 +3657,59 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableSharesValidateBeforeCall(@javax.annotation.Nonnull CaptableShareIn captableShareIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'captableShareIn' is set
-        if (captableShareIn == null) {
-            throw new ApiException("Missing the required parameter 'captableShareIn' when calling postCaptableShares(Async)");
+    private okhttp3.Call postCaptableSharesValidateBeforeCall(@javax.annotation.Nonnull CaptableCaptableShareIn captableCaptableShareIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableCaptableShareIn' is set
+        if (captableCaptableShareIn == null) {
+            throw new ApiException("Missing the required parameter 'captableCaptableShareIn' when calling postCaptableShares(Async)");
         }
 
-        return postCaptableSharesCall(captableShareIn, _callback);
+        return postCaptableSharesCall(captableCaptableShareIn, _callback);
 
     }
 
     /**
      * Issues a share certificate to a stakeholder.
      * Issues a share certificate to a stakeholder.  The certificate id must be UNIQUE within the company — a duplicate is refused 409, not silently merged — and both the stakeholder and the share class must belong to this company, so an id from another tenant is a 400 rather than a cross-company issuance.
-     * @param captableShareIn  (required)
-     * @return CaptableCreated
+     * @param captableCaptableShareIn  (required)
+     * @return CaptableCaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableCreated postCaptableShares(@javax.annotation.Nonnull CaptableShareIn captableShareIn) throws ApiException {
-        ApiResponse<CaptableCreated> localVarResp = postCaptableSharesWithHttpInfo(captableShareIn);
+    public CaptableCaptableCreated postCaptableShares(@javax.annotation.Nonnull CaptableCaptableShareIn captableCaptableShareIn) throws ApiException {
+        ApiResponse<CaptableCaptableCreated> localVarResp = postCaptableSharesWithHttpInfo(captableCaptableShareIn);
         return localVarResp.getData();
     }
 
     /**
      * Issues a share certificate to a stakeholder.
      * Issues a share certificate to a stakeholder.  The certificate id must be UNIQUE within the company — a duplicate is refused 409, not silently merged — and both the stakeholder and the share class must belong to this company, so an id from another tenant is a 400 rather than a cross-company issuance.
-     * @param captableShareIn  (required)
-     * @return ApiResponse&lt;CaptableCreated&gt;
+     * @param captableCaptableShareIn  (required)
+     * @return ApiResponse&lt;CaptableCaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableCreated> postCaptableSharesWithHttpInfo(@javax.annotation.Nonnull CaptableShareIn captableShareIn) throws ApiException {
-        okhttp3.Call localVarCall = postCaptableSharesValidateBeforeCall(captableShareIn, null);
-        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+    public ApiResponse<CaptableCaptableCreated> postCaptableSharesWithHttpInfo(@javax.annotation.Nonnull CaptableCaptableShareIn captableCaptableShareIn) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableSharesValidateBeforeCall(captableCaptableShareIn, null);
+        Type localVarReturnType = new TypeToken<CaptableCaptableCreated>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Issues a share certificate to a stakeholder. (asynchronously)
      * Issues a share certificate to a stakeholder.  The certificate id must be UNIQUE within the company — a duplicate is refused 409, not silently merged — and both the stakeholder and the share class must belong to this company, so an id from another tenant is a 400 rather than a cross-company issuance.
-     * @param captableShareIn  (required)
+     * @param captableCaptableShareIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3578,18 +3718,19 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableSharesAsync(@javax.annotation.Nonnull CaptableShareIn captableShareIn, final ApiCallback<CaptableCreated> _callback) throws ApiException {
+    public okhttp3.Call postCaptableSharesAsync(@javax.annotation.Nonnull CaptableCaptableShareIn captableCaptableShareIn, final ApiCallback<CaptableCaptableCreated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableSharesValidateBeforeCall(captableShareIn, _callback);
-        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        okhttp3.Call localVarCall = postCaptableSharesValidateBeforeCall(captableCaptableShareIn, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCaptableCreated>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptableSharesTransfer
-     * @param captableShareTransfer  (required)
+     * @param captableCaptableShareTransfer  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3598,9 +3739,10 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableSharesTransferCall(@javax.annotation.Nonnull CaptableShareTransfer captableShareTransfer, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableSharesTransferCall(@javax.annotation.Nonnull CaptableCaptableShareTransfer captableCaptableShareTransfer, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3614,7 +3756,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = captableShareTransfer;
+        Object localVarPostBody = captableCaptableShareTransfer;
 
         // create path and map variables
         String localVarPath = "/v1/captable/shares/transfer";
@@ -3626,7 +3768,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3646,57 +3789,59 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableSharesTransferValidateBeforeCall(@javax.annotation.Nonnull CaptableShareTransfer captableShareTransfer, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'captableShareTransfer' is set
-        if (captableShareTransfer == null) {
-            throw new ApiException("Missing the required parameter 'captableShareTransfer' when calling postCaptableSharesTransfer(Async)");
+    private okhttp3.Call postCaptableSharesTransferValidateBeforeCall(@javax.annotation.Nonnull CaptableCaptableShareTransfer captableCaptableShareTransfer, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableCaptableShareTransfer' is set
+        if (captableCaptableShareTransfer == null) {
+            throw new ApiException("Missing the required parameter 'captableCaptableShareTransfer' when calling postCaptableSharesTransfer(Async)");
         }
 
-        return postCaptableSharesTransferCall(captableShareTransfer, _callback);
+        return postCaptableSharesTransferCall(captableCaptableShareTransfer, _callback);
 
     }
 
     /**
      * Moves shares from one stakeholder to another.
      * Moves shares from one stakeholder to another.  Omit &#x60;quantity&#x60; to transfer the whole certificate, which REASSIGNS it and mints no new share. Send a quantity below the amount held to SPLIT it — the source certificate keeps the remainder, and a split additionally requires &#x60;certificateId&#x60; for the new certificate, which must be unique in the company. A quantity outside 1..held is refused, so a transfer can never over-issue.  Both outcomes answer 200: a transfer records a movement between holders and mints no security of its own, which is why this is not a 201 the way an investment is.
-     * @param captableShareTransfer  (required)
-     * @return CaptableTransferred
+     * @param captableCaptableShareTransfer  (required)
+     * @return CaptableCaptableTransferred
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableTransferred postCaptableSharesTransfer(@javax.annotation.Nonnull CaptableShareTransfer captableShareTransfer) throws ApiException {
-        ApiResponse<CaptableTransferred> localVarResp = postCaptableSharesTransferWithHttpInfo(captableShareTransfer);
+    public CaptableCaptableTransferred postCaptableSharesTransfer(@javax.annotation.Nonnull CaptableCaptableShareTransfer captableCaptableShareTransfer) throws ApiException {
+        ApiResponse<CaptableCaptableTransferred> localVarResp = postCaptableSharesTransferWithHttpInfo(captableCaptableShareTransfer);
         return localVarResp.getData();
     }
 
     /**
      * Moves shares from one stakeholder to another.
      * Moves shares from one stakeholder to another.  Omit &#x60;quantity&#x60; to transfer the whole certificate, which REASSIGNS it and mints no new share. Send a quantity below the amount held to SPLIT it — the source certificate keeps the remainder, and a split additionally requires &#x60;certificateId&#x60; for the new certificate, which must be unique in the company. A quantity outside 1..held is refused, so a transfer can never over-issue.  Both outcomes answer 200: a transfer records a movement between holders and mints no security of its own, which is why this is not a 201 the way an investment is.
-     * @param captableShareTransfer  (required)
-     * @return ApiResponse&lt;CaptableTransferred&gt;
+     * @param captableCaptableShareTransfer  (required)
+     * @return ApiResponse&lt;CaptableCaptableTransferred&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableTransferred> postCaptableSharesTransferWithHttpInfo(@javax.annotation.Nonnull CaptableShareTransfer captableShareTransfer) throws ApiException {
-        okhttp3.Call localVarCall = postCaptableSharesTransferValidateBeforeCall(captableShareTransfer, null);
-        Type localVarReturnType = new TypeToken<CaptableTransferred>(){}.getType();
+    public ApiResponse<CaptableCaptableTransferred> postCaptableSharesTransferWithHttpInfo(@javax.annotation.Nonnull CaptableCaptableShareTransfer captableCaptableShareTransfer) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableSharesTransferValidateBeforeCall(captableCaptableShareTransfer, null);
+        Type localVarReturnType = new TypeToken<CaptableCaptableTransferred>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Moves shares from one stakeholder to another. (asynchronously)
      * Moves shares from one stakeholder to another.  Omit &#x60;quantity&#x60; to transfer the whole certificate, which REASSIGNS it and mints no new share. Send a quantity below the amount held to SPLIT it — the source certificate keeps the remainder, and a split additionally requires &#x60;certificateId&#x60; for the new certificate, which must be unique in the company. A quantity outside 1..held is refused, so a transfer can never over-issue.  Both outcomes answer 200: a transfer records a movement between holders and mints no security of its own, which is why this is not a 201 the way an investment is.
-     * @param captableShareTransfer  (required)
+     * @param captableCaptableShareTransfer  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3705,12 +3850,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCaptableSharesTransferAsync(@javax.annotation.Nonnull CaptableShareTransfer captableShareTransfer, final ApiCallback<CaptableTransferred> _callback) throws ApiException {
+    public okhttp3.Call postCaptableSharesTransferAsync(@javax.annotation.Nonnull CaptableCaptableShareTransfer captableCaptableShareTransfer, final ApiCallback<CaptableCaptableTransferred> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableSharesTransferValidateBeforeCall(captableShareTransfer, _callback);
-        Type localVarReturnType = new TypeToken<CaptableTransferred>(){}.getType();
+        okhttp3.Call localVarCall = postCaptableSharesTransferValidateBeforeCall(captableCaptableShareTransfer, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCaptableTransferred>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3804,7 +3950,7 @@ public class CaptableApi {
     }
     /**
      * Build call for putCaptableCompany
-     * @param captableCompanyUpdate  (required)
+     * @param captableCaptableCompanyUpdate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3813,9 +3959,10 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putCaptableCompanyCall(@javax.annotation.Nonnull CaptableCompanyUpdate captableCompanyUpdate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCaptableCompanyCall(@javax.annotation.Nonnull CaptableCaptableCompanyUpdate captableCaptableCompanyUpdate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3829,7 +3976,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = captableCompanyUpdate;
+        Object localVarPostBody = captableCaptableCompanyUpdate;
 
         // create path and map variables
         String localVarPath = "/v1/captable/company";
@@ -3841,7 +3988,8 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3861,57 +4009,59 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putCaptableCompanyValidateBeforeCall(@javax.annotation.Nonnull CaptableCompanyUpdate captableCompanyUpdate, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'captableCompanyUpdate' is set
-        if (captableCompanyUpdate == null) {
-            throw new ApiException("Missing the required parameter 'captableCompanyUpdate' when calling putCaptableCompany(Async)");
+    private okhttp3.Call putCaptableCompanyValidateBeforeCall(@javax.annotation.Nonnull CaptableCaptableCompanyUpdate captableCaptableCompanyUpdate, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableCaptableCompanyUpdate' is set
+        if (captableCaptableCompanyUpdate == null) {
+            throw new ApiException("Missing the required parameter 'captableCaptableCompanyUpdate' when calling putCaptableCompany(Async)");
         }
 
-        return putCaptableCompanyCall(captableCompanyUpdate, _callback);
+        return putCaptableCompanyCall(captableCaptableCompanyUpdate, _callback);
 
     }
 
     /**
      * Sets the caller org&#39;s company name and incorporation details.
      * Sets the caller org&#39;s company name and incorporation details. The name is required; the three incorporation fields are optional and each is stored as empty when omitted, so a call that sends only a name CLEARS them. The company row itself is seeded when the tenant&#39;s store first opens, so this never creates one.
-     * @param captableCompanyUpdate  (required)
-     * @return CaptableUpdated
+     * @param captableCaptableCompanyUpdate  (required)
+     * @return CaptableCaptableUpdated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CaptableUpdated putCaptableCompany(@javax.annotation.Nonnull CaptableCompanyUpdate captableCompanyUpdate) throws ApiException {
-        ApiResponse<CaptableUpdated> localVarResp = putCaptableCompanyWithHttpInfo(captableCompanyUpdate);
+    public CaptableCaptableUpdated putCaptableCompany(@javax.annotation.Nonnull CaptableCaptableCompanyUpdate captableCaptableCompanyUpdate) throws ApiException {
+        ApiResponse<CaptableCaptableUpdated> localVarResp = putCaptableCompanyWithHttpInfo(captableCaptableCompanyUpdate);
         return localVarResp.getData();
     }
 
     /**
      * Sets the caller org&#39;s company name and incorporation details.
      * Sets the caller org&#39;s company name and incorporation details. The name is required; the three incorporation fields are optional and each is stored as empty when omitted, so a call that sends only a name CLEARS them. The company row itself is seeded when the tenant&#39;s store first opens, so this never creates one.
-     * @param captableCompanyUpdate  (required)
-     * @return ApiResponse&lt;CaptableUpdated&gt;
+     * @param captableCaptableCompanyUpdate  (required)
+     * @return ApiResponse&lt;CaptableCaptableUpdated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptableUpdated> putCaptableCompanyWithHttpInfo(@javax.annotation.Nonnull CaptableCompanyUpdate captableCompanyUpdate) throws ApiException {
-        okhttp3.Call localVarCall = putCaptableCompanyValidateBeforeCall(captableCompanyUpdate, null);
-        Type localVarReturnType = new TypeToken<CaptableUpdated>(){}.getType();
+    public ApiResponse<CaptableCaptableUpdated> putCaptableCompanyWithHttpInfo(@javax.annotation.Nonnull CaptableCaptableCompanyUpdate captableCaptableCompanyUpdate) throws ApiException {
+        okhttp3.Call localVarCall = putCaptableCompanyValidateBeforeCall(captableCaptableCompanyUpdate, null);
+        Type localVarReturnType = new TypeToken<CaptableCaptableUpdated>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Sets the caller org&#39;s company name and incorporation details. (asynchronously)
      * Sets the caller org&#39;s company name and incorporation details. The name is required; the three incorporation fields are optional and each is stored as empty when omitted, so a call that sends only a name CLEARS them. The company row itself is seeded when the tenant&#39;s store first opens, so this never creates one.
-     * @param captableCompanyUpdate  (required)
+     * @param captableCaptableCompanyUpdate  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3920,12 +4070,13 @@ public class CaptableApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putCaptableCompanyAsync(@javax.annotation.Nonnull CaptableCompanyUpdate captableCompanyUpdate, final ApiCallback<CaptableUpdated> _callback) throws ApiException {
+    public okhttp3.Call putCaptableCompanyAsync(@javax.annotation.Nonnull CaptableCaptableCompanyUpdate captableCaptableCompanyUpdate, final ApiCallback<CaptableCaptableUpdated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putCaptableCompanyValidateBeforeCall(captableCompanyUpdate, _callback);
-        Type localVarReturnType = new TypeToken<CaptableUpdated>(){}.getType();
+        okhttp3.Call localVarCall = putCaptableCompanyValidateBeforeCall(captableCaptableCompanyUpdate, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCaptableUpdated>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

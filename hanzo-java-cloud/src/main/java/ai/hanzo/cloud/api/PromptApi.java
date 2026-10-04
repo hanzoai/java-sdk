@@ -27,11 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.CatalogList;
-import ai.hanzo.cloud.model.MetricList;
-import ai.hanzo.cloud.model.PromptDetail;
-import ai.hanzo.cloud.model.PromptList;
-import ai.hanzo.cloud.model.PromptReq;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.PromptCatalogList;
+import ai.hanzo.cloud.model.PromptMetricList;
+import ai.hanzo.cloud.model.PromptPromptDetail;
+import ai.hanzo.cloud.model.PromptPromptList;
+import ai.hanzo.cloud.model.PromptPromptReq;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -87,6 +88,7 @@ public class PromptApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deletePromptByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -116,6 +118,7 @@ public class PromptApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -154,6 +157,7 @@ public class PromptApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deletePromptByName(@javax.annotation.Nonnull String name) throws ApiException {
@@ -171,6 +175,7 @@ public class PromptApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deletePromptByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
@@ -190,6 +195,7 @@ public class PromptApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deletePromptByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
@@ -208,6 +214,7 @@ public class PromptApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPromptCall(final ApiCallback _callback) throws ApiException {
@@ -236,7 +243,8 @@ public class PromptApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -261,43 +269,45 @@ public class PromptApi {
     }
 
     /**
-     * List returns the caller org&#39;s prompt library as one row per prompt: its name, type, every version number it has, its taxonomy and when it last changed.
-     * List returns the caller org&#39;s prompt library as one row per prompt: its name, type, every version number it has, its taxonomy and when it last changed. The template bodies are deliberately absent — fetch one prompt to read its text.
-     * @return PromptList
+     * Returns the caller org&#39;s prompt library as one row per prompt: its name, type, every version number it has, its taxonomy and when it last changed.
+     * Returns the caller org&#39;s prompt library as one row per prompt: its name, type, every version number it has, its taxonomy and when it last changed. The template bodies are deliberately absent — fetch one prompt to read its text.
+     * @return PromptPromptList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PromptList getPrompt() throws ApiException {
-        ApiResponse<PromptList> localVarResp = getPromptWithHttpInfo();
+    public PromptPromptList getPrompt() throws ApiException {
+        ApiResponse<PromptPromptList> localVarResp = getPromptWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * List returns the caller org&#39;s prompt library as one row per prompt: its name, type, every version number it has, its taxonomy and when it last changed.
-     * List returns the caller org&#39;s prompt library as one row per prompt: its name, type, every version number it has, its taxonomy and when it last changed. The template bodies are deliberately absent — fetch one prompt to read its text.
-     * @return ApiResponse&lt;PromptList&gt;
+     * Returns the caller org&#39;s prompt library as one row per prompt: its name, type, every version number it has, its taxonomy and when it last changed.
+     * Returns the caller org&#39;s prompt library as one row per prompt: its name, type, every version number it has, its taxonomy and when it last changed. The template bodies are deliberately absent — fetch one prompt to read its text.
+     * @return ApiResponse&lt;PromptPromptList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PromptList> getPromptWithHttpInfo() throws ApiException {
+    public ApiResponse<PromptPromptList> getPromptWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPromptValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PromptList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PromptPromptList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * List returns the caller org&#39;s prompt library as one row per prompt: its name, type, every version number it has, its taxonomy and when it last changed. (asynchronously)
-     * List returns the caller org&#39;s prompt library as one row per prompt: its name, type, every version number it has, its taxonomy and when it last changed. The template bodies are deliberately absent — fetch one prompt to read its text.
+     * Returns the caller org&#39;s prompt library as one row per prompt: its name, type, every version number it has, its taxonomy and when it last changed. (asynchronously)
+     * Returns the caller org&#39;s prompt library as one row per prompt: its name, type, every version number it has, its taxonomy and when it last changed. The template bodies are deliberately absent — fetch one prompt to read its text.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -306,12 +316,13 @@ public class PromptApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPromptAsync(final ApiCallback<PromptList> _callback) throws ApiException {
+    public okhttp3.Call getPromptAsync(final ApiCallback<PromptPromptList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPromptValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PromptList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PromptPromptList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -326,6 +337,7 @@ public class PromptApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPromptByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -355,7 +367,8 @@ public class PromptApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -385,45 +398,47 @@ public class PromptApi {
     }
 
     /**
-     * Get returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had.
-     * Get returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had. The history carries version numbers, types and timestamps only — not each version&#39;s body — so a long history cannot inflate this response. A name the caller&#39;s org does not own is 404, whoever owns it.
+     * Returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had.
+     * Returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had. The history carries version numbers, types and timestamps only — not each version&#39;s body — so a long history cannot inflate this response. A name the caller&#39;s org does not own is 404, whoever owns it.
      * @param name Name is the prompt to act on, from the path. (required)
-     * @return PromptDetail
+     * @return PromptPromptDetail
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PromptDetail getPromptByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<PromptDetail> localVarResp = getPromptByNameWithHttpInfo(name);
+    public PromptPromptDetail getPromptByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<PromptPromptDetail> localVarResp = getPromptByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
     /**
-     * Get returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had.
-     * Get returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had. The history carries version numbers, types and timestamps only — not each version&#39;s body — so a long history cannot inflate this response. A name the caller&#39;s org does not own is 404, whoever owns it.
+     * Returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had.
+     * Returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had. The history carries version numbers, types and timestamps only — not each version&#39;s body — so a long history cannot inflate this response. A name the caller&#39;s org does not own is 404, whoever owns it.
      * @param name Name is the prompt to act on, from the path. (required)
-     * @return ApiResponse&lt;PromptDetail&gt;
+     * @return ApiResponse&lt;PromptPromptDetail&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PromptDetail> getPromptByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<PromptPromptDetail> getPromptByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getPromptByNameValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<PromptDetail>(){}.getType();
+        Type localVarReturnType = new TypeToken<PromptPromptDetail>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had. (asynchronously)
-     * Get returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had. The history carries version numbers, types and timestamps only — not each version&#39;s body — so a long history cannot inflate this response. A name the caller&#39;s org does not own is 404, whoever owns it.
+     * Returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had. (asynchronously)
+     * Returns one of the caller org&#39;s prompts: its CURRENT template text plus the metadata of every version it has had. The history carries version numbers, types and timestamps only — not each version&#39;s body — so a long history cannot inflate this response. A name the caller&#39;s org does not own is 404, whoever owns it.
      * @param name Name is the prompt to act on, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -433,12 +448,13 @@ public class PromptApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPromptByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<PromptDetail> _callback) throws ApiException {
+    public okhttp3.Call getPromptByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<PromptPromptDetail> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPromptByNameValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<PromptDetail>(){}.getType();
+        Type localVarReturnType = new TypeToken<PromptPromptDetail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -452,6 +468,7 @@ public class PromptApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPromptCatalogCall(final ApiCallback _callback) throws ApiException {
@@ -480,7 +497,8 @@ public class PromptApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -505,43 +523,45 @@ public class PromptApi {
     }
 
     /**
-     * Catalog returns the read-only starter prompt library shipped with the binary — reference content every tenant sees the same, NOT the caller&#39;s own prompts and never mixed into them.
-     * Catalog returns the read-only starter prompt library shipped with the binary — reference content every tenant sees the same, NOT the caller&#39;s own prompts and never mixed into them. An org&#39;s library stays honestly empty until someone explicitly imports a starter, which is an ordinary POST /v1/prompt. Entries that would fail the create guards are dropped, so everything offered here can actually be imported.
-     * @return CatalogList
+     * Returns the read-only starter prompt library shipped with the binary — reference content every tenant sees the same, NOT the caller&#39;s own prompts and never mixed into them.
+     * Returns the read-only starter prompt library shipped with the binary — reference content every tenant sees the same, NOT the caller&#39;s own prompts and never mixed into them. An org&#39;s library stays honestly empty until someone explicitly imports a starter, which is an ordinary POST /v1/prompt. Entries that would fail the create guards are dropped, so everything offered here can actually be imported.
+     * @return PromptCatalogList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogList getPromptCatalog() throws ApiException {
-        ApiResponse<CatalogList> localVarResp = getPromptCatalogWithHttpInfo();
+    public PromptCatalogList getPromptCatalog() throws ApiException {
+        ApiResponse<PromptCatalogList> localVarResp = getPromptCatalogWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Catalog returns the read-only starter prompt library shipped with the binary — reference content every tenant sees the same, NOT the caller&#39;s own prompts and never mixed into them.
-     * Catalog returns the read-only starter prompt library shipped with the binary — reference content every tenant sees the same, NOT the caller&#39;s own prompts and never mixed into them. An org&#39;s library stays honestly empty until someone explicitly imports a starter, which is an ordinary POST /v1/prompt. Entries that would fail the create guards are dropped, so everything offered here can actually be imported.
-     * @return ApiResponse&lt;CatalogList&gt;
+     * Returns the read-only starter prompt library shipped with the binary — reference content every tenant sees the same, NOT the caller&#39;s own prompts and never mixed into them.
+     * Returns the read-only starter prompt library shipped with the binary — reference content every tenant sees the same, NOT the caller&#39;s own prompts and never mixed into them. An org&#39;s library stays honestly empty until someone explicitly imports a starter, which is an ordinary POST /v1/prompt. Entries that would fail the create guards are dropped, so everything offered here can actually be imported.
+     * @return ApiResponse&lt;PromptCatalogList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogList> getPromptCatalogWithHttpInfo() throws ApiException {
+    public ApiResponse<PromptCatalogList> getPromptCatalogWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPromptCatalogValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CatalogList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PromptCatalogList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Catalog returns the read-only starter prompt library shipped with the binary — reference content every tenant sees the same, NOT the caller&#39;s own prompts and never mixed into them. (asynchronously)
-     * Catalog returns the read-only starter prompt library shipped with the binary — reference content every tenant sees the same, NOT the caller&#39;s own prompts and never mixed into them. An org&#39;s library stays honestly empty until someone explicitly imports a starter, which is an ordinary POST /v1/prompt. Entries that would fail the create guards are dropped, so everything offered here can actually be imported.
+     * Returns the read-only starter prompt library shipped with the binary — reference content every tenant sees the same, NOT the caller&#39;s own prompts and never mixed into them. (asynchronously)
+     * Returns the read-only starter prompt library shipped with the binary — reference content every tenant sees the same, NOT the caller&#39;s own prompts and never mixed into them. An org&#39;s library stays honestly empty until someone explicitly imports a starter, which is an ordinary POST /v1/prompt. Entries that would fail the create guards are dropped, so everything offered here can actually be imported.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -550,12 +570,13 @@ public class PromptApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPromptCatalogAsync(final ApiCallback<CatalogList> _callback) throws ApiException {
+    public okhttp3.Call getPromptCatalogAsync(final ApiCallback<PromptCatalogList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPromptCatalogValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CatalogList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PromptCatalogList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -569,6 +590,7 @@ public class PromptApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPromptMetricsCall(final ApiCallback _callback) throws ApiException {
@@ -597,7 +619,8 @@ public class PromptApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -622,43 +645,45 @@ public class PromptApi {
     }
 
     /**
-     * Metrics returns real per-prompt statistics for the caller&#39;s org: how many versions each prompt has, which one is current, and when it was created and last changed.
-     * Metrics returns real per-prompt statistics for the caller&#39;s org: how many versions each prompt has, which one is current, and when it was created and last changed. Every number is counted from the store — nothing here is estimated or fabricated.
-     * @return MetricList
+     * Returns real per-prompt statistics for the caller&#39;s org: how many versions each prompt has, which one is current, and when it was created and last changed.
+     * Returns real per-prompt statistics for the caller&#39;s org: how many versions each prompt has, which one is current, and when it was created and last changed. Every number is counted from the store — nothing here is estimated or fabricated.
+     * @return PromptMetricList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MetricList getPromptMetrics() throws ApiException {
-        ApiResponse<MetricList> localVarResp = getPromptMetricsWithHttpInfo();
+    public PromptMetricList getPromptMetrics() throws ApiException {
+        ApiResponse<PromptMetricList> localVarResp = getPromptMetricsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Metrics returns real per-prompt statistics for the caller&#39;s org: how many versions each prompt has, which one is current, and when it was created and last changed.
-     * Metrics returns real per-prompt statistics for the caller&#39;s org: how many versions each prompt has, which one is current, and when it was created and last changed. Every number is counted from the store — nothing here is estimated or fabricated.
-     * @return ApiResponse&lt;MetricList&gt;
+     * Returns real per-prompt statistics for the caller&#39;s org: how many versions each prompt has, which one is current, and when it was created and last changed.
+     * Returns real per-prompt statistics for the caller&#39;s org: how many versions each prompt has, which one is current, and when it was created and last changed. Every number is counted from the store — nothing here is estimated or fabricated.
+     * @return ApiResponse&lt;PromptMetricList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MetricList> getPromptMetricsWithHttpInfo() throws ApiException {
+    public ApiResponse<PromptMetricList> getPromptMetricsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPromptMetricsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<MetricList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PromptMetricList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Metrics returns real per-prompt statistics for the caller&#39;s org: how many versions each prompt has, which one is current, and when it was created and last changed. (asynchronously)
-     * Metrics returns real per-prompt statistics for the caller&#39;s org: how many versions each prompt has, which one is current, and when it was created and last changed. Every number is counted from the store — nothing here is estimated or fabricated.
+     * Returns real per-prompt statistics for the caller&#39;s org: how many versions each prompt has, which one is current, and when it was created and last changed. (asynchronously)
+     * Returns real per-prompt statistics for the caller&#39;s org: how many versions each prompt has, which one is current, and when it was created and last changed. Every number is counted from the store — nothing here is estimated or fabricated.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -667,18 +692,19 @@ public class PromptApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPromptMetricsAsync(final ApiCallback<MetricList> _callback) throws ApiException {
+    public okhttp3.Call getPromptMetricsAsync(final ApiCallback<PromptMetricList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPromptMetricsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<MetricList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PromptMetricList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postPrompt
-     * @param promptReq  (required)
+     * @param promptPromptReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -687,9 +713,10 @@ public class PromptApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPromptCall(@javax.annotation.Nonnull PromptReq promptReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPromptCall(@javax.annotation.Nonnull PromptPromptReq promptPromptReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -703,7 +730,7 @@ public class PromptApi {
             basePath = null;
         }
 
-        Object localVarPostBody = promptReq;
+        Object localVarPostBody = promptPromptReq;
 
         // create path and map variables
         String localVarPath = "/v1/prompt";
@@ -715,7 +742,8 @@ public class PromptApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -735,57 +763,59 @@ public class PromptApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPromptValidateBeforeCall(@javax.annotation.Nonnull PromptReq promptReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'promptReq' is set
-        if (promptReq == null) {
-            throw new ApiException("Missing the required parameter 'promptReq' when calling postPrompt(Async)");
+    private okhttp3.Call postPromptValidateBeforeCall(@javax.annotation.Nonnull PromptPromptReq promptPromptReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'promptPromptReq' is set
+        if (promptPromptReq == null) {
+            throw new ApiException("Missing the required parameter 'promptPromptReq' when calling postPrompt(Async)");
         }
 
-        return postPromptCall(promptReq, _callback);
+        return postPromptCall(promptPromptReq, _callback);
 
     }
 
     /**
-     * Create records a prompt for the caller&#39;s org and answers 201 with it.
-     * Create records a prompt for the caller&#39;s org and answers 201 with it. A name the org already uses is NOT an error and NOT an overwrite: it appends a new version, so the library keeps real, inspectable history and the response carries the whole version list. The name is also the URL segment the prompt is fetched by, which is why its shape is constrained and a handful of names are reserved.
-     * @param promptReq  (required)
-     * @return PromptDetail
+     * Records a prompt for the caller&#39;s org and answers 201 with it.
+     * Records a prompt for the caller&#39;s org and answers 201 with it. A name the org already uses is NOT an error and NOT an overwrite: it appends a new version, so the library keeps real, inspectable history and the response carries the whole version list. The name is also the URL segment the prompt is fetched by, which is why its shape is constrained and a handful of names are reserved.
+     * @param promptPromptReq  (required)
+     * @return PromptPromptDetail
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PromptDetail postPrompt(@javax.annotation.Nonnull PromptReq promptReq) throws ApiException {
-        ApiResponse<PromptDetail> localVarResp = postPromptWithHttpInfo(promptReq);
+    public PromptPromptDetail postPrompt(@javax.annotation.Nonnull PromptPromptReq promptPromptReq) throws ApiException {
+        ApiResponse<PromptPromptDetail> localVarResp = postPromptWithHttpInfo(promptPromptReq);
         return localVarResp.getData();
     }
 
     /**
-     * Create records a prompt for the caller&#39;s org and answers 201 with it.
-     * Create records a prompt for the caller&#39;s org and answers 201 with it. A name the org already uses is NOT an error and NOT an overwrite: it appends a new version, so the library keeps real, inspectable history and the response carries the whole version list. The name is also the URL segment the prompt is fetched by, which is why its shape is constrained and a handful of names are reserved.
-     * @param promptReq  (required)
-     * @return ApiResponse&lt;PromptDetail&gt;
+     * Records a prompt for the caller&#39;s org and answers 201 with it.
+     * Records a prompt for the caller&#39;s org and answers 201 with it. A name the org already uses is NOT an error and NOT an overwrite: it appends a new version, so the library keeps real, inspectable history and the response carries the whole version list. The name is also the URL segment the prompt is fetched by, which is why its shape is constrained and a handful of names are reserved.
+     * @param promptPromptReq  (required)
+     * @return ApiResponse&lt;PromptPromptDetail&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PromptDetail> postPromptWithHttpInfo(@javax.annotation.Nonnull PromptReq promptReq) throws ApiException {
-        okhttp3.Call localVarCall = postPromptValidateBeforeCall(promptReq, null);
-        Type localVarReturnType = new TypeToken<PromptDetail>(){}.getType();
+    public ApiResponse<PromptPromptDetail> postPromptWithHttpInfo(@javax.annotation.Nonnull PromptPromptReq promptPromptReq) throws ApiException {
+        okhttp3.Call localVarCall = postPromptValidateBeforeCall(promptPromptReq, null);
+        Type localVarReturnType = new TypeToken<PromptPromptDetail>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Create records a prompt for the caller&#39;s org and answers 201 with it. (asynchronously)
-     * Create records a prompt for the caller&#39;s org and answers 201 with it. A name the org already uses is NOT an error and NOT an overwrite: it appends a new version, so the library keeps real, inspectable history and the response carries the whole version list. The name is also the URL segment the prompt is fetched by, which is why its shape is constrained and a handful of names are reserved.
-     * @param promptReq  (required)
+     * Records a prompt for the caller&#39;s org and answers 201 with it. (asynchronously)
+     * Records a prompt for the caller&#39;s org and answers 201 with it. A name the org already uses is NOT an error and NOT an overwrite: it appends a new version, so the library keeps real, inspectable history and the response carries the whole version list. The name is also the URL segment the prompt is fetched by, which is why its shape is constrained and a handful of names are reserved.
+     * @param promptPromptReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -794,12 +824,13 @@ public class PromptApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPromptAsync(@javax.annotation.Nonnull PromptReq promptReq, final ApiCallback<PromptDetail> _callback) throws ApiException {
+    public okhttp3.Call postPromptAsync(@javax.annotation.Nonnull PromptPromptReq promptPromptReq, final ApiCallback<PromptPromptDetail> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postPromptValidateBeforeCall(promptReq, _callback);
-        Type localVarReturnType = new TypeToken<PromptDetail>(){}.getType();
+        okhttp3.Call localVarCall = postPromptValidateBeforeCall(promptPromptReq, _callback);
+        Type localVarReturnType = new TypeToken<PromptPromptDetail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -17,7 +17,7 @@ test:
     run: ./gradlew --no-daemon :examples:compileJava
 
   - name: readme
-    # The coordinate the README prints is the version this build publishes.
+    # The coordinate the README prints is the release line this build publishes.
     run: ./scripts/readme
 
 binaries:
@@ -56,7 +56,9 @@ client:
   spec:
     repo: hanzo-inc/cloud
   generate: ./scripts/generate.sh
-  # NO version: — the artifact's number is its own (build.gradle), not the
-  # document's, so there is no patch for the lane to derive. Its projection
-  # still lands and is still gated; the cut waits for a human, instead of
-  # a tag naming bytes under a number nobody chose.
+  # Where the number lives. A release hands the lane its own version, the cut
+  # writes it into build.gradle and tags it, and the push to main is what
+  # release.yml publishes to Maven Central. Without this key the cut tagged a
+  # build.gradle still naming the last release, Central already served that
+  # coordinate, and nothing published.
+  version: 'hanzo-java-cloud/build.gradle:./scripts/version'

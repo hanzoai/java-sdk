@@ -22,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -64,7 +65,7 @@ public class O11yO11yFilterItem {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   @javax.annotation.Nullable
-  private Object value;
+  private Object value = null;
 
   public O11yO11yFilterItem() {
   }
@@ -113,7 +114,7 @@ public class O11yO11yFilterItem {
   }
 
   /**
-   * Value is what it is tested against; its type follows the attribute&#39;s.
+   * Get value
    * @return value
    */
   @javax.annotation.Nullable
@@ -186,9 +187,20 @@ public class O11yO11yFilterItem {
         Objects.equals(this.additionalProperties, o11yO11yFilterItem.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(key, op, value, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

@@ -27,7 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.CatalogPage;
+import ai.hanzo.cloud.model.CatalogCatalogPage;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -92,6 +93,7 @@ public class CatalogApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCatalogCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback _callback) throws ApiException {
@@ -160,7 +162,8 @@ public class CatalogApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -185,8 +188,8 @@ public class CatalogApi {
     }
 
     /**
-     * Browse searches AND browses the cross-org catalog: every project, app and site the fleet has built, whichever org built it.
-     * Browse searches AND browses the cross-org catalog: every project, app and site the fleet has built, whichever org built it.  It reads TWO corpora and returns them as one page — the published, world-readable catalog that every caller sees, plus the caller&#39;s OWN org&#39;s private entries when the request carries a validated principal. Each row says which it came from in &#x60;scope&#x60;, so a client can warn before sharing a link. An anonymous caller simply gets the published one; no filter can ever widen a caller into another tenant&#39;s corpus, because the query that would return it is never run for them.  A request with no q is a browse rather than a search, and both answer the same shape: the page, the total before paging, and the facet counts over the whole matching set.
+     * Searches AND browses the cross-org catalog: every project, app and site the fleet has built, whichever org built it.
+     * Searches AND browses the cross-org catalog: every project, app and site the fleet has built, whichever org built it.  It reads TWO corpora and returns them as one page — the published, world-readable catalog that every caller sees, plus the caller&#39;s OWN org&#39;s private entries when the request carries a validated principal. Each row says which it came from in &#x60;scope&#x60;, so a client can warn before sharing a link. An anonymous caller simply gets the published one; no filter can ever widen a caller into another tenant&#39;s corpus, because the query that would return it is never run for them.  A request with no q is a browse rather than a search, and both answer the same shape: the page, the total before paging, and the facet counts over the whole matching set.
      * @param q Q is the free-text query the lexical index scores relevance on. Empty is a browse rather than a search — the same request either way. (optional)
      * @param org Org narrows to one builder org: hanzo | lux | zoo. Case-insensitive. (optional)
      * @param kind Kind narrows to repo | site. Case-insensitive. (optional)
@@ -197,23 +200,24 @@ public class CatalogApi {
      * @param forkable Forkable is tri-state: \&quot;true\&quot; selects the forkable rows, \&quot;false\&quot; selects the rest, and anything else — including absent — applies no filter at all. (optional)
      * @param limit Limit caps the page at 200, default 50. A value that is not a non-negative integer falls back to the default. (optional)
      * @param offset Offset is where the page starts, default 0, with the same tolerance. (optional)
-     * @return CatalogPage
+     * @return CatalogCatalogPage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogPage getCatalog(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
-        ApiResponse<CatalogPage> localVarResp = getCatalogWithHttpInfo(q, org, kind, origin, archetype, language, template, forkable, limit, offset);
+    public CatalogCatalogPage getCatalog(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
+        ApiResponse<CatalogCatalogPage> localVarResp = getCatalogWithHttpInfo(q, org, kind, origin, archetype, language, template, forkable, limit, offset);
         return localVarResp.getData();
     }
 
     /**
-     * Browse searches AND browses the cross-org catalog: every project, app and site the fleet has built, whichever org built it.
-     * Browse searches AND browses the cross-org catalog: every project, app and site the fleet has built, whichever org built it.  It reads TWO corpora and returns them as one page — the published, world-readable catalog that every caller sees, plus the caller&#39;s OWN org&#39;s private entries when the request carries a validated principal. Each row says which it came from in &#x60;scope&#x60;, so a client can warn before sharing a link. An anonymous caller simply gets the published one; no filter can ever widen a caller into another tenant&#39;s corpus, because the query that would return it is never run for them.  A request with no q is a browse rather than a search, and both answer the same shape: the page, the total before paging, and the facet counts over the whole matching set.
+     * Searches AND browses the cross-org catalog: every project, app and site the fleet has built, whichever org built it.
+     * Searches AND browses the cross-org catalog: every project, app and site the fleet has built, whichever org built it.  It reads TWO corpora and returns them as one page — the published, world-readable catalog that every caller sees, plus the caller&#39;s OWN org&#39;s private entries when the request carries a validated principal. Each row says which it came from in &#x60;scope&#x60;, so a client can warn before sharing a link. An anonymous caller simply gets the published one; no filter can ever widen a caller into another tenant&#39;s corpus, because the query that would return it is never run for them.  A request with no q is a browse rather than a search, and both answer the same shape: the page, the total before paging, and the facet counts over the whole matching set.
      * @param q Q is the free-text query the lexical index scores relevance on. Empty is a browse rather than a search — the same request either way. (optional)
      * @param org Org narrows to one builder org: hanzo | lux | zoo. Case-insensitive. (optional)
      * @param kind Kind narrows to repo | site. Case-insensitive. (optional)
@@ -224,24 +228,25 @@ public class CatalogApi {
      * @param forkable Forkable is tri-state: \&quot;true\&quot; selects the forkable rows, \&quot;false\&quot; selects the rest, and anything else — including absent — applies no filter at all. (optional)
      * @param limit Limit caps the page at 200, default 50. A value that is not a non-negative integer falls back to the default. (optional)
      * @param offset Offset is where the page starts, default 0, with the same tolerance. (optional)
-     * @return ApiResponse&lt;CatalogPage&gt;
+     * @return ApiResponse&lt;CatalogCatalogPage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogPage> getCatalogWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
+    public ApiResponse<CatalogCatalogPage> getCatalogWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
         okhttp3.Call localVarCall = getCatalogValidateBeforeCall(q, org, kind, origin, archetype, language, template, forkable, limit, offset, null);
-        Type localVarReturnType = new TypeToken<CatalogPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<CatalogCatalogPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Browse searches AND browses the cross-org catalog: every project, app and site the fleet has built, whichever org built it. (asynchronously)
-     * Browse searches AND browses the cross-org catalog: every project, app and site the fleet has built, whichever org built it.  It reads TWO corpora and returns them as one page — the published, world-readable catalog that every caller sees, plus the caller&#39;s OWN org&#39;s private entries when the request carries a validated principal. Each row says which it came from in &#x60;scope&#x60;, so a client can warn before sharing a link. An anonymous caller simply gets the published one; no filter can ever widen a caller into another tenant&#39;s corpus, because the query that would return it is never run for them.  A request with no q is a browse rather than a search, and both answer the same shape: the page, the total before paging, and the facet counts over the whole matching set.
+     * Searches AND browses the cross-org catalog: every project, app and site the fleet has built, whichever org built it. (asynchronously)
+     * Searches AND browses the cross-org catalog: every project, app and site the fleet has built, whichever org built it.  It reads TWO corpora and returns them as one page — the published, world-readable catalog that every caller sees, plus the caller&#39;s OWN org&#39;s private entries when the request carries a validated principal. Each row says which it came from in &#x60;scope&#x60;, so a client can warn before sharing a link. An anonymous caller simply gets the published one; no filter can ever widen a caller into another tenant&#39;s corpus, because the query that would return it is never run for them.  A request with no q is a browse rather than a search, and both answer the same shape: the page, the total before paging, and the facet counts over the whole matching set.
      * @param q Q is the free-text query the lexical index scores relevance on. Empty is a browse rather than a search — the same request either way. (optional)
      * @param org Org narrows to one builder org: hanzo | lux | zoo. Case-insensitive. (optional)
      * @param kind Kind narrows to repo | site. Case-insensitive. (optional)
@@ -260,12 +265,13 @@ public class CatalogApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCatalogAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback<CatalogPage> _callback) throws ApiException {
+    public okhttp3.Call getCatalogAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback<CatalogCatalogPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCatalogValidateBeforeCall(q, org, kind, origin, archetype, language, template, forkable, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<CatalogPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<CatalogCatalogPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

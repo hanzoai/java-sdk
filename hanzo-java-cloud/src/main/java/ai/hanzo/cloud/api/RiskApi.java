@@ -27,19 +27,20 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.RiskAdoptIn;
-import ai.hanzo.cloud.model.RiskAppetiteIn;
-import ai.hanzo.cloud.model.RiskCatalog;
-import ai.hanzo.cloud.model.RiskLearnIn;
-import ai.hanzo.cloud.model.RiskLearnOut;
-import ai.hanzo.cloud.model.RiskModelState;
-import ai.hanzo.cloud.model.RiskPolicyOut;
-import ai.hanzo.cloud.model.RiskPublishOut;
-import ai.hanzo.cloud.model.RiskScoreIn;
-import ai.hanzo.cloud.model.RiskScoreOut;
-import ai.hanzo.cloud.model.RiskSearchIn;
-import ai.hanzo.cloud.model.RiskSearchReport;
-import ai.hanzo.cloud.model.RiskSearchRun;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.RiskRiskAdoptIn;
+import ai.hanzo.cloud.model.RiskRiskAppetiteIn;
+import ai.hanzo.cloud.model.RiskRiskCatalog;
+import ai.hanzo.cloud.model.RiskRiskLearnIn;
+import ai.hanzo.cloud.model.RiskRiskLearnOut;
+import ai.hanzo.cloud.model.RiskRiskModelState;
+import ai.hanzo.cloud.model.RiskRiskPolicyOut;
+import ai.hanzo.cloud.model.RiskRiskPublishOut;
+import ai.hanzo.cloud.model.RiskRiskScoreIn;
+import ai.hanzo.cloud.model.RiskRiskScoreOut;
+import ai.hanzo.cloud.model.RiskRiskSearchIn;
+import ai.hanzo.cloud.model.RiskRiskSearchReport;
+import ai.hanzo.cloud.model.RiskRiskSearchRun;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -174,7 +175,7 @@ public class RiskApi {
     }
     /**
      * Build call for riskAdoptModel
-     * @param riskAdoptIn  (required)
+     * @param riskRiskAdoptIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -183,9 +184,10 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskAdoptModelCall(@javax.annotation.Nonnull RiskAdoptIn riskAdoptIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskAdoptModelCall(@javax.annotation.Nonnull RiskRiskAdoptIn riskRiskAdoptIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -199,7 +201,7 @@ public class RiskApi {
             basePath = null;
         }
 
-        Object localVarPostBody = riskAdoptIn;
+        Object localVarPostBody = riskRiskAdoptIn;
 
         // create path and map variables
         String localVarPath = "/v1/risk/state/model";
@@ -211,7 +213,8 @@ public class RiskApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -231,57 +234,59 @@ public class RiskApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskAdoptModelValidateBeforeCall(@javax.annotation.Nonnull RiskAdoptIn riskAdoptIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'riskAdoptIn' is set
-        if (riskAdoptIn == null) {
-            throw new ApiException("Missing the required parameter 'riskAdoptIn' when calling riskAdoptModel(Async)");
+    private okhttp3.Call riskAdoptModelValidateBeforeCall(@javax.annotation.Nonnull RiskRiskAdoptIn riskRiskAdoptIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'riskRiskAdoptIn' is set
+        if (riskRiskAdoptIn == null) {
+            throw new ApiException("Missing the required parameter 'riskRiskAdoptIn' when calling riskAdoptModel(Async)");
         }
 
-        return riskAdoptModelCall(riskAdoptIn, _callback);
+        return riskAdoptModelCall(riskRiskAdoptIn, _callback);
 
     }
 
     /**
      * Put one of your organisation&#39;s own published model values in force
      * Puts one of your organisation&#39;s OWN PUBLISHED VALUES in force, by name — which is what an instant rollback is, what promoting a challenger is, and what installing the shape a search found is.  IT TAKES AN ADDRESS AND NEVER STATE. The masses are read from your own store, so nothing about your model has to be held by whatever is making this call. That closes the sharpest edge the previous shape had: a body of counters is something a caller can COMPOSE, and a region filled until activity inside it reads as ordinary is a model that has been shaped rather than learned. The engine&#39;s mass invariant was the only thing standing between a composed body and the model; with an address there is no body to compose.  IT ADOPTS THE SHAPE, NOT ONLY THE MASSES. A value records the model space its masses were taken in, and a value whose space differs from the one in force REPLANTS your model into that space before restoring them. That is what makes POST /v1/risk/search actionable: a search answers with the shape that fits your own history best and publishes it fitted, and its address is what you name here. Before this, a winning shape was advice nobody could take — the adoption path refused every shape change, and a winner is a different shape by definition.  WHAT ADOPTING A SEARCHED SHAPE COSTS, SAID PLAINLY: the value a search fits has learned the window the search replayed and nothing older, so installing it trades history for fit. Your appetite is untouched — that is your policy record&#39;s, with its own versions — and so is the geometry, which stays your own.  An address your organisation has not published is NOT FOUND. That includes one another organisation published, and it is not a lookup that failed: the store is per organisation and the address is a name, never an authority.
-     * @param riskAdoptIn  (required)
-     * @return RiskModelState
+     * @param riskRiskAdoptIn  (required)
+     * @return RiskRiskModelState
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskModelState riskAdoptModel(@javax.annotation.Nonnull RiskAdoptIn riskAdoptIn) throws ApiException {
-        ApiResponse<RiskModelState> localVarResp = riskAdoptModelWithHttpInfo(riskAdoptIn);
+    public RiskRiskModelState riskAdoptModel(@javax.annotation.Nonnull RiskRiskAdoptIn riskRiskAdoptIn) throws ApiException {
+        ApiResponse<RiskRiskModelState> localVarResp = riskAdoptModelWithHttpInfo(riskRiskAdoptIn);
         return localVarResp.getData();
     }
 
     /**
      * Put one of your organisation&#39;s own published model values in force
      * Puts one of your organisation&#39;s OWN PUBLISHED VALUES in force, by name — which is what an instant rollback is, what promoting a challenger is, and what installing the shape a search found is.  IT TAKES AN ADDRESS AND NEVER STATE. The masses are read from your own store, so nothing about your model has to be held by whatever is making this call. That closes the sharpest edge the previous shape had: a body of counters is something a caller can COMPOSE, and a region filled until activity inside it reads as ordinary is a model that has been shaped rather than learned. The engine&#39;s mass invariant was the only thing standing between a composed body and the model; with an address there is no body to compose.  IT ADOPTS THE SHAPE, NOT ONLY THE MASSES. A value records the model space its masses were taken in, and a value whose space differs from the one in force REPLANTS your model into that space before restoring them. That is what makes POST /v1/risk/search actionable: a search answers with the shape that fits your own history best and publishes it fitted, and its address is what you name here. Before this, a winning shape was advice nobody could take — the adoption path refused every shape change, and a winner is a different shape by definition.  WHAT ADOPTING A SEARCHED SHAPE COSTS, SAID PLAINLY: the value a search fits has learned the window the search replayed and nothing older, so installing it trades history for fit. Your appetite is untouched — that is your policy record&#39;s, with its own versions — and so is the geometry, which stays your own.  An address your organisation has not published is NOT FOUND. That includes one another organisation published, and it is not a lookup that failed: the store is per organisation and the address is a name, never an authority.
-     * @param riskAdoptIn  (required)
-     * @return ApiResponse&lt;RiskModelState&gt;
+     * @param riskRiskAdoptIn  (required)
+     * @return ApiResponse&lt;RiskRiskModelState&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskModelState> riskAdoptModelWithHttpInfo(@javax.annotation.Nonnull RiskAdoptIn riskAdoptIn) throws ApiException {
-        okhttp3.Call localVarCall = riskAdoptModelValidateBeforeCall(riskAdoptIn, null);
-        Type localVarReturnType = new TypeToken<RiskModelState>(){}.getType();
+    public ApiResponse<RiskRiskModelState> riskAdoptModelWithHttpInfo(@javax.annotation.Nonnull RiskRiskAdoptIn riskRiskAdoptIn) throws ApiException {
+        okhttp3.Call localVarCall = riskAdoptModelValidateBeforeCall(riskRiskAdoptIn, null);
+        Type localVarReturnType = new TypeToken<RiskRiskModelState>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Put one of your organisation&#39;s own published model values in force (asynchronously)
      * Puts one of your organisation&#39;s OWN PUBLISHED VALUES in force, by name — which is what an instant rollback is, what promoting a challenger is, and what installing the shape a search found is.  IT TAKES AN ADDRESS AND NEVER STATE. The masses are read from your own store, so nothing about your model has to be held by whatever is making this call. That closes the sharpest edge the previous shape had: a body of counters is something a caller can COMPOSE, and a region filled until activity inside it reads as ordinary is a model that has been shaped rather than learned. The engine&#39;s mass invariant was the only thing standing between a composed body and the model; with an address there is no body to compose.  IT ADOPTS THE SHAPE, NOT ONLY THE MASSES. A value records the model space its masses were taken in, and a value whose space differs from the one in force REPLANTS your model into that space before restoring them. That is what makes POST /v1/risk/search actionable: a search answers with the shape that fits your own history best and publishes it fitted, and its address is what you name here. Before this, a winning shape was advice nobody could take — the adoption path refused every shape change, and a winner is a different shape by definition.  WHAT ADOPTING A SEARCHED SHAPE COSTS, SAID PLAINLY: the value a search fits has learned the window the search replayed and nothing older, so installing it trades history for fit. Your appetite is untouched — that is your policy record&#39;s, with its own versions — and so is the geometry, which stays your own.  An address your organisation has not published is NOT FOUND. That includes one another organisation published, and it is not a lookup that failed: the store is per organisation and the address is a name, never an authority.
-     * @param riskAdoptIn  (required)
+     * @param riskRiskAdoptIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -290,12 +295,13 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskAdoptModelAsync(@javax.annotation.Nonnull RiskAdoptIn riskAdoptIn, final ApiCallback<RiskModelState> _callback) throws ApiException {
+    public okhttp3.Call riskAdoptModelAsync(@javax.annotation.Nonnull RiskRiskAdoptIn riskRiskAdoptIn, final ApiCallback<RiskRiskModelState> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = riskAdoptModelValidateBeforeCall(riskAdoptIn, _callback);
-        Type localVarReturnType = new TypeToken<RiskModelState>(){}.getType();
+        okhttp3.Call localVarCall = riskAdoptModelValidateBeforeCall(riskRiskAdoptIn, _callback);
+        Type localVarReturnType = new TypeToken<RiskRiskModelState>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -310,6 +316,7 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskFeaturesCall(@javax.annotation.Nullable Long days, final ApiCallback _callback) throws ApiException {
@@ -342,7 +349,8 @@ public class RiskApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -370,17 +378,18 @@ public class RiskApi {
      * The feature catalogue: what the model reads, and what your surface carries
      * Features is the feature catalogue in its two honest lenses.  The MODEL lens is the governed inventory: one entry per dimension of the model space, each carrying the typology it serves, the supervisor&#39;s own words for the indicator, and the published standard those words come from — so a coverage claim is checkable rather than asserted. It is the same for every organisation.  The SURFACE lens is what THIS organisation&#39;s own event surface actually carries, measured over the window: how many of its buckets carry each dimension at all, and what the dimension reads where it is present. A dimension present in no bucket is BLIND, and saying so is the difference between no risk and no data.
      * @param days Days is how far back to measure the organisation&#39;s own coverage, 1 to 400. Zero takes thirty. (optional)
-     * @return RiskCatalog
+     * @return RiskRiskCatalog
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskCatalog riskFeatures(@javax.annotation.Nullable Long days) throws ApiException {
-        ApiResponse<RiskCatalog> localVarResp = riskFeaturesWithHttpInfo(days);
+    public RiskRiskCatalog riskFeatures(@javax.annotation.Nullable Long days) throws ApiException {
+        ApiResponse<RiskRiskCatalog> localVarResp = riskFeaturesWithHttpInfo(days);
         return localVarResp.getData();
     }
 
@@ -388,18 +397,19 @@ public class RiskApi {
      * The feature catalogue: what the model reads, and what your surface carries
      * Features is the feature catalogue in its two honest lenses.  The MODEL lens is the governed inventory: one entry per dimension of the model space, each carrying the typology it serves, the supervisor&#39;s own words for the indicator, and the published standard those words come from — so a coverage claim is checkable rather than asserted. It is the same for every organisation.  The SURFACE lens is what THIS organisation&#39;s own event surface actually carries, measured over the window: how many of its buckets carry each dimension at all, and what the dimension reads where it is present. A dimension present in no bucket is BLIND, and saying so is the difference between no risk and no data.
      * @param days Days is how far back to measure the organisation&#39;s own coverage, 1 to 400. Zero takes thirty. (optional)
-     * @return ApiResponse&lt;RiskCatalog&gt;
+     * @return ApiResponse&lt;RiskRiskCatalog&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskCatalog> riskFeaturesWithHttpInfo(@javax.annotation.Nullable Long days) throws ApiException {
+    public ApiResponse<RiskRiskCatalog> riskFeaturesWithHttpInfo(@javax.annotation.Nullable Long days) throws ApiException {
         okhttp3.Call localVarCall = riskFeaturesValidateBeforeCall(days, null);
-        Type localVarReturnType = new TypeToken<RiskCatalog>(){}.getType();
+        Type localVarReturnType = new TypeToken<RiskRiskCatalog>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -415,18 +425,19 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskFeaturesAsync(@javax.annotation.Nullable Long days, final ApiCallback<RiskCatalog> _callback) throws ApiException {
+    public okhttp3.Call riskFeaturesAsync(@javax.annotation.Nullable Long days, final ApiCallback<RiskRiskCatalog> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskFeaturesValidateBeforeCall(days, _callback);
-        Type localVarReturnType = new TypeToken<RiskCatalog>(){}.getType();
+        Type localVarReturnType = new TypeToken<RiskRiskCatalog>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for riskLearn
-     * @param riskLearnIn  (required)
+     * @param riskRiskLearnIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -435,9 +446,10 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskLearnCall(@javax.annotation.Nonnull RiskLearnIn riskLearnIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskLearnCall(@javax.annotation.Nonnull RiskRiskLearnIn riskRiskLearnIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -451,7 +463,7 @@ public class RiskApi {
             basePath = null;
         }
 
-        Object localVarPostBody = riskLearnIn;
+        Object localVarPostBody = riskRiskLearnIn;
 
         // create path and map variables
         String localVarPath = "/v1/risk/learn";
@@ -463,7 +475,8 @@ public class RiskApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -483,57 +496,59 @@ public class RiskApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskLearnValidateBeforeCall(@javax.annotation.Nonnull RiskLearnIn riskLearnIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'riskLearnIn' is set
-        if (riskLearnIn == null) {
-            throw new ApiException("Missing the required parameter 'riskLearnIn' when calling riskLearn(Async)");
+    private okhttp3.Call riskLearnValidateBeforeCall(@javax.annotation.Nonnull RiskRiskLearnIn riskRiskLearnIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'riskRiskLearnIn' is set
+        if (riskRiskLearnIn == null) {
+            throw new ApiException("Missing the required parameter 'riskRiskLearnIn' when calling riskLearn(Async)");
         }
 
-        return riskLearnCall(riskLearnIn, _callback);
+        return riskLearnCall(riskRiskLearnIn, _callback);
 
     }
 
     /**
      * Teach your organisation&#39;s own model from its own events
-     * Learn records a batch of events into the caller organisation&#39;s own aggregates and lets its model learn from them. It answers how many it learned from.  IT DOES NOT SCORE, AND THAT IS THE POINT. An observation is a value you record; learning is a transformation over observations; a verdict is a query against the result. This op is the first two. [ops.score] is the third, it is pure, and it is the ONE entry point to a verdict. They were one call, which meant you could not record without training and could not train without being answered — and the model ran twice over every event to produce a verdict the response carried and no caller read.  TO OBSERVE AND JUDGE, COMPOSE THE TWO, and mind the order. Score FIRST, then learn: the score is then the model&#39;s opinion of an event it has not yet learned from, which is the question worth asking. The other order answers for a model that has already absorbed the event it is judging.  This is the training path, and there is no job behind it: the model IS a set of mass counters over half-space trees, so learning is an increment and the model is current the instant the last event lands. Nothing from any other organisation is in it, and nothing from this organisation leaves it.  A RETRY IS INERT. The record deduplicates on the event id you send, and an event already in it moves nothing, costs nothing and is not counted — so a client that timed out can send the same batch again and its model holds what it holds. Without an id of your own there is nothing to converge on: two identical bodies are two events.
-     * @param riskLearnIn  (required)
-     * @return RiskLearnOut
+     * Records a batch of events into the caller organisation&#39;s own aggregates and lets its model learn from them. It answers how many it learned from.  IT DOES NOT SCORE, AND THAT IS THE POINT. An observation is a value you record; learning is a transformation over observations; a verdict is a query against the result. This op is the first two. [ops.score] is the third, it is pure, and it is the ONE entry point to a verdict. They were one call, which meant you could not record without training and could not train without being answered — and the model ran twice over every event to produce a verdict the response carried and no caller read.  TO OBSERVE AND JUDGE, COMPOSE THE TWO, and mind the order. Score FIRST, then learn: the score is then the model&#39;s opinion of an event it has not yet learned from, which is the question worth asking. The other order answers for a model that has already absorbed the event it is judging.  This is the training path, and there is no job behind it: the model IS a set of mass counters over half-space trees, so learning is an increment and the model is current the instant the last event lands. Nothing from any other organisation is in it, and nothing from this organisation leaves it.  A RETRY IS INERT. The record deduplicates on the event id you send, and an event already in it moves nothing, costs nothing and is not counted — so a client that timed out can send the same batch again and its model holds what it holds. Without an id of your own there is nothing to converge on: two identical bodies are two events.
+     * @param riskRiskLearnIn  (required)
+     * @return RiskRiskLearnOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskLearnOut riskLearn(@javax.annotation.Nonnull RiskLearnIn riskLearnIn) throws ApiException {
-        ApiResponse<RiskLearnOut> localVarResp = riskLearnWithHttpInfo(riskLearnIn);
+    public RiskRiskLearnOut riskLearn(@javax.annotation.Nonnull RiskRiskLearnIn riskRiskLearnIn) throws ApiException {
+        ApiResponse<RiskRiskLearnOut> localVarResp = riskLearnWithHttpInfo(riskRiskLearnIn);
         return localVarResp.getData();
     }
 
     /**
      * Teach your organisation&#39;s own model from its own events
-     * Learn records a batch of events into the caller organisation&#39;s own aggregates and lets its model learn from them. It answers how many it learned from.  IT DOES NOT SCORE, AND THAT IS THE POINT. An observation is a value you record; learning is a transformation over observations; a verdict is a query against the result. This op is the first two. [ops.score] is the third, it is pure, and it is the ONE entry point to a verdict. They were one call, which meant you could not record without training and could not train without being answered — and the model ran twice over every event to produce a verdict the response carried and no caller read.  TO OBSERVE AND JUDGE, COMPOSE THE TWO, and mind the order. Score FIRST, then learn: the score is then the model&#39;s opinion of an event it has not yet learned from, which is the question worth asking. The other order answers for a model that has already absorbed the event it is judging.  This is the training path, and there is no job behind it: the model IS a set of mass counters over half-space trees, so learning is an increment and the model is current the instant the last event lands. Nothing from any other organisation is in it, and nothing from this organisation leaves it.  A RETRY IS INERT. The record deduplicates on the event id you send, and an event already in it moves nothing, costs nothing and is not counted — so a client that timed out can send the same batch again and its model holds what it holds. Without an id of your own there is nothing to converge on: two identical bodies are two events.
-     * @param riskLearnIn  (required)
-     * @return ApiResponse&lt;RiskLearnOut&gt;
+     * Records a batch of events into the caller organisation&#39;s own aggregates and lets its model learn from them. It answers how many it learned from.  IT DOES NOT SCORE, AND THAT IS THE POINT. An observation is a value you record; learning is a transformation over observations; a verdict is a query against the result. This op is the first two. [ops.score] is the third, it is pure, and it is the ONE entry point to a verdict. They were one call, which meant you could not record without training and could not train without being answered — and the model ran twice over every event to produce a verdict the response carried and no caller read.  TO OBSERVE AND JUDGE, COMPOSE THE TWO, and mind the order. Score FIRST, then learn: the score is then the model&#39;s opinion of an event it has not yet learned from, which is the question worth asking. The other order answers for a model that has already absorbed the event it is judging.  This is the training path, and there is no job behind it: the model IS a set of mass counters over half-space trees, so learning is an increment and the model is current the instant the last event lands. Nothing from any other organisation is in it, and nothing from this organisation leaves it.  A RETRY IS INERT. The record deduplicates on the event id you send, and an event already in it moves nothing, costs nothing and is not counted — so a client that timed out can send the same batch again and its model holds what it holds. Without an id of your own there is nothing to converge on: two identical bodies are two events.
+     * @param riskRiskLearnIn  (required)
+     * @return ApiResponse&lt;RiskRiskLearnOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskLearnOut> riskLearnWithHttpInfo(@javax.annotation.Nonnull RiskLearnIn riskLearnIn) throws ApiException {
-        okhttp3.Call localVarCall = riskLearnValidateBeforeCall(riskLearnIn, null);
-        Type localVarReturnType = new TypeToken<RiskLearnOut>(){}.getType();
+    public ApiResponse<RiskRiskLearnOut> riskLearnWithHttpInfo(@javax.annotation.Nonnull RiskRiskLearnIn riskRiskLearnIn) throws ApiException {
+        okhttp3.Call localVarCall = riskLearnValidateBeforeCall(riskRiskLearnIn, null);
+        Type localVarReturnType = new TypeToken<RiskRiskLearnOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Teach your organisation&#39;s own model from its own events (asynchronously)
-     * Learn records a batch of events into the caller organisation&#39;s own aggregates and lets its model learn from them. It answers how many it learned from.  IT DOES NOT SCORE, AND THAT IS THE POINT. An observation is a value you record; learning is a transformation over observations; a verdict is a query against the result. This op is the first two. [ops.score] is the third, it is pure, and it is the ONE entry point to a verdict. They were one call, which meant you could not record without training and could not train without being answered — and the model ran twice over every event to produce a verdict the response carried and no caller read.  TO OBSERVE AND JUDGE, COMPOSE THE TWO, and mind the order. Score FIRST, then learn: the score is then the model&#39;s opinion of an event it has not yet learned from, which is the question worth asking. The other order answers for a model that has already absorbed the event it is judging.  This is the training path, and there is no job behind it: the model IS a set of mass counters over half-space trees, so learning is an increment and the model is current the instant the last event lands. Nothing from any other organisation is in it, and nothing from this organisation leaves it.  A RETRY IS INERT. The record deduplicates on the event id you send, and an event already in it moves nothing, costs nothing and is not counted — so a client that timed out can send the same batch again and its model holds what it holds. Without an id of your own there is nothing to converge on: two identical bodies are two events.
-     * @param riskLearnIn  (required)
+     * Records a batch of events into the caller organisation&#39;s own aggregates and lets its model learn from them. It answers how many it learned from.  IT DOES NOT SCORE, AND THAT IS THE POINT. An observation is a value you record; learning is a transformation over observations; a verdict is a query against the result. This op is the first two. [ops.score] is the third, it is pure, and it is the ONE entry point to a verdict. They were one call, which meant you could not record without training and could not train without being answered — and the model ran twice over every event to produce a verdict the response carried and no caller read.  TO OBSERVE AND JUDGE, COMPOSE THE TWO, and mind the order. Score FIRST, then learn: the score is then the model&#39;s opinion of an event it has not yet learned from, which is the question worth asking. The other order answers for a model that has already absorbed the event it is judging.  This is the training path, and there is no job behind it: the model IS a set of mass counters over half-space trees, so learning is an increment and the model is current the instant the last event lands. Nothing from any other organisation is in it, and nothing from this organisation leaves it.  A RETRY IS INERT. The record deduplicates on the event id you send, and an event already in it moves nothing, costs nothing and is not counted — so a client that timed out can send the same batch again and its model holds what it holds. Without an id of your own there is nothing to converge on: two identical bodies are two events.
+     * @param riskRiskLearnIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -542,12 +557,13 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskLearnAsync(@javax.annotation.Nonnull RiskLearnIn riskLearnIn, final ApiCallback<RiskLearnOut> _callback) throws ApiException {
+    public okhttp3.Call riskLearnAsync(@javax.annotation.Nonnull RiskRiskLearnIn riskRiskLearnIn, final ApiCallback<RiskRiskLearnOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = riskLearnValidateBeforeCall(riskLearnIn, _callback);
-        Type localVarReturnType = new TypeToken<RiskLearnOut>(){}.getType();
+        okhttp3.Call localVarCall = riskLearnValidateBeforeCall(riskRiskLearnIn, _callback);
+        Type localVarReturnType = new TypeToken<RiskRiskLearnOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -561,6 +577,7 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskPolicyCall(final ApiCallback _callback) throws ApiException {
@@ -589,7 +606,8 @@ public class RiskApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -615,42 +633,44 @@ public class RiskApi {
 
     /**
      * Your organisation&#39;s decision-regime history, and which version is in force
-     * Policy reports the caller organisation&#39;s own decision-regime history: every distinct regime it has adopted, which version is in force, and what retention has taken.  WHY IT EXISTS. Every score cites the version it was decided under ([riskScoreOut.Policy]), and the threshold that score was measured against is derived from the appetite that version states. Restate the appetite and, without this record, every earlier decision becomes unreconstructible — the cut it was judged by no longer exists anywhere. An adverse decision that cannot be explained against the policy in force when it was taken cannot be defended.  It covers ONE organisation. The history is on that organisation&#39;s own shelf, so another&#39;s versions are not filtered out of the answer — they are not in the file the answer is read from.
-     * @return RiskPolicyOut
+     * Reports the caller organisation&#39;s own decision-regime history: every distinct regime it has adopted, which version is in force, and what retention has taken.  WHY IT EXISTS. Every score cites the version it was decided under ([riskScoreOut.Policy]), and the threshold that score was measured against is derived from the appetite that version states. Restate the appetite and, without this record, every earlier decision becomes unreconstructible — the cut it was judged by no longer exists anywhere. An adverse decision that cannot be explained against the policy in force when it was taken cannot be defended.  It covers ONE organisation. The history is on that organisation&#39;s own shelf, so another&#39;s versions are not filtered out of the answer — they are not in the file the answer is read from.
+     * @return RiskRiskPolicyOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskPolicyOut riskPolicy() throws ApiException {
-        ApiResponse<RiskPolicyOut> localVarResp = riskPolicyWithHttpInfo();
+    public RiskRiskPolicyOut riskPolicy() throws ApiException {
+        ApiResponse<RiskRiskPolicyOut> localVarResp = riskPolicyWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Your organisation&#39;s decision-regime history, and which version is in force
-     * Policy reports the caller organisation&#39;s own decision-regime history: every distinct regime it has adopted, which version is in force, and what retention has taken.  WHY IT EXISTS. Every score cites the version it was decided under ([riskScoreOut.Policy]), and the threshold that score was measured against is derived from the appetite that version states. Restate the appetite and, without this record, every earlier decision becomes unreconstructible — the cut it was judged by no longer exists anywhere. An adverse decision that cannot be explained against the policy in force when it was taken cannot be defended.  It covers ONE organisation. The history is on that organisation&#39;s own shelf, so another&#39;s versions are not filtered out of the answer — they are not in the file the answer is read from.
-     * @return ApiResponse&lt;RiskPolicyOut&gt;
+     * Reports the caller organisation&#39;s own decision-regime history: every distinct regime it has adopted, which version is in force, and what retention has taken.  WHY IT EXISTS. Every score cites the version it was decided under ([riskScoreOut.Policy]), and the threshold that score was measured against is derived from the appetite that version states. Restate the appetite and, without this record, every earlier decision becomes unreconstructible — the cut it was judged by no longer exists anywhere. An adverse decision that cannot be explained against the policy in force when it was taken cannot be defended.  It covers ONE organisation. The history is on that organisation&#39;s own shelf, so another&#39;s versions are not filtered out of the answer — they are not in the file the answer is read from.
+     * @return ApiResponse&lt;RiskRiskPolicyOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskPolicyOut> riskPolicyWithHttpInfo() throws ApiException {
+    public ApiResponse<RiskRiskPolicyOut> riskPolicyWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = riskPolicyValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<RiskPolicyOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<RiskRiskPolicyOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Your organisation&#39;s decision-regime history, and which version is in force (asynchronously)
-     * Policy reports the caller organisation&#39;s own decision-regime history: every distinct regime it has adopted, which version is in force, and what retention has taken.  WHY IT EXISTS. Every score cites the version it was decided under ([riskScoreOut.Policy]), and the threshold that score was measured against is derived from the appetite that version states. Restate the appetite and, without this record, every earlier decision becomes unreconstructible — the cut it was judged by no longer exists anywhere. An adverse decision that cannot be explained against the policy in force when it was taken cannot be defended.  It covers ONE organisation. The history is on that organisation&#39;s own shelf, so another&#39;s versions are not filtered out of the answer — they are not in the file the answer is read from.
+     * Reports the caller organisation&#39;s own decision-regime history: every distinct regime it has adopted, which version is in force, and what retention has taken.  WHY IT EXISTS. Every score cites the version it was decided under ([riskScoreOut.Policy]), and the threshold that score was measured against is derived from the appetite that version states. Restate the appetite and, without this record, every earlier decision becomes unreconstructible — the cut it was judged by no longer exists anywhere. An adverse decision that cannot be explained against the policy in force when it was taken cannot be defended.  It covers ONE organisation. The history is on that organisation&#39;s own shelf, so another&#39;s versions are not filtered out of the answer — they are not in the file the answer is read from.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -659,12 +679,13 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskPolicyAsync(final ApiCallback<RiskPolicyOut> _callback) throws ApiException {
+    public okhttp3.Call riskPolicyAsync(final ApiCallback<RiskRiskPolicyOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskPolicyValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<RiskPolicyOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<RiskRiskPolicyOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -678,6 +699,7 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskPublishModelCall(final ApiCallback _callback) throws ApiException {
@@ -706,7 +728,8 @@ public class RiskApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -733,35 +756,37 @@ public class RiskApi {
     /**
      * Publish your organisation&#39;s model as a named, immutable value
      * Publishes your organisation&#39;s model as a NAMED VALUE, so a decision taken today can be reconstructed tomorrow and a change made today can be undone.  It answers with a NAME and not with the state. The masses stay on your organisation&#39;s own encrypted store and are referred to by an address computed from their own content: the shape, the geometry seed, the position in the window, the threshold, the masses themselves as IEEE-754 bits, and the fold watermark behind them. That is what makes the value nameable without making the caller its custodian.  IT IS IDEMPOTENT ON THE VALUE. A model that has not changed publishes to the name it already has and mints nothing, reporting minted&#x3D;false — so publishing at every boundary that matters is free. Ten values are retained per organisation, bounded in BYTES rather than in rows, and the oldest is disposed of past that.  A model that has learned nothing is refused: planted is not learned, and a value that reproduces nothing is not a value.  It is POST and PUT on one address because they are one plane&#39;s two verbs over one kind of thing: POST mints a value from the model in force, PUT puts a value in force. They were /v1/risk/state/snapshot and /v1/risk/state/restore — two addresses named after the operation rather than after the thing, which is how a reader ends up asking what the difference between a snapshot and a value is.
-     * @return RiskPublishOut
+     * @return RiskRiskPublishOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskPublishOut riskPublishModel() throws ApiException {
-        ApiResponse<RiskPublishOut> localVarResp = riskPublishModelWithHttpInfo();
+    public RiskRiskPublishOut riskPublishModel() throws ApiException {
+        ApiResponse<RiskRiskPublishOut> localVarResp = riskPublishModelWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Publish your organisation&#39;s model as a named, immutable value
      * Publishes your organisation&#39;s model as a NAMED VALUE, so a decision taken today can be reconstructed tomorrow and a change made today can be undone.  It answers with a NAME and not with the state. The masses stay on your organisation&#39;s own encrypted store and are referred to by an address computed from their own content: the shape, the geometry seed, the position in the window, the threshold, the masses themselves as IEEE-754 bits, and the fold watermark behind them. That is what makes the value nameable without making the caller its custodian.  IT IS IDEMPOTENT ON THE VALUE. A model that has not changed publishes to the name it already has and mints nothing, reporting minted&#x3D;false — so publishing at every boundary that matters is free. Ten values are retained per organisation, bounded in BYTES rather than in rows, and the oldest is disposed of past that.  A model that has learned nothing is refused: planted is not learned, and a value that reproduces nothing is not a value.  It is POST and PUT on one address because they are one plane&#39;s two verbs over one kind of thing: POST mints a value from the model in force, PUT puts a value in force. They were /v1/risk/state/snapshot and /v1/risk/state/restore — two addresses named after the operation rather than after the thing, which is how a reader ends up asking what the difference between a snapshot and a value is.
-     * @return ApiResponse&lt;RiskPublishOut&gt;
+     * @return ApiResponse&lt;RiskRiskPublishOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskPublishOut> riskPublishModelWithHttpInfo() throws ApiException {
+    public ApiResponse<RiskRiskPublishOut> riskPublishModelWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = riskPublishModelValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<RiskPublishOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<RiskRiskPublishOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -776,18 +801,19 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskPublishModelAsync(final ApiCallback<RiskPublishOut> _callback) throws ApiException {
+    public okhttp3.Call riskPublishModelAsync(final ApiCallback<RiskRiskPublishOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskPublishModelValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<RiskPublishOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<RiskRiskPublishOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for riskScore
-     * @param riskScoreIn  (required)
+     * @param riskRiskScoreIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -796,9 +822,10 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskScoreCall(@javax.annotation.Nonnull RiskScoreIn riskScoreIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskScoreCall(@javax.annotation.Nonnull RiskRiskScoreIn riskRiskScoreIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -812,7 +839,7 @@ public class RiskApi {
             basePath = null;
         }
 
-        Object localVarPostBody = riskScoreIn;
+        Object localVarPostBody = riskRiskScoreIn;
 
         // create path and map variables
         String localVarPath = "/v1/risk/score";
@@ -824,7 +851,8 @@ public class RiskApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -844,57 +872,59 @@ public class RiskApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskScoreValidateBeforeCall(@javax.annotation.Nonnull RiskScoreIn riskScoreIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'riskScoreIn' is set
-        if (riskScoreIn == null) {
-            throw new ApiException("Missing the required parameter 'riskScoreIn' when calling riskScore(Async)");
+    private okhttp3.Call riskScoreValidateBeforeCall(@javax.annotation.Nonnull RiskRiskScoreIn riskRiskScoreIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'riskRiskScoreIn' is set
+        if (riskRiskScoreIn == null) {
+            throw new ApiException("Missing the required parameter 'riskRiskScoreIn' when calling riskScore(Async)");
         }
 
-        return riskScoreCall(riskScoreIn, _callback);
+        return riskScoreCall(riskRiskScoreIn, _callback);
 
     }
 
     /**
      * Score one event against your organisation&#39;s own model
-     * Score judges one event against the caller organisation&#39;s OWN model and learns nothing from it. It is how a candidate is tried against real behaviour before anything depends on the answer, and it is the model&#39;s analogue of testing a rule.  Because it records nothing, the aggregates it reads do not include the event: the numbers are the organisation&#39;s history as it stands. A model still warming declines with a reason rather than answering zero, because silence must never read as a clean result.
-     * @param riskScoreIn  (required)
-     * @return RiskScoreOut
+     * Judges one event against the caller organisation&#39;s OWN model and learns nothing from it. It is how a candidate is tried against real behaviour before anything depends on the answer, and it is the model&#39;s analogue of testing a rule.  Because it records nothing, the aggregates it reads do not include the event: the numbers are the organisation&#39;s history as it stands. A model still warming declines with a reason rather than answering zero, because silence must never read as a clean result.
+     * @param riskRiskScoreIn  (required)
+     * @return RiskRiskScoreOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskScoreOut riskScore(@javax.annotation.Nonnull RiskScoreIn riskScoreIn) throws ApiException {
-        ApiResponse<RiskScoreOut> localVarResp = riskScoreWithHttpInfo(riskScoreIn);
+    public RiskRiskScoreOut riskScore(@javax.annotation.Nonnull RiskRiskScoreIn riskRiskScoreIn) throws ApiException {
+        ApiResponse<RiskRiskScoreOut> localVarResp = riskScoreWithHttpInfo(riskRiskScoreIn);
         return localVarResp.getData();
     }
 
     /**
      * Score one event against your organisation&#39;s own model
-     * Score judges one event against the caller organisation&#39;s OWN model and learns nothing from it. It is how a candidate is tried against real behaviour before anything depends on the answer, and it is the model&#39;s analogue of testing a rule.  Because it records nothing, the aggregates it reads do not include the event: the numbers are the organisation&#39;s history as it stands. A model still warming declines with a reason rather than answering zero, because silence must never read as a clean result.
-     * @param riskScoreIn  (required)
-     * @return ApiResponse&lt;RiskScoreOut&gt;
+     * Judges one event against the caller organisation&#39;s OWN model and learns nothing from it. It is how a candidate is tried against real behaviour before anything depends on the answer, and it is the model&#39;s analogue of testing a rule.  Because it records nothing, the aggregates it reads do not include the event: the numbers are the organisation&#39;s history as it stands. A model still warming declines with a reason rather than answering zero, because silence must never read as a clean result.
+     * @param riskRiskScoreIn  (required)
+     * @return ApiResponse&lt;RiskRiskScoreOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskScoreOut> riskScoreWithHttpInfo(@javax.annotation.Nonnull RiskScoreIn riskScoreIn) throws ApiException {
-        okhttp3.Call localVarCall = riskScoreValidateBeforeCall(riskScoreIn, null);
-        Type localVarReturnType = new TypeToken<RiskScoreOut>(){}.getType();
+    public ApiResponse<RiskRiskScoreOut> riskScoreWithHttpInfo(@javax.annotation.Nonnull RiskRiskScoreIn riskRiskScoreIn) throws ApiException {
+        okhttp3.Call localVarCall = riskScoreValidateBeforeCall(riskRiskScoreIn, null);
+        Type localVarReturnType = new TypeToken<RiskRiskScoreOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Score one event against your organisation&#39;s own model (asynchronously)
-     * Score judges one event against the caller organisation&#39;s OWN model and learns nothing from it. It is how a candidate is tried against real behaviour before anything depends on the answer, and it is the model&#39;s analogue of testing a rule.  Because it records nothing, the aggregates it reads do not include the event: the numbers are the organisation&#39;s history as it stands. A model still warming declines with a reason rather than answering zero, because silence must never read as a clean result.
-     * @param riskScoreIn  (required)
+     * Judges one event against the caller organisation&#39;s OWN model and learns nothing from it. It is how a candidate is tried against real behaviour before anything depends on the answer, and it is the model&#39;s analogue of testing a rule.  Because it records nothing, the aggregates it reads do not include the event: the numbers are the organisation&#39;s history as it stands. A model still warming declines with a reason rather than answering zero, because silence must never read as a clean result.
+     * @param riskRiskScoreIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -903,18 +933,19 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskScoreAsync(@javax.annotation.Nonnull RiskScoreIn riskScoreIn, final ApiCallback<RiskScoreOut> _callback) throws ApiException {
+    public okhttp3.Call riskScoreAsync(@javax.annotation.Nonnull RiskRiskScoreIn riskRiskScoreIn, final ApiCallback<RiskRiskScoreOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = riskScoreValidateBeforeCall(riskScoreIn, _callback);
-        Type localVarReturnType = new TypeToken<RiskScoreOut>(){}.getType();
+        okhttp3.Call localVarCall = riskScoreValidateBeforeCall(riskRiskScoreIn, _callback);
+        Type localVarReturnType = new TypeToken<RiskRiskScoreOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for riskSearch
-     * @param riskSearchIn  (required)
+     * @param riskRiskSearchIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -923,9 +954,10 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskSearchCall(@javax.annotation.Nonnull RiskSearchIn riskSearchIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskSearchCall(@javax.annotation.Nonnull RiskRiskSearchIn riskRiskSearchIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -939,7 +971,7 @@ public class RiskApi {
             basePath = null;
         }
 
-        Object localVarPostBody = riskSearchIn;
+        Object localVarPostBody = riskRiskSearchIn;
 
         // create path and map variables
         String localVarPath = "/v1/risk/search";
@@ -951,7 +983,8 @@ public class RiskApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -971,57 +1004,59 @@ public class RiskApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskSearchValidateBeforeCall(@javax.annotation.Nonnull RiskSearchIn riskSearchIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'riskSearchIn' is set
-        if (riskSearchIn == null) {
-            throw new ApiException("Missing the required parameter 'riskSearchIn' when calling riskSearch(Async)");
+    private okhttp3.Call riskSearchValidateBeforeCall(@javax.annotation.Nonnull RiskRiskSearchIn riskRiskSearchIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'riskRiskSearchIn' is set
+        if (riskRiskSearchIn == null) {
+            throw new ApiException("Missing the required parameter 'riskRiskSearchIn' when calling riskSearch(Async)");
         }
 
-        return riskSearchCall(riskSearchIn, _callback);
+        return riskSearchCall(riskRiskSearchIn, _callback);
 
     }
 
     /**
      * Search exhaustively for the model shape that fits your own history
-     * Search runs an exhaustive search for the model shape that best fits the caller organisation&#39;s own history, and answers 202 with the run to read back.  Every candidate is replayed over that organisation&#39;s OWN feature surface in its own sandbox — its own aggregates, its own model, neither of them the live one — so a run cannot move a live threshold and cannot see another organisation&#39;s data. The result is the learning curve for each shape and the one that fit best, ranked on how closely it honoured the stated appetite, whether it warmed at all, whether it saturated, and how much of the coordinate space it left blind.  An empty history is REFUSED rather than reported as zero alerts, because \&quot;no alerts\&quot; is exactly what a quiet model looks like.
-     * @param riskSearchIn  (required)
-     * @return RiskSearchRun
+     * Runs an exhaustive search for the model shape that best fits the caller organisation&#39;s own history, and answers 202 with the run to read back.  Every candidate is replayed over that organisation&#39;s OWN feature surface in its own sandbox — its own aggregates, its own model, neither of them the live one — so a run cannot move a live threshold and cannot see another organisation&#39;s data. The result is the learning curve for each shape and the one that fit best, ranked on how closely it honoured the stated appetite, whether it warmed at all, whether it saturated, and how much of the coordinate space it left blind.  An empty history is REFUSED rather than reported as zero alerts, because \&quot;no alerts\&quot; is exactly what a quiet model looks like.
+     * @param riskRiskSearchIn  (required)
+     * @return RiskRiskSearchRun
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskSearchRun riskSearch(@javax.annotation.Nonnull RiskSearchIn riskSearchIn) throws ApiException {
-        ApiResponse<RiskSearchRun> localVarResp = riskSearchWithHttpInfo(riskSearchIn);
+    public RiskRiskSearchRun riskSearch(@javax.annotation.Nonnull RiskRiskSearchIn riskRiskSearchIn) throws ApiException {
+        ApiResponse<RiskRiskSearchRun> localVarResp = riskSearchWithHttpInfo(riskRiskSearchIn);
         return localVarResp.getData();
     }
 
     /**
      * Search exhaustively for the model shape that fits your own history
-     * Search runs an exhaustive search for the model shape that best fits the caller organisation&#39;s own history, and answers 202 with the run to read back.  Every candidate is replayed over that organisation&#39;s OWN feature surface in its own sandbox — its own aggregates, its own model, neither of them the live one — so a run cannot move a live threshold and cannot see another organisation&#39;s data. The result is the learning curve for each shape and the one that fit best, ranked on how closely it honoured the stated appetite, whether it warmed at all, whether it saturated, and how much of the coordinate space it left blind.  An empty history is REFUSED rather than reported as zero alerts, because \&quot;no alerts\&quot; is exactly what a quiet model looks like.
-     * @param riskSearchIn  (required)
-     * @return ApiResponse&lt;RiskSearchRun&gt;
+     * Runs an exhaustive search for the model shape that best fits the caller organisation&#39;s own history, and answers 202 with the run to read back.  Every candidate is replayed over that organisation&#39;s OWN feature surface in its own sandbox — its own aggregates, its own model, neither of them the live one — so a run cannot move a live threshold and cannot see another organisation&#39;s data. The result is the learning curve for each shape and the one that fit best, ranked on how closely it honoured the stated appetite, whether it warmed at all, whether it saturated, and how much of the coordinate space it left blind.  An empty history is REFUSED rather than reported as zero alerts, because \&quot;no alerts\&quot; is exactly what a quiet model looks like.
+     * @param riskRiskSearchIn  (required)
+     * @return ApiResponse&lt;RiskRiskSearchRun&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskSearchRun> riskSearchWithHttpInfo(@javax.annotation.Nonnull RiskSearchIn riskSearchIn) throws ApiException {
-        okhttp3.Call localVarCall = riskSearchValidateBeforeCall(riskSearchIn, null);
-        Type localVarReturnType = new TypeToken<RiskSearchRun>(){}.getType();
+    public ApiResponse<RiskRiskSearchRun> riskSearchWithHttpInfo(@javax.annotation.Nonnull RiskRiskSearchIn riskRiskSearchIn) throws ApiException {
+        okhttp3.Call localVarCall = riskSearchValidateBeforeCall(riskRiskSearchIn, null);
+        Type localVarReturnType = new TypeToken<RiskRiskSearchRun>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Search exhaustively for the model shape that fits your own history (asynchronously)
-     * Search runs an exhaustive search for the model shape that best fits the caller organisation&#39;s own history, and answers 202 with the run to read back.  Every candidate is replayed over that organisation&#39;s OWN feature surface in its own sandbox — its own aggregates, its own model, neither of them the live one — so a run cannot move a live threshold and cannot see another organisation&#39;s data. The result is the learning curve for each shape and the one that fit best, ranked on how closely it honoured the stated appetite, whether it warmed at all, whether it saturated, and how much of the coordinate space it left blind.  An empty history is REFUSED rather than reported as zero alerts, because \&quot;no alerts\&quot; is exactly what a quiet model looks like.
-     * @param riskSearchIn  (required)
+     * Runs an exhaustive search for the model shape that best fits the caller organisation&#39;s own history, and answers 202 with the run to read back.  Every candidate is replayed over that organisation&#39;s OWN feature surface in its own sandbox — its own aggregates, its own model, neither of them the live one — so a run cannot move a live threshold and cannot see another organisation&#39;s data. The result is the learning curve for each shape and the one that fit best, ranked on how closely it honoured the stated appetite, whether it warmed at all, whether it saturated, and how much of the coordinate space it left blind.  An empty history is REFUSED rather than reported as zero alerts, because \&quot;no alerts\&quot; is exactly what a quiet model looks like.
+     * @param riskRiskSearchIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1030,12 +1065,13 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskSearchAsync(@javax.annotation.Nonnull RiskSearchIn riskSearchIn, final ApiCallback<RiskSearchRun> _callback) throws ApiException {
+    public okhttp3.Call riskSearchAsync(@javax.annotation.Nonnull RiskRiskSearchIn riskRiskSearchIn, final ApiCallback<RiskRiskSearchRun> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = riskSearchValidateBeforeCall(riskSearchIn, _callback);
-        Type localVarReturnType = new TypeToken<RiskSearchRun>(){}.getType();
+        okhttp3.Call localVarCall = riskSearchValidateBeforeCall(riskRiskSearchIn, _callback);
+        Type localVarReturnType = new TypeToken<RiskRiskSearchRun>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1050,6 +1086,7 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskSearchResultCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1079,7 +1116,8 @@ public class RiskApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1112,17 +1150,18 @@ public class RiskApi {
      * Read back one exhaustive search
      * Reads back one search run: every shape tried over this organisation&#39;s own history, best first, and the one that fit.  A run another organisation started is simply not there — the same 404 an unknown id gives, so the read is not a probe oracle.
      * @param id ID is the run, taken from the path. A run another organisation started is simply not there — the same answer an unknown id gives. (required)
-     * @return RiskSearchReport
+     * @return RiskRiskSearchReport
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskSearchReport riskSearchResult(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<RiskSearchReport> localVarResp = riskSearchResultWithHttpInfo(id);
+    public RiskRiskSearchReport riskSearchResult(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<RiskRiskSearchReport> localVarResp = riskSearchResultWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1130,18 +1169,19 @@ public class RiskApi {
      * Read back one exhaustive search
      * Reads back one search run: every shape tried over this organisation&#39;s own history, best first, and the one that fit.  A run another organisation started is simply not there — the same 404 an unknown id gives, so the read is not a probe oracle.
      * @param id ID is the run, taken from the path. A run another organisation started is simply not there — the same answer an unknown id gives. (required)
-     * @return ApiResponse&lt;RiskSearchReport&gt;
+     * @return ApiResponse&lt;RiskRiskSearchReport&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskSearchReport> riskSearchResultWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<RiskRiskSearchReport> riskSearchResultWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = riskSearchResultValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<RiskSearchReport>(){}.getType();
+        Type localVarReturnType = new TypeToken<RiskRiskSearchReport>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1157,18 +1197,19 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskSearchResultAsync(@javax.annotation.Nonnull String id, final ApiCallback<RiskSearchReport> _callback) throws ApiException {
+    public okhttp3.Call riskSearchResultAsync(@javax.annotation.Nonnull String id, final ApiCallback<RiskRiskSearchReport> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskSearchResultValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<RiskSearchReport>(){}.getType();
+        Type localVarReturnType = new TypeToken<RiskRiskSearchReport>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for riskSetPolicy
-     * @param riskAppetiteIn  (required)
+     * @param riskRiskAppetiteIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1177,9 +1218,10 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskSetPolicyCall(@javax.annotation.Nonnull RiskAppetiteIn riskAppetiteIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskSetPolicyCall(@javax.annotation.Nonnull RiskRiskAppetiteIn riskRiskAppetiteIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1193,7 +1235,7 @@ public class RiskApi {
             basePath = null;
         }
 
-        Object localVarPostBody = riskAppetiteIn;
+        Object localVarPostBody = riskRiskAppetiteIn;
 
         // create path and map variables
         String localVarPath = "/v1/risk/policy";
@@ -1205,7 +1247,8 @@ public class RiskApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1225,57 +1268,59 @@ public class RiskApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskSetPolicyValidateBeforeCall(@javax.annotation.Nonnull RiskAppetiteIn riskAppetiteIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'riskAppetiteIn' is set
-        if (riskAppetiteIn == null) {
-            throw new ApiException("Missing the required parameter 'riskAppetiteIn' when calling riskSetPolicy(Async)");
+    private okhttp3.Call riskSetPolicyValidateBeforeCall(@javax.annotation.Nonnull RiskRiskAppetiteIn riskRiskAppetiteIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'riskRiskAppetiteIn' is set
+        if (riskRiskAppetiteIn == null) {
+            throw new ApiException("Missing the required parameter 'riskRiskAppetiteIn' when calling riskSetPolicy(Async)");
         }
 
-        return riskSetPolicyCall(riskAppetiteIn, _callback);
+        return riskSetPolicyCall(riskRiskAppetiteIn, _callback);
 
     }
 
     /**
      * State the decision regime: the appetite, the sample, and whether the model is live
      * States the decision regime the caller organisation&#39;s model decides under: how much of its own stream may be sent for examination, how much of the rest is sampled to measure what was missed, and whether the model may change an outcome at all.  The appetite is the decision a model is not permitted to make for itself: its output is a probability, so how likely it is to MISS something is a matter of policy that has to be stated, measured and reviewed rather than absorbed into a constant. The alert threshold is derived from it as a quantile of the scores actually observed, which is what keeps its meaning as the distribution drifts.  It is DURABLE BEFORE IT IS IN FORCE. The regime is recorded as a new version on the organisation&#39;s own shelf before anything in memory moves, so a policy that cannot be written down is refused rather than answered from state the next rollout would silently undo.  ARMING IS AN ADMIN ACT AND TUNING IS NOT. Setting &#x60;live&#x60; requires an admin of this organisation; stating the appetite and the sample is self-service for any member. Taking the model live decides whether it may change an OUTCOME at all — a payment frozen, a grant refused — for every customer this organisation has, and that is a decision an organisation takes rather than one of its members.  A RESTATEMENT OF THE REGIME IN FORCE MINTS NOTHING and answers the version already in force. Compare the version you receive with the version you had: unchanged means the numbers were the same, which is why there is no flag for it.  Learned state survives the change. The model&#39;s identity covers its SHAPE — the inventory and the geometry — and not its appetite, so restating policy unlearns nothing. It also does not REPORT the learned state: what the model is is read from the model.
-     * @param riskAppetiteIn  (required)
-     * @return RiskPolicyOut
+     * @param riskRiskAppetiteIn  (required)
+     * @return RiskRiskPolicyOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskPolicyOut riskSetPolicy(@javax.annotation.Nonnull RiskAppetiteIn riskAppetiteIn) throws ApiException {
-        ApiResponse<RiskPolicyOut> localVarResp = riskSetPolicyWithHttpInfo(riskAppetiteIn);
+    public RiskRiskPolicyOut riskSetPolicy(@javax.annotation.Nonnull RiskRiskAppetiteIn riskRiskAppetiteIn) throws ApiException {
+        ApiResponse<RiskRiskPolicyOut> localVarResp = riskSetPolicyWithHttpInfo(riskRiskAppetiteIn);
         return localVarResp.getData();
     }
 
     /**
      * State the decision regime: the appetite, the sample, and whether the model is live
      * States the decision regime the caller organisation&#39;s model decides under: how much of its own stream may be sent for examination, how much of the rest is sampled to measure what was missed, and whether the model may change an outcome at all.  The appetite is the decision a model is not permitted to make for itself: its output is a probability, so how likely it is to MISS something is a matter of policy that has to be stated, measured and reviewed rather than absorbed into a constant. The alert threshold is derived from it as a quantile of the scores actually observed, which is what keeps its meaning as the distribution drifts.  It is DURABLE BEFORE IT IS IN FORCE. The regime is recorded as a new version on the organisation&#39;s own shelf before anything in memory moves, so a policy that cannot be written down is refused rather than answered from state the next rollout would silently undo.  ARMING IS AN ADMIN ACT AND TUNING IS NOT. Setting &#x60;live&#x60; requires an admin of this organisation; stating the appetite and the sample is self-service for any member. Taking the model live decides whether it may change an OUTCOME at all — a payment frozen, a grant refused — for every customer this organisation has, and that is a decision an organisation takes rather than one of its members.  A RESTATEMENT OF THE REGIME IN FORCE MINTS NOTHING and answers the version already in force. Compare the version you receive with the version you had: unchanged means the numbers were the same, which is why there is no flag for it.  Learned state survives the change. The model&#39;s identity covers its SHAPE — the inventory and the geometry — and not its appetite, so restating policy unlearns nothing. It also does not REPORT the learned state: what the model is is read from the model.
-     * @param riskAppetiteIn  (required)
-     * @return ApiResponse&lt;RiskPolicyOut&gt;
+     * @param riskRiskAppetiteIn  (required)
+     * @return ApiResponse&lt;RiskRiskPolicyOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskPolicyOut> riskSetPolicyWithHttpInfo(@javax.annotation.Nonnull RiskAppetiteIn riskAppetiteIn) throws ApiException {
-        okhttp3.Call localVarCall = riskSetPolicyValidateBeforeCall(riskAppetiteIn, null);
-        Type localVarReturnType = new TypeToken<RiskPolicyOut>(){}.getType();
+    public ApiResponse<RiskRiskPolicyOut> riskSetPolicyWithHttpInfo(@javax.annotation.Nonnull RiskRiskAppetiteIn riskRiskAppetiteIn) throws ApiException {
+        okhttp3.Call localVarCall = riskSetPolicyValidateBeforeCall(riskRiskAppetiteIn, null);
+        Type localVarReturnType = new TypeToken<RiskRiskPolicyOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * State the decision regime: the appetite, the sample, and whether the model is live (asynchronously)
      * States the decision regime the caller organisation&#39;s model decides under: how much of its own stream may be sent for examination, how much of the rest is sampled to measure what was missed, and whether the model may change an outcome at all.  The appetite is the decision a model is not permitted to make for itself: its output is a probability, so how likely it is to MISS something is a matter of policy that has to be stated, measured and reviewed rather than absorbed into a constant. The alert threshold is derived from it as a quantile of the scores actually observed, which is what keeps its meaning as the distribution drifts.  It is DURABLE BEFORE IT IS IN FORCE. The regime is recorded as a new version on the organisation&#39;s own shelf before anything in memory moves, so a policy that cannot be written down is refused rather than answered from state the next rollout would silently undo.  ARMING IS AN ADMIN ACT AND TUNING IS NOT. Setting &#x60;live&#x60; requires an admin of this organisation; stating the appetite and the sample is self-service for any member. Taking the model live decides whether it may change an OUTCOME at all — a payment frozen, a grant refused — for every customer this organisation has, and that is a decision an organisation takes rather than one of its members.  A RESTATEMENT OF THE REGIME IN FORCE MINTS NOTHING and answers the version already in force. Compare the version you receive with the version you had: unchanged means the numbers were the same, which is why there is no flag for it.  Learned state survives the change. The model&#39;s identity covers its SHAPE — the inventory and the geometry — and not its appetite, so restating policy unlearns nothing. It also does not REPORT the learned state: what the model is is read from the model.
-     * @param riskAppetiteIn  (required)
+     * @param riskRiskAppetiteIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1284,12 +1329,13 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskSetPolicyAsync(@javax.annotation.Nonnull RiskAppetiteIn riskAppetiteIn, final ApiCallback<RiskPolicyOut> _callback) throws ApiException {
+    public okhttp3.Call riskSetPolicyAsync(@javax.annotation.Nonnull RiskRiskAppetiteIn riskRiskAppetiteIn, final ApiCallback<RiskRiskPolicyOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = riskSetPolicyValidateBeforeCall(riskAppetiteIn, _callback);
-        Type localVarReturnType = new TypeToken<RiskPolicyOut>(){}.getType();
+        okhttp3.Call localVarCall = riskSetPolicyValidateBeforeCall(riskRiskAppetiteIn, _callback);
+        Type localVarReturnType = new TypeToken<RiskRiskPolicyOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1303,6 +1349,7 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskStateCall(final ApiCallback _callback) throws ApiException {
@@ -1331,7 +1378,8 @@ public class RiskApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1357,42 +1405,44 @@ public class RiskApi {
 
     /**
      * Report your organisation&#39;s model: what it learned, and what it realised
-     * State reports the caller organisation&#39;s own model: what it has learned, whether it is live or still in shadow, the threshold in force, the appetite it stated beside the share it actually realised, every refusal by reason, every feature that read blind, and how much of the organisation&#39;s own event surface has been folded in.  It covers ONE organisation. A caller cannot learn another&#39;s volumes, alert rate or behaviour from it, because the state is read out of a model that holds only its own.
-     * @return RiskModelState
+     * Reports the caller organisation&#39;s own model: what it has learned, whether it is live or still in shadow, the threshold in force, the appetite it stated beside the share it actually realised, every refusal by reason, every feature that read blind, and how much of the organisation&#39;s own event surface has been folded in.  It covers ONE organisation. A caller cannot learn another&#39;s volumes, alert rate or behaviour from it, because the state is read out of a model that holds only its own.
+     * @return RiskRiskModelState
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskModelState riskState() throws ApiException {
-        ApiResponse<RiskModelState> localVarResp = riskStateWithHttpInfo();
+    public RiskRiskModelState riskState() throws ApiException {
+        ApiResponse<RiskRiskModelState> localVarResp = riskStateWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Report your organisation&#39;s model: what it learned, and what it realised
-     * State reports the caller organisation&#39;s own model: what it has learned, whether it is live or still in shadow, the threshold in force, the appetite it stated beside the share it actually realised, every refusal by reason, every feature that read blind, and how much of the organisation&#39;s own event surface has been folded in.  It covers ONE organisation. A caller cannot learn another&#39;s volumes, alert rate or behaviour from it, because the state is read out of a model that holds only its own.
-     * @return ApiResponse&lt;RiskModelState&gt;
+     * Reports the caller organisation&#39;s own model: what it has learned, whether it is live or still in shadow, the threshold in force, the appetite it stated beside the share it actually realised, every refusal by reason, every feature that read blind, and how much of the organisation&#39;s own event surface has been folded in.  It covers ONE organisation. A caller cannot learn another&#39;s volumes, alert rate or behaviour from it, because the state is read out of a model that holds only its own.
+     * @return ApiResponse&lt;RiskRiskModelState&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskModelState> riskStateWithHttpInfo() throws ApiException {
+    public ApiResponse<RiskRiskModelState> riskStateWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = riskStateValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<RiskModelState>(){}.getType();
+        Type localVarReturnType = new TypeToken<RiskRiskModelState>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Report your organisation&#39;s model: what it learned, and what it realised (asynchronously)
-     * State reports the caller organisation&#39;s own model: what it has learned, whether it is live or still in shadow, the threshold in force, the appetite it stated beside the share it actually realised, every refusal by reason, every feature that read blind, and how much of the organisation&#39;s own event surface has been folded in.  It covers ONE organisation. A caller cannot learn another&#39;s volumes, alert rate or behaviour from it, because the state is read out of a model that holds only its own.
+     * Reports the caller organisation&#39;s own model: what it has learned, whether it is live or still in shadow, the threshold in force, the appetite it stated beside the share it actually realised, every refusal by reason, every feature that read blind, and how much of the organisation&#39;s own event surface has been folded in.  It covers ONE organisation. A caller cannot learn another&#39;s volumes, alert rate or behaviour from it, because the state is read out of a model that holds only its own.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1401,12 +1451,13 @@ public class RiskApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskStateAsync(final ApiCallback<RiskModelState> _callback) throws ApiException {
+    public okhttp3.Call riskStateAsync(final ApiCallback<RiskRiskModelState> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskStateValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<RiskModelState>(){}.getType();
+        Type localVarReturnType = new TypeToken<RiskRiskModelState>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

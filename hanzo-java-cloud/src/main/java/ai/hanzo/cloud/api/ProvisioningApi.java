@@ -27,10 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.ProvisionRequest;
-import ai.hanzo.cloud.model.ProvisionResult;
-import ai.hanzo.cloud.model.ProvisionedResource;
-import ai.hanzo.cloud.model.ProvisionedSummary;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.ProvisioningProvisionRequest;
+import ai.hanzo.cloud.model.ProvisioningProvisionResult;
+import ai.hanzo.cloud.model.ProvisioningProvisionedResource;
+import ai.hanzo.cloud.model.ProvisioningProvisionedSummary;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -86,6 +87,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteProvisioningDatastoreByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -115,6 +117,7 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -153,6 +156,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteProvisioningDatastoreByName(@javax.annotation.Nonnull String name) throws ApiException {
@@ -170,6 +174,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteProvisioningDatastoreByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
@@ -189,6 +194,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteProvisioningDatastoreByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
@@ -208,6 +214,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteProvisioningDocdbByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -237,6 +244,7 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -266,8 +274,8 @@ public class ProvisioningApi {
     }
 
     /**
-     * DropDocDB deprovisions one Hanzo DocDB database.
-     * DropDocDB deprovisions one Hanzo DocDB database. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated FerretDB instance, then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404.
+     * Deprovisions one Hanzo DocDB database.
+     * Deprovisions one Hanzo DocDB database. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated FerretDB instance, then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -275,6 +283,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteProvisioningDocdbByName(@javax.annotation.Nonnull String name) throws ApiException {
@@ -282,8 +291,8 @@ public class ProvisioningApi {
     }
 
     /**
-     * DropDocDB deprovisions one Hanzo DocDB database.
-     * DropDocDB deprovisions one Hanzo DocDB database. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated FerretDB instance, then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404.
+     * Deprovisions one Hanzo DocDB database.
+     * Deprovisions one Hanzo DocDB database. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated FerretDB instance, then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -292,6 +301,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteProvisioningDocdbByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
@@ -300,8 +310,8 @@ public class ProvisioningApi {
     }
 
     /**
-     * DropDocDB deprovisions one Hanzo DocDB database. (asynchronously)
-     * DropDocDB deprovisions one Hanzo DocDB database. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated FerretDB instance, then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404.
+     * Deprovisions one Hanzo DocDB database. (asynchronously)
+     * Deprovisions one Hanzo DocDB database. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated FerretDB instance, then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -311,6 +321,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteProvisioningDocdbByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
@@ -330,6 +341,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteProvisioningKvByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -359,6 +371,7 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -388,8 +401,8 @@ public class ProvisioningApi {
     }
 
     /**
-     * DropKV deprovisions one Hanzo KV store.
-     * DropKV deprovisions one Hanzo KV store. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated Valkey instance, then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404.
+     * Deprovisions one Hanzo KV store.
+     * Deprovisions one Hanzo KV store. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated Valkey instance, then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -397,6 +410,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteProvisioningKvByName(@javax.annotation.Nonnull String name) throws ApiException {
@@ -404,8 +418,8 @@ public class ProvisioningApi {
     }
 
     /**
-     * DropKV deprovisions one Hanzo KV store.
-     * DropKV deprovisions one Hanzo KV store. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated Valkey instance, then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404.
+     * Deprovisions one Hanzo KV store.
+     * Deprovisions one Hanzo KV store. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated Valkey instance, then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -414,6 +428,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteProvisioningKvByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
@@ -422,8 +437,8 @@ public class ProvisioningApi {
     }
 
     /**
-     * DropKV deprovisions one Hanzo KV store. (asynchronously)
-     * DropKV deprovisions one Hanzo KV store. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated Valkey instance, then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404.
+     * Deprovisions one Hanzo KV store. (asynchronously)
+     * Deprovisions one Hanzo KV store. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated Valkey instance, then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -433,6 +448,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteProvisioningKvByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
@@ -452,6 +468,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteProvisioningS3ByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -481,6 +498,7 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -519,6 +537,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteProvisioningS3ByName(@javax.annotation.Nonnull String name) throws ApiException {
@@ -536,6 +555,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteProvisioningS3ByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
@@ -555,6 +575,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteProvisioningS3ByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
@@ -574,6 +595,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteProvisioningSearchByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -603,6 +625,7 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -641,6 +664,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteProvisioningSearchByName(@javax.annotation.Nonnull String name) throws ApiException {
@@ -658,6 +682,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteProvisioningSearchByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
@@ -677,6 +702,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteProvisioningSearchByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
@@ -696,6 +722,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteProvisioningSqlByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -725,6 +752,7 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -754,8 +782,8 @@ public class ProvisioningApi {
     }
 
     /**
-     * DropSQL deprovisions one Hanzo SQL database.
-     * DropSQL deprovisions one Hanzo SQL database. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated Postgres instance — never a live app pointed at a deleted backend — then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404, not a second delete.
+     * Deprovisions one Hanzo SQL database.
+     * Deprovisions one Hanzo SQL database. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated Postgres instance — never a live app pointed at a deleted backend — then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404, not a second delete.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -763,6 +791,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteProvisioningSqlByName(@javax.annotation.Nonnull String name) throws ApiException {
@@ -770,8 +799,8 @@ public class ProvisioningApi {
     }
 
     /**
-     * DropSQL deprovisions one Hanzo SQL database.
-     * DropSQL deprovisions one Hanzo SQL database. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated Postgres instance — never a live app pointed at a deleted backend — then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404, not a second delete.
+     * Deprovisions one Hanzo SQL database.
+     * Deprovisions one Hanzo SQL database. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated Postgres instance — never a live app pointed at a deleted backend — then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404, not a second delete.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -780,6 +809,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteProvisioningSqlByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
@@ -788,8 +818,8 @@ public class ProvisioningApi {
     }
 
     /**
-     * DropSQL deprovisions one Hanzo SQL database. (asynchronously)
-     * DropSQL deprovisions one Hanzo SQL database. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated Postgres instance — never a live app pointed at a deleted backend — then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404, not a second delete.
+     * Deprovisions one Hanzo SQL database. (asynchronously)
+     * Deprovisions one Hanzo SQL database. It reverts any app instance bound to it back to Base BEFORE tearing down the org&#39;s dedicated Postgres instance — never a live app pointed at a deleted backend — then deletes the sealed credential and removes the metadata row. Answers 204 with no body; a second call is a 404, not a second delete.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -799,6 +829,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteProvisioningSqlByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
@@ -818,6 +849,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteProvisioningVectorByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -847,6 +879,7 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -885,6 +918,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteProvisioningVectorByName(@javax.annotation.Nonnull String name) throws ApiException {
@@ -902,6 +936,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteProvisioningVectorByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
@@ -921,6 +956,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteProvisioningVectorByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
@@ -939,6 +975,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getProvisioningDatastoreCall(final ApiCallback _callback) throws ApiException {
@@ -967,7 +1004,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -994,35 +1032,37 @@ public class ProvisioningApi {
     /**
      * Lists the caller org&#39;s Hanzo Datastore warehouses.
      * Lists the caller org&#39;s Hanzo Datastore warehouses. Each one is a DEDICATED analytical instance the org alone runs, so the host is that instance&#39;s own in-cluster Service and the port is its HTTP port, 8123.
-     * @return List&lt;ProvisionedSummary&gt;
+     * @return List&lt;ProvisioningProvisionedSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProvisionedSummary> getProvisioningDatastore() throws ApiException {
-        ApiResponse<List<ProvisionedSummary>> localVarResp = getProvisioningDatastoreWithHttpInfo();
+    public List<ProvisioningProvisionedSummary> getProvisioningDatastore() throws ApiException {
+        ApiResponse<List<ProvisioningProvisionedSummary>> localVarResp = getProvisioningDatastoreWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the caller org&#39;s Hanzo Datastore warehouses.
      * Lists the caller org&#39;s Hanzo Datastore warehouses. Each one is a DEDICATED analytical instance the org alone runs, so the host is that instance&#39;s own in-cluster Service and the port is its HTTP port, 8123.
-     * @return ApiResponse&lt;List&lt;ProvisionedSummary&gt;&gt;
+     * @return ApiResponse&lt;List&lt;ProvisioningProvisionedSummary&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProvisionedSummary>> getProvisioningDatastoreWithHttpInfo() throws ApiException {
+    public ApiResponse<List<ProvisioningProvisionedSummary>> getProvisioningDatastoreWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getProvisioningDatastoreValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ProvisioningProvisionedSummary>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1037,12 +1077,13 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProvisioningDatastoreAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
+    public okhttp3.Call getProvisioningDatastoreAsync(final ApiCallback<List<ProvisioningProvisionedSummary>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProvisioningDatastoreValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ProvisioningProvisionedSummary>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1057,6 +1098,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getProvisioningDatastoreByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -1086,7 +1128,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1119,17 +1162,18 @@ public class ProvisioningApi {
      * Returns one Hanzo Datastore warehouse&#39;s metadata.
      * Returns one Hanzo Datastore warehouse&#39;s metadata. It carries the warehouse&#39;s status, its instance address and the admin user the instance booted with — never the password. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view rather than the row.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
-     * @return ProvisionedResource
+     * @return ProvisioningProvisionedResource
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionedResource getProvisioningDatastoreByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ProvisionedResource> localVarResp = getProvisioningDatastoreByNameWithHttpInfo(name);
+    public ProvisioningProvisionedResource getProvisioningDatastoreByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ProvisioningProvisionedResource> localVarResp = getProvisioningDatastoreByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -1137,18 +1181,19 @@ public class ProvisioningApi {
      * Returns one Hanzo Datastore warehouse&#39;s metadata.
      * Returns one Hanzo Datastore warehouse&#39;s metadata. It carries the warehouse&#39;s status, its instance address and the admin user the instance booted with — never the password. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view rather than the row.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
-     * @return ApiResponse&lt;ProvisionedResource&gt;
+     * @return ApiResponse&lt;ProvisioningProvisionedResource&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionedResource> getProvisioningDatastoreByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<ProvisioningProvisionedResource> getProvisioningDatastoreByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getProvisioningDatastoreByNameValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionedResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1164,12 +1209,13 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProvisioningDatastoreByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
+    public okhttp3.Call getProvisioningDatastoreByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisioningProvisionedResource> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProvisioningDatastoreByNameValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionedResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1183,6 +1229,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getProvisioningDocdbCall(final ApiCallback _callback) throws ApiException {
@@ -1211,7 +1258,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1236,43 +1284,45 @@ public class ProvisioningApi {
     }
 
     /**
-     * ListDocDB lists the caller org&#39;s Hanzo DocDB document databases.
-     * ListDocDB lists the caller org&#39;s Hanzo DocDB document databases. Each one is a DEDICATED FerretDB instance the org alone runs, speaking the MongoDB wire protocol, so the host is that instance&#39;s own in-cluster Service and the port is 27017.
-     * @return List&lt;ProvisionedSummary&gt;
+     * Lists the caller org&#39;s Hanzo DocDB document databases.
+     * Lists the caller org&#39;s Hanzo DocDB document databases. Each one is a DEDICATED FerretDB instance the org alone runs, speaking the MongoDB wire protocol, so the host is that instance&#39;s own in-cluster Service and the port is 27017.
+     * @return List&lt;ProvisioningProvisionedSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProvisionedSummary> getProvisioningDocdb() throws ApiException {
-        ApiResponse<List<ProvisionedSummary>> localVarResp = getProvisioningDocdbWithHttpInfo();
+    public List<ProvisioningProvisionedSummary> getProvisioningDocdb() throws ApiException {
+        ApiResponse<List<ProvisioningProvisionedSummary>> localVarResp = getProvisioningDocdbWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * ListDocDB lists the caller org&#39;s Hanzo DocDB document databases.
-     * ListDocDB lists the caller org&#39;s Hanzo DocDB document databases. Each one is a DEDICATED FerretDB instance the org alone runs, speaking the MongoDB wire protocol, so the host is that instance&#39;s own in-cluster Service and the port is 27017.
-     * @return ApiResponse&lt;List&lt;ProvisionedSummary&gt;&gt;
+     * Lists the caller org&#39;s Hanzo DocDB document databases.
+     * Lists the caller org&#39;s Hanzo DocDB document databases. Each one is a DEDICATED FerretDB instance the org alone runs, speaking the MongoDB wire protocol, so the host is that instance&#39;s own in-cluster Service and the port is 27017.
+     * @return ApiResponse&lt;List&lt;ProvisioningProvisionedSummary&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProvisionedSummary>> getProvisioningDocdbWithHttpInfo() throws ApiException {
+    public ApiResponse<List<ProvisioningProvisionedSummary>> getProvisioningDocdbWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getProvisioningDocdbValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ProvisioningProvisionedSummary>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * ListDocDB lists the caller org&#39;s Hanzo DocDB document databases. (asynchronously)
-     * ListDocDB lists the caller org&#39;s Hanzo DocDB document databases. Each one is a DEDICATED FerretDB instance the org alone runs, speaking the MongoDB wire protocol, so the host is that instance&#39;s own in-cluster Service and the port is 27017.
+     * Lists the caller org&#39;s Hanzo DocDB document databases. (asynchronously)
+     * Lists the caller org&#39;s Hanzo DocDB document databases. Each one is a DEDICATED FerretDB instance the org alone runs, speaking the MongoDB wire protocol, so the host is that instance&#39;s own in-cluster Service and the port is 27017.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1281,12 +1331,13 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProvisioningDocdbAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
+    public okhttp3.Call getProvisioningDocdbAsync(final ApiCallback<List<ProvisioningProvisionedSummary>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProvisioningDocdbValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ProvisioningProvisionedSummary>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1301,6 +1352,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getProvisioningDocdbByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -1330,7 +1382,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1360,45 +1413,47 @@ public class ProvisioningApi {
     }
 
     /**
-     * GetDocDB returns one Hanzo DocDB database&#39;s metadata.
-     * GetDocDB returns one Hanzo DocDB database&#39;s metadata. It carries the database&#39;s status, its instance address and the SCRAM user the instance was set up with — never the password. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view.
+     * Returns one Hanzo DocDB database&#39;s metadata.
+     * Returns one Hanzo DocDB database&#39;s metadata. It carries the database&#39;s status, its instance address and the SCRAM user the instance was set up with — never the password. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
-     * @return ProvisionedResource
+     * @return ProvisioningProvisionedResource
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionedResource getProvisioningDocdbByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ProvisionedResource> localVarResp = getProvisioningDocdbByNameWithHttpInfo(name);
+    public ProvisioningProvisionedResource getProvisioningDocdbByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ProvisioningProvisionedResource> localVarResp = getProvisioningDocdbByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
     /**
-     * GetDocDB returns one Hanzo DocDB database&#39;s metadata.
-     * GetDocDB returns one Hanzo DocDB database&#39;s metadata. It carries the database&#39;s status, its instance address and the SCRAM user the instance was set up with — never the password. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view.
+     * Returns one Hanzo DocDB database&#39;s metadata.
+     * Returns one Hanzo DocDB database&#39;s metadata. It carries the database&#39;s status, its instance address and the SCRAM user the instance was set up with — never the password. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
-     * @return ApiResponse&lt;ProvisionedResource&gt;
+     * @return ApiResponse&lt;ProvisioningProvisionedResource&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionedResource> getProvisioningDocdbByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<ProvisioningProvisionedResource> getProvisioningDocdbByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getProvisioningDocdbByNameValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionedResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * GetDocDB returns one Hanzo DocDB database&#39;s metadata. (asynchronously)
-     * GetDocDB returns one Hanzo DocDB database&#39;s metadata. It carries the database&#39;s status, its instance address and the SCRAM user the instance was set up with — never the password. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view.
+     * Returns one Hanzo DocDB database&#39;s metadata. (asynchronously)
+     * Returns one Hanzo DocDB database&#39;s metadata. It carries the database&#39;s status, its instance address and the SCRAM user the instance was set up with — never the password. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1408,12 +1463,13 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProvisioningDocdbByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
+    public okhttp3.Call getProvisioningDocdbByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisioningProvisionedResource> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProvisioningDocdbByNameValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionedResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1427,6 +1483,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getProvisioningKvCall(final ApiCallback _callback) throws ApiException {
@@ -1455,7 +1512,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1480,43 +1538,45 @@ public class ProvisioningApi {
     }
 
     /**
-     * ListKV lists the caller org&#39;s Hanzo KV stores.
-     * ListKV lists the caller org&#39;s Hanzo KV stores. Each one is a DEDICATED Valkey instance the org alone runs, so the host is that instance&#39;s own in-cluster Service and the port is 6379.
-     * @return List&lt;ProvisionedSummary&gt;
+     * Lists the caller org&#39;s Hanzo KV stores.
+     * Lists the caller org&#39;s Hanzo KV stores. Each one is a DEDICATED Valkey instance the org alone runs, so the host is that instance&#39;s own in-cluster Service and the port is 6379.
+     * @return List&lt;ProvisioningProvisionedSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProvisionedSummary> getProvisioningKv() throws ApiException {
-        ApiResponse<List<ProvisionedSummary>> localVarResp = getProvisioningKvWithHttpInfo();
+    public List<ProvisioningProvisionedSummary> getProvisioningKv() throws ApiException {
+        ApiResponse<List<ProvisioningProvisionedSummary>> localVarResp = getProvisioningKvWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * ListKV lists the caller org&#39;s Hanzo KV stores.
-     * ListKV lists the caller org&#39;s Hanzo KV stores. Each one is a DEDICATED Valkey instance the org alone runs, so the host is that instance&#39;s own in-cluster Service and the port is 6379.
-     * @return ApiResponse&lt;List&lt;ProvisionedSummary&gt;&gt;
+     * Lists the caller org&#39;s Hanzo KV stores.
+     * Lists the caller org&#39;s Hanzo KV stores. Each one is a DEDICATED Valkey instance the org alone runs, so the host is that instance&#39;s own in-cluster Service and the port is 6379.
+     * @return ApiResponse&lt;List&lt;ProvisioningProvisionedSummary&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProvisionedSummary>> getProvisioningKvWithHttpInfo() throws ApiException {
+    public ApiResponse<List<ProvisioningProvisionedSummary>> getProvisioningKvWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getProvisioningKvValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ProvisioningProvisionedSummary>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * ListKV lists the caller org&#39;s Hanzo KV stores. (asynchronously)
-     * ListKV lists the caller org&#39;s Hanzo KV stores. Each one is a DEDICATED Valkey instance the org alone runs, so the host is that instance&#39;s own in-cluster Service and the port is 6379.
+     * Lists the caller org&#39;s Hanzo KV stores. (asynchronously)
+     * Lists the caller org&#39;s Hanzo KV stores. Each one is a DEDICATED Valkey instance the org alone runs, so the host is that instance&#39;s own in-cluster Service and the port is 6379.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1525,12 +1585,13 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProvisioningKvAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
+    public okhttp3.Call getProvisioningKvAsync(final ApiCallback<List<ProvisioningProvisionedSummary>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProvisioningKvValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ProvisioningProvisionedSummary>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1545,6 +1606,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getProvisioningKvByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -1574,7 +1636,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1604,45 +1667,47 @@ public class ProvisioningApi {
     }
 
     /**
-     * GetKV returns one Hanzo KV store&#39;s metadata.
-     * GetKV returns one Hanzo KV store&#39;s metadata. It carries the store&#39;s status, its instance address and the Valkey user it authenticates as (\&quot;default\&quot;, the only user a requirepass instance has) — never the password. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view.
+     * Returns one Hanzo KV store&#39;s metadata.
+     * Returns one Hanzo KV store&#39;s metadata. It carries the store&#39;s status, its instance address and the Valkey user it authenticates as (\&quot;default\&quot;, the only user a requirepass instance has) — never the password. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
-     * @return ProvisionedResource
+     * @return ProvisioningProvisionedResource
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionedResource getProvisioningKvByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ProvisionedResource> localVarResp = getProvisioningKvByNameWithHttpInfo(name);
+    public ProvisioningProvisionedResource getProvisioningKvByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ProvisioningProvisionedResource> localVarResp = getProvisioningKvByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
     /**
-     * GetKV returns one Hanzo KV store&#39;s metadata.
-     * GetKV returns one Hanzo KV store&#39;s metadata. It carries the store&#39;s status, its instance address and the Valkey user it authenticates as (\&quot;default\&quot;, the only user a requirepass instance has) — never the password. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view.
+     * Returns one Hanzo KV store&#39;s metadata.
+     * Returns one Hanzo KV store&#39;s metadata. It carries the store&#39;s status, its instance address and the Valkey user it authenticates as (\&quot;default\&quot;, the only user a requirepass instance has) — never the password. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
-     * @return ApiResponse&lt;ProvisionedResource&gt;
+     * @return ApiResponse&lt;ProvisioningProvisionedResource&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionedResource> getProvisioningKvByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<ProvisioningProvisionedResource> getProvisioningKvByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getProvisioningKvByNameValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionedResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * GetKV returns one Hanzo KV store&#39;s metadata. (asynchronously)
-     * GetKV returns one Hanzo KV store&#39;s metadata. It carries the store&#39;s status, its instance address and the Valkey user it authenticates as (\&quot;default\&quot;, the only user a requirepass instance has) — never the password. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view.
+     * Returns one Hanzo KV store&#39;s metadata. (asynchronously)
+     * Returns one Hanzo KV store&#39;s metadata. It carries the store&#39;s status, its instance address and the Valkey user it authenticates as (\&quot;default\&quot;, the only user a requirepass instance has) — never the password. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1652,12 +1717,13 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProvisioningKvByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
+    public okhttp3.Call getProvisioningKvByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisioningProvisionedResource> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProvisioningKvByNameValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionedResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1671,6 +1737,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getProvisioningS3Call(final ApiCallback _callback) throws ApiException {
@@ -1699,7 +1766,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1726,35 +1794,37 @@ public class ProvisioningApi {
     /**
      * Lists the caller org&#39;s object-storage buckets.
      * Lists the caller org&#39;s object-storage buckets. A bucket lives in an already-live shared object store and is reached through the public gateway. The names here are the friendly ones the org provisioned; the physical bucket is org-namespaced underneath, which is what keeps two tenants&#39; buckets distinct.
-     * @return List&lt;ProvisionedSummary&gt;
+     * @return List&lt;ProvisioningProvisionedSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProvisionedSummary> getProvisioningS3() throws ApiException {
-        ApiResponse<List<ProvisionedSummary>> localVarResp = getProvisioningS3WithHttpInfo();
+    public List<ProvisioningProvisionedSummary> getProvisioningS3() throws ApiException {
+        ApiResponse<List<ProvisioningProvisionedSummary>> localVarResp = getProvisioningS3WithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the caller org&#39;s object-storage buckets.
      * Lists the caller org&#39;s object-storage buckets. A bucket lives in an already-live shared object store and is reached through the public gateway. The names here are the friendly ones the org provisioned; the physical bucket is org-namespaced underneath, which is what keeps two tenants&#39; buckets distinct.
-     * @return ApiResponse&lt;List&lt;ProvisionedSummary&gt;&gt;
+     * @return ApiResponse&lt;List&lt;ProvisioningProvisionedSummary&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProvisionedSummary>> getProvisioningS3WithHttpInfo() throws ApiException {
+    public ApiResponse<List<ProvisioningProvisionedSummary>> getProvisioningS3WithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getProvisioningS3ValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ProvisioningProvisionedSummary>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1769,12 +1839,13 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProvisioningS3Async(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
+    public okhttp3.Call getProvisioningS3Async(final ApiCallback<List<ProvisioningProvisionedSummary>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProvisioningS3ValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ProvisioningProvisionedSummary>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1789,6 +1860,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getProvisioningS3ByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -1818,7 +1890,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1851,17 +1924,18 @@ public class ProvisioningApi {
      * Returns one bucket&#39;s metadata.
      * Returns one bucket&#39;s metadata. It carries the bucket&#39;s status and the gateway address it is reached at, and no username: the object store authenticates with a shared, out-of-band key rather than a per-bucket credential.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
-     * @return ProvisionedResource
+     * @return ProvisioningProvisionedResource
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionedResource getProvisioningS3ByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ProvisionedResource> localVarResp = getProvisioningS3ByNameWithHttpInfo(name);
+    public ProvisioningProvisionedResource getProvisioningS3ByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ProvisioningProvisionedResource> localVarResp = getProvisioningS3ByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -1869,18 +1943,19 @@ public class ProvisioningApi {
      * Returns one bucket&#39;s metadata.
      * Returns one bucket&#39;s metadata. It carries the bucket&#39;s status and the gateway address it is reached at, and no username: the object store authenticates with a shared, out-of-band key rather than a per-bucket credential.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
-     * @return ApiResponse&lt;ProvisionedResource&gt;
+     * @return ApiResponse&lt;ProvisioningProvisionedResource&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionedResource> getProvisioningS3ByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<ProvisioningProvisionedResource> getProvisioningS3ByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getProvisioningS3ByNameValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionedResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1896,12 +1971,13 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProvisioningS3ByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
+    public okhttp3.Call getProvisioningS3ByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisioningProvisionedResource> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProvisioningS3ByNameValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionedResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1915,6 +1991,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getProvisioningSearchCall(final ApiCallback _callback) throws ApiException {
@@ -1943,7 +2020,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1970,35 +2048,37 @@ public class ProvisioningApi {
     /**
      * Lists the caller org&#39;s search indexes.
      * Lists the caller org&#39;s search indexes. An index is a logical resource inside an already-live shared backend, so every one of them is reached through the public gateway rather than at an instance of its own.
-     * @return List&lt;ProvisionedSummary&gt;
+     * @return List&lt;ProvisioningProvisionedSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProvisionedSummary> getProvisioningSearch() throws ApiException {
-        ApiResponse<List<ProvisionedSummary>> localVarResp = getProvisioningSearchWithHttpInfo();
+    public List<ProvisioningProvisionedSummary> getProvisioningSearch() throws ApiException {
+        ApiResponse<List<ProvisioningProvisionedSummary>> localVarResp = getProvisioningSearchWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the caller org&#39;s search indexes.
      * Lists the caller org&#39;s search indexes. An index is a logical resource inside an already-live shared backend, so every one of them is reached through the public gateway rather than at an instance of its own.
-     * @return ApiResponse&lt;List&lt;ProvisionedSummary&gt;&gt;
+     * @return ApiResponse&lt;List&lt;ProvisioningProvisionedSummary&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProvisionedSummary>> getProvisioningSearchWithHttpInfo() throws ApiException {
+    public ApiResponse<List<ProvisioningProvisionedSummary>> getProvisioningSearchWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getProvisioningSearchValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ProvisioningProvisionedSummary>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2013,12 +2093,13 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProvisioningSearchAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
+    public okhttp3.Call getProvisioningSearchAsync(final ApiCallback<List<ProvisioningProvisionedSummary>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProvisioningSearchValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ProvisioningProvisionedSummary>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2033,6 +2114,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getProvisioningSearchByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -2062,7 +2144,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2095,17 +2178,18 @@ public class ProvisioningApi {
      * Returns one search index&#39;s metadata.
      * Returns one search index&#39;s metadata. It carries the index&#39;s status and the gateway address it is reached at, and no username: the backend authenticates with a shared, out-of-band key rather than a per-index credential.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
-     * @return ProvisionedResource
+     * @return ProvisioningProvisionedResource
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionedResource getProvisioningSearchByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ProvisionedResource> localVarResp = getProvisioningSearchByNameWithHttpInfo(name);
+    public ProvisioningProvisionedResource getProvisioningSearchByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ProvisioningProvisionedResource> localVarResp = getProvisioningSearchByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -2113,18 +2197,19 @@ public class ProvisioningApi {
      * Returns one search index&#39;s metadata.
      * Returns one search index&#39;s metadata. It carries the index&#39;s status and the gateway address it is reached at, and no username: the backend authenticates with a shared, out-of-band key rather than a per-index credential.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
-     * @return ApiResponse&lt;ProvisionedResource&gt;
+     * @return ApiResponse&lt;ProvisioningProvisionedResource&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionedResource> getProvisioningSearchByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<ProvisioningProvisionedResource> getProvisioningSearchByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getProvisioningSearchByNameValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionedResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2140,12 +2225,13 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProvisioningSearchByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
+    public okhttp3.Call getProvisioningSearchByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisioningProvisionedResource> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProvisioningSearchByNameValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionedResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2159,6 +2245,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getProvisioningSqlCall(final ApiCallback _callback) throws ApiException {
@@ -2187,7 +2274,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2212,43 +2300,45 @@ public class ProvisioningApi {
     }
 
     /**
-     * ListSQL lists the caller org&#39;s Hanzo SQL databases.
-     * ListSQL lists the caller org&#39;s Hanzo SQL databases. Each one is a DEDICATED PostgreSQL instance the org alone runs, so the host is that instance&#39;s own in-cluster Service and the port is 5432.
-     * @return List&lt;ProvisionedSummary&gt;
+     * Lists the caller org&#39;s Hanzo SQL databases.
+     * Lists the caller org&#39;s Hanzo SQL databases. Each one is a DEDICATED PostgreSQL instance the org alone runs, so the host is that instance&#39;s own in-cluster Service and the port is 5432.
+     * @return List&lt;ProvisioningProvisionedSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProvisionedSummary> getProvisioningSql() throws ApiException {
-        ApiResponse<List<ProvisionedSummary>> localVarResp = getProvisioningSqlWithHttpInfo();
+    public List<ProvisioningProvisionedSummary> getProvisioningSql() throws ApiException {
+        ApiResponse<List<ProvisioningProvisionedSummary>> localVarResp = getProvisioningSqlWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * ListSQL lists the caller org&#39;s Hanzo SQL databases.
-     * ListSQL lists the caller org&#39;s Hanzo SQL databases. Each one is a DEDICATED PostgreSQL instance the org alone runs, so the host is that instance&#39;s own in-cluster Service and the port is 5432.
-     * @return ApiResponse&lt;List&lt;ProvisionedSummary&gt;&gt;
+     * Lists the caller org&#39;s Hanzo SQL databases.
+     * Lists the caller org&#39;s Hanzo SQL databases. Each one is a DEDICATED PostgreSQL instance the org alone runs, so the host is that instance&#39;s own in-cluster Service and the port is 5432.
+     * @return ApiResponse&lt;List&lt;ProvisioningProvisionedSummary&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProvisionedSummary>> getProvisioningSqlWithHttpInfo() throws ApiException {
+    public ApiResponse<List<ProvisioningProvisionedSummary>> getProvisioningSqlWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getProvisioningSqlValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ProvisioningProvisionedSummary>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * ListSQL lists the caller org&#39;s Hanzo SQL databases. (asynchronously)
-     * ListSQL lists the caller org&#39;s Hanzo SQL databases. Each one is a DEDICATED PostgreSQL instance the org alone runs, so the host is that instance&#39;s own in-cluster Service and the port is 5432.
+     * Lists the caller org&#39;s Hanzo SQL databases. (asynchronously)
+     * Lists the caller org&#39;s Hanzo SQL databases. Each one is a DEDICATED PostgreSQL instance the org alone runs, so the host is that instance&#39;s own in-cluster Service and the port is 5432.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2257,12 +2347,13 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProvisioningSqlAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
+    public okhttp3.Call getProvisioningSqlAsync(final ApiCallback<List<ProvisioningProvisionedSummary>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProvisioningSqlValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ProvisioningProvisionedSummary>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2277,6 +2368,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getProvisioningSqlByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -2306,7 +2398,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2336,45 +2429,47 @@ public class ProvisioningApi {
     }
 
     /**
-     * GetSQL returns one Hanzo SQL database&#39;s metadata.
-     * GetSQL returns one Hanzo SQL database&#39;s metadata. It carries the database&#39;s status, its instance address and the admin user Postgres booted with — never the password, which is returned once at create and otherwise lives only in Hanzo KMS. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view rather than from the row.
+     * Returns one Hanzo SQL database&#39;s metadata.
+     * Returns one Hanzo SQL database&#39;s metadata. It carries the database&#39;s status, its instance address and the admin user Postgres booted with — never the password, which is returned once at create and otherwise lives only in Hanzo KMS. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view rather than from the row.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
-     * @return ProvisionedResource
+     * @return ProvisioningProvisionedResource
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionedResource getProvisioningSqlByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ProvisionedResource> localVarResp = getProvisioningSqlByNameWithHttpInfo(name);
+    public ProvisioningProvisionedResource getProvisioningSqlByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ProvisioningProvisionedResource> localVarResp = getProvisioningSqlByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
     /**
-     * GetSQL returns one Hanzo SQL database&#39;s metadata.
-     * GetSQL returns one Hanzo SQL database&#39;s metadata. It carries the database&#39;s status, its instance address and the admin user Postgres booted with — never the password, which is returned once at create and otherwise lives only in Hanzo KMS. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view rather than from the row.
+     * Returns one Hanzo SQL database&#39;s metadata.
+     * Returns one Hanzo SQL database&#39;s metadata. It carries the database&#39;s status, its instance address and the admin user Postgres booted with — never the password, which is returned once at create and otherwise lives only in Hanzo KMS. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view rather than from the row.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
-     * @return ApiResponse&lt;ProvisionedResource&gt;
+     * @return ApiResponse&lt;ProvisioningProvisionedResource&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionedResource> getProvisioningSqlByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<ProvisioningProvisionedResource> getProvisioningSqlByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getProvisioningSqlByNameValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionedResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * GetSQL returns one Hanzo SQL database&#39;s metadata. (asynchronously)
-     * GetSQL returns one Hanzo SQL database&#39;s metadata. It carries the database&#39;s status, its instance address and the admin user Postgres booted with — never the password, which is returned once at create and otherwise lives only in Hanzo KMS. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view rather than from the row.
+     * Returns one Hanzo SQL database&#39;s metadata. (asynchronously)
+     * Returns one Hanzo SQL database&#39;s metadata. It carries the database&#39;s status, its instance address and the admin user Postgres booted with — never the password, which is returned once at create and otherwise lives only in Hanzo KMS. A still-booting instance reads \&quot;provisioning\&quot;, reconciled from the operator&#39;s live view rather than from the row.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2384,12 +2479,13 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProvisioningSqlByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
+    public okhttp3.Call getProvisioningSqlByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisioningProvisionedResource> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProvisioningSqlByNameValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionedResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2403,6 +2499,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getProvisioningVectorCall(final ApiCallback _callback) throws ApiException {
@@ -2431,7 +2528,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2458,35 +2556,37 @@ public class ProvisioningApi {
     /**
      * Lists the caller org&#39;s vector collections.
      * Lists the caller org&#39;s vector collections. A collection is a logical resource inside an already-live shared backend, so every one of them is reached through the public gateway rather than at an instance of its own.
-     * @return List&lt;ProvisionedSummary&gt;
+     * @return List&lt;ProvisioningProvisionedSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProvisionedSummary> getProvisioningVector() throws ApiException {
-        ApiResponse<List<ProvisionedSummary>> localVarResp = getProvisioningVectorWithHttpInfo();
+    public List<ProvisioningProvisionedSummary> getProvisioningVector() throws ApiException {
+        ApiResponse<List<ProvisioningProvisionedSummary>> localVarResp = getProvisioningVectorWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the caller org&#39;s vector collections.
      * Lists the caller org&#39;s vector collections. A collection is a logical resource inside an already-live shared backend, so every one of them is reached through the public gateway rather than at an instance of its own.
-     * @return ApiResponse&lt;List&lt;ProvisionedSummary&gt;&gt;
+     * @return ApiResponse&lt;List&lt;ProvisioningProvisionedSummary&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProvisionedSummary>> getProvisioningVectorWithHttpInfo() throws ApiException {
+    public ApiResponse<List<ProvisioningProvisionedSummary>> getProvisioningVectorWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getProvisioningVectorValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ProvisioningProvisionedSummary>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2501,12 +2601,13 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProvisioningVectorAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
+    public okhttp3.Call getProvisioningVectorAsync(final ApiCallback<List<ProvisioningProvisionedSummary>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProvisioningVectorValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ProvisioningProvisionedSummary>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2521,6 +2622,7 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getProvisioningVectorByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -2550,7 +2652,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2583,17 +2686,18 @@ public class ProvisioningApi {
      * Returns one vector collection&#39;s metadata.
      * Returns one vector collection&#39;s metadata. It carries the collection&#39;s status and the gateway address it is reached at, and no username: the backend authenticates with a shared, out-of-band key rather than a per-collection credential, so there is no per-resource user to report.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
-     * @return ProvisionedResource
+     * @return ProvisioningProvisionedResource
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionedResource getProvisioningVectorByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ProvisionedResource> localVarResp = getProvisioningVectorByNameWithHttpInfo(name);
+    public ProvisioningProvisionedResource getProvisioningVectorByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ProvisioningProvisionedResource> localVarResp = getProvisioningVectorByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -2601,18 +2705,19 @@ public class ProvisioningApi {
      * Returns one vector collection&#39;s metadata.
      * Returns one vector collection&#39;s metadata. It carries the collection&#39;s status and the gateway address it is reached at, and no username: the backend authenticates with a shared, out-of-band key rather than a per-collection credential, so there is no per-resource user to report.
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
-     * @return ApiResponse&lt;ProvisionedResource&gt;
+     * @return ApiResponse&lt;ProvisioningProvisionedResource&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionedResource> getProvisioningVectorByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<ProvisioningProvisionedResource> getProvisioningVectorByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getProvisioningVectorByNameValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionedResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2628,18 +2733,19 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProvisioningVectorByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
+    public okhttp3.Call getProvisioningVectorByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisioningProvisionedResource> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getProvisioningVectorByNameValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionedResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postProvisioningDatastore
-     * @param provisionRequest  (required)
+     * @param provisioningProvisionRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2648,9 +2754,10 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postProvisioningDatastoreCall(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postProvisioningDatastoreCall(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2664,7 +2771,7 @@ public class ProvisioningApi {
             basePath = null;
         }
 
-        Object localVarPostBody = provisionRequest;
+        Object localVarPostBody = provisioningProvisionRequest;
 
         // create path and map variables
         String localVarPath = "/v1/provisioning/datastore";
@@ -2676,7 +2783,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2696,57 +2804,59 @@ public class ProvisioningApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postProvisioningDatastoreValidateBeforeCall(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'provisionRequest' is set
-        if (provisionRequest == null) {
-            throw new ApiException("Missing the required parameter 'provisionRequest' when calling postProvisioningDatastore(Async)");
+    private okhttp3.Call postProvisioningDatastoreValidateBeforeCall(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'provisioningProvisionRequest' is set
+        if (provisioningProvisionRequest == null) {
+            throw new ApiException("Missing the required parameter 'provisioningProvisionRequest' when calling postProvisioningDatastore(Async)");
         }
 
-        return postProvisioningDatastoreCall(provisionRequest, _callback);
+        return postProvisioningDatastoreCall(provisioningProvisionRequest, _callback);
 
     }
 
     /**
      * Launches your org&#39;s OWN Hanzo Datastore instance and answers with its &#x60;datastore://&#x60; connection string.
      * Launches your org&#39;s OWN Hanzo Datastore instance and answers with its &#x60;datastore://&#x60; connection string.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster this fails closed with 503 rather than handing back a shared one.
-     * @param provisionRequest  (required)
-     * @return ProvisionResult
+     * @param provisioningProvisionRequest  (required)
+     * @return ProvisioningProvisionResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionResult postProvisioningDatastore(@javax.annotation.Nonnull ProvisionRequest provisionRequest) throws ApiException {
-        ApiResponse<ProvisionResult> localVarResp = postProvisioningDatastoreWithHttpInfo(provisionRequest);
+    public ProvisioningProvisionResult postProvisioningDatastore(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest) throws ApiException {
+        ApiResponse<ProvisioningProvisionResult> localVarResp = postProvisioningDatastoreWithHttpInfo(provisioningProvisionRequest);
         return localVarResp.getData();
     }
 
     /**
      * Launches your org&#39;s OWN Hanzo Datastore instance and answers with its &#x60;datastore://&#x60; connection string.
      * Launches your org&#39;s OWN Hanzo Datastore instance and answers with its &#x60;datastore://&#x60; connection string.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster this fails closed with 503 rather than handing back a shared one.
-     * @param provisionRequest  (required)
-     * @return ApiResponse&lt;ProvisionResult&gt;
+     * @param provisioningProvisionRequest  (required)
+     * @return ApiResponse&lt;ProvisioningProvisionResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionResult> postProvisioningDatastoreWithHttpInfo(@javax.annotation.Nonnull ProvisionRequest provisionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postProvisioningDatastoreValidateBeforeCall(provisionRequest, null);
-        Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
+    public ApiResponse<ProvisioningProvisionResult> postProvisioningDatastoreWithHttpInfo(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest) throws ApiException {
+        okhttp3.Call localVarCall = postProvisioningDatastoreValidateBeforeCall(provisioningProvisionRequest, null);
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Launches your org&#39;s OWN Hanzo Datastore instance and answers with its &#x60;datastore://&#x60; connection string. (asynchronously)
      * Launches your org&#39;s OWN Hanzo Datastore instance and answers with its &#x60;datastore://&#x60; connection string.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster this fails closed with 503 rather than handing back a shared one.
-     * @param provisionRequest  (required)
+     * @param provisioningProvisionRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2755,18 +2865,19 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postProvisioningDatastoreAsync(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
+    public okhttp3.Call postProvisioningDatastoreAsync(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback<ProvisioningProvisionResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postProvisioningDatastoreValidateBeforeCall(provisionRequest, _callback);
-        Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
+        okhttp3.Call localVarCall = postProvisioningDatastoreValidateBeforeCall(provisioningProvisionRequest, _callback);
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postProvisioningDocdb
-     * @param provisionRequest  (required)
+     * @param provisioningProvisionRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2775,9 +2886,10 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postProvisioningDocdbCall(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postProvisioningDocdbCall(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2791,7 +2903,7 @@ public class ProvisioningApi {
             basePath = null;
         }
 
-        Object localVarPostBody = provisionRequest;
+        Object localVarPostBody = provisioningProvisionRequest;
 
         // create path and map variables
         String localVarPath = "/v1/provisioning/docdb";
@@ -2803,7 +2915,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2823,57 +2936,59 @@ public class ProvisioningApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postProvisioningDocdbValidateBeforeCall(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'provisionRequest' is set
-        if (provisionRequest == null) {
-            throw new ApiException("Missing the required parameter 'provisionRequest' when calling postProvisioningDocdb(Async)");
+    private okhttp3.Call postProvisioningDocdbValidateBeforeCall(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'provisioningProvisionRequest' is set
+        if (provisioningProvisionRequest == null) {
+            throw new ApiException("Missing the required parameter 'provisioningProvisionRequest' when calling postProvisioningDocdb(Async)");
         }
 
-        return postProvisioningDocdbCall(provisionRequest, _callback);
+        return postProvisioningDocdbCall(provisioningProvisionRequest, _callback);
 
     }
 
     /**
-     * CreateDocDB launches your org&#39;s OWN document-database instance and answers with its &#x60;mongodb://&#x60; connection string.
-     * CreateDocDB launches your org&#39;s OWN document-database instance and answers with its &#x60;mongodb://&#x60; connection string. It speaks the MongoDB wire protocol, so existing MongoDB drivers connect unchanged.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster this fails closed with 503 rather than handing back a shared one.
-     * @param provisionRequest  (required)
-     * @return ProvisionResult
+     * Launches your org&#39;s OWN document-database instance and answers with its &#x60;mongodb://&#x60; connection string.
+     * Launches your org&#39;s OWN document-database instance and answers with its &#x60;mongodb://&#x60; connection string. It speaks the MongoDB wire protocol, so existing MongoDB drivers connect unchanged.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster this fails closed with 503 rather than handing back a shared one.
+     * @param provisioningProvisionRequest  (required)
+     * @return ProvisioningProvisionResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionResult postProvisioningDocdb(@javax.annotation.Nonnull ProvisionRequest provisionRequest) throws ApiException {
-        ApiResponse<ProvisionResult> localVarResp = postProvisioningDocdbWithHttpInfo(provisionRequest);
+    public ProvisioningProvisionResult postProvisioningDocdb(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest) throws ApiException {
+        ApiResponse<ProvisioningProvisionResult> localVarResp = postProvisioningDocdbWithHttpInfo(provisioningProvisionRequest);
         return localVarResp.getData();
     }
 
     /**
-     * CreateDocDB launches your org&#39;s OWN document-database instance and answers with its &#x60;mongodb://&#x60; connection string.
-     * CreateDocDB launches your org&#39;s OWN document-database instance and answers with its &#x60;mongodb://&#x60; connection string. It speaks the MongoDB wire protocol, so existing MongoDB drivers connect unchanged.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster this fails closed with 503 rather than handing back a shared one.
-     * @param provisionRequest  (required)
-     * @return ApiResponse&lt;ProvisionResult&gt;
+     * Launches your org&#39;s OWN document-database instance and answers with its &#x60;mongodb://&#x60; connection string.
+     * Launches your org&#39;s OWN document-database instance and answers with its &#x60;mongodb://&#x60; connection string. It speaks the MongoDB wire protocol, so existing MongoDB drivers connect unchanged.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster this fails closed with 503 rather than handing back a shared one.
+     * @param provisioningProvisionRequest  (required)
+     * @return ApiResponse&lt;ProvisioningProvisionResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionResult> postProvisioningDocdbWithHttpInfo(@javax.annotation.Nonnull ProvisionRequest provisionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postProvisioningDocdbValidateBeforeCall(provisionRequest, null);
-        Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
+    public ApiResponse<ProvisioningProvisionResult> postProvisioningDocdbWithHttpInfo(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest) throws ApiException {
+        okhttp3.Call localVarCall = postProvisioningDocdbValidateBeforeCall(provisioningProvisionRequest, null);
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * CreateDocDB launches your org&#39;s OWN document-database instance and answers with its &#x60;mongodb://&#x60; connection string. (asynchronously)
-     * CreateDocDB launches your org&#39;s OWN document-database instance and answers with its &#x60;mongodb://&#x60; connection string. It speaks the MongoDB wire protocol, so existing MongoDB drivers connect unchanged.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster this fails closed with 503 rather than handing back a shared one.
-     * @param provisionRequest  (required)
+     * Launches your org&#39;s OWN document-database instance and answers with its &#x60;mongodb://&#x60; connection string. (asynchronously)
+     * Launches your org&#39;s OWN document-database instance and answers with its &#x60;mongodb://&#x60; connection string. It speaks the MongoDB wire protocol, so existing MongoDB drivers connect unchanged.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster this fails closed with 503 rather than handing back a shared one.
+     * @param provisioningProvisionRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2882,18 +2997,19 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postProvisioningDocdbAsync(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
+    public okhttp3.Call postProvisioningDocdbAsync(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback<ProvisioningProvisionResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postProvisioningDocdbValidateBeforeCall(provisionRequest, _callback);
-        Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
+        okhttp3.Call localVarCall = postProvisioningDocdbValidateBeforeCall(provisioningProvisionRequest, _callback);
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postProvisioningKv
-     * @param provisionRequest  (required)
+     * @param provisioningProvisionRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2902,9 +3018,10 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postProvisioningKvCall(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postProvisioningKvCall(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2918,7 +3035,7 @@ public class ProvisioningApi {
             basePath = null;
         }
 
-        Object localVarPostBody = provisionRequest;
+        Object localVarPostBody = provisioningProvisionRequest;
 
         // create path and map variables
         String localVarPath = "/v1/provisioning/kv";
@@ -2930,7 +3047,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2950,57 +3068,59 @@ public class ProvisioningApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postProvisioningKvValidateBeforeCall(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'provisionRequest' is set
-        if (provisionRequest == null) {
-            throw new ApiException("Missing the required parameter 'provisionRequest' when calling postProvisioningKv(Async)");
+    private okhttp3.Call postProvisioningKvValidateBeforeCall(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'provisioningProvisionRequest' is set
+        if (provisioningProvisionRequest == null) {
+            throw new ApiException("Missing the required parameter 'provisioningProvisionRequest' when calling postProvisioningKv(Async)");
         }
 
-        return postProvisioningKvCall(provisionRequest, _callback);
+        return postProvisioningKvCall(provisioningProvisionRequest, _callback);
 
     }
 
     /**
-     * CreateKV launches your org&#39;s OWN key-value instance and answers with its &#x60;kv://&#x60; connection string.
-     * CreateKV launches your org&#39;s OWN key-value instance and answers with its &#x60;kv://&#x60; connection string.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster this fails closed with 503 rather than handing back a shared one.
-     * @param provisionRequest  (required)
-     * @return ProvisionResult
+     * Launches your org&#39;s OWN key-value instance and answers with its &#x60;kv://&#x60; connection string.
+     * Launches your org&#39;s OWN key-value instance and answers with its &#x60;kv://&#x60; connection string.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster this fails closed with 503 rather than handing back a shared one.
+     * @param provisioningProvisionRequest  (required)
+     * @return ProvisioningProvisionResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionResult postProvisioningKv(@javax.annotation.Nonnull ProvisionRequest provisionRequest) throws ApiException {
-        ApiResponse<ProvisionResult> localVarResp = postProvisioningKvWithHttpInfo(provisionRequest);
+    public ProvisioningProvisionResult postProvisioningKv(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest) throws ApiException {
+        ApiResponse<ProvisioningProvisionResult> localVarResp = postProvisioningKvWithHttpInfo(provisioningProvisionRequest);
         return localVarResp.getData();
     }
 
     /**
-     * CreateKV launches your org&#39;s OWN key-value instance and answers with its &#x60;kv://&#x60; connection string.
-     * CreateKV launches your org&#39;s OWN key-value instance and answers with its &#x60;kv://&#x60; connection string.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster this fails closed with 503 rather than handing back a shared one.
-     * @param provisionRequest  (required)
-     * @return ApiResponse&lt;ProvisionResult&gt;
+     * Launches your org&#39;s OWN key-value instance and answers with its &#x60;kv://&#x60; connection string.
+     * Launches your org&#39;s OWN key-value instance and answers with its &#x60;kv://&#x60; connection string.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster this fails closed with 503 rather than handing back a shared one.
+     * @param provisioningProvisionRequest  (required)
+     * @return ApiResponse&lt;ProvisioningProvisionResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionResult> postProvisioningKvWithHttpInfo(@javax.annotation.Nonnull ProvisionRequest provisionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postProvisioningKvValidateBeforeCall(provisionRequest, null);
-        Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
+    public ApiResponse<ProvisioningProvisionResult> postProvisioningKvWithHttpInfo(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest) throws ApiException {
+        okhttp3.Call localVarCall = postProvisioningKvValidateBeforeCall(provisioningProvisionRequest, null);
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * CreateKV launches your org&#39;s OWN key-value instance and answers with its &#x60;kv://&#x60; connection string. (asynchronously)
-     * CreateKV launches your org&#39;s OWN key-value instance and answers with its &#x60;kv://&#x60; connection string.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster this fails closed with 503 rather than handing back a shared one.
-     * @param provisionRequest  (required)
+     * Launches your org&#39;s OWN key-value instance and answers with its &#x60;kv://&#x60; connection string. (asynchronously)
+     * Launches your org&#39;s OWN key-value instance and answers with its &#x60;kv://&#x60; connection string.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster this fails closed with 503 rather than handing back a shared one.
+     * @param provisioningProvisionRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3009,18 +3129,19 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postProvisioningKvAsync(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
+    public okhttp3.Call postProvisioningKvAsync(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback<ProvisioningProvisionResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postProvisioningKvValidateBeforeCall(provisionRequest, _callback);
-        Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
+        okhttp3.Call localVarCall = postProvisioningKvValidateBeforeCall(provisioningProvisionRequest, _callback);
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postProvisioningS3
-     * @param provisionRequest  (required)
+     * @param provisioningProvisionRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3029,9 +3150,10 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postProvisioningS3Call(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postProvisioningS3Call(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3045,7 +3167,7 @@ public class ProvisioningApi {
             basePath = null;
         }
 
-        Object localVarPostBody = provisionRequest;
+        Object localVarPostBody = provisioningProvisionRequest;
 
         // create path and map variables
         String localVarPath = "/v1/provisioning/s3";
@@ -3057,7 +3179,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3077,57 +3200,59 @@ public class ProvisioningApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postProvisioningS3ValidateBeforeCall(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'provisionRequest' is set
-        if (provisionRequest == null) {
-            throw new ApiException("Missing the required parameter 'provisionRequest' when calling postProvisioningS3(Async)");
+    private okhttp3.Call postProvisioningS3ValidateBeforeCall(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'provisioningProvisionRequest' is set
+        if (provisioningProvisionRequest == null) {
+            throw new ApiException("Missing the required parameter 'provisioningProvisionRequest' when calling postProvisioningS3(Async)");
         }
 
-        return postProvisioningS3Call(provisionRequest, _callback);
+        return postProvisioningS3Call(provisioningProvisionRequest, _callback);
 
     }
 
     /**
      * Creates an S3-compatible bucket inside the already-running shared object store and answers with the endpoint that reaches it.
      * Creates an S3-compatible bucket inside the already-running shared object store and answers with the endpoint that reaches it.
-     * @param provisionRequest  (required)
-     * @return ProvisionResult
+     * @param provisioningProvisionRequest  (required)
+     * @return ProvisioningProvisionResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionResult postProvisioningS3(@javax.annotation.Nonnull ProvisionRequest provisionRequest) throws ApiException {
-        ApiResponse<ProvisionResult> localVarResp = postProvisioningS3WithHttpInfo(provisionRequest);
+    public ProvisioningProvisionResult postProvisioningS3(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest) throws ApiException {
+        ApiResponse<ProvisioningProvisionResult> localVarResp = postProvisioningS3WithHttpInfo(provisioningProvisionRequest);
         return localVarResp.getData();
     }
 
     /**
      * Creates an S3-compatible bucket inside the already-running shared object store and answers with the endpoint that reaches it.
      * Creates an S3-compatible bucket inside the already-running shared object store and answers with the endpoint that reaches it.
-     * @param provisionRequest  (required)
-     * @return ApiResponse&lt;ProvisionResult&gt;
+     * @param provisioningProvisionRequest  (required)
+     * @return ApiResponse&lt;ProvisioningProvisionResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionResult> postProvisioningS3WithHttpInfo(@javax.annotation.Nonnull ProvisionRequest provisionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postProvisioningS3ValidateBeforeCall(provisionRequest, null);
-        Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
+    public ApiResponse<ProvisioningProvisionResult> postProvisioningS3WithHttpInfo(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest) throws ApiException {
+        okhttp3.Call localVarCall = postProvisioningS3ValidateBeforeCall(provisioningProvisionRequest, null);
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Creates an S3-compatible bucket inside the already-running shared object store and answers with the endpoint that reaches it. (asynchronously)
      * Creates an S3-compatible bucket inside the already-running shared object store and answers with the endpoint that reaches it.
-     * @param provisionRequest  (required)
+     * @param provisioningProvisionRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3136,18 +3261,19 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postProvisioningS3Async(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
+    public okhttp3.Call postProvisioningS3Async(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback<ProvisioningProvisionResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postProvisioningS3ValidateBeforeCall(provisionRequest, _callback);
-        Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
+        okhttp3.Call localVarCall = postProvisioningS3ValidateBeforeCall(provisioningProvisionRequest, _callback);
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postProvisioningSearch
-     * @param provisionRequest  (required)
+     * @param provisioningProvisionRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3156,9 +3282,10 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postProvisioningSearchCall(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postProvisioningSearchCall(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3172,7 +3299,7 @@ public class ProvisioningApi {
             basePath = null;
         }
 
-        Object localVarPostBody = provisionRequest;
+        Object localVarPostBody = provisioningProvisionRequest;
 
         // create path and map variables
         String localVarPath = "/v1/provisioning/search";
@@ -3184,7 +3311,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3204,57 +3332,59 @@ public class ProvisioningApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postProvisioningSearchValidateBeforeCall(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'provisionRequest' is set
-        if (provisionRequest == null) {
-            throw new ApiException("Missing the required parameter 'provisionRequest' when calling postProvisioningSearch(Async)");
+    private okhttp3.Call postProvisioningSearchValidateBeforeCall(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'provisioningProvisionRequest' is set
+        if (provisioningProvisionRequest == null) {
+            throw new ApiException("Missing the required parameter 'provisioningProvisionRequest' when calling postProvisioningSearch(Async)");
         }
 
-        return postProvisioningSearchCall(provisionRequest, _callback);
+        return postProvisioningSearchCall(provisioningProvisionRequest, _callback);
 
     }
 
     /**
      * Creates a search index inside the already-running shared search backend and answers with the endpoint that reaches it.
      * Creates a search index inside the already-running shared search backend and answers with the endpoint that reaches it.
-     * @param provisionRequest  (required)
-     * @return ProvisionResult
+     * @param provisioningProvisionRequest  (required)
+     * @return ProvisioningProvisionResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionResult postProvisioningSearch(@javax.annotation.Nonnull ProvisionRequest provisionRequest) throws ApiException {
-        ApiResponse<ProvisionResult> localVarResp = postProvisioningSearchWithHttpInfo(provisionRequest);
+    public ProvisioningProvisionResult postProvisioningSearch(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest) throws ApiException {
+        ApiResponse<ProvisioningProvisionResult> localVarResp = postProvisioningSearchWithHttpInfo(provisioningProvisionRequest);
         return localVarResp.getData();
     }
 
     /**
      * Creates a search index inside the already-running shared search backend and answers with the endpoint that reaches it.
      * Creates a search index inside the already-running shared search backend and answers with the endpoint that reaches it.
-     * @param provisionRequest  (required)
-     * @return ApiResponse&lt;ProvisionResult&gt;
+     * @param provisioningProvisionRequest  (required)
+     * @return ApiResponse&lt;ProvisioningProvisionResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionResult> postProvisioningSearchWithHttpInfo(@javax.annotation.Nonnull ProvisionRequest provisionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postProvisioningSearchValidateBeforeCall(provisionRequest, null);
-        Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
+    public ApiResponse<ProvisioningProvisionResult> postProvisioningSearchWithHttpInfo(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest) throws ApiException {
+        okhttp3.Call localVarCall = postProvisioningSearchValidateBeforeCall(provisioningProvisionRequest, null);
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Creates a search index inside the already-running shared search backend and answers with the endpoint that reaches it. (asynchronously)
      * Creates a search index inside the already-running shared search backend and answers with the endpoint that reaches it.
-     * @param provisionRequest  (required)
+     * @param provisioningProvisionRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3263,18 +3393,19 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postProvisioningSearchAsync(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
+    public okhttp3.Call postProvisioningSearchAsync(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback<ProvisioningProvisionResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postProvisioningSearchValidateBeforeCall(provisionRequest, _callback);
-        Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
+        okhttp3.Call localVarCall = postProvisioningSearchValidateBeforeCall(provisioningProvisionRequest, _callback);
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postProvisioningSql
-     * @param provisionRequest  (required)
+     * @param provisioningProvisionRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3283,9 +3414,10 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postProvisioningSqlCall(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postProvisioningSqlCall(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3299,7 +3431,7 @@ public class ProvisioningApi {
             basePath = null;
         }
 
-        Object localVarPostBody = provisionRequest;
+        Object localVarPostBody = provisioningProvisionRequest;
 
         // create path and map variables
         String localVarPath = "/v1/provisioning/sql";
@@ -3311,7 +3443,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3331,57 +3464,59 @@ public class ProvisioningApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postProvisioningSqlValidateBeforeCall(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'provisionRequest' is set
-        if (provisionRequest == null) {
-            throw new ApiException("Missing the required parameter 'provisionRequest' when calling postProvisioningSql(Async)");
+    private okhttp3.Call postProvisioningSqlValidateBeforeCall(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'provisioningProvisionRequest' is set
+        if (provisioningProvisionRequest == null) {
+            throw new ApiException("Missing the required parameter 'provisioningProvisionRequest' when calling postProvisioningSql(Async)");
         }
 
-        return postProvisioningSqlCall(provisionRequest, _callback);
+        return postProvisioningSqlCall(provisioningProvisionRequest, _callback);
 
     }
 
     /**
-     * CreateSQL launches your org&#39;s OWN PostgreSQL instance and answers with its &#x60;postgres://&#x60; connection string.
-     * CreateSQL launches your org&#39;s OWN PostgreSQL instance and answers with its &#x60;postgres://&#x60; connection string.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster, where there is no orchestrator to launch one, this fails closed with 503 rather than handing back a shared one.
-     * @param provisionRequest  (required)
-     * @return ProvisionResult
+     * Launches your org&#39;s OWN PostgreSQL instance and answers with its &#x60;postgres://&#x60; connection string.
+     * Launches your org&#39;s OWN PostgreSQL instance and answers with its &#x60;postgres://&#x60; connection string.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster, where there is no orchestrator to launch one, this fails closed with 503 rather than handing back a shared one.
+     * @param provisioningProvisionRequest  (required)
+     * @return ProvisioningProvisionResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionResult postProvisioningSql(@javax.annotation.Nonnull ProvisionRequest provisionRequest) throws ApiException {
-        ApiResponse<ProvisionResult> localVarResp = postProvisioningSqlWithHttpInfo(provisionRequest);
+    public ProvisioningProvisionResult postProvisioningSql(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest) throws ApiException {
+        ApiResponse<ProvisioningProvisionResult> localVarResp = postProvisioningSqlWithHttpInfo(provisioningProvisionRequest);
         return localVarResp.getData();
     }
 
     /**
-     * CreateSQL launches your org&#39;s OWN PostgreSQL instance and answers with its &#x60;postgres://&#x60; connection string.
-     * CreateSQL launches your org&#39;s OWN PostgreSQL instance and answers with its &#x60;postgres://&#x60; connection string.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster, where there is no orchestrator to launch one, this fails closed with 503 rather than handing back a shared one.
-     * @param provisionRequest  (required)
-     * @return ApiResponse&lt;ProvisionResult&gt;
+     * Launches your org&#39;s OWN PostgreSQL instance and answers with its &#x60;postgres://&#x60; connection string.
+     * Launches your org&#39;s OWN PostgreSQL instance and answers with its &#x60;postgres://&#x60; connection string.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster, where there is no orchestrator to launch one, this fails closed with 503 rather than handing back a shared one.
+     * @param provisioningProvisionRequest  (required)
+     * @return ApiResponse&lt;ProvisioningProvisionResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionResult> postProvisioningSqlWithHttpInfo(@javax.annotation.Nonnull ProvisionRequest provisionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postProvisioningSqlValidateBeforeCall(provisionRequest, null);
-        Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
+    public ApiResponse<ProvisioningProvisionResult> postProvisioningSqlWithHttpInfo(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest) throws ApiException {
+        okhttp3.Call localVarCall = postProvisioningSqlValidateBeforeCall(provisioningProvisionRequest, null);
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * CreateSQL launches your org&#39;s OWN PostgreSQL instance and answers with its &#x60;postgres://&#x60; connection string. (asynchronously)
-     * CreateSQL launches your org&#39;s OWN PostgreSQL instance and answers with its &#x60;postgres://&#x60; connection string.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster, where there is no orchestrator to launch one, this fails closed with 503 rather than handing back a shared one.
-     * @param provisionRequest  (required)
+     * Launches your org&#39;s OWN PostgreSQL instance and answers with its &#x60;postgres://&#x60; connection string. (asynchronously)
+     * Launches your org&#39;s OWN PostgreSQL instance and answers with its &#x60;postgres://&#x60; connection string.  The instance is yours alone — a deployment in your own tenant namespace, so its admin credential is naturally scoped to you and no other tenant shares the process. Off-cluster, where there is no orchestrator to launch one, this fails closed with 503 rather than handing back a shared one.
+     * @param provisioningProvisionRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3390,18 +3525,19 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postProvisioningSqlAsync(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
+    public okhttp3.Call postProvisioningSqlAsync(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback<ProvisioningProvisionResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postProvisioningSqlValidateBeforeCall(provisionRequest, _callback);
-        Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
+        okhttp3.Call localVarCall = postProvisioningSqlValidateBeforeCall(provisioningProvisionRequest, _callback);
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postProvisioningVector
-     * @param provisionRequest  (required)
+     * @param provisioningProvisionRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3410,9 +3546,10 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postProvisioningVectorCall(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postProvisioningVectorCall(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3426,7 +3563,7 @@ public class ProvisioningApi {
             basePath = null;
         }
 
-        Object localVarPostBody = provisionRequest;
+        Object localVarPostBody = provisioningProvisionRequest;
 
         // create path and map variables
         String localVarPath = "/v1/provisioning/vector";
@@ -3438,7 +3575,8 @@ public class ProvisioningApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3458,57 +3596,59 @@ public class ProvisioningApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postProvisioningVectorValidateBeforeCall(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'provisionRequest' is set
-        if (provisionRequest == null) {
-            throw new ApiException("Missing the required parameter 'provisionRequest' when calling postProvisioningVector(Async)");
+    private okhttp3.Call postProvisioningVectorValidateBeforeCall(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'provisioningProvisionRequest' is set
+        if (provisioningProvisionRequest == null) {
+            throw new ApiException("Missing the required parameter 'provisioningProvisionRequest' when calling postProvisioningVector(Async)");
         }
 
-        return postProvisioningVectorCall(provisionRequest, _callback);
+        return postProvisioningVectorCall(provisioningProvisionRequest, _callback);
 
     }
 
     /**
      * Creates a vector collection inside the already-running shared vector backend and answers with the endpoint that reaches it.
      * Creates a vector collection inside the already-running shared vector backend and answers with the endpoint that reaches it.
-     * @param provisionRequest  (required)
-     * @return ProvisionResult
+     * @param provisioningProvisionRequest  (required)
+     * @return ProvisioningProvisionResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionResult postProvisioningVector(@javax.annotation.Nonnull ProvisionRequest provisionRequest) throws ApiException {
-        ApiResponse<ProvisionResult> localVarResp = postProvisioningVectorWithHttpInfo(provisionRequest);
+    public ProvisioningProvisionResult postProvisioningVector(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest) throws ApiException {
+        ApiResponse<ProvisioningProvisionResult> localVarResp = postProvisioningVectorWithHttpInfo(provisioningProvisionRequest);
         return localVarResp.getData();
     }
 
     /**
      * Creates a vector collection inside the already-running shared vector backend and answers with the endpoint that reaches it.
      * Creates a vector collection inside the already-running shared vector backend and answers with the endpoint that reaches it.
-     * @param provisionRequest  (required)
-     * @return ApiResponse&lt;ProvisionResult&gt;
+     * @param provisioningProvisionRequest  (required)
+     * @return ApiResponse&lt;ProvisioningProvisionResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionResult> postProvisioningVectorWithHttpInfo(@javax.annotation.Nonnull ProvisionRequest provisionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postProvisioningVectorValidateBeforeCall(provisionRequest, null);
-        Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
+    public ApiResponse<ProvisioningProvisionResult> postProvisioningVectorWithHttpInfo(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest) throws ApiException {
+        okhttp3.Call localVarCall = postProvisioningVectorValidateBeforeCall(provisioningProvisionRequest, null);
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Creates a vector collection inside the already-running shared vector backend and answers with the endpoint that reaches it. (asynchronously)
      * Creates a vector collection inside the already-running shared vector backend and answers with the endpoint that reaches it.
-     * @param provisionRequest  (required)
+     * @param provisioningProvisionRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3517,12 +3657,13 @@ public class ProvisioningApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postProvisioningVectorAsync(@javax.annotation.Nonnull ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
+    public okhttp3.Call postProvisioningVectorAsync(@javax.annotation.Nonnull ProvisioningProvisionRequest provisioningProvisionRequest, final ApiCallback<ProvisioningProvisionResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postProvisioningVectorValidateBeforeCall(provisionRequest, _callback);
-        Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
+        okhttp3.Call localVarCall = postProvisioningVectorValidateBeforeCall(provisioningProvisionRequest, _callback);
+        Type localVarReturnType = new TypeToken<ProvisioningProvisionResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

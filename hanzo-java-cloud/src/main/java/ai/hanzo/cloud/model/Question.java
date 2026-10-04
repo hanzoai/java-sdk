@@ -89,7 +89,7 @@ public class Question {
   }
 
   /**
-   * Account is the chart number the questioned entry posted to, where one applies.
+   * Get account
    * @return account
    */
   @javax.annotation.Nullable
@@ -108,7 +108,7 @@ public class Question {
   }
 
   /**
-   * Amount is the figure that makes the question concrete, already FORMATTED for display with its currency symbol — a string, not cents, and not for arithmetic.
+   * Get amount
    * @return amount
    */
   @javax.annotation.Nullable
@@ -127,7 +127,7 @@ public class Question {
   }
 
   /**
-   * ID is the source transaction the question is about, so answering it leads straight back to the entry that raised it.
+   * Get id
    * @return id
    */
   @javax.annotation.Nullable
@@ -146,7 +146,7 @@ public class Question {
   }
 
   /**
-   * Kind is what looked wrong: outlier (a charge far above the usual), reversal (a posting undone), roundoff (a balancing plug big enough to be worth explaining), uncosted (revenue booked with no cost matched to it), or overdrawn (a wallet spent past its balance).
+   * Get kind
    * @return kind
    */
   @javax.annotation.Nullable
@@ -165,7 +165,7 @@ public class Question {
   }
 
   /**
-   * PostedAt anchors the question in time — when the entry it concerns posted.
+   * Get postedAt
    * @return postedAt
    */
   @javax.annotation.Nullable
@@ -184,7 +184,7 @@ public class Question {
   }
 
   /**
-   * Text is the question itself, written for a founder to answer directly.
+   * Get text
    * @return text
    */
   @javax.annotation.Nullable

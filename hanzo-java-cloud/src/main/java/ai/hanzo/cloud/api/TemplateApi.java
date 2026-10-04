@@ -27,10 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.KitList;
-import ai.hanzo.cloud.model.PublishKitIn;
-import ai.hanzo.cloud.model.ReplaceKitIn;
-import ai.hanzo.cloud.model.StarterKit;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.TemplateKitList;
+import ai.hanzo.cloud.model.TemplatePublishKitIn;
+import ai.hanzo.cloud.model.TemplateReplaceKitIn;
+import ai.hanzo.cloud.model.TemplateStarterKit;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -86,6 +87,7 @@ public class TemplateApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteTemplateBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -115,6 +117,7 @@ public class TemplateApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -153,6 +156,7 @@ public class TemplateApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteTemplateBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -170,6 +174,7 @@ public class TemplateApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteTemplateBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
@@ -189,6 +194,7 @@ public class TemplateApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteTemplateBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
@@ -207,6 +213,7 @@ public class TemplateApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTemplateCall(final ApiCallback _callback) throws ApiException {
@@ -235,7 +242,8 @@ public class TemplateApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -262,35 +270,37 @@ public class TemplateApi {
     /**
      * Lists the public starter-kit catalog plus, for a validated caller, that org&#39;s own private kits.
      * Lists the public starter-kit catalog plus, for a validated caller, that org&#39;s own private kits. No request field can widen the scope: the org comes from the validated principal, so an anonymous or cross-org caller structurally sees the public catalog only.
-     * @return KitList
+     * @return TemplateKitList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public KitList getTemplate() throws ApiException {
-        ApiResponse<KitList> localVarResp = getTemplateWithHttpInfo();
+    public TemplateKitList getTemplate() throws ApiException {
+        ApiResponse<TemplateKitList> localVarResp = getTemplateWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the public starter-kit catalog plus, for a validated caller, that org&#39;s own private kits.
      * Lists the public starter-kit catalog plus, for a validated caller, that org&#39;s own private kits. No request field can widen the scope: the org comes from the validated principal, so an anonymous or cross-org caller structurally sees the public catalog only.
-     * @return ApiResponse&lt;KitList&gt;
+     * @return ApiResponse&lt;TemplateKitList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KitList> getTemplateWithHttpInfo() throws ApiException {
+    public ApiResponse<TemplateKitList> getTemplateWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getTemplateValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<KitList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TemplateKitList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -305,12 +315,13 @@ public class TemplateApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTemplateAsync(final ApiCallback<KitList> _callback) throws ApiException {
+    public okhttp3.Call getTemplateAsync(final ApiCallback<TemplateKitList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTemplateValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<KitList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TemplateKitList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -325,6 +336,7 @@ public class TemplateApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTemplateBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -354,7 +366,8 @@ public class TemplateApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -387,17 +400,18 @@ public class TemplateApi {
      * Returns one starter kit: the caller org&#39;s own by that slug, else the public catalog&#39;s.
      * Returns one starter kit: the caller org&#39;s own by that slug, else the public catalog&#39;s. A slug another org owns reads as not found.
      * @param slug Slug is the starter kit to act on, from the path. (required)
-     * @return StarterKit
+     * @return TemplateStarterKit
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public StarterKit getTemplateBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
-        ApiResponse<StarterKit> localVarResp = getTemplateBySlugWithHttpInfo(slug);
+    public TemplateStarterKit getTemplateBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<TemplateStarterKit> localVarResp = getTemplateBySlugWithHttpInfo(slug);
         return localVarResp.getData();
     }
 
@@ -405,18 +419,19 @@ public class TemplateApi {
      * Returns one starter kit: the caller org&#39;s own by that slug, else the public catalog&#39;s.
      * Returns one starter kit: the caller org&#39;s own by that slug, else the public catalog&#39;s. A slug another org owns reads as not found.
      * @param slug Slug is the starter kit to act on, from the path. (required)
-     * @return ApiResponse&lt;StarterKit&gt;
+     * @return ApiResponse&lt;TemplateStarterKit&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StarterKit> getTemplateBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+    public ApiResponse<TemplateStarterKit> getTemplateBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
         okhttp3.Call localVarCall = getTemplateBySlugValidateBeforeCall(slug, null);
-        Type localVarReturnType = new TypeToken<StarterKit>(){}.getType();
+        Type localVarReturnType = new TypeToken<TemplateStarterKit>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -432,18 +447,19 @@ public class TemplateApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTemplateBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<StarterKit> _callback) throws ApiException {
+    public okhttp3.Call getTemplateBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<TemplateStarterKit> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTemplateBySlugValidateBeforeCall(slug, _callback);
-        Type localVarReturnType = new TypeToken<StarterKit>(){}.getType();
+        Type localVarReturnType = new TypeToken<TemplateStarterKit>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postTemplate
-     * @param publishKitIn  (required)
+     * @param templatePublishKitIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -452,9 +468,10 @@ public class TemplateApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postTemplateCall(@javax.annotation.Nonnull PublishKitIn publishKitIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postTemplateCall(@javax.annotation.Nonnull TemplatePublishKitIn templatePublishKitIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -468,7 +485,7 @@ public class TemplateApi {
             basePath = null;
         }
 
-        Object localVarPostBody = publishKitIn;
+        Object localVarPostBody = templatePublishKitIn;
 
         // create path and map variables
         String localVarPath = "/v1/template";
@@ -480,7 +497,8 @@ public class TemplateApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -500,57 +518,59 @@ public class TemplateApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postTemplateValidateBeforeCall(@javax.annotation.Nonnull PublishKitIn publishKitIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'publishKitIn' is set
-        if (publishKitIn == null) {
-            throw new ApiException("Missing the required parameter 'publishKitIn' when calling postTemplate(Async)");
+    private okhttp3.Call postTemplateValidateBeforeCall(@javax.annotation.Nonnull TemplatePublishKitIn templatePublishKitIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'templatePublishKitIn' is set
+        if (templatePublishKitIn == null) {
+            throw new ApiException("Missing the required parameter 'templatePublishKitIn' when calling postTemplate(Async)");
         }
 
-        return postTemplateCall(publishKitIn, _callback);
+        return postTemplateCall(templatePublishKitIn, _callback);
 
     }
 
     /**
      * Creates a starter kit PRIVATE to the caller&#39;s org and answers 201 with the stored kit.
      * Creates a starter kit PRIVATE to the caller&#39;s org and answers 201 with the stored kit. The owner is stamped by the server, so a body \&quot;org\&quot; is never trusted; publishing over a public-catalog slug is 409, so a slug still names exactly one kit.
-     * @param publishKitIn  (required)
-     * @return StarterKit
+     * @param templatePublishKitIn  (required)
+     * @return TemplateStarterKit
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public StarterKit postTemplate(@javax.annotation.Nonnull PublishKitIn publishKitIn) throws ApiException {
-        ApiResponse<StarterKit> localVarResp = postTemplateWithHttpInfo(publishKitIn);
+    public TemplateStarterKit postTemplate(@javax.annotation.Nonnull TemplatePublishKitIn templatePublishKitIn) throws ApiException {
+        ApiResponse<TemplateStarterKit> localVarResp = postTemplateWithHttpInfo(templatePublishKitIn);
         return localVarResp.getData();
     }
 
     /**
      * Creates a starter kit PRIVATE to the caller&#39;s org and answers 201 with the stored kit.
      * Creates a starter kit PRIVATE to the caller&#39;s org and answers 201 with the stored kit. The owner is stamped by the server, so a body \&quot;org\&quot; is never trusted; publishing over a public-catalog slug is 409, so a slug still names exactly one kit.
-     * @param publishKitIn  (required)
-     * @return ApiResponse&lt;StarterKit&gt;
+     * @param templatePublishKitIn  (required)
+     * @return ApiResponse&lt;TemplateStarterKit&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StarterKit> postTemplateWithHttpInfo(@javax.annotation.Nonnull PublishKitIn publishKitIn) throws ApiException {
-        okhttp3.Call localVarCall = postTemplateValidateBeforeCall(publishKitIn, null);
-        Type localVarReturnType = new TypeToken<StarterKit>(){}.getType();
+    public ApiResponse<TemplateStarterKit> postTemplateWithHttpInfo(@javax.annotation.Nonnull TemplatePublishKitIn templatePublishKitIn) throws ApiException {
+        okhttp3.Call localVarCall = postTemplateValidateBeforeCall(templatePublishKitIn, null);
+        Type localVarReturnType = new TypeToken<TemplateStarterKit>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Creates a starter kit PRIVATE to the caller&#39;s org and answers 201 with the stored kit. (asynchronously)
      * Creates a starter kit PRIVATE to the caller&#39;s org and answers 201 with the stored kit. The owner is stamped by the server, so a body \&quot;org\&quot; is never trusted; publishing over a public-catalog slug is 409, so a slug still names exactly one kit.
-     * @param publishKitIn  (required)
+     * @param templatePublishKitIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -559,19 +579,20 @@ public class TemplateApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postTemplateAsync(@javax.annotation.Nonnull PublishKitIn publishKitIn, final ApiCallback<StarterKit> _callback) throws ApiException {
+    public okhttp3.Call postTemplateAsync(@javax.annotation.Nonnull TemplatePublishKitIn templatePublishKitIn, final ApiCallback<TemplateStarterKit> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postTemplateValidateBeforeCall(publishKitIn, _callback);
-        Type localVarReturnType = new TypeToken<StarterKit>(){}.getType();
+        okhttp3.Call localVarCall = postTemplateValidateBeforeCall(templatePublishKitIn, _callback);
+        Type localVarReturnType = new TypeToken<TemplateStarterKit>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putTemplateBySlug
      * @param slug Slug is the kit to replace, from the path. (required)
-     * @param replaceKitIn  (required)
+     * @param templateReplaceKitIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -580,9 +601,10 @@ public class TemplateApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putTemplateBySlugCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ReplaceKitIn replaceKitIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putTemplateBySlugCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull TemplateReplaceKitIn templateReplaceKitIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -596,7 +618,7 @@ public class TemplateApi {
             basePath = null;
         }
 
-        Object localVarPostBody = replaceKitIn;
+        Object localVarPostBody = templateReplaceKitIn;
 
         // create path and map variables
         String localVarPath = "/v1/template/{slug}"
@@ -609,7 +631,8 @@ public class TemplateApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -629,18 +652,18 @@ public class TemplateApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putTemplateBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ReplaceKitIn replaceKitIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putTemplateBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull TemplateReplaceKitIn templateReplaceKitIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
             throw new ApiException("Missing the required parameter 'slug' when calling putTemplateBySlug(Async)");
         }
 
-        // verify the required parameter 'replaceKitIn' is set
-        if (replaceKitIn == null) {
-            throw new ApiException("Missing the required parameter 'replaceKitIn' when calling putTemplateBySlug(Async)");
+        // verify the required parameter 'templateReplaceKitIn' is set
+        if (templateReplaceKitIn == null) {
+            throw new ApiException("Missing the required parameter 'templateReplaceKitIn' when calling putTemplateBySlug(Async)");
         }
 
-        return putTemplateBySlugCall(slug, replaceKitIn, _callback);
+        return putTemplateBySlugCall(slug, templateReplaceKitIn, _callback);
 
     }
 
@@ -648,18 +671,19 @@ public class TemplateApi {
      * Overwrites the caller org&#39;s OWN starter kit at the path slug, answering the stored kit.
      * Overwrites the caller org&#39;s OWN starter kit at the path slug, answering the stored kit. A slug they do not own is 404, never a create: the UPDATE binds org, so a PUT can never reach another org&#39;s kit.
      * @param slug Slug is the kit to replace, from the path. (required)
-     * @param replaceKitIn  (required)
-     * @return StarterKit
+     * @param templateReplaceKitIn  (required)
+     * @return TemplateStarterKit
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public StarterKit putTemplateBySlug(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ReplaceKitIn replaceKitIn) throws ApiException {
-        ApiResponse<StarterKit> localVarResp = putTemplateBySlugWithHttpInfo(slug, replaceKitIn);
+    public TemplateStarterKit putTemplateBySlug(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull TemplateReplaceKitIn templateReplaceKitIn) throws ApiException {
+        ApiResponse<TemplateStarterKit> localVarResp = putTemplateBySlugWithHttpInfo(slug, templateReplaceKitIn);
         return localVarResp.getData();
     }
 
@@ -667,19 +691,20 @@ public class TemplateApi {
      * Overwrites the caller org&#39;s OWN starter kit at the path slug, answering the stored kit.
      * Overwrites the caller org&#39;s OWN starter kit at the path slug, answering the stored kit. A slug they do not own is 404, never a create: the UPDATE binds org, so a PUT can never reach another org&#39;s kit.
      * @param slug Slug is the kit to replace, from the path. (required)
-     * @param replaceKitIn  (required)
-     * @return ApiResponse&lt;StarterKit&gt;
+     * @param templateReplaceKitIn  (required)
+     * @return ApiResponse&lt;TemplateStarterKit&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StarterKit> putTemplateBySlugWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ReplaceKitIn replaceKitIn) throws ApiException {
-        okhttp3.Call localVarCall = putTemplateBySlugValidateBeforeCall(slug, replaceKitIn, null);
-        Type localVarReturnType = new TypeToken<StarterKit>(){}.getType();
+    public ApiResponse<TemplateStarterKit> putTemplateBySlugWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull TemplateReplaceKitIn templateReplaceKitIn) throws ApiException {
+        okhttp3.Call localVarCall = putTemplateBySlugValidateBeforeCall(slug, templateReplaceKitIn, null);
+        Type localVarReturnType = new TypeToken<TemplateStarterKit>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -687,7 +712,7 @@ public class TemplateApi {
      * Overwrites the caller org&#39;s OWN starter kit at the path slug, answering the stored kit. (asynchronously)
      * Overwrites the caller org&#39;s OWN starter kit at the path slug, answering the stored kit. A slug they do not own is 404, never a create: the UPDATE binds org, so a PUT can never reach another org&#39;s kit.
      * @param slug Slug is the kit to replace, from the path. (required)
-     * @param replaceKitIn  (required)
+     * @param templateReplaceKitIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -696,12 +721,13 @@ public class TemplateApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putTemplateBySlugAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ReplaceKitIn replaceKitIn, final ApiCallback<StarterKit> _callback) throws ApiException {
+    public okhttp3.Call putTemplateBySlugAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull TemplateReplaceKitIn templateReplaceKitIn, final ApiCallback<TemplateStarterKit> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putTemplateBySlugValidateBeforeCall(slug, replaceKitIn, _callback);
-        Type localVarReturnType = new TypeToken<StarterKit>(){}.getType();
+        okhttp3.Call localVarCall = putTemplateBySlugValidateBeforeCall(slug, templateReplaceKitIn, _callback);
+        Type localVarReturnType = new TypeToken<TemplateStarterKit>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

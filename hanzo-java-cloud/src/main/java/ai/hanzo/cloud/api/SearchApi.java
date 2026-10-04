@@ -27,8 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Fusion;
-import ai.hanzo.cloud.model.Request;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.SearchFusion;
+import ai.hanzo.cloud.model.SearchRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -75,7 +76,7 @@ public class SearchApi {
 
     /**
      * Build call for search
-     * @param request  (required)
+     * @param searchRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,9 +85,10 @@ public class SearchApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCall(@javax.annotation.Nonnull Request request, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchCall(@javax.annotation.Nonnull SearchRequest searchRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -100,7 +102,7 @@ public class SearchApi {
             basePath = null;
         }
 
-        Object localVarPostBody = request;
+        Object localVarPostBody = searchRequest;
 
         // create path and map variables
         String localVarPath = "/v1/search";
@@ -112,7 +114,8 @@ public class SearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -132,57 +135,59 @@ public class SearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchValidateBeforeCall(@javax.annotation.Nonnull Request request, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'request' is set
-        if (request == null) {
-            throw new ApiException("Missing the required parameter 'request' when calling search(Async)");
+    private okhttp3.Call searchValidateBeforeCall(@javax.annotation.Nonnull SearchRequest searchRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'searchRequest' is set
+        if (searchRequest == null) {
+            throw new ApiException("Missing the required parameter 'searchRequest' when calling search(Async)");
         }
 
-        return searchCall(request, _callback);
+        return searchCall(searchRequest, _callback);
 
     }
 
     /**
      * Hybrid search over the org&#39;s own corpora
      * Is the typed op behind POST /v1/search. It does exactly two things the in-process entry point must not do: resolve the tenant from the validated principal, and refuse when there is none. Everything else is ForOrg.
-     * @param request  (required)
-     * @return Fusion
+     * @param searchRequest  (required)
+     * @return SearchFusion
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Fusion search(@javax.annotation.Nonnull Request request) throws ApiException {
-        ApiResponse<Fusion> localVarResp = searchWithHttpInfo(request);
+    public SearchFusion search(@javax.annotation.Nonnull SearchRequest searchRequest) throws ApiException {
+        ApiResponse<SearchFusion> localVarResp = searchWithHttpInfo(searchRequest);
         return localVarResp.getData();
     }
 
     /**
      * Hybrid search over the org&#39;s own corpora
      * Is the typed op behind POST /v1/search. It does exactly two things the in-process entry point must not do: resolve the tenant from the validated principal, and refuse when there is none. Everything else is ForOrg.
-     * @param request  (required)
-     * @return ApiResponse&lt;Fusion&gt;
+     * @param searchRequest  (required)
+     * @return ApiResponse&lt;SearchFusion&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Fusion> searchWithHttpInfo(@javax.annotation.Nonnull Request request) throws ApiException {
-        okhttp3.Call localVarCall = searchValidateBeforeCall(request, null);
-        Type localVarReturnType = new TypeToken<Fusion>(){}.getType();
+    public ApiResponse<SearchFusion> searchWithHttpInfo(@javax.annotation.Nonnull SearchRequest searchRequest) throws ApiException {
+        okhttp3.Call localVarCall = searchValidateBeforeCall(searchRequest, null);
+        Type localVarReturnType = new TypeToken<SearchFusion>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Hybrid search over the org&#39;s own corpora (asynchronously)
      * Is the typed op behind POST /v1/search. It does exactly two things the in-process entry point must not do: resolve the tenant from the validated principal, and refuse when there is none. Everything else is ForOrg.
-     * @param request  (required)
+     * @param searchRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -191,12 +196,13 @@ public class SearchApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAsync(@javax.annotation.Nonnull Request request, final ApiCallback<Fusion> _callback) throws ApiException {
+    public okhttp3.Call searchAsync(@javax.annotation.Nonnull SearchRequest searchRequest, final ApiCallback<SearchFusion> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchValidateBeforeCall(request, _callback);
-        Type localVarReturnType = new TypeToken<Fusion>(){}.getType();
+        okhttp3.Call localVarCall = searchValidateBeforeCall(searchRequest, _callback);
+        Type localVarReturnType = new TypeToken<SearchFusion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

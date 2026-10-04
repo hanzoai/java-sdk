@@ -27,10 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.FlowCreate;
-import ai.hanzo.cloud.model.FlowRun;
-import ai.hanzo.cloud.model.FlowStatus;
-import ai.hanzo.cloud.model.FlowUpdate;
+import ai.hanzo.cloud.model.FlowFlowCreate;
+import ai.hanzo.cloud.model.FlowFlowRun;
+import ai.hanzo.cloud.model.FlowFlowStatus;
+import ai.hanzo.cloud.model.FlowFlowUpdate;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -86,6 +87,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteFlowWorkflowsByWorkflowCall(@javax.annotation.Nonnull String workflow, final ApiCallback _callback) throws ApiException {
@@ -115,7 +117,8 @@ public class FlowApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -155,6 +158,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Object deleteFlowWorkflowsByWorkflow(@javax.annotation.Nonnull String workflow) throws ApiException {
@@ -173,6 +177,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> deleteFlowWorkflowsByWorkflowWithHttpInfo(@javax.annotation.Nonnull String workflow) throws ApiException {
@@ -193,6 +198,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteFlowWorkflowsByWorkflowAsync(@javax.annotation.Nonnull String workflow, final ApiCallback<Object> _callback) throws ApiException {
@@ -213,6 +219,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFlowRunsCall(@javax.annotation.Nullable String workflow, final ApiCallback _callback) throws ApiException {
@@ -245,7 +252,8 @@ public class FlowApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -270,8 +278,8 @@ public class FlowApi {
     }
 
     /**
-     * Runs reads one workflow&#39;s recorded runs: every component build with its result, keyed by component.
-     * Runs reads one workflow&#39;s recorded runs: every component build with its result, keyed by component. Ownership is verified first — run records never cross the org boundary.
+     * Reads one workflow&#39;s recorded runs: every component build with its result, keyed by component.
+     * Reads one workflow&#39;s recorded runs: every component build with its result, keyed by component. Ownership is verified first — run records never cross the org boundary.
      * @param workflow Workflow is the UUID of the workflow whose run records to read. It rides the query string. (optional)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -280,6 +288,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Object getFlowRuns(@javax.annotation.Nullable String workflow) throws ApiException {
@@ -288,8 +297,8 @@ public class FlowApi {
     }
 
     /**
-     * Runs reads one workflow&#39;s recorded runs: every component build with its result, keyed by component.
-     * Runs reads one workflow&#39;s recorded runs: every component build with its result, keyed by component. Ownership is verified first — run records never cross the org boundary.
+     * Reads one workflow&#39;s recorded runs: every component build with its result, keyed by component.
+     * Reads one workflow&#39;s recorded runs: every component build with its result, keyed by component. Ownership is verified first — run records never cross the org boundary.
      * @param workflow Workflow is the UUID of the workflow whose run records to read. It rides the query string. (optional)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -298,6 +307,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> getFlowRunsWithHttpInfo(@javax.annotation.Nullable String workflow) throws ApiException {
@@ -307,8 +317,8 @@ public class FlowApi {
     }
 
     /**
-     * Runs reads one workflow&#39;s recorded runs: every component build with its result, keyed by component. (asynchronously)
-     * Runs reads one workflow&#39;s recorded runs: every component build with its result, keyed by component. Ownership is verified first — run records never cross the org boundary.
+     * Reads one workflow&#39;s recorded runs: every component build with its result, keyed by component. (asynchronously)
+     * Reads one workflow&#39;s recorded runs: every component build with its result, keyed by component. Ownership is verified first — run records never cross the org boundary.
      * @param workflow Workflow is the UUID of the workflow whose run records to read. It rides the query string. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -318,6 +328,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFlowRunsAsync(@javax.annotation.Nullable String workflow, final ApiCallback<Object> _callback) throws ApiException {
@@ -337,6 +348,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFlowStatusCall(final ApiCallback _callback) throws ApiException {
@@ -365,7 +377,8 @@ public class FlowApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -390,43 +403,45 @@ public class FlowApi {
     }
 
     /**
-     * Status reports whether the flow service is reachable and which version it runs.
-     * Status reports whether the flow service is reachable and which version it runs. It is the product&#39;s own /health and /v1/version composed — an honest lens for \&quot;is the workflow plane up\&quot;, never a fabricated ok.
-     * @return FlowStatus
+     * Reports whether the flow service is reachable and which version it runs.
+     * Reports whether the flow service is reachable and which version it runs. It is the product&#39;s own /health and /v1/version composed — an honest lens for \&quot;is the workflow plane up\&quot;, never a fabricated ok.
+     * @return FlowFlowStatus
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FlowStatus getFlowStatus() throws ApiException {
-        ApiResponse<FlowStatus> localVarResp = getFlowStatusWithHttpInfo();
+    public FlowFlowStatus getFlowStatus() throws ApiException {
+        ApiResponse<FlowFlowStatus> localVarResp = getFlowStatusWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Status reports whether the flow service is reachable and which version it runs.
-     * Status reports whether the flow service is reachable and which version it runs. It is the product&#39;s own /health and /v1/version composed — an honest lens for \&quot;is the workflow plane up\&quot;, never a fabricated ok.
-     * @return ApiResponse&lt;FlowStatus&gt;
+     * Reports whether the flow service is reachable and which version it runs.
+     * Reports whether the flow service is reachable and which version it runs. It is the product&#39;s own /health and /v1/version composed — an honest lens for \&quot;is the workflow plane up\&quot;, never a fabricated ok.
+     * @return ApiResponse&lt;FlowFlowStatus&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FlowStatus> getFlowStatusWithHttpInfo() throws ApiException {
+    public ApiResponse<FlowFlowStatus> getFlowStatusWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getFlowStatusValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<FlowStatus>(){}.getType();
+        Type localVarReturnType = new TypeToken<FlowFlowStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Status reports whether the flow service is reachable and which version it runs. (asynchronously)
-     * Status reports whether the flow service is reachable and which version it runs. It is the product&#39;s own /health and /v1/version composed — an honest lens for \&quot;is the workflow plane up\&quot;, never a fabricated ok.
+     * Reports whether the flow service is reachable and which version it runs. (asynchronously)
+     * Reports whether the flow service is reachable and which version it runs. It is the product&#39;s own /health and /v1/version composed — an honest lens for \&quot;is the workflow plane up\&quot;, never a fabricated ok.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -435,12 +450,13 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFlowStatusAsync(final ApiCallback<FlowStatus> _callback) throws ApiException {
+    public okhttp3.Call getFlowStatusAsync(final ApiCallback<FlowFlowStatus> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFlowStatusValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<FlowStatus>(){}.getType();
+        Type localVarReturnType = new TypeToken<FlowFlowStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -456,6 +472,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFlowWorkflowsCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String size, final ApiCallback _callback) throws ApiException {
@@ -492,7 +509,8 @@ public class FlowApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -517,8 +535,8 @@ public class FlowApi {
     }
 
     /**
-     * Workflows lists the caller&#39;s workflows, paged.
-     * Workflows lists the caller&#39;s workflows, paged. The list is scoped server-side to the org&#39;s project — the page can only ever hold the caller&#39;s own workflows.
+     * Lists the caller&#39;s workflows, paged.
+     * Lists the caller&#39;s workflows, paged. The list is scoped server-side to the org&#39;s project — the page can only ever hold the caller&#39;s own workflows.
      * @param page Page is the 1-based page of workflows to return. (optional)
      * @param size Size is how many workflows one page holds (the product caps it at 100). (optional)
      * @return Object
@@ -528,6 +546,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Object getFlowWorkflows(@javax.annotation.Nullable String page, @javax.annotation.Nullable String size) throws ApiException {
@@ -536,8 +555,8 @@ public class FlowApi {
     }
 
     /**
-     * Workflows lists the caller&#39;s workflows, paged.
-     * Workflows lists the caller&#39;s workflows, paged. The list is scoped server-side to the org&#39;s project — the page can only ever hold the caller&#39;s own workflows.
+     * Lists the caller&#39;s workflows, paged.
+     * Lists the caller&#39;s workflows, paged. The list is scoped server-side to the org&#39;s project — the page can only ever hold the caller&#39;s own workflows.
      * @param page Page is the 1-based page of workflows to return. (optional)
      * @param size Size is how many workflows one page holds (the product caps it at 100). (optional)
      * @return ApiResponse&lt;Object&gt;
@@ -547,6 +566,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> getFlowWorkflowsWithHttpInfo(@javax.annotation.Nullable String page, @javax.annotation.Nullable String size) throws ApiException {
@@ -556,8 +576,8 @@ public class FlowApi {
     }
 
     /**
-     * Workflows lists the caller&#39;s workflows, paged. (asynchronously)
-     * Workflows lists the caller&#39;s workflows, paged. The list is scoped server-side to the org&#39;s project — the page can only ever hold the caller&#39;s own workflows.
+     * Lists the caller&#39;s workflows, paged. (asynchronously)
+     * Lists the caller&#39;s workflows, paged. The list is scoped server-side to the org&#39;s project — the page can only ever hold the caller&#39;s own workflows.
      * @param page Page is the 1-based page of workflows to return. (optional)
      * @param size Size is how many workflows one page holds (the product caps it at 100). (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -568,6 +588,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFlowWorkflowsAsync(@javax.annotation.Nullable String page, @javax.annotation.Nullable String size, final ApiCallback<Object> _callback) throws ApiException {
@@ -588,6 +609,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFlowWorkflowsByWorkflowCall(@javax.annotation.Nonnull String workflow, final ApiCallback _callback) throws ApiException {
@@ -617,7 +639,8 @@ public class FlowApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -647,8 +670,8 @@ public class FlowApi {
     }
 
     /**
-     * Workflow reads one of the caller&#39;s workflows — the full record, graph included.
-     * Workflow reads one of the caller&#39;s workflows — the full record, graph included. A workflow outside the caller&#39;s org answers 404, indistinguishable from one that does not exist.
+     * Reads one of the caller&#39;s workflows — the full record, graph included.
+     * Reads one of the caller&#39;s workflows — the full record, graph included. A workflow outside the caller&#39;s org answers 404, indistinguishable from one that does not exist.
      * @param workflow Workflow is the workflow&#39;s UUID, taken from the path. (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -657,6 +680,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Object getFlowWorkflowsByWorkflow(@javax.annotation.Nonnull String workflow) throws ApiException {
@@ -665,8 +689,8 @@ public class FlowApi {
     }
 
     /**
-     * Workflow reads one of the caller&#39;s workflows — the full record, graph included.
-     * Workflow reads one of the caller&#39;s workflows — the full record, graph included. A workflow outside the caller&#39;s org answers 404, indistinguishable from one that does not exist.
+     * Reads one of the caller&#39;s workflows — the full record, graph included.
+     * Reads one of the caller&#39;s workflows — the full record, graph included. A workflow outside the caller&#39;s org answers 404, indistinguishable from one that does not exist.
      * @param workflow Workflow is the workflow&#39;s UUID, taken from the path. (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -675,6 +699,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> getFlowWorkflowsByWorkflowWithHttpInfo(@javax.annotation.Nonnull String workflow) throws ApiException {
@@ -684,8 +709,8 @@ public class FlowApi {
     }
 
     /**
-     * Workflow reads one of the caller&#39;s workflows — the full record, graph included. (asynchronously)
-     * Workflow reads one of the caller&#39;s workflows — the full record, graph included. A workflow outside the caller&#39;s org answers 404, indistinguishable from one that does not exist.
+     * Reads one of the caller&#39;s workflows — the full record, graph included. (asynchronously)
+     * Reads one of the caller&#39;s workflows — the full record, graph included. A workflow outside the caller&#39;s org answers 404, indistinguishable from one that does not exist.
      * @param workflow Workflow is the workflow&#39;s UUID, taken from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -695,6 +720,7 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFlowWorkflowsByWorkflowAsync(@javax.annotation.Nonnull String workflow, final ApiCallback<Object> _callback) throws ApiException {
@@ -707,7 +733,7 @@ public class FlowApi {
     /**
      * Build call for patchFlowWorkflowsByWorkflow
      * @param workflow Workflow is the workflow&#39;s UUID, taken from the path. (required)
-     * @param flowUpdate  (required)
+     * @param flowFlowUpdate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -716,9 +742,10 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchFlowWorkflowsByWorkflowCall(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowUpdate flowUpdate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchFlowWorkflowsByWorkflowCall(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowFlowUpdate flowFlowUpdate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -732,7 +759,7 @@ public class FlowApi {
             basePath = null;
         }
 
-        Object localVarPostBody = flowUpdate;
+        Object localVarPostBody = flowFlowUpdate;
 
         // create path and map variables
         String localVarPath = "/v1/flow/workflows/{workflow}"
@@ -745,7 +772,8 @@ public class FlowApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -765,18 +793,18 @@ public class FlowApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchFlowWorkflowsByWorkflowValidateBeforeCall(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowUpdate flowUpdate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchFlowWorkflowsByWorkflowValidateBeforeCall(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowFlowUpdate flowFlowUpdate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'workflow' is set
         if (workflow == null) {
             throw new ApiException("Missing the required parameter 'workflow' when calling patchFlowWorkflowsByWorkflow(Async)");
         }
 
-        // verify the required parameter 'flowUpdate' is set
-        if (flowUpdate == null) {
-            throw new ApiException("Missing the required parameter 'flowUpdate' when calling patchFlowWorkflowsByWorkflow(Async)");
+        // verify the required parameter 'flowFlowUpdate' is set
+        if (flowFlowUpdate == null) {
+            throw new ApiException("Missing the required parameter 'flowFlowUpdate' when calling patchFlowWorkflowsByWorkflow(Async)");
         }
 
-        return patchFlowWorkflowsByWorkflowCall(workflow, flowUpdate, _callback);
+        return patchFlowWorkflowsByWorkflowCall(workflow, flowFlowUpdate, _callback);
 
     }
 
@@ -784,7 +812,7 @@ public class FlowApi {
      * Patches one of the caller&#39;s workflows: name, description, graph, or the locked flag — only the stated fields move.
      * Patches one of the caller&#39;s workflows: name, description, graph, or the locked flag — only the stated fields move. Ownership is verified before the patch reaches the product.
      * @param workflow Workflow is the workflow&#39;s UUID, taken from the path. (required)
-     * @param flowUpdate  (required)
+     * @param flowFlowUpdate  (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -792,10 +820,11 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Object patchFlowWorkflowsByWorkflow(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowUpdate flowUpdate) throws ApiException {
-        ApiResponse<Object> localVarResp = patchFlowWorkflowsByWorkflowWithHttpInfo(workflow, flowUpdate);
+    public Object patchFlowWorkflowsByWorkflow(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowFlowUpdate flowFlowUpdate) throws ApiException {
+        ApiResponse<Object> localVarResp = patchFlowWorkflowsByWorkflowWithHttpInfo(workflow, flowFlowUpdate);
         return localVarResp.getData();
     }
 
@@ -803,7 +832,7 @@ public class FlowApi {
      * Patches one of the caller&#39;s workflows: name, description, graph, or the locked flag — only the stated fields move.
      * Patches one of the caller&#39;s workflows: name, description, graph, or the locked flag — only the stated fields move. Ownership is verified before the patch reaches the product.
      * @param workflow Workflow is the workflow&#39;s UUID, taken from the path. (required)
-     * @param flowUpdate  (required)
+     * @param flowFlowUpdate  (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -811,10 +840,11 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> patchFlowWorkflowsByWorkflowWithHttpInfo(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowUpdate flowUpdate) throws ApiException {
-        okhttp3.Call localVarCall = patchFlowWorkflowsByWorkflowValidateBeforeCall(workflow, flowUpdate, null);
+    public ApiResponse<Object> patchFlowWorkflowsByWorkflowWithHttpInfo(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowFlowUpdate flowFlowUpdate) throws ApiException {
+        okhttp3.Call localVarCall = patchFlowWorkflowsByWorkflowValidateBeforeCall(workflow, flowFlowUpdate, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -823,7 +853,7 @@ public class FlowApi {
      * Patches one of the caller&#39;s workflows: name, description, graph, or the locked flag — only the stated fields move. (asynchronously)
      * Patches one of the caller&#39;s workflows: name, description, graph, or the locked flag — only the stated fields move. Ownership is verified before the patch reaches the product.
      * @param workflow Workflow is the workflow&#39;s UUID, taken from the path. (required)
-     * @param flowUpdate  (required)
+     * @param flowFlowUpdate  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -832,18 +862,19 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchFlowWorkflowsByWorkflowAsync(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowUpdate flowUpdate, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call patchFlowWorkflowsByWorkflowAsync(@javax.annotation.Nonnull String workflow, @javax.annotation.Nonnull FlowFlowUpdate flowFlowUpdate, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchFlowWorkflowsByWorkflowValidateBeforeCall(workflow, flowUpdate, _callback);
+        okhttp3.Call localVarCall = patchFlowWorkflowsByWorkflowValidateBeforeCall(workflow, flowFlowUpdate, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postFlowRuns
-     * @param flowRun  (required)
+     * @param flowFlowRun  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -852,9 +883,10 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFlowRunsCall(@javax.annotation.Nonnull FlowRun flowRun, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFlowRunsCall(@javax.annotation.Nonnull FlowFlowRun flowFlowRun, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -868,7 +900,7 @@ public class FlowApi {
             basePath = null;
         }
 
-        Object localVarPostBody = flowRun;
+        Object localVarPostBody = flowFlowRun;
 
         // create path and map variables
         String localVarPath = "/v1/flow/runs";
@@ -880,7 +912,8 @@ public class FlowApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -900,20 +933,20 @@ public class FlowApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postFlowRunsValidateBeforeCall(@javax.annotation.Nonnull FlowRun flowRun, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'flowRun' is set
-        if (flowRun == null) {
-            throw new ApiException("Missing the required parameter 'flowRun' when calling postFlowRuns(Async)");
+    private okhttp3.Call postFlowRunsValidateBeforeCall(@javax.annotation.Nonnull FlowFlowRun flowFlowRun, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'flowFlowRun' is set
+        if (flowFlowRun == null) {
+            throw new ApiException("Missing the required parameter 'flowFlowRun' when calling postFlowRuns(Async)");
         }
 
-        return postFlowRunsCall(flowRun, _callback);
+        return postFlowRunsCall(flowFlowRun, _callback);
 
     }
 
     /**
-     * Run executes one of the caller&#39;s workflows synchronously: the graph runs in the flow service and the response carries the run&#39;s session and outputs.
-     * Run executes one of the caller&#39;s workflows synchronously: the graph runs in the flow service and the response carries the run&#39;s session and outputs. A graph whose components fail reports the product&#39;s own error. Runs are bounded by the product&#39;s five-minute sync ceiling.
-     * @param flowRun  (required)
+     * Executes one of the caller&#39;s workflows synchronously: the graph runs in the flow service and the response carries the run&#39;s session and outputs.
+     * Executes one of the caller&#39;s workflows synchronously: the graph runs in the flow service and the response carries the run&#39;s session and outputs. A graph whose components fail reports the product&#39;s own error. Runs are bounded by the product&#39;s five-minute sync ceiling.
+     * @param flowFlowRun  (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -921,17 +954,18 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Object postFlowRuns(@javax.annotation.Nonnull FlowRun flowRun) throws ApiException {
-        ApiResponse<Object> localVarResp = postFlowRunsWithHttpInfo(flowRun);
+    public Object postFlowRuns(@javax.annotation.Nonnull FlowFlowRun flowFlowRun) throws ApiException {
+        ApiResponse<Object> localVarResp = postFlowRunsWithHttpInfo(flowFlowRun);
         return localVarResp.getData();
     }
 
     /**
-     * Run executes one of the caller&#39;s workflows synchronously: the graph runs in the flow service and the response carries the run&#39;s session and outputs.
-     * Run executes one of the caller&#39;s workflows synchronously: the graph runs in the flow service and the response carries the run&#39;s session and outputs. A graph whose components fail reports the product&#39;s own error. Runs are bounded by the product&#39;s five-minute sync ceiling.
-     * @param flowRun  (required)
+     * Executes one of the caller&#39;s workflows synchronously: the graph runs in the flow service and the response carries the run&#39;s session and outputs.
+     * Executes one of the caller&#39;s workflows synchronously: the graph runs in the flow service and the response carries the run&#39;s session and outputs. A graph whose components fail reports the product&#39;s own error. Runs are bounded by the product&#39;s five-minute sync ceiling.
+     * @param flowFlowRun  (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -939,18 +973,19 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postFlowRunsWithHttpInfo(@javax.annotation.Nonnull FlowRun flowRun) throws ApiException {
-        okhttp3.Call localVarCall = postFlowRunsValidateBeforeCall(flowRun, null);
+    public ApiResponse<Object> postFlowRunsWithHttpInfo(@javax.annotation.Nonnull FlowFlowRun flowFlowRun) throws ApiException {
+        okhttp3.Call localVarCall = postFlowRunsValidateBeforeCall(flowFlowRun, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Run executes one of the caller&#39;s workflows synchronously: the graph runs in the flow service and the response carries the run&#39;s session and outputs. (asynchronously)
-     * Run executes one of the caller&#39;s workflows synchronously: the graph runs in the flow service and the response carries the run&#39;s session and outputs. A graph whose components fail reports the product&#39;s own error. Runs are bounded by the product&#39;s five-minute sync ceiling.
-     * @param flowRun  (required)
+     * Executes one of the caller&#39;s workflows synchronously: the graph runs in the flow service and the response carries the run&#39;s session and outputs. (asynchronously)
+     * Executes one of the caller&#39;s workflows synchronously: the graph runs in the flow service and the response carries the run&#39;s session and outputs. A graph whose components fail reports the product&#39;s own error. Runs are bounded by the product&#39;s five-minute sync ceiling.
+     * @param flowFlowRun  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -959,18 +994,19 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFlowRunsAsync(@javax.annotation.Nonnull FlowRun flowRun, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postFlowRunsAsync(@javax.annotation.Nonnull FlowFlowRun flowFlowRun, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postFlowRunsValidateBeforeCall(flowRun, _callback);
+        okhttp3.Call localVarCall = postFlowRunsValidateBeforeCall(flowFlowRun, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postFlowWorkflows
-     * @param flowCreate  (required)
+     * @param flowFlowCreate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -979,9 +1015,10 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFlowWorkflowsCall(@javax.annotation.Nonnull FlowCreate flowCreate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFlowWorkflowsCall(@javax.annotation.Nonnull FlowFlowCreate flowFlowCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -995,7 +1032,7 @@ public class FlowApi {
             basePath = null;
         }
 
-        Object localVarPostBody = flowCreate;
+        Object localVarPostBody = flowFlowCreate;
 
         // create path and map variables
         String localVarPath = "/v1/flow/workflows";
@@ -1007,7 +1044,8 @@ public class FlowApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1027,20 +1065,20 @@ public class FlowApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postFlowWorkflowsValidateBeforeCall(@javax.annotation.Nonnull FlowCreate flowCreate, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'flowCreate' is set
-        if (flowCreate == null) {
-            throw new ApiException("Missing the required parameter 'flowCreate' when calling postFlowWorkflows(Async)");
+    private okhttp3.Call postFlowWorkflowsValidateBeforeCall(@javax.annotation.Nonnull FlowFlowCreate flowFlowCreate, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'flowFlowCreate' is set
+        if (flowFlowCreate == null) {
+            throw new ApiException("Missing the required parameter 'flowFlowCreate' when calling postFlowWorkflows(Async)");
         }
 
-        return postFlowWorkflowsCall(flowCreate, _callback);
+        return postFlowWorkflowsCall(flowFlowCreate, _callback);
 
     }
 
     /**
      * Creates a workflow in the caller&#39;s org.
      * Creates a workflow in the caller&#39;s org. The org&#39;s project id is pinned server-side from the validated principal — there is no field by which a caller could place a workflow in another org.
-     * @param flowCreate  (required)
+     * @param flowFlowCreate  (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1048,17 +1086,18 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Object postFlowWorkflows(@javax.annotation.Nonnull FlowCreate flowCreate) throws ApiException {
-        ApiResponse<Object> localVarResp = postFlowWorkflowsWithHttpInfo(flowCreate);
+    public Object postFlowWorkflows(@javax.annotation.Nonnull FlowFlowCreate flowFlowCreate) throws ApiException {
+        ApiResponse<Object> localVarResp = postFlowWorkflowsWithHttpInfo(flowFlowCreate);
         return localVarResp.getData();
     }
 
     /**
      * Creates a workflow in the caller&#39;s org.
      * Creates a workflow in the caller&#39;s org. The org&#39;s project id is pinned server-side from the validated principal — there is no field by which a caller could place a workflow in another org.
-     * @param flowCreate  (required)
+     * @param flowFlowCreate  (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1066,10 +1105,11 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postFlowWorkflowsWithHttpInfo(@javax.annotation.Nonnull FlowCreate flowCreate) throws ApiException {
-        okhttp3.Call localVarCall = postFlowWorkflowsValidateBeforeCall(flowCreate, null);
+    public ApiResponse<Object> postFlowWorkflowsWithHttpInfo(@javax.annotation.Nonnull FlowFlowCreate flowFlowCreate) throws ApiException {
+        okhttp3.Call localVarCall = postFlowWorkflowsValidateBeforeCall(flowFlowCreate, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1077,7 +1117,7 @@ public class FlowApi {
     /**
      * Creates a workflow in the caller&#39;s org. (asynchronously)
      * Creates a workflow in the caller&#39;s org. The org&#39;s project id is pinned server-side from the validated principal — there is no field by which a caller could place a workflow in another org.
-     * @param flowCreate  (required)
+     * @param flowFlowCreate  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1086,11 +1126,12 @@ public class FlowApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFlowWorkflowsAsync(@javax.annotation.Nonnull FlowCreate flowCreate, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postFlowWorkflowsAsync(@javax.annotation.Nonnull FlowFlowCreate flowFlowCreate, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postFlowWorkflowsValidateBeforeCall(flowCreate, _callback);
+        okhttp3.Call localVarCall = postFlowWorkflowsValidateBeforeCall(flowFlowCreate, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

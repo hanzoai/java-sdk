@@ -27,17 +27,18 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Definition;
-import ai.hanzo.cloud.model.FnList;
-import ai.hanzo.cloud.model.FunctionDetail;
-import ai.hanzo.cloud.model.FunctionView;
-import ai.hanzo.cloud.model.InvocationList;
-import ai.hanzo.cloud.model.InvocationView;
-import ai.hanzo.cloud.model.InvokeReq;
-import ai.hanzo.cloud.model.LogLines;
-import ai.hanzo.cloud.model.SecretList;
-import ai.hanzo.cloud.model.TriggerList;
-import ai.hanzo.cloud.model.Usage;
+import ai.hanzo.cloud.model.FunctionDefinition;
+import ai.hanzo.cloud.model.FunctionFnList;
+import ai.hanzo.cloud.model.FunctionFunctionDetail;
+import ai.hanzo.cloud.model.FunctionFunctionView;
+import ai.hanzo.cloud.model.FunctionInvocationList;
+import ai.hanzo.cloud.model.FunctionInvocationView;
+import ai.hanzo.cloud.model.FunctionInvokeReq;
+import ai.hanzo.cloud.model.FunctionLogLines;
+import ai.hanzo.cloud.model.FunctionSecretList;
+import ai.hanzo.cloud.model.FunctionTriggerList;
+import ai.hanzo.cloud.model.FunctionUsage;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -93,6 +94,7 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteFunctionByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -122,6 +124,7 @@ public class FunctionApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -160,6 +163,7 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteFunctionByName(@javax.annotation.Nonnull String name) throws ApiException {
@@ -177,6 +181,7 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteFunctionByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
@@ -196,6 +201,7 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteFunctionByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
@@ -214,6 +220,7 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFunctionCall(final ApiCallback _callback) throws ApiException {
@@ -242,7 +249,8 @@ public class FunctionApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -269,35 +277,37 @@ public class FunctionApi {
     /**
      * Is every serverless function the caller&#39;s org has published, each with its real 7-day rollup.
      * Is every serverless function the caller&#39;s org has published, each with its real 7-day rollup.  A row carries the function&#39;s runtime, resource limits, deployment target and its invoke endpoint, plus envCount — how many secrets it mounts. The rollup fields are ABSENT rather than zero when the function has not run in the window, so a console renders \&quot;—\&quot; instead of a fabricated 0.  Requires a validated principal; the listing is scoped to its org.
-     * @return FnList
+     * @return FunctionFnList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FnList getFunction() throws ApiException {
-        ApiResponse<FnList> localVarResp = getFunctionWithHttpInfo();
+    public FunctionFnList getFunction() throws ApiException {
+        ApiResponse<FunctionFnList> localVarResp = getFunctionWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Is every serverless function the caller&#39;s org has published, each with its real 7-day rollup.
      * Is every serverless function the caller&#39;s org has published, each with its real 7-day rollup.  A row carries the function&#39;s runtime, resource limits, deployment target and its invoke endpoint, plus envCount — how many secrets it mounts. The rollup fields are ABSENT rather than zero when the function has not run in the window, so a console renders \&quot;—\&quot; instead of a fabricated 0.  Requires a validated principal; the listing is scoped to its org.
-     * @return ApiResponse&lt;FnList&gt;
+     * @return ApiResponse&lt;FunctionFnList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FnList> getFunctionWithHttpInfo() throws ApiException {
+    public ApiResponse<FunctionFnList> getFunctionWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getFunctionValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<FnList>(){}.getType();
+        Type localVarReturnType = new TypeToken<FunctionFnList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -312,12 +322,13 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionAsync(final ApiCallback<FnList> _callback) throws ApiException {
+    public okhttp3.Call getFunctionAsync(final ApiCallback<FunctionFnList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFunctionValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<FnList>(){}.getType();
+        Type localVarReturnType = new TypeToken<FunctionFnList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -332,6 +343,7 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFunctionByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -361,7 +373,8 @@ public class FunctionApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -394,17 +407,18 @@ public class FunctionApi {
      * Is one function with everything a detail page needs in one round-trip: its definition, its 7-day rollup, its trigger, its twenty most recent invocations and the NAMES of the secrets it mounts.
      * Is one function with everything a detail page needs in one round-trip: its definition, its 7-day rollup, its trigger, its twenty most recent invocations and the NAMES of the secrets it mounts.  Secret values are never read or returned. A name the caller&#39;s org does not hold is 404, which is also what another tenant&#39;s function looks like from here.
      * @param name Name is the function the URL names. (required)
-     * @return FunctionDetail
+     * @return FunctionFunctionDetail
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FunctionDetail getFunctionByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<FunctionDetail> localVarResp = getFunctionByNameWithHttpInfo(name);
+    public FunctionFunctionDetail getFunctionByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<FunctionFunctionDetail> localVarResp = getFunctionByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -412,18 +426,19 @@ public class FunctionApi {
      * Is one function with everything a detail page needs in one round-trip: its definition, its 7-day rollup, its trigger, its twenty most recent invocations and the NAMES of the secrets it mounts.
      * Is one function with everything a detail page needs in one round-trip: its definition, its 7-day rollup, its trigger, its twenty most recent invocations and the NAMES of the secrets it mounts.  Secret values are never read or returned. A name the caller&#39;s org does not hold is 404, which is also what another tenant&#39;s function looks like from here.
      * @param name Name is the function the URL names. (required)
-     * @return ApiResponse&lt;FunctionDetail&gt;
+     * @return ApiResponse&lt;FunctionFunctionDetail&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FunctionDetail> getFunctionByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<FunctionFunctionDetail> getFunctionByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getFunctionByNameValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<FunctionDetail>(){}.getType();
+        Type localVarReturnType = new TypeToken<FunctionFunctionDetail>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -439,12 +454,13 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<FunctionDetail> _callback) throws ApiException {
+    public okhttp3.Call getFunctionByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<FunctionFunctionDetail> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFunctionByNameValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<FunctionDetail>(){}.getType();
+        Type localVarReturnType = new TypeToken<FunctionFunctionDetail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -460,6 +476,7 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFunctionByNameInvocationsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -493,7 +510,8 @@ public class FunctionApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -527,17 +545,18 @@ public class FunctionApi {
      * Is one function&#39;s past runs, newest first — each with its status, HTTP code, method, time and duration.  These are real recorded rows, not a projection: an invocation appears here only once it actually ran. Requires a validated principal; the read is scoped to its org.
      * @param name Name is the function the URL names. (required)
      * @param limit Limit caps the page, defaulting to 100. (optional)
-     * @return InvocationList
+     * @return FunctionInvocationList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public InvocationList getFunctionByNameInvocations(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<InvocationList> localVarResp = getFunctionByNameInvocationsWithHttpInfo(name, limit);
+    public FunctionInvocationList getFunctionByNameInvocations(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<FunctionInvocationList> localVarResp = getFunctionByNameInvocationsWithHttpInfo(name, limit);
         return localVarResp.getData();
     }
 
@@ -546,18 +565,19 @@ public class FunctionApi {
      * Is one function&#39;s past runs, newest first — each with its status, HTTP code, method, time and duration.  These are real recorded rows, not a projection: an invocation appears here only once it actually ran. Requires a validated principal; the read is scoped to its org.
      * @param name Name is the function the URL names. (required)
      * @param limit Limit caps the page, defaulting to 100. (optional)
-     * @return ApiResponse&lt;InvocationList&gt;
+     * @return ApiResponse&lt;FunctionInvocationList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InvocationList> getFunctionByNameInvocationsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<FunctionInvocationList> getFunctionByNameInvocationsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getFunctionByNameInvocationsValidateBeforeCall(name, limit, null);
-        Type localVarReturnType = new TypeToken<InvocationList>(){}.getType();
+        Type localVarReturnType = new TypeToken<FunctionInvocationList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -574,12 +594,13 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionByNameInvocationsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback<InvocationList> _callback) throws ApiException {
+    public okhttp3.Call getFunctionByNameInvocationsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback<FunctionInvocationList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFunctionByNameInvocationsValidateBeforeCall(name, limit, _callback);
-        Type localVarReturnType = new TypeToken<InvocationList>(){}.getType();
+        Type localVarReturnType = new TypeToken<FunctionInvocationList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -594,6 +615,7 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFunctionByNameLogsCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -623,7 +645,8 @@ public class FunctionApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -656,17 +679,18 @@ public class FunctionApi {
      * Is the output of a function&#39;s most recent run — its error text when that run failed, else what it printed.
      * Is the output of a function&#39;s most recent run — its error text when that run failed, else what it printed.  It is the LAST run only, and it is empty when the function has never run. There is no log retention behind this beyond the recorded invocation itself.
      * @param name Name is the function the URL names. (required)
-     * @return LogLines
+     * @return FunctionLogLines
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public LogLines getFunctionByNameLogs(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<LogLines> localVarResp = getFunctionByNameLogsWithHttpInfo(name);
+    public FunctionLogLines getFunctionByNameLogs(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<FunctionLogLines> localVarResp = getFunctionByNameLogsWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -674,18 +698,19 @@ public class FunctionApi {
      * Is the output of a function&#39;s most recent run — its error text when that run failed, else what it printed.
      * Is the output of a function&#39;s most recent run — its error text when that run failed, else what it printed.  It is the LAST run only, and it is empty when the function has never run. There is no log retention behind this beyond the recorded invocation itself.
      * @param name Name is the function the URL names. (required)
-     * @return ApiResponse&lt;LogLines&gt;
+     * @return ApiResponse&lt;FunctionLogLines&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LogLines> getFunctionByNameLogsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<FunctionLogLines> getFunctionByNameLogsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getFunctionByNameLogsValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<LogLines>(){}.getType();
+        Type localVarReturnType = new TypeToken<FunctionLogLines>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -701,12 +726,13 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionByNameLogsAsync(@javax.annotation.Nonnull String name, final ApiCallback<LogLines> _callback) throws ApiException {
+    public okhttp3.Call getFunctionByNameLogsAsync(@javax.annotation.Nonnull String name, final ApiCallback<FunctionLogLines> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFunctionByNameLogsValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<LogLines>(){}.getType();
+        Type localVarReturnType = new TypeToken<FunctionLogLines>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -720,6 +746,7 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFunctionDeploymentsCall(final ApiCallback _callback) throws ApiException {
@@ -748,7 +775,8 @@ public class FunctionApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -775,35 +803,37 @@ public class FunctionApi {
     /**
      * Is what is live right now — each function&#39;s current record IS its live deployment, so this is the deployment inventory.
      * Is what is live right now — each function&#39;s current record IS its live deployment, so this is the deployment inventory.  There is no deployment history behind it: a function has one record, and publishing replaces it. The 7-day rollup is deliberately absent here, because this read is about what is deployed rather than about how it has performed.
-     * @return FnList
+     * @return FunctionFnList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FnList getFunctionDeployments() throws ApiException {
-        ApiResponse<FnList> localVarResp = getFunctionDeploymentsWithHttpInfo();
+    public FunctionFnList getFunctionDeployments() throws ApiException {
+        ApiResponse<FunctionFnList> localVarResp = getFunctionDeploymentsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Is what is live right now — each function&#39;s current record IS its live deployment, so this is the deployment inventory.
      * Is what is live right now — each function&#39;s current record IS its live deployment, so this is the deployment inventory.  There is no deployment history behind it: a function has one record, and publishing replaces it. The 7-day rollup is deliberately absent here, because this read is about what is deployed rather than about how it has performed.
-     * @return ApiResponse&lt;FnList&gt;
+     * @return ApiResponse&lt;FunctionFnList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FnList> getFunctionDeploymentsWithHttpInfo() throws ApiException {
+    public ApiResponse<FunctionFnList> getFunctionDeploymentsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getFunctionDeploymentsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<FnList>(){}.getType();
+        Type localVarReturnType = new TypeToken<FunctionFnList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -818,12 +848,13 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionDeploymentsAsync(final ApiCallback<FnList> _callback) throws ApiException {
+    public okhttp3.Call getFunctionDeploymentsAsync(final ApiCallback<FunctionFnList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFunctionDeploymentsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<FnList>(){}.getType();
+        Type localVarReturnType = new TypeToken<FunctionFnList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -838,6 +869,7 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFunctionMetricsCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
@@ -870,7 +902,8 @@ public class FunctionApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -898,17 +931,18 @@ public class FunctionApi {
      * Is the org&#39;s serverless dashboard over a window: a per-function invocation costLine and how those invocations ended.
      * Is the org&#39;s serverless dashboard over a window: a per-function invocation costLine and how those invocations ended.  Every point is a REAL count of rows that fell in that bucket — nothing is interpolated or invented, so an empty window draws a flat line rather than a fabricated one.  costCents is null and stays null: there is no per-invocation cost source to read, and reporting a number computed some other way would be a guess presented as a measurement. Requires a validated principal; the read is scoped to its org.
      * @param range Range is 1H, 6H, 24H (the default), 7D or 30D. Anything else falls back to 24H rather than failing. (optional)
-     * @return Usage
+     * @return FunctionUsage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Usage getFunctionMetrics(@javax.annotation.Nullable String range) throws ApiException {
-        ApiResponse<Usage> localVarResp = getFunctionMetricsWithHttpInfo(range);
+    public FunctionUsage getFunctionMetrics(@javax.annotation.Nullable String range) throws ApiException {
+        ApiResponse<FunctionUsage> localVarResp = getFunctionMetricsWithHttpInfo(range);
         return localVarResp.getData();
     }
 
@@ -916,18 +950,19 @@ public class FunctionApi {
      * Is the org&#39;s serverless dashboard over a window: a per-function invocation costLine and how those invocations ended.
      * Is the org&#39;s serverless dashboard over a window: a per-function invocation costLine and how those invocations ended.  Every point is a REAL count of rows that fell in that bucket — nothing is interpolated or invented, so an empty window draws a flat line rather than a fabricated one.  costCents is null and stays null: there is no per-invocation cost source to read, and reporting a number computed some other way would be a guess presented as a measurement. Requires a validated principal; the read is scoped to its org.
      * @param range Range is 1H, 6H, 24H (the default), 7D or 30D. Anything else falls back to 24H rather than failing. (optional)
-     * @return ApiResponse&lt;Usage&gt;
+     * @return ApiResponse&lt;FunctionUsage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Usage> getFunctionMetricsWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
+    public ApiResponse<FunctionUsage> getFunctionMetricsWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
         okhttp3.Call localVarCall = getFunctionMetricsValidateBeforeCall(range, null);
-        Type localVarReturnType = new TypeToken<Usage>(){}.getType();
+        Type localVarReturnType = new TypeToken<FunctionUsage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -943,12 +978,13 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionMetricsAsync(@javax.annotation.Nullable String range, final ApiCallback<Usage> _callback) throws ApiException {
+    public okhttp3.Call getFunctionMetricsAsync(@javax.annotation.Nullable String range, final ApiCallback<FunctionUsage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFunctionMetricsValidateBeforeCall(range, _callback);
-        Type localVarReturnType = new TypeToken<Usage>(){}.getType();
+        Type localVarReturnType = new TypeToken<FunctionUsage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -962,6 +998,7 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFunctionSecretsCall(final ApiCallback _callback) throws ApiException {
@@ -990,7 +1027,8 @@ public class FunctionApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1017,35 +1055,37 @@ public class FunctionApi {
     /**
      * Is the NAMES of the secrets the caller org&#39;s functions mount.
      * Is the NAMES of the secrets the caller org&#39;s functions mount.  Values are NEVER read or returned — this surface knows which names a function asks for and nothing about what is behind them, which is what makes it safe to list at all. One row per distinct (namespace, name).
-     * @return SecretList
+     * @return FunctionSecretList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SecretList getFunctionSecrets() throws ApiException {
-        ApiResponse<SecretList> localVarResp = getFunctionSecretsWithHttpInfo();
+    public FunctionSecretList getFunctionSecrets() throws ApiException {
+        ApiResponse<FunctionSecretList> localVarResp = getFunctionSecretsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Is the NAMES of the secrets the caller org&#39;s functions mount.
      * Is the NAMES of the secrets the caller org&#39;s functions mount.  Values are NEVER read or returned — this surface knows which names a function asks for and nothing about what is behind them, which is what makes it safe to list at all. One row per distinct (namespace, name).
-     * @return ApiResponse&lt;SecretList&gt;
+     * @return ApiResponse&lt;FunctionSecretList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SecretList> getFunctionSecretsWithHttpInfo() throws ApiException {
+    public ApiResponse<FunctionSecretList> getFunctionSecretsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getFunctionSecretsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<SecretList>(){}.getType();
+        Type localVarReturnType = new TypeToken<FunctionSecretList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1060,12 +1100,13 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionSecretsAsync(final ApiCallback<SecretList> _callback) throws ApiException {
+    public okhttp3.Call getFunctionSecretsAsync(final ApiCallback<FunctionSecretList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFunctionSecretsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<SecretList>(){}.getType();
+        Type localVarReturnType = new TypeToken<FunctionSecretList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1079,6 +1120,7 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFunctionTriggersCall(final ApiCallback _callback) throws ApiException {
@@ -1107,7 +1149,8 @@ public class FunctionApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1134,35 +1177,37 @@ public class FunctionApi {
     /**
      * Is what calls the caller org&#39;s functions — one row per function.
      * Is what calls the caller org&#39;s functions — one row per function.  Every function has exactly one trigger today, its HTTP invoke endpoint, so this is the function list read as \&quot;how is each of these reached\&quot;.
-     * @return TriggerList
+     * @return FunctionTriggerList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TriggerList getFunctionTriggers() throws ApiException {
-        ApiResponse<TriggerList> localVarResp = getFunctionTriggersWithHttpInfo();
+    public FunctionTriggerList getFunctionTriggers() throws ApiException {
+        ApiResponse<FunctionTriggerList> localVarResp = getFunctionTriggersWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Is what calls the caller org&#39;s functions — one row per function.
      * Is what calls the caller org&#39;s functions — one row per function.  Every function has exactly one trigger today, its HTTP invoke endpoint, so this is the function list read as \&quot;how is each of these reached\&quot;.
-     * @return ApiResponse&lt;TriggerList&gt;
+     * @return ApiResponse&lt;FunctionTriggerList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TriggerList> getFunctionTriggersWithHttpInfo() throws ApiException {
+    public ApiResponse<FunctionTriggerList> getFunctionTriggersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getFunctionTriggersValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<TriggerList>(){}.getType();
+        Type localVarReturnType = new TypeToken<FunctionTriggerList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1177,18 +1222,19 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionTriggersAsync(final ApiCallback<TriggerList> _callback) throws ApiException {
+    public okhttp3.Call getFunctionTriggersAsync(final ApiCallback<FunctionTriggerList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFunctionTriggersValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<TriggerList>(){}.getType();
+        Type localVarReturnType = new TypeToken<FunctionTriggerList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postFunction
-     * @param definition  (required)
+     * @param functionDefinition  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1197,9 +1243,10 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFunctionCall(@javax.annotation.Nonnull Definition definition, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFunctionCall(@javax.annotation.Nonnull FunctionDefinition functionDefinition, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1213,7 +1260,7 @@ public class FunctionApi {
             basePath = null;
         }
 
-        Object localVarPostBody = definition;
+        Object localVarPostBody = functionDefinition;
 
         // create path and map variables
         String localVarPath = "/v1/function";
@@ -1225,7 +1272,8 @@ public class FunctionApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1245,57 +1293,59 @@ public class FunctionApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postFunctionValidateBeforeCall(@javax.annotation.Nonnull Definition definition, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'definition' is set
-        if (definition == null) {
-            throw new ApiException("Missing the required parameter 'definition' when calling postFunction(Async)");
+    private okhttp3.Call postFunctionValidateBeforeCall(@javax.annotation.Nonnull FunctionDefinition functionDefinition, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'functionDefinition' is set
+        if (functionDefinition == null) {
+            throw new ApiException("Missing the required parameter 'functionDefinition' when calling postFunction(Async)");
         }
 
-        return postFunctionCall(definition, _callback);
+        return postFunctionCall(functionDefinition, _callback);
 
     }
 
     /**
      * Publishes a serverless function under the caller&#39;s org and answers 201 with it.
      * Publishes a serverless function under the caller&#39;s org and answers 201 with it.  The name is the key and is claimed once; the names that would shadow a collection route are reserved. runtime and environment are the same field — either spelling is accepted — and default to node.  Bounds are clamped rather than refused where a clamp is honest: a timeout above the 900-second ceiling becomes the ceiling instead of silently reverting to the 30-second default, and an omitted memory limit becomes 256Mi. target&#x3D;fleet runs on the org&#39;s own GPU fleet and supports runtime&#x3D;python only.  Requires a validated principal; the function is owned by that principal&#39;s org.
-     * @param definition  (required)
-     * @return FunctionView
+     * @param functionDefinition  (required)
+     * @return FunctionFunctionView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FunctionView postFunction(@javax.annotation.Nonnull Definition definition) throws ApiException {
-        ApiResponse<FunctionView> localVarResp = postFunctionWithHttpInfo(definition);
+    public FunctionFunctionView postFunction(@javax.annotation.Nonnull FunctionDefinition functionDefinition) throws ApiException {
+        ApiResponse<FunctionFunctionView> localVarResp = postFunctionWithHttpInfo(functionDefinition);
         return localVarResp.getData();
     }
 
     /**
      * Publishes a serverless function under the caller&#39;s org and answers 201 with it.
      * Publishes a serverless function under the caller&#39;s org and answers 201 with it.  The name is the key and is claimed once; the names that would shadow a collection route are reserved. runtime and environment are the same field — either spelling is accepted — and default to node.  Bounds are clamped rather than refused where a clamp is honest: a timeout above the 900-second ceiling becomes the ceiling instead of silently reverting to the 30-second default, and an omitted memory limit becomes 256Mi. target&#x3D;fleet runs on the org&#39;s own GPU fleet and supports runtime&#x3D;python only.  Requires a validated principal; the function is owned by that principal&#39;s org.
-     * @param definition  (required)
-     * @return ApiResponse&lt;FunctionView&gt;
+     * @param functionDefinition  (required)
+     * @return ApiResponse&lt;FunctionFunctionView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FunctionView> postFunctionWithHttpInfo(@javax.annotation.Nonnull Definition definition) throws ApiException {
-        okhttp3.Call localVarCall = postFunctionValidateBeforeCall(definition, null);
-        Type localVarReturnType = new TypeToken<FunctionView>(){}.getType();
+    public ApiResponse<FunctionFunctionView> postFunctionWithHttpInfo(@javax.annotation.Nonnull FunctionDefinition functionDefinition) throws ApiException {
+        okhttp3.Call localVarCall = postFunctionValidateBeforeCall(functionDefinition, null);
+        Type localVarReturnType = new TypeToken<FunctionFunctionView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Publishes a serverless function under the caller&#39;s org and answers 201 with it. (asynchronously)
      * Publishes a serverless function under the caller&#39;s org and answers 201 with it.  The name is the key and is claimed once; the names that would shadow a collection route are reserved. runtime and environment are the same field — either spelling is accepted — and default to node.  Bounds are clamped rather than refused where a clamp is honest: a timeout above the 900-second ceiling becomes the ceiling instead of silently reverting to the 30-second default, and an omitted memory limit becomes 256Mi. target&#x3D;fleet runs on the org&#39;s own GPU fleet and supports runtime&#x3D;python only.  Requires a validated principal; the function is owned by that principal&#39;s org.
-     * @param definition  (required)
+     * @param functionDefinition  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1304,19 +1354,20 @@ public class FunctionApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFunctionAsync(@javax.annotation.Nonnull Definition definition, final ApiCallback<FunctionView> _callback) throws ApiException {
+    public okhttp3.Call postFunctionAsync(@javax.annotation.Nonnull FunctionDefinition functionDefinition, final ApiCallback<FunctionFunctionView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postFunctionValidateBeforeCall(definition, _callback);
-        Type localVarReturnType = new TypeToken<FunctionView>(){}.getType();
+        okhttp3.Call localVarCall = postFunctionValidateBeforeCall(functionDefinition, _callback);
+        Type localVarReturnType = new TypeToken<FunctionFunctionView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postFunctionByNameInvoke
      * @param name  (required)
-     * @param invokeReq  (required)
+     * @param functionInvokeReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1327,9 +1378,10 @@ public class FunctionApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 502 </td><td> bad gateway </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFunctionByNameInvokeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull InvokeReq invokeReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFunctionByNameInvokeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull FunctionInvokeReq functionInvokeReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1343,7 +1395,7 @@ public class FunctionApi {
             basePath = null;
         }
 
-        Object localVarPostBody = invokeReq;
+        Object localVarPostBody = functionInvokeReq;
 
         // create path and map variables
         String localVarPath = "/v1/function/{name}/invoke"
@@ -1356,7 +1408,8 @@ public class FunctionApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1376,18 +1429,18 @@ public class FunctionApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postFunctionByNameInvokeValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull InvokeReq invokeReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postFunctionByNameInvokeValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull FunctionInvokeReq functionInvokeReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postFunctionByNameInvoke(Async)");
         }
 
-        // verify the required parameter 'invokeReq' is set
-        if (invokeReq == null) {
-            throw new ApiException("Missing the required parameter 'invokeReq' when calling postFunctionByNameInvoke(Async)");
+        // verify the required parameter 'functionInvokeReq' is set
+        if (functionInvokeReq == null) {
+            throw new ApiException("Missing the required parameter 'functionInvokeReq' when calling postFunctionByNameInvoke(Async)");
         }
 
-        return postFunctionByNameInvokeCall(name, invokeReq, _callback);
+        return postFunctionByNameInvokeCall(name, functionInvokeReq, _callback);
 
     }
 
@@ -1395,8 +1448,8 @@ public class FunctionApi {
      * Runs a function and records a REAL invocation.
      * Runs a function and records a REAL invocation.  The answer is the invocation record whatever happened to it: 200 when the org&#39;s code ran clean, 502 when it ran and failed, 503 when this deployment has no sandbox to run code in. The record IS the evidence, so it rides the failure rather than being replaced by an error envelope.  Billing is two-part and both parts are prepaid-then-metered on the one shared meter: a flat per-invocation request fee, gated BEFORE any sandbox compute runs so an unfunded org gets 402 and nothing executes, and a usage-native GB-seconds compute debit taken after the run. Either is independently free when its fee is zero, so an operator can bill by request alone, by compute alone, or by both — and a zero request fee removes the balance gate with it.  A TRANSPORT failure is not charged: the sandbox being unreachable ran no billable compute. Code that ran and exited non-zero IS charged — that is a successful invocation of a failing program, not a billing failure.  When the sandbox is not configured on this deployment, a non-fleet function fails closed before anything is recorded — no execution and no fabricated output. Scoped to the caller&#39;s org; requires a validated principal.
      * @param name  (required)
-     * @param invokeReq  (required)
-     * @return InvocationView
+     * @param functionInvokeReq  (required)
+     * @return FunctionInvocationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1405,10 +1458,11 @@ public class FunctionApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 502 </td><td> bad gateway </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public InvocationView postFunctionByNameInvoke(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull InvokeReq invokeReq) throws ApiException {
-        ApiResponse<InvocationView> localVarResp = postFunctionByNameInvokeWithHttpInfo(name, invokeReq);
+    public FunctionInvocationView postFunctionByNameInvoke(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull FunctionInvokeReq functionInvokeReq) throws ApiException {
+        ApiResponse<FunctionInvocationView> localVarResp = postFunctionByNameInvokeWithHttpInfo(name, functionInvokeReq);
         return localVarResp.getData();
     }
 
@@ -1416,8 +1470,8 @@ public class FunctionApi {
      * Runs a function and records a REAL invocation.
      * Runs a function and records a REAL invocation.  The answer is the invocation record whatever happened to it: 200 when the org&#39;s code ran clean, 502 when it ran and failed, 503 when this deployment has no sandbox to run code in. The record IS the evidence, so it rides the failure rather than being replaced by an error envelope.  Billing is two-part and both parts are prepaid-then-metered on the one shared meter: a flat per-invocation request fee, gated BEFORE any sandbox compute runs so an unfunded org gets 402 and nothing executes, and a usage-native GB-seconds compute debit taken after the run. Either is independently free when its fee is zero, so an operator can bill by request alone, by compute alone, or by both — and a zero request fee removes the balance gate with it.  A TRANSPORT failure is not charged: the sandbox being unreachable ran no billable compute. Code that ran and exited non-zero IS charged — that is a successful invocation of a failing program, not a billing failure.  When the sandbox is not configured on this deployment, a non-fleet function fails closed before anything is recorded — no execution and no fabricated output. Scoped to the caller&#39;s org; requires a validated principal.
      * @param name  (required)
-     * @param invokeReq  (required)
-     * @return ApiResponse&lt;InvocationView&gt;
+     * @param functionInvokeReq  (required)
+     * @return ApiResponse&lt;FunctionInvocationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1426,11 +1480,12 @@ public class FunctionApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 502 </td><td> bad gateway </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InvocationView> postFunctionByNameInvokeWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull InvokeReq invokeReq) throws ApiException {
-        okhttp3.Call localVarCall = postFunctionByNameInvokeValidateBeforeCall(name, invokeReq, null);
-        Type localVarReturnType = new TypeToken<InvocationView>(){}.getType();
+    public ApiResponse<FunctionInvocationView> postFunctionByNameInvokeWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull FunctionInvokeReq functionInvokeReq) throws ApiException {
+        okhttp3.Call localVarCall = postFunctionByNameInvokeValidateBeforeCall(name, functionInvokeReq, null);
+        Type localVarReturnType = new TypeToken<FunctionInvocationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1438,7 +1493,7 @@ public class FunctionApi {
      * Runs a function and records a REAL invocation. (asynchronously)
      * Runs a function and records a REAL invocation.  The answer is the invocation record whatever happened to it: 200 when the org&#39;s code ran clean, 502 when it ran and failed, 503 when this deployment has no sandbox to run code in. The record IS the evidence, so it rides the failure rather than being replaced by an error envelope.  Billing is two-part and both parts are prepaid-then-metered on the one shared meter: a flat per-invocation request fee, gated BEFORE any sandbox compute runs so an unfunded org gets 402 and nothing executes, and a usage-native GB-seconds compute debit taken after the run. Either is independently free when its fee is zero, so an operator can bill by request alone, by compute alone, or by both — and a zero request fee removes the balance gate with it.  A TRANSPORT failure is not charged: the sandbox being unreachable ran no billable compute. Code that ran and exited non-zero IS charged — that is a successful invocation of a failing program, not a billing failure.  When the sandbox is not configured on this deployment, a non-fleet function fails closed before anything is recorded — no execution and no fabricated output. Scoped to the caller&#39;s org; requires a validated principal.
      * @param name  (required)
-     * @param invokeReq  (required)
+     * @param functionInvokeReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1449,12 +1504,13 @@ public class FunctionApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 502 </td><td> bad gateway </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFunctionByNameInvokeAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull InvokeReq invokeReq, final ApiCallback<InvocationView> _callback) throws ApiException {
+    public okhttp3.Call postFunctionByNameInvokeAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull FunctionInvokeReq functionInvokeReq, final ApiCallback<FunctionInvocationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postFunctionByNameInvokeValidateBeforeCall(name, invokeReq, _callback);
-        Type localVarReturnType = new TypeToken<InvocationView>(){}.getType();
+        okhttp3.Call localVarCall = postFunctionByNameInvokeValidateBeforeCall(name, functionInvokeReq, _callback);
+        Type localVarReturnType = new TypeToken<FunctionInvocationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

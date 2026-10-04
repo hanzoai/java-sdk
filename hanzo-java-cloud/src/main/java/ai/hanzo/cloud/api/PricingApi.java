@@ -27,18 +27,19 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.EnablementBoard;
-import ai.hanzo.cloud.model.EnablementOptRef;
-import ai.hanzo.cloud.model.PricingHealth;
-import ai.hanzo.cloud.model.PricingModelList;
-import ai.hanzo.cloud.model.PricingPlanList;
-import ai.hanzo.cloud.model.PricingPresetList;
-import ai.hanzo.cloud.model.PricingProviderList;
-import ai.hanzo.cloud.model.PricingRegionList;
-import ai.hanzo.cloud.model.PricingSyncOut;
-import ai.hanzo.cloud.model.PricingTierList;
-import ai.hanzo.cloud.model.PricingToolList;
-import ai.hanzo.cloud.model.UserEnablementItem;
+import ai.hanzo.cloud.model.PricingCard;
+import ai.hanzo.cloud.model.PricingEnablementBoard;
+import ai.hanzo.cloud.model.PricingEnablementOptRef;
+import ai.hanzo.cloud.model.PricingPricingHealth;
+import ai.hanzo.cloud.model.PricingPricingModelList;
+import ai.hanzo.cloud.model.PricingPricingPlanList;
+import ai.hanzo.cloud.model.PricingPricingPresetList;
+import ai.hanzo.cloud.model.PricingPricingProviderList;
+import ai.hanzo.cloud.model.PricingPricingRegionList;
+import ai.hanzo.cloud.model.PricingPricingTierList;
+import ai.hanzo.cloud.model.PricingPricingToolList;
+import ai.hanzo.cloud.model.PricingUserEnablementItem;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -93,6 +94,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingCall(final ApiCallback _callback) throws ApiException {
@@ -121,7 +123,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -155,6 +158,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Map<String, Object> getPricing() throws ApiException {
@@ -172,6 +176,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Map<String, Object>> getPricingWithHttpInfo() throws ApiException {
@@ -191,6 +196,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
@@ -210,6 +216,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingBaseCall(final ApiCallback _callback) throws ApiException {
@@ -238,7 +245,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -265,35 +273,37 @@ public class PricingApi {
     /**
      * Returns the Hanzo Base plans — the managed-instance tiers, each with its monthly and annual price, storage and request allowances and feature list.
      * Returns the Hanzo Base plans — the managed-instance tiers, each with its monthly and annual price, storage and request allowances and feature list.
-     * @return PricingPlanList
+     * @return PricingPricingPlanList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PricingPlanList getPricingBase() throws ApiException {
-        ApiResponse<PricingPlanList> localVarResp = getPricingBaseWithHttpInfo();
+    public PricingPricingPlanList getPricingBase() throws ApiException {
+        ApiResponse<PricingPricingPlanList> localVarResp = getPricingBaseWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the Hanzo Base plans — the managed-instance tiers, each with its monthly and annual price, storage and request allowances and feature list.
      * Returns the Hanzo Base plans — the managed-instance tiers, each with its monthly and annual price, storage and request allowances and feature list.
-     * @return ApiResponse&lt;PricingPlanList&gt;
+     * @return ApiResponse&lt;PricingPricingPlanList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingPlanList> getPricingBaseWithHttpInfo() throws ApiException {
+    public ApiResponse<PricingPricingPlanList> getPricingBaseWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPricingBaseValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingPlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -308,12 +318,13 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPricingBaseAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
+    public okhttp3.Call getPricingBaseAsync(final ApiCallback<PricingPricingPlanList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingBaseValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingPlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -327,6 +338,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingBlockchainCall(final ApiCallback _callback) throws ApiException {
@@ -355,7 +367,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -382,35 +395,37 @@ public class PricingApi {
     /**
      * Returns the blockchain access plans — the RPC and node tiers, each with its monthly price, compute-unit allowance and feature list.
      * Returns the blockchain access plans — the RPC and node tiers, each with its monthly price, compute-unit allowance and feature list.
-     * @return PricingPlanList
+     * @return PricingPricingPlanList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PricingPlanList getPricingBlockchain() throws ApiException {
-        ApiResponse<PricingPlanList> localVarResp = getPricingBlockchainWithHttpInfo();
+    public PricingPricingPlanList getPricingBlockchain() throws ApiException {
+        ApiResponse<PricingPricingPlanList> localVarResp = getPricingBlockchainWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the blockchain access plans — the RPC and node tiers, each with its monthly price, compute-unit allowance and feature list.
      * Returns the blockchain access plans — the RPC and node tiers, each with its monthly price, compute-unit allowance and feature list.
-     * @return ApiResponse&lt;PricingPlanList&gt;
+     * @return ApiResponse&lt;PricingPricingPlanList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingPlanList> getPricingBlockchainWithHttpInfo() throws ApiException {
+    public ApiResponse<PricingPricingPlanList> getPricingBlockchainWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPricingBlockchainValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingPlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -425,12 +440,13 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPricingBlockchainAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
+    public okhttp3.Call getPricingBlockchainAsync(final ApiCallback<PricingPricingPlanList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingBlockchainValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingPlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -444,6 +460,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingCloudCall(final ApiCallback _callback) throws ApiException {
@@ -472,7 +489,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -506,6 +524,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Map<String, Object> getPricingCloud() throws ApiException {
@@ -523,6 +542,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Map<String, Object>> getPricingCloudWithHttpInfo() throws ApiException {
@@ -542,6 +562,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingCloudAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
@@ -561,6 +582,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingCloudPlansCall(final ApiCallback _callback) throws ApiException {
@@ -589,7 +611,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -616,35 +639,37 @@ public class PricingApi {
     /**
      * Returns just the cloud instance plans — each with its vCPU, memory, disk, CPU type, VM allowance, feature list and monthly and hourly price.
      * Returns just the cloud instance plans — each with its vCPU, memory, disk, CPU type, VM allowance, feature list and monthly and hourly price. It is the plans of the cloud section on their own.
-     * @return PricingPlanList
+     * @return PricingPricingPlanList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PricingPlanList getPricingCloudPlans() throws ApiException {
-        ApiResponse<PricingPlanList> localVarResp = getPricingCloudPlansWithHttpInfo();
+    public PricingPricingPlanList getPricingCloudPlans() throws ApiException {
+        ApiResponse<PricingPricingPlanList> localVarResp = getPricingCloudPlansWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns just the cloud instance plans — each with its vCPU, memory, disk, CPU type, VM allowance, feature list and monthly and hourly price.
      * Returns just the cloud instance plans — each with its vCPU, memory, disk, CPU type, VM allowance, feature list and monthly and hourly price. It is the plans of the cloud section on their own.
-     * @return ApiResponse&lt;PricingPlanList&gt;
+     * @return ApiResponse&lt;PricingPricingPlanList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingPlanList> getPricingCloudPlansWithHttpInfo() throws ApiException {
+    public ApiResponse<PricingPricingPlanList> getPricingCloudPlansWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPricingCloudPlansValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingPlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -659,12 +684,13 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPricingCloudPlansAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
+    public okhttp3.Call getPricingCloudPlansAsync(final ApiCallback<PricingPricingPlanList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingCloudPlansValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingPlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -678,6 +704,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingCloudRegionsCall(final ApiCallback _callback) throws ApiException {
@@ -706,7 +733,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -733,35 +761,37 @@ public class PricingApi {
     /**
      * Returns the regions a cloud instance can be placed in, each with its id, display name and physical location.
      * Returns the regions a cloud instance can be placed in, each with its id, display name and physical location. It is the regions of the cloud section on their own.
-     * @return PricingRegionList
+     * @return PricingPricingRegionList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PricingRegionList getPricingCloudRegions() throws ApiException {
-        ApiResponse<PricingRegionList> localVarResp = getPricingCloudRegionsWithHttpInfo();
+    public PricingPricingRegionList getPricingCloudRegions() throws ApiException {
+        ApiResponse<PricingPricingRegionList> localVarResp = getPricingCloudRegionsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the regions a cloud instance can be placed in, each with its id, display name and physical location.
      * Returns the regions a cloud instance can be placed in, each with its id, display name and physical location. It is the regions of the cloud section on their own.
-     * @return ApiResponse&lt;PricingRegionList&gt;
+     * @return ApiResponse&lt;PricingPricingRegionList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingRegionList> getPricingCloudRegionsWithHttpInfo() throws ApiException {
+    public ApiResponse<PricingPricingRegionList> getPricingCloudRegionsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPricingCloudRegionsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PricingRegionList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingRegionList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -776,12 +806,13 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPricingCloudRegionsAsync(final ApiCallback<PricingRegionList> _callback) throws ApiException {
+    public okhttp3.Call getPricingCloudRegionsAsync(final ApiCallback<PricingPricingRegionList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingCloudRegionsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PricingRegionList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingRegionList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -795,6 +826,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingCloudStorageCall(final ApiCallback _callback) throws ApiException {
@@ -823,7 +855,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -857,6 +890,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Map<String, Object> getPricingCloudStorage() throws ApiException {
@@ -874,6 +908,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Map<String, Object>> getPricingCloudStorageWithHttpInfo() throws ApiException {
@@ -893,6 +928,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingCloudStorageAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
@@ -912,6 +948,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingComputeCall(final ApiCallback _callback) throws ApiException {
@@ -940,7 +977,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -974,6 +1012,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Map<String, Object> getPricingCompute() throws ApiException {
@@ -991,6 +1030,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Map<String, Object>> getPricingComputeWithHttpInfo() throws ApiException {
@@ -1010,6 +1050,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingComputeAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
@@ -1029,6 +1070,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingComputePresetsCall(final ApiCallback _callback) throws ApiException {
@@ -1057,7 +1099,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1084,35 +1127,37 @@ public class PricingApi {
     /**
      * Returns just the named compute sizes — the short, human-labelled list (\&quot;Starter\&quot;, \&quot;Pro\&quot;) a size picker renders, each carrying its provider slug, vCPU, memory, disk and price.
      * Returns just the named compute sizes — the short, human-labelled list (\&quot;Starter\&quot;, \&quot;Pro\&quot;) a size picker renders, each carrying its provider slug, vCPU, memory, disk and price. It is the presets of the compute section on their own, for a caller that does not need the full tier table.
-     * @return PricingPresetList
+     * @return PricingPricingPresetList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PricingPresetList getPricingComputePresets() throws ApiException {
-        ApiResponse<PricingPresetList> localVarResp = getPricingComputePresetsWithHttpInfo();
+    public PricingPricingPresetList getPricingComputePresets() throws ApiException {
+        ApiResponse<PricingPricingPresetList> localVarResp = getPricingComputePresetsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns just the named compute sizes — the short, human-labelled list (\&quot;Starter\&quot;, \&quot;Pro\&quot;) a size picker renders, each carrying its provider slug, vCPU, memory, disk and price.
      * Returns just the named compute sizes — the short, human-labelled list (\&quot;Starter\&quot;, \&quot;Pro\&quot;) a size picker renders, each carrying its provider slug, vCPU, memory, disk and price. It is the presets of the compute section on their own, for a caller that does not need the full tier table.
-     * @return ApiResponse&lt;PricingPresetList&gt;
+     * @return ApiResponse&lt;PricingPricingPresetList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingPresetList> getPricingComputePresetsWithHttpInfo() throws ApiException {
+    public ApiResponse<PricingPricingPresetList> getPricingComputePresetsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPricingComputePresetsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PricingPresetList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingPresetList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1127,12 +1172,13 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPricingComputePresetsAsync(final ApiCallback<PricingPresetList> _callback) throws ApiException {
+    public okhttp3.Call getPricingComputePresetsAsync(final ApiCallback<PricingPricingPresetList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingComputePresetsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PricingPresetList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingPresetList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1146,6 +1192,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingDatastoreCall(final ApiCallback _callback) throws ApiException {
@@ -1174,7 +1221,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1208,6 +1256,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Map<String, Object> getPricingDatastore() throws ApiException {
@@ -1225,6 +1274,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Map<String, Object>> getPricingDatastoreWithHttpInfo() throws ApiException {
@@ -1244,6 +1294,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingDatastoreAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
@@ -1263,6 +1314,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingEnablementCall(final ApiCallback _callback) throws ApiException {
@@ -1291,7 +1343,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1318,35 +1371,37 @@ public class PricingApi {
     /**
      * Returns what the caller&#39;s org can actually use: every managed item with its global state, whether it is effective here, whether this org is already opted into its beta, and whether it may still opt in.
      * Returns what the caller&#39;s org can actually use: every managed item with its global state, whether it is effective here, whether this org is already opted into its beta, and whether it may still opt in. Read-only and safe for any caller — one without a validated principal simply sees the generally-available items and no opt-in affordance, never another org&#39;s state.
-     * @return EnablementBoard
+     * @return PricingEnablementBoard
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EnablementBoard getPricingEnablement() throws ApiException {
-        ApiResponse<EnablementBoard> localVarResp = getPricingEnablementWithHttpInfo();
+    public PricingEnablementBoard getPricingEnablement() throws ApiException {
+        ApiResponse<PricingEnablementBoard> localVarResp = getPricingEnablementWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns what the caller&#39;s org can actually use: every managed item with its global state, whether it is effective here, whether this org is already opted into its beta, and whether it may still opt in.
      * Returns what the caller&#39;s org can actually use: every managed item with its global state, whether it is effective here, whether this org is already opted into its beta, and whether it may still opt in. Read-only and safe for any caller — one without a validated principal simply sees the generally-available items and no opt-in affordance, never another org&#39;s state.
-     * @return ApiResponse&lt;EnablementBoard&gt;
+     * @return ApiResponse&lt;PricingEnablementBoard&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EnablementBoard> getPricingEnablementWithHttpInfo() throws ApiException {
+    public ApiResponse<PricingEnablementBoard> getPricingEnablementWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPricingEnablementValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<EnablementBoard>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingEnablementBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1361,12 +1416,13 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPricingEnablementAsync(final ApiCallback<EnablementBoard> _callback) throws ApiException {
+    public okhttp3.Call getPricingEnablementAsync(final ApiCallback<PricingEnablementBoard> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingEnablementValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<EnablementBoard>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingEnablementBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1380,6 +1436,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingFeaturedCall(final ApiCallback _callback) throws ApiException {
@@ -1408,7 +1465,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1435,35 +1493,37 @@ public class PricingApi {
     /**
      * Returns the models the catalog highlights, filtered to what the caller&#39;s org may see.
      * Returns the models the catalog highlights, filtered to what the caller&#39;s org may see. It is the same catalog as ListModels narrowed to entries the pricing source marks featured.
-     * @return PricingModelList
+     * @return PricingPricingModelList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PricingModelList getPricingFeatured() throws ApiException {
-        ApiResponse<PricingModelList> localVarResp = getPricingFeaturedWithHttpInfo();
+    public PricingPricingModelList getPricingFeatured() throws ApiException {
+        ApiResponse<PricingPricingModelList> localVarResp = getPricingFeaturedWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the models the catalog highlights, filtered to what the caller&#39;s org may see.
      * Returns the models the catalog highlights, filtered to what the caller&#39;s org may see. It is the same catalog as ListModels narrowed to entries the pricing source marks featured.
-     * @return ApiResponse&lt;PricingModelList&gt;
+     * @return ApiResponse&lt;PricingPricingModelList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingModelList> getPricingFeaturedWithHttpInfo() throws ApiException {
+    public ApiResponse<PricingPricingModelList> getPricingFeaturedWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPricingFeaturedValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PricingModelList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingModelList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1478,12 +1538,13 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPricingFeaturedAsync(final ApiCallback<PricingModelList> _callback) throws ApiException {
+    public okhttp3.Call getPricingFeaturedAsync(final ApiCallback<PricingPricingModelList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingFeaturedValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PricingModelList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingModelList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1497,6 +1558,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingFreeCall(final ApiCallback _callback) throws ApiException {
@@ -1525,7 +1587,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1552,35 +1615,37 @@ public class PricingApi {
     /**
      * Returns the models that cost nothing to call, filtered to what the caller&#39;s org may see.
      * Returns the models that cost nothing to call, filtered to what the caller&#39;s org may see. It is the same catalog as ListModels narrowed to entries the pricing source marks free.
-     * @return PricingModelList
+     * @return PricingPricingModelList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PricingModelList getPricingFree() throws ApiException {
-        ApiResponse<PricingModelList> localVarResp = getPricingFreeWithHttpInfo();
+    public PricingPricingModelList getPricingFree() throws ApiException {
+        ApiResponse<PricingPricingModelList> localVarResp = getPricingFreeWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the models that cost nothing to call, filtered to what the caller&#39;s org may see.
      * Returns the models that cost nothing to call, filtered to what the caller&#39;s org may see. It is the same catalog as ListModels narrowed to entries the pricing source marks free.
-     * @return ApiResponse&lt;PricingModelList&gt;
+     * @return ApiResponse&lt;PricingPricingModelList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingModelList> getPricingFreeWithHttpInfo() throws ApiException {
+    public ApiResponse<PricingPricingModelList> getPricingFreeWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPricingFreeValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PricingModelList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingModelList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1595,12 +1660,13 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPricingFreeAsync(final ApiCallback<PricingModelList> _callback) throws ApiException {
+    public okhttp3.Call getPricingFreeAsync(final ApiCallback<PricingPricingModelList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingFreeValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PricingModelList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingModelList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1614,6 +1680,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingGpuCall(final ApiCallback _callback) throws ApiException {
@@ -1642,7 +1709,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1669,35 +1737,37 @@ public class PricingApi {
     /**
      * ListGPUTiers returns the rentable GPU configurations, each with its accelerator count and model, VRAM, vCPU, host memory and hourly price.
      * ListGPUTiers returns the rentable GPU configurations, each with its accelerator count and model, VRAM, vCPU, host memory and hourly price.
-     * @return PricingTierList
+     * @return PricingPricingTierList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PricingTierList getPricingGpu() throws ApiException {
-        ApiResponse<PricingTierList> localVarResp = getPricingGpuWithHttpInfo();
+    public PricingPricingTierList getPricingGpu() throws ApiException {
+        ApiResponse<PricingPricingTierList> localVarResp = getPricingGpuWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * ListGPUTiers returns the rentable GPU configurations, each with its accelerator count and model, VRAM, vCPU, host memory and hourly price.
      * ListGPUTiers returns the rentable GPU configurations, each with its accelerator count and model, VRAM, vCPU, host memory and hourly price.
-     * @return ApiResponse&lt;PricingTierList&gt;
+     * @return ApiResponse&lt;PricingPricingTierList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingTierList> getPricingGpuWithHttpInfo() throws ApiException {
+    public ApiResponse<PricingPricingTierList> getPricingGpuWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPricingGpuValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PricingTierList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingTierList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1712,12 +1782,13 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPricingGpuAsync(final ApiCallback<PricingTierList> _callback) throws ApiException {
+    public okhttp3.Call getPricingGpuAsync(final ApiCallback<PricingPricingTierList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingGpuValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PricingTierList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingTierList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1731,6 +1802,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingHealthCall(final ApiCallback _callback) throws ApiException {
@@ -1759,7 +1831,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1784,43 +1857,45 @@ public class PricingApi {
     }
 
     /**
-     * Health reports that the pricing subsystem is mounted and serving.
-     * Health reports that the pricing subsystem is mounted and serving. It answers from the process itself and consults neither the catalog bundle nor the enablement store, so it stays \&quot;ok\&quot; while either is degraded.
-     * @return PricingHealth
+     * Reports that the pricing subsystem is mounted and serving.
+     * Reports that the pricing subsystem is mounted and serving. It answers from the process itself and consults neither the catalog bundle nor the enablement store, so it stays \&quot;ok\&quot; while either is degraded.
+     * @return PricingPricingHealth
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PricingHealth getPricingHealth() throws ApiException {
-        ApiResponse<PricingHealth> localVarResp = getPricingHealthWithHttpInfo();
+    public PricingPricingHealth getPricingHealth() throws ApiException {
+        ApiResponse<PricingPricingHealth> localVarResp = getPricingHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Health reports that the pricing subsystem is mounted and serving.
-     * Health reports that the pricing subsystem is mounted and serving. It answers from the process itself and consults neither the catalog bundle nor the enablement store, so it stays \&quot;ok\&quot; while either is degraded.
-     * @return ApiResponse&lt;PricingHealth&gt;
+     * Reports that the pricing subsystem is mounted and serving.
+     * Reports that the pricing subsystem is mounted and serving. It answers from the process itself and consults neither the catalog bundle nor the enablement store, so it stays \&quot;ok\&quot; while either is degraded.
+     * @return ApiResponse&lt;PricingPricingHealth&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingHealth> getPricingHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<PricingPricingHealth> getPricingHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPricingHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PricingHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Health reports that the pricing subsystem is mounted and serving. (asynchronously)
-     * Health reports that the pricing subsystem is mounted and serving. It answers from the process itself and consults neither the catalog bundle nor the enablement store, so it stays \&quot;ok\&quot; while either is degraded.
+     * Reports that the pricing subsystem is mounted and serving. (asynchronously)
+     * Reports that the pricing subsystem is mounted and serving. It answers from the process itself and consults neither the catalog bundle nor the enablement store, so it stays \&quot;ok\&quot; while either is degraded.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1829,12 +1904,13 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPricingHealthAsync(final ApiCallback<PricingHealth> _callback) throws ApiException {
+    public okhttp3.Call getPricingHealthAsync(final ApiCallback<PricingPricingHealth> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PricingHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1848,6 +1924,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingIamCall(final ApiCallback _callback) throws ApiException {
@@ -1876,7 +1953,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1903,35 +1981,37 @@ public class PricingApi {
     /**
      * ListIAMPlans returns the identity plans — the Hanzo IAM tiers, each with its monthly and annual price, monthly-active-user allowance and feature list.
      * ListIAMPlans returns the identity plans — the Hanzo IAM tiers, each with its monthly and annual price, monthly-active-user allowance and feature list.
-     * @return PricingPlanList
+     * @return PricingPricingPlanList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PricingPlanList getPricingIam() throws ApiException {
-        ApiResponse<PricingPlanList> localVarResp = getPricingIamWithHttpInfo();
+    public PricingPricingPlanList getPricingIam() throws ApiException {
+        ApiResponse<PricingPricingPlanList> localVarResp = getPricingIamWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * ListIAMPlans returns the identity plans — the Hanzo IAM tiers, each with its monthly and annual price, monthly-active-user allowance and feature list.
      * ListIAMPlans returns the identity plans — the Hanzo IAM tiers, each with its monthly and annual price, monthly-active-user allowance and feature list.
-     * @return ApiResponse&lt;PricingPlanList&gt;
+     * @return ApiResponse&lt;PricingPricingPlanList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingPlanList> getPricingIamWithHttpInfo() throws ApiException {
+    public ApiResponse<PricingPricingPlanList> getPricingIamWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPricingIamValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingPlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1946,12 +2026,13 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPricingIamAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
+    public okhttp3.Call getPricingIamAsync(final ApiCallback<PricingPricingPlanList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingIamValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingPlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1966,6 +2047,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingModelByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -1995,7 +2077,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2035,6 +2118,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Map<String, Object> getPricingModelByName(@javax.annotation.Nonnull String name) throws ApiException {
@@ -2053,6 +2137,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Map<String, Object>> getPricingModelByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
@@ -2073,6 +2158,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingModelByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
@@ -2092,6 +2178,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingModelsCall(final ApiCallback _callback) throws ApiException {
@@ -2120,7 +2207,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2147,35 +2235,37 @@ public class PricingApi {
     /**
      * Returns the whole model catalog — every model the gateway serves, Zen and third-party alike — filtered to what the caller&#39;s org may see.
      * Returns the whole model catalog — every model the gateway serves, Zen and third-party alike — filtered to what the caller&#39;s org may see. A model an admin has disabled is absent; one in beta appears only for an org granted it. A SuperAdmin sees every model, each annotated with its enablement state.
-     * @return PricingModelList
+     * @return PricingPricingModelList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PricingModelList getPricingModels() throws ApiException {
-        ApiResponse<PricingModelList> localVarResp = getPricingModelsWithHttpInfo();
+    public PricingPricingModelList getPricingModels() throws ApiException {
+        ApiResponse<PricingPricingModelList> localVarResp = getPricingModelsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the whole model catalog — every model the gateway serves, Zen and third-party alike — filtered to what the caller&#39;s org may see.
      * Returns the whole model catalog — every model the gateway serves, Zen and third-party alike — filtered to what the caller&#39;s org may see. A model an admin has disabled is absent; one in beta appears only for an org granted it. A SuperAdmin sees every model, each annotated with its enablement state.
-     * @return ApiResponse&lt;PricingModelList&gt;
+     * @return ApiResponse&lt;PricingPricingModelList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingModelList> getPricingModelsWithHttpInfo() throws ApiException {
+    public ApiResponse<PricingPricingModelList> getPricingModelsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPricingModelsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PricingModelList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingModelList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2190,12 +2280,13 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPricingModelsAsync(final ApiCallback<PricingModelList> _callback) throws ApiException {
+    public okhttp3.Call getPricingModelsAsync(final ApiCallback<PricingPricingModelList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingModelsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PricingModelList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingModelList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2209,6 +2300,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingPaasCall(final ApiCallback _callback) throws ApiException {
@@ -2237,7 +2329,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2264,35 +2357,37 @@ public class PricingApi {
     /**
      * ListPaaSPlans returns the application-hosting plans — the deploy-and-host tiers, each with its monthly and annual price, app and memory allowances and feature list.
      * ListPaaSPlans returns the application-hosting plans — the deploy-and-host tiers, each with its monthly and annual price, app and memory allowances and feature list.
-     * @return PricingPlanList
+     * @return PricingPricingPlanList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PricingPlanList getPricingPaas() throws ApiException {
-        ApiResponse<PricingPlanList> localVarResp = getPricingPaasWithHttpInfo();
+    public PricingPricingPlanList getPricingPaas() throws ApiException {
+        ApiResponse<PricingPricingPlanList> localVarResp = getPricingPaasWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * ListPaaSPlans returns the application-hosting plans — the deploy-and-host tiers, each with its monthly and annual price, app and memory allowances and feature list.
      * ListPaaSPlans returns the application-hosting plans — the deploy-and-host tiers, each with its monthly and annual price, app and memory allowances and feature list.
-     * @return ApiResponse&lt;PricingPlanList&gt;
+     * @return ApiResponse&lt;PricingPricingPlanList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingPlanList> getPricingPaasWithHttpInfo() throws ApiException {
+    public ApiResponse<PricingPricingPlanList> getPricingPaasWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPricingPaasValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingPlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2307,12 +2402,13 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPricingPaasAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
+    public okhttp3.Call getPricingPaasAsync(final ApiCallback<PricingPricingPlanList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingPaasValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingPlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2326,6 +2422,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingPolicyCall(final ApiCallback _callback) throws ApiException {
@@ -2354,7 +2451,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2388,6 +2486,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Map<String, Object> getPricingPolicy() throws ApiException {
@@ -2405,6 +2504,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Map<String, Object>> getPricingPolicyWithHttpInfo() throws ApiException {
@@ -2424,6 +2524,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingPolicyAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
@@ -2443,6 +2544,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingProvidersCall(final ApiCallback _callback) throws ApiException {
@@ -2471,7 +2573,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2498,35 +2601,37 @@ public class PricingApi {
     /**
      * Returns the model providers the catalog knows, each with its info object, filtered to what the caller&#39;s org may see.
      * Returns the model providers the catalog knows, each with its info object, filtered to what the caller&#39;s org may see. A provider an admin has disabled is absent — and so are its models everywhere else on this surface, because a provider&#39;s state cascades to what it serves.
-     * @return PricingProviderList
+     * @return PricingPricingProviderList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PricingProviderList getPricingProviders() throws ApiException {
-        ApiResponse<PricingProviderList> localVarResp = getPricingProvidersWithHttpInfo();
+    public PricingPricingProviderList getPricingProviders() throws ApiException {
+        ApiResponse<PricingPricingProviderList> localVarResp = getPricingProvidersWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the model providers the catalog knows, each with its info object, filtered to what the caller&#39;s org may see.
      * Returns the model providers the catalog knows, each with its info object, filtered to what the caller&#39;s org may see. A provider an admin has disabled is absent — and so are its models everywhere else on this surface, because a provider&#39;s state cascades to what it serves.
-     * @return ApiResponse&lt;PricingProviderList&gt;
+     * @return ApiResponse&lt;PricingPricingProviderList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingProviderList> getPricingProvidersWithHttpInfo() throws ApiException {
+    public ApiResponse<PricingPricingProviderList> getPricingProvidersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPricingProvidersValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PricingProviderList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingProviderList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2541,12 +2646,13 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPricingProvidersAsync(final ApiCallback<PricingProviderList> _callback) throws ApiException {
+    public okhttp3.Call getPricingProvidersAsync(final ApiCallback<PricingPricingProviderList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingProvidersValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PricingProviderList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingProviderList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2560,6 +2666,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingServicesCall(final ApiCallback _callback) throws ApiException {
@@ -2588,7 +2695,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2622,6 +2730,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Map<String, Object> getPricingServices() throws ApiException {
@@ -2639,6 +2748,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Map<String, Object>> getPricingServicesWithHttpInfo() throws ApiException {
@@ -2658,6 +2768,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingServicesAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
@@ -2677,6 +2788,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingSubscriptionsCall(final ApiCallback _callback) throws ApiException {
@@ -2705,7 +2817,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2732,35 +2845,37 @@ public class PricingApi {
     /**
      * Returns the API subscription plans — the account-level tiers a customer subscribes to, each with its monthly and annual price, included credit, rate limits and feature list.
      * Returns the API subscription plans — the account-level tiers a customer subscribes to, each with its monthly and annual price, included credit, rate limits and feature list.
-     * @return PricingPlanList
+     * @return PricingPricingPlanList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PricingPlanList getPricingSubscriptions() throws ApiException {
-        ApiResponse<PricingPlanList> localVarResp = getPricingSubscriptionsWithHttpInfo();
+    public PricingPricingPlanList getPricingSubscriptions() throws ApiException {
+        ApiResponse<PricingPricingPlanList> localVarResp = getPricingSubscriptionsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the API subscription plans — the account-level tiers a customer subscribes to, each with its monthly and annual price, included credit, rate limits and feature list.
      * Returns the API subscription plans — the account-level tiers a customer subscribes to, each with its monthly and annual price, included credit, rate limits and feature list.
-     * @return ApiResponse&lt;PricingPlanList&gt;
+     * @return ApiResponse&lt;PricingPricingPlanList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingPlanList> getPricingSubscriptionsWithHttpInfo() throws ApiException {
+    public ApiResponse<PricingPricingPlanList> getPricingSubscriptionsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPricingSubscriptionsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingPlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2775,12 +2890,13 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPricingSubscriptionsAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
+    public okhttp3.Call getPricingSubscriptionsAsync(final ApiCallback<PricingPricingPlanList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingSubscriptionsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingPlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2794,6 +2910,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingSummaryCall(final ApiCallback _callback) throws ApiException {
@@ -2822,7 +2939,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2856,6 +2974,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Map<String, Object> getPricingSummary() throws ApiException {
@@ -2873,6 +2992,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Map<String, Object>> getPricingSummaryWithHttpInfo() throws ApiException {
@@ -2892,12 +3012,135 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingSummaryAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingSummaryValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getPricingTariff
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPricingTariffCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/pricing/tariff";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPricingTariffValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingTariffCall(_callback);
+
+    }
+
+    /**
+     * Returns the platform&#39;s rate card: what a bill is made of, what each part costs, and the completion windows a request may ask for.
+     * Returns the platform&#39;s rate card: what a bill is made of, what each part costs, and the completion windows a request may ask for.  FOUR COMPONENTS, and every charge is one of them — model inference, computer, web tools and media generation. Two are quoted before they run, so an agent is refused before it breaches its budget; two are booked from what they used, because neither a provider&#39;s charge nor a render&#39;s cost is knowable in advance.  EVERY AMOUNT IS INTEGER MICRO-USD (1 USD &#x3D; 1,000,000), stated once in &#x60;unit&#x60;, and each rate says what one unit of it is in &#x60;per&#x60;. The compute rates are per HOUR because that is the unit a span is priced in — rate × seconds / 3600 — and because a GiB-second is four and a half micro-USD, which no integer holds.  The rates are the ones the ledger books: each is resolved through the same authority the metering path reads, falling back to the same compiled floor. A rate of zero is a price and not an absence — a paused computer, a computer&#39;s creation, the interfaces and a seat all cost nothing by design.
+     * @return PricingCard
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public PricingCard getPricingTariff() throws ApiException {
+        ApiResponse<PricingCard> localVarResp = getPricingTariffWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns the platform&#39;s rate card: what a bill is made of, what each part costs, and the completion windows a request may ask for.
+     * Returns the platform&#39;s rate card: what a bill is made of, what each part costs, and the completion windows a request may ask for.  FOUR COMPONENTS, and every charge is one of them — model inference, computer, web tools and media generation. Two are quoted before they run, so an agent is refused before it breaches its budget; two are booked from what they used, because neither a provider&#39;s charge nor a render&#39;s cost is knowable in advance.  EVERY AMOUNT IS INTEGER MICRO-USD (1 USD &#x3D; 1,000,000), stated once in &#x60;unit&#x60;, and each rate says what one unit of it is in &#x60;per&#x60;. The compute rates are per HOUR because that is the unit a span is priced in — rate × seconds / 3600 — and because a GiB-second is four and a half micro-USD, which no integer holds.  The rates are the ones the ledger books: each is resolved through the same authority the metering path reads, falling back to the same compiled floor. A rate of zero is a price and not an absence — a paused computer, a computer&#39;s creation, the interfaces and a seat all cost nothing by design.
+     * @return ApiResponse&lt;PricingCard&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PricingCard> getPricingTariffWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingTariffValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<PricingCard>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns the platform&#39;s rate card: what a bill is made of, what each part costs, and the completion windows a request may ask for. (asynchronously)
+     * Returns the platform&#39;s rate card: what a bill is made of, what each part costs, and the completion windows a request may ask for.  FOUR COMPONENTS, and every charge is one of them — model inference, computer, web tools and media generation. Two are quoted before they run, so an agent is refused before it breaches its budget; two are booked from what they used, because neither a provider&#39;s charge nor a render&#39;s cost is knowable in advance.  EVERY AMOUNT IS INTEGER MICRO-USD (1 USD &#x3D; 1,000,000), stated once in &#x60;unit&#x60;, and each rate says what one unit of it is in &#x60;per&#x60;. The compute rates are per HOUR because that is the unit a span is priced in — rate × seconds / 3600 — and because a GiB-second is four and a half micro-USD, which no integer holds.  The rates are the ones the ledger books: each is resolved through the same authority the metering path reads, falling back to the same compiled floor. A rate of zero is a price and not an absence — a paused computer, a computer&#39;s creation, the interfaces and a seat all cost nothing by design.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPricingTariffAsync(final ApiCallback<PricingCard> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPricingTariffValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<PricingCard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2911,6 +3154,7 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPricingToolsCall(final ApiCallback _callback) throws ApiException {
@@ -2939,7 +3183,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2964,43 +3209,45 @@ public class PricingApi {
     }
 
     /**
-     * Returns the per-use tool prices — web search, code interpreter, file storage, image generation, speech-to-text and text-to-speech — each with the unit it is billed by and its price in that unit.
-     * Returns the per-use tool prices — web search, code interpreter, file storage, image generation, speech-to-text and text-to-speech — each with the unit it is billed by and its price in that unit.
-     * @return PricingToolList
+     * Returns the per-use tool prices — web search, web fetch, code interpreter, file storage, image generation, speech-to-text and text-to-speech — each with the unit it is billed by and its price in that unit.
+     * Returns the per-use tool prices — web search, web fetch, code interpreter, file storage, image generation, speech-to-text and text-to-speech — each with the unit it is billed by and its price in that unit.  The two WEB rows are priced from the rate card rather than from the catalog, because those are the rows the platform charges by the call and a published number that is also a charged one has exactly one home (see tariff.go). Read them as integer micro-USD at /v1/pricing/tariff; the decimal here is the display this list has always carried.
+     * @return PricingPricingToolList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PricingToolList getPricingTools() throws ApiException {
-        ApiResponse<PricingToolList> localVarResp = getPricingToolsWithHttpInfo();
+    public PricingPricingToolList getPricingTools() throws ApiException {
+        ApiResponse<PricingPricingToolList> localVarResp = getPricingToolsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Returns the per-use tool prices — web search, code interpreter, file storage, image generation, speech-to-text and text-to-speech — each with the unit it is billed by and its price in that unit.
-     * Returns the per-use tool prices — web search, code interpreter, file storage, image generation, speech-to-text and text-to-speech — each with the unit it is billed by and its price in that unit.
-     * @return ApiResponse&lt;PricingToolList&gt;
+     * Returns the per-use tool prices — web search, web fetch, code interpreter, file storage, image generation, speech-to-text and text-to-speech — each with the unit it is billed by and its price in that unit.
+     * Returns the per-use tool prices — web search, web fetch, code interpreter, file storage, image generation, speech-to-text and text-to-speech — each with the unit it is billed by and its price in that unit.  The two WEB rows are priced from the rate card rather than from the catalog, because those are the rows the platform charges by the call and a published number that is also a charged one has exactly one home (see tariff.go). Read them as integer micro-USD at /v1/pricing/tariff; the decimal here is the display this list has always carried.
+     * @return ApiResponse&lt;PricingPricingToolList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingToolList> getPricingToolsWithHttpInfo() throws ApiException {
+    public ApiResponse<PricingPricingToolList> getPricingToolsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPricingToolsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PricingToolList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingToolList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Returns the per-use tool prices — web search, code interpreter, file storage, image generation, speech-to-text and text-to-speech — each with the unit it is billed by and its price in that unit. (asynchronously)
-     * Returns the per-use tool prices — web search, code interpreter, file storage, image generation, speech-to-text and text-to-speech — each with the unit it is billed by and its price in that unit.
+     * Returns the per-use tool prices — web search, web fetch, code interpreter, file storage, image generation, speech-to-text and text-to-speech — each with the unit it is billed by and its price in that unit. (asynchronously)
+     * Returns the per-use tool prices — web search, web fetch, code interpreter, file storage, image generation, speech-to-text and text-to-speech — each with the unit it is billed by and its price in that unit.  The two WEB rows are priced from the rate card rather than from the catalog, because those are the rows the platform charges by the call and a published number that is also a charged one has exactly one home (see tariff.go). Read them as integer micro-USD at /v1/pricing/tariff; the decimal here is the display this list has always carried.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3009,18 +3256,19 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPricingToolsAsync(final ApiCallback<PricingToolList> _callback) throws ApiException {
+    public okhttp3.Call getPricingToolsAsync(final ApiCallback<PricingPricingToolList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPricingToolsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PricingToolList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PricingPricingToolList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postPricingEnablementOptin
-     * @param enablementOptRef  (required)
+     * @param pricingEnablementOptRef  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3029,9 +3277,10 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPricingEnablementOptinCall(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPricingEnablementOptinCall(@javax.annotation.Nonnull PricingEnablementOptRef pricingEnablementOptRef, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3045,7 +3294,7 @@ public class PricingApi {
             basePath = null;
         }
 
-        Object localVarPostBody = enablementOptRef;
+        Object localVarPostBody = pricingEnablementOptRef;
 
         // create path and map variables
         String localVarPath = "/v1/pricing/enablement/optin";
@@ -3057,7 +3306,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3077,57 +3327,59 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPricingEnablementOptinValidateBeforeCall(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'enablementOptRef' is set
-        if (enablementOptRef == null) {
-            throw new ApiException("Missing the required parameter 'enablementOptRef' when calling postPricingEnablementOptin(Async)");
+    private okhttp3.Call postPricingEnablementOptinValidateBeforeCall(@javax.annotation.Nonnull PricingEnablementOptRef pricingEnablementOptRef, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'pricingEnablementOptRef' is set
+        if (pricingEnablementOptRef == null) {
+            throw new ApiException("Missing the required parameter 'pricingEnablementOptRef' when calling postPricingEnablementOptin(Async)");
         }
 
-        return postPricingEnablementOptinCall(enablementOptRef, _callback);
+        return postPricingEnablementOptinCall(pricingEnablementOptRef, _callback);
 
     }
 
     /**
      * Opts the caller&#39;s OWN org into a beta item.
      * Opts the caller&#39;s OWN org into a beta item. The org is the caller&#39;s validated one, so this can never target another org, and the registry refuses anything not in beta — so it can neither re-open an item an operator turned off nor touch one that is already generally available. Requires a signed-in caller with an org.
-     * @param enablementOptRef  (required)
-     * @return UserEnablementItem
+     * @param pricingEnablementOptRef  (required)
+     * @return PricingUserEnablementItem
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public UserEnablementItem postPricingEnablementOptin(@javax.annotation.Nonnull EnablementOptRef enablementOptRef) throws ApiException {
-        ApiResponse<UserEnablementItem> localVarResp = postPricingEnablementOptinWithHttpInfo(enablementOptRef);
+    public PricingUserEnablementItem postPricingEnablementOptin(@javax.annotation.Nonnull PricingEnablementOptRef pricingEnablementOptRef) throws ApiException {
+        ApiResponse<PricingUserEnablementItem> localVarResp = postPricingEnablementOptinWithHttpInfo(pricingEnablementOptRef);
         return localVarResp.getData();
     }
 
     /**
      * Opts the caller&#39;s OWN org into a beta item.
      * Opts the caller&#39;s OWN org into a beta item. The org is the caller&#39;s validated one, so this can never target another org, and the registry refuses anything not in beta — so it can neither re-open an item an operator turned off nor touch one that is already generally available. Requires a signed-in caller with an org.
-     * @param enablementOptRef  (required)
-     * @return ApiResponse&lt;UserEnablementItem&gt;
+     * @param pricingEnablementOptRef  (required)
+     * @return ApiResponse&lt;PricingUserEnablementItem&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UserEnablementItem> postPricingEnablementOptinWithHttpInfo(@javax.annotation.Nonnull EnablementOptRef enablementOptRef) throws ApiException {
-        okhttp3.Call localVarCall = postPricingEnablementOptinValidateBeforeCall(enablementOptRef, null);
-        Type localVarReturnType = new TypeToken<UserEnablementItem>(){}.getType();
+    public ApiResponse<PricingUserEnablementItem> postPricingEnablementOptinWithHttpInfo(@javax.annotation.Nonnull PricingEnablementOptRef pricingEnablementOptRef) throws ApiException {
+        okhttp3.Call localVarCall = postPricingEnablementOptinValidateBeforeCall(pricingEnablementOptRef, null);
+        Type localVarReturnType = new TypeToken<PricingUserEnablementItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Opts the caller&#39;s OWN org into a beta item. (asynchronously)
      * Opts the caller&#39;s OWN org into a beta item. The org is the caller&#39;s validated one, so this can never target another org, and the registry refuses anything not in beta — so it can neither re-open an item an operator turned off nor touch one that is already generally available. Requires a signed-in caller with an org.
-     * @param enablementOptRef  (required)
+     * @param pricingEnablementOptRef  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3136,18 +3388,19 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPricingEnablementOptinAsync(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback<UserEnablementItem> _callback) throws ApiException {
+    public okhttp3.Call postPricingEnablementOptinAsync(@javax.annotation.Nonnull PricingEnablementOptRef pricingEnablementOptRef, final ApiCallback<PricingUserEnablementItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postPricingEnablementOptinValidateBeforeCall(enablementOptRef, _callback);
-        Type localVarReturnType = new TypeToken<UserEnablementItem>(){}.getType();
+        okhttp3.Call localVarCall = postPricingEnablementOptinValidateBeforeCall(pricingEnablementOptRef, _callback);
+        Type localVarReturnType = new TypeToken<PricingUserEnablementItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postPricingEnablementOptout
-     * @param enablementOptRef  (required)
+     * @param pricingEnablementOptRef  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3156,9 +3409,10 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPricingEnablementOptoutCall(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPricingEnablementOptoutCall(@javax.annotation.Nonnull PricingEnablementOptRef pricingEnablementOptRef, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3172,7 +3426,7 @@ public class PricingApi {
             basePath = null;
         }
 
-        Object localVarPostBody = enablementOptRef;
+        Object localVarPostBody = pricingEnablementOptRef;
 
         // create path and map variables
         String localVarPath = "/v1/pricing/enablement/optout";
@@ -3184,7 +3438,8 @@ public class PricingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3204,57 +3459,59 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPricingEnablementOptoutValidateBeforeCall(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'enablementOptRef' is set
-        if (enablementOptRef == null) {
-            throw new ApiException("Missing the required parameter 'enablementOptRef' when calling postPricingEnablementOptout(Async)");
+    private okhttp3.Call postPricingEnablementOptoutValidateBeforeCall(@javax.annotation.Nonnull PricingEnablementOptRef pricingEnablementOptRef, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'pricingEnablementOptRef' is set
+        if (pricingEnablementOptRef == null) {
+            throw new ApiException("Missing the required parameter 'pricingEnablementOptRef' when calling postPricingEnablementOptout(Async)");
         }
 
-        return postPricingEnablementOptoutCall(enablementOptRef, _callback);
+        return postPricingEnablementOptoutCall(pricingEnablementOptRef, _callback);
 
     }
 
     /**
      * Removes the caller&#39;s OWN org from a beta item&#39;s grant list, the reverse of OptIntoBeta and idempotent.
      * Removes the caller&#39;s OWN org from a beta item&#39;s grant list, the reverse of OptIntoBeta and idempotent. The org is the caller&#39;s validated one, so this can never revoke another org&#39;s grant. Requires a signed-in caller with an org.
-     * @param enablementOptRef  (required)
-     * @return UserEnablementItem
+     * @param pricingEnablementOptRef  (required)
+     * @return PricingUserEnablementItem
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public UserEnablementItem postPricingEnablementOptout(@javax.annotation.Nonnull EnablementOptRef enablementOptRef) throws ApiException {
-        ApiResponse<UserEnablementItem> localVarResp = postPricingEnablementOptoutWithHttpInfo(enablementOptRef);
+    public PricingUserEnablementItem postPricingEnablementOptout(@javax.annotation.Nonnull PricingEnablementOptRef pricingEnablementOptRef) throws ApiException {
+        ApiResponse<PricingUserEnablementItem> localVarResp = postPricingEnablementOptoutWithHttpInfo(pricingEnablementOptRef);
         return localVarResp.getData();
     }
 
     /**
      * Removes the caller&#39;s OWN org from a beta item&#39;s grant list, the reverse of OptIntoBeta and idempotent.
      * Removes the caller&#39;s OWN org from a beta item&#39;s grant list, the reverse of OptIntoBeta and idempotent. The org is the caller&#39;s validated one, so this can never revoke another org&#39;s grant. Requires a signed-in caller with an org.
-     * @param enablementOptRef  (required)
-     * @return ApiResponse&lt;UserEnablementItem&gt;
+     * @param pricingEnablementOptRef  (required)
+     * @return ApiResponse&lt;PricingUserEnablementItem&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UserEnablementItem> postPricingEnablementOptoutWithHttpInfo(@javax.annotation.Nonnull EnablementOptRef enablementOptRef) throws ApiException {
-        okhttp3.Call localVarCall = postPricingEnablementOptoutValidateBeforeCall(enablementOptRef, null);
-        Type localVarReturnType = new TypeToken<UserEnablementItem>(){}.getType();
+    public ApiResponse<PricingUserEnablementItem> postPricingEnablementOptoutWithHttpInfo(@javax.annotation.Nonnull PricingEnablementOptRef pricingEnablementOptRef) throws ApiException {
+        okhttp3.Call localVarCall = postPricingEnablementOptoutValidateBeforeCall(pricingEnablementOptRef, null);
+        Type localVarReturnType = new TypeToken<PricingUserEnablementItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Removes the caller&#39;s OWN org from a beta item&#39;s grant list, the reverse of OptIntoBeta and idempotent. (asynchronously)
      * Removes the caller&#39;s OWN org from a beta item&#39;s grant list, the reverse of OptIntoBeta and idempotent. The org is the caller&#39;s validated one, so this can never revoke another org&#39;s grant. Requires a signed-in caller with an org.
-     * @param enablementOptRef  (required)
+     * @param pricingEnablementOptRef  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3263,129 +3520,13 @@ public class PricingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPricingEnablementOptoutAsync(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback<UserEnablementItem> _callback) throws ApiException {
+    public okhttp3.Call postPricingEnablementOptoutAsync(@javax.annotation.Nonnull PricingEnablementOptRef pricingEnablementOptRef, final ApiCallback<PricingUserEnablementItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postPricingEnablementOptoutValidateBeforeCall(enablementOptRef, _callback);
-        Type localVarReturnType = new TypeToken<UserEnablementItem>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postPricingSync
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postPricingSyncCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/pricing/sync";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPricingSyncValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postPricingSyncCall(_callback);
-
-    }
-
-    /**
-     * Refreshes the third-party section of the catalog from its upstream listings and returns the time the refreshed catalog was stamped with.
-     * Refreshes the third-party section of the catalog from its upstream listings and returns the time the refreshed catalog was stamped with. The fetch runs in Go and the markup transform in the pricing bundle. SuperAdmin only; every other caller is refused.
-     * @return PricingSyncOut
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public PricingSyncOut postPricingSync() throws ApiException {
-        ApiResponse<PricingSyncOut> localVarResp = postPricingSyncWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Refreshes the third-party section of the catalog from its upstream listings and returns the time the refreshed catalog was stamped with.
-     * Refreshes the third-party section of the catalog from its upstream listings and returns the time the refreshed catalog was stamped with. The fetch runs in Go and the markup transform in the pricing bundle. SuperAdmin only; every other caller is refused.
-     * @return ApiResponse&lt;PricingSyncOut&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<PricingSyncOut> postPricingSyncWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postPricingSyncValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PricingSyncOut>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Refreshes the third-party section of the catalog from its upstream listings and returns the time the refreshed catalog was stamped with. (asynchronously)
-     * Refreshes the third-party section of the catalog from its upstream listings and returns the time the refreshed catalog was stamped with. The fetch runs in Go and the markup transform in the pricing bundle. SuperAdmin only; every other caller is refused.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postPricingSyncAsync(final ApiCallback<PricingSyncOut> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postPricingSyncValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PricingSyncOut>(){}.getType();
+        okhttp3.Call localVarCall = postPricingEnablementOptoutValidateBeforeCall(pricingEnablementOptRef, _callback);
+        Type localVarReturnType = new TypeToken<PricingUserEnablementItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

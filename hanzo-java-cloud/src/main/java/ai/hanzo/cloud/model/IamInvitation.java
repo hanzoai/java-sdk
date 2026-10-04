@@ -91,6 +91,11 @@ public class IamInvitation {
   @javax.annotation.Nullable
   private String email;
 
+  public static final String SERIALIZED_NAME_GENERATED = "generated";
+  @SerializedName(SERIALIZED_NAME_GENERATED)
+  @javax.annotation.Nullable
+  private Boolean generated;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
@@ -120,6 +125,11 @@ public class IamInvitation {
   @SerializedName(SERIALIZED_NAME_QUOTA)
   @javax.annotation.Nullable
   private Long quota;
+
+  public static final String SERIALIZED_NAME_SENT_TIME = "sentTime";
+  @SerializedName(SERIALIZED_NAME_SENT_TIME)
+  @javax.annotation.Nullable
+  private String sentTime;
 
   public static final String SERIALIZED_NAME_SIGNUP_GROUP = "signupGroup";
   @SerializedName(SERIALIZED_NAME_SIGNUP_GROUP)
@@ -306,6 +316,25 @@ public class IamInvitation {
   }
 
 
+  public IamInvitation generated(@javax.annotation.Nullable Boolean generated) {
+    this.generated = generated;
+    return this;
+  }
+
+  /**
+   * Generated reports that IAM minted Code itself, from crypto/rand, when the invitation was created. Only such a code is compared without limit; any code a caller wrote is compared only while the org is not being guessed at, however it looks, because a code that looks random need not be.
+   * @return generated
+   */
+  @javax.annotation.Nullable
+  public Boolean getGenerated() {
+    return generated;
+  }
+
+  public void setGenerated(@javax.annotation.Nullable Boolean generated) {
+    this.generated = generated;
+  }
+
+
   public IamInvitation id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
@@ -417,6 +446,25 @@ public class IamInvitation {
 
   public void setQuota(@javax.annotation.Nullable Long quota) {
     this.quota = quota;
+  }
+
+
+  public IamInvitation sentTime(@javax.annotation.Nullable String sentTime) {
+    this.sentTime = sentTime;
+    return this;
+  }
+
+  /**
+   * SentTime is when an email about this invitation last went to its pinned address (RFC 3339), \&quot;\&quot; when none has. It paces resends, so the send endpoint cannot be used to mail one address over and over.
+   * @return sentTime
+   */
+  @javax.annotation.Nullable
+  public String getSentTime() {
+    return sentTime;
+  }
+
+  public void setSentTime(@javax.annotation.Nullable String sentTime) {
+    this.sentTime = sentTime;
   }
 
 
@@ -596,12 +644,14 @@ public class IamInvitation {
         Objects.equals(this.deleted, iamInvitation.deleted) &&
         Objects.equals(this.displayName, iamInvitation.displayName) &&
         Objects.equals(this.email, iamInvitation.email) &&
+        Objects.equals(this.generated, iamInvitation.generated) &&
         Objects.equals(this.id, iamInvitation.id) &&
         Objects.equals(this.isRegexp, iamInvitation.isRegexp) &&
         Objects.equals(this.name, iamInvitation.name) &&
         Objects.equals(this.owner, iamInvitation.owner) &&
         Objects.equals(this.phone, iamInvitation.phone) &&
         Objects.equals(this.quota, iamInvitation.quota) &&
+        Objects.equals(this.sentTime, iamInvitation.sentTime) &&
         Objects.equals(this.signupGroup, iamInvitation.signupGroup) &&
         Objects.equals(this.state, iamInvitation.state) &&
         Objects.equals(this.updatedAt, iamInvitation.updatedAt) &&
@@ -613,7 +663,7 @@ public class IamInvitation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(application, code, createdAt, createdTime, defaultCode, deleted, displayName, email, id, isRegexp, name, owner, phone, quota, signupGroup, state, updatedAt, updatedTime, usedCount, username, additionalProperties);
+    return Objects.hash(application, code, createdAt, createdTime, defaultCode, deleted, displayName, email, generated, id, isRegexp, name, owner, phone, quota, sentTime, signupGroup, state, updatedAt, updatedTime, usedCount, username, additionalProperties);
   }
 
   @Override
@@ -628,12 +678,14 @@ public class IamInvitation {
     sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    generated: ").append(toIndentedString(generated)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    isRegexp: ").append(toIndentedString(isRegexp)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    quota: ").append(toIndentedString(quota)).append("\n");
+    sb.append("    sentTime: ").append(toIndentedString(sentTime)).append("\n");
     sb.append("    signupGroup: ").append(toIndentedString(signupGroup)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
@@ -662,7 +714,7 @@ public class IamInvitation {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("application", "code", "createdAt", "createdTime", "defaultCode", "deleted", "displayName", "email", "id", "isRegexp", "name", "owner", "phone", "quota", "signupGroup", "state", "updatedAt", "updatedTime", "usedCount", "username"));
+    openapiFields = new HashSet<String>(Arrays.asList("application", "code", "createdAt", "createdTime", "defaultCode", "deleted", "displayName", "email", "generated", "id", "isRegexp", "name", "owner", "phone", "quota", "sentTime", "signupGroup", "state", "updatedAt", "updatedTime", "usedCount", "username"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -710,6 +762,9 @@ public class IamInvitation {
       }
       if ((jsonObj.get("phone") != null && !jsonObj.get("phone").isJsonNull()) && !jsonObj.get("phone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `phone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phone").toString()));
+      }
+      if ((jsonObj.get("sentTime") != null && !jsonObj.get("sentTime").isJsonNull()) && !jsonObj.get("sentTime").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sentTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sentTime").toString()));
       }
       if ((jsonObj.get("signupGroup") != null && !jsonObj.get("signupGroup").isJsonNull()) && !jsonObj.get("signupGroup").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `signupGroup` to be a primitive type in the JSON string but got `%s`", jsonObj.get("signupGroup").toString()));

@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -75,7 +76,7 @@ public class O11yO11yFeature {
   public static final String SERIALIZED_NAME_RESOLVED_VALUE = "resolvedValue";
   @SerializedName(SERIALIZED_NAME_RESOLVED_VALUE)
   @javax.annotation.Nullable
-  private Object resolvedValue;
+  private Object resolvedValue = null;
 
   public static final String SERIALIZED_NAME_STAGE = "stage";
   @SerializedName(SERIALIZED_NAME_STAGE)
@@ -172,7 +173,7 @@ public class O11yO11yFeature {
   }
 
   /**
-   * ResolvedValue is the value resolved for the caller&#39;s org.
+   * Get resolvedValue
    * @return resolvedValue
    */
   @javax.annotation.Nullable
@@ -295,9 +296,20 @@ public class O11yO11yFeature {
         Objects.equals(this.additionalProperties, o11yO11yFeature.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(defaultVariant, description, kind, name, resolvedValue, stage, variants, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

@@ -311,6 +311,11 @@ public class IamCreateOrganizationInput {
   @javax.annotation.Nullable
   private String passwordType;
 
+  public static final String SERIALIZED_NAME_PLATFORM = "platform";
+  @SerializedName(SERIALIZED_NAME_PLATFORM)
+  @javax.annotation.Nullable
+  private Boolean platform;
+
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
@@ -1389,6 +1394,25 @@ public class IamCreateOrganizationInput {
   }
 
 
+  public IamCreateOrganizationInput platform(@javax.annotation.Nullable Boolean platform) {
+    this.platform = platform;
+    return this;
+  }
+
+  /**
+   * Get platform
+   * @return platform
+   */
+  @javax.annotation.Nullable
+  public Boolean getPlatform() {
+    return platform;
+  }
+
+  public void setPlatform(@javax.annotation.Nullable Boolean platform) {
+    this.platform = platform;
+  }
+
+
   public IamCreateOrganizationInput tags(@javax.annotation.Nullable List<String> tags) {
     this.tags = tags;
     return this;
@@ -1716,6 +1740,7 @@ public class IamCreateOrganizationInput {
         Objects.equals(this.passwordOptions, iamCreateOrganizationInput.passwordOptions) &&
         Objects.equals(this.passwordSalt, iamCreateOrganizationInput.passwordSalt) &&
         Objects.equals(this.passwordType, iamCreateOrganizationInput.passwordType) &&
+        Objects.equals(this.platform, iamCreateOrganizationInput.platform) &&
         Objects.equals(this.tags, iamCreateOrganizationInput.tags) &&
         Objects.equals(this.themeData, iamCreateOrganizationInput.themeData) &&
         Objects.equals(this.updatedAt, iamCreateOrganizationInput.updatedAt) &&
@@ -1731,7 +1756,7 @@ public class IamCreateOrganizationInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountItems, accountMenu, avatar, balanceCredit, balanceCurrency, countryCodes, createdAt, createdTime, dcrPolicy, defaultApplication, defaultAvatar, defaultPassword, deleted, disableSignin, displayName, emoji, enableSoftDeletion, enableTour, failedSigninFrozenTime, failedSigninLimit, favicon, founder, hasPrivilegeConsent, id, initScore, ipRestriction, ipWhitelist, isPersonal, isProfilePublic, kerberosKdcHost, kerberosKeytab, kerberosRealm, kerberosServiceName, languages, ldapAttributes, logo, logoDark, masterPassword, masterVerificationCode, mfaItems, mfaRememberInHours, name, navItems, orgBalance, owner, passwordExpireDays, passwordObfuscatorKey, passwordObfuscatorType, passwordOptions, passwordSalt, passwordType, tags, themeData, updatedAt, useEmailAsUsername, usePermanentAvatar, userBalance, userNavItems, userTypes, websiteUrl, widgetItems, additionalProperties);
+    return Objects.hash(accountItems, accountMenu, avatar, balanceCredit, balanceCurrency, countryCodes, createdAt, createdTime, dcrPolicy, defaultApplication, defaultAvatar, defaultPassword, deleted, disableSignin, displayName, emoji, enableSoftDeletion, enableTour, failedSigninFrozenTime, failedSigninLimit, favicon, founder, hasPrivilegeConsent, id, initScore, ipRestriction, ipWhitelist, isPersonal, isProfilePublic, kerberosKdcHost, kerberosKeytab, kerberosRealm, kerberosServiceName, languages, ldapAttributes, logo, logoDark, masterPassword, masterVerificationCode, mfaItems, mfaRememberInHours, name, navItems, orgBalance, owner, passwordExpireDays, passwordObfuscatorKey, passwordObfuscatorType, passwordOptions, passwordSalt, passwordType, platform, tags, themeData, updatedAt, useEmailAsUsername, usePermanentAvatar, userBalance, userNavItems, userTypes, websiteUrl, widgetItems, additionalProperties);
   }
 
   @Override
@@ -1789,6 +1814,7 @@ public class IamCreateOrganizationInput {
     sb.append("    passwordOptions: ").append(toIndentedString(passwordOptions)).append("\n");
     sb.append("    passwordSalt: ").append(toIndentedString(passwordSalt)).append("\n");
     sb.append("    passwordType: ").append(toIndentedString(passwordType)).append("\n");
+    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    themeData: ").append(toIndentedString(themeData)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
@@ -1821,7 +1847,7 @@ public class IamCreateOrganizationInput {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("accountItems", "accountMenu", "avatar", "balanceCredit", "balanceCurrency", "countryCodes", "createdAt", "createdTime", "dcrPolicy", "defaultApplication", "defaultAvatar", "defaultPassword", "deleted", "disableSignin", "displayName", "emoji", "enableSoftDeletion", "enableTour", "failedSigninFrozenTime", "failedSigninLimit", "favicon", "founder", "hasPrivilegeConsent", "id", "initScore", "ipRestriction", "ipWhitelist", "isPersonal", "isProfilePublic", "kerberosKdcHost", "kerberosKeytab", "kerberosRealm", "kerberosServiceName", "languages", "ldapAttributes", "logo", "logoDark", "masterPassword", "masterVerificationCode", "mfaItems", "mfaRememberInHours", "name", "navItems", "orgBalance", "owner", "passwordExpireDays", "passwordObfuscatorKey", "passwordObfuscatorType", "passwordOptions", "passwordSalt", "passwordType", "tags", "themeData", "updatedAt", "useEmailAsUsername", "usePermanentAvatar", "userBalance", "userNavItems", "userTypes", "websiteUrl", "widgetItems"));
+    openapiFields = new HashSet<String>(Arrays.asList("accountItems", "accountMenu", "avatar", "balanceCredit", "balanceCurrency", "countryCodes", "createdAt", "createdTime", "dcrPolicy", "defaultApplication", "defaultAvatar", "defaultPassword", "deleted", "disableSignin", "displayName", "emoji", "enableSoftDeletion", "enableTour", "failedSigninFrozenTime", "failedSigninLimit", "favicon", "founder", "hasPrivilegeConsent", "id", "initScore", "ipRestriction", "ipWhitelist", "isPersonal", "isProfilePublic", "kerberosKdcHost", "kerberosKeytab", "kerberosRealm", "kerberosServiceName", "languages", "ldapAttributes", "logo", "logoDark", "masterPassword", "masterVerificationCode", "mfaItems", "mfaRememberInHours", "name", "navItems", "orgBalance", "owner", "passwordExpireDays", "passwordObfuscatorKey", "passwordObfuscatorType", "passwordOptions", "passwordSalt", "passwordType", "platform", "tags", "themeData", "updatedAt", "useEmailAsUsername", "usePermanentAvatar", "userBalance", "userNavItems", "userTypes", "websiteUrl", "widgetItems"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

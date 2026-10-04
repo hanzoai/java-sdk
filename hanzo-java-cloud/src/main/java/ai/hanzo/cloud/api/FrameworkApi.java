@@ -27,13 +27,14 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.DocType;
-import ai.hanzo.cloud.model.DocTypeList;
-import ai.hanzo.cloud.model.DocumentList;
-import ai.hanzo.cloud.model.Install;
-import ai.hanzo.cloud.model.ModuleList;
-import ai.hanzo.cloud.model.ModuleState;
-import ai.hanzo.cloud.model.SummaryView;
+import ai.hanzo.cloud.model.FrameworkDocType;
+import ai.hanzo.cloud.model.FrameworkDocTypeList;
+import ai.hanzo.cloud.model.FrameworkDocumentList;
+import ai.hanzo.cloud.model.FrameworkInstall;
+import ai.hanzo.cloud.model.FrameworkModuleList;
+import ai.hanzo.cloud.model.FrameworkModuleState;
+import ai.hanzo.cloud.model.FrameworkSummaryView;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -90,6 +91,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteFrameworkByDoctypeByNameCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -120,6 +122,7 @@ public class FrameworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -164,6 +167,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteFrameworkByDoctypeByName(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
@@ -182,6 +186,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteFrameworkByDoctypeByNameWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
@@ -202,6 +207,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteFrameworkByDoctypeByNameAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
@@ -221,6 +227,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteFrameworkDoctypesByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -250,6 +257,7 @@ public class FrameworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -288,6 +296,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteFrameworkDoctypesByName(@javax.annotation.Nonnull String name) throws ApiException {
@@ -305,6 +314,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteFrameworkDoctypesByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
@@ -324,6 +334,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteFrameworkDoctypesByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
@@ -347,6 +358,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFrameworkByDoctypeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
@@ -392,7 +404,8 @@ public class FrameworkApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -429,17 +442,18 @@ public class FrameworkApi {
      * @param fields Fields projects the response to a subset — a JSON array [\&quot;a\&quot;,\&quot;b\&quot;] or a comma list \&quot;a,b\&quot;. The envelope keys are always returned. (optional)
      * @param orderBy OrderBy is \&quot;&lt;field&gt; [asc|desc]\&quot;. Empty means most-recently-updated first. (optional)
      * @param limit Limit caps the rows returned. Anything that is not a positive integer leaves the engine&#39;s default in place. (optional)
-     * @return DocumentList
+     * @return FrameworkDocumentList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DocumentList getFrameworkByDoctype(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit) throws ApiException {
-        ApiResponse<DocumentList> localVarResp = getFrameworkByDoctypeWithHttpInfo(doctype, filters, fields, orderBy, limit);
+    public FrameworkDocumentList getFrameworkByDoctype(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit) throws ApiException {
+        ApiResponse<FrameworkDocumentList> localVarResp = getFrameworkByDoctypeWithHttpInfo(doctype, filters, fields, orderBy, limit);
         return localVarResp.getData();
     }
 
@@ -451,18 +465,19 @@ public class FrameworkApi {
      * @param fields Fields projects the response to a subset — a JSON array [\&quot;a\&quot;,\&quot;b\&quot;] or a comma list \&quot;a,b\&quot;. The envelope keys are always returned. (optional)
      * @param orderBy OrderBy is \&quot;&lt;field&gt; [asc|desc]\&quot;. Empty means most-recently-updated first. (optional)
      * @param limit Limit caps the rows returned. Anything that is not a positive integer leaves the engine&#39;s default in place. (optional)
-     * @return ApiResponse&lt;DocumentList&gt;
+     * @return ApiResponse&lt;FrameworkDocumentList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DocumentList> getFrameworkByDoctypeWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit) throws ApiException {
+    public ApiResponse<FrameworkDocumentList> getFrameworkByDoctypeWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit) throws ApiException {
         okhttp3.Call localVarCall = getFrameworkByDoctypeValidateBeforeCall(doctype, filters, fields, orderBy, limit, null);
-        Type localVarReturnType = new TypeToken<DocumentList>(){}.getType();
+        Type localVarReturnType = new TypeToken<FrameworkDocumentList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -482,12 +497,13 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFrameworkByDoctypeAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit, final ApiCallback<DocumentList> _callback) throws ApiException {
+    public okhttp3.Call getFrameworkByDoctypeAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nullable String filters, @javax.annotation.Nullable String fields, @javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String limit, final ApiCallback<FrameworkDocumentList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFrameworkByDoctypeValidateBeforeCall(doctype, filters, fields, orderBy, limit, _callback);
-        Type localVarReturnType = new TypeToken<DocumentList>(){}.getType();
+        Type localVarReturnType = new TypeToken<FrameworkDocumentList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -503,6 +519,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFrameworkByDoctypeByNameCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -533,7 +550,8 @@ public class FrameworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -579,6 +597,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Map<String, Object> getFrameworkByDoctypeByName(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
@@ -598,6 +617,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Map<String, Object>> getFrameworkByDoctypeByNameWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
@@ -619,6 +639,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFrameworkByDoctypeByNameAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
@@ -638,6 +659,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFrameworkDoctypesCall(final ApiCallback _callback) throws ApiException {
@@ -666,7 +688,8 @@ public class FrameworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -693,35 +716,37 @@ public class FrameworkApi {
     /**
      * Returns every DocType defined in the caller&#39;s org.
      * Returns every DocType defined in the caller&#39;s org. Another tenant&#39;s definitions are never included: the org is part of the store key.
-     * @return DocTypeList
+     * @return FrameworkDocTypeList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DocTypeList getFrameworkDoctypes() throws ApiException {
-        ApiResponse<DocTypeList> localVarResp = getFrameworkDoctypesWithHttpInfo();
+    public FrameworkDocTypeList getFrameworkDoctypes() throws ApiException {
+        ApiResponse<FrameworkDocTypeList> localVarResp = getFrameworkDoctypesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns every DocType defined in the caller&#39;s org.
      * Returns every DocType defined in the caller&#39;s org. Another tenant&#39;s definitions are never included: the org is part of the store key.
-     * @return ApiResponse&lt;DocTypeList&gt;
+     * @return ApiResponse&lt;FrameworkDocTypeList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DocTypeList> getFrameworkDoctypesWithHttpInfo() throws ApiException {
+    public ApiResponse<FrameworkDocTypeList> getFrameworkDoctypesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getFrameworkDoctypesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<DocTypeList>(){}.getType();
+        Type localVarReturnType = new TypeToken<FrameworkDocTypeList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -736,12 +761,13 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFrameworkDoctypesAsync(final ApiCallback<DocTypeList> _callback) throws ApiException {
+    public okhttp3.Call getFrameworkDoctypesAsync(final ApiCallback<FrameworkDocTypeList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFrameworkDoctypesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<DocTypeList>(){}.getType();
+        Type localVarReturnType = new TypeToken<FrameworkDocTypeList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -756,6 +782,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFrameworkDoctypesByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -785,7 +812,8 @@ public class FrameworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -818,17 +846,18 @@ public class FrameworkApi {
      * Returns one DocType definition — its fields, naming rule, permissions and lifecycle flags.
      * Returns one DocType definition — its fields, naming rule, permissions and lifecycle flags. Scoped to the caller&#39;s org, so another tenant&#39;s DocType of the same name is simply not found.
      * @param name Name is the DocType&#39;s ADDRESS — \&quot;module.name\&quot;, e.g. \&quot;kb.page\&quot;. A name containing a space (\&quot;erp.Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
-     * @return DocType
+     * @return FrameworkDocType
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DocType getFrameworkDoctypesByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<DocType> localVarResp = getFrameworkDoctypesByNameWithHttpInfo(name);
+    public FrameworkDocType getFrameworkDoctypesByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<FrameworkDocType> localVarResp = getFrameworkDoctypesByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -836,18 +865,19 @@ public class FrameworkApi {
      * Returns one DocType definition — its fields, naming rule, permissions and lifecycle flags.
      * Returns one DocType definition — its fields, naming rule, permissions and lifecycle flags. Scoped to the caller&#39;s org, so another tenant&#39;s DocType of the same name is simply not found.
      * @param name Name is the DocType&#39;s ADDRESS — \&quot;module.name\&quot;, e.g. \&quot;kb.page\&quot;. A name containing a space (\&quot;erp.Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
-     * @return ApiResponse&lt;DocType&gt;
+     * @return ApiResponse&lt;FrameworkDocType&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DocType> getFrameworkDoctypesByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<FrameworkDocType> getFrameworkDoctypesByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getFrameworkDoctypesByNameValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<DocType>(){}.getType();
+        Type localVarReturnType = new TypeToken<FrameworkDocType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -863,12 +893,13 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFrameworkDoctypesByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<DocType> _callback) throws ApiException {
+    public okhttp3.Call getFrameworkDoctypesByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<FrameworkDocType> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFrameworkDoctypesByNameValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<DocType>(){}.getType();
+        Type localVarReturnType = new TypeToken<FrameworkDocType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -882,6 +913,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFrameworkModulesCall(final ApiCallback _callback) throws ApiException {
@@ -910,7 +942,8 @@ public class FrameworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -937,35 +970,37 @@ public class FrameworkApi {
     /**
      * Returns every app lane compiled into this deployment and the DocTypes each one installs.
      * Returns every app lane compiled into this deployment and the DocTypes each one installs. It describes the BINARY, not the org: what a given org has actually installed is the per-module state below.
-     * @return ModuleList
+     * @return FrameworkModuleList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ModuleList getFrameworkModules() throws ApiException {
-        ApiResponse<ModuleList> localVarResp = getFrameworkModulesWithHttpInfo();
+    public FrameworkModuleList getFrameworkModules() throws ApiException {
+        ApiResponse<FrameworkModuleList> localVarResp = getFrameworkModulesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns every app lane compiled into this deployment and the DocTypes each one installs.
      * Returns every app lane compiled into this deployment and the DocTypes each one installs. It describes the BINARY, not the org: what a given org has actually installed is the per-module state below.
-     * @return ApiResponse&lt;ModuleList&gt;
+     * @return ApiResponse&lt;FrameworkModuleList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ModuleList> getFrameworkModulesWithHttpInfo() throws ApiException {
+    public ApiResponse<FrameworkModuleList> getFrameworkModulesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getFrameworkModulesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ModuleList>(){}.getType();
+        Type localVarReturnType = new TypeToken<FrameworkModuleList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -980,12 +1015,13 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFrameworkModulesAsync(final ApiCallback<ModuleList> _callback) throws ApiException {
+    public okhttp3.Call getFrameworkModulesAsync(final ApiCallback<FrameworkModuleList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFrameworkModulesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ModuleList>(){}.getType();
+        Type localVarReturnType = new TypeToken<FrameworkModuleList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1000,6 +1036,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFrameworkModulesByModuleCall(@javax.annotation.Nonnull String module, final ApiCallback _callback) throws ApiException {
@@ -1029,7 +1066,8 @@ public class FrameworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1062,17 +1100,18 @@ public class FrameworkApi {
      * Returns one app lane&#39;s install state for the caller&#39;s org: the DocTypes the lane declares, and which of them already exist in the org.
      * Returns one app lane&#39;s install state for the caller&#39;s org: the DocTypes the lane declares, and which of them already exist in the org. That is the honest \&quot;set up\&quot; versus \&quot;installed\&quot; answer a console renders.
      * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
-     * @return ModuleState
+     * @return FrameworkModuleState
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ModuleState getFrameworkModulesByModule(@javax.annotation.Nonnull String module) throws ApiException {
-        ApiResponse<ModuleState> localVarResp = getFrameworkModulesByModuleWithHttpInfo(module);
+    public FrameworkModuleState getFrameworkModulesByModule(@javax.annotation.Nonnull String module) throws ApiException {
+        ApiResponse<FrameworkModuleState> localVarResp = getFrameworkModulesByModuleWithHttpInfo(module);
         return localVarResp.getData();
     }
 
@@ -1080,18 +1119,19 @@ public class FrameworkApi {
      * Returns one app lane&#39;s install state for the caller&#39;s org: the DocTypes the lane declares, and which of them already exist in the org.
      * Returns one app lane&#39;s install state for the caller&#39;s org: the DocTypes the lane declares, and which of them already exist in the org. That is the honest \&quot;set up\&quot; versus \&quot;installed\&quot; answer a console renders.
      * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
-     * @return ApiResponse&lt;ModuleState&gt;
+     * @return ApiResponse&lt;FrameworkModuleState&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ModuleState> getFrameworkModulesByModuleWithHttpInfo(@javax.annotation.Nonnull String module) throws ApiException {
+    public ApiResponse<FrameworkModuleState> getFrameworkModulesByModuleWithHttpInfo(@javax.annotation.Nonnull String module) throws ApiException {
         okhttp3.Call localVarCall = getFrameworkModulesByModuleValidateBeforeCall(module, null);
-        Type localVarReturnType = new TypeToken<ModuleState>(){}.getType();
+        Type localVarReturnType = new TypeToken<FrameworkModuleState>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1107,12 +1147,13 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFrameworkModulesByModuleAsync(@javax.annotation.Nonnull String module, final ApiCallback<ModuleState> _callback) throws ApiException {
+    public okhttp3.Call getFrameworkModulesByModuleAsync(@javax.annotation.Nonnull String module, final ApiCallback<FrameworkModuleState> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFrameworkModulesByModuleValidateBeforeCall(module, _callback);
-        Type localVarReturnType = new TypeToken<ModuleState>(){}.getType();
+        Type localVarReturnType = new TypeToken<FrameworkModuleState>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1126,6 +1167,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getFrameworkSummaryCall(final ApiCallback _callback) throws ApiException {
@@ -1154,7 +1196,8 @@ public class FrameworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1181,35 +1224,37 @@ public class FrameworkApi {
     /**
      * Reports how much of the DocType surface the caller&#39;s org uses: how many DocTypes it has defined, and how many documents exist across them.
      * Reports how much of the DocType surface the caller&#39;s org uses: how many DocTypes it has defined, and how many documents exist across them.
-     * @return SummaryView
+     * @return FrameworkSummaryView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SummaryView getFrameworkSummary() throws ApiException {
-        ApiResponse<SummaryView> localVarResp = getFrameworkSummaryWithHttpInfo();
+    public FrameworkSummaryView getFrameworkSummary() throws ApiException {
+        ApiResponse<FrameworkSummaryView> localVarResp = getFrameworkSummaryWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports how much of the DocType surface the caller&#39;s org uses: how many DocTypes it has defined, and how many documents exist across them.
      * Reports how much of the DocType surface the caller&#39;s org uses: how many DocTypes it has defined, and how many documents exist across them.
-     * @return ApiResponse&lt;SummaryView&gt;
+     * @return ApiResponse&lt;FrameworkSummaryView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SummaryView> getFrameworkSummaryWithHttpInfo() throws ApiException {
+    public ApiResponse<FrameworkSummaryView> getFrameworkSummaryWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getFrameworkSummaryValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<SummaryView>(){}.getType();
+        Type localVarReturnType = new TypeToken<FrameworkSummaryView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1224,12 +1269,13 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFrameworkSummaryAsync(final ApiCallback<SummaryView> _callback) throws ApiException {
+    public okhttp3.Call getFrameworkSummaryAsync(final ApiCallback<FrameworkSummaryView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFrameworkSummaryValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<SummaryView>(){}.getType();
+        Type localVarReturnType = new TypeToken<FrameworkSummaryView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1343,6 +1389,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postFrameworkByDoctypeByNameCancelCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -1373,7 +1420,8 @@ public class FrameworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1419,6 +1467,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Map<String, Object> postFrameworkByDoctypeByNameCancel(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
@@ -1438,6 +1487,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Map<String, Object>> postFrameworkByDoctypeByNameCancelWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
@@ -1459,6 +1509,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postFrameworkByDoctypeByNameCancelAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
@@ -1480,6 +1531,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postFrameworkByDoctypeByNameSubmitCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -1510,7 +1562,8 @@ public class FrameworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1556,6 +1609,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Map<String, Object> postFrameworkByDoctypeByNameSubmit(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
@@ -1575,6 +1629,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Map<String, Object>> postFrameworkByDoctypeByNameSubmitWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name) throws ApiException {
@@ -1596,6 +1651,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postFrameworkByDoctypeByNameSubmitAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
@@ -1607,7 +1663,7 @@ public class FrameworkApi {
     }
     /**
      * Build call for postFrameworkDoctypes
-     * @param docType  (required)
+     * @param frameworkDocType  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1616,9 +1672,10 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFrameworkDoctypesCall(@javax.annotation.Nonnull DocType docType, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFrameworkDoctypesCall(@javax.annotation.Nonnull FrameworkDocType frameworkDocType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1632,7 +1689,7 @@ public class FrameworkApi {
             basePath = null;
         }
 
-        Object localVarPostBody = docType;
+        Object localVarPostBody = frameworkDocType;
 
         // create path and map variables
         String localVarPath = "/v1/framework/doctypes";
@@ -1644,7 +1701,8 @@ public class FrameworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1664,57 +1722,59 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postFrameworkDoctypesValidateBeforeCall(@javax.annotation.Nonnull DocType docType, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'docType' is set
-        if (docType == null) {
-            throw new ApiException("Missing the required parameter 'docType' when calling postFrameworkDoctypes(Async)");
+    private okhttp3.Call postFrameworkDoctypesValidateBeforeCall(@javax.annotation.Nonnull FrameworkDocType frameworkDocType, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'frameworkDocType' is set
+        if (frameworkDocType == null) {
+            throw new ApiException("Missing the required parameter 'frameworkDocType' when calling postFrameworkDoctypes(Async)");
         }
 
-        return postFrameworkDoctypesCall(docType, _callback);
+        return postFrameworkDoctypesCall(frameworkDocType, _callback);
 
     }
 
     /**
      * Defines a DocType in the caller&#39;s org: the metadata that gives a document surface its fields, its naming rule, whether it has a submit/cancel lifecycle, and which role may do what to it.
      * Defines a DocType in the caller&#39;s org: the metadata that gives a document surface its fields, its naming rule, whether it has a submit/cancel lifecycle, and which role may do what to it. Manager-only — on a fresh org the first caller to administer it is seeded as its System Manager, after which only a System Manager (or a platform admin) may define. Answers 201.
-     * @param docType  (required)
-     * @return DocType
+     * @param frameworkDocType  (required)
+     * @return FrameworkDocType
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DocType postFrameworkDoctypes(@javax.annotation.Nonnull DocType docType) throws ApiException {
-        ApiResponse<DocType> localVarResp = postFrameworkDoctypesWithHttpInfo(docType);
+    public FrameworkDocType postFrameworkDoctypes(@javax.annotation.Nonnull FrameworkDocType frameworkDocType) throws ApiException {
+        ApiResponse<FrameworkDocType> localVarResp = postFrameworkDoctypesWithHttpInfo(frameworkDocType);
         return localVarResp.getData();
     }
 
     /**
      * Defines a DocType in the caller&#39;s org: the metadata that gives a document surface its fields, its naming rule, whether it has a submit/cancel lifecycle, and which role may do what to it.
      * Defines a DocType in the caller&#39;s org: the metadata that gives a document surface its fields, its naming rule, whether it has a submit/cancel lifecycle, and which role may do what to it. Manager-only — on a fresh org the first caller to administer it is seeded as its System Manager, after which only a System Manager (or a platform admin) may define. Answers 201.
-     * @param docType  (required)
-     * @return ApiResponse&lt;DocType&gt;
+     * @param frameworkDocType  (required)
+     * @return ApiResponse&lt;FrameworkDocType&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DocType> postFrameworkDoctypesWithHttpInfo(@javax.annotation.Nonnull DocType docType) throws ApiException {
-        okhttp3.Call localVarCall = postFrameworkDoctypesValidateBeforeCall(docType, null);
-        Type localVarReturnType = new TypeToken<DocType>(){}.getType();
+    public ApiResponse<FrameworkDocType> postFrameworkDoctypesWithHttpInfo(@javax.annotation.Nonnull FrameworkDocType frameworkDocType) throws ApiException {
+        okhttp3.Call localVarCall = postFrameworkDoctypesValidateBeforeCall(frameworkDocType, null);
+        Type localVarReturnType = new TypeToken<FrameworkDocType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Defines a DocType in the caller&#39;s org: the metadata that gives a document surface its fields, its naming rule, whether it has a submit/cancel lifecycle, and which role may do what to it. (asynchronously)
      * Defines a DocType in the caller&#39;s org: the metadata that gives a document surface its fields, its naming rule, whether it has a submit/cancel lifecycle, and which role may do what to it. Manager-only — on a fresh org the first caller to administer it is seeded as its System Manager, after which only a System Manager (or a platform admin) may define. Answers 201.
-     * @param docType  (required)
+     * @param frameworkDocType  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1723,12 +1783,13 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFrameworkDoctypesAsync(@javax.annotation.Nonnull DocType docType, final ApiCallback<DocType> _callback) throws ApiException {
+    public okhttp3.Call postFrameworkDoctypesAsync(@javax.annotation.Nonnull FrameworkDocType frameworkDocType, final ApiCallback<FrameworkDocType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postFrameworkDoctypesValidateBeforeCall(docType, _callback);
-        Type localVarReturnType = new TypeToken<DocType>(){}.getType();
+        okhttp3.Call localVarCall = postFrameworkDoctypesValidateBeforeCall(frameworkDocType, _callback);
+        Type localVarReturnType = new TypeToken<FrameworkDocType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1743,6 +1804,7 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postFrameworkModulesByModuleInstallCall(@javax.annotation.Nonnull String module, final ApiCallback _callback) throws ApiException {
@@ -1772,7 +1834,8 @@ public class FrameworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1805,17 +1868,18 @@ public class FrameworkApi {
      * Creates an app lane&#39;s DocTypes in the caller&#39;s org.
      * Creates an app lane&#39;s DocTypes in the caller&#39;s org. Idempotent and create-if-absent: a DocType the org already has is reported as existing and never replaced, so re-installing cannot clobber a definition the org has since edited. Manager-only.
      * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
-     * @return Install
+     * @return FrameworkInstall
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Install postFrameworkModulesByModuleInstall(@javax.annotation.Nonnull String module) throws ApiException {
-        ApiResponse<Install> localVarResp = postFrameworkModulesByModuleInstallWithHttpInfo(module);
+    public FrameworkInstall postFrameworkModulesByModuleInstall(@javax.annotation.Nonnull String module) throws ApiException {
+        ApiResponse<FrameworkInstall> localVarResp = postFrameworkModulesByModuleInstallWithHttpInfo(module);
         return localVarResp.getData();
     }
 
@@ -1823,18 +1887,19 @@ public class FrameworkApi {
      * Creates an app lane&#39;s DocTypes in the caller&#39;s org.
      * Creates an app lane&#39;s DocTypes in the caller&#39;s org. Idempotent and create-if-absent: a DocType the org already has is reported as existing and never replaced, so re-installing cannot clobber a definition the org has since edited. Manager-only.
      * @param module Module is the lane&#39;s registered name (\&quot;cms\&quot;, \&quot;erp\&quot;), from the path. (required)
-     * @return ApiResponse&lt;Install&gt;
+     * @return ApiResponse&lt;FrameworkInstall&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Install> postFrameworkModulesByModuleInstallWithHttpInfo(@javax.annotation.Nonnull String module) throws ApiException {
+    public ApiResponse<FrameworkInstall> postFrameworkModulesByModuleInstallWithHttpInfo(@javax.annotation.Nonnull String module) throws ApiException {
         okhttp3.Call localVarCall = postFrameworkModulesByModuleInstallValidateBeforeCall(module, null);
-        Type localVarReturnType = new TypeToken<Install>(){}.getType();
+        Type localVarReturnType = new TypeToken<FrameworkInstall>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1850,12 +1915,13 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFrameworkModulesByModuleInstallAsync(@javax.annotation.Nonnull String module, final ApiCallback<Install> _callback) throws ApiException {
+    public okhttp3.Call postFrameworkModulesByModuleInstallAsync(@javax.annotation.Nonnull String module, final ApiCallback<FrameworkInstall> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postFrameworkModulesByModuleInstallValidateBeforeCall(module, _callback);
-        Type localVarReturnType = new TypeToken<Install>(){}.getType();
+        Type localVarReturnType = new TypeToken<FrameworkInstall>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1970,7 +2036,7 @@ public class FrameworkApi {
     /**
      * Build call for putFrameworkDoctypesByName
      * @param name  (required)
-     * @param docType  (required)
+     * @param frameworkDocType  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1979,9 +2045,10 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putFrameworkDoctypesByNameCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull DocType docType, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putFrameworkDoctypesByNameCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull FrameworkDocType frameworkDocType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1995,7 +2062,7 @@ public class FrameworkApi {
             basePath = null;
         }
 
-        Object localVarPostBody = docType;
+        Object localVarPostBody = frameworkDocType;
 
         // create path and map variables
         String localVarPath = "/v1/framework/doctypes/{name}"
@@ -2008,7 +2075,8 @@ public class FrameworkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2028,18 +2096,18 @@ public class FrameworkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putFrameworkDoctypesByNameValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull DocType docType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putFrameworkDoctypesByNameValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull FrameworkDocType frameworkDocType, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling putFrameworkDoctypesByName(Async)");
         }
 
-        // verify the required parameter 'docType' is set
-        if (docType == null) {
-            throw new ApiException("Missing the required parameter 'docType' when calling putFrameworkDoctypesByName(Async)");
+        // verify the required parameter 'frameworkDocType' is set
+        if (frameworkDocType == null) {
+            throw new ApiException("Missing the required parameter 'frameworkDocType' when calling putFrameworkDoctypesByName(Async)");
         }
 
-        return putFrameworkDoctypesByNameCall(name, docType, _callback);
+        return putFrameworkDoctypesByNameCall(name, frameworkDocType, _callback);
 
     }
 
@@ -2047,18 +2115,19 @@ public class FrameworkApi {
      * Replaces a DocType definition wholesale (PUT semantics): the stored definition becomes the body.
      * Replaces a DocType definition wholesale (PUT semantics): the stored definition becomes the body. The name in the URL is authoritative over the body&#39;s, and documents already stored under the DocType are left intact. Manager-only.
      * @param name  (required)
-     * @param docType  (required)
-     * @return DocType
+     * @param frameworkDocType  (required)
+     * @return FrameworkDocType
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DocType putFrameworkDoctypesByName(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull DocType docType) throws ApiException {
-        ApiResponse<DocType> localVarResp = putFrameworkDoctypesByNameWithHttpInfo(name, docType);
+    public FrameworkDocType putFrameworkDoctypesByName(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull FrameworkDocType frameworkDocType) throws ApiException {
+        ApiResponse<FrameworkDocType> localVarResp = putFrameworkDoctypesByNameWithHttpInfo(name, frameworkDocType);
         return localVarResp.getData();
     }
 
@@ -2066,19 +2135,20 @@ public class FrameworkApi {
      * Replaces a DocType definition wholesale (PUT semantics): the stored definition becomes the body.
      * Replaces a DocType definition wholesale (PUT semantics): the stored definition becomes the body. The name in the URL is authoritative over the body&#39;s, and documents already stored under the DocType are left intact. Manager-only.
      * @param name  (required)
-     * @param docType  (required)
-     * @return ApiResponse&lt;DocType&gt;
+     * @param frameworkDocType  (required)
+     * @return ApiResponse&lt;FrameworkDocType&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DocType> putFrameworkDoctypesByNameWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull DocType docType) throws ApiException {
-        okhttp3.Call localVarCall = putFrameworkDoctypesByNameValidateBeforeCall(name, docType, null);
-        Type localVarReturnType = new TypeToken<DocType>(){}.getType();
+    public ApiResponse<FrameworkDocType> putFrameworkDoctypesByNameWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull FrameworkDocType frameworkDocType) throws ApiException {
+        okhttp3.Call localVarCall = putFrameworkDoctypesByNameValidateBeforeCall(name, frameworkDocType, null);
+        Type localVarReturnType = new TypeToken<FrameworkDocType>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2086,7 +2156,7 @@ public class FrameworkApi {
      * Replaces a DocType definition wholesale (PUT semantics): the stored definition becomes the body. (asynchronously)
      * Replaces a DocType definition wholesale (PUT semantics): the stored definition becomes the body. The name in the URL is authoritative over the body&#39;s, and documents already stored under the DocType are left intact. Manager-only.
      * @param name  (required)
-     * @param docType  (required)
+     * @param frameworkDocType  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2095,12 +2165,13 @@ public class FrameworkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putFrameworkDoctypesByNameAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull DocType docType, final ApiCallback<DocType> _callback) throws ApiException {
+    public okhttp3.Call putFrameworkDoctypesByNameAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull FrameworkDocType frameworkDocType, final ApiCallback<FrameworkDocType> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putFrameworkDoctypesByNameValidateBeforeCall(name, docType, _callback);
-        Type localVarReturnType = new TypeToken<DocType>(){}.getType();
+        okhttp3.Call localVarCall = putFrameworkDoctypesByNameValidateBeforeCall(name, frameworkDocType, _callback);
+        Type localVarReturnType = new TypeToken<FrameworkDocType>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

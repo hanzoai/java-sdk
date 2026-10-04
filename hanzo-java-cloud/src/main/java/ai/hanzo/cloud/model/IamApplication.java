@@ -369,6 +369,11 @@ public class IamApplication {
   @javax.annotation.Nullable
   private String owner;
 
+  public static final String SERIALIZED_NAME_PLATFORM = "platform";
+  @SerializedName(SERIALIZED_NAME_PLATFORM)
+  @javax.annotation.Nullable
+  private Boolean platform;
+
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)
   @javax.annotation.Nullable
@@ -1700,6 +1705,25 @@ public class IamApplication {
   }
 
 
+  public IamApplication platform(@javax.annotation.Nullable Boolean platform) {
+    this.platform = platform;
+    return this;
+  }
+
+  /**
+   * Platform marks an application the platform itself declares (init_data.json): its own consoles and apps, never one a tenant registered. The seed stamps it on every declared application at boot, and only a SuperAdmin may change it over the API. It is what lets a signed-in person act through IAM with a bearer on the platform&#39;s behalf — sending an invitation from the platform&#39;s own email account, joining an org — which a tenant&#39;s application may not do with the tokens its users hand it.
+   * @return platform
+   */
+  @javax.annotation.Nullable
+  public Boolean getPlatform() {
+    return platform;
+  }
+
+  public void setPlatform(@javax.annotation.Nullable Boolean platform) {
+    this.platform = platform;
+  }
+
+
   public IamApplication project(@javax.annotation.Nullable String project) {
     this.project = project;
     return this;
@@ -2446,6 +2470,7 @@ public class IamApplication {
         Objects.equals(this.organizationObj, iamApplication.organizationObj) &&
         Objects.equals(this.otherDomains, iamApplication.otherDomains) &&
         Objects.equals(this.owner, iamApplication.owner) &&
+        Objects.equals(this.platform, iamApplication.platform) &&
         Objects.equals(this.project, iamApplication.project) &&
         Objects.equals(this.providers, iamApplication.providers) &&
         Objects.equals(this.redirectUris, iamApplication.redirectUris) &&
@@ -2480,7 +2505,7 @@ public class IamApplication {
 
   @Override
   public int hashCode() {
-    return Objects.hash(affiliationUrl, category, cert, certObj, certPublicKey, clientCert, clientId, clientSecret, codeResendTimeout, cookieExpireInHours, createdAt, createdTime, customScopes, defaultGroup, deleted, description, disableSamlAttributes, disableSignin, displayName, domain, enableAutoSignin, enableCodeSignin, enableExclusiveSignin, enableLinkWithEmail, enablePassword, enableSamlAssertionSignature, enableSamlC14n10, enableSamlCompress, enableSamlPostBinding, enableSignUp, enableSigninSession, enableWebAuthn, environment, expireInHours, failedSigninFrozenTime, failedSigninLimit, favicon, footerHtml, forcedRedirectOrigin, forgetUrl, formBackgroundUrl, formBackgroundUrlMobile, formCss, formCssMobile, formOffset, formSideHtml, grantTypes, headerHtml, homepageUrl, id, ipRestriction, ipWhitelist, isShared, logo, name, order, orgChoiceMode, organization, organizationObj, otherDomains, owner, project, providers, redirectUris, refreshExpireInHours, samlAttributes, samlHashAlgorithm, samlReplyUrl, scopes, signinHtml, signinItems, signinMethods, signinUrl, signupHtml, signupItems, signupUrl, sslCert, sslMode, tags, termsOfUse, themeData, title, tokenAttributes, tokenFields, tokenFormat, tokenSigningMethod, type, updatedAt, upstreamHost, useEmailAsSamlNameId, additionalProperties);
+    return Objects.hash(affiliationUrl, category, cert, certObj, certPublicKey, clientCert, clientId, clientSecret, codeResendTimeout, cookieExpireInHours, createdAt, createdTime, customScopes, defaultGroup, deleted, description, disableSamlAttributes, disableSignin, displayName, domain, enableAutoSignin, enableCodeSignin, enableExclusiveSignin, enableLinkWithEmail, enablePassword, enableSamlAssertionSignature, enableSamlC14n10, enableSamlCompress, enableSamlPostBinding, enableSignUp, enableSigninSession, enableWebAuthn, environment, expireInHours, failedSigninFrozenTime, failedSigninLimit, favicon, footerHtml, forcedRedirectOrigin, forgetUrl, formBackgroundUrl, formBackgroundUrlMobile, formCss, formCssMobile, formOffset, formSideHtml, grantTypes, headerHtml, homepageUrl, id, ipRestriction, ipWhitelist, isShared, logo, name, order, orgChoiceMode, organization, organizationObj, otherDomains, owner, platform, project, providers, redirectUris, refreshExpireInHours, samlAttributes, samlHashAlgorithm, samlReplyUrl, scopes, signinHtml, signinItems, signinMethods, signinUrl, signupHtml, signupItems, signupUrl, sslCert, sslMode, tags, termsOfUse, themeData, title, tokenAttributes, tokenFields, tokenFormat, tokenSigningMethod, type, updatedAt, upstreamHost, useEmailAsSamlNameId, additionalProperties);
   }
 
   @Override
@@ -2548,6 +2573,7 @@ public class IamApplication {
     sb.append("    organizationObj: ").append(toIndentedString(organizationObj)).append("\n");
     sb.append("    otherDomains: ").append(toIndentedString(otherDomains)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
+    sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("    providers: ").append(toIndentedString(providers)).append("\n");
     sb.append("    redirectUris: ").append(toIndentedString(redirectUris)).append("\n");
@@ -2599,7 +2625,7 @@ public class IamApplication {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("affiliationUrl", "category", "cert", "certObj", "certPublicKey", "clientCert", "clientId", "clientSecret", "codeResendTimeout", "cookieExpireInHours", "createdAt", "createdTime", "customScopes", "defaultGroup", "deleted", "description", "disableSamlAttributes", "disableSignin", "displayName", "domain", "enableAutoSignin", "enableCodeSignin", "enableExclusiveSignin", "enableLinkWithEmail", "enablePassword", "enableSamlAssertionSignature", "enableSamlC14n10", "enableSamlCompress", "enableSamlPostBinding", "enableSignUp", "enableSigninSession", "enableWebAuthn", "environment", "expireInHours", "failedSigninFrozenTime", "failedSigninLimit", "favicon", "footerHtml", "forcedRedirectOrigin", "forgetUrl", "formBackgroundUrl", "formBackgroundUrlMobile", "formCss", "formCssMobile", "formOffset", "formSideHtml", "grantTypes", "headerHtml", "homepageUrl", "id", "ipRestriction", "ipWhitelist", "isShared", "logo", "name", "order", "orgChoiceMode", "organization", "organizationObj", "otherDomains", "owner", "project", "providers", "redirectUris", "refreshExpireInHours", "samlAttributes", "samlHashAlgorithm", "samlReplyUrl", "scopes", "signinHtml", "signinItems", "signinMethods", "signinUrl", "signupHtml", "signupItems", "signupUrl", "sslCert", "sslMode", "tags", "termsOfUse", "themeData", "title", "tokenAttributes", "tokenFields", "tokenFormat", "tokenSigningMethod", "type", "updatedAt", "upstreamHost", "useEmailAsSamlNameId"));
+    openapiFields = new HashSet<String>(Arrays.asList("affiliationUrl", "category", "cert", "certObj", "certPublicKey", "clientCert", "clientId", "clientSecret", "codeResendTimeout", "cookieExpireInHours", "createdAt", "createdTime", "customScopes", "defaultGroup", "deleted", "description", "disableSamlAttributes", "disableSignin", "displayName", "domain", "enableAutoSignin", "enableCodeSignin", "enableExclusiveSignin", "enableLinkWithEmail", "enablePassword", "enableSamlAssertionSignature", "enableSamlC14n10", "enableSamlCompress", "enableSamlPostBinding", "enableSignUp", "enableSigninSession", "enableWebAuthn", "environment", "expireInHours", "failedSigninFrozenTime", "failedSigninLimit", "favicon", "footerHtml", "forcedRedirectOrigin", "forgetUrl", "formBackgroundUrl", "formBackgroundUrlMobile", "formCss", "formCssMobile", "formOffset", "formSideHtml", "grantTypes", "headerHtml", "homepageUrl", "id", "ipRestriction", "ipWhitelist", "isShared", "logo", "name", "order", "orgChoiceMode", "organization", "organizationObj", "otherDomains", "owner", "platform", "project", "providers", "redirectUris", "refreshExpireInHours", "samlAttributes", "samlHashAlgorithm", "samlReplyUrl", "scopes", "signinHtml", "signinItems", "signinMethods", "signinUrl", "signupHtml", "signupItems", "signupUrl", "sslCert", "sslMode", "tags", "termsOfUse", "themeData", "title", "tokenAttributes", "tokenFields", "tokenFormat", "tokenSigningMethod", "type", "updatedAt", "upstreamHost", "useEmailAsSamlNameId"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

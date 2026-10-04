@@ -15,6 +15,7 @@ package ai.hanzo.cloud.model;
 
 import java.util.Objects;
 import ai.hanzo.cloud.model.BrowserTagOut;
+import ai.hanzo.cloud.model.Decision;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -53,6 +54,16 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class TagConfig {
+  public static final String SERIALIZED_NAME_AUDIENCE = "audience";
+  @SerializedName(SERIALIZED_NAME_AUDIENCE)
+  @javax.annotation.Nullable
+  private String audience;
+
+  public static final String SERIALIZED_NAME_CONSENT = "consent";
+  @SerializedName(SERIALIZED_NAME_CONSENT)
+  @javax.annotation.Nullable
+  private Decision consent;
+
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
@@ -60,6 +71,44 @@ public class TagConfig {
 
   public TagConfig() {
   }
+
+  public TagConfig audience(@javax.annotation.Nullable String audience) {
+    this.audience = audience;
+    return this;
+  }
+
+  /**
+   * Get audience
+   * @return audience
+   */
+  @javax.annotation.Nullable
+  public String getAudience() {
+    return audience;
+  }
+
+  public void setAudience(@javax.annotation.Nullable String audience) {
+    this.audience = audience;
+  }
+
+
+  public TagConfig consent(@javax.annotation.Nullable Decision consent) {
+    this.consent = consent;
+    return this;
+  }
+
+  /**
+   * Get consent
+   * @return consent
+   */
+  @javax.annotation.Nullable
+  public Decision getConsent() {
+    return consent;
+  }
+
+  public void setConsent(@javax.annotation.Nullable Decision consent) {
+    this.consent = consent;
+  }
+
 
   public TagConfig tags(@javax.annotation.Nullable List<BrowserTagOut> tags) {
     this.tags = tags;
@@ -142,19 +191,23 @@ public class TagConfig {
       return false;
     }
     TagConfig tagConfig = (TagConfig) o;
-    return Objects.equals(this.tags, tagConfig.tags)&&
+    return Objects.equals(this.audience, tagConfig.audience) &&
+        Objects.equals(this.consent, tagConfig.consent) &&
+        Objects.equals(this.tags, tagConfig.tags)&&
         Objects.equals(this.additionalProperties, tagConfig.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, additionalProperties);
+    return Objects.hash(audience, consent, tags, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TagConfig {\n");
+    sb.append("    audience: ").append(toIndentedString(audience)).append("\n");
+    sb.append("    consent: ").append(toIndentedString(consent)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -178,7 +231,7 @@ public class TagConfig {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("tags"));
+    openapiFields = new HashSet<String>(Arrays.asList("audience", "consent", "tags"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -197,6 +250,13 @@ public class TagConfig {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("audience") != null && !jsonObj.get("audience").isJsonNull()) && !jsonObj.get("audience").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `audience` to be a primitive type in the JSON string but got `%s`", jsonObj.get("audience").toString()));
+      }
+      // validate the optional field `consent`
+      if (jsonObj.get("consent") != null && !jsonObj.get("consent").isJsonNull()) {
+        Decision.validateJsonElement(jsonObj.get("consent"));
+      }
       if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) {
         JsonArray jsonArraytags = jsonObj.getAsJsonArray("tags");
         if (jsonArraytags != null) {

@@ -50,50 +50,120 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class CatalogEntry {
-  public static final String SERIALIZED_NAME_CONFIGURED = "configured";
-  @SerializedName(SERIALIZED_NAME_CONFIGURED)
+  public static final String SERIALIZED_NAME_ARCHETYPE = "archetype";
+  @SerializedName(SERIALIZED_NAME_ARCHETYPE)
   @javax.annotation.Nullable
-  private Boolean configured;
+  private String archetype;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   @javax.annotation.Nullable
   private String description;
 
-  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  public static final String SERIALIZED_NAME_FORKABLE = "forkable";
+  @SerializedName(SERIALIZED_NAME_FORKABLE)
   @javax.annotation.Nullable
-  private String displayName;
+  private Boolean forkable;
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
+  private String id;
 
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
   @javax.annotation.Nullable
   private String kind;
 
-  public static final String SERIALIZED_NAME_PROVIDER = "provider";
-  @SerializedName(SERIALIZED_NAME_PROVIDER)
+  public static final String SERIALIZED_NAME_LANGUAGE = "language";
+  @SerializedName(SERIALIZED_NAME_LANGUAGE)
   @javax.annotation.Nullable
-  private String provider;
+  private String language;
+
+  public static final String SERIALIZED_NAME_LICENSE = "license";
+  @SerializedName(SERIALIZED_NAME_LICENSE)
+  @javax.annotation.Nullable
+  private String license;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
+  private String name;
+
+  public static final String SERIALIZED_NAME_NOTE = "note";
+  @SerializedName(SERIALIZED_NAME_NOTE)
+  @javax.annotation.Nullable
+  private String note;
+
+  public static final String SERIALIZED_NAME_ORG = "org";
+  @SerializedName(SERIALIZED_NAME_ORG)
+  @javax.annotation.Nullable
+  private String org;
+
+  public static final String SERIALIZED_NAME_ORIGIN = "origin";
+  @SerializedName(SERIALIZED_NAME_ORIGIN)
+  @javax.annotation.Nullable
+  private String origin;
+
+  public static final String SERIALIZED_NAME_REPO = "repo";
+  @SerializedName(SERIALIZED_NAME_REPO)
+  @javax.annotation.Nullable
+  private String repo;
+
+  public static final String SERIALIZED_NAME_SCOPE = "scope";
+  @SerializedName(SERIALIZED_NAME_SCOPE)
+  @javax.annotation.Nullable
+  private String scope;
+
+  public static final String SERIALIZED_NAME_STARS = "stars";
+  @SerializedName(SERIALIZED_NAME_STARS)
+  @javax.annotation.Nullable
+  private Long stars;
+
+  public static final String SERIALIZED_NAME_TEMPLATE = "template";
+  @SerializedName(SERIALIZED_NAME_TEMPLATE)
+  @javax.annotation.Nullable
+  private String template;
+
+  public static final String SERIALIZED_NAME_TITLE = "title";
+  @SerializedName(SERIALIZED_NAME_TITLE)
+  @javax.annotation.Nullable
+  private String title;
+
+  public static final String SERIALIZED_NAME_UPDATED = "updated";
+  @SerializedName(SERIALIZED_NAME_UPDATED)
+  @javax.annotation.Nullable
+  private String updated;
+
+  public static final String SERIALIZED_NAME_UPSTREAM = "upstream";
+  @SerializedName(SERIALIZED_NAME_UPSTREAM)
+  @javax.annotation.Nullable
+  private String upstream;
+
+  public static final String SERIALIZED_NAME_URL = "url";
+  @SerializedName(SERIALIZED_NAME_URL)
+  @javax.annotation.Nullable
+  private String url;
 
   public CatalogEntry() {
   }
 
-  public CatalogEntry configured(@javax.annotation.Nullable Boolean configured) {
-    this.configured = configured;
+  public CatalogEntry archetype(@javax.annotation.Nullable String archetype) {
+    this.archetype = archetype;
     return this;
   }
 
   /**
-   * Configured is whether THIS DEPLOYMENT holds the OAuth client credentials for the provider. False means Connect would dead-end, so the console can offer it disabled instead of broken. It is deployment-wide and says nothing about whether the caller&#39;s org has connected the source — that is the connector list&#39;s &#x60;status&#x60;.
-   * @return configured
+   * Archetype is WHAT KIND OF THING this is, from a closed and ordered list — model | contract | chain | sdk | template | infra | site | app — derived from the repository&#39;s own topics, name and description, first match winning, and always &#x60;site&#x60; for a deployed site. It is DERIVED, never guessed by a model, because a wrong archetype hides a row from the browse rail more thoroughly than a missing one does. Empty when no topic matched: unclassified, not uncategorisable.
+   * @return archetype
    */
   @javax.annotation.Nullable
-  public Boolean getConfigured() {
-    return configured;
+  public String getArchetype() {
+    return archetype;
   }
 
-  public void setConfigured(@javax.annotation.Nullable Boolean configured) {
-    this.configured = configured;
+  public void setArchetype(@javax.annotation.Nullable String archetype) {
+    this.archetype = archetype;
   }
 
 
@@ -103,7 +173,7 @@ public class CatalogEntry {
   }
 
   /**
-   * Description is one line of shop copy: what connecting this source pulls in. Native connectors carry written prose; a piece-backed one reads \&quot;activepieces connector (&lt;piece&gt;)\&quot;.
+   * Description is the repository&#39;s own one-line GitHub description, carried verbatim. It comes from the SOURCE half of a row, so a site that was never matched to a repository has none, and nothing here is written by us.
    * @return description
    */
   @javax.annotation.Nullable
@@ -116,22 +186,41 @@ public class CatalogEntry {
   }
 
 
-  public CatalogEntry displayName(@javax.annotation.Nullable String displayName) {
-    this.displayName = displayName;
+  public CatalogEntry forkable(@javax.annotation.Nullable Boolean forkable) {
+    this.forkable = forkable;
     return this;
   }
 
   /**
-   * DisplayName is the label to show a person. First-party connectors carry a written name (\&quot;GitHub\&quot;, \&quot;Google Drive\&quot;); a piece-backed one falls back to the provider capitalized, because the rich activepieces metadata lives behind a cross-service call this read will not make.
-   * @return displayName
+   * Forkable is NOT omitempty: false is an answer here, not a missing field. Omitted, a client could not tell \&quot;you cannot fork this\&quot; from \&quot;nobody said\&quot;.
+   * @return forkable
    */
   @javax.annotation.Nullable
-  public String getDisplayName() {
-    return displayName;
+  public Boolean getForkable() {
+    return forkable;
   }
 
-  public void setDisplayName(@javax.annotation.Nullable String displayName) {
-    this.displayName = displayName;
+  public void setForkable(@javax.annotation.Nullable Boolean forkable) {
+    this.forkable = forkable;
+  }
+
+
+  public CatalogEntry id(@javax.annotation.Nullable String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * ID is \&quot;&lt;org&gt;/&lt;name&gt;\&quot; and is the corpus&#39;s primary key: a re-published entry updates in place under it rather than accumulating duplicates, so it is the one handle stable enough to link to or to name in a &#x60;template&#x60; filter. Two orgs can spell the same id, and &#x60;canonical&#x60; picks which one keeps it.
+   * @return id
+   */
+  @javax.annotation.Nullable
+  public String getId() {
+    return id;
+  }
+
+  public void setId(@javax.annotation.Nullable String id) {
+    this.id = id;
   }
 
 
@@ -141,7 +230,7 @@ public class CatalogEntry {
   }
 
   /**
-   * \&quot;native\&quot; | \&quot;piece\&quot;
+   * repo | site
    * @return kind
    */
   @javax.annotation.Nullable
@@ -154,22 +243,269 @@ public class CatalogEntry {
   }
 
 
-  public CatalogEntry provider(@javax.annotation.Nullable String provider) {
-    this.provider = provider;
+  public CatalogEntry language(@javax.annotation.Nullable String language) {
+    this.language = language;
     return this;
   }
 
   /**
-   * Provider is the source&#39;s id and the address every connector op takes it by (/v1/knowledge/connectors/:provider). One of github, slack, google, notion.
-   * @return provider
+   * Language is the repository&#39;s primary implementation language as GitHub computes it (\&quot;Go\&quot;, \&quot;TypeScript\&quot;), and the case is GitHub&#39;s. Empty for a site with no source half and for a repository GitHub could not classify.
+   * @return language
    */
   @javax.annotation.Nullable
-  public String getProvider() {
-    return provider;
+  public String getLanguage() {
+    return language;
   }
 
-  public void setProvider(@javax.annotation.Nullable String provider) {
-    this.provider = provider;
+  public void setLanguage(@javax.annotation.Nullable String language) {
+    this.language = language;
+  }
+
+
+  public CatalogEntry license(@javax.annotation.Nullable String license) {
+    this.license = license;
+    return this;
+  }
+
+  /**
+   * License is the terms that upstream work carries, in whichever form the half that credited it had: an SPDX id (\&quot;MIT\&quot;, \&quot;Apache-2.0\&quot;) on a GitHub fork, free text on a site whose publisher declared it. GitHub&#39;s NOASSERTION — \&quot;we could not identify it\&quot; — reads as none rather than as a licence by that name. So empty means UNDECLARED and never unencumbered, and Upstream is what says whether the question applies at all.
+   * @return license
+   */
+  @javax.annotation.Nullable
+  public String getLicense() {
+    return license;
+  }
+
+  public void setLicense(@javax.annotation.Nullable String license) {
+    this.license = license;
+  }
+
+
+  public CatalogEntry name(@javax.annotation.Nullable String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Name is the short identifier inside the org — the repository&#39;s name, or the site&#39;s slug — and is the half of ID after the slash. Not a display name; Title is.
+   * @return name
+   */
+  @javax.annotation.Nullable
+  public String getName() {
+    return name;
+  }
+
+  public void setName(@javax.annotation.Nullable String name) {
+    this.name = name;
+  }
+
+
+  public CatalogEntry note(@javax.annotation.Nullable String note) {
+    this.note = note;
+    return this;
+  }
+
+  /**
+   * Note is why a row is NOT in the published catalog, set by the admission gate (gate.go) on the sites it holds back. It is the difference between a demo that silently vanished from the public lens and one whose owner can read the reason and fix it. A published row never carries one.
+   * @return note
+   */
+  @javax.annotation.Nullable
+  public String getNote() {
+    return note;
+  }
+
+  public void setNote(@javax.annotation.Nullable String note) {
+    this.note = note;
+  }
+
+
+  public CatalogEntry org(@javax.annotation.Nullable String org) {
+    this.org = org;
+    return this;
+  }
+
+  /**
+   * hanzo | lux | zoo
+   * @return org
+   */
+  @javax.annotation.Nullable
+  public String getOrg() {
+    return org;
+  }
+
+  public void setOrg(@javax.annotation.Nullable String org) {
+    this.org = org;
+  }
+
+
+  public CatalogEntry origin(@javax.annotation.Nullable String origin) {
+    this.origin = origin;
+    return this;
+  }
+
+  /**
+   * Origin is WHAT THIS IS TO YOU: template | community | third-party | product (origin.go owns the four nouns and derives them). Not omitempty, for the same reason Forkable is not: every row has an answer, and a missing one is exactly the flattening this field exists to end.
+   * @return origin
+   */
+  @javax.annotation.Nullable
+  public String getOrigin() {
+    return origin;
+  }
+
+  public void setOrigin(@javax.annotation.Nullable String origin) {
+    this.origin = origin;
+  }
+
+
+  public CatalogEntry repo(@javax.annotation.Nullable String repo) {
+    this.repo = repo;
+    return this;
+  }
+
+  /**
+   * source
+   * @return repo
+   */
+  @javax.annotation.Nullable
+  public String getRepo() {
+    return repo;
+  }
+
+  public void setRepo(@javax.annotation.Nullable String repo) {
+    this.repo = repo;
+  }
+
+
+  public CatalogEntry scope(@javax.annotation.Nullable String scope) {
+    this.scope = scope;
+    return this;
+  }
+
+  /**
+   * Scope is provenance, not storage: \&quot;public\&quot; for a row from the published corpus, \&quot;org\&quot; for one only this caller can see. A UI that cannot tell them apart cannot warn before sharing a link.
+   * @return scope
+   */
+  @javax.annotation.Nullable
+  public String getScope() {
+    return scope;
+  }
+
+  public void setScope(@javax.annotation.Nullable String scope) {
+    this.scope = scope;
+  }
+
+
+  public CatalogEntry stars(@javax.annotation.Nullable Long stars) {
+    this.stars = stars;
+    return this;
+  }
+
+  /**
+   * Stars is GitHub&#39;s stargazer count for the source repository, read at the last sync and never accumulated here. It is not a ranking — the page sorts on Updated — but it is the tiebreak when two orgs claim one ID. Absent for a site with no repository behind it, and for a repository nobody has starred.
+   * @return stars
+   */
+  @javax.annotation.Nullable
+  public Long getStars() {
+    return stars;
+  }
+
+  public void setStars(@javax.annotation.Nullable Long stars) {
+    this.stars = stars;
+  }
+
+
+  public CatalogEntry template(@javax.annotation.Nullable String template) {
+    this.template = template;
+    return this;
+  }
+
+  /**
+   * lineage, if forked from one
+   * @return template
+   */
+  @javax.annotation.Nullable
+  public String getTemplate() {
+    return template;
+  }
+
+  public void setTemplate(@javax.annotation.Nullable String template) {
+    this.template = template;
+  }
+
+
+  public CatalogEntry title(@javax.annotation.Nullable String title) {
+    this.title = title;
+    return this;
+  }
+
+  /**
+   * Title is what to SHOW. A site&#39;s human name wins where it has one; a repo row falls back to the repository name, so on a repo this usually just repeats Name. Absent only for a site whose project was never named — render Name.
+   * @return title
+   */
+  @javax.annotation.Nullable
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(@javax.annotation.Nullable String title) {
+    this.title = title;
+  }
+
+
+  public CatalogEntry updated(@javax.annotation.Nullable String updated) {
+    this.updated = updated;
+    return this;
+  }
+
+  /**
+   * Updated is when the thing last MOVED, as RFC 3339 in UTC: a repository&#39;s last push, or a site&#39;s last deploy. The page is ordered on it, most recent first, by comparing these strings — so the format is load-bearing and not cosmetic. Absent means the source reported no timestamp, and such a row sorts last.
+   * @return updated
+   */
+  @javax.annotation.Nullable
+  public String getUpdated() {
+    return updated;
+  }
+
+  public void setUpdated(@javax.annotation.Nullable String updated) {
+    this.updated = updated;
+  }
+
+
+  public CatalogEntry upstream(@javax.annotation.Nullable String upstream) {
+    this.upstream = upstream;
+    return this;
+  }
+
+  /**
+   * Upstream/License credit the third-party work an entry was published from: the difference between \&quot;this org built it\&quot; and \&quot;somebody else built it and we are showing it to you\&quot;.  WHO built it is Org, above — the account that paid for the project. There was once a separate admin-gated &#x60;official&#x60; boolean here claiming the same thing, and because it was gated it disagreed: apps Hanzo wrote and hosts were published by a script holding an ordinary org token, so it stayed false on all of them and this directory filed our own work as somebody else&#39;s. A field that restates an unforgeable fact can only ever be the wrong copy of it.
+   * @return upstream
+   */
+  @javax.annotation.Nullable
+  public String getUpstream() {
+    return upstream;
+  }
+
+  public void setUpstream(@javax.annotation.Nullable String upstream) {
+    this.upstream = upstream;
+  }
+
+
+  public CatalogEntry url(@javax.annotation.Nullable String url) {
+    this.url = url;
+    return this;
+  }
+
+  /**
+   * live, if it is deployed
+   * @return url
+   */
+  @javax.annotation.Nullable
+  public String getUrl() {
+    return url;
+  }
+
+  public void setUrl(@javax.annotation.Nullable String url) {
+    this.url = url;
   }
 
   /**
@@ -227,28 +563,56 @@ public class CatalogEntry {
       return false;
     }
     CatalogEntry catalogEntry = (CatalogEntry) o;
-    return Objects.equals(this.configured, catalogEntry.configured) &&
+    return Objects.equals(this.archetype, catalogEntry.archetype) &&
         Objects.equals(this.description, catalogEntry.description) &&
-        Objects.equals(this.displayName, catalogEntry.displayName) &&
+        Objects.equals(this.forkable, catalogEntry.forkable) &&
+        Objects.equals(this.id, catalogEntry.id) &&
         Objects.equals(this.kind, catalogEntry.kind) &&
-        Objects.equals(this.provider, catalogEntry.provider)&&
+        Objects.equals(this.language, catalogEntry.language) &&
+        Objects.equals(this.license, catalogEntry.license) &&
+        Objects.equals(this.name, catalogEntry.name) &&
+        Objects.equals(this.note, catalogEntry.note) &&
+        Objects.equals(this.org, catalogEntry.org) &&
+        Objects.equals(this.origin, catalogEntry.origin) &&
+        Objects.equals(this.repo, catalogEntry.repo) &&
+        Objects.equals(this.scope, catalogEntry.scope) &&
+        Objects.equals(this.stars, catalogEntry.stars) &&
+        Objects.equals(this.template, catalogEntry.template) &&
+        Objects.equals(this.title, catalogEntry.title) &&
+        Objects.equals(this.updated, catalogEntry.updated) &&
+        Objects.equals(this.upstream, catalogEntry.upstream) &&
+        Objects.equals(this.url, catalogEntry.url)&&
         Objects.equals(this.additionalProperties, catalogEntry.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(configured, description, displayName, kind, provider, additionalProperties);
+    return Objects.hash(archetype, description, forkable, id, kind, language, license, name, note, org, origin, repo, scope, stars, template, title, updated, upstream, url, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CatalogEntry {\n");
-    sb.append("    configured: ").append(toIndentedString(configured)).append("\n");
+    sb.append("    archetype: ").append(toIndentedString(archetype)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    forkable: ").append(toIndentedString(forkable)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
-    sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
+    sb.append("    license: ").append(toIndentedString(license)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    note: ").append(toIndentedString(note)).append("\n");
+    sb.append("    org: ").append(toIndentedString(org)).append("\n");
+    sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
+    sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    stars: ").append(toIndentedString(stars)).append("\n");
+    sb.append("    template: ").append(toIndentedString(template)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
+    sb.append("    upstream: ").append(toIndentedString(upstream)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -271,7 +635,7 @@ public class CatalogEntry {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("configured", "description", "displayName", "kind", "provider"));
+    openapiFields = new HashSet<String>(Arrays.asList("archetype", "description", "forkable", "id", "kind", "language", "license", "name", "note", "org", "origin", "repo", "scope", "stars", "template", "title", "updated", "upstream", "url"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -290,17 +654,56 @@ public class CatalogEntry {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("archetype") != null && !jsonObj.get("archetype").isJsonNull()) && !jsonObj.get("archetype").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `archetype` to be a primitive type in the JSON string but got `%s`", jsonObj.get("archetype").toString()));
+      }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if ((jsonObj.get("kind") != null && !jsonObj.get("kind").isJsonNull()) && !jsonObj.get("kind").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `kind` to be a primitive type in the JSON string but got `%s`", jsonObj.get("kind").toString()));
       }
-      if ((jsonObj.get("provider") != null && !jsonObj.get("provider").isJsonNull()) && !jsonObj.get("provider").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `provider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("provider").toString()));
+      if ((jsonObj.get("language") != null && !jsonObj.get("language").isJsonNull()) && !jsonObj.get("language").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `language` to be a primitive type in the JSON string but got `%s`", jsonObj.get("language").toString()));
+      }
+      if ((jsonObj.get("license") != null && !jsonObj.get("license").isJsonNull()) && !jsonObj.get("license").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `license` to be a primitive type in the JSON string but got `%s`", jsonObj.get("license").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("note") != null && !jsonObj.get("note").isJsonNull()) && !jsonObj.get("note").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `note` to be a primitive type in the JSON string but got `%s`", jsonObj.get("note").toString()));
+      }
+      if ((jsonObj.get("org") != null && !jsonObj.get("org").isJsonNull()) && !jsonObj.get("org").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `org` to be a primitive type in the JSON string but got `%s`", jsonObj.get("org").toString()));
+      }
+      if ((jsonObj.get("origin") != null && !jsonObj.get("origin").isJsonNull()) && !jsonObj.get("origin").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `origin` to be a primitive type in the JSON string but got `%s`", jsonObj.get("origin").toString()));
+      }
+      if ((jsonObj.get("repo") != null && !jsonObj.get("repo").isJsonNull()) && !jsonObj.get("repo").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `repo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("repo").toString()));
+      }
+      if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));
+      }
+      if ((jsonObj.get("template") != null && !jsonObj.get("template").isJsonNull()) && !jsonObj.get("template").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `template` to be a primitive type in the JSON string but got `%s`", jsonObj.get("template").toString()));
+      }
+      if ((jsonObj.get("title") != null && !jsonObj.get("title").isJsonNull()) && !jsonObj.get("title").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `title` to be a primitive type in the JSON string but got `%s`", jsonObj.get("title").toString()));
+      }
+      if ((jsonObj.get("updated") != null && !jsonObj.get("updated").isJsonNull()) && !jsonObj.get("updated").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `updated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updated").toString()));
+      }
+      if ((jsonObj.get("upstream") != null && !jsonObj.get("upstream").isJsonNull()) && !jsonObj.get("upstream").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `upstream` to be a primitive type in the JSON string but got `%s`", jsonObj.get("upstream").toString()));
+      }
+      if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
       }
   }
 

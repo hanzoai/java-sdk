@@ -54,7 +54,7 @@ public class O11yQueryEnvelope {
   public static final String SERIALIZED_NAME_SPEC = "spec";
   @SerializedName(SERIALIZED_NAME_SPEC)
   @javax.annotation.Nullable
-  private Object spec;
+  private Object spec = null;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -70,7 +70,7 @@ public class O11yQueryEnvelope {
   }
 
   /**
-   * Spec is the deferred decoding of the query if any.
+   * Get spec
    * @return spec
    */
   @javax.annotation.Nullable

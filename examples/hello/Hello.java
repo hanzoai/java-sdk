@@ -3,8 +3,8 @@ package ai.hanzo.cloud.examples;
 import ai.hanzo.Hanzo;
 import ai.hanzo.cloud.ApiException;
 import ai.hanzo.cloud.api.AccountApi;
-import ai.hanzo.cloud.model.ApiKey;
-import ai.hanzo.cloud.model.ApiKeyList;
+import ai.hanzo.cloud.model.AccountApiKey;
+import ai.hanzo.cloud.model.AccountApiKeyList;
 
 import java.util.List;
 
@@ -30,13 +30,13 @@ public final class Hello {
     public static void main(String[] args) {
         AccountApi keys = new AccountApi(Hanzo.client());
         try {
-            ApiKeyList mine = keys.getAccountKeys();
-            List<ApiKey> owned = mine.getKeys();
+            AccountApiKeyList mine = keys.getAccountKeys();
+            List<AccountApiKey> owned = mine.getKeys();
             if (owned == null || owned.isEmpty()) {
                 System.out.println("the key is good, and it owns no keys of its own");
                 return;
             }
-            for (ApiKey key : owned) {
+            for (AccountApiKey key : owned) {
                 System.out.printf("%-8s %-24s %s%n", key.getType(), key.getPrefix(), key.getCreatedAt());
             }
         } catch (ApiException e) {

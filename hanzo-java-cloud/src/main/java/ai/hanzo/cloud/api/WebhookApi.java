@@ -27,12 +27,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.CreateEndpointIn;
-import ai.hanzo.cloud.model.DeliveryList;
-import ai.hanzo.cloud.model.Endpoint;
-import ai.hanzo.cloud.model.EndpointList;
-import ai.hanzo.cloud.model.TestResult;
-import ai.hanzo.cloud.model.UpdateEndpointIn;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.WebhookCreateEndpointIn;
+import ai.hanzo.cloud.model.WebhookDeliveryList;
+import ai.hanzo.cloud.model.WebhookEndpoint;
+import ai.hanzo.cloud.model.WebhookEndpointList;
+import ai.hanzo.cloud.model.WebhookTestResult;
+import ai.hanzo.cloud.model.WebhookUpdateEndpointIn;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -88,6 +89,7 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteWebhookByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -117,6 +119,7 @@ public class WebhookApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -155,6 +158,7 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteWebhookById(@javax.annotation.Nonnull String id) throws ApiException {
@@ -172,6 +176,7 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteWebhookByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -191,6 +196,7 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteWebhookByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -209,6 +215,7 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getWebhookCall(final ApiCallback _callback) throws ApiException {
@@ -237,7 +244,8 @@ public class WebhookApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -264,35 +272,37 @@ public class WebhookApi {
     /**
      * Returns every webhook endpoint the caller&#39;s org has registered, newest first, each with its 7-day delivery and failure counts.
      * Returns every webhook endpoint the caller&#39;s org has registered, newest first, each with its 7-day delivery and failure counts. Signing secrets are redacted here — a secret leaves the server only on create and on rotate. The listing is physically org-scoped, so another tenant&#39;s endpoints are not reachable from this route at all.
-     * @return EndpointList
+     * @return WebhookEndpointList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EndpointList getWebhook() throws ApiException {
-        ApiResponse<EndpointList> localVarResp = getWebhookWithHttpInfo();
+    public WebhookEndpointList getWebhook() throws ApiException {
+        ApiResponse<WebhookEndpointList> localVarResp = getWebhookWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns every webhook endpoint the caller&#39;s org has registered, newest first, each with its 7-day delivery and failure counts.
      * Returns every webhook endpoint the caller&#39;s org has registered, newest first, each with its 7-day delivery and failure counts. Signing secrets are redacted here — a secret leaves the server only on create and on rotate. The listing is physically org-scoped, so another tenant&#39;s endpoints are not reachable from this route at all.
-     * @return ApiResponse&lt;EndpointList&gt;
+     * @return ApiResponse&lt;WebhookEndpointList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EndpointList> getWebhookWithHttpInfo() throws ApiException {
+    public ApiResponse<WebhookEndpointList> getWebhookWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getWebhookValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<EndpointList>(){}.getType();
+        Type localVarReturnType = new TypeToken<WebhookEndpointList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -307,12 +317,13 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWebhookAsync(final ApiCallback<EndpointList> _callback) throws ApiException {
+    public okhttp3.Call getWebhookAsync(final ApiCallback<WebhookEndpointList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWebhookValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<EndpointList>(){}.getType();
+        Type localVarReturnType = new TypeToken<WebhookEndpointList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -327,6 +338,7 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getWebhookByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -356,7 +368,8 @@ public class WebhookApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -389,17 +402,18 @@ public class WebhookApi {
      * Returns one of the caller org&#39;s webhook endpoints with its 7-day delivery and failure counts, signing secret redacted.
      * Returns one of the caller org&#39;s webhook endpoints with its 7-day delivery and failure counts, signing secret redacted. An id another org owns reads as not found, so the response cannot confirm that it exists.
      * @param id  (required)
-     * @return Endpoint
+     * @return WebhookEndpoint
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Endpoint getWebhookById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Endpoint> localVarResp = getWebhookByIdWithHttpInfo(id);
+    public WebhookEndpoint getWebhookById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<WebhookEndpoint> localVarResp = getWebhookByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -407,18 +421,19 @@ public class WebhookApi {
      * Returns one of the caller org&#39;s webhook endpoints with its 7-day delivery and failure counts, signing secret redacted.
      * Returns one of the caller org&#39;s webhook endpoints with its 7-day delivery and failure counts, signing secret redacted. An id another org owns reads as not found, so the response cannot confirm that it exists.
      * @param id  (required)
-     * @return ApiResponse&lt;Endpoint&gt;
+     * @return ApiResponse&lt;WebhookEndpoint&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Endpoint> getWebhookByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<WebhookEndpoint> getWebhookByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getWebhookByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
+        Type localVarReturnType = new TypeToken<WebhookEndpoint>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -434,12 +449,13 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWebhookByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Endpoint> _callback) throws ApiException {
+    public okhttp3.Call getWebhookByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<WebhookEndpoint> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWebhookByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
+        Type localVarReturnType = new TypeToken<WebhookEndpoint>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -456,6 +472,7 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getWebhookByIdDeliveriesCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
@@ -493,7 +510,8 @@ public class WebhookApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -528,17 +546,18 @@ public class WebhookApi {
      * @param id  (required)
      * @param limit Limit caps how many attempts come back: default 50, maximum 200. A value that is not a positive integer reads as the default. (optional)
      * @param status Status narrows the log to one outcome: \&quot;ok\&quot;, \&quot;retrying\&quot; or \&quot;failed\&quot;. Empty returns every attempt. (optional)
-     * @return DeliveryList
+     * @return WebhookDeliveryList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DeliveryList getWebhookByIdDeliveries(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status) throws ApiException {
-        ApiResponse<DeliveryList> localVarResp = getWebhookByIdDeliveriesWithHttpInfo(id, limit, status);
+    public WebhookDeliveryList getWebhookByIdDeliveries(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status) throws ApiException {
+        ApiResponse<WebhookDeliveryList> localVarResp = getWebhookByIdDeliveriesWithHttpInfo(id, limit, status);
         return localVarResp.getData();
     }
 
@@ -548,18 +567,19 @@ public class WebhookApi {
      * @param id  (required)
      * @param limit Limit caps how many attempts come back: default 50, maximum 200. A value that is not a positive integer reads as the default. (optional)
      * @param status Status narrows the log to one outcome: \&quot;ok\&quot;, \&quot;retrying\&quot; or \&quot;failed\&quot;. Empty returns every attempt. (optional)
-     * @return ApiResponse&lt;DeliveryList&gt;
+     * @return ApiResponse&lt;WebhookDeliveryList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeliveryList> getWebhookByIdDeliveriesWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status) throws ApiException {
+    public ApiResponse<WebhookDeliveryList> getWebhookByIdDeliveriesWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status) throws ApiException {
         okhttp3.Call localVarCall = getWebhookByIdDeliveriesValidateBeforeCall(id, limit, status, null);
-        Type localVarReturnType = new TypeToken<DeliveryList>(){}.getType();
+        Type localVarReturnType = new TypeToken<WebhookDeliveryList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -577,18 +597,19 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWebhookByIdDeliveriesAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status, final ApiCallback<DeliveryList> _callback) throws ApiException {
+    public okhttp3.Call getWebhookByIdDeliveriesAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status, final ApiCallback<WebhookDeliveryList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWebhookByIdDeliveriesValidateBeforeCall(id, limit, status, _callback);
-        Type localVarReturnType = new TypeToken<DeliveryList>(){}.getType();
+        Type localVarReturnType = new TypeToken<WebhookDeliveryList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postWebhook
-     * @param createEndpointIn  (required)
+     * @param webhookCreateEndpointIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -597,9 +618,10 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postWebhookCall(@javax.annotation.Nonnull CreateEndpointIn createEndpointIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWebhookCall(@javax.annotation.Nonnull WebhookCreateEndpointIn webhookCreateEndpointIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -613,7 +635,7 @@ public class WebhookApi {
             basePath = null;
         }
 
-        Object localVarPostBody = createEndpointIn;
+        Object localVarPostBody = webhookCreateEndpointIn;
 
         // create path and map variables
         String localVarPath = "/v1/webhook";
@@ -625,7 +647,8 @@ public class WebhookApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -645,57 +668,59 @@ public class WebhookApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postWebhookValidateBeforeCall(@javax.annotation.Nonnull CreateEndpointIn createEndpointIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'createEndpointIn' is set
-        if (createEndpointIn == null) {
-            throw new ApiException("Missing the required parameter 'createEndpointIn' when calling postWebhook(Async)");
+    private okhttp3.Call postWebhookValidateBeforeCall(@javax.annotation.Nonnull WebhookCreateEndpointIn webhookCreateEndpointIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'webhookCreateEndpointIn' is set
+        if (webhookCreateEndpointIn == null) {
+            throw new ApiException("Missing the required parameter 'webhookCreateEndpointIn' when calling postWebhook(Async)");
         }
 
-        return postWebhookCall(createEndpointIn, _callback);
+        return postWebhookCall(webhookCreateEndpointIn, _callback);
 
     }
 
     /**
      * Registers a new webhook subscription for the caller&#39;s org and answers 201 with the endpoint INCLUDING its freshly minted signing secret.
      * Registers a new webhook subscription for the caller&#39;s org and answers 201 with the endpoint INCLUDING its freshly minted signing secret. This is one of only two responses that ever carry that secret (the other is rotate) — store it now, because no later read returns it. The org is stamped by the server from the validated principal, so a body can never register an endpoint in another tenant.
-     * @param createEndpointIn  (required)
-     * @return Endpoint
+     * @param webhookCreateEndpointIn  (required)
+     * @return WebhookEndpoint
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Endpoint postWebhook(@javax.annotation.Nonnull CreateEndpointIn createEndpointIn) throws ApiException {
-        ApiResponse<Endpoint> localVarResp = postWebhookWithHttpInfo(createEndpointIn);
+    public WebhookEndpoint postWebhook(@javax.annotation.Nonnull WebhookCreateEndpointIn webhookCreateEndpointIn) throws ApiException {
+        ApiResponse<WebhookEndpoint> localVarResp = postWebhookWithHttpInfo(webhookCreateEndpointIn);
         return localVarResp.getData();
     }
 
     /**
      * Registers a new webhook subscription for the caller&#39;s org and answers 201 with the endpoint INCLUDING its freshly minted signing secret.
      * Registers a new webhook subscription for the caller&#39;s org and answers 201 with the endpoint INCLUDING its freshly minted signing secret. This is one of only two responses that ever carry that secret (the other is rotate) — store it now, because no later read returns it. The org is stamped by the server from the validated principal, so a body can never register an endpoint in another tenant.
-     * @param createEndpointIn  (required)
-     * @return ApiResponse&lt;Endpoint&gt;
+     * @param webhookCreateEndpointIn  (required)
+     * @return ApiResponse&lt;WebhookEndpoint&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Endpoint> postWebhookWithHttpInfo(@javax.annotation.Nonnull CreateEndpointIn createEndpointIn) throws ApiException {
-        okhttp3.Call localVarCall = postWebhookValidateBeforeCall(createEndpointIn, null);
-        Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
+    public ApiResponse<WebhookEndpoint> postWebhookWithHttpInfo(@javax.annotation.Nonnull WebhookCreateEndpointIn webhookCreateEndpointIn) throws ApiException {
+        okhttp3.Call localVarCall = postWebhookValidateBeforeCall(webhookCreateEndpointIn, null);
+        Type localVarReturnType = new TypeToken<WebhookEndpoint>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Registers a new webhook subscription for the caller&#39;s org and answers 201 with the endpoint INCLUDING its freshly minted signing secret. (asynchronously)
      * Registers a new webhook subscription for the caller&#39;s org and answers 201 with the endpoint INCLUDING its freshly minted signing secret. This is one of only two responses that ever carry that secret (the other is rotate) — store it now, because no later read returns it. The org is stamped by the server from the validated principal, so a body can never register an endpoint in another tenant.
-     * @param createEndpointIn  (required)
+     * @param webhookCreateEndpointIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -704,12 +729,13 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postWebhookAsync(@javax.annotation.Nonnull CreateEndpointIn createEndpointIn, final ApiCallback<Endpoint> _callback) throws ApiException {
+    public okhttp3.Call postWebhookAsync(@javax.annotation.Nonnull WebhookCreateEndpointIn webhookCreateEndpointIn, final ApiCallback<WebhookEndpoint> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postWebhookValidateBeforeCall(createEndpointIn, _callback);
-        Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
+        okhttp3.Call localVarCall = postWebhookValidateBeforeCall(webhookCreateEndpointIn, _callback);
+        Type localVarReturnType = new TypeToken<WebhookEndpoint>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -724,6 +750,7 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postWebhookByIdSecretCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -753,7 +780,8 @@ public class WebhookApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -786,17 +814,18 @@ public class WebhookApi {
      * Mints a NEW HMAC signing secret for the endpoint and answers the endpoint WITH it — the only other response besides create that ever carries a secret.
      * Mints a NEW HMAC signing secret for the endpoint and answers the endpoint WITH it — the only other response besides create that ever carries a secret. The old secret stops working the instant this returns: every subsequent delivery signs with the new one, with no overlap window. Call it when the subscriber is ready to swap the value on its side, not before.
      * @param id  (required)
-     * @return Endpoint
+     * @return WebhookEndpoint
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Endpoint postWebhookByIdSecret(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Endpoint> localVarResp = postWebhookByIdSecretWithHttpInfo(id);
+    public WebhookEndpoint postWebhookByIdSecret(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<WebhookEndpoint> localVarResp = postWebhookByIdSecretWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -804,18 +833,19 @@ public class WebhookApi {
      * Mints a NEW HMAC signing secret for the endpoint and answers the endpoint WITH it — the only other response besides create that ever carries a secret.
      * Mints a NEW HMAC signing secret for the endpoint and answers the endpoint WITH it — the only other response besides create that ever carries a secret. The old secret stops working the instant this returns: every subsequent delivery signs with the new one, with no overlap window. Call it when the subscriber is ready to swap the value on its side, not before.
      * @param id  (required)
-     * @return ApiResponse&lt;Endpoint&gt;
+     * @return ApiResponse&lt;WebhookEndpoint&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Endpoint> postWebhookByIdSecretWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<WebhookEndpoint> postWebhookByIdSecretWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postWebhookByIdSecretValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
+        Type localVarReturnType = new TypeToken<WebhookEndpoint>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -831,12 +861,13 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postWebhookByIdSecretAsync(@javax.annotation.Nonnull String id, final ApiCallback<Endpoint> _callback) throws ApiException {
+    public okhttp3.Call postWebhookByIdSecretAsync(@javax.annotation.Nonnull String id, final ApiCallback<WebhookEndpoint> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postWebhookByIdSecretValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
+        Type localVarReturnType = new TypeToken<WebhookEndpoint>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -851,6 +882,7 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postWebhookByIdTestCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -880,7 +912,8 @@ public class WebhookApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -913,17 +946,18 @@ public class WebhookApi {
      * Sends ONE signed test event to the endpoint right now and answers the outcome inline, so the console can show whether the subscriber is reachable without waiting for real traffic.
      * Sends ONE signed test event to the endpoint right now and answers the outcome inline, so the console can show whether the subscriber is reachable without waiting for real traffic. It takes the same attempt path the bus dispatcher takes — one attempt, 10s timeout, no retry ladder — and records the result in the endpoint&#39;s delivery log. It works on a DISABLED endpoint too: validating one you have paused is the whole point.
      * @param id  (required)
-     * @return TestResult
+     * @return WebhookTestResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TestResult postWebhookByIdTest(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<TestResult> localVarResp = postWebhookByIdTestWithHttpInfo(id);
+    public WebhookTestResult postWebhookByIdTest(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<WebhookTestResult> localVarResp = postWebhookByIdTestWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -931,18 +965,19 @@ public class WebhookApi {
      * Sends ONE signed test event to the endpoint right now and answers the outcome inline, so the console can show whether the subscriber is reachable without waiting for real traffic.
      * Sends ONE signed test event to the endpoint right now and answers the outcome inline, so the console can show whether the subscriber is reachable without waiting for real traffic. It takes the same attempt path the bus dispatcher takes — one attempt, 10s timeout, no retry ladder — and records the result in the endpoint&#39;s delivery log. It works on a DISABLED endpoint too: validating one you have paused is the whole point.
      * @param id  (required)
-     * @return ApiResponse&lt;TestResult&gt;
+     * @return ApiResponse&lt;WebhookTestResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TestResult> postWebhookByIdTestWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<WebhookTestResult> postWebhookByIdTestWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postWebhookByIdTestValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<TestResult>(){}.getType();
+        Type localVarReturnType = new TypeToken<WebhookTestResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -958,19 +993,20 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postWebhookByIdTestAsync(@javax.annotation.Nonnull String id, final ApiCallback<TestResult> _callback) throws ApiException {
+    public okhttp3.Call postWebhookByIdTestAsync(@javax.annotation.Nonnull String id, final ApiCallback<WebhookTestResult> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postWebhookByIdTestValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<TestResult>(){}.getType();
+        Type localVarReturnType = new TypeToken<WebhookTestResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putWebhookById
      * @param id  (required)
-     * @param updateEndpointIn  (required)
+     * @param webhookUpdateEndpointIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -979,9 +1015,10 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putWebhookByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateEndpointIn updateEndpointIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putWebhookByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull WebhookUpdateEndpointIn webhookUpdateEndpointIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -995,7 +1032,7 @@ public class WebhookApi {
             basePath = null;
         }
 
-        Object localVarPostBody = updateEndpointIn;
+        Object localVarPostBody = webhookUpdateEndpointIn;
 
         // create path and map variables
         String localVarPath = "/v1/webhook/{id}"
@@ -1008,7 +1045,8 @@ public class WebhookApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1028,18 +1066,18 @@ public class WebhookApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putWebhookByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateEndpointIn updateEndpointIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putWebhookByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull WebhookUpdateEndpointIn webhookUpdateEndpointIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling putWebhookById(Async)");
         }
 
-        // verify the required parameter 'updateEndpointIn' is set
-        if (updateEndpointIn == null) {
-            throw new ApiException("Missing the required parameter 'updateEndpointIn' when calling putWebhookById(Async)");
+        // verify the required parameter 'webhookUpdateEndpointIn' is set
+        if (webhookUpdateEndpointIn == null) {
+            throw new ApiException("Missing the required parameter 'webhookUpdateEndpointIn' when calling putWebhookById(Async)");
         }
 
-        return putWebhookByIdCall(id, updateEndpointIn, _callback);
+        return putWebhookByIdCall(id, webhookUpdateEndpointIn, _callback);
 
     }
 
@@ -1047,18 +1085,19 @@ public class WebhookApi {
      * Replaces the editable fields of one of the caller org&#39;s endpoints — url, events, status and description — and answers the stored row with its secret redacted.
      * Replaces the editable fields of one of the caller org&#39;s endpoints — url, events, status and description — and answers the stored row with its secret redacted. It is a full replace, not a patch: an omitted field is written as its empty value, and an omitted or empty events list resubscribes the endpoint to EVERY event. The signing secret and the creation time are immutable here; rotate the secret with POST /v1/webhook/{id}/secret.
      * @param id  (required)
-     * @param updateEndpointIn  (required)
-     * @return Endpoint
+     * @param webhookUpdateEndpointIn  (required)
+     * @return WebhookEndpoint
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Endpoint putWebhookById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateEndpointIn updateEndpointIn) throws ApiException {
-        ApiResponse<Endpoint> localVarResp = putWebhookByIdWithHttpInfo(id, updateEndpointIn);
+    public WebhookEndpoint putWebhookById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull WebhookUpdateEndpointIn webhookUpdateEndpointIn) throws ApiException {
+        ApiResponse<WebhookEndpoint> localVarResp = putWebhookByIdWithHttpInfo(id, webhookUpdateEndpointIn);
         return localVarResp.getData();
     }
 
@@ -1066,19 +1105,20 @@ public class WebhookApi {
      * Replaces the editable fields of one of the caller org&#39;s endpoints — url, events, status and description — and answers the stored row with its secret redacted.
      * Replaces the editable fields of one of the caller org&#39;s endpoints — url, events, status and description — and answers the stored row with its secret redacted. It is a full replace, not a patch: an omitted field is written as its empty value, and an omitted or empty events list resubscribes the endpoint to EVERY event. The signing secret and the creation time are immutable here; rotate the secret with POST /v1/webhook/{id}/secret.
      * @param id  (required)
-     * @param updateEndpointIn  (required)
-     * @return ApiResponse&lt;Endpoint&gt;
+     * @param webhookUpdateEndpointIn  (required)
+     * @return ApiResponse&lt;WebhookEndpoint&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Endpoint> putWebhookByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateEndpointIn updateEndpointIn) throws ApiException {
-        okhttp3.Call localVarCall = putWebhookByIdValidateBeforeCall(id, updateEndpointIn, null);
-        Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
+    public ApiResponse<WebhookEndpoint> putWebhookByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull WebhookUpdateEndpointIn webhookUpdateEndpointIn) throws ApiException {
+        okhttp3.Call localVarCall = putWebhookByIdValidateBeforeCall(id, webhookUpdateEndpointIn, null);
+        Type localVarReturnType = new TypeToken<WebhookEndpoint>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1086,7 +1126,7 @@ public class WebhookApi {
      * Replaces the editable fields of one of the caller org&#39;s endpoints — url, events, status and description — and answers the stored row with its secret redacted. (asynchronously)
      * Replaces the editable fields of one of the caller org&#39;s endpoints — url, events, status and description — and answers the stored row with its secret redacted. It is a full replace, not a patch: an omitted field is written as its empty value, and an omitted or empty events list resubscribes the endpoint to EVERY event. The signing secret and the creation time are immutable here; rotate the secret with POST /v1/webhook/{id}/secret.
      * @param id  (required)
-     * @param updateEndpointIn  (required)
+     * @param webhookUpdateEndpointIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1095,12 +1135,13 @@ public class WebhookApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putWebhookByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull UpdateEndpointIn updateEndpointIn, final ApiCallback<Endpoint> _callback) throws ApiException {
+    public okhttp3.Call putWebhookByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull WebhookUpdateEndpointIn webhookUpdateEndpointIn, final ApiCallback<WebhookEndpoint> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putWebhookByIdValidateBeforeCall(id, updateEndpointIn, _callback);
-        Type localVarReturnType = new TypeToken<Endpoint>(){}.getType();
+        okhttp3.Call localVarCall = putWebhookByIdValidateBeforeCall(id, webhookUpdateEndpointIn, _callback);
+        Type localVarReturnType = new TypeToken<WebhookEndpoint>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

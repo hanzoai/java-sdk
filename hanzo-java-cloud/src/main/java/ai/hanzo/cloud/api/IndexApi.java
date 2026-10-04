@@ -27,19 +27,21 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.IndexDocuments;
 import ai.hanzo.cloud.model.IndexEnqueued;
-import ai.hanzo.cloud.model.IndexFilter;
-import ai.hanzo.cloud.model.IndexHealth;
-import ai.hanzo.cloud.model.IndexHits;
-import ai.hanzo.cloud.model.IndexList;
-import ai.hanzo.cloud.model.IndexNew;
-import ai.hanzo.cloud.model.IndexQuery;
-import ai.hanzo.cloud.model.IndexSettings;
-import ai.hanzo.cloud.model.IndexStats;
-import ai.hanzo.cloud.model.IndexTask;
-import ai.hanzo.cloud.model.IndexVersion;
-import ai.hanzo.cloud.model.IndexView;
+import ai.hanzo.cloud.model.IndexIndexDocuments;
+import ai.hanzo.cloud.model.IndexIndexEnqueued;
+import ai.hanzo.cloud.model.IndexIndexFilter;
+import ai.hanzo.cloud.model.IndexIndexHealth;
+import ai.hanzo.cloud.model.IndexIndexHits;
+import ai.hanzo.cloud.model.IndexIndexList;
+import ai.hanzo.cloud.model.IndexIndexNew;
+import ai.hanzo.cloud.model.IndexIndexQuery;
+import ai.hanzo.cloud.model.IndexIndexSettings;
+import ai.hanzo.cloud.model.IndexIndexStats;
+import ai.hanzo.cloud.model.IndexIndexTask;
+import ai.hanzo.cloud.model.IndexIndexVersion;
+import ai.hanzo.cloud.model.IndexIndexView;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -95,6 +97,7 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteIndexIndexesByUidCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
@@ -124,7 +127,8 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -157,17 +161,18 @@ public class IndexApi {
      * Deletes an index and everything in it.
      * Deletes an index and everything in it.  Drops the index and every document in it from the caller&#39;s own org, and answers the dialect&#39;s EnqueuedTask. This is the only way to retire an index; without it a mistaken uid is permanent. Deleting an index that is not there succeeds, so a cleanup pass is safe to re-run.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the documents are already gone when this answers.
      * @param uid  (required)
-     * @return IndexEnqueued
+     * @return IndexIndexEnqueued
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IndexEnqueued deleteIndexIndexesByUid(@javax.annotation.Nonnull String uid) throws ApiException {
-        ApiResponse<IndexEnqueued> localVarResp = deleteIndexIndexesByUidWithHttpInfo(uid);
+    public IndexIndexEnqueued deleteIndexIndexesByUid(@javax.annotation.Nonnull String uid) throws ApiException {
+        ApiResponse<IndexIndexEnqueued> localVarResp = deleteIndexIndexesByUidWithHttpInfo(uid);
         return localVarResp.getData();
     }
 
@@ -175,18 +180,19 @@ public class IndexApi {
      * Deletes an index and everything in it.
      * Deletes an index and everything in it.  Drops the index and every document in it from the caller&#39;s own org, and answers the dialect&#39;s EnqueuedTask. This is the only way to retire an index; without it a mistaken uid is permanent. Deleting an index that is not there succeeds, so a cleanup pass is safe to re-run.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the documents are already gone when this answers.
      * @param uid  (required)
-     * @return ApiResponse&lt;IndexEnqueued&gt;
+     * @return ApiResponse&lt;IndexIndexEnqueued&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexEnqueued> deleteIndexIndexesByUidWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+    public ApiResponse<IndexIndexEnqueued> deleteIndexIndexesByUidWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
         okhttp3.Call localVarCall = deleteIndexIndexesByUidValidateBeforeCall(uid, null);
-        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexEnqueued>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -202,12 +208,13 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteIndexIndexesByUidAsync(@javax.annotation.Nonnull String uid, final ApiCallback<IndexEnqueued> _callback) throws ApiException {
+    public okhttp3.Call deleteIndexIndexesByUidAsync(@javax.annotation.Nonnull String uid, final ApiCallback<IndexIndexEnqueued> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteIndexIndexesByUidValidateBeforeCall(uid, _callback);
-        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexEnqueued>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -223,6 +230,7 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteIndexIndexesByUidDocumentsByIdCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -253,7 +261,8 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -292,17 +301,18 @@ public class IndexApi {
      * Deletes one document by its primary key.  Removes the document from the caller&#39;s own org and answers the dialect&#39;s EnqueuedTask. Deleting a key that is not there succeeds, so a client reconciling its own corpus can delete without checking first.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the document is already gone when this answers.
      * @param uid  (required)
      * @param id  (required)
-     * @return IndexEnqueued
+     * @return IndexIndexEnqueued
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IndexEnqueued deleteIndexIndexesByUidDocumentsById(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<IndexEnqueued> localVarResp = deleteIndexIndexesByUidDocumentsByIdWithHttpInfo(uid, id);
+    public IndexIndexEnqueued deleteIndexIndexesByUidDocumentsById(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<IndexIndexEnqueued> localVarResp = deleteIndexIndexesByUidDocumentsByIdWithHttpInfo(uid, id);
         return localVarResp.getData();
     }
 
@@ -311,18 +321,19 @@ public class IndexApi {
      * Deletes one document by its primary key.  Removes the document from the caller&#39;s own org and answers the dialect&#39;s EnqueuedTask. Deleting a key that is not there succeeds, so a client reconciling its own corpus can delete without checking first.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the document is already gone when this answers.
      * @param uid  (required)
      * @param id  (required)
-     * @return ApiResponse&lt;IndexEnqueued&gt;
+     * @return ApiResponse&lt;IndexIndexEnqueued&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexEnqueued> deleteIndexIndexesByUidDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<IndexIndexEnqueued> deleteIndexIndexesByUidDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteIndexIndexesByUidDocumentsByIdValidateBeforeCall(uid, id, null);
-        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexEnqueued>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -339,12 +350,13 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteIndexIndexesByUidDocumentsByIdAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback<IndexEnqueued> _callback) throws ApiException {
+    public okhttp3.Call deleteIndexIndexesByUidDocumentsByIdAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback<IndexIndexEnqueued> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteIndexIndexesByUidDocumentsByIdValidateBeforeCall(uid, id, _callback);
-        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexEnqueued>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -359,6 +371,7 @@ public class IndexApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIndexHealthCall(final ApiCallback _callback) throws ApiException {
@@ -387,7 +400,8 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -414,7 +428,7 @@ public class IndexApi {
     /**
      * Reports whether the search plane can serve.
      * Reports whether the search plane can serve.  Answers the dialect&#39;s &#x60;{\&quot;status\&quot;:\&quot;available\&quot;}&#x60; when the index store is readable. It FAILS CLOSED — an unreadable store answers 503 with &#x60;{\&quot;status\&quot;:\&quot;unavailable\&quot;}&#x60; rather than an empty result set, because a Meilisearch client probes this before it will use a server at all and a cheerful 200 over a broken volume turns \&quot;search is down\&quot; into \&quot;nothing matched\&quot;. It requires no principal and reads no tenant data.
-     * @return IndexHealth
+     * @return IndexIndexHealth
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -422,17 +436,18 @@ public class IndexApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IndexHealth getIndexHealth() throws ApiException {
-        ApiResponse<IndexHealth> localVarResp = getIndexHealthWithHttpInfo();
+    public IndexIndexHealth getIndexHealth() throws ApiException {
+        ApiResponse<IndexIndexHealth> localVarResp = getIndexHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports whether the search plane can serve.
      * Reports whether the search plane can serve.  Answers the dialect&#39;s &#x60;{\&quot;status\&quot;:\&quot;available\&quot;}&#x60; when the index store is readable. It FAILS CLOSED — an unreadable store answers 503 with &#x60;{\&quot;status\&quot;:\&quot;unavailable\&quot;}&#x60; rather than an empty result set, because a Meilisearch client probes this before it will use a server at all and a cheerful 200 over a broken volume turns \&quot;search is down\&quot; into \&quot;nothing matched\&quot;. It requires no principal and reads no tenant data.
-     * @return ApiResponse&lt;IndexHealth&gt;
+     * @return ApiResponse&lt;IndexIndexHealth&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -440,11 +455,12 @@ public class IndexApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexHealth> getIndexHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<IndexIndexHealth> getIndexHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getIndexHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<IndexHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -460,12 +476,13 @@ public class IndexApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIndexHealthAsync(final ApiCallback<IndexHealth> _callback) throws ApiException {
+    public okhttp3.Call getIndexHealthAsync(final ApiCallback<IndexIndexHealth> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<IndexHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -479,6 +496,7 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIndexIndexesCall(final ApiCallback _callback) throws ApiException {
@@ -507,7 +525,8 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -534,35 +553,37 @@ public class IndexApi {
     /**
      * Lists the indexes your org holds.
      * Lists the indexes your org holds.  Answers every index in the caller&#39;s own org with its primary key and timestamps. Without it an index whose uid a caller has forgotten is unreachable — there is no other way to enumerate what an org holds. The page is the whole set: an org&#39;s index count is small by construction, so &#x60;limit&#x60; and &#x60;total&#x60; both report it.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and two orgs may both hold an index named \&quot;messages\&quot; without either seeing the other. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.
-     * @return IndexList
+     * @return IndexIndexList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IndexList getIndexIndexes() throws ApiException {
-        ApiResponse<IndexList> localVarResp = getIndexIndexesWithHttpInfo();
+    public IndexIndexList getIndexIndexes() throws ApiException {
+        ApiResponse<IndexIndexList> localVarResp = getIndexIndexesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the indexes your org holds.
      * Lists the indexes your org holds.  Answers every index in the caller&#39;s own org with its primary key and timestamps. Without it an index whose uid a caller has forgotten is unreachable — there is no other way to enumerate what an org holds. The page is the whole set: an org&#39;s index count is small by construction, so &#x60;limit&#x60; and &#x60;total&#x60; both report it.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and two orgs may both hold an index named \&quot;messages\&quot; without either seeing the other. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.
-     * @return ApiResponse&lt;IndexList&gt;
+     * @return ApiResponse&lt;IndexIndexList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexList> getIndexIndexesWithHttpInfo() throws ApiException {
+    public ApiResponse<IndexIndexList> getIndexIndexesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getIndexIndexesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<IndexList>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -577,12 +598,13 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIndexIndexesAsync(final ApiCallback<IndexList> _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesAsync(final ApiCallback<IndexIndexList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexIndexesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<IndexList>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -597,6 +619,7 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIndexIndexesByUidCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
@@ -626,7 +649,8 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -659,17 +683,18 @@ public class IndexApi {
      * Reads one index&#39;s definition.
      * Reads one index&#39;s definition.  Answers the index&#39;s uid, primary key and timestamps. An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60; — the code a Meilisearch client reads as permission to create it, which is why this is a refusal rather than an empty object.  The uid is scoped to the caller&#39;s own org, so another tenant&#39;s index is indistinguishable from one that never existed: this surface is not an existence oracle.
      * @param uid  (required)
-     * @return IndexView
+     * @return IndexIndexView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IndexView getIndexIndexesByUid(@javax.annotation.Nonnull String uid) throws ApiException {
-        ApiResponse<IndexView> localVarResp = getIndexIndexesByUidWithHttpInfo(uid);
+    public IndexIndexView getIndexIndexesByUid(@javax.annotation.Nonnull String uid) throws ApiException {
+        ApiResponse<IndexIndexView> localVarResp = getIndexIndexesByUidWithHttpInfo(uid);
         return localVarResp.getData();
     }
 
@@ -677,18 +702,19 @@ public class IndexApi {
      * Reads one index&#39;s definition.
      * Reads one index&#39;s definition.  Answers the index&#39;s uid, primary key and timestamps. An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60; — the code a Meilisearch client reads as permission to create it, which is why this is a refusal rather than an empty object.  The uid is scoped to the caller&#39;s own org, so another tenant&#39;s index is indistinguishable from one that never existed: this surface is not an existence oracle.
      * @param uid  (required)
-     * @return ApiResponse&lt;IndexView&gt;
+     * @return ApiResponse&lt;IndexIndexView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexView> getIndexIndexesByUidWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+    public ApiResponse<IndexIndexView> getIndexIndexesByUidWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
         okhttp3.Call localVarCall = getIndexIndexesByUidValidateBeforeCall(uid, null);
-        Type localVarReturnType = new TypeToken<IndexView>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -704,12 +730,13 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIndexIndexesByUidAsync(@javax.annotation.Nonnull String uid, final ApiCallback<IndexView> _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesByUidAsync(@javax.annotation.Nonnull String uid, final ApiCallback<IndexIndexView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexIndexesByUidValidateBeforeCall(uid, _callback);
-        Type localVarReturnType = new TypeToken<IndexView>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -726,6 +753,7 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIndexIndexesByUidDocumentsCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback _callback) throws ApiException {
@@ -763,7 +791,8 @@ public class IndexApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -798,17 +827,18 @@ public class IndexApi {
      * @param uid  (required)
      * @param limit  (optional)
      * @param offset  (optional)
-     * @return IndexDocuments
+     * @return IndexIndexDocuments
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IndexDocuments getIndexIndexesByUidDocuments(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
-        ApiResponse<IndexDocuments> localVarResp = getIndexIndexesByUidDocumentsWithHttpInfo(uid, limit, offset);
+    public IndexIndexDocuments getIndexIndexesByUidDocuments(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
+        ApiResponse<IndexIndexDocuments> localVarResp = getIndexIndexesByUidDocumentsWithHttpInfo(uid, limit, offset);
         return localVarResp.getData();
     }
 
@@ -818,18 +848,19 @@ public class IndexApi {
      * @param uid  (required)
      * @param limit  (optional)
      * @param offset  (optional)
-     * @return ApiResponse&lt;IndexDocuments&gt;
+     * @return ApiResponse&lt;IndexIndexDocuments&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexDocuments> getIndexIndexesByUidDocumentsWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
+    public ApiResponse<IndexIndexDocuments> getIndexIndexesByUidDocumentsWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
         okhttp3.Call localVarCall = getIndexIndexesByUidDocumentsValidateBeforeCall(uid, limit, offset, null);
-        Type localVarReturnType = new TypeToken<IndexDocuments>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexDocuments>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -847,12 +878,13 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIndexIndexesByUidDocumentsAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback<IndexDocuments> _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesByUidDocumentsAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback<IndexIndexDocuments> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexIndexesByUidDocumentsValidateBeforeCall(uid, limit, offset, _callback);
-        Type localVarReturnType = new TypeToken<IndexDocuments>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexDocuments>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -868,6 +900,7 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIndexIndexesByUidDocumentsByIdCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -898,7 +931,8 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -944,6 +978,7 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Object getIndexIndexesByUidDocumentsById(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
@@ -963,6 +998,7 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> getIndexIndexesByUidDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
@@ -984,6 +1020,7 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIndexIndexesByUidDocumentsByIdAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback<Object> _callback) throws ApiException {
@@ -1004,6 +1041,7 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIndexIndexesByUidSettingsCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
@@ -1033,7 +1071,8 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1066,17 +1105,18 @@ public class IndexApi {
      * Reads an index&#39;s filterable attributes.
      * Reads an index&#39;s filterable attributes.  Answers the settings subset this surface implements: the attributes a search &#x60;filter&#x60; may constrain. An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60;.
      * @param uid  (required)
-     * @return IndexSettings
+     * @return IndexIndexSettings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IndexSettings getIndexIndexesByUidSettings(@javax.annotation.Nonnull String uid) throws ApiException {
-        ApiResponse<IndexSettings> localVarResp = getIndexIndexesByUidSettingsWithHttpInfo(uid);
+    public IndexIndexSettings getIndexIndexesByUidSettings(@javax.annotation.Nonnull String uid) throws ApiException {
+        ApiResponse<IndexIndexSettings> localVarResp = getIndexIndexesByUidSettingsWithHttpInfo(uid);
         return localVarResp.getData();
     }
 
@@ -1084,18 +1124,19 @@ public class IndexApi {
      * Reads an index&#39;s filterable attributes.
      * Reads an index&#39;s filterable attributes.  Answers the settings subset this surface implements: the attributes a search &#x60;filter&#x60; may constrain. An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60;.
      * @param uid  (required)
-     * @return ApiResponse&lt;IndexSettings&gt;
+     * @return ApiResponse&lt;IndexIndexSettings&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexSettings> getIndexIndexesByUidSettingsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+    public ApiResponse<IndexIndexSettings> getIndexIndexesByUidSettingsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
         okhttp3.Call localVarCall = getIndexIndexesByUidSettingsValidateBeforeCall(uid, null);
-        Type localVarReturnType = new TypeToken<IndexSettings>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexSettings>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1111,12 +1152,13 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIndexIndexesByUidSettingsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<IndexSettings> _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesByUidSettingsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<IndexIndexSettings> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexIndexesByUidSettingsValidateBeforeCall(uid, _callback);
-        Type localVarReturnType = new TypeToken<IndexSettings>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexSettings>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1130,6 +1172,7 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIndexStatsCall(final ApiCallback _callback) throws ApiException {
@@ -1158,7 +1201,8 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1185,35 +1229,37 @@ public class IndexApi {
     /**
      * Counts the documents in each of your indexes.
      * Counts the documents in each of your indexes.  Reports every index the caller&#39;s own org holds with its document count, plus the org&#39;s total. &#x60;isIndexing&#x60; is always false because writes here are applied before their response — there is never a background pass to wait on.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, so this counts the caller&#39;s own documents and no other tenant&#39;s. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.
-     * @return IndexStats
+     * @return IndexIndexStats
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IndexStats getIndexStats() throws ApiException {
-        ApiResponse<IndexStats> localVarResp = getIndexStatsWithHttpInfo();
+    public IndexIndexStats getIndexStats() throws ApiException {
+        ApiResponse<IndexIndexStats> localVarResp = getIndexStatsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Counts the documents in each of your indexes.
      * Counts the documents in each of your indexes.  Reports every index the caller&#39;s own org holds with its document count, plus the org&#39;s total. &#x60;isIndexing&#x60; is always false because writes here are applied before their response — there is never a background pass to wait on.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, so this counts the caller&#39;s own documents and no other tenant&#39;s. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.
-     * @return ApiResponse&lt;IndexStats&gt;
+     * @return ApiResponse&lt;IndexIndexStats&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexStats> getIndexStatsWithHttpInfo() throws ApiException {
+    public ApiResponse<IndexIndexStats> getIndexStatsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getIndexStatsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<IndexStats>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexStats>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1228,12 +1274,13 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIndexStatsAsync(final ApiCallback<IndexStats> _callback) throws ApiException {
+    public okhttp3.Call getIndexStatsAsync(final ApiCallback<IndexIndexStats> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexStatsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<IndexStats>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexStats>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1248,6 +1295,7 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIndexTasksByUidCall(@javax.annotation.Nonnull Long uid, final ApiCallback _callback) throws ApiException {
@@ -1277,7 +1325,8 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1310,17 +1359,18 @@ public class IndexApi {
      * Checks a write task, which has already finished.
      * Checks a write task, which has already finished.  Always reports &#x60;succeeded&#x60;. Writes here are applied to SQLite before their EnqueuedTask is returned, so a client polling waitForTask resolves on its first call rather than waiting for a queue that was never there. The three timestamps are the same instant for the same reason.  It requires a validated principal but reads no tenant data: the task id it echoes was minted by this process and names nothing about any org.
      * @param uid  (required)
-     * @return IndexTask
+     * @return IndexIndexTask
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IndexTask getIndexTasksByUid(@javax.annotation.Nonnull Long uid) throws ApiException {
-        ApiResponse<IndexTask> localVarResp = getIndexTasksByUidWithHttpInfo(uid);
+    public IndexIndexTask getIndexTasksByUid(@javax.annotation.Nonnull Long uid) throws ApiException {
+        ApiResponse<IndexIndexTask> localVarResp = getIndexTasksByUidWithHttpInfo(uid);
         return localVarResp.getData();
     }
 
@@ -1328,18 +1378,19 @@ public class IndexApi {
      * Checks a write task, which has already finished.
      * Checks a write task, which has already finished.  Always reports &#x60;succeeded&#x60;. Writes here are applied to SQLite before their EnqueuedTask is returned, so a client polling waitForTask resolves on its first call rather than waiting for a queue that was never there. The three timestamps are the same instant for the same reason.  It requires a validated principal but reads no tenant data: the task id it echoes was minted by this process and names nothing about any org.
      * @param uid  (required)
-     * @return ApiResponse&lt;IndexTask&gt;
+     * @return ApiResponse&lt;IndexIndexTask&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexTask> getIndexTasksByUidWithHttpInfo(@javax.annotation.Nonnull Long uid) throws ApiException {
+    public ApiResponse<IndexIndexTask> getIndexTasksByUidWithHttpInfo(@javax.annotation.Nonnull Long uid) throws ApiException {
         okhttp3.Call localVarCall = getIndexTasksByUidValidateBeforeCall(uid, null);
-        Type localVarReturnType = new TypeToken<IndexTask>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexTask>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1355,12 +1406,13 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIndexTasksByUidAsync(@javax.annotation.Nonnull Long uid, final ApiCallback<IndexTask> _callback) throws ApiException {
+    public okhttp3.Call getIndexTasksByUidAsync(@javax.annotation.Nonnull Long uid, final ApiCallback<IndexIndexTask> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexTasksByUidValidateBeforeCall(uid, _callback);
-        Type localVarReturnType = new TypeToken<IndexTask>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexTask>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1374,6 +1426,7 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIndexVersionCall(final ApiCallback _callback) throws ApiException {
@@ -1402,7 +1455,8 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1429,35 +1483,37 @@ public class IndexApi {
     /**
      * Identifies the search implementation answering.
      * Identifies the search implementation answering.  Reports the dialect&#39;s version shape with &#x60;commitSha&#x60; naming this implementation rather than a Meilisearch build, so a client that logs the version records which server answered instead of implying a release of software this is not. It requires no principal and reads no tenant data.
-     * @return IndexVersion
+     * @return IndexIndexVersion
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IndexVersion getIndexVersion() throws ApiException {
-        ApiResponse<IndexVersion> localVarResp = getIndexVersionWithHttpInfo();
+    public IndexIndexVersion getIndexVersion() throws ApiException {
+        ApiResponse<IndexIndexVersion> localVarResp = getIndexVersionWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Identifies the search implementation answering.
      * Identifies the search implementation answering.  Reports the dialect&#39;s version shape with &#x60;commitSha&#x60; naming this implementation rather than a Meilisearch build, so a client that logs the version records which server answered instead of implying a release of software this is not. It requires no principal and reads no tenant data.
-     * @return ApiResponse&lt;IndexVersion&gt;
+     * @return ApiResponse&lt;IndexIndexVersion&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexVersion> getIndexVersionWithHttpInfo() throws ApiException {
+    public ApiResponse<IndexIndexVersion> getIndexVersionWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getIndexVersionValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<IndexVersion>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexVersion>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1472,19 +1528,20 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIndexVersionAsync(final ApiCallback<IndexVersion> _callback) throws ApiException {
+    public okhttp3.Call getIndexVersionAsync(final ApiCallback<IndexIndexVersion> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexVersionValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<IndexVersion>(){}.getType();
+        Type localVarReturnType = new TypeToken<IndexIndexVersion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for patchIndexIndexesByUidSettings
      * @param uid  (required)
-     * @param indexFilter  (required)
+     * @param indexIndexFilter  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1493,9 +1550,10 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchIndexIndexesByUidSettingsCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexFilter indexFilter, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchIndexIndexesByUidSettingsCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexIndexFilter indexIndexFilter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1509,7 +1567,7 @@ public class IndexApi {
             basePath = null;
         }
 
-        Object localVarPostBody = indexFilter;
+        Object localVarPostBody = indexIndexFilter;
 
         // create path and map variables
         String localVarPath = "/v1/index/indexes/{uid}/settings"
@@ -1522,7 +1580,8 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1542,18 +1601,18 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchIndexIndexesByUidSettingsValidateBeforeCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexFilter indexFilter, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchIndexIndexesByUidSettingsValidateBeforeCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexIndexFilter indexIndexFilter, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
             throw new ApiException("Missing the required parameter 'uid' when calling patchIndexIndexesByUidSettings(Async)");
         }
 
-        // verify the required parameter 'indexFilter' is set
-        if (indexFilter == null) {
-            throw new ApiException("Missing the required parameter 'indexFilter' when calling patchIndexIndexesByUidSettings(Async)");
+        // verify the required parameter 'indexIndexFilter' is set
+        if (indexIndexFilter == null) {
+            throw new ApiException("Missing the required parameter 'indexIndexFilter' when calling patchIndexIndexesByUidSettings(Async)");
         }
 
-        return patchIndexIndexesByUidSettingsCall(uid, indexFilter, _callback);
+        return patchIndexIndexesByUidSettingsCall(uid, indexIndexFilter, _callback);
 
     }
 
@@ -1561,18 +1620,19 @@ public class IndexApi {
      * Sets which attributes an index can be filtered on.
      * Sets which attributes an index can be filtered on.  Replaces the whole filterable set. An attribute not listed here cannot be used in a search &#x60;filter&#x60;, so this is what makes a per-user or per-tag narrowing possible at all.  It CREATES the index when it is missing rather than answering 404, because a Meilisearch client configures settings on an index it has just asked for and a refusal there leaves the client with no index at all.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the setting is already applied when this answers.
      * @param uid  (required)
-     * @param indexFilter  (required)
-     * @return IndexEnqueued
+     * @param indexIndexFilter  (required)
+     * @return IndexIndexEnqueued
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IndexEnqueued patchIndexIndexesByUidSettings(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexFilter indexFilter) throws ApiException {
-        ApiResponse<IndexEnqueued> localVarResp = patchIndexIndexesByUidSettingsWithHttpInfo(uid, indexFilter);
+    public IndexIndexEnqueued patchIndexIndexesByUidSettings(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexIndexFilter indexIndexFilter) throws ApiException {
+        ApiResponse<IndexIndexEnqueued> localVarResp = patchIndexIndexesByUidSettingsWithHttpInfo(uid, indexIndexFilter);
         return localVarResp.getData();
     }
 
@@ -1580,19 +1640,20 @@ public class IndexApi {
      * Sets which attributes an index can be filtered on.
      * Sets which attributes an index can be filtered on.  Replaces the whole filterable set. An attribute not listed here cannot be used in a search &#x60;filter&#x60;, so this is what makes a per-user or per-tag narrowing possible at all.  It CREATES the index when it is missing rather than answering 404, because a Meilisearch client configures settings on an index it has just asked for and a refusal there leaves the client with no index at all.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the setting is already applied when this answers.
      * @param uid  (required)
-     * @param indexFilter  (required)
-     * @return ApiResponse&lt;IndexEnqueued&gt;
+     * @param indexIndexFilter  (required)
+     * @return ApiResponse&lt;IndexIndexEnqueued&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexEnqueued> patchIndexIndexesByUidSettingsWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexFilter indexFilter) throws ApiException {
-        okhttp3.Call localVarCall = patchIndexIndexesByUidSettingsValidateBeforeCall(uid, indexFilter, null);
-        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+    public ApiResponse<IndexIndexEnqueued> patchIndexIndexesByUidSettingsWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexIndexFilter indexIndexFilter) throws ApiException {
+        okhttp3.Call localVarCall = patchIndexIndexesByUidSettingsValidateBeforeCall(uid, indexIndexFilter, null);
+        Type localVarReturnType = new TypeToken<IndexIndexEnqueued>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1600,7 +1661,7 @@ public class IndexApi {
      * Sets which attributes an index can be filtered on. (asynchronously)
      * Sets which attributes an index can be filtered on.  Replaces the whole filterable set. An attribute not listed here cannot be used in a search &#x60;filter&#x60;, so this is what makes a per-user or per-tag narrowing possible at all.  It CREATES the index when it is missing rather than answering 404, because a Meilisearch client configures settings on an index it has just asked for and a refusal there leaves the client with no index at all.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the setting is already applied when this answers.
      * @param uid  (required)
-     * @param indexFilter  (required)
+     * @param indexIndexFilter  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1609,18 +1670,19 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchIndexIndexesByUidSettingsAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexFilter indexFilter, final ApiCallback<IndexEnqueued> _callback) throws ApiException {
+    public okhttp3.Call patchIndexIndexesByUidSettingsAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexIndexFilter indexIndexFilter, final ApiCallback<IndexIndexEnqueued> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchIndexIndexesByUidSettingsValidateBeforeCall(uid, indexFilter, _callback);
-        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        okhttp3.Call localVarCall = patchIndexIndexesByUidSettingsValidateBeforeCall(uid, indexIndexFilter, _callback);
+        Type localVarReturnType = new TypeToken<IndexIndexEnqueued>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postIndexIndexes
-     * @param indexNew  (required)
+     * @param indexIndexNew  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1629,9 +1691,10 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIndexIndexesCall(@javax.annotation.Nonnull IndexNew indexNew, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesCall(@javax.annotation.Nonnull IndexIndexNew indexIndexNew, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1645,7 +1708,7 @@ public class IndexApi {
             basePath = null;
         }
 
-        Object localVarPostBody = indexNew;
+        Object localVarPostBody = indexIndexNew;
 
         // create path and map variables
         String localVarPath = "/v1/index/indexes";
@@ -1657,7 +1720,8 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1677,57 +1741,59 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIndexIndexesValidateBeforeCall(@javax.annotation.Nonnull IndexNew indexNew, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'indexNew' is set
-        if (indexNew == null) {
-            throw new ApiException("Missing the required parameter 'indexNew' when calling postIndexIndexes(Async)");
+    private okhttp3.Call postIndexIndexesValidateBeforeCall(@javax.annotation.Nonnull IndexIndexNew indexIndexNew, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'indexIndexNew' is set
+        if (indexIndexNew == null) {
+            throw new ApiException("Missing the required parameter 'indexIndexNew' when calling postIndexIndexes(Async)");
         }
 
-        return postIndexIndexesCall(indexNew, _callback);
+        return postIndexIndexesCall(indexIndexNew, _callback);
 
     }
 
     /**
      * Creates an index.
      * Creates an index.  Registers a named index in the caller&#39;s own org and answers the dialect&#39;s EnqueuedTask. It is idempotent: creating an index that already exists returns the same receipt and changes nothing, which is what lets a client create on startup without checking first.  &#x60;primaryKey&#x60; is optional — the first write establishes one when it is omitted. An index is a ROW here rather than a table, so an unusual uid is stored verbatim instead of being sanitised into a schema name.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers. A client that polls waitForTask resolves immediately.
-     * @param indexNew  (required)
-     * @return IndexEnqueued
+     * @param indexIndexNew  (required)
+     * @return IndexIndexEnqueued
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IndexEnqueued postIndexIndexes(@javax.annotation.Nonnull IndexNew indexNew) throws ApiException {
-        ApiResponse<IndexEnqueued> localVarResp = postIndexIndexesWithHttpInfo(indexNew);
+    public IndexIndexEnqueued postIndexIndexes(@javax.annotation.Nonnull IndexIndexNew indexIndexNew) throws ApiException {
+        ApiResponse<IndexIndexEnqueued> localVarResp = postIndexIndexesWithHttpInfo(indexIndexNew);
         return localVarResp.getData();
     }
 
     /**
      * Creates an index.
      * Creates an index.  Registers a named index in the caller&#39;s own org and answers the dialect&#39;s EnqueuedTask. It is idempotent: creating an index that already exists returns the same receipt and changes nothing, which is what lets a client create on startup without checking first.  &#x60;primaryKey&#x60; is optional — the first write establishes one when it is omitted. An index is a ROW here rather than a table, so an unusual uid is stored verbatim instead of being sanitised into a schema name.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers. A client that polls waitForTask resolves immediately.
-     * @param indexNew  (required)
-     * @return ApiResponse&lt;IndexEnqueued&gt;
+     * @param indexIndexNew  (required)
+     * @return ApiResponse&lt;IndexIndexEnqueued&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexEnqueued> postIndexIndexesWithHttpInfo(@javax.annotation.Nonnull IndexNew indexNew) throws ApiException {
-        okhttp3.Call localVarCall = postIndexIndexesValidateBeforeCall(indexNew, null);
-        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+    public ApiResponse<IndexIndexEnqueued> postIndexIndexesWithHttpInfo(@javax.annotation.Nonnull IndexIndexNew indexIndexNew) throws ApiException {
+        okhttp3.Call localVarCall = postIndexIndexesValidateBeforeCall(indexIndexNew, null);
+        Type localVarReturnType = new TypeToken<IndexIndexEnqueued>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Creates an index. (asynchronously)
      * Creates an index.  Registers a named index in the caller&#39;s own org and answers the dialect&#39;s EnqueuedTask. It is idempotent: creating an index that already exists returns the same receipt and changes nothing, which is what lets a client create on startup without checking first.  &#x60;primaryKey&#x60; is optional — the first write establishes one when it is omitted. An index is a ROW here rather than a table, so an unusual uid is stored verbatim instead of being sanitised into a schema name.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers. A client that polls waitForTask resolves immediately.
-     * @param indexNew  (required)
+     * @param indexIndexNew  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1736,12 +1802,13 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIndexIndexesAsync(@javax.annotation.Nonnull IndexNew indexNew, final ApiCallback<IndexEnqueued> _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesAsync(@javax.annotation.Nonnull IndexIndexNew indexIndexNew, final ApiCallback<IndexIndexEnqueued> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postIndexIndexesValidateBeforeCall(indexNew, _callback);
-        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        okhttp3.Call localVarCall = postIndexIndexesValidateBeforeCall(indexIndexNew, _callback);
+        Type localVarReturnType = new TypeToken<IndexIndexEnqueued>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2012,7 +2079,7 @@ public class IndexApi {
     /**
      * Build call for postIndexIndexesByUidSearch
      * @param uid  (required)
-     * @param indexQuery  (required)
+     * @param indexIndexQuery  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2021,9 +2088,10 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIndexIndexesByUidSearchCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexQuery indexQuery, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesByUidSearchCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexIndexQuery indexIndexQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2037,7 +2105,7 @@ public class IndexApi {
             basePath = null;
         }
 
-        Object localVarPostBody = indexQuery;
+        Object localVarPostBody = indexIndexQuery;
 
         // create path and map variables
         String localVarPath = "/v1/index/indexes/{uid}/search"
@@ -2050,7 +2118,8 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2070,18 +2139,18 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIndexIndexesByUidSearchValidateBeforeCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexQuery indexQuery, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIndexIndexesByUidSearchValidateBeforeCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexIndexQuery indexIndexQuery, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
             throw new ApiException("Missing the required parameter 'uid' when calling postIndexIndexesByUidSearch(Async)");
         }
 
-        // verify the required parameter 'indexQuery' is set
-        if (indexQuery == null) {
-            throw new ApiException("Missing the required parameter 'indexQuery' when calling postIndexIndexesByUidSearch(Async)");
+        // verify the required parameter 'indexIndexQuery' is set
+        if (indexIndexQuery == null) {
+            throw new ApiException("Missing the required parameter 'indexIndexQuery' when calling postIndexIndexesByUidSearch(Async)");
         }
 
-        return postIndexIndexesByUidSearchCall(uid, indexQuery, _callback);
+        return postIndexIndexesByUidSearchCall(uid, indexIndexQuery, _callback);
 
     }
 
@@ -2089,18 +2158,19 @@ public class IndexApi {
      * Searches an index, forgiving typos.
      * Searches an index, forgiving typos.  Ranks the org&#39;s documents in one index against &#x60;q&#x60; and answers the matching documents whole, most relevant first. A prefix matches, so a partial word finds the documents containing it, and &#x60;filter&#x60; narrows the result to documents whose filterable attributes match — which is how a caller scopes results to one end user within its own org.  &#x60;estimatedTotalHits&#x60; is the dialect&#39;s name for the count; every hit is materialised here, so for this page it is exact. An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60;.
      * @param uid  (required)
-     * @param indexQuery  (required)
-     * @return IndexHits
+     * @param indexIndexQuery  (required)
+     * @return IndexIndexHits
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IndexHits postIndexIndexesByUidSearch(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexQuery indexQuery) throws ApiException {
-        ApiResponse<IndexHits> localVarResp = postIndexIndexesByUidSearchWithHttpInfo(uid, indexQuery);
+    public IndexIndexHits postIndexIndexesByUidSearch(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexIndexQuery indexIndexQuery) throws ApiException {
+        ApiResponse<IndexIndexHits> localVarResp = postIndexIndexesByUidSearchWithHttpInfo(uid, indexIndexQuery);
         return localVarResp.getData();
     }
 
@@ -2108,19 +2178,20 @@ public class IndexApi {
      * Searches an index, forgiving typos.
      * Searches an index, forgiving typos.  Ranks the org&#39;s documents in one index against &#x60;q&#x60; and answers the matching documents whole, most relevant first. A prefix matches, so a partial word finds the documents containing it, and &#x60;filter&#x60; narrows the result to documents whose filterable attributes match — which is how a caller scopes results to one end user within its own org.  &#x60;estimatedTotalHits&#x60; is the dialect&#39;s name for the count; every hit is materialised here, so for this page it is exact. An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60;.
      * @param uid  (required)
-     * @param indexQuery  (required)
-     * @return ApiResponse&lt;IndexHits&gt;
+     * @param indexIndexQuery  (required)
+     * @return ApiResponse&lt;IndexIndexHits&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexHits> postIndexIndexesByUidSearchWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexQuery indexQuery) throws ApiException {
-        okhttp3.Call localVarCall = postIndexIndexesByUidSearchValidateBeforeCall(uid, indexQuery, null);
-        Type localVarReturnType = new TypeToken<IndexHits>(){}.getType();
+    public ApiResponse<IndexIndexHits> postIndexIndexesByUidSearchWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexIndexQuery indexIndexQuery) throws ApiException {
+        okhttp3.Call localVarCall = postIndexIndexesByUidSearchValidateBeforeCall(uid, indexIndexQuery, null);
+        Type localVarReturnType = new TypeToken<IndexIndexHits>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2128,7 +2199,7 @@ public class IndexApi {
      * Searches an index, forgiving typos. (asynchronously)
      * Searches an index, forgiving typos.  Ranks the org&#39;s documents in one index against &#x60;q&#x60; and answers the matching documents whole, most relevant first. A prefix matches, so a partial word finds the documents containing it, and &#x60;filter&#x60; narrows the result to documents whose filterable attributes match — which is how a caller scopes results to one end user within its own org.  &#x60;estimatedTotalHits&#x60; is the dialect&#39;s name for the count; every hit is materialised here, so for this page it is exact. An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60;.
      * @param uid  (required)
-     * @param indexQuery  (required)
+     * @param indexIndexQuery  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2137,12 +2208,13 @@ public class IndexApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIndexIndexesByUidSearchAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexQuery indexQuery, final ApiCallback<IndexHits> _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesByUidSearchAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexIndexQuery indexIndexQuery, final ApiCallback<IndexIndexHits> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postIndexIndexesByUidSearchValidateBeforeCall(uid, indexQuery, _callback);
-        Type localVarReturnType = new TypeToken<IndexHits>(){}.getType();
+        okhttp3.Call localVarCall = postIndexIndexesByUidSearchValidateBeforeCall(uid, indexIndexQuery, _callback);
+        Type localVarReturnType = new TypeToken<IndexIndexHits>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

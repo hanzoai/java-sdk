@@ -119,7 +119,7 @@ public class DestinationStatus {
   }
 
   /**
-   * Account is the operator&#39;s own label for the connected account, as supplied on connect. Absent when unset.
+   * Get account
    * @return account
    */
   @javax.annotation.Nullable
@@ -138,7 +138,7 @@ public class DestinationStatus {
   }
 
   /**
-   * groups the card: Analytics | Advertising
+   * Get category
    * @return category
    */
   @javax.annotation.Nullable
@@ -165,7 +165,7 @@ public class DestinationStatus {
   }
 
   /**
-   * Config is the org&#39;s stored NON-SECRET configuration — the measurement/pixel ids keyed by DestinationField.Key. A secret is never in here; secrets live in KMS and only their names are published, in Secrets.
+   * Get config
    * @return config
    */
   @javax.annotation.Nullable
@@ -184,7 +184,7 @@ public class DestinationStatus {
   }
 
   /**
-   * Connected is true when this org has a stored row for the platform — it has been configured here at least once. It says nothing about whether a credential still resolves; that is Live.
+   * Get connected
    * @return connected
    */
   @javax.annotation.Nullable
@@ -203,7 +203,7 @@ public class DestinationStatus {
   }
 
   /**
-   * Enabled is whether the fan-out forwards to this destination. False on a destination that is connected but paused, and on one never connected.
+   * Get enabled
    * @return enabled
    */
   @javax.annotation.Nullable
@@ -230,7 +230,7 @@ public class DestinationStatus {
   }
 
   /**
-   * Fields are the non-secret inputs this platform needs, which the console card renders and the connect body fills.
+   * Get fields
    * @return fields
    */
   @javax.annotation.Nullable
@@ -249,7 +249,7 @@ public class DestinationStatus {
   }
 
   /**
-   * Live is whether a credential resolves RIGHT NOW: a KMS-sealed secret for this org, else the integrations connection named by the platform&#39;s Fallback, else no credential needed at all (a public-ingest sink like Analytics). False on a connected destination whose secret has gone missing — Connected &amp;&amp; !Live is exactly the \&quot;reconnect me\&quot; state.
+   * Get live
    * @return live
    */
   @javax.annotation.Nullable
@@ -268,7 +268,7 @@ public class DestinationStatus {
   }
 
   /**
-   * the platform&#39;s display name (\&quot;Google Analytics 4\&quot;)
+   * Get name
    * @return name
    */
   @javax.annotation.Nullable
@@ -287,7 +287,7 @@ public class DestinationStatus {
   }
 
   /**
-   * Pixel is whether the hosted tag can inject a browser pixel for this platform, so a console offers a per-SITE pixel input for exactly these. False means the platform receives conversions server-side only, and an input would promise an injection that never happens. Derived from the tag&#39;s own map (event.BrowserTags), never restated — a second list is how a console offers a pixel nothing fires.
+   * Get pixel
    * @return pixel
    */
   @javax.annotation.Nullable
@@ -306,7 +306,7 @@ public class DestinationStatus {
   }
 
   /**
-   * the platform slug, and the path segment every route addresses it by
+   * Get platform
    * @return platform
    */
   @javax.annotation.Nullable
@@ -333,7 +333,7 @@ public class DestinationStatus {
   }
 
   /**
-   * Secrets are the KMS secret NAMES this platform custodies for the org — names only, never values. The connect body accepts each under its camelCase form.
+   * Get secrets
    * @return secrets
    */
   @javax.annotation.Nullable

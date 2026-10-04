@@ -27,15 +27,14 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.ClearReferenceOut;
-import ai.hanzo.cloud.model.ReferenceOut;
-import ai.hanzo.cloud.model.ReferenceSetsOut;
-import ai.hanzo.cloud.model.RefreshReferenceIn;
-import ai.hanzo.cloud.model.RefreshReferenceOut;
-import ai.hanzo.cloud.model.ResolveReferenceIn;
-import ai.hanzo.cloud.model.ResolveReferenceOut;
-import ai.hanzo.cloud.model.SetReferenceIn;
-import ai.hanzo.cloud.model.SetReferenceOut;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.ReferenceClearReferenceOut;
+import ai.hanzo.cloud.model.ReferenceReferenceOut;
+import ai.hanzo.cloud.model.ReferenceReferenceSetsOut;
+import ai.hanzo.cloud.model.ReferenceResolveReferenceIn;
+import ai.hanzo.cloud.model.ReferenceResolveReferenceOut;
+import ai.hanzo.cloud.model.ReferenceSetReferenceIn;
+import ai.hanzo.cloud.model.ReferenceSetReferenceOut;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -92,6 +91,7 @@ public class ReferenceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskClearReferenceCall(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String key, final ApiCallback _callback) throws ApiException {
@@ -125,7 +125,8 @@ public class ReferenceApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -159,17 +160,18 @@ public class ReferenceApi {
      * Removes one of your organisation&#39;s overrides.  It removes an entry your organisation wrote, never a baseline member: the published set is not writable from here, so a removal can only ever restore the baseline&#39;s own answer.
      * @param set  (required)
      * @param key  (optional)
-     * @return ClearReferenceOut
+     * @return ReferenceClearReferenceOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ClearReferenceOut riskClearReference(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String key) throws ApiException {
-        ApiResponse<ClearReferenceOut> localVarResp = riskClearReferenceWithHttpInfo(set, key);
+    public ReferenceClearReferenceOut riskClearReference(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String key) throws ApiException {
+        ApiResponse<ReferenceClearReferenceOut> localVarResp = riskClearReferenceWithHttpInfo(set, key);
         return localVarResp.getData();
     }
 
@@ -178,18 +180,19 @@ public class ReferenceApi {
      * Removes one of your organisation&#39;s overrides.  It removes an entry your organisation wrote, never a baseline member: the published set is not writable from here, so a removal can only ever restore the baseline&#39;s own answer.
      * @param set  (required)
      * @param key  (optional)
-     * @return ApiResponse&lt;ClearReferenceOut&gt;
+     * @return ApiResponse&lt;ReferenceClearReferenceOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ClearReferenceOut> riskClearReferenceWithHttpInfo(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String key) throws ApiException {
+    public ApiResponse<ReferenceClearReferenceOut> riskClearReferenceWithHttpInfo(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String key) throws ApiException {
         okhttp3.Call localVarCall = riskClearReferenceValidateBeforeCall(set, key, null);
-        Type localVarReturnType = new TypeToken<ClearReferenceOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReferenceClearReferenceOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -206,12 +209,13 @@ public class ReferenceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskClearReferenceAsync(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String key, final ApiCallback<ClearReferenceOut> _callback) throws ApiException {
+    public okhttp3.Call riskClearReferenceAsync(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String key, final ApiCallback<ReferenceClearReferenceOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskClearReferenceValidateBeforeCall(set, key, _callback);
-        Type localVarReturnType = new TypeToken<ClearReferenceOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReferenceClearReferenceOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -228,6 +232,7 @@ public class ReferenceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskReferenceCall(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -265,7 +270,8 @@ public class ReferenceApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -300,17 +306,18 @@ public class ReferenceApi {
      * @param set  (required)
      * @param after After pages the override listing: the last key of the previous page. (optional)
      * @param limit Limit caps the override listing: default 200, maximum 1000. (optional)
-     * @return ReferenceOut
+     * @return ReferenceReferenceOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ReferenceOut riskReference(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<ReferenceOut> localVarResp = riskReferenceWithHttpInfo(set, after, limit);
+    public ReferenceReferenceOut riskReference(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<ReferenceReferenceOut> localVarResp = riskReferenceWithHttpInfo(set, after, limit);
         return localVarResp.getData();
     }
 
@@ -320,18 +327,19 @@ public class ReferenceApi {
      * @param set  (required)
      * @param after After pages the override listing: the last key of the previous page. (optional)
      * @param limit Limit caps the override listing: default 200, maximum 1000. (optional)
-     * @return ApiResponse&lt;ReferenceOut&gt;
+     * @return ApiResponse&lt;ReferenceReferenceOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReferenceOut> riskReferenceWithHttpInfo(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<ReferenceReferenceOut> riskReferenceWithHttpInfo(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = riskReferenceValidateBeforeCall(set, after, limit, null);
-        Type localVarReturnType = new TypeToken<ReferenceOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReferenceReferenceOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -349,12 +357,13 @@ public class ReferenceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskReferenceAsync(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Long limit, final ApiCallback<ReferenceOut> _callback) throws ApiException {
+    public okhttp3.Call riskReferenceAsync(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Long limit, final ApiCallback<ReferenceReferenceOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskReferenceValidateBeforeCall(set, after, limit, _callback);
-        Type localVarReturnType = new TypeToken<ReferenceOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReferenceReferenceOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -368,6 +377,7 @@ public class ReferenceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskReferenceSetsCall(final ApiCallback _callback) throws ApiException {
@@ -396,7 +406,8 @@ public class ReferenceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -423,35 +434,37 @@ public class ReferenceApi {
     /**
      * Lists every set this plane publishes, with its version and how fresh it is.
      * Lists every set this plane publishes, with its version and how fresh it is.  Read the Stale and Refused lists first: they are the two ways this plane can be quietly wrong, and they are reported rather than inferred. A set in Refused answers nothing — it has never loaded, it is held by another component, or it names a source we hold no licence for.
-     * @return ReferenceSetsOut
+     * @return ReferenceReferenceSetsOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ReferenceSetsOut riskReferenceSets() throws ApiException {
-        ApiResponse<ReferenceSetsOut> localVarResp = riskReferenceSetsWithHttpInfo();
+    public ReferenceReferenceSetsOut riskReferenceSets() throws ApiException {
+        ApiResponse<ReferenceReferenceSetsOut> localVarResp = riskReferenceSetsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists every set this plane publishes, with its version and how fresh it is.
      * Lists every set this plane publishes, with its version and how fresh it is.  Read the Stale and Refused lists first: they are the two ways this plane can be quietly wrong, and they are reported rather than inferred. A set in Refused answers nothing — it has never loaded, it is held by another component, or it names a source we hold no licence for.
-     * @return ApiResponse&lt;ReferenceSetsOut&gt;
+     * @return ApiResponse&lt;ReferenceReferenceSetsOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReferenceSetsOut> riskReferenceSetsWithHttpInfo() throws ApiException {
+    public ApiResponse<ReferenceReferenceSetsOut> riskReferenceSetsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = riskReferenceSetsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ReferenceSetsOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReferenceReferenceSetsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -466,145 +479,19 @@ public class ReferenceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskReferenceSetsAsync(final ApiCallback<ReferenceSetsOut> _callback) throws ApiException {
+    public okhttp3.Call riskReferenceSetsAsync(final ApiCallback<ReferenceReferenceSetsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskReferenceSetsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ReferenceSetsOut>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for riskRefreshReference
-     * @param refreshReferenceIn  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call riskRefreshReferenceCall(@javax.annotation.Nonnull RefreshReferenceIn refreshReferenceIn, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = refreshReferenceIn;
-
-        // create path and map variables
-        String localVarPath = "/v1/reference/refresh";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskRefreshReferenceValidateBeforeCall(@javax.annotation.Nonnull RefreshReferenceIn refreshReferenceIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'refreshReferenceIn' is set
-        if (refreshReferenceIn == null) {
-            throw new ApiException("Missing the required parameter 'refreshReferenceIn' when calling riskRefreshReference(Async)");
-        }
-
-        return riskRefreshReferenceCall(refreshReferenceIn, _callback);
-
-    }
-
-    /**
-     * Takes a new version of one set.
-     * Takes a new version of one set. SuperAdmin only.  It is platform work, not tenant work: it writes the shared baseline every organisation reads, so it is gated to the platform&#39;s own identity. Nothing here can write an organisation&#39;s overrides, and nothing an organisation sends can reach this route.  Idempotent. A version is the content digest of what was taken, so refreshing an unchanged publisher writes no rows and reports unchanged. Resumable: a run that died half-way is continued from where it stopped rather than restarted.  A set whose source needs a licence we do not hold is refused with the reason, rather than being quietly skipped.
-     * @param refreshReferenceIn  (required)
-     * @return RefreshReferenceOut
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public RefreshReferenceOut riskRefreshReference(@javax.annotation.Nonnull RefreshReferenceIn refreshReferenceIn) throws ApiException {
-        ApiResponse<RefreshReferenceOut> localVarResp = riskRefreshReferenceWithHttpInfo(refreshReferenceIn);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Takes a new version of one set.
-     * Takes a new version of one set. SuperAdmin only.  It is platform work, not tenant work: it writes the shared baseline every organisation reads, so it is gated to the platform&#39;s own identity. Nothing here can write an organisation&#39;s overrides, and nothing an organisation sends can reach this route.  Idempotent. A version is the content digest of what was taken, so refreshing an unchanged publisher writes no rows and reports unchanged. Resumable: a run that died half-way is continued from where it stopped rather than restarted.  A set whose source needs a licence we do not hold is refused with the reason, rather than being quietly skipped.
-     * @param refreshReferenceIn  (required)
-     * @return ApiResponse&lt;RefreshReferenceOut&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<RefreshReferenceOut> riskRefreshReferenceWithHttpInfo(@javax.annotation.Nonnull RefreshReferenceIn refreshReferenceIn) throws ApiException {
-        okhttp3.Call localVarCall = riskRefreshReferenceValidateBeforeCall(refreshReferenceIn, null);
-        Type localVarReturnType = new TypeToken<RefreshReferenceOut>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Takes a new version of one set. (asynchronously)
-     * Takes a new version of one set. SuperAdmin only.  It is platform work, not tenant work: it writes the shared baseline every organisation reads, so it is gated to the platform&#39;s own identity. Nothing here can write an organisation&#39;s overrides, and nothing an organisation sends can reach this route.  Idempotent. A version is the content digest of what was taken, so refreshing an unchanged publisher writes no rows and reports unchanged. Resumable: a run that died half-way is continued from where it stopped rather than restarted.  A set whose source needs a licence we do not hold is refused with the reason, rather than being quietly skipped.
-     * @param refreshReferenceIn  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call riskRefreshReferenceAsync(@javax.annotation.Nonnull RefreshReferenceIn refreshReferenceIn, final ApiCallback<RefreshReferenceOut> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = riskRefreshReferenceValidateBeforeCall(refreshReferenceIn, _callback);
-        Type localVarReturnType = new TypeToken<RefreshReferenceOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<ReferenceReferenceSetsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for riskResolveReference
-     * @param resolveReferenceIn  (required)
+     * @param referenceResolveReferenceIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -613,9 +500,10 @@ public class ReferenceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskResolveReferenceCall(@javax.annotation.Nonnull ResolveReferenceIn resolveReferenceIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskResolveReferenceCall(@javax.annotation.Nonnull ReferenceResolveReferenceIn referenceResolveReferenceIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -629,7 +517,7 @@ public class ReferenceApi {
             basePath = null;
         }
 
-        Object localVarPostBody = resolveReferenceIn;
+        Object localVarPostBody = referenceResolveReferenceIn;
 
         // create path and map variables
         String localVarPath = "/v1/reference/resolve";
@@ -641,7 +529,8 @@ public class ReferenceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -661,57 +550,59 @@ public class ReferenceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskResolveReferenceValidateBeforeCall(@javax.annotation.Nonnull ResolveReferenceIn resolveReferenceIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'resolveReferenceIn' is set
-        if (resolveReferenceIn == null) {
-            throw new ApiException("Missing the required parameter 'resolveReferenceIn' when calling riskResolveReference(Async)");
+    private okhttp3.Call riskResolveReferenceValidateBeforeCall(@javax.annotation.Nonnull ReferenceResolveReferenceIn referenceResolveReferenceIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'referenceResolveReferenceIn' is set
+        if (referenceResolveReferenceIn == null) {
+            throw new ApiException("Missing the required parameter 'referenceResolveReferenceIn' when calling riskResolveReference(Async)");
         }
 
-        return riskResolveReferenceCall(resolveReferenceIn, _callback);
+        return riskResolveReferenceCall(referenceResolveReferenceIn, _callback);
 
     }
 
     /**
      * Looks keys up against the reference plane.
      * Looks keys up against the reference plane.  Your organisation&#39;s own overrides are consulted FIRST and win outright; the shared baseline answers everything they do not cover. Every answer names the version that produced it, when that version was current and whether it is stale, so a decision can record exactly what it consulted.  Read Refusal before reading Hit. A set that has never loaded, one held by the component that screens against it, and one whose source needs a licence we do not hold all answer with a refusal — and a miss on a refusing set means nothing is known, not that the key is clean.
-     * @param resolveReferenceIn  (required)
-     * @return ResolveReferenceOut
+     * @param referenceResolveReferenceIn  (required)
+     * @return ReferenceResolveReferenceOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ResolveReferenceOut riskResolveReference(@javax.annotation.Nonnull ResolveReferenceIn resolveReferenceIn) throws ApiException {
-        ApiResponse<ResolveReferenceOut> localVarResp = riskResolveReferenceWithHttpInfo(resolveReferenceIn);
+    public ReferenceResolveReferenceOut riskResolveReference(@javax.annotation.Nonnull ReferenceResolveReferenceIn referenceResolveReferenceIn) throws ApiException {
+        ApiResponse<ReferenceResolveReferenceOut> localVarResp = riskResolveReferenceWithHttpInfo(referenceResolveReferenceIn);
         return localVarResp.getData();
     }
 
     /**
      * Looks keys up against the reference plane.
      * Looks keys up against the reference plane.  Your organisation&#39;s own overrides are consulted FIRST and win outright; the shared baseline answers everything they do not cover. Every answer names the version that produced it, when that version was current and whether it is stale, so a decision can record exactly what it consulted.  Read Refusal before reading Hit. A set that has never loaded, one held by the component that screens against it, and one whose source needs a licence we do not hold all answer with a refusal — and a miss on a refusing set means nothing is known, not that the key is clean.
-     * @param resolveReferenceIn  (required)
-     * @return ApiResponse&lt;ResolveReferenceOut&gt;
+     * @param referenceResolveReferenceIn  (required)
+     * @return ApiResponse&lt;ReferenceResolveReferenceOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResolveReferenceOut> riskResolveReferenceWithHttpInfo(@javax.annotation.Nonnull ResolveReferenceIn resolveReferenceIn) throws ApiException {
-        okhttp3.Call localVarCall = riskResolveReferenceValidateBeforeCall(resolveReferenceIn, null);
-        Type localVarReturnType = new TypeToken<ResolveReferenceOut>(){}.getType();
+    public ApiResponse<ReferenceResolveReferenceOut> riskResolveReferenceWithHttpInfo(@javax.annotation.Nonnull ReferenceResolveReferenceIn referenceResolveReferenceIn) throws ApiException {
+        okhttp3.Call localVarCall = riskResolveReferenceValidateBeforeCall(referenceResolveReferenceIn, null);
+        Type localVarReturnType = new TypeToken<ReferenceResolveReferenceOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Looks keys up against the reference plane. (asynchronously)
      * Looks keys up against the reference plane.  Your organisation&#39;s own overrides are consulted FIRST and win outright; the shared baseline answers everything they do not cover. Every answer names the version that produced it, when that version was current and whether it is stale, so a decision can record exactly what it consulted.  Read Refusal before reading Hit. A set that has never loaded, one held by the component that screens against it, and one whose source needs a licence we do not hold all answer with a refusal — and a miss on a refusing set means nothing is known, not that the key is clean.
-     * @param resolveReferenceIn  (required)
+     * @param referenceResolveReferenceIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -720,19 +611,20 @@ public class ReferenceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskResolveReferenceAsync(@javax.annotation.Nonnull ResolveReferenceIn resolveReferenceIn, final ApiCallback<ResolveReferenceOut> _callback) throws ApiException {
+    public okhttp3.Call riskResolveReferenceAsync(@javax.annotation.Nonnull ReferenceResolveReferenceIn referenceResolveReferenceIn, final ApiCallback<ReferenceResolveReferenceOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = riskResolveReferenceValidateBeforeCall(resolveReferenceIn, _callback);
-        Type localVarReturnType = new TypeToken<ResolveReferenceOut>(){}.getType();
+        okhttp3.Call localVarCall = riskResolveReferenceValidateBeforeCall(referenceResolveReferenceIn, _callback);
+        Type localVarReturnType = new TypeToken<ReferenceResolveReferenceOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for riskSetReference
      * @param set  (required)
-     * @param setReferenceIn  (required)
+     * @param referenceSetReferenceIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -741,9 +633,10 @@ public class ReferenceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskSetReferenceCall(@javax.annotation.Nonnull String set, @javax.annotation.Nonnull SetReferenceIn setReferenceIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskSetReferenceCall(@javax.annotation.Nonnull String set, @javax.annotation.Nonnull ReferenceSetReferenceIn referenceSetReferenceIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -757,7 +650,7 @@ public class ReferenceApi {
             basePath = null;
         }
 
-        Object localVarPostBody = setReferenceIn;
+        Object localVarPostBody = referenceSetReferenceIn;
 
         // create path and map variables
         String localVarPath = "/v1/reference/{set}"
@@ -770,7 +663,8 @@ public class ReferenceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -790,18 +684,18 @@ public class ReferenceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskSetReferenceValidateBeforeCall(@javax.annotation.Nonnull String set, @javax.annotation.Nonnull SetReferenceIn setReferenceIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call riskSetReferenceValidateBeforeCall(@javax.annotation.Nonnull String set, @javax.annotation.Nonnull ReferenceSetReferenceIn referenceSetReferenceIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'set' is set
         if (set == null) {
             throw new ApiException("Missing the required parameter 'set' when calling riskSetReference(Async)");
         }
 
-        // verify the required parameter 'setReferenceIn' is set
-        if (setReferenceIn == null) {
-            throw new ApiException("Missing the required parameter 'setReferenceIn' when calling riskSetReference(Async)");
+        // verify the required parameter 'referenceSetReferenceIn' is set
+        if (referenceSetReferenceIn == null) {
+            throw new ApiException("Missing the required parameter 'referenceSetReferenceIn' when calling riskSetReference(Async)");
         }
 
-        return riskSetReferenceCall(set, setReferenceIn, _callback);
+        return riskSetReferenceCall(set, referenceSetReferenceIn, _callback);
 
     }
 
@@ -809,18 +703,19 @@ public class ReferenceApi {
      * Writes your organisation&#39;s own allow and deny entries over a set.
      * Writes your organisation&#39;s own allow and deny entries over a set.  Idempotent on the key: writing the same entry twice is one entry, and writing it again replaces the verdict and the note. The whole batch is one transaction, so a batch that would cross the per-set bound writes nothing rather than half of itself — a half-applied deny list is worse than a refused one, because nobody can tell which half applied.  Your entries are held in your organisation&#39;s own store and are never visible to another organisation, and they never change what any other organisation sees. The shared baseline is not writable from here at all.
      * @param set  (required)
-     * @param setReferenceIn  (required)
-     * @return SetReferenceOut
+     * @param referenceSetReferenceIn  (required)
+     * @return ReferenceSetReferenceOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SetReferenceOut riskSetReference(@javax.annotation.Nonnull String set, @javax.annotation.Nonnull SetReferenceIn setReferenceIn) throws ApiException {
-        ApiResponse<SetReferenceOut> localVarResp = riskSetReferenceWithHttpInfo(set, setReferenceIn);
+    public ReferenceSetReferenceOut riskSetReference(@javax.annotation.Nonnull String set, @javax.annotation.Nonnull ReferenceSetReferenceIn referenceSetReferenceIn) throws ApiException {
+        ApiResponse<ReferenceSetReferenceOut> localVarResp = riskSetReferenceWithHttpInfo(set, referenceSetReferenceIn);
         return localVarResp.getData();
     }
 
@@ -828,19 +723,20 @@ public class ReferenceApi {
      * Writes your organisation&#39;s own allow and deny entries over a set.
      * Writes your organisation&#39;s own allow and deny entries over a set.  Idempotent on the key: writing the same entry twice is one entry, and writing it again replaces the verdict and the note. The whole batch is one transaction, so a batch that would cross the per-set bound writes nothing rather than half of itself — a half-applied deny list is worse than a refused one, because nobody can tell which half applied.  Your entries are held in your organisation&#39;s own store and are never visible to another organisation, and they never change what any other organisation sees. The shared baseline is not writable from here at all.
      * @param set  (required)
-     * @param setReferenceIn  (required)
-     * @return ApiResponse&lt;SetReferenceOut&gt;
+     * @param referenceSetReferenceIn  (required)
+     * @return ApiResponse&lt;ReferenceSetReferenceOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SetReferenceOut> riskSetReferenceWithHttpInfo(@javax.annotation.Nonnull String set, @javax.annotation.Nonnull SetReferenceIn setReferenceIn) throws ApiException {
-        okhttp3.Call localVarCall = riskSetReferenceValidateBeforeCall(set, setReferenceIn, null);
-        Type localVarReturnType = new TypeToken<SetReferenceOut>(){}.getType();
+    public ApiResponse<ReferenceSetReferenceOut> riskSetReferenceWithHttpInfo(@javax.annotation.Nonnull String set, @javax.annotation.Nonnull ReferenceSetReferenceIn referenceSetReferenceIn) throws ApiException {
+        okhttp3.Call localVarCall = riskSetReferenceValidateBeforeCall(set, referenceSetReferenceIn, null);
+        Type localVarReturnType = new TypeToken<ReferenceSetReferenceOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -848,7 +744,7 @@ public class ReferenceApi {
      * Writes your organisation&#39;s own allow and deny entries over a set. (asynchronously)
      * Writes your organisation&#39;s own allow and deny entries over a set.  Idempotent on the key: writing the same entry twice is one entry, and writing it again replaces the verdict and the note. The whole batch is one transaction, so a batch that would cross the per-set bound writes nothing rather than half of itself — a half-applied deny list is worse than a refused one, because nobody can tell which half applied.  Your entries are held in your organisation&#39;s own store and are never visible to another organisation, and they never change what any other organisation sees. The shared baseline is not writable from here at all.
      * @param set  (required)
-     * @param setReferenceIn  (required)
+     * @param referenceSetReferenceIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -857,12 +753,13 @@ public class ReferenceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskSetReferenceAsync(@javax.annotation.Nonnull String set, @javax.annotation.Nonnull SetReferenceIn setReferenceIn, final ApiCallback<SetReferenceOut> _callback) throws ApiException {
+    public okhttp3.Call riskSetReferenceAsync(@javax.annotation.Nonnull String set, @javax.annotation.Nonnull ReferenceSetReferenceIn referenceSetReferenceIn, final ApiCallback<ReferenceSetReferenceOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = riskSetReferenceValidateBeforeCall(set, setReferenceIn, _callback);
-        Type localVarReturnType = new TypeToken<SetReferenceOut>(){}.getType();
+        okhttp3.Call localVarCall = riskSetReferenceValidateBeforeCall(set, referenceSetReferenceIn, _callback);
+        Type localVarReturnType = new TypeToken<ReferenceSetReferenceOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

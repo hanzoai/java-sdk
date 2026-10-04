@@ -27,19 +27,27 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Catalog;
-import ai.hanzo.cloud.model.CreateFlowReq;
-import ai.hanzo.cloud.model.CreateVersionIn;
-import ai.hanzo.cloud.model.Flow;
-import ai.hanzo.cloud.model.FlowPage;
-import ai.hanzo.cloud.model.FlowRun;
-import ai.hanzo.cloud.model.FlowVersion;
-import ai.hanzo.cloud.model.PatchFlowIn;
-import ai.hanzo.cloud.model.PopulatedFlow;
-import ai.hanzo.cloud.model.RunIn;
-import ai.hanzo.cloud.model.RunPage;
-import ai.hanzo.cloud.model.RunResp;
-import ai.hanzo.cloud.model.VersionPage;
+import ai.hanzo.cloud.model.AutoAutomation;
+import ai.hanzo.cloud.model.AutoAutomationIn;
+import ai.hanzo.cloud.model.AutoAutomationPage;
+import ai.hanzo.cloud.model.AutoAutomationPatch;
+import ai.hanzo.cloud.model.AutoAutomationRunPage;
+import ai.hanzo.cloud.model.AutoCatalog;
+import ai.hanzo.cloud.model.AutoCreateFlowReq;
+import ai.hanzo.cloud.model.AutoCreateVersionIn;
+import ai.hanzo.cloud.model.AutoFlow;
+import ai.hanzo.cloud.model.AutoFlowPage;
+import ai.hanzo.cloud.model.AutoFlowRun;
+import ai.hanzo.cloud.model.AutoFlowVersion;
+import ai.hanzo.cloud.model.AutoPatchFlowIn;
+import ai.hanzo.cloud.model.AutoPopulatedFlow;
+import ai.hanzo.cloud.model.AutoRunIn;
+import ai.hanzo.cloud.model.AutoRunPage;
+import ai.hanzo.cloud.model.AutoRunResp;
+import ai.hanzo.cloud.model.AutoRunStarted;
+import ai.hanzo.cloud.model.AutoStarterPage;
+import ai.hanzo.cloud.model.AutoVersionPage;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -85,6 +93,133 @@ public class AutoApi {
     }
 
     /**
+     * Build call for deleteAutoAutomationsById
+     * @param id ID is the automation, from the path. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAutoAutomationsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/auto/automations/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteAutoAutomationsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteAutoAutomationsById(Async)");
+        }
+
+        return deleteAutoAutomationsByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Deletes an automation, its schedule and its run history, and stops a Dev run it has going.
+     * Deletes an automation, its schedule and its run history, and stops a Dev run it has going. It answers no content.
+     * @param id ID is the automation, from the path. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteAutoAutomationsById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteAutoAutomationsByIdWithHttpInfo(id);
+    }
+
+    /**
+     * Deletes an automation, its schedule and its run history, and stops a Dev run it has going.
+     * Deletes an automation, its schedule and its run history, and stops a Dev run it has going. It answers no content.
+     * @param id ID is the automation, from the path. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteAutoAutomationsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteAutoAutomationsByIdValidateBeforeCall(id, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Deletes an automation, its schedule and its run history, and stops a Dev run it has going. (asynchronously)
+     * Deletes an automation, its schedule and its run history, and stops a Dev run it has going. It answers no content.
+     * @param id ID is the automation, from the path. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteAutoAutomationsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteAutoAutomationsByIdValidateBeforeCall(id, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for deleteAutoFlowsById
      * @param id ID is the flow to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -95,6 +230,7 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteAutoFlowsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -124,6 +260,7 @@ public class AutoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -162,6 +299,7 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteAutoFlowsById(@javax.annotation.Nonnull String id) throws ApiException {
@@ -179,6 +317,7 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteAutoFlowsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -198,6 +337,7 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteAutoFlowsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -207,7 +347,9 @@ public class AutoApi {
         return localVarCall;
     }
     /**
-     * Build call for getAutoConnectors
+     * Build call for getAutoAutomations
+     * @param q Q keeps the automations whose name or instructions contain it, ignoring case. (optional)
+     * @param sort Sort is name, next or updated (the default, newest first). (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -216,9 +358,10 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAutoConnectorsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutoAutomationsCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String sort, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -235,7 +378,7 @@ public class AutoApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/auto/connectors";
+        String localVarPath = "/v1/auto/automations";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -243,8 +386,17 @@ public class AutoApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -263,49 +415,57 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAutoConnectorsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getAutoConnectorsCall(_callback);
+    private okhttp3.Call getAutoAutomationsValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String sort, final ApiCallback _callback) throws ApiException {
+        return getAutoAutomationsCall(q, sort, _callback);
 
     }
 
     /**
-     * Connectors returns the connector catalogue.
-     * Connectors returns the connector catalogue. Each entry is an external service a flow step can invoke, carrying its auth descriptor and the input properties of its actions and triggers. The catalogue is the same for every tenant, so the gate is a validated principal rather than a per-org view.
-     * @return Catalog
+     * Returns the org&#39;s automations.
+     * Returns the org&#39;s automations. &#x60;q&#x60; keeps those whose name or instructions contain it, ignoring case; &#x60;sort&#x60; is &#x60;updated&#x60; (the default, newest first), &#x60;name&#x60;, or &#x60;next&#x60; (soonest first, unscheduled last).
+     * @param q Q keeps the automations whose name or instructions contain it, ignoring case. (optional)
+     * @param sort Sort is name, next or updated (the default, newest first). (optional)
+     * @return AutoAutomationPage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Catalog getAutoConnectors() throws ApiException {
-        ApiResponse<Catalog> localVarResp = getAutoConnectorsWithHttpInfo();
+    public AutoAutomationPage getAutoAutomations(@javax.annotation.Nullable String q, @javax.annotation.Nullable String sort) throws ApiException {
+        ApiResponse<AutoAutomationPage> localVarResp = getAutoAutomationsWithHttpInfo(q, sort);
         return localVarResp.getData();
     }
 
     /**
-     * Connectors returns the connector catalogue.
-     * Connectors returns the connector catalogue. Each entry is an external service a flow step can invoke, carrying its auth descriptor and the input properties of its actions and triggers. The catalogue is the same for every tenant, so the gate is a validated principal rather than a per-org view.
-     * @return ApiResponse&lt;Catalog&gt;
+     * Returns the org&#39;s automations.
+     * Returns the org&#39;s automations. &#x60;q&#x60; keeps those whose name or instructions contain it, ignoring case; &#x60;sort&#x60; is &#x60;updated&#x60; (the default, newest first), &#x60;name&#x60;, or &#x60;next&#x60; (soonest first, unscheduled last).
+     * @param q Q keeps the automations whose name or instructions contain it, ignoring case. (optional)
+     * @param sort Sort is name, next or updated (the default, newest first). (optional)
+     * @return ApiResponse&lt;AutoAutomationPage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Catalog> getAutoConnectorsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getAutoConnectorsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Catalog>(){}.getType();
+    public ApiResponse<AutoAutomationPage> getAutoAutomationsWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String sort) throws ApiException {
+        okhttp3.Call localVarCall = getAutoAutomationsValidateBeforeCall(q, sort, null);
+        Type localVarReturnType = new TypeToken<AutoAutomationPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Connectors returns the connector catalogue. (asynchronously)
-     * Connectors returns the connector catalogue. Each entry is an external service a flow step can invoke, carrying its auth descriptor and the input properties of its actions and triggers. The catalogue is the same for every tenant, so the gate is a validated principal rather than a per-org view.
+     * Returns the org&#39;s automations. (asynchronously)
+     * Returns the org&#39;s automations. &#x60;q&#x60; keeps those whose name or instructions contain it, ignoring case; &#x60;sort&#x60; is &#x60;updated&#x60; (the default, newest first), &#x60;name&#x60;, or &#x60;next&#x60; (soonest first, unscheduled last).
+     * @param q Q keeps the automations whose name or instructions contain it, ignoring case. (optional)
+     * @param sort Sort is name, next or updated (the default, newest first). (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -314,12 +474,285 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAutoConnectorsAsync(final ApiCallback<Catalog> _callback) throws ApiException {
+    public okhttp3.Call getAutoAutomationsAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String sort, final ApiCallback<AutoAutomationPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAutoConnectorsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Catalog>(){}.getType();
+        okhttp3.Call localVarCall = getAutoAutomationsValidateBeforeCall(q, sort, _callback);
+        Type localVarReturnType = new TypeToken<AutoAutomationPage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAutoAutomationsById
+     * @param id ID is the automation, from the path. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAutoAutomationsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/auto/automations/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAutoAutomationsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getAutoAutomationsById(Async)");
+        }
+
+        return getAutoAutomationsByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Returns one automation.
+     * Returns one automation. A flow of the org that is not an automation, and anything of another org, answers not-found.
+     * @param id ID is the automation, from the path. (required)
+     * @return AutoAutomation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AutoAutomation getAutoAutomationsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<AutoAutomation> localVarResp = getAutoAutomationsByIdWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one automation.
+     * Returns one automation. A flow of the org that is not an automation, and anything of another org, answers not-found.
+     * @param id ID is the automation, from the path. (required)
+     * @return ApiResponse&lt;AutoAutomation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AutoAutomation> getAutoAutomationsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getAutoAutomationsByIdValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<AutoAutomation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one automation. (asynchronously)
+     * Returns one automation. A flow of the org that is not an automation, and anything of another org, answers not-found.
+     * @param id ID is the automation, from the path. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAutoAutomationsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<AutoAutomation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAutoAutomationsByIdValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<AutoAutomation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAutoAutomationsByIdRuns
+     * @param id ID is the automation, from the path. (required)
+     * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAutoAutomationsByIdRunsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/auto/automations/{id}/runs"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAutoAutomationsByIdRunsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getAutoAutomationsByIdRuns(Async)");
+        }
+
+        return getAutoAutomationsByIdRunsCall(id, limit, _callback);
+
+    }
+
+    /**
+     * Returns one automation&#39;s runs, newest first, to the person it runs as or an admin of the org.
+     * Returns one automation&#39;s runs, newest first, to the person it runs as or an admin of the org. Each links the Dev run it started as &#x60;transcript&#x60;. The optional &#x60;limit&#x60; bounds the page.
+     * @param id ID is the automation, from the path. (required)
+     * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
+     * @return AutoAutomationRunPage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AutoAutomationRunPage getAutoAutomationsByIdRuns(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<AutoAutomationRunPage> localVarResp = getAutoAutomationsByIdRunsWithHttpInfo(id, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one automation&#39;s runs, newest first, to the person it runs as or an admin of the org.
+     * Returns one automation&#39;s runs, newest first, to the person it runs as or an admin of the org. Each links the Dev run it started as &#x60;transcript&#x60;. The optional &#x60;limit&#x60; bounds the page.
+     * @param id ID is the automation, from the path. (required)
+     * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
+     * @return ApiResponse&lt;AutoAutomationRunPage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AutoAutomationRunPage> getAutoAutomationsByIdRunsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = getAutoAutomationsByIdRunsValidateBeforeCall(id, limit, null);
+        Type localVarReturnType = new TypeToken<AutoAutomationRunPage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one automation&#39;s runs, newest first, to the person it runs as or an admin of the org. (asynchronously)
+     * Returns one automation&#39;s runs, newest first, to the person it runs as or an admin of the org. Each links the Dev run it started as &#x60;transcript&#x60;. The optional &#x60;limit&#x60; bounds the page.
+     * @param id ID is the automation, from the path. (required)
+     * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAutoAutomationsByIdRunsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, final ApiCallback<AutoAutomationRunPage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAutoAutomationsByIdRunsValidateBeforeCall(id, limit, _callback);
+        Type localVarReturnType = new TypeToken<AutoAutomationRunPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -334,6 +767,7 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAutoFlowsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -366,7 +800,8 @@ public class AutoApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -394,17 +829,18 @@ public class AutoApi {
      * Returns the caller org&#39;s automations, most-recently-updated first.
      * Returns the caller org&#39;s automations, most-recently-updated first. The optional &#x60;limit&#x60; query bounds the page.
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
-     * @return FlowPage
+     * @return AutoFlowPage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FlowPage getAutoFlows(@javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<FlowPage> localVarResp = getAutoFlowsWithHttpInfo(limit);
+    public AutoFlowPage getAutoFlows(@javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<AutoFlowPage> localVarResp = getAutoFlowsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -412,18 +848,19 @@ public class AutoApi {
      * Returns the caller org&#39;s automations, most-recently-updated first.
      * Returns the caller org&#39;s automations, most-recently-updated first. The optional &#x60;limit&#x60; query bounds the page.
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
-     * @return ApiResponse&lt;FlowPage&gt;
+     * @return ApiResponse&lt;AutoFlowPage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FlowPage> getAutoFlowsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<AutoFlowPage> getAutoFlowsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getAutoFlowsValidateBeforeCall(limit, null);
-        Type localVarReturnType = new TypeToken<FlowPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<AutoFlowPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -439,12 +876,13 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAutoFlowsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<FlowPage> _callback) throws ApiException {
+    public okhttp3.Call getAutoFlowsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<AutoFlowPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAutoFlowsValidateBeforeCall(limit, _callback);
-        Type localVarReturnType = new TypeToken<FlowPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<AutoFlowPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -459,6 +897,7 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAutoFlowsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -488,7 +927,8 @@ public class AutoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -521,17 +961,18 @@ public class AutoApi {
      * Returns one automation and its latest version.
      * Returns one automation and its latest version. That is the flow record plus the step tree the builder edits; a flow of another org answers not-found.
      * @param id ID is the flow to act on, from the path. (required)
-     * @return PopulatedFlow
+     * @return AutoPopulatedFlow
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PopulatedFlow getAutoFlowsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<PopulatedFlow> localVarResp = getAutoFlowsByIdWithHttpInfo(id);
+    public AutoPopulatedFlow getAutoFlowsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<AutoPopulatedFlow> localVarResp = getAutoFlowsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -539,18 +980,19 @@ public class AutoApi {
      * Returns one automation and its latest version.
      * Returns one automation and its latest version. That is the flow record plus the step tree the builder edits; a flow of another org answers not-found.
      * @param id ID is the flow to act on, from the path. (required)
-     * @return ApiResponse&lt;PopulatedFlow&gt;
+     * @return ApiResponse&lt;AutoPopulatedFlow&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PopulatedFlow> getAutoFlowsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<AutoPopulatedFlow> getAutoFlowsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getAutoFlowsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<PopulatedFlow>(){}.getType();
+        Type localVarReturnType = new TypeToken<AutoPopulatedFlow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -566,12 +1008,13 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAutoFlowsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<PopulatedFlow> _callback) throws ApiException {
+    public okhttp3.Call getAutoFlowsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<AutoPopulatedFlow> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAutoFlowsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<PopulatedFlow>(){}.getType();
+        Type localVarReturnType = new TypeToken<AutoPopulatedFlow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -587,6 +1030,7 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAutoFlowsByIdVersionsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -620,7 +1064,8 @@ public class AutoApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -654,17 +1099,18 @@ public class AutoApi {
      * Returns one flow&#39;s versions, newest first. The optional &#x60;limit&#x60; query bounds the page.
      * @param id ID is the flow whose versions to list, from the path. (required)
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
-     * @return VersionPage
+     * @return AutoVersionPage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public VersionPage getAutoFlowsByIdVersions(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<VersionPage> localVarResp = getAutoFlowsByIdVersionsWithHttpInfo(id, limit);
+    public AutoVersionPage getAutoFlowsByIdVersions(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<AutoVersionPage> localVarResp = getAutoFlowsByIdVersionsWithHttpInfo(id, limit);
         return localVarResp.getData();
     }
 
@@ -673,18 +1119,19 @@ public class AutoApi {
      * Returns one flow&#39;s versions, newest first. The optional &#x60;limit&#x60; query bounds the page.
      * @param id ID is the flow whose versions to list, from the path. (required)
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
-     * @return ApiResponse&lt;VersionPage&gt;
+     * @return ApiResponse&lt;AutoVersionPage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VersionPage> getAutoFlowsByIdVersionsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<AutoVersionPage> getAutoFlowsByIdVersionsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getAutoFlowsByIdVersionsValidateBeforeCall(id, limit, null);
-        Type localVarReturnType = new TypeToken<VersionPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<AutoVersionPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -701,12 +1148,135 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAutoFlowsByIdVersionsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, final ApiCallback<VersionPage> _callback) throws ApiException {
+    public okhttp3.Call getAutoFlowsByIdVersionsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, final ApiCallback<AutoVersionPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAutoFlowsByIdVersionsValidateBeforeCall(id, limit, _callback);
-        Type localVarReturnType = new TypeToken<VersionPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<AutoVersionPage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAutoProvider
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAutoProviderCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/auto/provider";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAutoProviderValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAutoProviderCall(_callback);
+
+    }
+
+    /**
+     * Returns the connector catalogue.
+     * Returns the connector catalogue. Each entry is an external service a flow step can invoke, carrying its auth descriptor and the input properties of its actions and triggers. The catalogue is the same for every tenant, so the gate is a validated principal rather than a per-org view.
+     * @return AutoCatalog
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AutoCatalog getAutoProvider() throws ApiException {
+        ApiResponse<AutoCatalog> localVarResp = getAutoProviderWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns the connector catalogue.
+     * Returns the connector catalogue. Each entry is an external service a flow step can invoke, carrying its auth descriptor and the input properties of its actions and triggers. The catalogue is the same for every tenant, so the gate is a validated principal rather than a per-org view.
+     * @return ApiResponse&lt;AutoCatalog&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AutoCatalog> getAutoProviderWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAutoProviderValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<AutoCatalog>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns the connector catalogue. (asynchronously)
+     * Returns the connector catalogue. Each entry is an external service a flow step can invoke, carrying its auth descriptor and the input properties of its actions and triggers. The catalogue is the same for every tenant, so the gate is a validated principal rather than a per-org view.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAutoProviderAsync(final ApiCallback<AutoCatalog> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAutoProviderValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<AutoCatalog>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -722,6 +1292,7 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAutoRunsCall(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -758,7 +1329,8 @@ public class AutoApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -787,17 +1359,18 @@ public class AutoApi {
      * Returns the caller org&#39;s run history, newest first. The optional &#x60;flowId&#x60; query narrows it to one flow and &#x60;limit&#x60; bounds the page.
      * @param flowId FlowID narrows the history to one flow. Omit it for the whole org&#39;s runs. (optional)
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
-     * @return RunPage
+     * @return AutoRunPage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RunPage getAutoRuns(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<RunPage> localVarResp = getAutoRunsWithHttpInfo(flowId, limit);
+    public AutoRunPage getAutoRuns(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<AutoRunPage> localVarResp = getAutoRunsWithHttpInfo(flowId, limit);
         return localVarResp.getData();
     }
 
@@ -806,18 +1379,19 @@ public class AutoApi {
      * Returns the caller org&#39;s run history, newest first. The optional &#x60;flowId&#x60; query narrows it to one flow and &#x60;limit&#x60; bounds the page.
      * @param flowId FlowID narrows the history to one flow. Omit it for the whole org&#39;s runs. (optional)
      * @param limit Limit bounds the page (default 200, maximum 1000). (optional)
-     * @return ApiResponse&lt;RunPage&gt;
+     * @return ApiResponse&lt;AutoRunPage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RunPage> getAutoRunsWithHttpInfo(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<AutoRunPage> getAutoRunsWithHttpInfo(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getAutoRunsValidateBeforeCall(flowId, limit, null);
-        Type localVarReturnType = new TypeToken<RunPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<AutoRunPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -834,12 +1408,13 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAutoRunsAsync(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Long limit, final ApiCallback<RunPage> _callback) throws ApiException {
+    public okhttp3.Call getAutoRunsAsync(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Long limit, final ApiCallback<AutoRunPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAutoRunsValidateBeforeCall(flowId, limit, _callback);
-        Type localVarReturnType = new TypeToken<RunPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<AutoRunPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -854,6 +1429,7 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAutoRunsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -883,7 +1459,8 @@ public class AutoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -916,17 +1493,18 @@ public class AutoApi {
      * Returns one run.
      * Returns one run. A run that has not reached a terminal status is refreshed from the durable engine first — scoped to the org&#39;s own namespace — so the caller sees live progress rather than the last status that happened to be persisted.
      * @param id ID is the run to read, from the path. (required)
-     * @return FlowRun
+     * @return AutoFlowRun
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FlowRun getAutoRunsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<FlowRun> localVarResp = getAutoRunsByIdWithHttpInfo(id);
+    public AutoFlowRun getAutoRunsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<AutoFlowRun> localVarResp = getAutoRunsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -934,18 +1512,19 @@ public class AutoApi {
      * Returns one run.
      * Returns one run. A run that has not reached a terminal status is refreshed from the durable engine first — scoped to the org&#39;s own namespace — so the caller sees live progress rather than the last status that happened to be persisted.
      * @param id ID is the run to read, from the path. (required)
-     * @return ApiResponse&lt;FlowRun&gt;
+     * @return ApiResponse&lt;AutoFlowRun&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FlowRun> getAutoRunsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<AutoFlowRun> getAutoRunsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getAutoRunsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<FlowRun>(){}.getType();
+        Type localVarReturnType = new TypeToken<AutoFlowRun>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -961,19 +1540,18 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAutoRunsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<FlowRun> _callback) throws ApiException {
+    public okhttp3.Call getAutoRunsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<AutoFlowRun> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAutoRunsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<FlowRun>(){}.getType();
+        Type localVarReturnType = new TypeToken<AutoFlowRun>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchAutoFlowsById
-     * @param id ID is the flow to update, from the path. (required)
-     * @param patchFlowIn  (required)
+     * Build call for getAutoTemplates
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -982,9 +1560,10 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchAutoFlowsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchFlowIn patchFlowIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutoTemplatesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -998,10 +1577,134 @@ public class AutoApi {
             basePath = null;
         }
 
-        Object localVarPostBody = patchFlowIn;
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/auto/flows/{id}"
+        String localVarPath = "/v1/auto/templates";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAutoTemplatesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAutoTemplatesCall(_callback);
+
+    }
+
+    /**
+     * Returns the starter automations: a name, what it does, the instructions it runs and the schedule it suggests, in the caller&#39;s own zone.
+     * Returns the starter automations: a name, what it does, the instructions it runs and the schedule it suggests, in the caller&#39;s own zone.
+     * @return AutoStarterPage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AutoStarterPage getAutoTemplates() throws ApiException {
+        ApiResponse<AutoStarterPage> localVarResp = getAutoTemplatesWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns the starter automations: a name, what it does, the instructions it runs and the schedule it suggests, in the caller&#39;s own zone.
+     * Returns the starter automations: a name, what it does, the instructions it runs and the schedule it suggests, in the caller&#39;s own zone.
+     * @return ApiResponse&lt;AutoStarterPage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AutoStarterPage> getAutoTemplatesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAutoTemplatesValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<AutoStarterPage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns the starter automations: a name, what it does, the instructions it runs and the schedule it suggests, in the caller&#39;s own zone. (asynchronously)
+     * Returns the starter automations: a name, what it does, the instructions it runs and the schedule it suggests, in the caller&#39;s own zone.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAutoTemplatesAsync(final ApiCallback<AutoStarterPage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAutoTemplatesValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<AutoStarterPage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for patchAutoAutomationsById
+     * @param id ID is the automation, from the path. (required)
+     * @param autoAutomationPatch  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchAutoAutomationsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoAutomationPatch autoAutomationPatch, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = autoAutomationPatch;
+
+        // create path and map variables
+        String localVarPath = "/v1/auto/automations/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1011,7 +1714,8 @@ public class AutoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1031,65 +1735,67 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchAutoFlowsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchFlowIn patchFlowIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchAutoAutomationsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoAutomationPatch autoAutomationPatch, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling patchAutoFlowsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling patchAutoAutomationsById(Async)");
         }
 
-        // verify the required parameter 'patchFlowIn' is set
-        if (patchFlowIn == null) {
-            throw new ApiException("Missing the required parameter 'patchFlowIn' when calling patchAutoFlowsById(Async)");
+        // verify the required parameter 'autoAutomationPatch' is set
+        if (autoAutomationPatch == null) {
+            throw new ApiException("Missing the required parameter 'autoAutomationPatch' when calling patchAutoAutomationsById(Async)");
         }
 
-        return patchAutoFlowsByIdCall(id, patchFlowIn, _callback);
+        return patchAutoAutomationsByIdCall(id, autoAutomationPatch, _callback);
 
     }
 
     /**
-     * Updates one automation&#39;s metadata in place.
-     * Updates one automation&#39;s metadata in place. Every field is optional; a field the request omits is left alone. Publishing a version pins which one runs, and is refused unless that version belongs to this flow.
-     * @param id ID is the flow to update, from the path. (required)
-     * @param patchFlowIn  (required)
-     * @return Flow
+     * Changes an automation, for the person it runs as or an admin of the org: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule.
+     * Changes an automation, for the person it runs as or an admin of the org: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule. A field the request omits is left alone; &#x60;project&#x60; or &#x60;model&#x60; sent as null (or \&quot;\&quot;) clears it. Any change but &#x60;enabled&#x60; makes the caller the person it runs as from then on. A draft is finished by saving its &#x60;instructions&#x60;: it becomes an automation in place, on unless &#x60;enabled&#x60; says otherwise.
+     * @param id ID is the automation, from the path. (required)
+     * @param autoAutomationPatch  (required)
+     * @return AutoAutomation
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Flow patchAutoFlowsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchFlowIn patchFlowIn) throws ApiException {
-        ApiResponse<Flow> localVarResp = patchAutoFlowsByIdWithHttpInfo(id, patchFlowIn);
+    public AutoAutomation patchAutoAutomationsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoAutomationPatch autoAutomationPatch) throws ApiException {
+        ApiResponse<AutoAutomation> localVarResp = patchAutoAutomationsByIdWithHttpInfo(id, autoAutomationPatch);
         return localVarResp.getData();
     }
 
     /**
-     * Updates one automation&#39;s metadata in place.
-     * Updates one automation&#39;s metadata in place. Every field is optional; a field the request omits is left alone. Publishing a version pins which one runs, and is refused unless that version belongs to this flow.
-     * @param id ID is the flow to update, from the path. (required)
-     * @param patchFlowIn  (required)
-     * @return ApiResponse&lt;Flow&gt;
+     * Changes an automation, for the person it runs as or an admin of the org: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule.
+     * Changes an automation, for the person it runs as or an admin of the org: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule. A field the request omits is left alone; &#x60;project&#x60; or &#x60;model&#x60; sent as null (or \&quot;\&quot;) clears it. Any change but &#x60;enabled&#x60; makes the caller the person it runs as from then on. A draft is finished by saving its &#x60;instructions&#x60;: it becomes an automation in place, on unless &#x60;enabled&#x60; says otherwise.
+     * @param id ID is the automation, from the path. (required)
+     * @param autoAutomationPatch  (required)
+     * @return ApiResponse&lt;AutoAutomation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Flow> patchAutoFlowsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchFlowIn patchFlowIn) throws ApiException {
-        okhttp3.Call localVarCall = patchAutoFlowsByIdValidateBeforeCall(id, patchFlowIn, null);
-        Type localVarReturnType = new TypeToken<Flow>(){}.getType();
+    public ApiResponse<AutoAutomation> patchAutoAutomationsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoAutomationPatch autoAutomationPatch) throws ApiException {
+        okhttp3.Call localVarCall = patchAutoAutomationsByIdValidateBeforeCall(id, autoAutomationPatch, null);
+        Type localVarReturnType = new TypeToken<AutoAutomation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Updates one automation&#39;s metadata in place. (asynchronously)
-     * Updates one automation&#39;s metadata in place. Every field is optional; a field the request omits is left alone. Publishing a version pins which one runs, and is refused unless that version belongs to this flow.
-     * @param id ID is the flow to update, from the path. (required)
-     * @param patchFlowIn  (required)
+     * Changes an automation, for the person it runs as or an admin of the org: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule. (asynchronously)
+     * Changes an automation, for the person it runs as or an admin of the org: any field it was created with, and &#x60;enabled&#x60;, which arms or disarms its schedule. A field the request omits is left alone; &#x60;project&#x60; or &#x60;model&#x60; sent as null (or \&quot;\&quot;) clears it. Any change but &#x60;enabled&#x60; makes the caller the person it runs as from then on. A draft is finished by saving its &#x60;instructions&#x60;: it becomes an automation in place, on unless &#x60;enabled&#x60; says otherwise.
+     * @param id ID is the automation, from the path. (required)
+     * @param autoAutomationPatch  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1098,19 +1804,20 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchAutoFlowsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchFlowIn patchFlowIn, final ApiCallback<Flow> _callback) throws ApiException {
+    public okhttp3.Call patchAutoAutomationsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoAutomationPatch autoAutomationPatch, final ApiCallback<AutoAutomation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchAutoFlowsByIdValidateBeforeCall(id, patchFlowIn, _callback);
-        Type localVarReturnType = new TypeToken<Flow>(){}.getType();
+        okhttp3.Call localVarCall = patchAutoAutomationsByIdValidateBeforeCall(id, autoAutomationPatch, _callback);
+        Type localVarReturnType = new TypeToken<AutoAutomation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAutoConnectorsByIdRun
-     * @param id ID is the connector to run, from the path. (required)
-     * @param runIn  (required)
+     * Build call for patchAutoFlowsById
+     * @param id ID is the flow to update, from the path. (required)
+     * @param autoPatchFlowIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1119,9 +1826,10 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAutoConnectorsByIdRunCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RunIn runIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchAutoFlowsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoPatchFlowIn autoPatchFlowIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1135,10 +1843,10 @@ public class AutoApi {
             basePath = null;
         }
 
-        Object localVarPostBody = runIn;
+        Object localVarPostBody = autoPatchFlowIn;
 
         // create path and map variables
-        String localVarPath = "/v1/auto/connectors/{id}/run"
+        String localVarPath = "/v1/auto/flows/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1148,7 +1856,148 @@ public class AutoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
             "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchAutoFlowsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoPatchFlowIn autoPatchFlowIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling patchAutoFlowsById(Async)");
+        }
+
+        // verify the required parameter 'autoPatchFlowIn' is set
+        if (autoPatchFlowIn == null) {
+            throw new ApiException("Missing the required parameter 'autoPatchFlowIn' when calling patchAutoFlowsById(Async)");
+        }
+
+        return patchAutoFlowsByIdCall(id, autoPatchFlowIn, _callback);
+
+    }
+
+    /**
+     * Updates one automation&#39;s metadata in place.
+     * Updates one automation&#39;s metadata in place. Every field is optional; a field the request omits is left alone. Publishing a version pins which one runs, and is refused unless that version belongs to this flow.
+     * @param id ID is the flow to update, from the path. (required)
+     * @param autoPatchFlowIn  (required)
+     * @return AutoFlow
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AutoFlow patchAutoFlowsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoPatchFlowIn autoPatchFlowIn) throws ApiException {
+        ApiResponse<AutoFlow> localVarResp = patchAutoFlowsByIdWithHttpInfo(id, autoPatchFlowIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Updates one automation&#39;s metadata in place.
+     * Updates one automation&#39;s metadata in place. Every field is optional; a field the request omits is left alone. Publishing a version pins which one runs, and is refused unless that version belongs to this flow.
+     * @param id ID is the flow to update, from the path. (required)
+     * @param autoPatchFlowIn  (required)
+     * @return ApiResponse&lt;AutoFlow&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AutoFlow> patchAutoFlowsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoPatchFlowIn autoPatchFlowIn) throws ApiException {
+        okhttp3.Call localVarCall = patchAutoFlowsByIdValidateBeforeCall(id, autoPatchFlowIn, null);
+        Type localVarReturnType = new TypeToken<AutoFlow>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Updates one automation&#39;s metadata in place. (asynchronously)
+     * Updates one automation&#39;s metadata in place. Every field is optional; a field the request omits is left alone. Publishing a version pins which one runs, and is refused unless that version belongs to this flow.
+     * @param id ID is the flow to update, from the path. (required)
+     * @param autoPatchFlowIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchAutoFlowsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoPatchFlowIn autoPatchFlowIn, final ApiCallback<AutoFlow> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchAutoFlowsByIdValidateBeforeCall(id, autoPatchFlowIn, _callback);
+        Type localVarReturnType = new TypeToken<AutoFlow>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postAutoAutomations
+     * @param autoAutomationIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAutoAutomationsCall(@javax.annotation.Nonnull AutoAutomationIn autoAutomationIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = autoAutomationIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/auto/automations";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1168,65 +2017,59 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAutoConnectorsByIdRunValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RunIn runIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postAutoConnectorsByIdRun(Async)");
+    private okhttp3.Call postAutoAutomationsValidateBeforeCall(@javax.annotation.Nonnull AutoAutomationIn autoAutomationIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'autoAutomationIn' is set
+        if (autoAutomationIn == null) {
+            throw new ApiException("Missing the required parameter 'autoAutomationIn' when calling postAutoAutomations(Async)");
         }
 
-        // verify the required parameter 'runIn' is set
-        if (runIn == null) {
-            throw new ApiException("Missing the required parameter 'runIn' when calling postAutoConnectorsByIdRun(Async)");
-        }
-
-        return postAutoConnectorsByIdRunCall(id, runIn, _callback);
+        return postAutoAutomationsCall(autoAutomationIn, _callback);
 
     }
 
     /**
-     * Run executes one connector action in-process and answers the outcome.
-     * Run executes one connector action in-process and answers the outcome. The caller&#39;s resolved credential travels in &#x60;auth&#x60;, delivered to the action verbatim — the runtime resolves no credential itself. An action that ran and failed (or an action name the connector does not have) answers ok:false with the failure message, not an HTTP error; an unknown connector is 404 and a missing action 422.
-     * @param id ID is the connector to run, from the path. (required)
-     * @param runIn  (required)
-     * @return RunResp
+     * Creates an automation and arms its schedule.
+     * Creates an automation and arms its schedule. It runs as the caller: their Dev run, in this org, each time it fires. &#x60;name&#x60; and &#x60;instructions&#x60; are required; no &#x60;schedule&#x60; runs it only on demand, no &#x60;permissions&#x60; is ask: it proposes what it would do and changes nothing, and &#x60;enabled: false&#x60; creates it off, its schedule unarmed.
+     * @param autoAutomationIn  (required)
+     * @return AutoAutomation
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RunResp postAutoConnectorsByIdRun(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RunIn runIn) throws ApiException {
-        ApiResponse<RunResp> localVarResp = postAutoConnectorsByIdRunWithHttpInfo(id, runIn);
+    public AutoAutomation postAutoAutomations(@javax.annotation.Nonnull AutoAutomationIn autoAutomationIn) throws ApiException {
+        ApiResponse<AutoAutomation> localVarResp = postAutoAutomationsWithHttpInfo(autoAutomationIn);
         return localVarResp.getData();
     }
 
     /**
-     * Run executes one connector action in-process and answers the outcome.
-     * Run executes one connector action in-process and answers the outcome. The caller&#39;s resolved credential travels in &#x60;auth&#x60;, delivered to the action verbatim — the runtime resolves no credential itself. An action that ran and failed (or an action name the connector does not have) answers ok:false with the failure message, not an HTTP error; an unknown connector is 404 and a missing action 422.
-     * @param id ID is the connector to run, from the path. (required)
-     * @param runIn  (required)
-     * @return ApiResponse&lt;RunResp&gt;
+     * Creates an automation and arms its schedule.
+     * Creates an automation and arms its schedule. It runs as the caller: their Dev run, in this org, each time it fires. &#x60;name&#x60; and &#x60;instructions&#x60; are required; no &#x60;schedule&#x60; runs it only on demand, no &#x60;permissions&#x60; is ask: it proposes what it would do and changes nothing, and &#x60;enabled: false&#x60; creates it off, its schedule unarmed.
+     * @param autoAutomationIn  (required)
+     * @return ApiResponse&lt;AutoAutomation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RunResp> postAutoConnectorsByIdRunWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RunIn runIn) throws ApiException {
-        okhttp3.Call localVarCall = postAutoConnectorsByIdRunValidateBeforeCall(id, runIn, null);
-        Type localVarReturnType = new TypeToken<RunResp>(){}.getType();
+    public ApiResponse<AutoAutomation> postAutoAutomationsWithHttpInfo(@javax.annotation.Nonnull AutoAutomationIn autoAutomationIn) throws ApiException {
+        okhttp3.Call localVarCall = postAutoAutomationsValidateBeforeCall(autoAutomationIn, null);
+        Type localVarReturnType = new TypeToken<AutoAutomation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Run executes one connector action in-process and answers the outcome. (asynchronously)
-     * Run executes one connector action in-process and answers the outcome. The caller&#39;s resolved credential travels in &#x60;auth&#x60;, delivered to the action verbatim — the runtime resolves no credential itself. An action that ran and failed (or an action name the connector does not have) answers ok:false with the failure message, not an HTTP error; an unknown connector is 404 and a missing action 422.
-     * @param id ID is the connector to run, from the path. (required)
-     * @param runIn  (required)
+     * Creates an automation and arms its schedule. (asynchronously)
+     * Creates an automation and arms its schedule. It runs as the caller: their Dev run, in this org, each time it fires. &#x60;name&#x60; and &#x60;instructions&#x60; are required; no &#x60;schedule&#x60; runs it only on demand, no &#x60;permissions&#x60; is ask: it proposes what it would do and changes nothing, and &#x60;enabled: false&#x60; creates it off, its schedule unarmed.
+     * @param autoAutomationIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1234,19 +2077,20 @@ public class AutoApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAutoConnectorsByIdRunAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull RunIn runIn, final ApiCallback<RunResp> _callback) throws ApiException {
+    public okhttp3.Call postAutoAutomationsAsync(@javax.annotation.Nonnull AutoAutomationIn autoAutomationIn, final ApiCallback<AutoAutomation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAutoConnectorsByIdRunValidateBeforeCall(id, runIn, _callback);
-        Type localVarReturnType = new TypeToken<RunResp>(){}.getType();
+        okhttp3.Call localVarCall = postAutoAutomationsValidateBeforeCall(autoAutomationIn, _callback);
+        Type localVarReturnType = new TypeToken<AutoAutomation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAutoFlows
-     * @param createFlowReq  (required)
+     * Build call for postAutoAutomationsByIdRun
+     * @param id ID is the automation, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1255,9 +2099,10 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAutoFlowsCall(@javax.annotation.Nonnull CreateFlowReq createFlowReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAutoAutomationsByIdRunCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1271,7 +2116,139 @@ public class AutoApi {
             basePath = null;
         }
 
-        Object localVarPostBody = createFlowReq;
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/auto/automations/{id}/run"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postAutoAutomationsByIdRunValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postAutoAutomationsByIdRun(Async)");
+        }
+
+        return postAutoAutomationsByIdRunCall(id, _callback);
+
+    }
+
+    /**
+     * Starts one run now, whether or not its schedule is armed.
+     * Starts one run now, whether or not its schedule is armed. Only the person it runs as, or an admin of the org, may start one; who did is kept. An automation runs one at a time: while a run is going, this records a skipped start and answers it. Every run first asks IAM whether the person it runs as is still a member of the org; one who is not makes the run refused and turns the automation off.
+     * @param id ID is the automation, from the path. (required)
+     * @return AutoRunStarted
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AutoRunStarted postAutoAutomationsByIdRun(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<AutoRunStarted> localVarResp = postAutoAutomationsByIdRunWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Starts one run now, whether or not its schedule is armed.
+     * Starts one run now, whether or not its schedule is armed. Only the person it runs as, or an admin of the org, may start one; who did is kept. An automation runs one at a time: while a run is going, this records a skipped start and answers it. Every run first asks IAM whether the person it runs as is still a member of the org; one who is not makes the run refused and turns the automation off.
+     * @param id ID is the automation, from the path. (required)
+     * @return ApiResponse&lt;AutoRunStarted&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AutoRunStarted> postAutoAutomationsByIdRunWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postAutoAutomationsByIdRunValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<AutoRunStarted>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Starts one run now, whether or not its schedule is armed. (asynchronously)
+     * Starts one run now, whether or not its schedule is armed. Only the person it runs as, or an admin of the org, may start one; who did is kept. An automation runs one at a time: while a run is going, this records a skipped start and answers it. Every run first asks IAM whether the person it runs as is still a member of the org; one who is not makes the run refused and turns the automation off.
+     * @param id ID is the automation, from the path. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAutoAutomationsByIdRunAsync(@javax.annotation.Nonnull String id, final ApiCallback<AutoRunStarted> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postAutoAutomationsByIdRunValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<AutoRunStarted>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postAutoFlows
+     * @param autoCreateFlowReq  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAutoFlowsCall(@javax.annotation.Nonnull AutoCreateFlowReq autoCreateFlowReq, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = autoCreateFlowReq;
 
         // create path and map variables
         String localVarPath = "/v1/auto/flows";
@@ -1283,7 +2260,8 @@ public class AutoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1303,57 +2281,59 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAutoFlowsValidateBeforeCall(@javax.annotation.Nonnull CreateFlowReq createFlowReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'createFlowReq' is set
-        if (createFlowReq == null) {
-            throw new ApiException("Missing the required parameter 'createFlowReq' when calling postAutoFlows(Async)");
+    private okhttp3.Call postAutoFlowsValidateBeforeCall(@javax.annotation.Nonnull AutoCreateFlowReq autoCreateFlowReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'autoCreateFlowReq' is set
+        if (autoCreateFlowReq == null) {
+            throw new ApiException("Missing the required parameter 'autoCreateFlowReq' when calling postAutoFlows(Async)");
         }
 
-        return postAutoFlowsCall(createFlowReq, _callback);
+        return postAutoFlowsCall(autoCreateFlowReq, _callback);
 
     }
 
     /**
      * Creates an automation and its initial DRAFT version in one call.
      * Creates an automation and its initial DRAFT version in one call. The new flow is DISABLED — creating it does not arm its trigger; POST /v1/auto/flows/{id}/enable does that.
-     * @param createFlowReq  (required)
-     * @return PopulatedFlow
+     * @param autoCreateFlowReq  (required)
+     * @return AutoPopulatedFlow
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PopulatedFlow postAutoFlows(@javax.annotation.Nonnull CreateFlowReq createFlowReq) throws ApiException {
-        ApiResponse<PopulatedFlow> localVarResp = postAutoFlowsWithHttpInfo(createFlowReq);
+    public AutoPopulatedFlow postAutoFlows(@javax.annotation.Nonnull AutoCreateFlowReq autoCreateFlowReq) throws ApiException {
+        ApiResponse<AutoPopulatedFlow> localVarResp = postAutoFlowsWithHttpInfo(autoCreateFlowReq);
         return localVarResp.getData();
     }
 
     /**
      * Creates an automation and its initial DRAFT version in one call.
      * Creates an automation and its initial DRAFT version in one call. The new flow is DISABLED — creating it does not arm its trigger; POST /v1/auto/flows/{id}/enable does that.
-     * @param createFlowReq  (required)
-     * @return ApiResponse&lt;PopulatedFlow&gt;
+     * @param autoCreateFlowReq  (required)
+     * @return ApiResponse&lt;AutoPopulatedFlow&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PopulatedFlow> postAutoFlowsWithHttpInfo(@javax.annotation.Nonnull CreateFlowReq createFlowReq) throws ApiException {
-        okhttp3.Call localVarCall = postAutoFlowsValidateBeforeCall(createFlowReq, null);
-        Type localVarReturnType = new TypeToken<PopulatedFlow>(){}.getType();
+    public ApiResponse<AutoPopulatedFlow> postAutoFlowsWithHttpInfo(@javax.annotation.Nonnull AutoCreateFlowReq autoCreateFlowReq) throws ApiException {
+        okhttp3.Call localVarCall = postAutoFlowsValidateBeforeCall(autoCreateFlowReq, null);
+        Type localVarReturnType = new TypeToken<AutoPopulatedFlow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Creates an automation and its initial DRAFT version in one call. (asynchronously)
      * Creates an automation and its initial DRAFT version in one call. The new flow is DISABLED — creating it does not arm its trigger; POST /v1/auto/flows/{id}/enable does that.
-     * @param createFlowReq  (required)
+     * @param autoCreateFlowReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1362,12 +2342,13 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAutoFlowsAsync(@javax.annotation.Nonnull CreateFlowReq createFlowReq, final ApiCallback<PopulatedFlow> _callback) throws ApiException {
+    public okhttp3.Call postAutoFlowsAsync(@javax.annotation.Nonnull AutoCreateFlowReq autoCreateFlowReq, final ApiCallback<AutoPopulatedFlow> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAutoFlowsValidateBeforeCall(createFlowReq, _callback);
-        Type localVarReturnType = new TypeToken<PopulatedFlow>(){}.getType();
+        okhttp3.Call localVarCall = postAutoFlowsValidateBeforeCall(autoCreateFlowReq, _callback);
+        Type localVarReturnType = new TypeToken<AutoPopulatedFlow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1382,6 +2363,7 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postAutoFlowsByIdDisableCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1411,7 +2393,8 @@ public class AutoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1444,17 +2427,18 @@ public class AutoApi {
      * Disarms a flow&#39;s trigger and marks it DISABLED.
      * Disarms a flow&#39;s trigger and marks it DISABLED. Its schedule and its event subscriptions are dropped, so a disabled flow is never a live target; runs already in flight are unaffected, and it can still be started on demand.
      * @param id ID is the flow to act on, from the path. (required)
-     * @return Flow
+     * @return AutoFlow
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Flow postAutoFlowsByIdDisable(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Flow> localVarResp = postAutoFlowsByIdDisableWithHttpInfo(id);
+    public AutoFlow postAutoFlowsByIdDisable(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<AutoFlow> localVarResp = postAutoFlowsByIdDisableWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1462,18 +2446,19 @@ public class AutoApi {
      * Disarms a flow&#39;s trigger and marks it DISABLED.
      * Disarms a flow&#39;s trigger and marks it DISABLED. Its schedule and its event subscriptions are dropped, so a disabled flow is never a live target; runs already in flight are unaffected, and it can still be started on demand.
      * @param id ID is the flow to act on, from the path. (required)
-     * @return ApiResponse&lt;Flow&gt;
+     * @return ApiResponse&lt;AutoFlow&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Flow> postAutoFlowsByIdDisableWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<AutoFlow> postAutoFlowsByIdDisableWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postAutoFlowsByIdDisableValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Flow>(){}.getType();
+        Type localVarReturnType = new TypeToken<AutoFlow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1489,12 +2474,13 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAutoFlowsByIdDisableAsync(@javax.annotation.Nonnull String id, final ApiCallback<Flow> _callback) throws ApiException {
+    public okhttp3.Call postAutoFlowsByIdDisableAsync(@javax.annotation.Nonnull String id, final ApiCallback<AutoFlow> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postAutoFlowsByIdDisableValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Flow>(){}.getType();
+        Type localVarReturnType = new TypeToken<AutoFlow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1509,6 +2495,7 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postAutoFlowsByIdEnableCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1538,7 +2525,8 @@ public class AutoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1571,17 +2559,18 @@ public class AutoApi {
      * Arms a flow&#39;s trigger and marks it ENABLED.
      * Arms a flow&#39;s trigger and marks it ENABLED. A POLLING trigger gets a cron schedule on the durable engine; a WEBHOOK trigger gets a subscription in the routing index, so an inbound event starts it; a MANUAL trigger arms nothing and still runs on demand.
      * @param id ID is the flow to act on, from the path. (required)
-     * @return Flow
+     * @return AutoFlow
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Flow postAutoFlowsByIdEnable(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Flow> localVarResp = postAutoFlowsByIdEnableWithHttpInfo(id);
+    public AutoFlow postAutoFlowsByIdEnable(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<AutoFlow> localVarResp = postAutoFlowsByIdEnableWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1589,18 +2578,19 @@ public class AutoApi {
      * Arms a flow&#39;s trigger and marks it ENABLED.
      * Arms a flow&#39;s trigger and marks it ENABLED. A POLLING trigger gets a cron schedule on the durable engine; a WEBHOOK trigger gets a subscription in the routing index, so an inbound event starts it; a MANUAL trigger arms nothing and still runs on demand.
      * @param id ID is the flow to act on, from the path. (required)
-     * @return ApiResponse&lt;Flow&gt;
+     * @return ApiResponse&lt;AutoFlow&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Flow> postAutoFlowsByIdEnableWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<AutoFlow> postAutoFlowsByIdEnableWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postAutoFlowsByIdEnableValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Flow>(){}.getType();
+        Type localVarReturnType = new TypeToken<AutoFlow>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1616,12 +2606,13 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAutoFlowsByIdEnableAsync(@javax.annotation.Nonnull String id, final ApiCallback<Flow> _callback) throws ApiException {
+    public okhttp3.Call postAutoFlowsByIdEnableAsync(@javax.annotation.Nonnull String id, final ApiCallback<AutoFlow> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postAutoFlowsByIdEnableValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Flow>(){}.getType();
+        Type localVarReturnType = new TypeToken<AutoFlow>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1689,7 +2680,7 @@ public class AutoApi {
 
     /**
      * Edit a flow — rename it, retarget its trigger, or add, move and delete steps
-     * Applies ONE flow operation and answers the thing it changed. The operation is named by &#x60;type&#x60;, with its arguments under &#x60;request&#x60;: &#x60;CHANGE_NAME&#x60;, &#x60;UPDATE_TRIGGER&#x60;, &#x60;ADD_ACTION&#x60;, &#x60;UPDATE_ACTION&#x60;, &#x60;MOVE_ACTION&#x60;, &#x60;DELETE_ACTION&#x60; edit the flow&#39;s LATEST version and answer with that version, and &#x60;CHANGE_STATUS&#x60; instead enables or disables the flow and answers with the FLOW. Two response shapes on one address is the rule a reader would otherwise get wrong, and it is why this route is not a typed op.  Edits land on the latest version only — the published version a run executes is untouched until it is republished — and the whole resulting step tree is re-validated against the step-count and size caps after every operation, so a long sequence of &#x60;ADD_ACTION&#x60; calls cannot grow a flow past a bound one step at a time (422 when it would). Org-scoped and fails closed: a validated principal is required (403 without one), the flow and its version are read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, and an operation whose &#x60;request&#x60; does not decode is a 400.
+     * Applies ONE flow operation and answers the thing it changed. The operation is named by &#x60;type&#x60;, with its arguments under &#x60;request&#x60;: &#x60;CHANGE_NAME&#x60;, &#x60;UPDATE_TRIGGER&#x60;, &#x60;ADD_ACTION&#x60;, &#x60;UPDATE_ACTION&#x60;, &#x60;MOVE_ACTION&#x60;, &#x60;DELETE_ACTION&#x60; edit the flow&#39;s LATEST version and answer with that version, and &#x60;CHANGE_STATUS&#x60; instead enables or disables the flow and answers with the FLOW. Two response shapes on one address is the rule a reader would otherwise get wrong, and it is why this route is not a typed op.  Edits land on the latest version only — the published version a run executes is untouched until it is republished — and the whole resulting step tree is re-validated against the step-count and size caps after every operation, so a long sequence of &#x60;ADD_ACTION&#x60; calls cannot grow a flow past a bound one step at a time (422 when it would). Org-scoped and fails closed: a validated principal is required (401 without one), the flow and its version are read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, and an operation whose &#x60;request&#x60; does not decode is a 400.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1699,7 +2690,7 @@ public class AutoApi {
 
     /**
      * Edit a flow — rename it, retarget its trigger, or add, move and delete steps
-     * Applies ONE flow operation and answers the thing it changed. The operation is named by &#x60;type&#x60;, with its arguments under &#x60;request&#x60;: &#x60;CHANGE_NAME&#x60;, &#x60;UPDATE_TRIGGER&#x60;, &#x60;ADD_ACTION&#x60;, &#x60;UPDATE_ACTION&#x60;, &#x60;MOVE_ACTION&#x60;, &#x60;DELETE_ACTION&#x60; edit the flow&#39;s LATEST version and answer with that version, and &#x60;CHANGE_STATUS&#x60; instead enables or disables the flow and answers with the FLOW. Two response shapes on one address is the rule a reader would otherwise get wrong, and it is why this route is not a typed op.  Edits land on the latest version only — the published version a run executes is untouched until it is republished — and the whole resulting step tree is re-validated against the step-count and size caps after every operation, so a long sequence of &#x60;ADD_ACTION&#x60; calls cannot grow a flow past a bound one step at a time (422 when it would). Org-scoped and fails closed: a validated principal is required (403 without one), the flow and its version are read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, and an operation whose &#x60;request&#x60; does not decode is a 400.
+     * Applies ONE flow operation and answers the thing it changed. The operation is named by &#x60;type&#x60;, with its arguments under &#x60;request&#x60;: &#x60;CHANGE_NAME&#x60;, &#x60;UPDATE_TRIGGER&#x60;, &#x60;ADD_ACTION&#x60;, &#x60;UPDATE_ACTION&#x60;, &#x60;MOVE_ACTION&#x60;, &#x60;DELETE_ACTION&#x60; edit the flow&#39;s LATEST version and answer with that version, and &#x60;CHANGE_STATUS&#x60; instead enables or disables the flow and answers with the FLOW. Two response shapes on one address is the rule a reader would otherwise get wrong, and it is why this route is not a typed op.  Edits land on the latest version only — the published version a run executes is untouched until it is republished — and the whole resulting step tree is re-validated against the step-count and size caps after every operation, so a long sequence of &#x60;ADD_ACTION&#x60; calls cannot grow a flow past a bound one step at a time (422 when it would). Org-scoped and fails closed: a validated principal is required (401 without one), the flow and its version are read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, and an operation whose &#x60;request&#x60; does not decode is a 400.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1711,7 +2702,7 @@ public class AutoApi {
 
     /**
      * Edit a flow — rename it, retarget its trigger, or add, move and delete steps (asynchronously)
-     * Applies ONE flow operation and answers the thing it changed. The operation is named by &#x60;type&#x60;, with its arguments under &#x60;request&#x60;: &#x60;CHANGE_NAME&#x60;, &#x60;UPDATE_TRIGGER&#x60;, &#x60;ADD_ACTION&#x60;, &#x60;UPDATE_ACTION&#x60;, &#x60;MOVE_ACTION&#x60;, &#x60;DELETE_ACTION&#x60; edit the flow&#39;s LATEST version and answer with that version, and &#x60;CHANGE_STATUS&#x60; instead enables or disables the flow and answers with the FLOW. Two response shapes on one address is the rule a reader would otherwise get wrong, and it is why this route is not a typed op.  Edits land on the latest version only — the published version a run executes is untouched until it is republished — and the whole resulting step tree is re-validated against the step-count and size caps after every operation, so a long sequence of &#x60;ADD_ACTION&#x60; calls cannot grow a flow past a bound one step at a time (422 when it would). Org-scoped and fails closed: a validated principal is required (403 without one), the flow and its version are read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, and an operation whose &#x60;request&#x60; does not decode is a 400.
+     * Applies ONE flow operation and answers the thing it changed. The operation is named by &#x60;type&#x60;, with its arguments under &#x60;request&#x60;: &#x60;CHANGE_NAME&#x60;, &#x60;UPDATE_TRIGGER&#x60;, &#x60;ADD_ACTION&#x60;, &#x60;UPDATE_ACTION&#x60;, &#x60;MOVE_ACTION&#x60;, &#x60;DELETE_ACTION&#x60; edit the flow&#39;s LATEST version and answer with that version, and &#x60;CHANGE_STATUS&#x60; instead enables or disables the flow and answers with the FLOW. Two response shapes on one address is the rule a reader would otherwise get wrong, and it is why this route is not a typed op.  Edits land on the latest version only — the published version a run executes is untouched until it is republished — and the whole resulting step tree is re-validated against the step-count and size caps after every operation, so a long sequence of &#x60;ADD_ACTION&#x60; calls cannot grow a flow past a bound one step at a time (422 when it would). Org-scoped and fails closed: a validated principal is required (401 without one), the flow and its version are read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, and an operation whose &#x60;request&#x60; does not decode is a 400.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1734,6 +2725,7 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postAutoFlowsByIdRunCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1763,7 +2755,8 @@ public class AutoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1796,17 +2789,18 @@ public class AutoApi {
      * Starts one durable run of a flow now.
      * Starts one durable run of a flow now. It runs the flow&#39;s published version if one is pinned, else its latest, and answers the run record it created. The run is bounded by the org&#39;s per-minute run-start budget and its in-flight concurrency ceiling; over either, or with the engine not ready, no run is started and no run id is burned.
      * @param id ID is the flow to act on, from the path. (required)
-     * @return FlowRun
+     * @return AutoFlowRun
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FlowRun postAutoFlowsByIdRun(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<FlowRun> localVarResp = postAutoFlowsByIdRunWithHttpInfo(id);
+    public AutoFlowRun postAutoFlowsByIdRun(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<AutoFlowRun> localVarResp = postAutoFlowsByIdRunWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1814,18 +2808,19 @@ public class AutoApi {
      * Starts one durable run of a flow now.
      * Starts one durable run of a flow now. It runs the flow&#39;s published version if one is pinned, else its latest, and answers the run record it created. The run is bounded by the org&#39;s per-minute run-start budget and its in-flight concurrency ceiling; over either, or with the engine not ready, no run is started and no run id is burned.
      * @param id ID is the flow to act on, from the path. (required)
-     * @return ApiResponse&lt;FlowRun&gt;
+     * @return ApiResponse&lt;AutoFlowRun&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FlowRun> postAutoFlowsByIdRunWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<AutoFlowRun> postAutoFlowsByIdRunWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postAutoFlowsByIdRunValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<FlowRun>(){}.getType();
+        Type localVarReturnType = new TypeToken<AutoFlowRun>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1841,19 +2836,20 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAutoFlowsByIdRunAsync(@javax.annotation.Nonnull String id, final ApiCallback<FlowRun> _callback) throws ApiException {
+    public okhttp3.Call postAutoFlowsByIdRunAsync(@javax.annotation.Nonnull String id, final ApiCallback<AutoFlowRun> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postAutoFlowsByIdRunValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<FlowRun>(){}.getType();
+        Type localVarReturnType = new TypeToken<AutoFlowRun>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postAutoFlowsByIdVersions
      * @param id ID is the flow to add a version to, from the path. (required)
-     * @param createVersionIn  (required)
+     * @param autoCreateVersionIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1862,9 +2858,10 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAutoFlowsByIdVersionsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateVersionIn createVersionIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAutoFlowsByIdVersionsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoCreateVersionIn autoCreateVersionIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1878,7 +2875,7 @@ public class AutoApi {
             basePath = null;
         }
 
-        Object localVarPostBody = createVersionIn;
+        Object localVarPostBody = autoCreateVersionIn;
 
         // create path and map variables
         String localVarPath = "/v1/auto/flows/{id}/versions"
@@ -1891,7 +2888,8 @@ public class AutoApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1911,18 +2909,18 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAutoFlowsByIdVersionsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateVersionIn createVersionIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAutoFlowsByIdVersionsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoCreateVersionIn autoCreateVersionIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postAutoFlowsByIdVersions(Async)");
         }
 
-        // verify the required parameter 'createVersionIn' is set
-        if (createVersionIn == null) {
-            throw new ApiException("Missing the required parameter 'createVersionIn' when calling postAutoFlowsByIdVersions(Async)");
+        // verify the required parameter 'autoCreateVersionIn' is set
+        if (autoCreateVersionIn == null) {
+            throw new ApiException("Missing the required parameter 'autoCreateVersionIn' when calling postAutoFlowsByIdVersions(Async)");
         }
 
-        return postAutoFlowsByIdVersionsCall(id, createVersionIn, _callback);
+        return postAutoFlowsByIdVersionsCall(id, autoCreateVersionIn, _callback);
 
     }
 
@@ -1930,18 +2928,19 @@ public class AutoApi {
      * Adds a new DRAFT version to a flow.
      * Adds a new DRAFT version to a flow. The version is created invalid unless it carries a trigger, and it does not become the running version until it is published (PATCH the flow&#39;s publishedVersionId) or becomes the latest.
      * @param id ID is the flow to add a version to, from the path. (required)
-     * @param createVersionIn  (required)
-     * @return FlowVersion
+     * @param autoCreateVersionIn  (required)
+     * @return AutoFlowVersion
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FlowVersion postAutoFlowsByIdVersions(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateVersionIn createVersionIn) throws ApiException {
-        ApiResponse<FlowVersion> localVarResp = postAutoFlowsByIdVersionsWithHttpInfo(id, createVersionIn);
+    public AutoFlowVersion postAutoFlowsByIdVersions(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoCreateVersionIn autoCreateVersionIn) throws ApiException {
+        ApiResponse<AutoFlowVersion> localVarResp = postAutoFlowsByIdVersionsWithHttpInfo(id, autoCreateVersionIn);
         return localVarResp.getData();
     }
 
@@ -1949,19 +2948,20 @@ public class AutoApi {
      * Adds a new DRAFT version to a flow.
      * Adds a new DRAFT version to a flow. The version is created invalid unless it carries a trigger, and it does not become the running version until it is published (PATCH the flow&#39;s publishedVersionId) or becomes the latest.
      * @param id ID is the flow to add a version to, from the path. (required)
-     * @param createVersionIn  (required)
-     * @return ApiResponse&lt;FlowVersion&gt;
+     * @param autoCreateVersionIn  (required)
+     * @return ApiResponse&lt;AutoFlowVersion&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FlowVersion> postAutoFlowsByIdVersionsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateVersionIn createVersionIn) throws ApiException {
-        okhttp3.Call localVarCall = postAutoFlowsByIdVersionsValidateBeforeCall(id, createVersionIn, null);
-        Type localVarReturnType = new TypeToken<FlowVersion>(){}.getType();
+    public ApiResponse<AutoFlowVersion> postAutoFlowsByIdVersionsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoCreateVersionIn autoCreateVersionIn) throws ApiException {
+        okhttp3.Call localVarCall = postAutoFlowsByIdVersionsValidateBeforeCall(id, autoCreateVersionIn, null);
+        Type localVarReturnType = new TypeToken<AutoFlowVersion>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1969,7 +2969,7 @@ public class AutoApi {
      * Adds a new DRAFT version to a flow. (asynchronously)
      * Adds a new DRAFT version to a flow. The version is created invalid unless it carries a trigger, and it does not become the running version until it is published (PATCH the flow&#39;s publishedVersionId) or becomes the latest.
      * @param id ID is the flow to add a version to, from the path. (required)
-     * @param createVersionIn  (required)
+     * @param autoCreateVersionIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1978,12 +2978,13 @@ public class AutoApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAutoFlowsByIdVersionsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CreateVersionIn createVersionIn, final ApiCallback<FlowVersion> _callback) throws ApiException {
+    public okhttp3.Call postAutoFlowsByIdVersionsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoCreateVersionIn autoCreateVersionIn, final ApiCallback<AutoFlowVersion> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAutoFlowsByIdVersionsValidateBeforeCall(id, createVersionIn, _callback);
-        Type localVarReturnType = new TypeToken<FlowVersion>(){}.getType();
+        okhttp3.Call localVarCall = postAutoFlowsByIdVersionsValidateBeforeCall(id, autoCreateVersionIn, _callback);
+        Type localVarReturnType = new TypeToken<AutoFlowVersion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2058,7 +3059,7 @@ public class AutoApi {
 
     /**
      * Fire an event that starts every enabled flow subscribed to it
-     * Delivers one event to the org&#39;s automation triggers and answers &#x60;{matched:n}&#x60; — how many enabled flows had a webhook trigger on this &#x60;(source, event)&#x60; key and were started by it. A zero match is a success, not an error: nothing was subscribed.  The path is the trigger key and the JSON object body is the event payload, threaded into each started run as &#x60;{{trigger.*}}&#x60; with all of its keys intact — which is why this is not a typed op, since a declared input struct would silently DISCARD every payload key it had no field for. Re-delivery is a no-op: an &#x60;X-Idempotency-Key&#x60; header dedupes, and with none the body is content-hashed instead, so a hammer of identical posts collapses to ONE run rather than minting a fresh one per post. An in-platform producer may propagate &#x60;X-Causation-Depth&#x60; so a firing that a flow caused is bounded against a loop; an absent or invalid header reads as depth 0, an external origin.  Authenticated and org-scoped, unlike a provider&#39;s public webhook URL: a validated principal is required (403 without one) and the org is that principal&#39;s, never the body&#39;s, so a producer can only fire into its own tenant&#39;s flows. Both path segments are required (400) and a payload over the size limit is a 413.
+     * Delivers one event to the org&#39;s automation triggers and answers &#x60;{matched:n}&#x60; — how many enabled flows had a webhook trigger on this &#x60;(source, event)&#x60; key and were started by it. A zero match is a success, not an error: nothing was subscribed.  The path is the trigger key and the JSON object body is the event payload, threaded into each started run as &#x60;{{trigger.*}}&#x60; with all of its keys intact — which is why this is not a typed op, since a declared input struct would silently DISCARD every payload key it had no field for. Re-delivery is a no-op: an &#x60;X-Idempotency-Key&#x60; header dedupes, and with none the body is content-hashed instead, so a hammer of identical posts collapses to ONE run rather than minting a fresh one per post. An in-platform producer may propagate &#x60;X-Causation-Depth&#x60; so a firing that a flow caused is bounded against a loop; an absent or invalid header reads as depth 0, an external origin.  Authenticated and org-scoped, unlike a provider&#39;s public webhook URL: a validated principal is required (401 without one) and the org is that principal&#39;s, never the body&#39;s, so a producer can only fire into its own tenant&#39;s flows. Both path segments are required (400) and a payload over the size limit is a 413.
      * @param source  (required)
      * @param event  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2069,7 +3070,7 @@ public class AutoApi {
 
     /**
      * Fire an event that starts every enabled flow subscribed to it
-     * Delivers one event to the org&#39;s automation triggers and answers &#x60;{matched:n}&#x60; — how many enabled flows had a webhook trigger on this &#x60;(source, event)&#x60; key and were started by it. A zero match is a success, not an error: nothing was subscribed.  The path is the trigger key and the JSON object body is the event payload, threaded into each started run as &#x60;{{trigger.*}}&#x60; with all of its keys intact — which is why this is not a typed op, since a declared input struct would silently DISCARD every payload key it had no field for. Re-delivery is a no-op: an &#x60;X-Idempotency-Key&#x60; header dedupes, and with none the body is content-hashed instead, so a hammer of identical posts collapses to ONE run rather than minting a fresh one per post. An in-platform producer may propagate &#x60;X-Causation-Depth&#x60; so a firing that a flow caused is bounded against a loop; an absent or invalid header reads as depth 0, an external origin.  Authenticated and org-scoped, unlike a provider&#39;s public webhook URL: a validated principal is required (403 without one) and the org is that principal&#39;s, never the body&#39;s, so a producer can only fire into its own tenant&#39;s flows. Both path segments are required (400) and a payload over the size limit is a 413.
+     * Delivers one event to the org&#39;s automation triggers and answers &#x60;{matched:n}&#x60; — how many enabled flows had a webhook trigger on this &#x60;(source, event)&#x60; key and were started by it. A zero match is a success, not an error: nothing was subscribed.  The path is the trigger key and the JSON object body is the event payload, threaded into each started run as &#x60;{{trigger.*}}&#x60; with all of its keys intact — which is why this is not a typed op, since a declared input struct would silently DISCARD every payload key it had no field for. Re-delivery is a no-op: an &#x60;X-Idempotency-Key&#x60; header dedupes, and with none the body is content-hashed instead, so a hammer of identical posts collapses to ONE run rather than minting a fresh one per post. An in-platform producer may propagate &#x60;X-Causation-Depth&#x60; so a firing that a flow caused is bounded against a loop; an absent or invalid header reads as depth 0, an external origin.  Authenticated and org-scoped, unlike a provider&#39;s public webhook URL: a validated principal is required (401 without one) and the org is that principal&#39;s, never the body&#39;s, so a producer can only fire into its own tenant&#39;s flows. Both path segments are required (400) and a payload over the size limit is a 413.
      * @param source  (required)
      * @param event  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -2082,7 +3083,7 @@ public class AutoApi {
 
     /**
      * Fire an event that starts every enabled flow subscribed to it (asynchronously)
-     * Delivers one event to the org&#39;s automation triggers and answers &#x60;{matched:n}&#x60; — how many enabled flows had a webhook trigger on this &#x60;(source, event)&#x60; key and were started by it. A zero match is a success, not an error: nothing was subscribed.  The path is the trigger key and the JSON object body is the event payload, threaded into each started run as &#x60;{{trigger.*}}&#x60; with all of its keys intact — which is why this is not a typed op, since a declared input struct would silently DISCARD every payload key it had no field for. Re-delivery is a no-op: an &#x60;X-Idempotency-Key&#x60; header dedupes, and with none the body is content-hashed instead, so a hammer of identical posts collapses to ONE run rather than minting a fresh one per post. An in-platform producer may propagate &#x60;X-Causation-Depth&#x60; so a firing that a flow caused is bounded against a loop; an absent or invalid header reads as depth 0, an external origin.  Authenticated and org-scoped, unlike a provider&#39;s public webhook URL: a validated principal is required (403 without one) and the org is that principal&#39;s, never the body&#39;s, so a producer can only fire into its own tenant&#39;s flows. Both path segments are required (400) and a payload over the size limit is a 413.
+     * Delivers one event to the org&#39;s automation triggers and answers &#x60;{matched:n}&#x60; — how many enabled flows had a webhook trigger on this &#x60;(source, event)&#x60; key and were started by it. A zero match is a success, not an error: nothing was subscribed.  The path is the trigger key and the JSON object body is the event payload, threaded into each started run as &#x60;{{trigger.*}}&#x60; with all of its keys intact — which is why this is not a typed op, since a declared input struct would silently DISCARD every payload key it had no field for. Re-delivery is a no-op: an &#x60;X-Idempotency-Key&#x60; header dedupes, and with none the body is content-hashed instead, so a hammer of identical posts collapses to ONE run rather than minting a fresh one per post. An in-platform producer may propagate &#x60;X-Causation-Depth&#x60; so a firing that a flow caused is bounded against a loop; an absent or invalid header reads as depth 0, an external origin.  Authenticated and org-scoped, unlike a provider&#39;s public webhook URL: a validated principal is required (401 without one) and the org is that principal&#39;s, never the body&#39;s, so a producer can only fire into its own tenant&#39;s flows. Both path segments are required (400) and a payload over the size limit is a 413.
      * @param source  (required)
      * @param event  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -2093,6 +3094,148 @@ public class AutoApi {
 
         okhttp3.Call localVarCall = postAutoHooksBySourceByEventValidateBeforeCall(source, event, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postAutoProviderByIdRun
+     * @param id ID is the provider to run, from the path. (required)
+     * @param autoRunIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAutoProviderByIdRunCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoRunIn autoRunIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = autoRunIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/auto/provider/{id}/run"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postAutoProviderByIdRunValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoRunIn autoRunIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postAutoProviderByIdRun(Async)");
+        }
+
+        // verify the required parameter 'autoRunIn' is set
+        if (autoRunIn == null) {
+            throw new ApiException("Missing the required parameter 'autoRunIn' when calling postAutoProviderByIdRun(Async)");
+        }
+
+        return postAutoProviderByIdRunCall(id, autoRunIn, _callback);
+
+    }
+
+    /**
+     * Executes one provider action in-process and answers the outcome.
+     * Executes one provider action in-process and answers the outcome. The caller&#39;s resolved credential travels in &#x60;auth&#x60;, delivered to the action verbatim — the runtime resolves no credential itself. An action that ran and failed (or an action name the provider does not have) answers ok:false with the failure message, not an HTTP error; an unknown provider is 404 and a missing action 422.
+     * @param id ID is the provider to run, from the path. (required)
+     * @param autoRunIn  (required)
+     * @return AutoRunResp
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AutoRunResp postAutoProviderByIdRun(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoRunIn autoRunIn) throws ApiException {
+        ApiResponse<AutoRunResp> localVarResp = postAutoProviderByIdRunWithHttpInfo(id, autoRunIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Executes one provider action in-process and answers the outcome.
+     * Executes one provider action in-process and answers the outcome. The caller&#39;s resolved credential travels in &#x60;auth&#x60;, delivered to the action verbatim — the runtime resolves no credential itself. An action that ran and failed (or an action name the provider does not have) answers ok:false with the failure message, not an HTTP error; an unknown provider is 404 and a missing action 422.
+     * @param id ID is the provider to run, from the path. (required)
+     * @param autoRunIn  (required)
+     * @return ApiResponse&lt;AutoRunResp&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AutoRunResp> postAutoProviderByIdRunWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoRunIn autoRunIn) throws ApiException {
+        okhttp3.Call localVarCall = postAutoProviderByIdRunValidateBeforeCall(id, autoRunIn, null);
+        Type localVarReturnType = new TypeToken<AutoRunResp>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Executes one provider action in-process and answers the outcome. (asynchronously)
+     * Executes one provider action in-process and answers the outcome. The caller&#39;s resolved credential travels in &#x60;auth&#x60;, delivered to the action verbatim — the runtime resolves no credential itself. An action that ran and failed (or an action name the provider does not have) answers ok:false with the failure message, not an HTTP error; an unknown provider is 404 and a missing action 422.
+     * @param id ID is the provider to run, from the path. (required)
+     * @param autoRunIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAutoProviderByIdRunAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AutoRunIn autoRunIn, final ApiCallback<AutoRunResp> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postAutoProviderByIdRunValidateBeforeCall(id, autoRunIn, _callback);
+        Type localVarReturnType = new TypeToken<AutoRunResp>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -2159,7 +3302,7 @@ public class AutoApi {
 
     /**
      * Release a run waiting at an approval step, with the approval payload
-     * Delivers the durable &#x60;resume&#x60; signal to a run parked on a &#x60;wait_for_approval&#x60; waitpoint and answers &#x60;{resumed:true}&#x60; once the engine has taken it.  The body is an ARBITRARY JSON value — object, array, string, number — delivered VERBATIM into the workflow as that waitpoint&#39;s output, so it is what the steps after the approval read as their input. An empty body resumes with no payload. That open shape is why this route is not a typed op: an operation&#39;s input can carry the payload or the run address, never both.  Org-scoped and fails closed: a validated principal is required (403 without one), the run is read under the caller&#39;s OWN org so another tenant&#39;s run id is a 404, a body that is not JSON is a 400, and a payload over the size limit is a 413 — it becomes durable engine state, so it is bounded here rather than after it lands. The resume is audited as &#x60;automations.run.resume&#x60;.
+     * Delivers the durable &#x60;resume&#x60; signal to a run parked on a &#x60;wait_for_approval&#x60; waitpoint and answers &#x60;{resumed:true}&#x60; once the engine has taken it.  The body is an ARBITRARY JSON value — object, array, string, number — delivered VERBATIM into the workflow as that waitpoint&#39;s output, so it is what the steps after the approval read as their input. An empty body resumes with no payload. That open shape is why this route is not a typed op: an operation&#39;s input can carry the payload or the run address, never both.  Org-scoped and fails closed: a validated principal is required (401 without one), the run is read under the caller&#39;s OWN org so another tenant&#39;s run id is a 404, a body that is not JSON is a 400, and a payload over the size limit is a 413 — it becomes durable engine state, so it is bounded here rather than after it lands. The resume is audited as &#x60;automations.run.resume&#x60;.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -2169,7 +3312,7 @@ public class AutoApi {
 
     /**
      * Release a run waiting at an approval step, with the approval payload
-     * Delivers the durable &#x60;resume&#x60; signal to a run parked on a &#x60;wait_for_approval&#x60; waitpoint and answers &#x60;{resumed:true}&#x60; once the engine has taken it.  The body is an ARBITRARY JSON value — object, array, string, number — delivered VERBATIM into the workflow as that waitpoint&#39;s output, so it is what the steps after the approval read as their input. An empty body resumes with no payload. That open shape is why this route is not a typed op: an operation&#39;s input can carry the payload or the run address, never both.  Org-scoped and fails closed: a validated principal is required (403 without one), the run is read under the caller&#39;s OWN org so another tenant&#39;s run id is a 404, a body that is not JSON is a 400, and a payload over the size limit is a 413 — it becomes durable engine state, so it is bounded here rather than after it lands. The resume is audited as &#x60;automations.run.resume&#x60;.
+     * Delivers the durable &#x60;resume&#x60; signal to a run parked on a &#x60;wait_for_approval&#x60; waitpoint and answers &#x60;{resumed:true}&#x60; once the engine has taken it.  The body is an ARBITRARY JSON value — object, array, string, number — delivered VERBATIM into the workflow as that waitpoint&#39;s output, so it is what the steps after the approval read as their input. An empty body resumes with no payload. That open shape is why this route is not a typed op: an operation&#39;s input can carry the payload or the run address, never both.  Org-scoped and fails closed: a validated principal is required (401 without one), the run is read under the caller&#39;s OWN org so another tenant&#39;s run id is a 404, a body that is not JSON is a 400, and a payload over the size limit is a 413 — it becomes durable engine state, so it is bounded here rather than after it lands. The resume is audited as &#x60;automations.run.resume&#x60;.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2181,7 +3324,7 @@ public class AutoApi {
 
     /**
      * Release a run waiting at an approval step, with the approval payload (asynchronously)
-     * Delivers the durable &#x60;resume&#x60; signal to a run parked on a &#x60;wait_for_approval&#x60; waitpoint and answers &#x60;{resumed:true}&#x60; once the engine has taken it.  The body is an ARBITRARY JSON value — object, array, string, number — delivered VERBATIM into the workflow as that waitpoint&#39;s output, so it is what the steps after the approval read as their input. An empty body resumes with no payload. That open shape is why this route is not a typed op: an operation&#39;s input can carry the payload or the run address, never both.  Org-scoped and fails closed: a validated principal is required (403 without one), the run is read under the caller&#39;s OWN org so another tenant&#39;s run id is a 404, a body that is not JSON is a 400, and a payload over the size limit is a 413 — it becomes durable engine state, so it is bounded here rather than after it lands. The resume is audited as &#x60;automations.run.resume&#x60;.
+     * Delivers the durable &#x60;resume&#x60; signal to a run parked on a &#x60;wait_for_approval&#x60; waitpoint and answers &#x60;{resumed:true}&#x60; once the engine has taken it.  The body is an ARBITRARY JSON value — object, array, string, number — delivered VERBATIM into the workflow as that waitpoint&#39;s output, so it is what the steps after the approval read as their input. An empty body resumes with no payload. That open shape is why this route is not a typed op: an operation&#39;s input can carry the payload or the run address, never both.  Org-scoped and fails closed: a validated principal is required (401 without one), the run is read under the caller&#39;s OWN org so another tenant&#39;s run id is a 404, a body that is not JSON is a 400, and a payload over the size limit is a 413 — it becomes durable engine state, so it is bounded here rather than after it lands. The resume is audited as &#x60;automations.run.resume&#x60;.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

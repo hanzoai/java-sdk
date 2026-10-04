@@ -237,7 +237,7 @@ public class O11yWaterfallSpan {
   }
 
   /**
-   * Calculated fields https://o11y.io/docs/traces-management/guides/derived-fields-spans
+   * Calculated fields, derived from the span&#39;s attributes.
    * @return dbName
    */
   @javax.annotation.Nullable

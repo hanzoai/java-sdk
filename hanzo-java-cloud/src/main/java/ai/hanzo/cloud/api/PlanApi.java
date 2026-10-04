@@ -27,15 +27,16 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.PlanEntitlements;
-import ai.hanzo.cloud.model.PlanHealth;
-import ai.hanzo.cloud.model.PlanList;
-import ai.hanzo.cloud.model.PlanRegionList;
-import ai.hanzo.cloud.model.PlanResolution;
-import ai.hanzo.cloud.model.PlanSchemas;
-import ai.hanzo.cloud.model.PlanTierList;
-import ai.hanzo.cloud.model.PlanToolList;
-import ai.hanzo.cloud.model.PlanVocab;
+import ai.hanzo.cloud.model.PlanPlanEntitlements;
+import ai.hanzo.cloud.model.PlanPlanHealth;
+import ai.hanzo.cloud.model.PlanPlanList;
+import ai.hanzo.cloud.model.PlanPlanRegionList;
+import ai.hanzo.cloud.model.PlanPlanResolution;
+import ai.hanzo.cloud.model.PlanPlanSchemas;
+import ai.hanzo.cloud.model.PlanPlanTierList;
+import ai.hanzo.cloud.model.PlanPlanToolList;
+import ai.hanzo.cloud.model.PlanPlanVocab;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -90,6 +91,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlanCall(final ApiCallback _callback) throws ApiException {
@@ -118,7 +120,8 @@ public class PlanApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -145,35 +148,37 @@ public class PlanApi {
     /**
      * Returns the Hanzo cloud plan catalog: every cloud tier with its price, included capacity, limits and feature list, scoped to the caller&#39;s catalog.
      * Returns the Hanzo cloud plan catalog: every cloud tier with its price, included capacity, limits and feature list, scoped to the caller&#39;s catalog. A reseller org sees its own overrides in place of the canonical records it has replaced, and the canonical record for every tier it has not.
-     * @return PlanList
+     * @return PlanPlanList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PlanList getPlan() throws ApiException {
-        ApiResponse<PlanList> localVarResp = getPlanWithHttpInfo();
+    public PlanPlanList getPlan() throws ApiException {
+        ApiResponse<PlanPlanList> localVarResp = getPlanWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the Hanzo cloud plan catalog: every cloud tier with its price, included capacity, limits and feature list, scoped to the caller&#39;s catalog.
      * Returns the Hanzo cloud plan catalog: every cloud tier with its price, included capacity, limits and feature list, scoped to the caller&#39;s catalog. A reseller org sees its own overrides in place of the canonical records it has replaced, and the canonical record for every tier it has not.
-     * @return ApiResponse&lt;PlanList&gt;
+     * @return ApiResponse&lt;PlanPlanList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanList> getPlanWithHttpInfo() throws ApiException {
+    public ApiResponse<PlanPlanList> getPlanWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlanValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -188,12 +193,13 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlanAsync(final ApiCallback<PlanList> _callback) throws ApiException {
+    public okhttp3.Call getPlanAsync(final ApiCallback<PlanPlanList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlanValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -207,6 +213,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlanBlockchainCall(final ApiCallback _callback) throws ApiException {
@@ -235,7 +242,8 @@ public class PlanApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -262,35 +270,37 @@ public class PlanApi {
     /**
      * Returns the blockchain RPC plan catalog: the tiers metered in monthly compute units, with their prices, limits and overage terms.
      * Returns the blockchain RPC plan catalog: the tiers metered in monthly compute units, with their prices, limits and overage terms. It is the canonical catalog for every caller — these plans carry no reseller overrides.
-     * @return PlanList
+     * @return PlanPlanList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PlanList getPlanBlockchain() throws ApiException {
-        ApiResponse<PlanList> localVarResp = getPlanBlockchainWithHttpInfo();
+    public PlanPlanList getPlanBlockchain() throws ApiException {
+        ApiResponse<PlanPlanList> localVarResp = getPlanBlockchainWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the blockchain RPC plan catalog: the tiers metered in monthly compute units, with their prices, limits and overage terms.
      * Returns the blockchain RPC plan catalog: the tiers metered in monthly compute units, with their prices, limits and overage terms. It is the canonical catalog for every caller — these plans carry no reseller overrides.
-     * @return ApiResponse&lt;PlanList&gt;
+     * @return ApiResponse&lt;PlanPlanList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanList> getPlanBlockchainWithHttpInfo() throws ApiException {
+    public ApiResponse<PlanPlanList> getPlanBlockchainWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlanBlockchainValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -305,12 +315,13 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlanBlockchainAsync(final ApiCallback<PlanList> _callback) throws ApiException {
+    public okhttp3.Call getPlanBlockchainAsync(final ApiCallback<PlanPlanList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlanBlockchainValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -324,6 +335,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlanDnsCall(final ApiCallback _callback) throws ApiException {
@@ -352,7 +364,8 @@ public class PlanApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -379,35 +392,37 @@ public class PlanApi {
     /**
      * ListDNSPlans returns the DNS plan catalog: the tiers priced on zones, records per zone and queries per day.
      * ListDNSPlans returns the DNS plan catalog: the tiers priced on zones, records per zone and queries per day. It is the canonical catalog for every caller — these plans carry no reseller overrides.
-     * @return PlanList
+     * @return PlanPlanList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PlanList getPlanDns() throws ApiException {
-        ApiResponse<PlanList> localVarResp = getPlanDnsWithHttpInfo();
+    public PlanPlanList getPlanDns() throws ApiException {
+        ApiResponse<PlanPlanList> localVarResp = getPlanDnsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * ListDNSPlans returns the DNS plan catalog: the tiers priced on zones, records per zone and queries per day.
      * ListDNSPlans returns the DNS plan catalog: the tiers priced on zones, records per zone and queries per day. It is the canonical catalog for every caller — these plans carry no reseller overrides.
-     * @return ApiResponse&lt;PlanList&gt;
+     * @return ApiResponse&lt;PlanPlanList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanList> getPlanDnsWithHttpInfo() throws ApiException {
+    public ApiResponse<PlanPlanList> getPlanDnsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlanDnsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -422,12 +437,13 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlanDnsAsync(final ApiCallback<PlanList> _callback) throws ApiException {
+    public okhttp3.Call getPlanDnsAsync(final ApiCallback<PlanPlanList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlanDnsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -442,6 +458,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlanEntitlementsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -471,7 +488,8 @@ public class PlanApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -504,17 +522,18 @@ public class PlanApi {
      * Returns what one plan GRANTS and not what it costs: the canonical namespaced entitlement block and the flat license-feature list derived from it.
      * Returns what one plan GRANTS and not what it costs: the canonical namespaced entitlement block and the flat license-feature list derived from it. It is the entitlement half of ResolvePlan, over the same catalog and the same 404 for an id no catalog holds — the read a licensing or quota gate makes.
      * @param id ID is the plan&#39;s catalog id or slug — \&quot;dev\&quot;, \&quot;max\&quot;, \&quot;team\&quot;, \&quot;rpc-growth\&quot;. Both are matched, so a slug resolves the plan it names. A withdrawn id still resolves for a renewal, which is why this takes an id rather than a ladder position. (required)
-     * @return PlanEntitlements
+     * @return PlanPlanEntitlements
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PlanEntitlements getPlanEntitlementsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<PlanEntitlements> localVarResp = getPlanEntitlementsByIdWithHttpInfo(id);
+    public PlanPlanEntitlements getPlanEntitlementsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<PlanPlanEntitlements> localVarResp = getPlanEntitlementsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -522,18 +541,19 @@ public class PlanApi {
      * Returns what one plan GRANTS and not what it costs: the canonical namespaced entitlement block and the flat license-feature list derived from it.
      * Returns what one plan GRANTS and not what it costs: the canonical namespaced entitlement block and the flat license-feature list derived from it. It is the entitlement half of ResolvePlan, over the same catalog and the same 404 for an id no catalog holds — the read a licensing or quota gate makes.
      * @param id ID is the plan&#39;s catalog id or slug — \&quot;dev\&quot;, \&quot;max\&quot;, \&quot;team\&quot;, \&quot;rpc-growth\&quot;. Both are matched, so a slug resolves the plan it names. A withdrawn id still resolves for a renewal, which is why this takes an id rather than a ladder position. (required)
-     * @return ApiResponse&lt;PlanEntitlements&gt;
+     * @return ApiResponse&lt;PlanPlanEntitlements&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanEntitlements> getPlanEntitlementsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<PlanPlanEntitlements> getPlanEntitlementsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getPlanEntitlementsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<PlanEntitlements>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanEntitlements>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -549,12 +569,13 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlanEntitlementsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<PlanEntitlements> _callback) throws ApiException {
+    public okhttp3.Call getPlanEntitlementsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<PlanPlanEntitlements> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlanEntitlementsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<PlanEntitlements>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanEntitlements>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -568,6 +589,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlanGpuCall(final ApiCallback _callback) throws ApiException {
@@ -596,7 +618,8 @@ public class PlanApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -623,35 +646,37 @@ public class PlanApi {
     /**
      * ListGPUTiers returns the rentable GPU configurations, each with its accelerator count and model, VRAM, vCPUs, host memory and hourly price.
      * ListGPUTiers returns the rentable GPU configurations, each with its accelerator count and model, VRAM, vCPUs, host memory and hourly price.
-     * @return PlanTierList
+     * @return PlanPlanTierList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PlanTierList getPlanGpu() throws ApiException {
-        ApiResponse<PlanTierList> localVarResp = getPlanGpuWithHttpInfo();
+    public PlanPlanTierList getPlanGpu() throws ApiException {
+        ApiResponse<PlanPlanTierList> localVarResp = getPlanGpuWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * ListGPUTiers returns the rentable GPU configurations, each with its accelerator count and model, VRAM, vCPUs, host memory and hourly price.
      * ListGPUTiers returns the rentable GPU configurations, each with its accelerator count and model, VRAM, vCPUs, host memory and hourly price.
-     * @return ApiResponse&lt;PlanTierList&gt;
+     * @return ApiResponse&lt;PlanPlanTierList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanTierList> getPlanGpuWithHttpInfo() throws ApiException {
+    public ApiResponse<PlanPlanTierList> getPlanGpuWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlanGpuValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PlanTierList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanTierList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -666,12 +691,13 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlanGpuAsync(final ApiCallback<PlanTierList> _callback) throws ApiException {
+    public okhttp3.Call getPlanGpuAsync(final ApiCallback<PlanPlanTierList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlanGpuValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PlanTierList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanTierList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -685,6 +711,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlanHealthCall(final ApiCallback _callback) throws ApiException {
@@ -713,7 +740,8 @@ public class PlanApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -738,43 +766,45 @@ public class PlanApi {
     }
 
     /**
-     * Health reports that the plans subsystem is mounted and serving.
-     * Health reports that the plans subsystem is mounted and serving. It answers from the process itself and consults neither the catalog bundle nor the goja host, so it stays \&quot;ok\&quot; while either is degraded.
-     * @return PlanHealth
+     * Reports that the plans subsystem is mounted and serving.
+     * Reports that the plans subsystem is mounted and serving. It answers from the process itself and consults neither the catalog bundle nor the goja host, so it stays \&quot;ok\&quot; while either is degraded.
+     * @return PlanPlanHealth
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PlanHealth getPlanHealth() throws ApiException {
-        ApiResponse<PlanHealth> localVarResp = getPlanHealthWithHttpInfo();
+    public PlanPlanHealth getPlanHealth() throws ApiException {
+        ApiResponse<PlanPlanHealth> localVarResp = getPlanHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Health reports that the plans subsystem is mounted and serving.
-     * Health reports that the plans subsystem is mounted and serving. It answers from the process itself and consults neither the catalog bundle nor the goja host, so it stays \&quot;ok\&quot; while either is degraded.
-     * @return ApiResponse&lt;PlanHealth&gt;
+     * Reports that the plans subsystem is mounted and serving.
+     * Reports that the plans subsystem is mounted and serving. It answers from the process itself and consults neither the catalog bundle nor the goja host, so it stays \&quot;ok\&quot; while either is degraded.
+     * @return ApiResponse&lt;PlanPlanHealth&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanHealth> getPlanHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<PlanPlanHealth> getPlanHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlanHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PlanHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Health reports that the plans subsystem is mounted and serving. (asynchronously)
-     * Health reports that the plans subsystem is mounted and serving. It answers from the process itself and consults neither the catalog bundle nor the goja host, so it stays \&quot;ok\&quot; while either is degraded.
+     * Reports that the plans subsystem is mounted and serving. (asynchronously)
+     * Reports that the plans subsystem is mounted and serving. It answers from the process itself and consults neither the catalog bundle nor the goja host, so it stays \&quot;ok\&quot; while either is degraded.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -783,12 +813,13 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlanHealthAsync(final ApiCallback<PlanHealth> _callback) throws ApiException {
+    public okhttp3.Call getPlanHealthAsync(final ApiCallback<PlanPlanHealth> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlanHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PlanHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -802,6 +833,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlanPolicyCall(final ApiCallback _callback) throws ApiException {
@@ -830,7 +862,8 @@ public class PlanApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -864,6 +897,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Map<String, Object> getPlanPolicy() throws ApiException {
@@ -881,6 +915,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Map<String, Object>> getPlanPolicyWithHttpInfo() throws ApiException {
@@ -900,6 +935,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlanPolicyAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
@@ -919,6 +955,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlanRegionsCall(final ApiCallback _callback) throws ApiException {
@@ -947,7 +984,8 @@ public class PlanApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -974,35 +1012,37 @@ public class PlanApi {
     /**
      * Returns the regions cloud capacity is offered in, each with its display name and physical location.
      * Returns the regions cloud capacity is offered in, each with its display name and physical location.
-     * @return PlanRegionList
+     * @return PlanPlanRegionList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PlanRegionList getPlanRegions() throws ApiException {
-        ApiResponse<PlanRegionList> localVarResp = getPlanRegionsWithHttpInfo();
+    public PlanPlanRegionList getPlanRegions() throws ApiException {
+        ApiResponse<PlanPlanRegionList> localVarResp = getPlanRegionsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the regions cloud capacity is offered in, each with its display name and physical location.
      * Returns the regions cloud capacity is offered in, each with its display name and physical location.
-     * @return ApiResponse&lt;PlanRegionList&gt;
+     * @return ApiResponse&lt;PlanPlanRegionList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanRegionList> getPlanRegionsWithHttpInfo() throws ApiException {
+    public ApiResponse<PlanPlanRegionList> getPlanRegionsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlanRegionsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PlanRegionList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanRegionList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1017,12 +1057,13 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlanRegionsAsync(final ApiCallback<PlanRegionList> _callback) throws ApiException {
+    public okhttp3.Call getPlanRegionsAsync(final ApiCallback<PlanPlanRegionList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlanRegionsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PlanRegionList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanRegionList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1037,6 +1078,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlanResolveByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1066,7 +1108,8 @@ public class PlanApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1099,17 +1142,18 @@ public class PlanApi {
      * Resolves one plan to everything a consumer of the catalog needs at once: its canonical entitlement block, the flat license-feature list a signed license carries, its billing reference, and the catalog it came from.
      * Resolves one plan to everything a consumer of the catalog needs at once: its canonical entitlement block, the flat license-feature list a signed license carries, its billing reference, and the catalog it came from. The id may be the plan&#39;s id or its slug, and it is resolved against the caller&#39;s catalog, so a reseller&#39;s override wins over the canonical record. An id no catalog holds answers 404.
      * @param id ID is the plan&#39;s catalog id or slug — \&quot;dev\&quot;, \&quot;max\&quot;, \&quot;team\&quot;, \&quot;rpc-growth\&quot;. Both are matched, so a slug resolves the plan it names. A withdrawn id still resolves for a renewal, which is why this takes an id rather than a ladder position. (required)
-     * @return PlanResolution
+     * @return PlanPlanResolution
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PlanResolution getPlanResolveById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<PlanResolution> localVarResp = getPlanResolveByIdWithHttpInfo(id);
+    public PlanPlanResolution getPlanResolveById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<PlanPlanResolution> localVarResp = getPlanResolveByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1117,18 +1161,19 @@ public class PlanApi {
      * Resolves one plan to everything a consumer of the catalog needs at once: its canonical entitlement block, the flat license-feature list a signed license carries, its billing reference, and the catalog it came from.
      * Resolves one plan to everything a consumer of the catalog needs at once: its canonical entitlement block, the flat license-feature list a signed license carries, its billing reference, and the catalog it came from. The id may be the plan&#39;s id or its slug, and it is resolved against the caller&#39;s catalog, so a reseller&#39;s override wins over the canonical record. An id no catalog holds answers 404.
      * @param id ID is the plan&#39;s catalog id or slug — \&quot;dev\&quot;, \&quot;max\&quot;, \&quot;team\&quot;, \&quot;rpc-growth\&quot;. Both are matched, so a slug resolves the plan it names. A withdrawn id still resolves for a renewal, which is why this takes an id rather than a ladder position. (required)
-     * @return ApiResponse&lt;PlanResolution&gt;
+     * @return ApiResponse&lt;PlanPlanResolution&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanResolution> getPlanResolveByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<PlanPlanResolution> getPlanResolveByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getPlanResolveByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<PlanResolution>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanResolution>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1144,12 +1189,13 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlanResolveByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<PlanResolution> _callback) throws ApiException {
+    public okhttp3.Call getPlanResolveByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<PlanPlanResolution> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlanResolveByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<PlanResolution>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanResolution>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1163,6 +1209,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlanSchemaCall(final ApiCallback _callback) throws ApiException {
@@ -1191,7 +1238,8 @@ public class PlanApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1218,35 +1266,37 @@ public class PlanApi {
     /**
      * Returns the two JSON Schema documents this surface speaks: entitlements.schema.json, which declares every entitlement key with its type, unit and enum, and plan.schema.json, which a catalog plan record conforms to.
      * Returns the two JSON Schema documents this surface speaks: entitlements.schema.json, which declares every entitlement key with its type, unit and enum, and plan.schema.json, which a catalog plan record conforms to.
-     * @return PlanSchemas
+     * @return PlanPlanSchemas
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PlanSchemas getPlanSchema() throws ApiException {
-        ApiResponse<PlanSchemas> localVarResp = getPlanSchemaWithHttpInfo();
+    public PlanPlanSchemas getPlanSchema() throws ApiException {
+        ApiResponse<PlanPlanSchemas> localVarResp = getPlanSchemaWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the two JSON Schema documents this surface speaks: entitlements.schema.json, which declares every entitlement key with its type, unit and enum, and plan.schema.json, which a catalog plan record conforms to.
      * Returns the two JSON Schema documents this surface speaks: entitlements.schema.json, which declares every entitlement key with its type, unit and enum, and plan.schema.json, which a catalog plan record conforms to.
-     * @return ApiResponse&lt;PlanSchemas&gt;
+     * @return ApiResponse&lt;PlanPlanSchemas&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanSchemas> getPlanSchemaWithHttpInfo() throws ApiException {
+    public ApiResponse<PlanPlanSchemas> getPlanSchemaWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlanSchemaValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PlanSchemas>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanSchemas>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1261,12 +1311,13 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlanSchemaAsync(final ApiCallback<PlanSchemas> _callback) throws ApiException {
+    public okhttp3.Call getPlanSchemaAsync(final ApiCallback<PlanPlanSchemas> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlanSchemaValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PlanSchemas>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanSchemas>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1280,6 +1331,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlanStorageCall(final ApiCallback _callback) throws ApiException {
@@ -1308,7 +1360,8 @@ public class PlanApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1342,6 +1395,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Map<String, Object> getPlanStorage() throws ApiException {
@@ -1359,6 +1413,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Map<String, Object>> getPlanStorageWithHttpInfo() throws ApiException {
@@ -1378,6 +1433,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlanStorageAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
@@ -1397,6 +1453,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlanSubscriptionsCall(final ApiCallback _callback) throws ApiException {
@@ -1425,7 +1482,8 @@ public class PlanApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1452,35 +1510,37 @@ public class PlanApi {
     /**
      * Returns the subscription ladder — the personal and team tiers a customer buys to use the cloud, each with its monthly and annual price, seat rules, limits and billing reference.
      * Returns the subscription ladder — the personal and team tiers a customer buys to use the cloud, each with its monthly and annual price, seat rules, limits and billing reference. Scoped to the caller&#39;s catalog.
-     * @return PlanList
+     * @return PlanPlanList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PlanList getPlanSubscriptions() throws ApiException {
-        ApiResponse<PlanList> localVarResp = getPlanSubscriptionsWithHttpInfo();
+    public PlanPlanList getPlanSubscriptions() throws ApiException {
+        ApiResponse<PlanPlanList> localVarResp = getPlanSubscriptionsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the subscription ladder — the personal and team tiers a customer buys to use the cloud, each with its monthly and annual price, seat rules, limits and billing reference.
      * Returns the subscription ladder — the personal and team tiers a customer buys to use the cloud, each with its monthly and annual price, seat rules, limits and billing reference. Scoped to the caller&#39;s catalog.
-     * @return ApiResponse&lt;PlanList&gt;
+     * @return ApiResponse&lt;PlanPlanList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanList> getPlanSubscriptionsWithHttpInfo() throws ApiException {
+    public ApiResponse<PlanPlanList> getPlanSubscriptionsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlanSubscriptionsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1495,12 +1555,13 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlanSubscriptionsAsync(final ApiCallback<PlanList> _callback) throws ApiException {
+    public okhttp3.Call getPlanSubscriptionsAsync(final ApiCallback<PlanPlanList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlanSubscriptionsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PlanList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1514,6 +1575,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlanToolsCall(final ApiCallback _callback) throws ApiException {
@@ -1542,7 +1604,8 @@ public class PlanApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1569,35 +1632,37 @@ public class PlanApi {
     /**
      * Returns the per-use price of every metered tool — web search, code interpreter, image generation, speech — each with the unit it is billed in.
      * Returns the per-use price of every metered tool — web search, code interpreter, image generation, speech — each with the unit it is billed in.
-     * @return PlanToolList
+     * @return PlanPlanToolList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PlanToolList getPlanTools() throws ApiException {
-        ApiResponse<PlanToolList> localVarResp = getPlanToolsWithHttpInfo();
+    public PlanPlanToolList getPlanTools() throws ApiException {
+        ApiResponse<PlanPlanToolList> localVarResp = getPlanToolsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the per-use price of every metered tool — web search, code interpreter, image generation, speech — each with the unit it is billed in.
      * Returns the per-use price of every metered tool — web search, code interpreter, image generation, speech — each with the unit it is billed in.
-     * @return ApiResponse&lt;PlanToolList&gt;
+     * @return ApiResponse&lt;PlanPlanToolList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanToolList> getPlanToolsWithHttpInfo() throws ApiException {
+    public ApiResponse<PlanPlanToolList> getPlanToolsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlanToolsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PlanToolList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanToolList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1612,12 +1677,13 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlanToolsAsync(final ApiCallback<PlanToolList> _callback) throws ApiException {
+    public okhttp3.Call getPlanToolsAsync(final ApiCallback<PlanPlanToolList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlanToolsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PlanToolList>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanToolList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1631,6 +1697,7 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPlanVocabCall(final ApiCallback _callback) throws ApiException {
@@ -1659,7 +1726,8 @@ public class PlanApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1686,35 +1754,37 @@ public class PlanApi {
     /**
      * Returns the entitlement key vocabulary: every key with its namespace, JSON type, nullability, unit, enum and title, the list of namespaces, and the engine features a license can grant.
      * Returns the entitlement key vocabulary: every key with its namespace, JSON type, nullability, unit, enum and title, the list of namespaces, and the engine features a license can grant. It is derived from entitlements.schema.json on every call, so it cannot fall behind the schema.
-     * @return PlanVocab
+     * @return PlanPlanVocab
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PlanVocab getPlanVocab() throws ApiException {
-        ApiResponse<PlanVocab> localVarResp = getPlanVocabWithHttpInfo();
+    public PlanPlanVocab getPlanVocab() throws ApiException {
+        ApiResponse<PlanPlanVocab> localVarResp = getPlanVocabWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the entitlement key vocabulary: every key with its namespace, JSON type, nullability, unit, enum and title, the list of namespaces, and the engine features a license can grant.
      * Returns the entitlement key vocabulary: every key with its namespace, JSON type, nullability, unit, enum and title, the list of namespaces, and the engine features a license can grant. It is derived from entitlements.schema.json on every call, so it cannot fall behind the schema.
-     * @return ApiResponse&lt;PlanVocab&gt;
+     * @return ApiResponse&lt;PlanPlanVocab&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanVocab> getPlanVocabWithHttpInfo() throws ApiException {
+    public ApiResponse<PlanPlanVocab> getPlanVocabWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlanVocabValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PlanVocab>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanVocab>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1729,12 +1799,13 @@ public class PlanApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPlanVocabAsync(final ApiCallback<PlanVocab> _callback) throws ApiException {
+    public okhttp3.Call getPlanVocabAsync(final ApiCallback<PlanPlanVocab> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlanVocabValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PlanVocab>(){}.getType();
+        Type localVarReturnType = new TypeToken<PlanPlanVocab>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -14,7 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.O11yCompositeQuery;
+import ai.hanzo.cloud.model.O11yV3CompositeQuery;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -63,7 +63,7 @@ public class O11ySavedView {
   public static final String SERIALIZED_NAME_COMPOSITE_QUERY = "compositeQuery";
   @SerializedName(SERIALIZED_NAME_COMPOSITE_QUERY)
   @javax.annotation.Nullable
-  private O11yCompositeQuery compositeQuery;
+  private O11yV3CompositeQuery compositeQuery;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -132,7 +132,7 @@ public class O11ySavedView {
   }
 
 
-  public O11ySavedView compositeQuery(@javax.annotation.Nullable O11yCompositeQuery compositeQuery) {
+  public O11ySavedView compositeQuery(@javax.annotation.Nullable O11yV3CompositeQuery compositeQuery) {
     this.compositeQuery = compositeQuery;
     return this;
   }
@@ -142,11 +142,11 @@ public class O11ySavedView {
    * @return compositeQuery
    */
   @javax.annotation.Nullable
-  public O11yCompositeQuery getCompositeQuery() {
+  public O11yV3CompositeQuery getCompositeQuery() {
     return compositeQuery;
   }
 
-  public void setCompositeQuery(@javax.annotation.Nullable O11yCompositeQuery compositeQuery) {
+  public void setCompositeQuery(@javax.annotation.Nullable O11yV3CompositeQuery compositeQuery) {
     this.compositeQuery = compositeQuery;
   }
 
@@ -475,7 +475,7 @@ public class O11ySavedView {
       }
       // validate the optional field `compositeQuery`
       if (jsonObj.get("compositeQuery") != null && !jsonObj.get("compositeQuery").isJsonNull()) {
-        O11yCompositeQuery.validateJsonElement(jsonObj.get("compositeQuery"));
+        O11yV3CompositeQuery.validateJsonElement(jsonObj.get("compositeQuery"));
       }
       if ((jsonObj.get("createdBy") != null && !jsonObj.get("createdBy").isJsonNull()) && !jsonObj.get("createdBy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `createdBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdBy").toString()));

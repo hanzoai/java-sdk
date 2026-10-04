@@ -27,11 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.History;
-import ai.hanzo.cloud.model.Pools;
-import ai.hanzo.cloud.model.Roster;
-import ai.hanzo.cloud.model.Survey;
-import ai.hanzo.cloud.model.Tokens;
+import ai.hanzo.cloud.model.MarketHistory;
+import ai.hanzo.cloud.model.MarketPools;
+import ai.hanzo.cloud.model.MarketRoster;
+import ai.hanzo.cloud.model.MarketSurvey;
+import ai.hanzo.cloud.model.MarketTokens;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -86,6 +87,7 @@ public class MarketApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketChainsCall(final ApiCallback _callback) throws ApiException {
@@ -114,7 +116,8 @@ public class MarketApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -141,35 +144,37 @@ public class MarketApi {
     /**
      * Answers every chain this deployment can read, what is deployed on each, and what its automated market maker amounts to.
      * Answers every chain this deployment can read, what is deployed on each, and what its automated market maker amounts to.  One call. It reads the chain registry, then every chain&#39;s indexer for its figures and its most recent active day, all at once — where a client doing it itself makes one registry request and two more per chain.  THE ROW IS THE UNIT OF TRUTH. Each carries its own reach, so one indexer being unreachable costs one row its figures and leaves the rest answered. A chain with no market maker deployed — the registry names no factory for it — answers &#x60;read&#x60; with totals of nothing, which is a fact about that chain and is not the same as a chain nobody could ask.
-     * @return Roster
+     * @return MarketRoster
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Roster getMarketChains() throws ApiException {
-        ApiResponse<Roster> localVarResp = getMarketChainsWithHttpInfo();
+    public MarketRoster getMarketChains() throws ApiException {
+        ApiResponse<MarketRoster> localVarResp = getMarketChainsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Answers every chain this deployment can read, what is deployed on each, and what its automated market maker amounts to.
      * Answers every chain this deployment can read, what is deployed on each, and what its automated market maker amounts to.  One call. It reads the chain registry, then every chain&#39;s indexer for its figures and its most recent active day, all at once — where a client doing it itself makes one registry request and two more per chain.  THE ROW IS THE UNIT OF TRUTH. Each carries its own reach, so one indexer being unreachable costs one row its figures and leaves the rest answered. A chain with no market maker deployed — the registry names no factory for it — answers &#x60;read&#x60; with totals of nothing, which is a fact about that chain and is not the same as a chain nobody could ask.
-     * @return ApiResponse&lt;Roster&gt;
+     * @return ApiResponse&lt;MarketRoster&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Roster> getMarketChainsWithHttpInfo() throws ApiException {
+    public ApiResponse<MarketRoster> getMarketChainsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getMarketChainsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Roster>(){}.getType();
+        Type localVarReturnType = new TypeToken<MarketRoster>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -184,12 +189,13 @@ public class MarketApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketChainsAsync(final ApiCallback<Roster> _callback) throws ApiException {
+    public okhttp3.Call getMarketChainsAsync(final ApiCallback<MarketRoster> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketChainsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Roster>(){}.getType();
+        Type localVarReturnType = new TypeToken<MarketRoster>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -204,6 +210,7 @@ public class MarketApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketPoolsCall(@javax.annotation.Nullable String chain, final ApiCallback _callback) throws ApiException {
@@ -236,7 +243,8 @@ public class MarketApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -264,17 +272,18 @@ public class MarketApi {
      * Answers the automated market makers on one chain: their two tokens, their fee tier, and what has moved through each.
      * Answers the automated market makers on one chain: their two tokens, their fee tier, and what has moved through each.  The two price fields on a pool are the ratio its own reserves stand at, as the indexer computed them. They are not a price ON either token and not a mark: nothing here derives one, ranks the pools, or names a route through them.  A chain with no market maker deployed answers &#x60;read&#x60; with no pools. That is the chain&#39;s real condition, and it is deliberately not the same answer as an indexer that could not be asked.
      * @param chain Chain is the chain&#39;s slug — &#x60;cchain&#x60;, &#x60;zoo&#x60; — as &#x60;chains&#x60; reports it. It is the indexer&#39;s word for the chain and NOT the chain id: &#x60;96369&#x60;, &#x60;C&#x60; and &#x60;c-chain&#x60; all name nothing. (optional)
-     * @return Pools
+     * @return MarketPools
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Pools getMarketPools(@javax.annotation.Nullable String chain) throws ApiException {
-        ApiResponse<Pools> localVarResp = getMarketPoolsWithHttpInfo(chain);
+    public MarketPools getMarketPools(@javax.annotation.Nullable String chain) throws ApiException {
+        ApiResponse<MarketPools> localVarResp = getMarketPoolsWithHttpInfo(chain);
         return localVarResp.getData();
     }
 
@@ -282,18 +291,19 @@ public class MarketApi {
      * Answers the automated market makers on one chain: their two tokens, their fee tier, and what has moved through each.
      * Answers the automated market makers on one chain: their two tokens, their fee tier, and what has moved through each.  The two price fields on a pool are the ratio its own reserves stand at, as the indexer computed them. They are not a price ON either token and not a mark: nothing here derives one, ranks the pools, or names a route through them.  A chain with no market maker deployed answers &#x60;read&#x60; with no pools. That is the chain&#39;s real condition, and it is deliberately not the same answer as an indexer that could not be asked.
      * @param chain Chain is the chain&#39;s slug — &#x60;cchain&#x60;, &#x60;zoo&#x60; — as &#x60;chains&#x60; reports it. It is the indexer&#39;s word for the chain and NOT the chain id: &#x60;96369&#x60;, &#x60;C&#x60; and &#x60;c-chain&#x60; all name nothing. (optional)
-     * @return ApiResponse&lt;Pools&gt;
+     * @return ApiResponse&lt;MarketPools&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Pools> getMarketPoolsWithHttpInfo(@javax.annotation.Nullable String chain) throws ApiException {
+    public ApiResponse<MarketPools> getMarketPoolsWithHttpInfo(@javax.annotation.Nullable String chain) throws ApiException {
         okhttp3.Call localVarCall = getMarketPoolsValidateBeforeCall(chain, null);
-        Type localVarReturnType = new TypeToken<Pools>(){}.getType();
+        Type localVarReturnType = new TypeToken<MarketPools>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -309,12 +319,13 @@ public class MarketApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketPoolsAsync(@javax.annotation.Nullable String chain, final ApiCallback<Pools> _callback) throws ApiException {
+    public okhttp3.Call getMarketPoolsAsync(@javax.annotation.Nullable String chain, final ApiCallback<MarketPools> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketPoolsValidateBeforeCall(chain, _callback);
-        Type localVarReturnType = new TypeToken<Pools>(){}.getType();
+        Type localVarReturnType = new TypeToken<MarketPools>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -329,6 +340,7 @@ public class MarketApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketSurveyCall(@javax.annotation.Nullable String chain, final ApiCallback _callback) throws ApiException {
@@ -361,7 +373,8 @@ public class MarketApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -389,17 +402,18 @@ public class MarketApi {
      * Answers which of the four settlement precompiles carry code on one chain.
      * Answers which of the four settlement precompiles carry code on one chain.  An address with no code answers a call with empty data rather than an error, so \&quot;this chain has no view precompile\&quot; and \&quot;this market was never opened\&quot; reach a caller as the same silence — and only the second is a fact about a market. This says which it is, by asking the node for the code at each address.  It reads presence and nothing else. No market, no quote, no depth and no order is requested here, and &#x60;eth_getCode&#x60; is the only method this operation ever sends.
      * @param chain Chain is the chain&#39;s slug — &#x60;cchain&#x60;, &#x60;zoo&#x60; — as &#x60;chains&#x60; reports it. It is the indexer&#39;s word for the chain and NOT the chain id: &#x60;96369&#x60;, &#x60;C&#x60; and &#x60;c-chain&#x60; all name nothing. (optional)
-     * @return Survey
+     * @return MarketSurvey
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Survey getMarketSurvey(@javax.annotation.Nullable String chain) throws ApiException {
-        ApiResponse<Survey> localVarResp = getMarketSurveyWithHttpInfo(chain);
+    public MarketSurvey getMarketSurvey(@javax.annotation.Nullable String chain) throws ApiException {
+        ApiResponse<MarketSurvey> localVarResp = getMarketSurveyWithHttpInfo(chain);
         return localVarResp.getData();
     }
 
@@ -407,18 +421,19 @@ public class MarketApi {
      * Answers which of the four settlement precompiles carry code on one chain.
      * Answers which of the four settlement precompiles carry code on one chain.  An address with no code answers a call with empty data rather than an error, so \&quot;this chain has no view precompile\&quot; and \&quot;this market was never opened\&quot; reach a caller as the same silence — and only the second is a fact about a market. This says which it is, by asking the node for the code at each address.  It reads presence and nothing else. No market, no quote, no depth and no order is requested here, and &#x60;eth_getCode&#x60; is the only method this operation ever sends.
      * @param chain Chain is the chain&#39;s slug — &#x60;cchain&#x60;, &#x60;zoo&#x60; — as &#x60;chains&#x60; reports it. It is the indexer&#39;s word for the chain and NOT the chain id: &#x60;96369&#x60;, &#x60;C&#x60; and &#x60;c-chain&#x60; all name nothing. (optional)
-     * @return ApiResponse&lt;Survey&gt;
+     * @return ApiResponse&lt;MarketSurvey&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Survey> getMarketSurveyWithHttpInfo(@javax.annotation.Nullable String chain) throws ApiException {
+    public ApiResponse<MarketSurvey> getMarketSurveyWithHttpInfo(@javax.annotation.Nullable String chain) throws ApiException {
         okhttp3.Call localVarCall = getMarketSurveyValidateBeforeCall(chain, null);
-        Type localVarReturnType = new TypeToken<Survey>(){}.getType();
+        Type localVarReturnType = new TypeToken<MarketSurvey>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -434,12 +449,13 @@ public class MarketApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketSurveyAsync(@javax.annotation.Nullable String chain, final ApiCallback<Survey> _callback) throws ApiException {
+    public okhttp3.Call getMarketSurveyAsync(@javax.annotation.Nullable String chain, final ApiCallback<MarketSurvey> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketSurveyValidateBeforeCall(chain, _callback);
-        Type localVarReturnType = new TypeToken<Survey>(){}.getType();
+        Type localVarReturnType = new TypeToken<MarketSurvey>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -455,6 +471,7 @@ public class MarketApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketTokenCall(@javax.annotation.Nullable String chain, @javax.annotation.Nullable String at, final ApiCallback _callback) throws ApiException {
@@ -491,7 +508,8 @@ public class MarketApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -520,17 +538,18 @@ public class MarketApi {
      * Answers one token&#39;s daily history — open, high, low, close, price and volume per UTC day, oldest first.  Every figure is the indexer&#39;s own arithmetic, passed through as the decimal string it computed. Nothing here rounds one, converts one, or fills a gap: a day the indexer holds no figure for arrives with that field absent, which says \&quot;not indexed\&quot; where a zero would say \&quot;worth nothing\&quot;.
      * @param chain  (optional)
      * @param at At is the token&#39;s contract address. (optional)
-     * @return History
+     * @return MarketHistory
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public History getMarketToken(@javax.annotation.Nullable String chain, @javax.annotation.Nullable String at) throws ApiException {
-        ApiResponse<History> localVarResp = getMarketTokenWithHttpInfo(chain, at);
+    public MarketHistory getMarketToken(@javax.annotation.Nullable String chain, @javax.annotation.Nullable String at) throws ApiException {
+        ApiResponse<MarketHistory> localVarResp = getMarketTokenWithHttpInfo(chain, at);
         return localVarResp.getData();
     }
 
@@ -539,18 +558,19 @@ public class MarketApi {
      * Answers one token&#39;s daily history — open, high, low, close, price and volume per UTC day, oldest first.  Every figure is the indexer&#39;s own arithmetic, passed through as the decimal string it computed. Nothing here rounds one, converts one, or fills a gap: a day the indexer holds no figure for arrives with that field absent, which says \&quot;not indexed\&quot; where a zero would say \&quot;worth nothing\&quot;.
      * @param chain  (optional)
      * @param at At is the token&#39;s contract address. (optional)
-     * @return ApiResponse&lt;History&gt;
+     * @return ApiResponse&lt;MarketHistory&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<History> getMarketTokenWithHttpInfo(@javax.annotation.Nullable String chain, @javax.annotation.Nullable String at) throws ApiException {
+    public ApiResponse<MarketHistory> getMarketTokenWithHttpInfo(@javax.annotation.Nullable String chain, @javax.annotation.Nullable String at) throws ApiException {
         okhttp3.Call localVarCall = getMarketTokenValidateBeforeCall(chain, at, null);
-        Type localVarReturnType = new TypeToken<History>(){}.getType();
+        Type localVarReturnType = new TypeToken<MarketHistory>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -567,12 +587,13 @@ public class MarketApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketTokenAsync(@javax.annotation.Nullable String chain, @javax.annotation.Nullable String at, final ApiCallback<History> _callback) throws ApiException {
+    public okhttp3.Call getMarketTokenAsync(@javax.annotation.Nullable String chain, @javax.annotation.Nullable String at, final ApiCallback<MarketHistory> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketTokenValidateBeforeCall(chain, at, _callback);
-        Type localVarReturnType = new TypeToken<History>(){}.getType();
+        Type localVarReturnType = new TypeToken<MarketHistory>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -587,6 +608,7 @@ public class MarketApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMarketTokensCall(@javax.annotation.Nullable String chain, final ApiCallback _callback) throws ApiException {
@@ -619,7 +641,8 @@ public class MarketApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -647,17 +670,18 @@ public class MarketApi {
      * Answers the tokens one chain&#39;s indexer has seen, with the decimals a caller needs to read any amount of one correctly.
      * Answers the tokens one chain&#39;s indexer has seen, with the decimals a caller needs to read any amount of one correctly.  This is what the indexer INGESTED, which is not the same as what exists on the chain: a token nothing has traded has no row here, and this is not a registry of what is permitted or listed.
      * @param chain Chain is the chain&#39;s slug — &#x60;cchain&#x60;, &#x60;zoo&#x60; — as &#x60;chains&#x60; reports it. It is the indexer&#39;s word for the chain and NOT the chain id: &#x60;96369&#x60;, &#x60;C&#x60; and &#x60;c-chain&#x60; all name nothing. (optional)
-     * @return Tokens
+     * @return MarketTokens
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Tokens getMarketTokens(@javax.annotation.Nullable String chain) throws ApiException {
-        ApiResponse<Tokens> localVarResp = getMarketTokensWithHttpInfo(chain);
+    public MarketTokens getMarketTokens(@javax.annotation.Nullable String chain) throws ApiException {
+        ApiResponse<MarketTokens> localVarResp = getMarketTokensWithHttpInfo(chain);
         return localVarResp.getData();
     }
 
@@ -665,18 +689,19 @@ public class MarketApi {
      * Answers the tokens one chain&#39;s indexer has seen, with the decimals a caller needs to read any amount of one correctly.
      * Answers the tokens one chain&#39;s indexer has seen, with the decimals a caller needs to read any amount of one correctly.  This is what the indexer INGESTED, which is not the same as what exists on the chain: a token nothing has traded has no row here, and this is not a registry of what is permitted or listed.
      * @param chain Chain is the chain&#39;s slug — &#x60;cchain&#x60;, &#x60;zoo&#x60; — as &#x60;chains&#x60; reports it. It is the indexer&#39;s word for the chain and NOT the chain id: &#x60;96369&#x60;, &#x60;C&#x60; and &#x60;c-chain&#x60; all name nothing. (optional)
-     * @return ApiResponse&lt;Tokens&gt;
+     * @return ApiResponse&lt;MarketTokens&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Tokens> getMarketTokensWithHttpInfo(@javax.annotation.Nullable String chain) throws ApiException {
+    public ApiResponse<MarketTokens> getMarketTokensWithHttpInfo(@javax.annotation.Nullable String chain) throws ApiException {
         okhttp3.Call localVarCall = getMarketTokensValidateBeforeCall(chain, null);
-        Type localVarReturnType = new TypeToken<Tokens>(){}.getType();
+        Type localVarReturnType = new TypeToken<MarketTokens>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -692,12 +717,13 @@ public class MarketApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMarketTokensAsync(@javax.annotation.Nullable String chain, final ApiCallback<Tokens> _callback) throws ApiException {
+    public okhttp3.Call getMarketTokensAsync(@javax.annotation.Nullable String chain, final ApiCallback<MarketTokens> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMarketTokensValidateBeforeCall(chain, _callback);
-        Type localVarReturnType = new TypeToken<Tokens>(){}.getType();
+        Type localVarReturnType = new TypeToken<MarketTokens>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

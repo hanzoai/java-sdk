@@ -27,9 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.EntitlementsView;
-import ai.hanzo.cloud.model.MutateReq;
-import ai.hanzo.cloud.model.ProjectionView;
+import ai.hanzo.cloud.model.EntitlementEntitlementsView;
+import ai.hanzo.cloud.model.EntitlementMutateReq;
+import ai.hanzo.cloud.model.EntitlementProjectionView;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -84,6 +85,7 @@ public class EntitlementApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEntitlementCall(final ApiCallback _callback) throws ApiException {
@@ -112,7 +114,8 @@ public class EntitlementApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -137,43 +140,45 @@ public class EntitlementApi {
     }
 
     /**
-     * Projection reports which console apps the CALLER&#39;s org may open, and the plan slug that decides it.
-     * Projection reports which console apps the CALLER&#39;s org may open, and the plan slug that decides it. It is the READ side of the unified paywall: the org&#39;s plan tier resolved from commerce, which is a different authority from the enablement store behind GET /v1/entitlement/orgs/{org} (that one is the org&#39;s own on/off intent).  It fails SAFE-TO-LOCKED, never 500: an unvalidated principal is a 403, but a commerce outage reports every app locked at 200 rather than breaking the shell. The ENFORCEMENT path still fails open, so functionality survives the same outage even while the UI conservatively shows locked.
-     * @return ProjectionView
+     * Reports which console apps the CALLER&#39;s org may open, and the plan slug that decides it.
+     * Reports which console apps the CALLER&#39;s org may open, and the plan slug that decides it. It is the READ side of the unified paywall: the org&#39;s plan tier resolved from commerce, which is a different authority from the enablement store behind GET /v1/entitlement/orgs/{org} (that one is the org&#39;s own on/off intent).  It never answers 500: an unvalidated principal is a 403, and an app whose plan cannot be confirmed is reported locked at 200, so the shell always renders. The paywall applies the same rule when it enforces: access follows a confirmed standing.
+     * @return EntitlementProjectionView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectionView getEntitlement() throws ApiException {
-        ApiResponse<ProjectionView> localVarResp = getEntitlementWithHttpInfo();
+    public EntitlementProjectionView getEntitlement() throws ApiException {
+        ApiResponse<EntitlementProjectionView> localVarResp = getEntitlementWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Projection reports which console apps the CALLER&#39;s org may open, and the plan slug that decides it.
-     * Projection reports which console apps the CALLER&#39;s org may open, and the plan slug that decides it. It is the READ side of the unified paywall: the org&#39;s plan tier resolved from commerce, which is a different authority from the enablement store behind GET /v1/entitlement/orgs/{org} (that one is the org&#39;s own on/off intent).  It fails SAFE-TO-LOCKED, never 500: an unvalidated principal is a 403, but a commerce outage reports every app locked at 200 rather than breaking the shell. The ENFORCEMENT path still fails open, so functionality survives the same outage even while the UI conservatively shows locked.
-     * @return ApiResponse&lt;ProjectionView&gt;
+     * Reports which console apps the CALLER&#39;s org may open, and the plan slug that decides it.
+     * Reports which console apps the CALLER&#39;s org may open, and the plan slug that decides it. It is the READ side of the unified paywall: the org&#39;s plan tier resolved from commerce, which is a different authority from the enablement store behind GET /v1/entitlement/orgs/{org} (that one is the org&#39;s own on/off intent).  It never answers 500: an unvalidated principal is a 403, and an app whose plan cannot be confirmed is reported locked at 200, so the shell always renders. The paywall applies the same rule when it enforces: access follows a confirmed standing.
+     * @return ApiResponse&lt;EntitlementProjectionView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectionView> getEntitlementWithHttpInfo() throws ApiException {
+    public ApiResponse<EntitlementProjectionView> getEntitlementWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getEntitlementValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ProjectionView>(){}.getType();
+        Type localVarReturnType = new TypeToken<EntitlementProjectionView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Projection reports which console apps the CALLER&#39;s org may open, and the plan slug that decides it. (asynchronously)
-     * Projection reports which console apps the CALLER&#39;s org may open, and the plan slug that decides it. It is the READ side of the unified paywall: the org&#39;s plan tier resolved from commerce, which is a different authority from the enablement store behind GET /v1/entitlement/orgs/{org} (that one is the org&#39;s own on/off intent).  It fails SAFE-TO-LOCKED, never 500: an unvalidated principal is a 403, but a commerce outage reports every app locked at 200 rather than breaking the shell. The ENFORCEMENT path still fails open, so functionality survives the same outage even while the UI conservatively shows locked.
+     * Reports which console apps the CALLER&#39;s org may open, and the plan slug that decides it. (asynchronously)
+     * Reports which console apps the CALLER&#39;s org may open, and the plan slug that decides it. It is the READ side of the unified paywall: the org&#39;s plan tier resolved from commerce, which is a different authority from the enablement store behind GET /v1/entitlement/orgs/{org} (that one is the org&#39;s own on/off intent).  It never answers 500: an unvalidated principal is a 403, and an app whose plan cannot be confirmed is reported locked at 200, so the shell always renders. The paywall applies the same rule when it enforces: access follows a confirmed standing.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -182,12 +187,13 @@ public class EntitlementApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEntitlementAsync(final ApiCallback<ProjectionView> _callback) throws ApiException {
+    public okhttp3.Call getEntitlementAsync(final ApiCallback<EntitlementProjectionView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEntitlementValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ProjectionView>(){}.getType();
+        Type localVarReturnType = new TypeToken<EntitlementProjectionView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -202,6 +208,7 @@ public class EntitlementApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEntitlementOrgsByOrgCall(@javax.annotation.Nonnull String org, final ApiCallback _callback) throws ApiException {
@@ -231,7 +238,8 @@ public class EntitlementApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -261,45 +269,47 @@ public class EntitlementApi {
     }
 
     /**
-     * Get lists the products an org has ENABLED — its own intent, which the console&#39;s paid-product sidebar reads to decide what to show.
-     * Get lists the products an org has ENABLED — its own intent, which the console&#39;s paid-product sidebar reads to decide what to show. It is distinct from what the org&#39;s plan ENTITLES it to (that is GET /v1/entitlement, resolved from commerce).  A caller may only read its OWN org&#39;s row; a platform super admin may read any.
+     * Lists the products an org has ENABLED — its own intent, which the console&#39;s paid-product sidebar reads to decide what to show.
+     * Lists the products an org has ENABLED — its own intent, which the console&#39;s paid-product sidebar reads to decide what to show. It is distinct from what the org&#39;s plan ENTITLES it to (that is GET /v1/entitlement, resolved from commerce).  A caller may only read its OWN org&#39;s row; a platform super admin may read any.
      * @param org  (required)
-     * @return EntitlementsView
+     * @return EntitlementEntitlementsView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EntitlementsView getEntitlementOrgsByOrg(@javax.annotation.Nonnull String org) throws ApiException {
-        ApiResponse<EntitlementsView> localVarResp = getEntitlementOrgsByOrgWithHttpInfo(org);
+    public EntitlementEntitlementsView getEntitlementOrgsByOrg(@javax.annotation.Nonnull String org) throws ApiException {
+        ApiResponse<EntitlementEntitlementsView> localVarResp = getEntitlementOrgsByOrgWithHttpInfo(org);
         return localVarResp.getData();
     }
 
     /**
-     * Get lists the products an org has ENABLED — its own intent, which the console&#39;s paid-product sidebar reads to decide what to show.
-     * Get lists the products an org has ENABLED — its own intent, which the console&#39;s paid-product sidebar reads to decide what to show. It is distinct from what the org&#39;s plan ENTITLES it to (that is GET /v1/entitlement, resolved from commerce).  A caller may only read its OWN org&#39;s row; a platform super admin may read any.
+     * Lists the products an org has ENABLED — its own intent, which the console&#39;s paid-product sidebar reads to decide what to show.
+     * Lists the products an org has ENABLED — its own intent, which the console&#39;s paid-product sidebar reads to decide what to show. It is distinct from what the org&#39;s plan ENTITLES it to (that is GET /v1/entitlement, resolved from commerce).  A caller may only read its OWN org&#39;s row; a platform super admin may read any.
      * @param org  (required)
-     * @return ApiResponse&lt;EntitlementsView&gt;
+     * @return ApiResponse&lt;EntitlementEntitlementsView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntitlementsView> getEntitlementOrgsByOrgWithHttpInfo(@javax.annotation.Nonnull String org) throws ApiException {
+    public ApiResponse<EntitlementEntitlementsView> getEntitlementOrgsByOrgWithHttpInfo(@javax.annotation.Nonnull String org) throws ApiException {
         okhttp3.Call localVarCall = getEntitlementOrgsByOrgValidateBeforeCall(org, null);
-        Type localVarReturnType = new TypeToken<EntitlementsView>(){}.getType();
+        Type localVarReturnType = new TypeToken<EntitlementEntitlementsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get lists the products an org has ENABLED — its own intent, which the console&#39;s paid-product sidebar reads to decide what to show. (asynchronously)
-     * Get lists the products an org has ENABLED — its own intent, which the console&#39;s paid-product sidebar reads to decide what to show. It is distinct from what the org&#39;s plan ENTITLES it to (that is GET /v1/entitlement, resolved from commerce).  A caller may only read its OWN org&#39;s row; a platform super admin may read any.
+     * Lists the products an org has ENABLED — its own intent, which the console&#39;s paid-product sidebar reads to decide what to show. (asynchronously)
+     * Lists the products an org has ENABLED — its own intent, which the console&#39;s paid-product sidebar reads to decide what to show. It is distinct from what the org&#39;s plan ENTITLES it to (that is GET /v1/entitlement, resolved from commerce).  A caller may only read its OWN org&#39;s row; a platform super admin may read any.
      * @param org  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -309,19 +319,20 @@ public class EntitlementApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEntitlementOrgsByOrgAsync(@javax.annotation.Nonnull String org, final ApiCallback<EntitlementsView> _callback) throws ApiException {
+    public okhttp3.Call getEntitlementOrgsByOrgAsync(@javax.annotation.Nonnull String org, final ApiCallback<EntitlementEntitlementsView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEntitlementOrgsByOrgValidateBeforeCall(org, _callback);
-        Type localVarReturnType = new TypeToken<EntitlementsView>(){}.getType();
+        Type localVarReturnType = new TypeToken<EntitlementEntitlementsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postEntitlementOrgsByOrg
      * @param org  (required)
-     * @param mutateReq  (required)
+     * @param entitlementMutateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -330,9 +341,10 @@ public class EntitlementApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEntitlementOrgsByOrgCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull MutateReq mutateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEntitlementOrgsByOrgCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull EntitlementMutateReq entitlementMutateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -346,7 +358,7 @@ public class EntitlementApi {
             basePath = null;
         }
 
-        Object localVarPostBody = mutateReq;
+        Object localVarPostBody = entitlementMutateReq;
 
         // create path and map variables
         String localVarPath = "/v1/entitlement/orgs/{org}"
@@ -359,7 +371,8 @@ public class EntitlementApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -379,65 +392,67 @@ public class EntitlementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postEntitlementOrgsByOrgValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull MutateReq mutateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEntitlementOrgsByOrgValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull EntitlementMutateReq entitlementMutateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
             throw new ApiException("Missing the required parameter 'org' when calling postEntitlementOrgsByOrg(Async)");
         }
 
-        // verify the required parameter 'mutateReq' is set
-        if (mutateReq == null) {
-            throw new ApiException("Missing the required parameter 'mutateReq' when calling postEntitlementOrgsByOrg(Async)");
+        // verify the required parameter 'entitlementMutateReq' is set
+        if (entitlementMutateReq == null) {
+            throw new ApiException("Missing the required parameter 'entitlementMutateReq' when calling postEntitlementOrgsByOrg(Async)");
         }
 
-        return postEntitlementOrgsByOrgCall(org, mutateReq, _callback);
+        return postEntitlementOrgsByOrgCall(org, entitlementMutateReq, _callback);
 
     }
 
     /**
-     * Post turns products on or off for an org and returns the enabled set afterwards.
-     * Post turns products on or off for an org and returns the enabled set afterwards.  A product may only be ENABLED if the org&#39;s plan already ENTITLES it, so enabling never spends new money — a product the plan does not grant answers 402 and the console routes that to an upgrade prompt. DISABLING is never gated. A platform super admin bypasses the plan check (operator comp/grant) and may target any org; everyone else may only change their own. Commerce unreachable is a 503, never an implicit yes.
+     * Turns products on or off for an org and returns the enabled set afterwards.
+     * Turns products on or off for an org and returns the enabled set afterwards.  A product may only be ENABLED if the org&#39;s plan already ENTITLES it, so enabling never spends new money — a product the plan does not grant answers 402 and the console routes that to an upgrade prompt. DISABLING is never gated. A platform super admin bypasses the plan check (operator comp/grant) and may target any org; everyone else may only change their own. Commerce unreachable is a 503, never an implicit yes.
      * @param org  (required)
-     * @param mutateReq  (required)
-     * @return EntitlementsView
+     * @param entitlementMutateReq  (required)
+     * @return EntitlementEntitlementsView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EntitlementsView postEntitlementOrgsByOrg(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull MutateReq mutateReq) throws ApiException {
-        ApiResponse<EntitlementsView> localVarResp = postEntitlementOrgsByOrgWithHttpInfo(org, mutateReq);
+    public EntitlementEntitlementsView postEntitlementOrgsByOrg(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull EntitlementMutateReq entitlementMutateReq) throws ApiException {
+        ApiResponse<EntitlementEntitlementsView> localVarResp = postEntitlementOrgsByOrgWithHttpInfo(org, entitlementMutateReq);
         return localVarResp.getData();
     }
 
     /**
-     * Post turns products on or off for an org and returns the enabled set afterwards.
-     * Post turns products on or off for an org and returns the enabled set afterwards.  A product may only be ENABLED if the org&#39;s plan already ENTITLES it, so enabling never spends new money — a product the plan does not grant answers 402 and the console routes that to an upgrade prompt. DISABLING is never gated. A platform super admin bypasses the plan check (operator comp/grant) and may target any org; everyone else may only change their own. Commerce unreachable is a 503, never an implicit yes.
+     * Turns products on or off for an org and returns the enabled set afterwards.
+     * Turns products on or off for an org and returns the enabled set afterwards.  A product may only be ENABLED if the org&#39;s plan already ENTITLES it, so enabling never spends new money — a product the plan does not grant answers 402 and the console routes that to an upgrade prompt. DISABLING is never gated. A platform super admin bypasses the plan check (operator comp/grant) and may target any org; everyone else may only change their own. Commerce unreachable is a 503, never an implicit yes.
      * @param org  (required)
-     * @param mutateReq  (required)
-     * @return ApiResponse&lt;EntitlementsView&gt;
+     * @param entitlementMutateReq  (required)
+     * @return ApiResponse&lt;EntitlementEntitlementsView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EntitlementsView> postEntitlementOrgsByOrgWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull MutateReq mutateReq) throws ApiException {
-        okhttp3.Call localVarCall = postEntitlementOrgsByOrgValidateBeforeCall(org, mutateReq, null);
-        Type localVarReturnType = new TypeToken<EntitlementsView>(){}.getType();
+    public ApiResponse<EntitlementEntitlementsView> postEntitlementOrgsByOrgWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull EntitlementMutateReq entitlementMutateReq) throws ApiException {
+        okhttp3.Call localVarCall = postEntitlementOrgsByOrgValidateBeforeCall(org, entitlementMutateReq, null);
+        Type localVarReturnType = new TypeToken<EntitlementEntitlementsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Post turns products on or off for an org and returns the enabled set afterwards. (asynchronously)
-     * Post turns products on or off for an org and returns the enabled set afterwards.  A product may only be ENABLED if the org&#39;s plan already ENTITLES it, so enabling never spends new money — a product the plan does not grant answers 402 and the console routes that to an upgrade prompt. DISABLING is never gated. A platform super admin bypasses the plan check (operator comp/grant) and may target any org; everyone else may only change their own. Commerce unreachable is a 503, never an implicit yes.
+     * Turns products on or off for an org and returns the enabled set afterwards. (asynchronously)
+     * Turns products on or off for an org and returns the enabled set afterwards.  A product may only be ENABLED if the org&#39;s plan already ENTITLES it, so enabling never spends new money — a product the plan does not grant answers 402 and the console routes that to an upgrade prompt. DISABLING is never gated. A platform super admin bypasses the plan check (operator comp/grant) and may target any org; everyone else may only change their own. Commerce unreachable is a 503, never an implicit yes.
      * @param org  (required)
-     * @param mutateReq  (required)
+     * @param entitlementMutateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -446,12 +461,13 @@ public class EntitlementApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEntitlementOrgsByOrgAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull MutateReq mutateReq, final ApiCallback<EntitlementsView> _callback) throws ApiException {
+    public okhttp3.Call postEntitlementOrgsByOrgAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull EntitlementMutateReq entitlementMutateReq, final ApiCallback<EntitlementEntitlementsView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postEntitlementOrgsByOrgValidateBeforeCall(org, mutateReq, _callback);
-        Type localVarReturnType = new TypeToken<EntitlementsView>(){}.getType();
+        okhttp3.Call localVarCall = postEntitlementOrgsByOrgValidateBeforeCall(org, entitlementMutateReq, _callback);
+        Type localVarReturnType = new TypeToken<EntitlementEntitlementsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

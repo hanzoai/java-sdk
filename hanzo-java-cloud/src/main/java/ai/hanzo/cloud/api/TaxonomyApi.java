@@ -27,12 +27,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Category;
-import ai.hanzo.cloud.model.CategoryIn;
-import ai.hanzo.cloud.model.Deleted;
-import ai.hanzo.cloud.model.Taxon;
-import ai.hanzo.cloud.model.TaxonIn;
-import ai.hanzo.cloud.model.Taxonomy;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.TaxonomyCategory;
+import ai.hanzo.cloud.model.TaxonomyCategoryIn;
+import ai.hanzo.cloud.model.TaxonomyDeleted;
+import ai.hanzo.cloud.model.TaxonomyTaxon;
+import ai.hanzo.cloud.model.TaxonomyTaxonIn;
+import ai.hanzo.cloud.model.TaxonomyTaxonomy;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -88,6 +89,7 @@ public class TaxonomyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteTaxonomyCategoriesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -117,7 +119,8 @@ public class TaxonomyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -150,17 +153,18 @@ public class TaxonomyApi {
      * Removes one empty category.
      * Removes one empty category. A category that still has taxa filed under it is refused with 409 and a count: deleting the label off a group must never silently take the products wearing it, and the alternative — orphan rows naming a category that no longer exists — is a catalogue that cannot be rendered. Move or delete its taxa first. An id no category holds is a 404.
      * @param id ID is the slug to act on, from the path. (required)
-     * @return Deleted
+     * @return TaxonomyDeleted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Deleted deleteTaxonomyCategoriesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Deleted> localVarResp = deleteTaxonomyCategoriesByIdWithHttpInfo(id);
+    public TaxonomyDeleted deleteTaxonomyCategoriesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<TaxonomyDeleted> localVarResp = deleteTaxonomyCategoriesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -168,18 +172,19 @@ public class TaxonomyApi {
      * Removes one empty category.
      * Removes one empty category. A category that still has taxa filed under it is refused with 409 and a count: deleting the label off a group must never silently take the products wearing it, and the alternative — orphan rows naming a category that no longer exists — is a catalogue that cannot be rendered. Move or delete its taxa first. An id no category holds is a 404.
      * @param id ID is the slug to act on, from the path. (required)
-     * @return ApiResponse&lt;Deleted&gt;
+     * @return ApiResponse&lt;TaxonomyDeleted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Deleted> deleteTaxonomyCategoriesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<TaxonomyDeleted> deleteTaxonomyCategoriesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteTaxonomyCategoriesByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Deleted>(){}.getType();
+        Type localVarReturnType = new TypeToken<TaxonomyDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -195,12 +200,13 @@ public class TaxonomyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteTaxonomyCategoriesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Deleted> _callback) throws ApiException {
+    public okhttp3.Call deleteTaxonomyCategoriesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<TaxonomyDeleted> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteTaxonomyCategoriesByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Deleted>(){}.getType();
+        Type localVarReturnType = new TypeToken<TaxonomyDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -215,6 +221,7 @@ public class TaxonomyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteTaxonomyTaxaByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -244,7 +251,8 @@ public class TaxonomyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -277,17 +285,18 @@ public class TaxonomyApi {
      * Removes one product from the catalogue.
      * Removes one product from the catalogue. An id no taxon holds is a 404. To take a product out of view without losing what was written about it, set &#x60;published&#x60; to false instead.
      * @param id ID is the slug to act on, from the path. (required)
-     * @return Deleted
+     * @return TaxonomyDeleted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Deleted deleteTaxonomyTaxaById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Deleted> localVarResp = deleteTaxonomyTaxaByIdWithHttpInfo(id);
+    public TaxonomyDeleted deleteTaxonomyTaxaById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<TaxonomyDeleted> localVarResp = deleteTaxonomyTaxaByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -295,18 +304,19 @@ public class TaxonomyApi {
      * Removes one product from the catalogue.
      * Removes one product from the catalogue. An id no taxon holds is a 404. To take a product out of view without losing what was written about it, set &#x60;published&#x60; to false instead.
      * @param id ID is the slug to act on, from the path. (required)
-     * @return ApiResponse&lt;Deleted&gt;
+     * @return ApiResponse&lt;TaxonomyDeleted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Deleted> deleteTaxonomyTaxaByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<TaxonomyDeleted> deleteTaxonomyTaxaByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteTaxonomyTaxaByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Deleted>(){}.getType();
+        Type localVarReturnType = new TypeToken<TaxonomyDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -322,12 +332,13 @@ public class TaxonomyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteTaxonomyTaxaByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Deleted> _callback) throws ApiException {
+    public okhttp3.Call deleteTaxonomyTaxaByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<TaxonomyDeleted> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteTaxonomyTaxaByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Deleted>(){}.getType();
+        Type localVarReturnType = new TypeToken<TaxonomyDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -342,6 +353,7 @@ public class TaxonomyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTaxonomyCall(@javax.annotation.Nullable String brand, final ApiCallback _callback) throws ApiException {
@@ -374,7 +386,8 @@ public class TaxonomyApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -399,45 +412,47 @@ public class TaxonomyApi {
     }
 
     /**
-     * Read returns the product catalogue as this caller sees it: the PLATFORM catalogue — Hanzo&#39;s own products, the part that is true for everyone — plus the caller&#39;s own org&#39;s rows, every category in display order and each carrying the products filed under it in theirs.
-     * Read returns the product catalogue as this caller sees it: the PLATFORM catalogue — Hanzo&#39;s own products, the part that is true for everyone — plus the caller&#39;s own org&#39;s rows, every category in display order and each carrying the products filed under it in theirs. Another customer&#39;s rows are never in it. It is readable signed out, and a signed-out visitor gets the platform catalogue alone, which is what the marketing landing renders from.  Where the caller&#39;s org and the platform hold the same id, the caller&#39;s own row is the one served. That rule exists because ids are unique per ORG and not globally — two customers may each have a \&quot;crm\&quot;, and refusing the second would tell one of them the other exists — so a collision with the platform is possible by construction and something has to win deterministically. Yours does: your own catalogue is the one you edited.  &#x60;?brand&#x3D;&#x60; narrows it the way a brand&#39;s own console does: only the categories that brand admits, and within them only the taxa scoped to it. An unpublished row is served only to whoever may edit it — a SuperAdmin for the platform&#39;s, an org admin for their own — so a product can be staged before anyone sees it without becoming invisible to the person staging it.
+     * Returns the product catalogue as this caller sees it: the PLATFORM catalogue — Hanzo&#39;s own products, the part that is true for everyone — plus the caller&#39;s own org&#39;s rows, every category in display order and each carrying the products filed under it in theirs.
+     * Returns the product catalogue as this caller sees it: the PLATFORM catalogue — Hanzo&#39;s own products, the part that is true for everyone — plus the caller&#39;s own org&#39;s rows, every category in display order and each carrying the products filed under it in theirs. Another customer&#39;s rows are never in it. It is readable signed out, and a signed-out visitor gets the platform catalogue alone, which is what the marketing landing renders from.  Where the caller&#39;s org and the platform hold the same id, the caller&#39;s own row is the one served. That rule exists because ids are unique per ORG and not globally — two customers may each have a \&quot;crm\&quot;, and refusing the second would tell one of them the other exists — so a collision with the platform is possible by construction and something has to win deterministically. Yours does: your own catalogue is the one you edited.  &#x60;?brand&#x3D;&#x60; narrows it the way a brand&#39;s own console does: only the categories that brand admits, and within them only the taxa scoped to it. An unpublished row is served only to whoever may edit it — a SuperAdmin for the platform&#39;s, an org admin for their own — so a product can be staged before anyone sees it without becoming invisible to the person staging it.
      * @param brand Brand returns only what that brand&#39;s console shows — the categories it admits, and within them the taxa scoped to it. Empty returns everything. (optional)
-     * @return Taxonomy
+     * @return TaxonomyTaxonomy
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Taxonomy getTaxonomy(@javax.annotation.Nullable String brand) throws ApiException {
-        ApiResponse<Taxonomy> localVarResp = getTaxonomyWithHttpInfo(brand);
+    public TaxonomyTaxonomy getTaxonomy(@javax.annotation.Nullable String brand) throws ApiException {
+        ApiResponse<TaxonomyTaxonomy> localVarResp = getTaxonomyWithHttpInfo(brand);
         return localVarResp.getData();
     }
 
     /**
-     * Read returns the product catalogue as this caller sees it: the PLATFORM catalogue — Hanzo&#39;s own products, the part that is true for everyone — plus the caller&#39;s own org&#39;s rows, every category in display order and each carrying the products filed under it in theirs.
-     * Read returns the product catalogue as this caller sees it: the PLATFORM catalogue — Hanzo&#39;s own products, the part that is true for everyone — plus the caller&#39;s own org&#39;s rows, every category in display order and each carrying the products filed under it in theirs. Another customer&#39;s rows are never in it. It is readable signed out, and a signed-out visitor gets the platform catalogue alone, which is what the marketing landing renders from.  Where the caller&#39;s org and the platform hold the same id, the caller&#39;s own row is the one served. That rule exists because ids are unique per ORG and not globally — two customers may each have a \&quot;crm\&quot;, and refusing the second would tell one of them the other exists — so a collision with the platform is possible by construction and something has to win deterministically. Yours does: your own catalogue is the one you edited.  &#x60;?brand&#x3D;&#x60; narrows it the way a brand&#39;s own console does: only the categories that brand admits, and within them only the taxa scoped to it. An unpublished row is served only to whoever may edit it — a SuperAdmin for the platform&#39;s, an org admin for their own — so a product can be staged before anyone sees it without becoming invisible to the person staging it.
+     * Returns the product catalogue as this caller sees it: the PLATFORM catalogue — Hanzo&#39;s own products, the part that is true for everyone — plus the caller&#39;s own org&#39;s rows, every category in display order and each carrying the products filed under it in theirs.
+     * Returns the product catalogue as this caller sees it: the PLATFORM catalogue — Hanzo&#39;s own products, the part that is true for everyone — plus the caller&#39;s own org&#39;s rows, every category in display order and each carrying the products filed under it in theirs. Another customer&#39;s rows are never in it. It is readable signed out, and a signed-out visitor gets the platform catalogue alone, which is what the marketing landing renders from.  Where the caller&#39;s org and the platform hold the same id, the caller&#39;s own row is the one served. That rule exists because ids are unique per ORG and not globally — two customers may each have a \&quot;crm\&quot;, and refusing the second would tell one of them the other exists — so a collision with the platform is possible by construction and something has to win deterministically. Yours does: your own catalogue is the one you edited.  &#x60;?brand&#x3D;&#x60; narrows it the way a brand&#39;s own console does: only the categories that brand admits, and within them only the taxa scoped to it. An unpublished row is served only to whoever may edit it — a SuperAdmin for the platform&#39;s, an org admin for their own — so a product can be staged before anyone sees it without becoming invisible to the person staging it.
      * @param brand Brand returns only what that brand&#39;s console shows — the categories it admits, and within them the taxa scoped to it. Empty returns everything. (optional)
-     * @return ApiResponse&lt;Taxonomy&gt;
+     * @return ApiResponse&lt;TaxonomyTaxonomy&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Taxonomy> getTaxonomyWithHttpInfo(@javax.annotation.Nullable String brand) throws ApiException {
+    public ApiResponse<TaxonomyTaxonomy> getTaxonomyWithHttpInfo(@javax.annotation.Nullable String brand) throws ApiException {
         okhttp3.Call localVarCall = getTaxonomyValidateBeforeCall(brand, null);
-        Type localVarReturnType = new TypeToken<Taxonomy>(){}.getType();
+        Type localVarReturnType = new TypeToken<TaxonomyTaxonomy>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Read returns the product catalogue as this caller sees it: the PLATFORM catalogue — Hanzo&#39;s own products, the part that is true for everyone — plus the caller&#39;s own org&#39;s rows, every category in display order and each carrying the products filed under it in theirs. (asynchronously)
-     * Read returns the product catalogue as this caller sees it: the PLATFORM catalogue — Hanzo&#39;s own products, the part that is true for everyone — plus the caller&#39;s own org&#39;s rows, every category in display order and each carrying the products filed under it in theirs. Another customer&#39;s rows are never in it. It is readable signed out, and a signed-out visitor gets the platform catalogue alone, which is what the marketing landing renders from.  Where the caller&#39;s org and the platform hold the same id, the caller&#39;s own row is the one served. That rule exists because ids are unique per ORG and not globally — two customers may each have a \&quot;crm\&quot;, and refusing the second would tell one of them the other exists — so a collision with the platform is possible by construction and something has to win deterministically. Yours does: your own catalogue is the one you edited.  &#x60;?brand&#x3D;&#x60; narrows it the way a brand&#39;s own console does: only the categories that brand admits, and within them only the taxa scoped to it. An unpublished row is served only to whoever may edit it — a SuperAdmin for the platform&#39;s, an org admin for their own — so a product can be staged before anyone sees it without becoming invisible to the person staging it.
+     * Returns the product catalogue as this caller sees it: the PLATFORM catalogue — Hanzo&#39;s own products, the part that is true for everyone — plus the caller&#39;s own org&#39;s rows, every category in display order and each carrying the products filed under it in theirs. (asynchronously)
+     * Returns the product catalogue as this caller sees it: the PLATFORM catalogue — Hanzo&#39;s own products, the part that is true for everyone — plus the caller&#39;s own org&#39;s rows, every category in display order and each carrying the products filed under it in theirs. Another customer&#39;s rows are never in it. It is readable signed out, and a signed-out visitor gets the platform catalogue alone, which is what the marketing landing renders from.  Where the caller&#39;s org and the platform hold the same id, the caller&#39;s own row is the one served. That rule exists because ids are unique per ORG and not globally — two customers may each have a \&quot;crm\&quot;, and refusing the second would tell one of them the other exists — so a collision with the platform is possible by construction and something has to win deterministically. Yours does: your own catalogue is the one you edited.  &#x60;?brand&#x3D;&#x60; narrows it the way a brand&#39;s own console does: only the categories that brand admits, and within them only the taxa scoped to it. An unpublished row is served only to whoever may edit it — a SuperAdmin for the platform&#39;s, an org admin for their own — so a product can be staged before anyone sees it without becoming invisible to the person staging it.
      * @param brand Brand returns only what that brand&#39;s console shows — the categories it admits, and within them the taxa scoped to it. Empty returns everything. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -447,19 +462,20 @@ public class TaxonomyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTaxonomyAsync(@javax.annotation.Nullable String brand, final ApiCallback<Taxonomy> _callback) throws ApiException {
+    public okhttp3.Call getTaxonomyAsync(@javax.annotation.Nullable String brand, final ApiCallback<TaxonomyTaxonomy> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTaxonomyValidateBeforeCall(brand, _callback);
-        Type localVarReturnType = new TypeToken<Taxonomy>(){}.getType();
+        Type localVarReturnType = new TypeToken<TaxonomyTaxonomy>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putTaxonomyCategoriesById
      * @param id ID is the category slug to write, from the path. (required)
-     * @param categoryIn  (required)
+     * @param taxonomyCategoryIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -468,9 +484,10 @@ public class TaxonomyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putTaxonomyCategoriesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CategoryIn categoryIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putTaxonomyCategoriesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TaxonomyCategoryIn taxonomyCategoryIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -484,7 +501,7 @@ public class TaxonomyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = categoryIn;
+        Object localVarPostBody = taxonomyCategoryIn;
 
         // create path and map variables
         String localVarPath = "/v1/taxonomy/categories/{id}"
@@ -497,7 +514,8 @@ public class TaxonomyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -517,18 +535,18 @@ public class TaxonomyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putTaxonomyCategoriesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CategoryIn categoryIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putTaxonomyCategoriesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TaxonomyCategoryIn taxonomyCategoryIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling putTaxonomyCategoriesById(Async)");
         }
 
-        // verify the required parameter 'categoryIn' is set
-        if (categoryIn == null) {
-            throw new ApiException("Missing the required parameter 'categoryIn' when calling putTaxonomyCategoriesById(Async)");
+        // verify the required parameter 'taxonomyCategoryIn' is set
+        if (taxonomyCategoryIn == null) {
+            throw new ApiException("Missing the required parameter 'taxonomyCategoryIn' when calling putTaxonomyCategoriesById(Async)");
         }
 
-        return putTaxonomyCategoriesByIdCall(id, categoryIn, _callback);
+        return putTaxonomyCategoriesByIdCall(id, taxonomyCategoryIn, _callback);
 
     }
 
@@ -536,18 +554,19 @@ public class TaxonomyApi {
      * Creates or replaces one category and returns it as stored.
      * Creates or replaces one category and returns it as stored. The id in the URL is the one it is filed under whatever the body says, so a category can never be written under a name it was not addressed by — which also makes create and replace the same act, and is why there is no POST beside this.  Platform SuperAdmin only: one catalogue serves every tenant, so an org admin who could rename a category would rename it for all of them.
      * @param id ID is the category slug to write, from the path. (required)
-     * @param categoryIn  (required)
-     * @return Category
+     * @param taxonomyCategoryIn  (required)
+     * @return TaxonomyCategory
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Category putTaxonomyCategoriesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CategoryIn categoryIn) throws ApiException {
-        ApiResponse<Category> localVarResp = putTaxonomyCategoriesByIdWithHttpInfo(id, categoryIn);
+    public TaxonomyCategory putTaxonomyCategoriesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TaxonomyCategoryIn taxonomyCategoryIn) throws ApiException {
+        ApiResponse<TaxonomyCategory> localVarResp = putTaxonomyCategoriesByIdWithHttpInfo(id, taxonomyCategoryIn);
         return localVarResp.getData();
     }
 
@@ -555,19 +574,20 @@ public class TaxonomyApi {
      * Creates or replaces one category and returns it as stored.
      * Creates or replaces one category and returns it as stored. The id in the URL is the one it is filed under whatever the body says, so a category can never be written under a name it was not addressed by — which also makes create and replace the same act, and is why there is no POST beside this.  Platform SuperAdmin only: one catalogue serves every tenant, so an org admin who could rename a category would rename it for all of them.
      * @param id ID is the category slug to write, from the path. (required)
-     * @param categoryIn  (required)
-     * @return ApiResponse&lt;Category&gt;
+     * @param taxonomyCategoryIn  (required)
+     * @return ApiResponse&lt;TaxonomyCategory&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Category> putTaxonomyCategoriesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CategoryIn categoryIn) throws ApiException {
-        okhttp3.Call localVarCall = putTaxonomyCategoriesByIdValidateBeforeCall(id, categoryIn, null);
-        Type localVarReturnType = new TypeToken<Category>(){}.getType();
+    public ApiResponse<TaxonomyCategory> putTaxonomyCategoriesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TaxonomyCategoryIn taxonomyCategoryIn) throws ApiException {
+        okhttp3.Call localVarCall = putTaxonomyCategoriesByIdValidateBeforeCall(id, taxonomyCategoryIn, null);
+        Type localVarReturnType = new TypeToken<TaxonomyCategory>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -575,7 +595,7 @@ public class TaxonomyApi {
      * Creates or replaces one category and returns it as stored. (asynchronously)
      * Creates or replaces one category and returns it as stored. The id in the URL is the one it is filed under whatever the body says, so a category can never be written under a name it was not addressed by — which also makes create and replace the same act, and is why there is no POST beside this.  Platform SuperAdmin only: one catalogue serves every tenant, so an org admin who could rename a category would rename it for all of them.
      * @param id ID is the category slug to write, from the path. (required)
-     * @param categoryIn  (required)
+     * @param taxonomyCategoryIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -584,19 +604,20 @@ public class TaxonomyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putTaxonomyCategoriesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CategoryIn categoryIn, final ApiCallback<Category> _callback) throws ApiException {
+    public okhttp3.Call putTaxonomyCategoriesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TaxonomyCategoryIn taxonomyCategoryIn, final ApiCallback<TaxonomyCategory> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putTaxonomyCategoriesByIdValidateBeforeCall(id, categoryIn, _callback);
-        Type localVarReturnType = new TypeToken<Category>(){}.getType();
+        okhttp3.Call localVarCall = putTaxonomyCategoriesByIdValidateBeforeCall(id, taxonomyCategoryIn, _callback);
+        Type localVarReturnType = new TypeToken<TaxonomyCategory>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putTaxonomyTaxaById
      * @param id ID is the taxon slug to write, from the path. (required)
-     * @param taxonIn  (required)
+     * @param taxonomyTaxonIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -605,9 +626,10 @@ public class TaxonomyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putTaxonomyTaxaByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TaxonIn taxonIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putTaxonomyTaxaByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TaxonomyTaxonIn taxonomyTaxonIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -621,7 +643,7 @@ public class TaxonomyApi {
             basePath = null;
         }
 
-        Object localVarPostBody = taxonIn;
+        Object localVarPostBody = taxonomyTaxonIn;
 
         // create path and map variables
         String localVarPath = "/v1/taxonomy/taxa/{id}"
@@ -634,7 +656,8 @@ public class TaxonomyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -654,18 +677,18 @@ public class TaxonomyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putTaxonomyTaxaByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TaxonIn taxonIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putTaxonomyTaxaByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TaxonomyTaxonIn taxonomyTaxonIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling putTaxonomyTaxaById(Async)");
         }
 
-        // verify the required parameter 'taxonIn' is set
-        if (taxonIn == null) {
-            throw new ApiException("Missing the required parameter 'taxonIn' when calling putTaxonomyTaxaById(Async)");
+        // verify the required parameter 'taxonomyTaxonIn' is set
+        if (taxonomyTaxonIn == null) {
+            throw new ApiException("Missing the required parameter 'taxonomyTaxonIn' when calling putTaxonomyTaxaById(Async)");
         }
 
-        return putTaxonomyTaxaByIdCall(id, taxonIn, _callback);
+        return putTaxonomyTaxaByIdCall(id, taxonomyTaxonIn, _callback);
 
     }
 
@@ -673,18 +696,19 @@ public class TaxonomyApi {
      * Creates or replaces one product and returns it as stored.
      * Creates or replaces one product and returns it as stored. The id in the URL is the one it is filed under whatever the body says. The category must already exist — a taxon naming a category that does not is refused with 400 rather than stored where nothing can render it.  A taxon opens exactly one way: &#x60;route&#x60; for a product the console renders itself, or &#x60;href&#x60; for one that genuinely lives at its own domain. Giving both, or neither, is refused.  Platform SuperAdmin only.
      * @param id ID is the taxon slug to write, from the path. (required)
-     * @param taxonIn  (required)
-     * @return Taxon
+     * @param taxonomyTaxonIn  (required)
+     * @return TaxonomyTaxon
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Taxon putTaxonomyTaxaById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TaxonIn taxonIn) throws ApiException {
-        ApiResponse<Taxon> localVarResp = putTaxonomyTaxaByIdWithHttpInfo(id, taxonIn);
+    public TaxonomyTaxon putTaxonomyTaxaById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TaxonomyTaxonIn taxonomyTaxonIn) throws ApiException {
+        ApiResponse<TaxonomyTaxon> localVarResp = putTaxonomyTaxaByIdWithHttpInfo(id, taxonomyTaxonIn);
         return localVarResp.getData();
     }
 
@@ -692,19 +716,20 @@ public class TaxonomyApi {
      * Creates or replaces one product and returns it as stored.
      * Creates or replaces one product and returns it as stored. The id in the URL is the one it is filed under whatever the body says. The category must already exist — a taxon naming a category that does not is refused with 400 rather than stored where nothing can render it.  A taxon opens exactly one way: &#x60;route&#x60; for a product the console renders itself, or &#x60;href&#x60; for one that genuinely lives at its own domain. Giving both, or neither, is refused.  Platform SuperAdmin only.
      * @param id ID is the taxon slug to write, from the path. (required)
-     * @param taxonIn  (required)
-     * @return ApiResponse&lt;Taxon&gt;
+     * @param taxonomyTaxonIn  (required)
+     * @return ApiResponse&lt;TaxonomyTaxon&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Taxon> putTaxonomyTaxaByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TaxonIn taxonIn) throws ApiException {
-        okhttp3.Call localVarCall = putTaxonomyTaxaByIdValidateBeforeCall(id, taxonIn, null);
-        Type localVarReturnType = new TypeToken<Taxon>(){}.getType();
+    public ApiResponse<TaxonomyTaxon> putTaxonomyTaxaByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TaxonomyTaxonIn taxonomyTaxonIn) throws ApiException {
+        okhttp3.Call localVarCall = putTaxonomyTaxaByIdValidateBeforeCall(id, taxonomyTaxonIn, null);
+        Type localVarReturnType = new TypeToken<TaxonomyTaxon>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -712,7 +737,7 @@ public class TaxonomyApi {
      * Creates or replaces one product and returns it as stored. (asynchronously)
      * Creates or replaces one product and returns it as stored. The id in the URL is the one it is filed under whatever the body says. The category must already exist — a taxon naming a category that does not is refused with 400 rather than stored where nothing can render it.  A taxon opens exactly one way: &#x60;route&#x60; for a product the console renders itself, or &#x60;href&#x60; for one that genuinely lives at its own domain. Giving both, or neither, is refused.  Platform SuperAdmin only.
      * @param id ID is the taxon slug to write, from the path. (required)
-     * @param taxonIn  (required)
+     * @param taxonomyTaxonIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -721,12 +746,13 @@ public class TaxonomyApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putTaxonomyTaxaByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TaxonIn taxonIn, final ApiCallback<Taxon> _callback) throws ApiException {
+    public okhttp3.Call putTaxonomyTaxaByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TaxonomyTaxonIn taxonomyTaxonIn, final ApiCallback<TaxonomyTaxon> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putTaxonomyTaxaByIdValidateBeforeCall(id, taxonIn, _callback);
-        Type localVarReturnType = new TypeToken<Taxon>(){}.getType();
+        okhttp3.Call localVarCall = putTaxonomyTaxaByIdValidateBeforeCall(id, taxonomyTaxonIn, _callback);
+        Type localVarReturnType = new TypeToken<TaxonomyTaxon>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -27,15 +27,16 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.AllowlistPutIn;
-import ai.hanzo.cloud.model.AllowlistView;
-import ai.hanzo.cloud.model.ApprovePairingIn;
-import ai.hanzo.cloud.model.ChannelAgents;
-import ai.hanzo.cloud.model.ChannelAgentsPut;
-import ai.hanzo.cloud.model.ChatChannels;
-import ai.hanzo.cloud.model.InboxPage;
-import ai.hanzo.cloud.model.PairingApproved;
-import ai.hanzo.cloud.model.PairingQueue;
+import ai.hanzo.cloud.model.ChannelAllowlistPutIn;
+import ai.hanzo.cloud.model.ChannelAllowlistView;
+import ai.hanzo.cloud.model.ChannelApprovePairingIn;
+import ai.hanzo.cloud.model.ChannelChannelAgents;
+import ai.hanzo.cloud.model.ChannelChannelAgentsPut;
+import ai.hanzo.cloud.model.ChannelChatChannels;
+import ai.hanzo.cloud.model.ChannelInboxPage;
+import ai.hanzo.cloud.model.ChannelPairingApproved;
+import ai.hanzo.cloud.model.ChannelPairingQueue;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -90,6 +91,7 @@ public class ChannelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getChannelCall(final ApiCallback _callback) throws ApiException {
@@ -118,7 +120,8 @@ public class ChannelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -145,35 +148,37 @@ public class ChannelApi {
     /**
      * Reports every chat channel this org can send through, and whether it can send through it right now.
      * Reports every chat channel this org can send through, and whether it can send through it right now.  A channel appears here whether or not it is connected — an empty list would leave a caller unable to tell \&quot;this org has no Slack\&quot; from \&quot;Slack is down\&quot;, which are different problems with different fixes. Each entry carries the connection behind it, so the answer to \&quot;why can I not post?\&quot; is in the same response as the channel that cannot post.
-     * @return ChatChannels
+     * @return ChannelChatChannels
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ChatChannels getChannel() throws ApiException {
-        ApiResponse<ChatChannels> localVarResp = getChannelWithHttpInfo();
+    public ChannelChatChannels getChannel() throws ApiException {
+        ApiResponse<ChannelChatChannels> localVarResp = getChannelWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports every chat channel this org can send through, and whether it can send through it right now.
      * Reports every chat channel this org can send through, and whether it can send through it right now.  A channel appears here whether or not it is connected — an empty list would leave a caller unable to tell \&quot;this org has no Slack\&quot; from \&quot;Slack is down\&quot;, which are different problems with different fixes. Each entry carries the connection behind it, so the answer to \&quot;why can I not post?\&quot; is in the same response as the channel that cannot post.
-     * @return ApiResponse&lt;ChatChannels&gt;
+     * @return ApiResponse&lt;ChannelChatChannels&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChatChannels> getChannelWithHttpInfo() throws ApiException {
+    public ApiResponse<ChannelChatChannels> getChannelWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getChannelValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ChatChannels>(){}.getType();
+        Type localVarReturnType = new TypeToken<ChannelChatChannels>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -188,12 +193,13 @@ public class ChannelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChannelAsync(final ApiCallback<ChatChannels> _callback) throws ApiException {
+    public okhttp3.Call getChannelAsync(final ApiCallback<ChannelChatChannels> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getChannelValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ChatChannels>(){}.getType();
+        Type localVarReturnType = new TypeToken<ChannelChatChannels>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -208,6 +214,7 @@ public class ChannelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getChannelAgentCall(@javax.annotation.Nullable String channel, final ApiCallback _callback) throws ApiException {
@@ -240,7 +247,8 @@ public class ChannelApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -268,17 +276,18 @@ public class ChannelApi {
      * Returns which agent answers the caller org&#39;s channel: the default and every room bound to another agent.
      * Returns which agent answers the caller org&#39;s channel: the default and every room bound to another agent.
      * @param channel Channel is the transport: discord, github, linear, slack, teams, telegram or whatsapp. Required; an unknown value is a 404. (optional)
-     * @return ChannelAgents
+     * @return ChannelChannelAgents
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ChannelAgents getChannelAgent(@javax.annotation.Nullable String channel) throws ApiException {
-        ApiResponse<ChannelAgents> localVarResp = getChannelAgentWithHttpInfo(channel);
+    public ChannelChannelAgents getChannelAgent(@javax.annotation.Nullable String channel) throws ApiException {
+        ApiResponse<ChannelChannelAgents> localVarResp = getChannelAgentWithHttpInfo(channel);
         return localVarResp.getData();
     }
 
@@ -286,18 +295,19 @@ public class ChannelApi {
      * Returns which agent answers the caller org&#39;s channel: the default and every room bound to another agent.
      * Returns which agent answers the caller org&#39;s channel: the default and every room bound to another agent.
      * @param channel Channel is the transport: discord, github, linear, slack, teams, telegram or whatsapp. Required; an unknown value is a 404. (optional)
-     * @return ApiResponse&lt;ChannelAgents&gt;
+     * @return ApiResponse&lt;ChannelChannelAgents&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChannelAgents> getChannelAgentWithHttpInfo(@javax.annotation.Nullable String channel) throws ApiException {
+    public ApiResponse<ChannelChannelAgents> getChannelAgentWithHttpInfo(@javax.annotation.Nullable String channel) throws ApiException {
         okhttp3.Call localVarCall = getChannelAgentValidateBeforeCall(channel, null);
-        Type localVarReturnType = new TypeToken<ChannelAgents>(){}.getType();
+        Type localVarReturnType = new TypeToken<ChannelChannelAgents>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -313,12 +323,13 @@ public class ChannelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChannelAgentAsync(@javax.annotation.Nullable String channel, final ApiCallback<ChannelAgents> _callback) throws ApiException {
+    public okhttp3.Call getChannelAgentAsync(@javax.annotation.Nullable String channel, final ApiCallback<ChannelChannelAgents> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getChannelAgentValidateBeforeCall(channel, _callback);
-        Type localVarReturnType = new TypeToken<ChannelAgents>(){}.getType();
+        Type localVarReturnType = new TypeToken<ChannelChannelAgents>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -333,6 +344,7 @@ public class ChannelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getChannelAllowlistCall(@javax.annotation.Nullable String channel, final ApiCallback _callback) throws ApiException {
@@ -365,7 +377,8 @@ public class ChannelApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -393,17 +406,18 @@ public class ChannelApi {
      * Returns the caller org&#39;s access policy for one channel: whether DMs are pairing-gated, allowlisted or open, whether group rooms are open, allowlisted or disabled, the config-managed DM and group allow entries, the senders approved through PAIRING (read-only here), and the org&#39;s named access groups.
      * Returns the caller org&#39;s access policy for one channel: whether DMs are pairing-gated, allowlisted or open, whether group rooms are open, allowlisted or disabled, the config-managed DM and group allow entries, the senders approved through PAIRING (read-only here), and the org&#39;s named access groups. An unknown channel is a 404.
      * @param channel Channel is the transport to read: discord, github, linear, slack, teams, telegram or whatsapp. Required; an unknown value is a 404. (optional)
-     * @return AllowlistView
+     * @return ChannelAllowlistView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AllowlistView getChannelAllowlist(@javax.annotation.Nullable String channel) throws ApiException {
-        ApiResponse<AllowlistView> localVarResp = getChannelAllowlistWithHttpInfo(channel);
+    public ChannelAllowlistView getChannelAllowlist(@javax.annotation.Nullable String channel) throws ApiException {
+        ApiResponse<ChannelAllowlistView> localVarResp = getChannelAllowlistWithHttpInfo(channel);
         return localVarResp.getData();
     }
 
@@ -411,18 +425,19 @@ public class ChannelApi {
      * Returns the caller org&#39;s access policy for one channel: whether DMs are pairing-gated, allowlisted or open, whether group rooms are open, allowlisted or disabled, the config-managed DM and group allow entries, the senders approved through PAIRING (read-only here), and the org&#39;s named access groups.
      * Returns the caller org&#39;s access policy for one channel: whether DMs are pairing-gated, allowlisted or open, whether group rooms are open, allowlisted or disabled, the config-managed DM and group allow entries, the senders approved through PAIRING (read-only here), and the org&#39;s named access groups. An unknown channel is a 404.
      * @param channel Channel is the transport to read: discord, github, linear, slack, teams, telegram or whatsapp. Required; an unknown value is a 404. (optional)
-     * @return ApiResponse&lt;AllowlistView&gt;
+     * @return ApiResponse&lt;ChannelAllowlistView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AllowlistView> getChannelAllowlistWithHttpInfo(@javax.annotation.Nullable String channel) throws ApiException {
+    public ApiResponse<ChannelAllowlistView> getChannelAllowlistWithHttpInfo(@javax.annotation.Nullable String channel) throws ApiException {
         okhttp3.Call localVarCall = getChannelAllowlistValidateBeforeCall(channel, null);
-        Type localVarReturnType = new TypeToken<AllowlistView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ChannelAllowlistView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -438,12 +453,13 @@ public class ChannelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChannelAllowlistAsync(@javax.annotation.Nullable String channel, final ApiCallback<AllowlistView> _callback) throws ApiException {
+    public okhttp3.Call getChannelAllowlistAsync(@javax.annotation.Nullable String channel, final ApiCallback<ChannelAllowlistView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getChannelAllowlistValidateBeforeCall(channel, _callback);
-        Type localVarReturnType = new TypeToken<AllowlistView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ChannelAllowlistView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -459,6 +475,7 @@ public class ChannelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getChannelInboxCall(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
@@ -495,7 +512,8 @@ public class ChannelApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -524,17 +542,18 @@ public class ChannelApi {
      * Returns the messages people have sent to the caller org&#39;s connected chat bots, oldest first, in the portable envelope shape every transport normalises into. It is a CURSOR feed, not a search: pass the returned cursor back as &#x60;since&#x60; to get only what has arrived since. Only this org&#39;s messages are stored under this org, so the feed can never carry another tenant&#39;s chat.
      * @param since Since is the exclusive cursor: only messages with a higher row id come back. Empty starts at the beginning. Must parse as an integer. (optional)
      * @param limit Limit caps how many messages come back. Empty or 0 uses the store&#39;s default page size. Must parse as an integer. (optional)
-     * @return InboxPage
+     * @return ChannelInboxPage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public InboxPage getChannelInbox(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit) throws ApiException {
-        ApiResponse<InboxPage> localVarResp = getChannelInboxWithHttpInfo(since, limit);
+    public ChannelInboxPage getChannelInbox(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit) throws ApiException {
+        ApiResponse<ChannelInboxPage> localVarResp = getChannelInboxWithHttpInfo(since, limit);
         return localVarResp.getData();
     }
 
@@ -543,18 +562,19 @@ public class ChannelApi {
      * Returns the messages people have sent to the caller org&#39;s connected chat bots, oldest first, in the portable envelope shape every transport normalises into. It is a CURSOR feed, not a search: pass the returned cursor back as &#x60;since&#x60; to get only what has arrived since. Only this org&#39;s messages are stored under this org, so the feed can never carry another tenant&#39;s chat.
      * @param since Since is the exclusive cursor: only messages with a higher row id come back. Empty starts at the beginning. Must parse as an integer. (optional)
      * @param limit Limit caps how many messages come back. Empty or 0 uses the store&#39;s default page size. Must parse as an integer. (optional)
-     * @return ApiResponse&lt;InboxPage&gt;
+     * @return ApiResponse&lt;ChannelInboxPage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InboxPage> getChannelInboxWithHttpInfo(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit) throws ApiException {
+    public ApiResponse<ChannelInboxPage> getChannelInboxWithHttpInfo(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit) throws ApiException {
         okhttp3.Call localVarCall = getChannelInboxValidateBeforeCall(since, limit, null);
-        Type localVarReturnType = new TypeToken<InboxPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<ChannelInboxPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -571,12 +591,13 @@ public class ChannelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChannelInboxAsync(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit, final ApiCallback<InboxPage> _callback) throws ApiException {
+    public okhttp3.Call getChannelInboxAsync(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit, final ApiCallback<ChannelInboxPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getChannelInboxValidateBeforeCall(since, limit, _callback);
-        Type localVarReturnType = new TypeToken<InboxPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<ChannelInboxPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -590,6 +611,7 @@ public class ChannelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getChannelPairingCall(final ApiCallback _callback) throws ApiException {
@@ -618,7 +640,8 @@ public class ChannelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -645,35 +668,37 @@ public class ChannelApi {
     /**
      * Returns the pairing requests waiting for the caller org to approve — one per person who messaged a connected bot on a channel whose DM policy is \&quot;pairing\&quot; and who is not allowed yet.
      * Returns the pairing requests waiting for the caller org to approve — one per person who messaged a connected bot on a channel whose DM policy is \&quot;pairing\&quot; and who is not allowed yet. Each row carries the CODE an org admin passes to POST /v1/channel/pairing/approve. Expired requests are not returned. Codes are capability strings: they are shown here, and never logged.
-     * @return PairingQueue
+     * @return ChannelPairingQueue
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PairingQueue getChannelPairing() throws ApiException {
-        ApiResponse<PairingQueue> localVarResp = getChannelPairingWithHttpInfo();
+    public ChannelPairingQueue getChannelPairing() throws ApiException {
+        ApiResponse<ChannelPairingQueue> localVarResp = getChannelPairingWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the pairing requests waiting for the caller org to approve — one per person who messaged a connected bot on a channel whose DM policy is \&quot;pairing\&quot; and who is not allowed yet.
      * Returns the pairing requests waiting for the caller org to approve — one per person who messaged a connected bot on a channel whose DM policy is \&quot;pairing\&quot; and who is not allowed yet. Each row carries the CODE an org admin passes to POST /v1/channel/pairing/approve. Expired requests are not returned. Codes are capability strings: they are shown here, and never logged.
-     * @return ApiResponse&lt;PairingQueue&gt;
+     * @return ApiResponse&lt;ChannelPairingQueue&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PairingQueue> getChannelPairingWithHttpInfo() throws ApiException {
+    public ApiResponse<ChannelPairingQueue> getChannelPairingWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getChannelPairingValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PairingQueue>(){}.getType();
+        Type localVarReturnType = new TypeToken<ChannelPairingQueue>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -688,12 +713,13 @@ public class ChannelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChannelPairingAsync(final ApiCallback<PairingQueue> _callback) throws ApiException {
+    public okhttp3.Call getChannelPairingAsync(final ApiCallback<ChannelPairingQueue> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getChannelPairingValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PairingQueue>(){}.getType();
+        Type localVarReturnType = new TypeToken<ChannelPairingQueue>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -761,7 +787,7 @@ public class ChannelApi {
 
     /**
      * Send a message from your org&#39;s bot to one chat room
-     * Delivers text, attachments and actions to one room on a connected chat transport — discord, github, linear, slack, teams, telegram or whatsapp — and answers that transport&#39;s own receipt, the &#x60;messageId&#x60; it assigned and the Unix second it landed. An unknown channel is a 404.  The body is the envelope&#39;s NARROW outbound projection: &#x60;room&#x60;, &#x60;text&#x60;, &#x60;attachments&#x60;, &#x60;actions&#x60;, &#x60;replyTo&#x60; and &#x60;idempotency&#x60;, and nothing else. Identity is not a field — the channel is the path segment and the sender is the caller&#39;s validated org — so a body carrying &#x60;sender&#x60;, &#x60;account&#x60; or &#x60;channel&#x60; is refused with 400 rather than having it silently dropped. &#x60;room.id&#x60; is required, and so is something to say: text, or at least one attachment.  Requires a validated principal; 403 without one. The room must already belong to the caller&#39;s org — each transport verifies the binding itself, so a room this org has not bound is 403 and a room whose route the bot has never learned is 409, meaning someone has to message the bot there first. A route learned only so a pairing reply could be delivered lasts exactly as long as that pairing request does, so a room whose sender was never approved goes back to 409 within the hour. A transport that fails answers 502 carrying status and shape only, never a token.  Sending is at-most-once only if you ask for it: pass an &#x60;idempotency&#x60; string and a replay answers 200 with the PRIOR receipt instead of sending twice, while a send that fails releases the key so the caller can re-attempt. Bodies over 1 MiB are refused. Every transport currently renders text only, so attachments and actions are flattened deterministically to one line each after the text rather than dropped.
+     * Delivers text, attachments and actions to one room on a connected chat transport — discord, github, linear, slack, teams, telegram or whatsapp — and answers that transport&#39;s own receipt, the &#x60;messageId&#x60; it assigned and the Unix second it landed. An unknown channel is a 404.  The body is the envelope&#39;s NARROW outbound projection: &#x60;room&#x60;, &#x60;text&#x60;, &#x60;attachments&#x60;, &#x60;actions&#x60;, &#x60;replyTo&#x60; and &#x60;idempotency&#x60;, and nothing else. Identity is not a field — the channel is the path segment and the sender is the caller&#39;s validated org — so a body carrying &#x60;sender&#x60;, &#x60;account&#x60; or &#x60;channel&#x60; is refused with 400 rather than having it silently dropped. &#x60;room.id&#x60; is required, and so is something to say: text, or at least one attachment.  Requires a validated principal; 401 without one. The room must already belong to the caller&#39;s org — each transport verifies the binding itself, so a room this org has not bound is 403 and a room whose route the bot has never learned is 409, meaning someone has to message the bot there first. A route learned only so a pairing reply could be delivered lasts exactly as long as that pairing request does, so a room whose sender was never approved goes back to 409 within the hour. A transport that fails answers 502 carrying status and shape only, never a token.  Sending is at-most-once only if you ask for it: pass an &#x60;idempotency&#x60; string and a replay answers 200 with the PRIOR receipt instead of sending twice, while a send that fails releases the key so the caller can re-attempt. Bodies over 1 MiB are refused. Every transport currently renders text only, so attachments and actions are flattened deterministically to one line each after the text rather than dropped.
      * @param channel  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -771,7 +797,7 @@ public class ChannelApi {
 
     /**
      * Send a message from your org&#39;s bot to one chat room
-     * Delivers text, attachments and actions to one room on a connected chat transport — discord, github, linear, slack, teams, telegram or whatsapp — and answers that transport&#39;s own receipt, the &#x60;messageId&#x60; it assigned and the Unix second it landed. An unknown channel is a 404.  The body is the envelope&#39;s NARROW outbound projection: &#x60;room&#x60;, &#x60;text&#x60;, &#x60;attachments&#x60;, &#x60;actions&#x60;, &#x60;replyTo&#x60; and &#x60;idempotency&#x60;, and nothing else. Identity is not a field — the channel is the path segment and the sender is the caller&#39;s validated org — so a body carrying &#x60;sender&#x60;, &#x60;account&#x60; or &#x60;channel&#x60; is refused with 400 rather than having it silently dropped. &#x60;room.id&#x60; is required, and so is something to say: text, or at least one attachment.  Requires a validated principal; 403 without one. The room must already belong to the caller&#39;s org — each transport verifies the binding itself, so a room this org has not bound is 403 and a room whose route the bot has never learned is 409, meaning someone has to message the bot there first. A route learned only so a pairing reply could be delivered lasts exactly as long as that pairing request does, so a room whose sender was never approved goes back to 409 within the hour. A transport that fails answers 502 carrying status and shape only, never a token.  Sending is at-most-once only if you ask for it: pass an &#x60;idempotency&#x60; string and a replay answers 200 with the PRIOR receipt instead of sending twice, while a send that fails releases the key so the caller can re-attempt. Bodies over 1 MiB are refused. Every transport currently renders text only, so attachments and actions are flattened deterministically to one line each after the text rather than dropped.
+     * Delivers text, attachments and actions to one room on a connected chat transport — discord, github, linear, slack, teams, telegram or whatsapp — and answers that transport&#39;s own receipt, the &#x60;messageId&#x60; it assigned and the Unix second it landed. An unknown channel is a 404.  The body is the envelope&#39;s NARROW outbound projection: &#x60;room&#x60;, &#x60;text&#x60;, &#x60;attachments&#x60;, &#x60;actions&#x60;, &#x60;replyTo&#x60; and &#x60;idempotency&#x60;, and nothing else. Identity is not a field — the channel is the path segment and the sender is the caller&#39;s validated org — so a body carrying &#x60;sender&#x60;, &#x60;account&#x60; or &#x60;channel&#x60; is refused with 400 rather than having it silently dropped. &#x60;room.id&#x60; is required, and so is something to say: text, or at least one attachment.  Requires a validated principal; 401 without one. The room must already belong to the caller&#39;s org — each transport verifies the binding itself, so a room this org has not bound is 403 and a room whose route the bot has never learned is 409, meaning someone has to message the bot there first. A route learned only so a pairing reply could be delivered lasts exactly as long as that pairing request does, so a room whose sender was never approved goes back to 409 within the hour. A transport that fails answers 502 carrying status and shape only, never a token.  Sending is at-most-once only if you ask for it: pass an &#x60;idempotency&#x60; string and a replay answers 200 with the PRIOR receipt instead of sending twice, while a send that fails releases the key so the caller can re-attempt. Bodies over 1 MiB are refused. Every transport currently renders text only, so attachments and actions are flattened deterministically to one line each after the text rather than dropped.
      * @param channel  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -783,7 +809,7 @@ public class ChannelApi {
 
     /**
      * Send a message from your org&#39;s bot to one chat room (asynchronously)
-     * Delivers text, attachments and actions to one room on a connected chat transport — discord, github, linear, slack, teams, telegram or whatsapp — and answers that transport&#39;s own receipt, the &#x60;messageId&#x60; it assigned and the Unix second it landed. An unknown channel is a 404.  The body is the envelope&#39;s NARROW outbound projection: &#x60;room&#x60;, &#x60;text&#x60;, &#x60;attachments&#x60;, &#x60;actions&#x60;, &#x60;replyTo&#x60; and &#x60;idempotency&#x60;, and nothing else. Identity is not a field — the channel is the path segment and the sender is the caller&#39;s validated org — so a body carrying &#x60;sender&#x60;, &#x60;account&#x60; or &#x60;channel&#x60; is refused with 400 rather than having it silently dropped. &#x60;room.id&#x60; is required, and so is something to say: text, or at least one attachment.  Requires a validated principal; 403 without one. The room must already belong to the caller&#39;s org — each transport verifies the binding itself, so a room this org has not bound is 403 and a room whose route the bot has never learned is 409, meaning someone has to message the bot there first. A route learned only so a pairing reply could be delivered lasts exactly as long as that pairing request does, so a room whose sender was never approved goes back to 409 within the hour. A transport that fails answers 502 carrying status and shape only, never a token.  Sending is at-most-once only if you ask for it: pass an &#x60;idempotency&#x60; string and a replay answers 200 with the PRIOR receipt instead of sending twice, while a send that fails releases the key so the caller can re-attempt. Bodies over 1 MiB are refused. Every transport currently renders text only, so attachments and actions are flattened deterministically to one line each after the text rather than dropped.
+     * Delivers text, attachments and actions to one room on a connected chat transport — discord, github, linear, slack, teams, telegram or whatsapp — and answers that transport&#39;s own receipt, the &#x60;messageId&#x60; it assigned and the Unix second it landed. An unknown channel is a 404.  The body is the envelope&#39;s NARROW outbound projection: &#x60;room&#x60;, &#x60;text&#x60;, &#x60;attachments&#x60;, &#x60;actions&#x60;, &#x60;replyTo&#x60; and &#x60;idempotency&#x60;, and nothing else. Identity is not a field — the channel is the path segment and the sender is the caller&#39;s validated org — so a body carrying &#x60;sender&#x60;, &#x60;account&#x60; or &#x60;channel&#x60; is refused with 400 rather than having it silently dropped. &#x60;room.id&#x60; is required, and so is something to say: text, or at least one attachment.  Requires a validated principal; 401 without one. The room must already belong to the caller&#39;s org — each transport verifies the binding itself, so a room this org has not bound is 403 and a room whose route the bot has never learned is 409, meaning someone has to message the bot there first. A route learned only so a pairing reply could be delivered lasts exactly as long as that pairing request does, so a room whose sender was never approved goes back to 409 within the hour. A transport that fails answers 502 carrying status and shape only, never a token.  Sending is at-most-once only if you ask for it: pass an &#x60;idempotency&#x60; string and a replay answers 200 with the PRIOR receipt instead of sending twice, while a send that fails releases the key so the caller can re-attempt. Bodies over 1 MiB are refused. Every transport currently renders text only, so attachments and actions are flattened deterministically to one line each after the text rather than dropped.
      * @param channel  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -797,7 +823,7 @@ public class ChannelApi {
     }
     /**
      * Build call for postChannelPairingApprove
-     * @param approvePairingIn  (required)
+     * @param channelApprovePairingIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -806,9 +832,10 @@ public class ChannelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postChannelPairingApproveCall(@javax.annotation.Nonnull ApprovePairingIn approvePairingIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postChannelPairingApproveCall(@javax.annotation.Nonnull ChannelApprovePairingIn channelApprovePairingIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -822,7 +849,7 @@ public class ChannelApi {
             basePath = null;
         }
 
-        Object localVarPostBody = approvePairingIn;
+        Object localVarPostBody = channelApprovePairingIn;
 
         // create path and map variables
         String localVarPath = "/v1/channel/pairing/approve";
@@ -834,7 +861,8 @@ public class ChannelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -854,57 +882,59 @@ public class ChannelApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postChannelPairingApproveValidateBeforeCall(@javax.annotation.Nonnull ApprovePairingIn approvePairingIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'approvePairingIn' is set
-        if (approvePairingIn == null) {
-            throw new ApiException("Missing the required parameter 'approvePairingIn' when calling postChannelPairingApprove(Async)");
+    private okhttp3.Call postChannelPairingApproveValidateBeforeCall(@javax.annotation.Nonnull ChannelApprovePairingIn channelApprovePairingIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'channelApprovePairingIn' is set
+        if (channelApprovePairingIn == null) {
+            throw new ApiException("Missing the required parameter 'channelApprovePairingIn' when calling postChannelPairingApprove(Async)");
         }
 
-        return postChannelPairingApproveCall(approvePairingIn, _callback);
+        return postChannelPairingApproveCall(channelApprovePairingIn, _callback);
 
     }
 
     /**
      * Turns one pending pairing code into a standing allow entry, so that person can DM the org&#39;s bot on that channel from now on.
      * Turns one pending pairing code into a standing allow entry, so that person can DM the org&#39;s bot on that channel from now on. It requires ORG ADMIN, not merely membership. The first approval an org makes on a channel also bootstraps that sender as the channel&#39;s owner, which the answer reports. An unknown or expired code is a 404, and a code always belongs to exactly one org, so it can never approve someone into another tenant.
-     * @param approvePairingIn  (required)
-     * @return PairingApproved
+     * @param channelApprovePairingIn  (required)
+     * @return ChannelPairingApproved
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PairingApproved postChannelPairingApprove(@javax.annotation.Nonnull ApprovePairingIn approvePairingIn) throws ApiException {
-        ApiResponse<PairingApproved> localVarResp = postChannelPairingApproveWithHttpInfo(approvePairingIn);
+    public ChannelPairingApproved postChannelPairingApprove(@javax.annotation.Nonnull ChannelApprovePairingIn channelApprovePairingIn) throws ApiException {
+        ApiResponse<ChannelPairingApproved> localVarResp = postChannelPairingApproveWithHttpInfo(channelApprovePairingIn);
         return localVarResp.getData();
     }
 
     /**
      * Turns one pending pairing code into a standing allow entry, so that person can DM the org&#39;s bot on that channel from now on.
      * Turns one pending pairing code into a standing allow entry, so that person can DM the org&#39;s bot on that channel from now on. It requires ORG ADMIN, not merely membership. The first approval an org makes on a channel also bootstraps that sender as the channel&#39;s owner, which the answer reports. An unknown or expired code is a 404, and a code always belongs to exactly one org, so it can never approve someone into another tenant.
-     * @param approvePairingIn  (required)
-     * @return ApiResponse&lt;PairingApproved&gt;
+     * @param channelApprovePairingIn  (required)
+     * @return ApiResponse&lt;ChannelPairingApproved&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PairingApproved> postChannelPairingApproveWithHttpInfo(@javax.annotation.Nonnull ApprovePairingIn approvePairingIn) throws ApiException {
-        okhttp3.Call localVarCall = postChannelPairingApproveValidateBeforeCall(approvePairingIn, null);
-        Type localVarReturnType = new TypeToken<PairingApproved>(){}.getType();
+    public ApiResponse<ChannelPairingApproved> postChannelPairingApproveWithHttpInfo(@javax.annotation.Nonnull ChannelApprovePairingIn channelApprovePairingIn) throws ApiException {
+        okhttp3.Call localVarCall = postChannelPairingApproveValidateBeforeCall(channelApprovePairingIn, null);
+        Type localVarReturnType = new TypeToken<ChannelPairingApproved>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Turns one pending pairing code into a standing allow entry, so that person can DM the org&#39;s bot on that channel from now on. (asynchronously)
      * Turns one pending pairing code into a standing allow entry, so that person can DM the org&#39;s bot on that channel from now on. It requires ORG ADMIN, not merely membership. The first approval an org makes on a channel also bootstraps that sender as the channel&#39;s owner, which the answer reports. An unknown or expired code is a 404, and a code always belongs to exactly one org, so it can never approve someone into another tenant.
-     * @param approvePairingIn  (required)
+     * @param channelApprovePairingIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -913,18 +943,19 @@ public class ChannelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postChannelPairingApproveAsync(@javax.annotation.Nonnull ApprovePairingIn approvePairingIn, final ApiCallback<PairingApproved> _callback) throws ApiException {
+    public okhttp3.Call postChannelPairingApproveAsync(@javax.annotation.Nonnull ChannelApprovePairingIn channelApprovePairingIn, final ApiCallback<ChannelPairingApproved> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postChannelPairingApproveValidateBeforeCall(approvePairingIn, _callback);
-        Type localVarReturnType = new TypeToken<PairingApproved>(){}.getType();
+        okhttp3.Call localVarCall = postChannelPairingApproveValidateBeforeCall(channelApprovePairingIn, _callback);
+        Type localVarReturnType = new TypeToken<ChannelPairingApproved>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putChannelAgent
-     * @param channelAgentsPut  (required)
+     * @param channelChannelAgentsPut  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -933,9 +964,10 @@ public class ChannelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putChannelAgentCall(@javax.annotation.Nonnull ChannelAgentsPut channelAgentsPut, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putChannelAgentCall(@javax.annotation.Nonnull ChannelChannelAgentsPut channelChannelAgentsPut, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -949,7 +981,7 @@ public class ChannelApi {
             basePath = null;
         }
 
-        Object localVarPostBody = channelAgentsPut;
+        Object localVarPostBody = channelChannelAgentsPut;
 
         // create path and map variables
         String localVarPath = "/v1/channel/agent";
@@ -961,7 +993,8 @@ public class ChannelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -981,57 +1014,59 @@ public class ChannelApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putChannelAgentValidateBeforeCall(@javax.annotation.Nonnull ChannelAgentsPut channelAgentsPut, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'channelAgentsPut' is set
-        if (channelAgentsPut == null) {
-            throw new ApiException("Missing the required parameter 'channelAgentsPut' when calling putChannelAgent(Async)");
+    private okhttp3.Call putChannelAgentValidateBeforeCall(@javax.annotation.Nonnull ChannelChannelAgentsPut channelChannelAgentsPut, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'channelChannelAgentsPut' is set
+        if (channelChannelAgentsPut == null) {
+            throw new ApiException("Missing the required parameter 'channelChannelAgentsPut' when calling putChannelAgent(Async)");
         }
 
-        return putChannelAgentCall(channelAgentsPut, _callback);
+        return putChannelAgentCall(channelChannelAgentsPut, _callback);
 
     }
 
     /**
      * Binds agents to the caller org&#39;s channel and answers the bindings as GET would.
      * Binds agents to the caller org&#39;s channel and answers the bindings as GET would. It requires ORG ADMIN. The agent is named by its ref — the name an org gave it at POST /v1/agent, or a built-in such as dev, des or vi.
-     * @param channelAgentsPut  (required)
-     * @return ChannelAgents
+     * @param channelChannelAgentsPut  (required)
+     * @return ChannelChannelAgents
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ChannelAgents putChannelAgent(@javax.annotation.Nonnull ChannelAgentsPut channelAgentsPut) throws ApiException {
-        ApiResponse<ChannelAgents> localVarResp = putChannelAgentWithHttpInfo(channelAgentsPut);
+    public ChannelChannelAgents putChannelAgent(@javax.annotation.Nonnull ChannelChannelAgentsPut channelChannelAgentsPut) throws ApiException {
+        ApiResponse<ChannelChannelAgents> localVarResp = putChannelAgentWithHttpInfo(channelChannelAgentsPut);
         return localVarResp.getData();
     }
 
     /**
      * Binds agents to the caller org&#39;s channel and answers the bindings as GET would.
      * Binds agents to the caller org&#39;s channel and answers the bindings as GET would. It requires ORG ADMIN. The agent is named by its ref — the name an org gave it at POST /v1/agent, or a built-in such as dev, des or vi.
-     * @param channelAgentsPut  (required)
-     * @return ApiResponse&lt;ChannelAgents&gt;
+     * @param channelChannelAgentsPut  (required)
+     * @return ApiResponse&lt;ChannelChannelAgents&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChannelAgents> putChannelAgentWithHttpInfo(@javax.annotation.Nonnull ChannelAgentsPut channelAgentsPut) throws ApiException {
-        okhttp3.Call localVarCall = putChannelAgentValidateBeforeCall(channelAgentsPut, null);
-        Type localVarReturnType = new TypeToken<ChannelAgents>(){}.getType();
+    public ApiResponse<ChannelChannelAgents> putChannelAgentWithHttpInfo(@javax.annotation.Nonnull ChannelChannelAgentsPut channelChannelAgentsPut) throws ApiException {
+        okhttp3.Call localVarCall = putChannelAgentValidateBeforeCall(channelChannelAgentsPut, null);
+        Type localVarReturnType = new TypeToken<ChannelChannelAgents>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Binds agents to the caller org&#39;s channel and answers the bindings as GET would. (asynchronously)
      * Binds agents to the caller org&#39;s channel and answers the bindings as GET would. It requires ORG ADMIN. The agent is named by its ref — the name an org gave it at POST /v1/agent, or a built-in such as dev, des or vi.
-     * @param channelAgentsPut  (required)
+     * @param channelChannelAgentsPut  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1040,18 +1075,19 @@ public class ChannelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putChannelAgentAsync(@javax.annotation.Nonnull ChannelAgentsPut channelAgentsPut, final ApiCallback<ChannelAgents> _callback) throws ApiException {
+    public okhttp3.Call putChannelAgentAsync(@javax.annotation.Nonnull ChannelChannelAgentsPut channelChannelAgentsPut, final ApiCallback<ChannelChannelAgents> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putChannelAgentValidateBeforeCall(channelAgentsPut, _callback);
-        Type localVarReturnType = new TypeToken<ChannelAgents>(){}.getType();
+        okhttp3.Call localVarCall = putChannelAgentValidateBeforeCall(channelChannelAgentsPut, _callback);
+        Type localVarReturnType = new TypeToken<ChannelChannelAgents>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putChannelAllowlist
-     * @param allowlistPutIn  (required)
+     * @param channelAllowlistPutIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1060,9 +1096,10 @@ public class ChannelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putChannelAllowlistCall(@javax.annotation.Nonnull AllowlistPutIn allowlistPutIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putChannelAllowlistCall(@javax.annotation.Nonnull ChannelAllowlistPutIn channelAllowlistPutIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1076,7 +1113,7 @@ public class ChannelApi {
             basePath = null;
         }
 
-        Object localVarPostBody = allowlistPutIn;
+        Object localVarPostBody = channelAllowlistPutIn;
 
         // create path and map variables
         String localVarPath = "/v1/channel/allowlist";
@@ -1088,7 +1125,8 @@ public class ChannelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1108,57 +1146,59 @@ public class ChannelApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putChannelAllowlistValidateBeforeCall(@javax.annotation.Nonnull AllowlistPutIn allowlistPutIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'allowlistPutIn' is set
-        if (allowlistPutIn == null) {
-            throw new ApiException("Missing the required parameter 'allowlistPutIn' when calling putChannelAllowlist(Async)");
+    private okhttp3.Call putChannelAllowlistValidateBeforeCall(@javax.annotation.Nonnull ChannelAllowlistPutIn channelAllowlistPutIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'channelAllowlistPutIn' is set
+        if (channelAllowlistPutIn == null) {
+            throw new ApiException("Missing the required parameter 'channelAllowlistPutIn' when calling putChannelAllowlist(Async)");
         }
 
-        return putChannelAllowlistCall(allowlistPutIn, _callback);
+        return putChannelAllowlistCall(channelAllowlistPutIn, _callback);
 
     }
 
     /**
      * Edits the caller org&#39;s access policy for one channel and answers the policy as GET would, so both verbs return ONE shape.
      * Edits the caller org&#39;s access policy for one channel and answers the policy as GET would, so both verbs return ONE shape. It requires ORG ADMIN. Every field but &#x60;channel&#x60; is optional and applied only when provided: an empty policy string leaves that policy alone, an absent or null list leaves that list alone, and an EMPTY list clears it. It writes only CONFIG-sourced allow entries — senders approved through pairing belong to the approval flow, so a policy edit can never revoke one. An unknown channel is a 404.
-     * @param allowlistPutIn  (required)
-     * @return AllowlistView
+     * @param channelAllowlistPutIn  (required)
+     * @return ChannelAllowlistView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AllowlistView putChannelAllowlist(@javax.annotation.Nonnull AllowlistPutIn allowlistPutIn) throws ApiException {
-        ApiResponse<AllowlistView> localVarResp = putChannelAllowlistWithHttpInfo(allowlistPutIn);
+    public ChannelAllowlistView putChannelAllowlist(@javax.annotation.Nonnull ChannelAllowlistPutIn channelAllowlistPutIn) throws ApiException {
+        ApiResponse<ChannelAllowlistView> localVarResp = putChannelAllowlistWithHttpInfo(channelAllowlistPutIn);
         return localVarResp.getData();
     }
 
     /**
      * Edits the caller org&#39;s access policy for one channel and answers the policy as GET would, so both verbs return ONE shape.
      * Edits the caller org&#39;s access policy for one channel and answers the policy as GET would, so both verbs return ONE shape. It requires ORG ADMIN. Every field but &#x60;channel&#x60; is optional and applied only when provided: an empty policy string leaves that policy alone, an absent or null list leaves that list alone, and an EMPTY list clears it. It writes only CONFIG-sourced allow entries — senders approved through pairing belong to the approval flow, so a policy edit can never revoke one. An unknown channel is a 404.
-     * @param allowlistPutIn  (required)
-     * @return ApiResponse&lt;AllowlistView&gt;
+     * @param channelAllowlistPutIn  (required)
+     * @return ApiResponse&lt;ChannelAllowlistView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AllowlistView> putChannelAllowlistWithHttpInfo(@javax.annotation.Nonnull AllowlistPutIn allowlistPutIn) throws ApiException {
-        okhttp3.Call localVarCall = putChannelAllowlistValidateBeforeCall(allowlistPutIn, null);
-        Type localVarReturnType = new TypeToken<AllowlistView>(){}.getType();
+    public ApiResponse<ChannelAllowlistView> putChannelAllowlistWithHttpInfo(@javax.annotation.Nonnull ChannelAllowlistPutIn channelAllowlistPutIn) throws ApiException {
+        okhttp3.Call localVarCall = putChannelAllowlistValidateBeforeCall(channelAllowlistPutIn, null);
+        Type localVarReturnType = new TypeToken<ChannelAllowlistView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Edits the caller org&#39;s access policy for one channel and answers the policy as GET would, so both verbs return ONE shape. (asynchronously)
      * Edits the caller org&#39;s access policy for one channel and answers the policy as GET would, so both verbs return ONE shape. It requires ORG ADMIN. Every field but &#x60;channel&#x60; is optional and applied only when provided: an empty policy string leaves that policy alone, an absent or null list leaves that list alone, and an EMPTY list clears it. It writes only CONFIG-sourced allow entries — senders approved through pairing belong to the approval flow, so a policy edit can never revoke one. An unknown channel is a 404.
-     * @param allowlistPutIn  (required)
+     * @param channelAllowlistPutIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1167,12 +1207,13 @@ public class ChannelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putChannelAllowlistAsync(@javax.annotation.Nonnull AllowlistPutIn allowlistPutIn, final ApiCallback<AllowlistView> _callback) throws ApiException {
+    public okhttp3.Call putChannelAllowlistAsync(@javax.annotation.Nonnull ChannelAllowlistPutIn channelAllowlistPutIn, final ApiCallback<ChannelAllowlistView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putChannelAllowlistValidateBeforeCall(allowlistPutIn, _callback);
-        Type localVarReturnType = new TypeToken<AllowlistView>(){}.getType();
+        okhttp3.Call localVarCall = putChannelAllowlistValidateBeforeCall(channelAllowlistPutIn, _callback);
+        Type localVarReturnType = new TypeToken<ChannelAllowlistView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

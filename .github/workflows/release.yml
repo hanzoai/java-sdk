@@ -45,7 +45,7 @@ jobs:
         # touch the version, which is indistinguishable from a broken release.
         run: |
           set -uo pipefail
-          V=$(sed -n "s/^version = '\(.*\)'/\1/p" hanzo-java-cloud/build.gradle)
+          V=$(./scripts/version)
           [ -n "$V" ] || { echo "::error::no version in hanzo-java-cloud/build.gradle"; exit 1; }
           if curl -sfI "https://repo1.maven.org/maven2/ai/hanzo/hanzo-java-cloud/${V}/hanzo-java-cloud-${V}.pom" >/dev/null 2>&1; then
             echo "Central already serves ai.hanzo:hanzo-java-cloud:${V} — nothing to publish."

@@ -2,11 +2,11 @@ package ai.hanzo.cloud.examples;
 
 import ai.hanzo.Hanzo;
 import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.AgentsApi;
-import ai.hanzo.cloud.model.AgentRunView;
-import ai.hanzo.cloud.model.AgentView;
-import ai.hanzo.cloud.model.CreateAgentIn;
-import ai.hanzo.cloud.model.RunList;
+import ai.hanzo.cloud.api.AgentApi;
+import ai.hanzo.cloud.model.AgentAgentRunView;
+import ai.hanzo.cloud.model.AgentAgentView;
+import ai.hanzo.cloud.model.AgentCreateAgentIn;
+import ai.hanzo.cloud.model.AgentRunList;
 
 import java.util.HashSet;
 import java.util.List;
@@ -16,9 +16,9 @@ import java.util.UUID;
 /**
  * agent — create one, run it, watch the run land.
  *
- * <p>Operations: {@code post_agents} — POST /v1/agents,
- * {@code post_agents_by_ref_run} — POST /v1/agents/{ref}/run,
- * {@code get_agents_by_ref_runs} — GET /v1/agents/{ref}/runs.
+ * <p>Operations: {@code post_agent} — POST /v1/agent,
+ * {@code post_agent_by_ref_run} — POST /v1/agent/{ref}/run,
+ * {@code get_agent_by_ref_runs} — GET /v1/agent/{ref}/runs.
  *
  * <p>{@code ref} accepts the public id or the org-unique name, so the run and
  * the read both use the name just created. Names are org-unique, so this makes
@@ -49,23 +49,23 @@ public final class Agent {
     private static final String DEFAULT_MODEL = "zen5";
 
     public static void main(String[] args) throws InterruptedException {
-        AgentsApi agents = new AgentsApi(Hanzo.client());
+        AgentApi agents = new AgentApi(Hanzo.client());
         String name = "sdk-example-" + UUID.randomUUID().toString().substring(0, 8);
 
         try {
-            AgentView created = agents.postAgents(new CreateAgentIn()
+            AgentAgentView created = agents.postAgent(new AgentCreateAgentIn()
                     .name(name)
                     .model(model())
                     .instructions("Answer in exactly one sentence: what is the capital of Japan?"));
             System.out.printf("created  %s (%s)%n", created.getName(), created.getId());
 
-            Set<String> before = runIds(agents.getAgentsByRefRuns(name, 100));
+            Set<String> before = runIds(agents.getAgentByRefRuns(name, 100L));
 
-            agents.postAgentsByRefRun(name);
+            agents.postAgentByRefRun(name);
             System.out.printf("ran      %s%n", name);
 
             for (int attempt = 0; attempt < POLL_ATTEMPTS; attempt++) {
-                AgentRunView run = started(agents.getAgentsByRefRuns(name, 100), before);
+                AgentAgentRunView run = started(agents.getAgentByRefRuns(name, 100L), before);
                 if (run != null && !RUNNING.contains(String.valueOf(run.getStatus()))) {
                     System.out.printf("run      %s %s%n", run.getId(), run.getStatus());
                     System.out.printf("output   %s%n", run.getOutput());
@@ -86,9 +86,9 @@ public final class Agent {
         return model == null || model.trim().isEmpty() ? DEFAULT_MODEL : model;
     }
 
-    private static Set<String> runIds(RunList list) {
+    private static Set<String> runIds(AgentRunList list) {
         Set<String> ids = new HashSet<>();
-        List<AgentRunView> runs = list == null ? null : list.getRuns();
+        List<AgentAgentRunView> runs = list == null ? null : list.getRuns();
         if (runs != null) {
             runs.forEach(run -> ids.add(run.getId()));
         }
@@ -96,8 +96,8 @@ public final class Agent {
     }
 
     /** The run this example started: the one that was not there before. */
-    private static AgentRunView started(RunList list, Set<String> before) {
-        List<AgentRunView> runs = list == null ? null : list.getRuns();
+    private static AgentAgentRunView started(AgentRunList list, Set<String> before) {
+        List<AgentAgentRunView> runs = list == null ? null : list.getRuns();
         if (runs == null) {
             return null;
         }

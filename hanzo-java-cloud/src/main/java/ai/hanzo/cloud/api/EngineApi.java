@@ -27,7 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.EngineStatus;
+import ai.hanzo.cloud.model.EngineEngineStatus;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -83,6 +84,7 @@ public class EngineApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call engineModelCall(@javax.annotation.Nullable String model, final ApiCallback _callback) throws ApiException {
@@ -115,7 +117,8 @@ public class EngineApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -141,7 +144,7 @@ public class EngineApi {
 
     /**
      * Read one model&#39;s load state on the serving runtime
-     * Model reads one model&#39;s load state — loaded, unloading, or not_found, as the engine itself reports it.
+     * Reads one model&#39;s load state — loaded, unloading, or not_found, as the engine itself reports it.
      * @param model Model is the model id to inspect, exactly as the model list reports it. (optional)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -150,6 +153,7 @@ public class EngineApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Object engineModel(@javax.annotation.Nullable String model) throws ApiException {
@@ -159,7 +163,7 @@ public class EngineApi {
 
     /**
      * Read one model&#39;s load state on the serving runtime
-     * Model reads one model&#39;s load state — loaded, unloading, or not_found, as the engine itself reports it.
+     * Reads one model&#39;s load state — loaded, unloading, or not_found, as the engine itself reports it.
      * @param model Model is the model id to inspect, exactly as the model list reports it. (optional)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -168,6 +172,7 @@ public class EngineApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> engineModelWithHttpInfo(@javax.annotation.Nullable String model) throws ApiException {
@@ -178,7 +183,7 @@ public class EngineApi {
 
     /**
      * Read one model&#39;s load state on the serving runtime (asynchronously)
-     * Model reads one model&#39;s load state — loaded, unloading, or not_found, as the engine itself reports it.
+     * Reads one model&#39;s load state — loaded, unloading, or not_found, as the engine itself reports it.
      * @param model Model is the model id to inspect, exactly as the model list reports it. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -188,6 +193,7 @@ public class EngineApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call engineModelAsync(@javax.annotation.Nullable String model, final ApiCallback<Object> _callback) throws ApiException {
@@ -207,6 +213,7 @@ public class EngineApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call engineModelsCall(final ApiCallback _callback) throws ApiException {
@@ -235,7 +242,8 @@ public class EngineApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -261,7 +269,7 @@ public class EngineApi {
 
     /**
      * List the models the serving runtime holds, with each one&#39;s load state
-     * Models lists the models the engine serves, each with its load state — the server&#39;s own model table (its standard list envelope, load status included), relayed verbatim.
+     * Lists the models the engine serves, each with its load state — the server&#39;s own model table (its standard list envelope, load status included), relayed verbatim.
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -269,6 +277,7 @@ public class EngineApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Object engineModels() throws ApiException {
@@ -278,7 +287,7 @@ public class EngineApi {
 
     /**
      * List the models the serving runtime holds, with each one&#39;s load state
-     * Models lists the models the engine serves, each with its load state — the server&#39;s own model table (its standard list envelope, load status included), relayed verbatim.
+     * Lists the models the engine serves, each with its load state — the server&#39;s own model table (its standard list envelope, load status included), relayed verbatim.
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -286,6 +295,7 @@ public class EngineApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> engineModelsWithHttpInfo() throws ApiException {
@@ -296,7 +306,7 @@ public class EngineApi {
 
     /**
      * List the models the serving runtime holds, with each one&#39;s load state (asynchronously)
-     * Models lists the models the engine serves, each with its load state — the server&#39;s own model table (its standard list envelope, load status included), relayed verbatim.
+     * Lists the models the engine serves, each with its load state — the server&#39;s own model table (its standard list envelope, load status included), relayed verbatim.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -305,6 +315,7 @@ public class EngineApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call engineModelsAsync(final ApiCallback<Object> _callback) throws ApiException {
@@ -324,6 +335,7 @@ public class EngineApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call engineStatusCall(final ApiCallback _callback) throws ApiException {
@@ -352,7 +364,8 @@ public class EngineApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -378,42 +391,44 @@ public class EngineApi {
 
     /**
      * Whether the serving runtime is reachable, and which build it runs
-     * Status reports whether the engine deployment is reachable and which build revision it runs — an honest lens for \&quot;is the serving runtime up\&quot;, never a fabricated ok.
-     * @return EngineStatus
+     * Reports whether the engine deployment is reachable and which build revision it runs — an honest lens for \&quot;is the serving runtime up\&quot;, never a fabricated ok.
+     * @return EngineEngineStatus
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EngineStatus engineStatus() throws ApiException {
-        ApiResponse<EngineStatus> localVarResp = engineStatusWithHttpInfo();
+    public EngineEngineStatus engineStatus() throws ApiException {
+        ApiResponse<EngineEngineStatus> localVarResp = engineStatusWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Whether the serving runtime is reachable, and which build it runs
-     * Status reports whether the engine deployment is reachable and which build revision it runs — an honest lens for \&quot;is the serving runtime up\&quot;, never a fabricated ok.
-     * @return ApiResponse&lt;EngineStatus&gt;
+     * Reports whether the engine deployment is reachable and which build revision it runs — an honest lens for \&quot;is the serving runtime up\&quot;, never a fabricated ok.
+     * @return ApiResponse&lt;EngineEngineStatus&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EngineStatus> engineStatusWithHttpInfo() throws ApiException {
+    public ApiResponse<EngineEngineStatus> engineStatusWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = engineStatusValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<EngineStatus>(){}.getType();
+        Type localVarReturnType = new TypeToken<EngineEngineStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Whether the serving runtime is reachable, and which build it runs (asynchronously)
-     * Status reports whether the engine deployment is reachable and which build revision it runs — an honest lens for \&quot;is the serving runtime up\&quot;, never a fabricated ok.
+     * Reports whether the engine deployment is reachable and which build revision it runs — an honest lens for \&quot;is the serving runtime up\&quot;, never a fabricated ok.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -422,12 +437,13 @@ public class EngineApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call engineStatusAsync(final ApiCallback<EngineStatus> _callback) throws ApiException {
+    public okhttp3.Call engineStatusAsync(final ApiCallback<EngineEngineStatus> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = engineStatusValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<EngineStatus>(){}.getType();
+        Type localVarReturnType = new TypeToken<EngineEngineStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -441,6 +457,7 @@ public class EngineApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call engineSystemCall(final ApiCallback _callback) throws ApiException {
@@ -469,7 +486,8 @@ public class EngineApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -495,7 +513,7 @@ public class EngineApi {
 
     /**
      * The serving host&#39;s own inventory: devices, memory and build capabilities
-     * System reads the engine host&#39;s inventory: OS, CPU, memory, every accelerator device with its VRAM and compute capability, and the build&#39;s capabilities (CUDA/Metal/flash-attention) — the real hardware under the serving runtime, relayed verbatim.
+     * Reads the engine host&#39;s inventory: OS, CPU, memory, every accelerator device with its VRAM and compute capability, and the build&#39;s capabilities (CUDA/Metal/flash-attention) — the real hardware under the serving runtime, relayed verbatim.
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -503,6 +521,7 @@ public class EngineApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Object engineSystem() throws ApiException {
@@ -512,7 +531,7 @@ public class EngineApi {
 
     /**
      * The serving host&#39;s own inventory: devices, memory and build capabilities
-     * System reads the engine host&#39;s inventory: OS, CPU, memory, every accelerator device with its VRAM and compute capability, and the build&#39;s capabilities (CUDA/Metal/flash-attention) — the real hardware under the serving runtime, relayed verbatim.
+     * Reads the engine host&#39;s inventory: OS, CPU, memory, every accelerator device with its VRAM and compute capability, and the build&#39;s capabilities (CUDA/Metal/flash-attention) — the real hardware under the serving runtime, relayed verbatim.
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -520,6 +539,7 @@ public class EngineApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> engineSystemWithHttpInfo() throws ApiException {
@@ -530,7 +550,7 @@ public class EngineApi {
 
     /**
      * The serving host&#39;s own inventory: devices, memory and build capabilities (asynchronously)
-     * System reads the engine host&#39;s inventory: OS, CPU, memory, every accelerator device with its VRAM and compute capability, and the build&#39;s capabilities (CUDA/Metal/flash-attention) — the real hardware under the serving runtime, relayed verbatim.
+     * Reads the engine host&#39;s inventory: OS, CPU, memory, every accelerator device with its VRAM and compute capability, and the build&#39;s capabilities (CUDA/Metal/flash-attention) — the real hardware under the serving runtime, relayed verbatim.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -539,6 +559,7 @@ public class EngineApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call engineSystemAsync(final ApiCallback<Object> _callback) throws ApiException {

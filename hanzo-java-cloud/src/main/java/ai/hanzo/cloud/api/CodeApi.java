@@ -27,15 +27,16 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.AskAnswer;
-import ai.hanzo.cloud.model.AskPostIn;
-import ai.hanzo.cloud.model.ContextBundle;
-import ai.hanzo.cloud.model.ContextIn;
-import ai.hanzo.cloud.model.FileContent;
-import ai.hanzo.cloud.model.IndexIn;
-import ai.hanzo.cloud.model.IndexResult;
-import ai.hanzo.cloud.model.RepoTree;
-import ai.hanzo.cloud.model.SearchResults;
+import ai.hanzo.cloud.model.CodeAskAnswer;
+import ai.hanzo.cloud.model.CodeAskPostIn;
+import ai.hanzo.cloud.model.CodeContextBundle;
+import ai.hanzo.cloud.model.CodeContextIn;
+import ai.hanzo.cloud.model.CodeFileContent;
+import ai.hanzo.cloud.model.CodeIndexIn;
+import ai.hanzo.cloud.model.CodeIndexResult;
+import ai.hanzo.cloud.model.CodeRepoTree;
+import ai.hanzo.cloud.model.CodeSearchResults;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -92,6 +93,7 @@ public class CodeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCodeAskCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo, final ApiCallback _callback) throws ApiException {
@@ -128,7 +130,8 @@ public class CodeApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -157,17 +160,18 @@ public class CodeApi {
      * Answers a question about the caller org&#39;s code with a CITED answer: retrieval packs grounding context, then the synthesizer writes the answer over exactly those spans, which come back alongside it. It never answers without grounding — with no matched code the answer is empty and says so, and with no synthesizer available the citations still come back with \&quot;degraded\&quot;: true so the caller can reason over the spans itself.
      * @param q Q is the question to answer. Required, max 4000 bytes. (optional)
      * @param repo Repo narrows retrieval to one repository. Empty searches every repo the org has indexed. (optional)
-     * @return AskAnswer
+     * @return CodeAskAnswer
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AskAnswer getCodeAsk(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo) throws ApiException {
-        ApiResponse<AskAnswer> localVarResp = getCodeAskWithHttpInfo(q, repo);
+    public CodeAskAnswer getCodeAsk(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo) throws ApiException {
+        ApiResponse<CodeAskAnswer> localVarResp = getCodeAskWithHttpInfo(q, repo);
         return localVarResp.getData();
     }
 
@@ -176,18 +180,19 @@ public class CodeApi {
      * Answers a question about the caller org&#39;s code with a CITED answer: retrieval packs grounding context, then the synthesizer writes the answer over exactly those spans, which come back alongside it. It never answers without grounding — with no matched code the answer is empty and says so, and with no synthesizer available the citations still come back with \&quot;degraded\&quot;: true so the caller can reason over the spans itself.
      * @param q Q is the question to answer. Required, max 4000 bytes. (optional)
      * @param repo Repo narrows retrieval to one repository. Empty searches every repo the org has indexed. (optional)
-     * @return ApiResponse&lt;AskAnswer&gt;
+     * @return ApiResponse&lt;CodeAskAnswer&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AskAnswer> getCodeAskWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo) throws ApiException {
+    public ApiResponse<CodeAskAnswer> getCodeAskWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo) throws ApiException {
         okhttp3.Call localVarCall = getCodeAskValidateBeforeCall(q, repo, null);
-        Type localVarReturnType = new TypeToken<AskAnswer>(){}.getType();
+        Type localVarReturnType = new TypeToken<CodeAskAnswer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -204,12 +209,13 @@ public class CodeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCodeAskAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo, final ApiCallback<AskAnswer> _callback) throws ApiException {
+    public okhttp3.Call getCodeAskAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String repo, final ApiCallback<CodeAskAnswer> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCodeAskValidateBeforeCall(q, repo, _callback);
-        Type localVarReturnType = new TypeToken<AskAnswer>(){}.getType();
+        Type localVarReturnType = new TypeToken<CodeAskAnswer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -225,6 +231,7 @@ public class CodeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCodeFileCall(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo, final ApiCallback _callback) throws ApiException {
@@ -261,7 +268,8 @@ public class CodeApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -290,17 +298,18 @@ public class CodeApi {
      * Returns the INDEXED content of one file — read_file over the chunks the search tiers hold, for pulling up code an agent just found. It is NOT byte-verbatim: the git object plane is the source of record for exact bytes, history and blame. A file absent from the index is a 404, so an agent can tell \&quot;not indexed\&quot; from \&quot;empty file\&quot;.
      * @param path Path is the file&#39;s repo-relative path. Required. (optional)
      * @param repo Repo is the repository the file belongs to. REQUIRED. (optional)
-     * @return FileContent
+     * @return CodeFileContent
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FileContent getCodeFile(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo) throws ApiException {
-        ApiResponse<FileContent> localVarResp = getCodeFileWithHttpInfo(path, repo);
+    public CodeFileContent getCodeFile(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo) throws ApiException {
+        ApiResponse<CodeFileContent> localVarResp = getCodeFileWithHttpInfo(path, repo);
         return localVarResp.getData();
     }
 
@@ -309,18 +318,19 @@ public class CodeApi {
      * Returns the INDEXED content of one file — read_file over the chunks the search tiers hold, for pulling up code an agent just found. It is NOT byte-verbatim: the git object plane is the source of record for exact bytes, history and blame. A file absent from the index is a 404, so an agent can tell \&quot;not indexed\&quot; from \&quot;empty file\&quot;.
      * @param path Path is the file&#39;s repo-relative path. Required. (optional)
      * @param repo Repo is the repository the file belongs to. REQUIRED. (optional)
-     * @return ApiResponse&lt;FileContent&gt;
+     * @return ApiResponse&lt;CodeFileContent&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FileContent> getCodeFileWithHttpInfo(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo) throws ApiException {
+    public ApiResponse<CodeFileContent> getCodeFileWithHttpInfo(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo) throws ApiException {
         okhttp3.Call localVarCall = getCodeFileValidateBeforeCall(path, repo, null);
-        Type localVarReturnType = new TypeToken<FileContent>(){}.getType();
+        Type localVarReturnType = new TypeToken<CodeFileContent>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -337,12 +347,13 @@ public class CodeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCodeFileAsync(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo, final ApiCallback<FileContent> _callback) throws ApiException {
+    public okhttp3.Call getCodeFileAsync(@javax.annotation.Nullable String path, @javax.annotation.Nullable String repo, final ApiCallback<CodeFileContent> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCodeFileValidateBeforeCall(path, repo, _callback);
-        Type localVarReturnType = new TypeToken<FileContent>(){}.getType();
+        Type localVarReturnType = new TypeToken<CodeFileContent>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -360,6 +371,7 @@ public class CodeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCodeSearchCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -404,7 +416,8 @@ public class CodeApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -435,17 +448,18 @@ public class CodeApi {
      * @param type Type selects the retrieval tier: \&quot;text\&quot; (FTS5 trigram), \&quot;regex\&quot;, \&quot;symbol\&quot; (definitions), \&quot;semantic\&quot; (embeddings) or \&quot;hybrid\&quot;. Anything else — including empty — reads as hybrid. (optional)
      * @param repo Repo narrows to one repository. Empty searches every repo the org has indexed. (optional)
      * @param limit Limit caps how many spans come back: default 20, maximum 100. A value that is not a positive integer reads as the default. (optional)
-     * @return SearchResults
+     * @return CodeSearchResults
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SearchResults getCodeSearch(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<SearchResults> localVarResp = getCodeSearchWithHttpInfo(q, type, repo, limit);
+    public CodeSearchResults getCodeSearch(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<CodeSearchResults> localVarResp = getCodeSearchWithHttpInfo(q, type, repo, limit);
         return localVarResp.getData();
     }
 
@@ -456,18 +470,19 @@ public class CodeApi {
      * @param type Type selects the retrieval tier: \&quot;text\&quot; (FTS5 trigram), \&quot;regex\&quot;, \&quot;symbol\&quot; (definitions), \&quot;semantic\&quot; (embeddings) or \&quot;hybrid\&quot;. Anything else — including empty — reads as hybrid. (optional)
      * @param repo Repo narrows to one repository. Empty searches every repo the org has indexed. (optional)
      * @param limit Limit caps how many spans come back: default 20, maximum 100. A value that is not a positive integer reads as the default. (optional)
-     * @return ApiResponse&lt;SearchResults&gt;
+     * @return ApiResponse&lt;CodeSearchResults&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SearchResults> getCodeSearchWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<CodeSearchResults> getCodeSearchWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getCodeSearchValidateBeforeCall(q, type, repo, limit, null);
-        Type localVarReturnType = new TypeToken<SearchResults>(){}.getType();
+        Type localVarReturnType = new TypeToken<CodeSearchResults>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -486,12 +501,13 @@ public class CodeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCodeSearchAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Long limit, final ApiCallback<SearchResults> _callback) throws ApiException {
+    public okhttp3.Call getCodeSearchAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Long limit, final ApiCallback<CodeSearchResults> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCodeSearchValidateBeforeCall(q, type, repo, limit, _callback);
-        Type localVarReturnType = new TypeToken<SearchResults>(){}.getType();
+        Type localVarReturnType = new TypeToken<CodeSearchResults>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -506,6 +522,7 @@ public class CodeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCodeTreeCall(@javax.annotation.Nullable String repo, final ApiCallback _callback) throws ApiException {
@@ -538,7 +555,8 @@ public class CodeApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -566,17 +584,18 @@ public class CodeApi {
      * Returns one repository&#39;s file structure with a per-file symbol count — get_repo_structure over the org&#39;s own index, with no git checkout involved.
      * Returns one repository&#39;s file structure with a per-file symbol count — get_repo_structure over the org&#39;s own index, with no git checkout involved. A repository that has not been indexed answers an empty tree rather than an error, so an agent can tell \&quot;nothing here\&quot; without handling a failure.
      * @param repo Repo is the repository to walk. REQUIRED — a tree is repo-scoped. (optional)
-     * @return RepoTree
+     * @return CodeRepoTree
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RepoTree getCodeTree(@javax.annotation.Nullable String repo) throws ApiException {
-        ApiResponse<RepoTree> localVarResp = getCodeTreeWithHttpInfo(repo);
+    public CodeRepoTree getCodeTree(@javax.annotation.Nullable String repo) throws ApiException {
+        ApiResponse<CodeRepoTree> localVarResp = getCodeTreeWithHttpInfo(repo);
         return localVarResp.getData();
     }
 
@@ -584,18 +603,19 @@ public class CodeApi {
      * Returns one repository&#39;s file structure with a per-file symbol count — get_repo_structure over the org&#39;s own index, with no git checkout involved.
      * Returns one repository&#39;s file structure with a per-file symbol count — get_repo_structure over the org&#39;s own index, with no git checkout involved. A repository that has not been indexed answers an empty tree rather than an error, so an agent can tell \&quot;nothing here\&quot; without handling a failure.
      * @param repo Repo is the repository to walk. REQUIRED — a tree is repo-scoped. (optional)
-     * @return ApiResponse&lt;RepoTree&gt;
+     * @return ApiResponse&lt;CodeRepoTree&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RepoTree> getCodeTreeWithHttpInfo(@javax.annotation.Nullable String repo) throws ApiException {
+    public ApiResponse<CodeRepoTree> getCodeTreeWithHttpInfo(@javax.annotation.Nullable String repo) throws ApiException {
         okhttp3.Call localVarCall = getCodeTreeValidateBeforeCall(repo, null);
-        Type localVarReturnType = new TypeToken<RepoTree>(){}.getType();
+        Type localVarReturnType = new TypeToken<CodeRepoTree>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -611,18 +631,19 @@ public class CodeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCodeTreeAsync(@javax.annotation.Nullable String repo, final ApiCallback<RepoTree> _callback) throws ApiException {
+    public okhttp3.Call getCodeTreeAsync(@javax.annotation.Nullable String repo, final ApiCallback<CodeRepoTree> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCodeTreeValidateBeforeCall(repo, _callback);
-        Type localVarReturnType = new TypeToken<RepoTree>(){}.getType();
+        Type localVarReturnType = new TypeToken<CodeRepoTree>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCodeAsk
-     * @param askPostIn  (required)
+     * @param codeAskPostIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -631,9 +652,10 @@ public class CodeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCodeAskCall(@javax.annotation.Nonnull AskPostIn askPostIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCodeAskCall(@javax.annotation.Nonnull CodeAskPostIn codeAskPostIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -647,7 +669,7 @@ public class CodeApi {
             basePath = null;
         }
 
-        Object localVarPostBody = askPostIn;
+        Object localVarPostBody = codeAskPostIn;
 
         // create path and map variables
         String localVarPath = "/v1/code/ask";
@@ -659,7 +681,8 @@ public class CodeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -679,57 +702,59 @@ public class CodeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCodeAskValidateBeforeCall(@javax.annotation.Nonnull AskPostIn askPostIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'askPostIn' is set
-        if (askPostIn == null) {
-            throw new ApiException("Missing the required parameter 'askPostIn' when calling postCodeAsk(Async)");
+    private okhttp3.Call postCodeAskValidateBeforeCall(@javax.annotation.Nonnull CodeAskPostIn codeAskPostIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'codeAskPostIn' is set
+        if (codeAskPostIn == null) {
+            throw new ApiException("Missing the required parameter 'codeAskPostIn' when calling postCodeAsk(Async)");
         }
 
-        return postCodeAskCall(askPostIn, _callback);
+        return postCodeAskCall(codeAskPostIn, _callback);
 
     }
 
     /**
-     * Is askGet with the question in the request BODY, for a question too long or too awkward to put in a URL.
-     * Is askGet with the question in the request BODY, for a question too long or too awkward to put in a URL. &#x60;query&#x60; and &#x60;repo&#x60; in the body take precedence over &#x60;?q&#x3D;&#x60; and &#x60;?repo&#x3D;&#x60;; either source works alone.
-     * @param askPostIn  (required)
-     * @return AskAnswer
+     * Answers a question about the caller org&#39;s code with a CITED answer, taking the question from the request BODY, for a question too long or too awkward to put in a URL.
+     * Answers a question about the caller org&#39;s code with a CITED answer, taking the question from the request BODY, for a question too long or too awkward to put in a URL. &#x60;query&#x60; and &#x60;repo&#x60; in the body take precedence over &#x60;?q&#x3D;&#x60; and &#x60;?repo&#x3D;&#x60;; either source works alone.
+     * @param codeAskPostIn  (required)
+     * @return CodeAskAnswer
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AskAnswer postCodeAsk(@javax.annotation.Nonnull AskPostIn askPostIn) throws ApiException {
-        ApiResponse<AskAnswer> localVarResp = postCodeAskWithHttpInfo(askPostIn);
+    public CodeAskAnswer postCodeAsk(@javax.annotation.Nonnull CodeAskPostIn codeAskPostIn) throws ApiException {
+        ApiResponse<CodeAskAnswer> localVarResp = postCodeAskWithHttpInfo(codeAskPostIn);
         return localVarResp.getData();
     }
 
     /**
-     * Is askGet with the question in the request BODY, for a question too long or too awkward to put in a URL.
-     * Is askGet with the question in the request BODY, for a question too long or too awkward to put in a URL. &#x60;query&#x60; and &#x60;repo&#x60; in the body take precedence over &#x60;?q&#x3D;&#x60; and &#x60;?repo&#x3D;&#x60;; either source works alone.
-     * @param askPostIn  (required)
-     * @return ApiResponse&lt;AskAnswer&gt;
+     * Answers a question about the caller org&#39;s code with a CITED answer, taking the question from the request BODY, for a question too long or too awkward to put in a URL.
+     * Answers a question about the caller org&#39;s code with a CITED answer, taking the question from the request BODY, for a question too long or too awkward to put in a URL. &#x60;query&#x60; and &#x60;repo&#x60; in the body take precedence over &#x60;?q&#x3D;&#x60; and &#x60;?repo&#x3D;&#x60;; either source works alone.
+     * @param codeAskPostIn  (required)
+     * @return ApiResponse&lt;CodeAskAnswer&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AskAnswer> postCodeAskWithHttpInfo(@javax.annotation.Nonnull AskPostIn askPostIn) throws ApiException {
-        okhttp3.Call localVarCall = postCodeAskValidateBeforeCall(askPostIn, null);
-        Type localVarReturnType = new TypeToken<AskAnswer>(){}.getType();
+    public ApiResponse<CodeAskAnswer> postCodeAskWithHttpInfo(@javax.annotation.Nonnull CodeAskPostIn codeAskPostIn) throws ApiException {
+        okhttp3.Call localVarCall = postCodeAskValidateBeforeCall(codeAskPostIn, null);
+        Type localVarReturnType = new TypeToken<CodeAskAnswer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Is askGet with the question in the request BODY, for a question too long or too awkward to put in a URL. (asynchronously)
-     * Is askGet with the question in the request BODY, for a question too long or too awkward to put in a URL. &#x60;query&#x60; and &#x60;repo&#x60; in the body take precedence over &#x60;?q&#x3D;&#x60; and &#x60;?repo&#x3D;&#x60;; either source works alone.
-     * @param askPostIn  (required)
+     * Answers a question about the caller org&#39;s code with a CITED answer, taking the question from the request BODY, for a question too long or too awkward to put in a URL. (asynchronously)
+     * Answers a question about the caller org&#39;s code with a CITED answer, taking the question from the request BODY, for a question too long or too awkward to put in a URL. &#x60;query&#x60; and &#x60;repo&#x60; in the body take precedence over &#x60;?q&#x3D;&#x60; and &#x60;?repo&#x3D;&#x60;; either source works alone.
+     * @param codeAskPostIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -738,18 +763,19 @@ public class CodeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCodeAskAsync(@javax.annotation.Nonnull AskPostIn askPostIn, final ApiCallback<AskAnswer> _callback) throws ApiException {
+    public okhttp3.Call postCodeAskAsync(@javax.annotation.Nonnull CodeAskPostIn codeAskPostIn, final ApiCallback<CodeAskAnswer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCodeAskValidateBeforeCall(askPostIn, _callback);
-        Type localVarReturnType = new TypeToken<AskAnswer>(){}.getType();
+        okhttp3.Call localVarCall = postCodeAskValidateBeforeCall(codeAskPostIn, _callback);
+        Type localVarReturnType = new TypeToken<CodeAskAnswer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCodeContext
-     * @param contextIn  (required)
+     * @param codeContextIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -758,9 +784,10 @@ public class CodeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCodeContextCall(@javax.annotation.Nonnull ContextIn contextIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCodeContextCall(@javax.annotation.Nonnull CodeContextIn codeContextIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -774,7 +801,7 @@ public class CodeApi {
             basePath = null;
         }
 
-        Object localVarPostBody = contextIn;
+        Object localVarPostBody = codeContextIn;
 
         // create path and map variables
         String localVarPath = "/v1/code/context";
@@ -786,7 +813,8 @@ public class CodeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -806,57 +834,59 @@ public class CodeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCodeContextValidateBeforeCall(@javax.annotation.Nonnull ContextIn contextIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'contextIn' is set
-        if (contextIn == null) {
-            throw new ApiException("Missing the required parameter 'contextIn' when calling postCodeContext(Async)");
+    private okhttp3.Call postCodeContextValidateBeforeCall(@javax.annotation.Nonnull CodeContextIn codeContextIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'codeContextIn' is set
+        if (codeContextIn == null) {
+            throw new ApiException("Missing the required parameter 'codeContextIn' when calling postCodeContext(Async)");
         }
 
-        return postCodeContextCall(contextIn, _callback);
+        return postCodeContextCall(codeContextIn, _callback);
 
     }
 
     /**
      * Packs the most relevant code for a query into a token budget — THE primitive for a coding agent that has to decide what to put in a prompt.
      * Packs the most relevant code for a query into a token budget — THE primitive for a coding agent that has to decide what to put in a prompt. It retrieves seed spans, expands each with the definitions it calls and its key callers, then greedily fills the budget, so the answer is a coherent slice of the codebase rather than a list of disconnected matches. The top match is always included, truncated if it alone overflows, so a matched query never comes back empty. A retrieval outage answers 200 with an empty bundle rather than a 5xx.
-     * @param contextIn  (required)
-     * @return ContextBundle
+     * @param codeContextIn  (required)
+     * @return CodeContextBundle
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ContextBundle postCodeContext(@javax.annotation.Nonnull ContextIn contextIn) throws ApiException {
-        ApiResponse<ContextBundle> localVarResp = postCodeContextWithHttpInfo(contextIn);
+    public CodeContextBundle postCodeContext(@javax.annotation.Nonnull CodeContextIn codeContextIn) throws ApiException {
+        ApiResponse<CodeContextBundle> localVarResp = postCodeContextWithHttpInfo(codeContextIn);
         return localVarResp.getData();
     }
 
     /**
      * Packs the most relevant code for a query into a token budget — THE primitive for a coding agent that has to decide what to put in a prompt.
      * Packs the most relevant code for a query into a token budget — THE primitive for a coding agent that has to decide what to put in a prompt. It retrieves seed spans, expands each with the definitions it calls and its key callers, then greedily fills the budget, so the answer is a coherent slice of the codebase rather than a list of disconnected matches. The top match is always included, truncated if it alone overflows, so a matched query never comes back empty. A retrieval outage answers 200 with an empty bundle rather than a 5xx.
-     * @param contextIn  (required)
-     * @return ApiResponse&lt;ContextBundle&gt;
+     * @param codeContextIn  (required)
+     * @return ApiResponse&lt;CodeContextBundle&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ContextBundle> postCodeContextWithHttpInfo(@javax.annotation.Nonnull ContextIn contextIn) throws ApiException {
-        okhttp3.Call localVarCall = postCodeContextValidateBeforeCall(contextIn, null);
-        Type localVarReturnType = new TypeToken<ContextBundle>(){}.getType();
+    public ApiResponse<CodeContextBundle> postCodeContextWithHttpInfo(@javax.annotation.Nonnull CodeContextIn codeContextIn) throws ApiException {
+        okhttp3.Call localVarCall = postCodeContextValidateBeforeCall(codeContextIn, null);
+        Type localVarReturnType = new TypeToken<CodeContextBundle>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Packs the most relevant code for a query into a token budget — THE primitive for a coding agent that has to decide what to put in a prompt. (asynchronously)
      * Packs the most relevant code for a query into a token budget — THE primitive for a coding agent that has to decide what to put in a prompt. It retrieves seed spans, expands each with the definitions it calls and its key callers, then greedily fills the budget, so the answer is a coherent slice of the codebase rather than a list of disconnected matches. The top match is always included, truncated if it alone overflows, so a matched query never comes back empty. A retrieval outage answers 200 with an empty bundle rather than a 5xx.
-     * @param contextIn  (required)
+     * @param codeContextIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -865,18 +895,19 @@ public class CodeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCodeContextAsync(@javax.annotation.Nonnull ContextIn contextIn, final ApiCallback<ContextBundle> _callback) throws ApiException {
+    public okhttp3.Call postCodeContextAsync(@javax.annotation.Nonnull CodeContextIn codeContextIn, final ApiCallback<CodeContextBundle> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCodeContextValidateBeforeCall(contextIn, _callback);
-        Type localVarReturnType = new TypeToken<ContextBundle>(){}.getType();
+        okhttp3.Call localVarCall = postCodeContextValidateBeforeCall(codeContextIn, _callback);
+        Type localVarReturnType = new TypeToken<CodeContextBundle>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCodeIndex
-     * @param indexIn  (required)
+     * @param codeIndexIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -885,9 +916,10 @@ public class CodeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCodeIndexCall(@javax.annotation.Nonnull IndexIn indexIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCodeIndexCall(@javax.annotation.Nonnull CodeIndexIn codeIndexIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -901,7 +933,7 @@ public class CodeApi {
             basePath = null;
         }
 
-        Object localVarPostBody = indexIn;
+        Object localVarPostBody = codeIndexIn;
 
         // create path and map variables
         String localVarPath = "/v1/code/index";
@@ -913,7 +945,8 @@ public class CodeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -933,57 +966,59 @@ public class CodeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCodeIndexValidateBeforeCall(@javax.annotation.Nonnull IndexIn indexIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'indexIn' is set
-        if (indexIn == null) {
-            throw new ApiException("Missing the required parameter 'indexIn' when calling postCodeIndex(Async)");
+    private okhttp3.Call postCodeIndexValidateBeforeCall(@javax.annotation.Nonnull CodeIndexIn codeIndexIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'codeIndexIn' is set
+        if (codeIndexIn == null) {
+            throw new ApiException("Missing the required parameter 'codeIndexIn' when calling postCodeIndex(Async)");
         }
 
-        return postCodeIndexCall(indexIn, _callback);
+        return postCodeIndexCall(codeIndexIn, _callback);
 
     }
 
     /**
      * (re)indexes a repository for the caller&#39;s org, incrementally: files whose content hash is unchanged are skipped, so re-sending a whole tree is cheap.
      * (re)indexes a repository for the caller&#39;s org, incrementally: files whose content hash is unchanged are skipped, so re-sending a whole tree is cheap. Each file is parsed for symbols, split at AST boundaries and — when the semantic tier is available — embedded, which is what makes it searchable across all three retrieval tiers. Pass &#x60;prune&#x60; to also DELETE indexed files absent from the request, which turns the call into a full sync; without it the call is an upsert. The index is written to the caller org&#39;s own physically separate database.
-     * @param indexIn  (required)
-     * @return IndexResult
+     * @param codeIndexIn  (required)
+     * @return CodeIndexResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IndexResult postCodeIndex(@javax.annotation.Nonnull IndexIn indexIn) throws ApiException {
-        ApiResponse<IndexResult> localVarResp = postCodeIndexWithHttpInfo(indexIn);
+    public CodeIndexResult postCodeIndex(@javax.annotation.Nonnull CodeIndexIn codeIndexIn) throws ApiException {
+        ApiResponse<CodeIndexResult> localVarResp = postCodeIndexWithHttpInfo(codeIndexIn);
         return localVarResp.getData();
     }
 
     /**
      * (re)indexes a repository for the caller&#39;s org, incrementally: files whose content hash is unchanged are skipped, so re-sending a whole tree is cheap.
      * (re)indexes a repository for the caller&#39;s org, incrementally: files whose content hash is unchanged are skipped, so re-sending a whole tree is cheap. Each file is parsed for symbols, split at AST boundaries and — when the semantic tier is available — embedded, which is what makes it searchable across all three retrieval tiers. Pass &#x60;prune&#x60; to also DELETE indexed files absent from the request, which turns the call into a full sync; without it the call is an upsert. The index is written to the caller org&#39;s own physically separate database.
-     * @param indexIn  (required)
-     * @return ApiResponse&lt;IndexResult&gt;
+     * @param codeIndexIn  (required)
+     * @return ApiResponse&lt;CodeIndexResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexResult> postCodeIndexWithHttpInfo(@javax.annotation.Nonnull IndexIn indexIn) throws ApiException {
-        okhttp3.Call localVarCall = postCodeIndexValidateBeforeCall(indexIn, null);
-        Type localVarReturnType = new TypeToken<IndexResult>(){}.getType();
+    public ApiResponse<CodeIndexResult> postCodeIndexWithHttpInfo(@javax.annotation.Nonnull CodeIndexIn codeIndexIn) throws ApiException {
+        okhttp3.Call localVarCall = postCodeIndexValidateBeforeCall(codeIndexIn, null);
+        Type localVarReturnType = new TypeToken<CodeIndexResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * (re)indexes a repository for the caller&#39;s org, incrementally: files whose content hash is unchanged are skipped, so re-sending a whole tree is cheap. (asynchronously)
      * (re)indexes a repository for the caller&#39;s org, incrementally: files whose content hash is unchanged are skipped, so re-sending a whole tree is cheap. Each file is parsed for symbols, split at AST boundaries and — when the semantic tier is available — embedded, which is what makes it searchable across all three retrieval tiers. Pass &#x60;prune&#x60; to also DELETE indexed files absent from the request, which turns the call into a full sync; without it the call is an upsert. The index is written to the caller org&#39;s own physically separate database.
-     * @param indexIn  (required)
+     * @param codeIndexIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -992,12 +1027,13 @@ public class CodeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCodeIndexAsync(@javax.annotation.Nonnull IndexIn indexIn, final ApiCallback<IndexResult> _callback) throws ApiException {
+    public okhttp3.Call postCodeIndexAsync(@javax.annotation.Nonnull CodeIndexIn codeIndexIn, final ApiCallback<CodeIndexResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCodeIndexValidateBeforeCall(indexIn, _callback);
-        Type localVarReturnType = new TypeToken<IndexResult>(){}.getType();
+        okhttp3.Call localVarCall = postCodeIndexValidateBeforeCall(codeIndexIn, _callback);
+        Type localVarReturnType = new TypeToken<CodeIndexResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

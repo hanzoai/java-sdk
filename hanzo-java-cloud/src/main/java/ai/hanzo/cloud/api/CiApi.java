@@ -27,8 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Executions;
-import ai.hanzo.cloud.model.Pipelines;
+import ai.hanzo.cloud.model.CiExecutions;
+import ai.hanzo.cloud.model.CiPipelines;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -83,6 +84,7 @@ public class CiApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCiFleetCall(final ApiCallback _callback) throws ApiException {
@@ -111,7 +113,8 @@ public class CiApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -138,35 +141,37 @@ public class CiApi {
     /**
      * Compares what was written with what is running, one row per service along a single causal line: head, the commit on the branch; built, the image that commit produced; declared, the tag pinned in the universe repository; running, what the cluster serves.
      * Compares what was written with what is running, one row per service along a single causal line: head, the commit on the branch; built, the image that commit produced; declared, the tag pinned in the universe repository; running, what the cluster serves. A service whose four values disagree names the step that broke.
-     * @return Pipelines
+     * @return CiPipelines
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Pipelines getCiFleet() throws ApiException {
-        ApiResponse<Pipelines> localVarResp = getCiFleetWithHttpInfo();
+    public CiPipelines getCiFleet() throws ApiException {
+        ApiResponse<CiPipelines> localVarResp = getCiFleetWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Compares what was written with what is running, one row per service along a single causal line: head, the commit on the branch; built, the image that commit produced; declared, the tag pinned in the universe repository; running, what the cluster serves.
      * Compares what was written with what is running, one row per service along a single causal line: head, the commit on the branch; built, the image that commit produced; declared, the tag pinned in the universe repository; running, what the cluster serves. A service whose four values disagree names the step that broke.
-     * @return ApiResponse&lt;Pipelines&gt;
+     * @return ApiResponse&lt;CiPipelines&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Pipelines> getCiFleetWithHttpInfo() throws ApiException {
+    public ApiResponse<CiPipelines> getCiFleetWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getCiFleetValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Pipelines>(){}.getType();
+        Type localVarReturnType = new TypeToken<CiPipelines>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -181,12 +186,13 @@ public class CiApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCiFleetAsync(final ApiCallback<Pipelines> _callback) throws ApiException {
+    public okhttp3.Call getCiFleetAsync(final ApiCallback<CiPipelines> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCiFleetValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Pipelines>(){}.getType();
+        Type localVarReturnType = new TypeToken<CiPipelines>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -200,6 +206,7 @@ public class CiApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCiRunsCall(final ApiCallback _callback) throws ApiException {
@@ -228,7 +235,8 @@ public class CiApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -255,35 +263,37 @@ public class CiApi {
     /**
      * Lists recent builds: the repo, the branch, the commit and how each run ended, newest first.
      * Lists recent builds: the repo, the branch, the commit and how each run ended, newest first. A run names a repo, a branch and an actor, so the list is never wider than the caller — a SuperAdmin sees the fleet, an org member sees only its own org.
-     * @return Executions
+     * @return CiExecutions
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Executions getCiRuns() throws ApiException {
-        ApiResponse<Executions> localVarResp = getCiRunsWithHttpInfo();
+    public CiExecutions getCiRuns() throws ApiException {
+        ApiResponse<CiExecutions> localVarResp = getCiRunsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists recent builds: the repo, the branch, the commit and how each run ended, newest first.
      * Lists recent builds: the repo, the branch, the commit and how each run ended, newest first. A run names a repo, a branch and an actor, so the list is never wider than the caller — a SuperAdmin sees the fleet, an org member sees only its own org.
-     * @return ApiResponse&lt;Executions&gt;
+     * @return ApiResponse&lt;CiExecutions&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Executions> getCiRunsWithHttpInfo() throws ApiException {
+    public ApiResponse<CiExecutions> getCiRunsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getCiRunsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Executions>(){}.getType();
+        Type localVarReturnType = new TypeToken<CiExecutions>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -298,12 +308,13 @@ public class CiApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCiRunsAsync(final ApiCallback<Executions> _callback) throws ApiException {
+    public okhttp3.Call getCiRunsAsync(final ApiCallback<CiExecutions> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCiRunsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Executions>(){}.getType();
+        Type localVarReturnType = new TypeToken<CiExecutions>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

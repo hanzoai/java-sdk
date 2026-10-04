@@ -27,14 +27,15 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Holdings;
-import ai.hanzo.cloud.model.Order;
-import ai.hanzo.cloud.model.QuoteList;
-import ai.hanzo.cloud.model.Reachability;
-import ai.hanzo.cloud.model.RegisterResult;
-import ai.hanzo.cloud.model.RenewReq;
-import ai.hanzo.cloud.model.RenewResult;
-import ai.hanzo.cloud.model.TransferReq;
+import ai.hanzo.cloud.model.DomainHoldings;
+import ai.hanzo.cloud.model.DomainOrder;
+import ai.hanzo.cloud.model.DomainQuoteList;
+import ai.hanzo.cloud.model.DomainReachability;
+import ai.hanzo.cloud.model.DomainRegisterResult;
+import ai.hanzo.cloud.model.DomainRenewReq;
+import ai.hanzo.cloud.model.DomainRenewResult;
+import ai.hanzo.cloud.model.DomainTransferReq;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -90,6 +91,7 @@ public class DomainApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDomainAvailabilityCall(@javax.annotation.Nonnull String domain, final ApiCallback _callback) throws ApiException {
@@ -122,7 +124,8 @@ public class DomainApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -153,44 +156,46 @@ public class DomainApi {
 
     /**
      * Checks exact names rather than searching for them, and answers the same quote shape search does — purchasable, premium, first-term and renewal price in cents.
-     * Checks exact names rather than searching for them, and answers the same quote shape search does — purchasable, premium, first-term and renewal price in cents.  It requires a validated principal; 403 without one. Nothing is charged and nothing is held. A deployment with no registrar credentials answers 503.
+     * Checks exact names rather than searching for them, and answers the same quote shape search does — purchasable, premium, first-term and renewal price in cents.  It requires a validated principal; 401 without one. Nothing is charged and nothing is held. A deployment with no registrar credentials answers 503.
      * @param domain Domain is one name, or several comma-separated, to check in one call. Names are lowercased. It is required. (required)
-     * @return QuoteList
+     * @return DomainQuoteList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public QuoteList getDomainAvailability(@javax.annotation.Nonnull String domain) throws ApiException {
-        ApiResponse<QuoteList> localVarResp = getDomainAvailabilityWithHttpInfo(domain);
+    public DomainQuoteList getDomainAvailability(@javax.annotation.Nonnull String domain) throws ApiException {
+        ApiResponse<DomainQuoteList> localVarResp = getDomainAvailabilityWithHttpInfo(domain);
         return localVarResp.getData();
     }
 
     /**
      * Checks exact names rather than searching for them, and answers the same quote shape search does — purchasable, premium, first-term and renewal price in cents.
-     * Checks exact names rather than searching for them, and answers the same quote shape search does — purchasable, premium, first-term and renewal price in cents.  It requires a validated principal; 403 without one. Nothing is charged and nothing is held. A deployment with no registrar credentials answers 503.
+     * Checks exact names rather than searching for them, and answers the same quote shape search does — purchasable, premium, first-term and renewal price in cents.  It requires a validated principal; 401 without one. Nothing is charged and nothing is held. A deployment with no registrar credentials answers 503.
      * @param domain Domain is one name, or several comma-separated, to check in one call. Names are lowercased. It is required. (required)
-     * @return ApiResponse&lt;QuoteList&gt;
+     * @return ApiResponse&lt;DomainQuoteList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<QuoteList> getDomainAvailabilityWithHttpInfo(@javax.annotation.Nonnull String domain) throws ApiException {
+    public ApiResponse<DomainQuoteList> getDomainAvailabilityWithHttpInfo(@javax.annotation.Nonnull String domain) throws ApiException {
         okhttp3.Call localVarCall = getDomainAvailabilityValidateBeforeCall(domain, null);
-        Type localVarReturnType = new TypeToken<QuoteList>(){}.getType();
+        Type localVarReturnType = new TypeToken<DomainQuoteList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Checks exact names rather than searching for them, and answers the same quote shape search does — purchasable, premium, first-term and renewal price in cents. (asynchronously)
-     * Checks exact names rather than searching for them, and answers the same quote shape search does — purchasable, premium, first-term and renewal price in cents.  It requires a validated principal; 403 without one. Nothing is charged and nothing is held. A deployment with no registrar credentials answers 503.
+     * Checks exact names rather than searching for them, and answers the same quote shape search does — purchasable, premium, first-term and renewal price in cents.  It requires a validated principal; 401 without one. Nothing is charged and nothing is held. A deployment with no registrar credentials answers 503.
      * @param domain Domain is one name, or several comma-separated, to check in one call. Names are lowercased. It is required. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -200,12 +205,13 @@ public class DomainApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDomainAvailabilityAsync(@javax.annotation.Nonnull String domain, final ApiCallback<QuoteList> _callback) throws ApiException {
+    public okhttp3.Call getDomainAvailabilityAsync(@javax.annotation.Nonnull String domain, final ApiCallback<DomainQuoteList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDomainAvailabilityValidateBeforeCall(domain, _callback);
-        Type localVarReturnType = new TypeToken<QuoteList>(){}.getType();
+        Type localVarReturnType = new TypeToken<DomainQuoteList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -219,6 +225,7 @@ public class DomainApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDomainDomainsCall(final ApiCallback _callback) throws ApiException {
@@ -247,7 +254,8 @@ public class DomainApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -273,42 +281,44 @@ public class DomainApi {
 
     /**
      * Is the domains your org has bought here, newest registration first, each carrying the name, when it was registered, when it expires, what the org paid, the registrar order id and the nameservers it points at.
-     * Is the domains your org has bought here, newest registration first, each carrying the name, when it was registered, when it expires, what the org paid, the registrar order id and the nameservers it points at.  Scoped to the validated principal&#39;s org — 403 without one, and there is no parameter that reaches another org&#39;s holdings.  This is the deployment&#39;s OWN ownership record, not a query to the registrar: it lists what was bought THROUGH this surface, so a domain the org holds elsewhere is not here. The default store is in-process, so a deployment that has not swapped in a durable store answers from what this process registered.
-     * @return Holdings
+     * Is the domains your org has bought here, newest registration first, each carrying the name, when it was registered, when it expires, what the org paid, the registrar order id and the nameservers it points at.  Scoped to the validated principal&#39;s org — 401 without one, and there is no parameter that reaches another org&#39;s holdings.  This is the deployment&#39;s OWN ownership record, not a query to the registrar: it lists what was bought THROUGH this surface, so a domain the org holds elsewhere is not here. The default store is in-process, so a deployment that has not swapped in a durable store answers from what this process registered.
+     * @return DomainHoldings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Holdings getDomainDomains() throws ApiException {
-        ApiResponse<Holdings> localVarResp = getDomainDomainsWithHttpInfo();
+    public DomainHoldings getDomainDomains() throws ApiException {
+        ApiResponse<DomainHoldings> localVarResp = getDomainDomainsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Is the domains your org has bought here, newest registration first, each carrying the name, when it was registered, when it expires, what the org paid, the registrar order id and the nameservers it points at.
-     * Is the domains your org has bought here, newest registration first, each carrying the name, when it was registered, when it expires, what the org paid, the registrar order id and the nameservers it points at.  Scoped to the validated principal&#39;s org — 403 without one, and there is no parameter that reaches another org&#39;s holdings.  This is the deployment&#39;s OWN ownership record, not a query to the registrar: it lists what was bought THROUGH this surface, so a domain the org holds elsewhere is not here. The default store is in-process, so a deployment that has not swapped in a durable store answers from what this process registered.
-     * @return ApiResponse&lt;Holdings&gt;
+     * Is the domains your org has bought here, newest registration first, each carrying the name, when it was registered, when it expires, what the org paid, the registrar order id and the nameservers it points at.  Scoped to the validated principal&#39;s org — 401 without one, and there is no parameter that reaches another org&#39;s holdings.  This is the deployment&#39;s OWN ownership record, not a query to the registrar: it lists what was bought THROUGH this surface, so a domain the org holds elsewhere is not here. The default store is in-process, so a deployment that has not swapped in a durable store answers from what this process registered.
+     * @return ApiResponse&lt;DomainHoldings&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Holdings> getDomainDomainsWithHttpInfo() throws ApiException {
+    public ApiResponse<DomainHoldings> getDomainDomainsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDomainDomainsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Holdings>(){}.getType();
+        Type localVarReturnType = new TypeToken<DomainHoldings>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Is the domains your org has bought here, newest registration first, each carrying the name, when it was registered, when it expires, what the org paid, the registrar order id and the nameservers it points at. (asynchronously)
-     * Is the domains your org has bought here, newest registration first, each carrying the name, when it was registered, when it expires, what the org paid, the registrar order id and the nameservers it points at.  Scoped to the validated principal&#39;s org — 403 without one, and there is no parameter that reaches another org&#39;s holdings.  This is the deployment&#39;s OWN ownership record, not a query to the registrar: it lists what was bought THROUGH this surface, so a domain the org holds elsewhere is not here. The default store is in-process, so a deployment that has not swapped in a durable store answers from what this process registered.
+     * Is the domains your org has bought here, newest registration first, each carrying the name, when it was registered, when it expires, what the org paid, the registrar order id and the nameservers it points at.  Scoped to the validated principal&#39;s org — 401 without one, and there is no parameter that reaches another org&#39;s holdings.  This is the deployment&#39;s OWN ownership record, not a query to the registrar: it lists what was bought THROUGH this surface, so a domain the org holds elsewhere is not here. The default store is in-process, so a deployment that has not swapped in a durable store answers from what this process registered.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -317,12 +327,13 @@ public class DomainApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDomainDomainsAsync(final ApiCallback<Holdings> _callback) throws ApiException {
+    public okhttp3.Call getDomainDomainsAsync(final ApiCallback<DomainHoldings> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDomainDomainsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Holdings>(){}.getType();
+        Type localVarReturnType = new TypeToken<DomainHoldings>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -337,6 +348,7 @@ public class DomainApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDomainHealthCall(final ApiCallback _callback) throws ApiException {
@@ -365,7 +377,8 @@ public class DomainApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -392,7 +405,7 @@ public class DomainApi {
     /**
      * Reports registrar reachability honestly: ok only when the wholesale credentials are present AND name.com accepted them on a live call made while you waited.
      * Reports registrar reachability honestly: ok only when the wholesale credentials are present AND name.com accepted them on a live call made while you waited.  Missing credentials or an unreachable registrar is 503 carrying configured, reachable and the reason, so an operator reads the blocker instead of guessing at it. It takes no principal, like every subsystem health probe.
-     * @return Reachability
+     * @return DomainReachability
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -400,17 +413,18 @@ public class DomainApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Reachability getDomainHealth() throws ApiException {
-        ApiResponse<Reachability> localVarResp = getDomainHealthWithHttpInfo();
+    public DomainReachability getDomainHealth() throws ApiException {
+        ApiResponse<DomainReachability> localVarResp = getDomainHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports registrar reachability honestly: ok only when the wholesale credentials are present AND name.com accepted them on a live call made while you waited.
      * Reports registrar reachability honestly: ok only when the wholesale credentials are present AND name.com accepted them on a live call made while you waited.  Missing credentials or an unreachable registrar is 503 carrying configured, reachable and the reason, so an operator reads the blocker instead of guessing at it. It takes no principal, like every subsystem health probe.
-     * @return ApiResponse&lt;Reachability&gt;
+     * @return ApiResponse&lt;DomainReachability&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -418,11 +432,12 @@ public class DomainApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Reachability> getDomainHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<DomainReachability> getDomainHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDomainHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Reachability>(){}.getType();
+        Type localVarReturnType = new TypeToken<DomainReachability>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -438,12 +453,13 @@ public class DomainApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDomainHealthAsync(final ApiCallback<Reachability> _callback) throws ApiException {
+    public okhttp3.Call getDomainHealthAsync(final ApiCallback<DomainReachability> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDomainHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Reachability>(){}.getType();
+        Type localVarReturnType = new TypeToken<DomainReachability>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -459,6 +475,7 @@ public class DomainApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDomainSearchCall(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld, final ApiCallback _callback) throws ApiException {
@@ -495,7 +512,8 @@ public class DomainApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -526,46 +544,48 @@ public class DomainApi {
 
     /**
      * Finds names built from the keyword q, plus the registrar&#39;s alternate-TLD suggestions, and answers a quote for each: the name, whether it is purchasable, whether it is premium, the first-term and renewal price in cents, and the TLD.
-     * Finds names built from the keyword q, plus the registrar&#39;s alternate-TLD suggestions, and answers a quote for each: the name, whether it is purchasable, whether it is premium, the first-term and renewal price in cents, and the TLD.  Prices are RETAIL — this deployment&#39;s markup is already applied and the wholesale cost is never on the wire.  It requires a validated principal; 403 without one. Nothing is charged and nothing is held — a quote is not a reservation, and the price is re-quoted at purchase, so a name quoted here can be gone or dearer by the time you buy it. A deployment with no registrar credentials answers 503.
+     * Finds names built from the keyword q, plus the registrar&#39;s alternate-TLD suggestions, and answers a quote for each: the name, whether it is purchasable, whether it is premium, the first-term and renewal price in cents, and the TLD.  Prices are RETAIL — this deployment&#39;s markup is already applied and the wholesale cost is never on the wire.  It requires a validated principal; 401 without one. Nothing is charged and nothing is held — a quote is not a reservation, and the price is re-quoted at purchase, so a name quoted here can be gone or dearer by the time you buy it. A deployment with no registrar credentials answers 503.
      * @param q Q is the keyword to build names from. It is required. (required)
      * @param tld TLD narrows the search to a comma-separated set of top-level domains. (optional)
-     * @return QuoteList
+     * @return DomainQuoteList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public QuoteList getDomainSearch(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld) throws ApiException {
-        ApiResponse<QuoteList> localVarResp = getDomainSearchWithHttpInfo(q, tld);
+    public DomainQuoteList getDomainSearch(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld) throws ApiException {
+        ApiResponse<DomainQuoteList> localVarResp = getDomainSearchWithHttpInfo(q, tld);
         return localVarResp.getData();
     }
 
     /**
      * Finds names built from the keyword q, plus the registrar&#39;s alternate-TLD suggestions, and answers a quote for each: the name, whether it is purchasable, whether it is premium, the first-term and renewal price in cents, and the TLD.
-     * Finds names built from the keyword q, plus the registrar&#39;s alternate-TLD suggestions, and answers a quote for each: the name, whether it is purchasable, whether it is premium, the first-term and renewal price in cents, and the TLD.  Prices are RETAIL — this deployment&#39;s markup is already applied and the wholesale cost is never on the wire.  It requires a validated principal; 403 without one. Nothing is charged and nothing is held — a quote is not a reservation, and the price is re-quoted at purchase, so a name quoted here can be gone or dearer by the time you buy it. A deployment with no registrar credentials answers 503.
+     * Finds names built from the keyword q, plus the registrar&#39;s alternate-TLD suggestions, and answers a quote for each: the name, whether it is purchasable, whether it is premium, the first-term and renewal price in cents, and the TLD.  Prices are RETAIL — this deployment&#39;s markup is already applied and the wholesale cost is never on the wire.  It requires a validated principal; 401 without one. Nothing is charged and nothing is held — a quote is not a reservation, and the price is re-quoted at purchase, so a name quoted here can be gone or dearer by the time you buy it. A deployment with no registrar credentials answers 503.
      * @param q Q is the keyword to build names from. It is required. (required)
      * @param tld TLD narrows the search to a comma-separated set of top-level domains. (optional)
-     * @return ApiResponse&lt;QuoteList&gt;
+     * @return ApiResponse&lt;DomainQuoteList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<QuoteList> getDomainSearchWithHttpInfo(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld) throws ApiException {
+    public ApiResponse<DomainQuoteList> getDomainSearchWithHttpInfo(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld) throws ApiException {
         okhttp3.Call localVarCall = getDomainSearchValidateBeforeCall(q, tld, null);
-        Type localVarReturnType = new TypeToken<QuoteList>(){}.getType();
+        Type localVarReturnType = new TypeToken<DomainQuoteList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Finds names built from the keyword q, plus the registrar&#39;s alternate-TLD suggestions, and answers a quote for each: the name, whether it is purchasable, whether it is premium, the first-term and renewal price in cents, and the TLD. (asynchronously)
-     * Finds names built from the keyword q, plus the registrar&#39;s alternate-TLD suggestions, and answers a quote for each: the name, whether it is purchasable, whether it is premium, the first-term and renewal price in cents, and the TLD.  Prices are RETAIL — this deployment&#39;s markup is already applied and the wholesale cost is never on the wire.  It requires a validated principal; 403 without one. Nothing is charged and nothing is held — a quote is not a reservation, and the price is re-quoted at purchase, so a name quoted here can be gone or dearer by the time you buy it. A deployment with no registrar credentials answers 503.
+     * Finds names built from the keyword q, plus the registrar&#39;s alternate-TLD suggestions, and answers a quote for each: the name, whether it is purchasable, whether it is premium, the first-term and renewal price in cents, and the TLD.  Prices are RETAIL — this deployment&#39;s markup is already applied and the wholesale cost is never on the wire.  It requires a validated principal; 401 without one. Nothing is charged and nothing is held — a quote is not a reservation, and the price is re-quoted at purchase, so a name quoted here can be gone or dearer by the time you buy it. A deployment with no registrar credentials answers 503.
      * @param q Q is the keyword to build names from. It is required. (required)
      * @param tld TLD narrows the search to a comma-separated set of top-level domains. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -576,18 +596,19 @@ public class DomainApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDomainSearchAsync(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld, final ApiCallback<QuoteList> _callback) throws ApiException {
+    public okhttp3.Call getDomainSearchAsync(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld, final ApiCallback<DomainQuoteList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDomainSearchValidateBeforeCall(q, tld, _callback);
-        Type localVarReturnType = new TypeToken<QuoteList>(){}.getType();
+        Type localVarReturnType = new TypeToken<DomainQuoteList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postDomainRegister
-     * @param order  (required)
+     * @param domainOrder  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -596,9 +617,10 @@ public class DomainApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDomainRegisterCall(@javax.annotation.Nonnull Order order, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDomainRegisterCall(@javax.annotation.Nonnull DomainOrder domainOrder, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -612,7 +634,7 @@ public class DomainApi {
             basePath = null;
         }
 
-        Object localVarPostBody = order;
+        Object localVarPostBody = domainOrder;
 
         // create path and map variables
         String localVarPath = "/v1/domain/register";
@@ -624,7 +646,8 @@ public class DomainApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -644,57 +667,59 @@ public class DomainApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postDomainRegisterValidateBeforeCall(@javax.annotation.Nonnull Order order, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'order' is set
-        if (order == null) {
-            throw new ApiException("Missing the required parameter 'order' when calling postDomainRegister(Async)");
+    private okhttp3.Call postDomainRegisterValidateBeforeCall(@javax.annotation.Nonnull DomainOrder domainOrder, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'domainOrder' is set
+        if (domainOrder == null) {
+            throw new ApiException("Missing the required parameter 'domainOrder' when calling postDomainRegister(Async)");
         }
 
-        return postDomainRegisterCall(order, _callback);
+        return postDomainRegisterCall(domainOrder, _callback);
 
     }
 
     /**
      * Buys a domain for your org and answers the ownership record together with the quote it was bought at.
      * Buys a domain for your org and answers the ownership record together with the quote it was bought at.  The order of operations is the product guarantee: quote, refuse anything unpurchasable or unpriced, AUTHORIZE the org&#39;s prepaid balance, provision the authoritative zone in Hanzo DNS, register at the registrar already pointing at Hanzo&#39;s nameservers, and only then CAPTURE the charge and record ownership. A registrar failure therefore leaves the balance untouched — the org is never billed for a domain it did not get.  It requires a validated principal; that principal&#39;s org owns the domain and is the ledger the charge lands on. Re-buying a name the org already holds is 409, not a second purchase.  Refusals are distinct on purpose: 402 when the prepaid balance cannot cover the quoted price, 409 when the name is not available, 503 when the deployment has no registrar credentials, and the registrar&#39;s own message with its own 4xx — or 502 for its 5xx — when it rejects the purchase. Zone provisioning is best-effort: if the zone service is down the domain is still registered against Hanzo&#39;s nameservers and the zone reconciles afterwards, rather than the purchase failing.
-     * @param order  (required)
-     * @return RegisterResult
+     * @param domainOrder  (required)
+     * @return DomainRegisterResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RegisterResult postDomainRegister(@javax.annotation.Nonnull Order order) throws ApiException {
-        ApiResponse<RegisterResult> localVarResp = postDomainRegisterWithHttpInfo(order);
+    public DomainRegisterResult postDomainRegister(@javax.annotation.Nonnull DomainOrder domainOrder) throws ApiException {
+        ApiResponse<DomainRegisterResult> localVarResp = postDomainRegisterWithHttpInfo(domainOrder);
         return localVarResp.getData();
     }
 
     /**
      * Buys a domain for your org and answers the ownership record together with the quote it was bought at.
      * Buys a domain for your org and answers the ownership record together with the quote it was bought at.  The order of operations is the product guarantee: quote, refuse anything unpurchasable or unpriced, AUTHORIZE the org&#39;s prepaid balance, provision the authoritative zone in Hanzo DNS, register at the registrar already pointing at Hanzo&#39;s nameservers, and only then CAPTURE the charge and record ownership. A registrar failure therefore leaves the balance untouched — the org is never billed for a domain it did not get.  It requires a validated principal; that principal&#39;s org owns the domain and is the ledger the charge lands on. Re-buying a name the org already holds is 409, not a second purchase.  Refusals are distinct on purpose: 402 when the prepaid balance cannot cover the quoted price, 409 when the name is not available, 503 when the deployment has no registrar credentials, and the registrar&#39;s own message with its own 4xx — or 502 for its 5xx — when it rejects the purchase. Zone provisioning is best-effort: if the zone service is down the domain is still registered against Hanzo&#39;s nameservers and the zone reconciles afterwards, rather than the purchase failing.
-     * @param order  (required)
-     * @return ApiResponse&lt;RegisterResult&gt;
+     * @param domainOrder  (required)
+     * @return ApiResponse&lt;DomainRegisterResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegisterResult> postDomainRegisterWithHttpInfo(@javax.annotation.Nonnull Order order) throws ApiException {
-        okhttp3.Call localVarCall = postDomainRegisterValidateBeforeCall(order, null);
-        Type localVarReturnType = new TypeToken<RegisterResult>(){}.getType();
+    public ApiResponse<DomainRegisterResult> postDomainRegisterWithHttpInfo(@javax.annotation.Nonnull DomainOrder domainOrder) throws ApiException {
+        okhttp3.Call localVarCall = postDomainRegisterValidateBeforeCall(domainOrder, null);
+        Type localVarReturnType = new TypeToken<DomainRegisterResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Buys a domain for your org and answers the ownership record together with the quote it was bought at. (asynchronously)
      * Buys a domain for your org and answers the ownership record together with the quote it was bought at.  The order of operations is the product guarantee: quote, refuse anything unpurchasable or unpriced, AUTHORIZE the org&#39;s prepaid balance, provision the authoritative zone in Hanzo DNS, register at the registrar already pointing at Hanzo&#39;s nameservers, and only then CAPTURE the charge and record ownership. A registrar failure therefore leaves the balance untouched — the org is never billed for a domain it did not get.  It requires a validated principal; that principal&#39;s org owns the domain and is the ledger the charge lands on. Re-buying a name the org already holds is 409, not a second purchase.  Refusals are distinct on purpose: 402 when the prepaid balance cannot cover the quoted price, 409 when the name is not available, 503 when the deployment has no registrar credentials, and the registrar&#39;s own message with its own 4xx — or 502 for its 5xx — when it rejects the purchase. Zone provisioning is best-effort: if the zone service is down the domain is still registered against Hanzo&#39;s nameservers and the zone reconciles afterwards, rather than the purchase failing.
-     * @param order  (required)
+     * @param domainOrder  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -703,18 +728,19 @@ public class DomainApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDomainRegisterAsync(@javax.annotation.Nonnull Order order, final ApiCallback<RegisterResult> _callback) throws ApiException {
+    public okhttp3.Call postDomainRegisterAsync(@javax.annotation.Nonnull DomainOrder domainOrder, final ApiCallback<DomainRegisterResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postDomainRegisterValidateBeforeCall(order, _callback);
-        Type localVarReturnType = new TypeToken<RegisterResult>(){}.getType();
+        okhttp3.Call localVarCall = postDomainRegisterValidateBeforeCall(domainOrder, _callback);
+        Type localVarReturnType = new TypeToken<DomainRegisterResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postDomainRenew
-     * @param renewReq  (required)
+     * @param domainRenewReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -723,9 +749,10 @@ public class DomainApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDomainRenewCall(@javax.annotation.Nonnull RenewReq renewReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDomainRenewCall(@javax.annotation.Nonnull DomainRenewReq domainRenewReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -739,7 +766,7 @@ public class DomainApi {
             basePath = null;
         }
 
-        Object localVarPostBody = renewReq;
+        Object localVarPostBody = domainRenewReq;
 
         // create path and map variables
         String localVarPath = "/v1/domain/renew";
@@ -751,7 +778,8 @@ public class DomainApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -771,57 +799,59 @@ public class DomainApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postDomainRenewValidateBeforeCall(@javax.annotation.Nonnull RenewReq renewReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'renewReq' is set
-        if (renewReq == null) {
-            throw new ApiException("Missing the required parameter 'renewReq' when calling postDomainRenew(Async)");
+    private okhttp3.Call postDomainRenewValidateBeforeCall(@javax.annotation.Nonnull DomainRenewReq domainRenewReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'domainRenewReq' is set
+        if (domainRenewReq == null) {
+            throw new ApiException("Missing the required parameter 'domainRenewReq' when calling postDomainRenew(Async)");
         }
 
-        return postDomainRenewCall(renewReq, _callback);
+        return postDomainRenewCall(domainRenewReq, _callback);
 
     }
 
     /**
      * Extends a domain your org already owns and answers the updated record with its new expiry alongside what was paid.
      * Extends a domain your org already owns and answers the updated record with its new expiry alongside what was paid.  Ownership is the gate: a name the caller&#39;s org does not hold is 404, so a renewal can never reach another tenant&#39;s domain.  The price is re-quoted at the CURRENT renewal rate rather than the one paid at purchase. If the registrar returns no renewal price the org&#39;s original price is charged instead, so a renewal is never accidentally free. The balance is authorized before the registrar is called and captured after it confirms — 402 when the prepaid balance cannot cover it, 503 when the deployment has no registrar credentials. Requires a validated principal.
-     * @param renewReq  (required)
-     * @return RenewResult
+     * @param domainRenewReq  (required)
+     * @return DomainRenewResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RenewResult postDomainRenew(@javax.annotation.Nonnull RenewReq renewReq) throws ApiException {
-        ApiResponse<RenewResult> localVarResp = postDomainRenewWithHttpInfo(renewReq);
+    public DomainRenewResult postDomainRenew(@javax.annotation.Nonnull DomainRenewReq domainRenewReq) throws ApiException {
+        ApiResponse<DomainRenewResult> localVarResp = postDomainRenewWithHttpInfo(domainRenewReq);
         return localVarResp.getData();
     }
 
     /**
      * Extends a domain your org already owns and answers the updated record with its new expiry alongside what was paid.
      * Extends a domain your org already owns and answers the updated record with its new expiry alongside what was paid.  Ownership is the gate: a name the caller&#39;s org does not hold is 404, so a renewal can never reach another tenant&#39;s domain.  The price is re-quoted at the CURRENT renewal rate rather than the one paid at purchase. If the registrar returns no renewal price the org&#39;s original price is charged instead, so a renewal is never accidentally free. The balance is authorized before the registrar is called and captured after it confirms — 402 when the prepaid balance cannot cover it, 503 when the deployment has no registrar credentials. Requires a validated principal.
-     * @param renewReq  (required)
-     * @return ApiResponse&lt;RenewResult&gt;
+     * @param domainRenewReq  (required)
+     * @return ApiResponse&lt;DomainRenewResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RenewResult> postDomainRenewWithHttpInfo(@javax.annotation.Nonnull RenewReq renewReq) throws ApiException {
-        okhttp3.Call localVarCall = postDomainRenewValidateBeforeCall(renewReq, null);
-        Type localVarReturnType = new TypeToken<RenewResult>(){}.getType();
+    public ApiResponse<DomainRenewResult> postDomainRenewWithHttpInfo(@javax.annotation.Nonnull DomainRenewReq domainRenewReq) throws ApiException {
+        okhttp3.Call localVarCall = postDomainRenewValidateBeforeCall(domainRenewReq, null);
+        Type localVarReturnType = new TypeToken<DomainRenewResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Extends a domain your org already owns and answers the updated record with its new expiry alongside what was paid. (asynchronously)
      * Extends a domain your org already owns and answers the updated record with its new expiry alongside what was paid.  Ownership is the gate: a name the caller&#39;s org does not hold is 404, so a renewal can never reach another tenant&#39;s domain.  The price is re-quoted at the CURRENT renewal rate rather than the one paid at purchase. If the registrar returns no renewal price the org&#39;s original price is charged instead, so a renewal is never accidentally free. The balance is authorized before the registrar is called and captured after it confirms — 402 when the prepaid balance cannot cover it, 503 when the deployment has no registrar credentials. Requires a validated principal.
-     * @param renewReq  (required)
+     * @param domainRenewReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -830,18 +860,19 @@ public class DomainApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDomainRenewAsync(@javax.annotation.Nonnull RenewReq renewReq, final ApiCallback<RenewResult> _callback) throws ApiException {
+    public okhttp3.Call postDomainRenewAsync(@javax.annotation.Nonnull DomainRenewReq domainRenewReq, final ApiCallback<DomainRenewResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postDomainRenewValidateBeforeCall(renewReq, _callback);
-        Type localVarReturnType = new TypeToken<RenewResult>(){}.getType();
+        okhttp3.Call localVarCall = postDomainRenewValidateBeforeCall(domainRenewReq, _callback);
+        Type localVarReturnType = new TypeToken<DomainRenewResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postDomainTransfer
-     * @param transferReq  (required)
+     * @param domainTransferReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -850,9 +881,10 @@ public class DomainApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDomainTransferCall(@javax.annotation.Nonnull TransferReq transferReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDomainTransferCall(@javax.annotation.Nonnull DomainTransferReq domainTransferReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -866,7 +898,7 @@ public class DomainApi {
             basePath = null;
         }
 
-        Object localVarPostBody = transferReq;
+        Object localVarPostBody = domainTransferReq;
 
         // create path and map variables
         String localVarPath = "/v1/domain/transfer";
@@ -878,7 +910,8 @@ public class DomainApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -898,57 +931,59 @@ public class DomainApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postDomainTransferValidateBeforeCall(@javax.annotation.Nonnull TransferReq transferReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'transferReq' is set
-        if (transferReq == null) {
-            throw new ApiException("Missing the required parameter 'transferReq' when calling postDomainTransfer(Async)");
+    private okhttp3.Call postDomainTransferValidateBeforeCall(@javax.annotation.Nonnull DomainTransferReq domainTransferReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'domainTransferReq' is set
+        if (domainTransferReq == null) {
+            throw new ApiException("Missing the required parameter 'domainTransferReq' when calling postDomainTransfer(Async)");
         }
 
-        return postDomainTransferCall(transferReq, _callback);
+        return postDomainTransferCall(domainTransferReq, _callback);
 
     }
 
     /**
      * Moves a domain you own at another registrar onto your org here, using its authCode, and answers the same record-plus-quote a purchase does.
      * Moves a domain you own at another registrar onto your org here, using its authCode, and answers the same record-plus-quote a purchase does.  It is priced and charged exactly like a registration: authorize the org&#39;s prepaid balance, ask the registrar for the transfer, capture only after the registrar accepts. A name the registrar will not price is 409, an insufficient balance is 402, and a deployment with no registrar credentials is 503.  It requires a validated principal; the ownership record is written under that org as soon as the registrar ACCEPTS the request, which is not the same instant the transfer completes at the losing registrar. Unlike a registration this does not provision a zone, so the record carries this deployment&#39;s configured nameservers.
-     * @param transferReq  (required)
-     * @return RegisterResult
+     * @param domainTransferReq  (required)
+     * @return DomainRegisterResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RegisterResult postDomainTransfer(@javax.annotation.Nonnull TransferReq transferReq) throws ApiException {
-        ApiResponse<RegisterResult> localVarResp = postDomainTransferWithHttpInfo(transferReq);
+    public DomainRegisterResult postDomainTransfer(@javax.annotation.Nonnull DomainTransferReq domainTransferReq) throws ApiException {
+        ApiResponse<DomainRegisterResult> localVarResp = postDomainTransferWithHttpInfo(domainTransferReq);
         return localVarResp.getData();
     }
 
     /**
      * Moves a domain you own at another registrar onto your org here, using its authCode, and answers the same record-plus-quote a purchase does.
      * Moves a domain you own at another registrar onto your org here, using its authCode, and answers the same record-plus-quote a purchase does.  It is priced and charged exactly like a registration: authorize the org&#39;s prepaid balance, ask the registrar for the transfer, capture only after the registrar accepts. A name the registrar will not price is 409, an insufficient balance is 402, and a deployment with no registrar credentials is 503.  It requires a validated principal; the ownership record is written under that org as soon as the registrar ACCEPTS the request, which is not the same instant the transfer completes at the losing registrar. Unlike a registration this does not provision a zone, so the record carries this deployment&#39;s configured nameservers.
-     * @param transferReq  (required)
-     * @return ApiResponse&lt;RegisterResult&gt;
+     * @param domainTransferReq  (required)
+     * @return ApiResponse&lt;DomainRegisterResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegisterResult> postDomainTransferWithHttpInfo(@javax.annotation.Nonnull TransferReq transferReq) throws ApiException {
-        okhttp3.Call localVarCall = postDomainTransferValidateBeforeCall(transferReq, null);
-        Type localVarReturnType = new TypeToken<RegisterResult>(){}.getType();
+    public ApiResponse<DomainRegisterResult> postDomainTransferWithHttpInfo(@javax.annotation.Nonnull DomainTransferReq domainTransferReq) throws ApiException {
+        okhttp3.Call localVarCall = postDomainTransferValidateBeforeCall(domainTransferReq, null);
+        Type localVarReturnType = new TypeToken<DomainRegisterResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Moves a domain you own at another registrar onto your org here, using its authCode, and answers the same record-plus-quote a purchase does. (asynchronously)
      * Moves a domain you own at another registrar onto your org here, using its authCode, and answers the same record-plus-quote a purchase does.  It is priced and charged exactly like a registration: authorize the org&#39;s prepaid balance, ask the registrar for the transfer, capture only after the registrar accepts. A name the registrar will not price is 409, an insufficient balance is 402, and a deployment with no registrar credentials is 503.  It requires a validated principal; the ownership record is written under that org as soon as the registrar ACCEPTS the request, which is not the same instant the transfer completes at the losing registrar. Unlike a registration this does not provision a zone, so the record carries this deployment&#39;s configured nameservers.
-     * @param transferReq  (required)
+     * @param domainTransferReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -957,12 +992,13 @@ public class DomainApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDomainTransferAsync(@javax.annotation.Nonnull TransferReq transferReq, final ApiCallback<RegisterResult> _callback) throws ApiException {
+    public okhttp3.Call postDomainTransferAsync(@javax.annotation.Nonnull DomainTransferReq domainTransferReq, final ApiCallback<DomainRegisterResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postDomainTransferValidateBeforeCall(transferReq, _callback);
-        Type localVarReturnType = new TypeToken<RegisterResult>(){}.getType();
+        okhttp3.Call localVarCall = postDomainTransferValidateBeforeCall(domainTransferReq, _callback);
+        Type localVarReturnType = new TypeToken<DomainRegisterResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

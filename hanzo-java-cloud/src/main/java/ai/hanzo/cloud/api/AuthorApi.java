@@ -27,12 +27,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Claim;
-import ai.hanzo.cloud.model.ConnectRequest;
-import ai.hanzo.cloud.model.DeployRecord;
-import ai.hanzo.cloud.model.DeployRequest;
-import ai.hanzo.cloud.model.Enrolment;
-import ai.hanzo.cloud.model.VerifyRequest;
+import ai.hanzo.cloud.model.AuthorClaim;
+import ai.hanzo.cloud.model.AuthorConnectRequest;
+import ai.hanzo.cloud.model.AuthorDeployRecord;
+import ai.hanzo.cloud.model.AuthorDeployRequest;
+import ai.hanzo.cloud.model.AuthorEnrolment;
+import ai.hanzo.cloud.model.AuthorVerifyRequest;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -87,6 +88,7 @@ public class AuthorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAuthorCall(final ApiCallback _callback) throws ApiException {
@@ -115,7 +117,8 @@ public class AuthorApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -149,6 +152,7 @@ public class AuthorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Map<String, Object> getAuthor() throws ApiException {
@@ -166,6 +170,7 @@ public class AuthorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Map<String, Object>> getAuthorWithHttpInfo() throws ApiException {
@@ -185,6 +190,7 @@ public class AuthorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAuthorAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
@@ -205,6 +211,7 @@ public class AuthorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAuthorBasisCall(@javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
@@ -237,7 +244,8 @@ public class AuthorApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -272,6 +280,7 @@ public class AuthorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Map<String, Object> getAuthorBasis(@javax.annotation.Nullable String period) throws ApiException {
@@ -290,6 +299,7 @@ public class AuthorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Map<String, Object>> getAuthorBasisWithHttpInfo(@javax.annotation.Nullable String period) throws ApiException {
@@ -310,6 +320,7 @@ public class AuthorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAuthorBasisAsync(@javax.annotation.Nullable String period, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
@@ -321,7 +332,7 @@ public class AuthorApi {
     }
     /**
      * Build call for postAuthorConnect
-     * @param connectRequest  (required)
+     * @param authorConnectRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -330,9 +341,10 @@ public class AuthorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAuthorConnectCall(@javax.annotation.Nonnull ConnectRequest connectRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAuthorConnectCall(@javax.annotation.Nonnull AuthorConnectRequest authorConnectRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -346,7 +358,7 @@ public class AuthorApi {
             basePath = null;
         }
 
-        Object localVarPostBody = connectRequest;
+        Object localVarPostBody = authorConnectRequest;
 
         // create path and map variables
         String localVarPath = "/v1/author/connect";
@@ -358,7 +370,8 @@ public class AuthorApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -378,57 +391,59 @@ public class AuthorApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAuthorConnectValidateBeforeCall(@javax.annotation.Nonnull ConnectRequest connectRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'connectRequest' is set
-        if (connectRequest == null) {
-            throw new ApiException("Missing the required parameter 'connectRequest' when calling postAuthorConnect(Async)");
+    private okhttp3.Call postAuthorConnectValidateBeforeCall(@javax.annotation.Nonnull AuthorConnectRequest authorConnectRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'authorConnectRequest' is set
+        if (authorConnectRequest == null) {
+            throw new ApiException("Missing the required parameter 'authorConnectRequest' when calling postAuthorConnect(Async)");
         }
 
-        return postAuthorConnectCall(connectRequest, _callback);
+        return postAuthorConnectCall(authorConnectRequest, _callback);
 
     }
 
     /**
      * Enrols the caller&#39;s org in the author program at status \&quot;connected\&quot; and returns its enrolment, including the verify code the file method needs.
      * Enrols the caller&#39;s org in the author program at status \&quot;connected\&quot; and returns its enrolment, including the verify code the file method needs. It is IDEMPOTENT: a second call returns the same enrolment rather than a conflict.  The forge login is taken from IAM&#39;s LINKED account for the provider when there is one — that is identity proof, not a claim — and only otherwise from the login in the body, which then has to be proven per repository. Connecting does not admit an org to earning: a platform reviewer approves that separately.  Answers 201 when it enrolled the org and 200 when it found an existing enrolment.
-     * @param connectRequest  (required)
-     * @return Enrolment
+     * @param authorConnectRequest  (required)
+     * @return AuthorEnrolment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Enrolment postAuthorConnect(@javax.annotation.Nonnull ConnectRequest connectRequest) throws ApiException {
-        ApiResponse<Enrolment> localVarResp = postAuthorConnectWithHttpInfo(connectRequest);
+    public AuthorEnrolment postAuthorConnect(@javax.annotation.Nonnull AuthorConnectRequest authorConnectRequest) throws ApiException {
+        ApiResponse<AuthorEnrolment> localVarResp = postAuthorConnectWithHttpInfo(authorConnectRequest);
         return localVarResp.getData();
     }
 
     /**
      * Enrols the caller&#39;s org in the author program at status \&quot;connected\&quot; and returns its enrolment, including the verify code the file method needs.
      * Enrols the caller&#39;s org in the author program at status \&quot;connected\&quot; and returns its enrolment, including the verify code the file method needs. It is IDEMPOTENT: a second call returns the same enrolment rather than a conflict.  The forge login is taken from IAM&#39;s LINKED account for the provider when there is one — that is identity proof, not a claim — and only otherwise from the login in the body, which then has to be proven per repository. Connecting does not admit an org to earning: a platform reviewer approves that separately.  Answers 201 when it enrolled the org and 200 when it found an existing enrolment.
-     * @param connectRequest  (required)
-     * @return ApiResponse&lt;Enrolment&gt;
+     * @param authorConnectRequest  (required)
+     * @return ApiResponse&lt;AuthorEnrolment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Enrolment> postAuthorConnectWithHttpInfo(@javax.annotation.Nonnull ConnectRequest connectRequest) throws ApiException {
-        okhttp3.Call localVarCall = postAuthorConnectValidateBeforeCall(connectRequest, null);
-        Type localVarReturnType = new TypeToken<Enrolment>(){}.getType();
+    public ApiResponse<AuthorEnrolment> postAuthorConnectWithHttpInfo(@javax.annotation.Nonnull AuthorConnectRequest authorConnectRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAuthorConnectValidateBeforeCall(authorConnectRequest, null);
+        Type localVarReturnType = new TypeToken<AuthorEnrolment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Enrols the caller&#39;s org in the author program at status \&quot;connected\&quot; and returns its enrolment, including the verify code the file method needs. (asynchronously)
      * Enrols the caller&#39;s org in the author program at status \&quot;connected\&quot; and returns its enrolment, including the verify code the file method needs. It is IDEMPOTENT: a second call returns the same enrolment rather than a conflict.  The forge login is taken from IAM&#39;s LINKED account for the provider when there is one — that is identity proof, not a claim — and only otherwise from the login in the body, which then has to be proven per repository. Connecting does not admit an org to earning: a platform reviewer approves that separately.  Answers 201 when it enrolled the org and 200 when it found an existing enrolment.
-     * @param connectRequest  (required)
+     * @param authorConnectRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -437,18 +452,19 @@ public class AuthorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAuthorConnectAsync(@javax.annotation.Nonnull ConnectRequest connectRequest, final ApiCallback<Enrolment> _callback) throws ApiException {
+    public okhttp3.Call postAuthorConnectAsync(@javax.annotation.Nonnull AuthorConnectRequest authorConnectRequest, final ApiCallback<AuthorEnrolment> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAuthorConnectValidateBeforeCall(connectRequest, _callback);
-        Type localVarReturnType = new TypeToken<Enrolment>(){}.getType();
+        okhttp3.Call localVarCall = postAuthorConnectValidateBeforeCall(authorConnectRequest, _callback);
+        Type localVarReturnType = new TypeToken<AuthorEnrolment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postAuthorDeploysRecord
-     * @param deployRequest  (required)
+     * @param authorDeployRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -457,9 +473,10 @@ public class AuthorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAuthorDeploysRecordCall(@javax.annotation.Nonnull DeployRequest deployRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAuthorDeploysRecordCall(@javax.annotation.Nonnull AuthorDeployRequest authorDeployRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -473,7 +490,7 @@ public class AuthorApi {
             basePath = null;
         }
 
-        Object localVarPostBody = deployRequest;
+        Object localVarPostBody = authorDeployRequest;
 
         // create path and map variables
         String localVarPath = "/v1/author/deploys/record";
@@ -485,7 +502,8 @@ public class AuthorApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -505,57 +523,59 @@ public class AuthorApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAuthorDeploysRecordValidateBeforeCall(@javax.annotation.Nonnull DeployRequest deployRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'deployRequest' is set
-        if (deployRequest == null) {
-            throw new ApiException("Missing the required parameter 'deployRequest' when calling postAuthorDeploysRecord(Async)");
+    private okhttp3.Call postAuthorDeploysRecordValidateBeforeCall(@javax.annotation.Nonnull AuthorDeployRequest authorDeployRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'authorDeployRequest' is set
+        if (authorDeployRequest == null) {
+            throw new ApiException("Missing the required parameter 'authorDeployRequest' when calling postAuthorDeploysRecord(Async)");
         }
 
-        return postAuthorDeploysRecordCall(deployRequest, _callback);
+        return postAuthorDeploysRecordCall(authorDeployRequest, _callback);
 
     }
 
     /**
      * Records that the caller&#39;s org deployed a project built from a source repository, which is the edge that makes an author&#39;s work earn royalty.
      * Records that the caller&#39;s org deployed a project built from a source repository, which is the edge that makes an author&#39;s work earn royalty.  It is deliberately NOT an error for a deploy to attribute to nobody: a project built from no repository, or from one no author has verified, answers {\&quot;recorded\&quot;: false, \&quot;reason\&quot;} so a deploy pipeline can fire this on every deploy without branching. Attribution resolves per-repository first, then owner-wide, so a repository with its own claim always earns for its own author.  A deploy of a Hanzo-maintained template attributes to the platform treasury, and a self-deploy (the author&#39;s own org deploying its own repository) is recorded for provenance but excluded from accrual. The edge is idempotent per repository+project+org.  Answers 201 when it recorded a new edge and 200 otherwise.
-     * @param deployRequest  (required)
-     * @return DeployRecord
+     * @param authorDeployRequest  (required)
+     * @return AuthorDeployRecord
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DeployRecord postAuthorDeploysRecord(@javax.annotation.Nonnull DeployRequest deployRequest) throws ApiException {
-        ApiResponse<DeployRecord> localVarResp = postAuthorDeploysRecordWithHttpInfo(deployRequest);
+    public AuthorDeployRecord postAuthorDeploysRecord(@javax.annotation.Nonnull AuthorDeployRequest authorDeployRequest) throws ApiException {
+        ApiResponse<AuthorDeployRecord> localVarResp = postAuthorDeploysRecordWithHttpInfo(authorDeployRequest);
         return localVarResp.getData();
     }
 
     /**
      * Records that the caller&#39;s org deployed a project built from a source repository, which is the edge that makes an author&#39;s work earn royalty.
      * Records that the caller&#39;s org deployed a project built from a source repository, which is the edge that makes an author&#39;s work earn royalty.  It is deliberately NOT an error for a deploy to attribute to nobody: a project built from no repository, or from one no author has verified, answers {\&quot;recorded\&quot;: false, \&quot;reason\&quot;} so a deploy pipeline can fire this on every deploy without branching. Attribution resolves per-repository first, then owner-wide, so a repository with its own claim always earns for its own author.  A deploy of a Hanzo-maintained template attributes to the platform treasury, and a self-deploy (the author&#39;s own org deploying its own repository) is recorded for provenance but excluded from accrual. The edge is idempotent per repository+project+org.  Answers 201 when it recorded a new edge and 200 otherwise.
-     * @param deployRequest  (required)
-     * @return ApiResponse&lt;DeployRecord&gt;
+     * @param authorDeployRequest  (required)
+     * @return ApiResponse&lt;AuthorDeployRecord&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeployRecord> postAuthorDeploysRecordWithHttpInfo(@javax.annotation.Nonnull DeployRequest deployRequest) throws ApiException {
-        okhttp3.Call localVarCall = postAuthorDeploysRecordValidateBeforeCall(deployRequest, null);
-        Type localVarReturnType = new TypeToken<DeployRecord>(){}.getType();
+    public ApiResponse<AuthorDeployRecord> postAuthorDeploysRecordWithHttpInfo(@javax.annotation.Nonnull AuthorDeployRequest authorDeployRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAuthorDeploysRecordValidateBeforeCall(authorDeployRequest, null);
+        Type localVarReturnType = new TypeToken<AuthorDeployRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Records that the caller&#39;s org deployed a project built from a source repository, which is the edge that makes an author&#39;s work earn royalty. (asynchronously)
      * Records that the caller&#39;s org deployed a project built from a source repository, which is the edge that makes an author&#39;s work earn royalty.  It is deliberately NOT an error for a deploy to attribute to nobody: a project built from no repository, or from one no author has verified, answers {\&quot;recorded\&quot;: false, \&quot;reason\&quot;} so a deploy pipeline can fire this on every deploy without branching. Attribution resolves per-repository first, then owner-wide, so a repository with its own claim always earns for its own author.  A deploy of a Hanzo-maintained template attributes to the platform treasury, and a self-deploy (the author&#39;s own org deploying its own repository) is recorded for provenance but excluded from accrual. The edge is idempotent per repository+project+org.  Answers 201 when it recorded a new edge and 200 otherwise.
-     * @param deployRequest  (required)
+     * @param authorDeployRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -564,18 +584,19 @@ public class AuthorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAuthorDeploysRecordAsync(@javax.annotation.Nonnull DeployRequest deployRequest, final ApiCallback<DeployRecord> _callback) throws ApiException {
+    public okhttp3.Call postAuthorDeploysRecordAsync(@javax.annotation.Nonnull AuthorDeployRequest authorDeployRequest, final ApiCallback<AuthorDeployRecord> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAuthorDeploysRecordValidateBeforeCall(deployRequest, _callback);
-        Type localVarReturnType = new TypeToken<DeployRecord>(){}.getType();
+        okhttp3.Call localVarCall = postAuthorDeploysRecordValidateBeforeCall(authorDeployRequest, _callback);
+        Type localVarReturnType = new TypeToken<AuthorDeployRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postAuthorReposVerify
-     * @param verifyRequest  (required)
+     * @param authorVerifyRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -584,9 +605,10 @@ public class AuthorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAuthorReposVerifyCall(@javax.annotation.Nonnull VerifyRequest verifyRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAuthorReposVerifyCall(@javax.annotation.Nonnull AuthorVerifyRequest authorVerifyRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -600,7 +622,7 @@ public class AuthorApi {
             basePath = null;
         }
 
-        Object localVarPostBody = verifyRequest;
+        Object localVarPostBody = authorVerifyRequest;
 
         // create path and map variables
         String localVarPath = "/v1/author/repos/verify";
@@ -612,7 +634,8 @@ public class AuthorApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -632,57 +655,59 @@ public class AuthorApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAuthorReposVerifyValidateBeforeCall(@javax.annotation.Nonnull VerifyRequest verifyRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'verifyRequest' is set
-        if (verifyRequest == null) {
-            throw new ApiException("Missing the required parameter 'verifyRequest' when calling postAuthorReposVerify(Async)");
+    private okhttp3.Call postAuthorReposVerifyValidateBeforeCall(@javax.annotation.Nonnull AuthorVerifyRequest authorVerifyRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'authorVerifyRequest' is set
+        if (authorVerifyRequest == null) {
+            throw new ApiException("Missing the required parameter 'authorVerifyRequest' when calling postAuthorReposVerify(Async)");
         }
 
-        return postAuthorReposVerifyCall(verifyRequest, _callback);
+        return postAuthorReposVerifyCall(authorVerifyRequest, _callback);
 
     }
 
     /**
      * Proves that the caller owns a repository — or a whole OWNER — and records the claim, which is what makes deploys of that code earn royalty.
      * Proves that the caller owns a repository — or a whole OWNER — and records the claim, which is what makes deploys of that code earn royalty.  Ownership is proven the SAME two ways in both cases, tried in order: an IAM-linked forge token with admin or push permission, or a hanzo.json on the default branch carrying the author&#39;s verify code. Claiming an OWNER proves it against that owner&#39;s \&quot;.github\&quot; control repository, and is exactly as strong as a per-repository claim — an owner the caller cannot prove is refused with 422, never assumed.  A per-repository claim wins over an owner-wide one, so a specifically-claimed repository always earns for its own author. A repository another author has already verified is a 409. The org must have connected first.  Answers 201 when it recorded a new claim and 200 when the claim already existed.
-     * @param verifyRequest  (required)
-     * @return Claim
+     * @param authorVerifyRequest  (required)
+     * @return AuthorClaim
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Claim postAuthorReposVerify(@javax.annotation.Nonnull VerifyRequest verifyRequest) throws ApiException {
-        ApiResponse<Claim> localVarResp = postAuthorReposVerifyWithHttpInfo(verifyRequest);
+    public AuthorClaim postAuthorReposVerify(@javax.annotation.Nonnull AuthorVerifyRequest authorVerifyRequest) throws ApiException {
+        ApiResponse<AuthorClaim> localVarResp = postAuthorReposVerifyWithHttpInfo(authorVerifyRequest);
         return localVarResp.getData();
     }
 
     /**
      * Proves that the caller owns a repository — or a whole OWNER — and records the claim, which is what makes deploys of that code earn royalty.
      * Proves that the caller owns a repository — or a whole OWNER — and records the claim, which is what makes deploys of that code earn royalty.  Ownership is proven the SAME two ways in both cases, tried in order: an IAM-linked forge token with admin or push permission, or a hanzo.json on the default branch carrying the author&#39;s verify code. Claiming an OWNER proves it against that owner&#39;s \&quot;.github\&quot; control repository, and is exactly as strong as a per-repository claim — an owner the caller cannot prove is refused with 422, never assumed.  A per-repository claim wins over an owner-wide one, so a specifically-claimed repository always earns for its own author. A repository another author has already verified is a 409. The org must have connected first.  Answers 201 when it recorded a new claim and 200 when the claim already existed.
-     * @param verifyRequest  (required)
-     * @return ApiResponse&lt;Claim&gt;
+     * @param authorVerifyRequest  (required)
+     * @return ApiResponse&lt;AuthorClaim&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Claim> postAuthorReposVerifyWithHttpInfo(@javax.annotation.Nonnull VerifyRequest verifyRequest) throws ApiException {
-        okhttp3.Call localVarCall = postAuthorReposVerifyValidateBeforeCall(verifyRequest, null);
-        Type localVarReturnType = new TypeToken<Claim>(){}.getType();
+    public ApiResponse<AuthorClaim> postAuthorReposVerifyWithHttpInfo(@javax.annotation.Nonnull AuthorVerifyRequest authorVerifyRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAuthorReposVerifyValidateBeforeCall(authorVerifyRequest, null);
+        Type localVarReturnType = new TypeToken<AuthorClaim>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Proves that the caller owns a repository — or a whole OWNER — and records the claim, which is what makes deploys of that code earn royalty. (asynchronously)
      * Proves that the caller owns a repository — or a whole OWNER — and records the claim, which is what makes deploys of that code earn royalty.  Ownership is proven the SAME two ways in both cases, tried in order: an IAM-linked forge token with admin or push permission, or a hanzo.json on the default branch carrying the author&#39;s verify code. Claiming an OWNER proves it against that owner&#39;s \&quot;.github\&quot; control repository, and is exactly as strong as a per-repository claim — an owner the caller cannot prove is refused with 422, never assumed.  A per-repository claim wins over an owner-wide one, so a specifically-claimed repository always earns for its own author. A repository another author has already verified is a 409. The org must have connected first.  Answers 201 when it recorded a new claim and 200 when the claim already existed.
-     * @param verifyRequest  (required)
+     * @param authorVerifyRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -691,12 +716,13 @@ public class AuthorApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAuthorReposVerifyAsync(@javax.annotation.Nonnull VerifyRequest verifyRequest, final ApiCallback<Claim> _callback) throws ApiException {
+    public okhttp3.Call postAuthorReposVerifyAsync(@javax.annotation.Nonnull AuthorVerifyRequest authorVerifyRequest, final ApiCallback<AuthorClaim> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAuthorReposVerifyValidateBeforeCall(verifyRequest, _callback);
-        Type localVarReturnType = new TypeToken<Claim>(){}.getType();
+        okhttp3.Call localVarCall = postAuthorReposVerifyValidateBeforeCall(authorVerifyRequest, _callback);
+        Type localVarReturnType = new TypeToken<AuthorClaim>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

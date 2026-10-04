@@ -27,7 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.SettingsReq;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.SettingsSettingsReq;
 import ai.hanzo.cloud.model.SettingsView;
 
 import java.lang.reflect.Type;
@@ -84,6 +85,7 @@ public class SettingsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSettingsByProductCall(@javax.annotation.Nonnull String product, final ApiCallback _callback) throws ApiException {
@@ -113,7 +115,8 @@ public class SettingsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -153,6 +156,7 @@ public class SettingsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public SettingsView getSettingsByProduct(@javax.annotation.Nonnull String product) throws ApiException {
@@ -171,6 +175,7 @@ public class SettingsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<SettingsView> getSettingsByProductWithHttpInfo(@javax.annotation.Nonnull String product) throws ApiException {
@@ -191,6 +196,7 @@ public class SettingsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSettingsByProductAsync(@javax.annotation.Nonnull String product, final ApiCallback<SettingsView> _callback) throws ApiException {
@@ -203,7 +209,7 @@ public class SettingsApi {
     /**
      * Build call for putSettingsByProduct
      * @param product Product is the catalog slug, from the PATH. zip binds the path last, so the URL names the product being written whatever a body field claims. (required)
-     * @param settingsReq  (required)
+     * @param settingsSettingsReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -212,9 +218,10 @@ public class SettingsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putSettingsByProductCall(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsReq settingsReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putSettingsByProductCall(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsSettingsReq settingsSettingsReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -228,7 +235,7 @@ public class SettingsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = settingsReq;
+        Object localVarPostBody = settingsSettingsReq;
 
         // create path and map variables
         String localVarPath = "/v1/settings/{product}"
@@ -241,7 +248,8 @@ public class SettingsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -261,18 +269,18 @@ public class SettingsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putSettingsByProductValidateBeforeCall(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsReq settingsReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putSettingsByProductValidateBeforeCall(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsSettingsReq settingsSettingsReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'product' is set
         if (product == null) {
             throw new ApiException("Missing the required parameter 'product' when calling putSettingsByProduct(Async)");
         }
 
-        // verify the required parameter 'settingsReq' is set
-        if (settingsReq == null) {
-            throw new ApiException("Missing the required parameter 'settingsReq' when calling putSettingsByProduct(Async)");
+        // verify the required parameter 'settingsSettingsReq' is set
+        if (settingsSettingsReq == null) {
+            throw new ApiException("Missing the required parameter 'settingsSettingsReq' when calling putSettingsByProduct(Async)");
         }
 
-        return putSettingsByProductCall(product, settingsReq, _callback);
+        return putSettingsByProductCall(product, settingsSettingsReq, _callback);
 
     }
 
@@ -280,7 +288,7 @@ public class SettingsApi {
      * Writes the caller org&#39;s configuration for one product and answers the stored result, secrets masked.
      * Writes the caller org&#39;s configuration for one product and answers the stored result, secrets masked. Secret VALUES are sealed into KMS under orgs/{org}/settings/{product}/{key} and never touch this deployment&#39;s database; with no KMS configured a write that carries any secret is refused whole (503) rather than dropping it or persisting it in the clear. A secret the body omits keeps its stored value, so a partial write never silently clears one.
      * @param product Product is the catalog slug, from the PATH. zip binds the path last, so the URL names the product being written whatever a body field claims. (required)
-     * @param settingsReq  (required)
+     * @param settingsSettingsReq  (required)
      * @return SettingsView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -288,10 +296,11 @@ public class SettingsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SettingsView putSettingsByProduct(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsReq settingsReq) throws ApiException {
-        ApiResponse<SettingsView> localVarResp = putSettingsByProductWithHttpInfo(product, settingsReq);
+    public SettingsView putSettingsByProduct(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsSettingsReq settingsSettingsReq) throws ApiException {
+        ApiResponse<SettingsView> localVarResp = putSettingsByProductWithHttpInfo(product, settingsSettingsReq);
         return localVarResp.getData();
     }
 
@@ -299,7 +308,7 @@ public class SettingsApi {
      * Writes the caller org&#39;s configuration for one product and answers the stored result, secrets masked.
      * Writes the caller org&#39;s configuration for one product and answers the stored result, secrets masked. Secret VALUES are sealed into KMS under orgs/{org}/settings/{product}/{key} and never touch this deployment&#39;s database; with no KMS configured a write that carries any secret is refused whole (503) rather than dropping it or persisting it in the clear. A secret the body omits keeps its stored value, so a partial write never silently clears one.
      * @param product Product is the catalog slug, from the PATH. zip binds the path last, so the URL names the product being written whatever a body field claims. (required)
-     * @param settingsReq  (required)
+     * @param settingsSettingsReq  (required)
      * @return ApiResponse&lt;SettingsView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -307,10 +316,11 @@ public class SettingsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SettingsView> putSettingsByProductWithHttpInfo(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsReq settingsReq) throws ApiException {
-        okhttp3.Call localVarCall = putSettingsByProductValidateBeforeCall(product, settingsReq, null);
+    public ApiResponse<SettingsView> putSettingsByProductWithHttpInfo(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsSettingsReq settingsSettingsReq) throws ApiException {
+        okhttp3.Call localVarCall = putSettingsByProductValidateBeforeCall(product, settingsSettingsReq, null);
         Type localVarReturnType = new TypeToken<SettingsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -319,7 +329,7 @@ public class SettingsApi {
      * Writes the caller org&#39;s configuration for one product and answers the stored result, secrets masked. (asynchronously)
      * Writes the caller org&#39;s configuration for one product and answers the stored result, secrets masked. Secret VALUES are sealed into KMS under orgs/{org}/settings/{product}/{key} and never touch this deployment&#39;s database; with no KMS configured a write that carries any secret is refused whole (503) rather than dropping it or persisting it in the clear. A secret the body omits keeps its stored value, so a partial write never silently clears one.
      * @param product Product is the catalog slug, from the PATH. zip binds the path last, so the URL names the product being written whatever a body field claims. (required)
-     * @param settingsReq  (required)
+     * @param settingsSettingsReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -328,11 +338,12 @@ public class SettingsApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putSettingsByProductAsync(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsReq settingsReq, final ApiCallback<SettingsView> _callback) throws ApiException {
+    public okhttp3.Call putSettingsByProductAsync(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull SettingsSettingsReq settingsSettingsReq, final ApiCallback<SettingsView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putSettingsByProductValidateBeforeCall(product, settingsReq, _callback);
+        okhttp3.Call localVarCall = putSettingsByProductValidateBeforeCall(product, settingsSettingsReq, _callback);
         Type localVarReturnType = new TypeToken<SettingsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

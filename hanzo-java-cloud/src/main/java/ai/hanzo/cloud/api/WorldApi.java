@@ -27,11 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.LimitsView;
-import ai.hanzo.cloud.model.NewsResponse;
-import ai.hanzo.cloud.model.PipelineReq;
-import ai.hanzo.cloud.model.PipelineView;
-import ai.hanzo.cloud.model.WorldIndex;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.WorldLimitsView;
+import ai.hanzo.cloud.model.WorldNewsResponse;
+import ai.hanzo.cloud.model.WorldPipelineReq;
+import ai.hanzo.cloud.model.WorldPipelineView;
+import ai.hanzo.cloud.model.WorldWorldIndex;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -86,6 +87,7 @@ public class WorldApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getWorldCall(final ApiCallback _callback) throws ApiException {
@@ -114,7 +116,8 @@ public class WorldApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -141,35 +144,37 @@ public class WorldApi {
     /**
      * Answers GET /v1/world — the product&#39;s public endpoint, naming every wire this surface answers on.
      * Answers GET /v1/world — the product&#39;s public endpoint, naming every wire this surface answers on.  It exists because two of those wires are INVISIBLE to the generated document. /v1/world/mcp and /v1/world/zap are carved off the cloud catch-all by the ingress and answered by world-gw, so the cloud router never serves them — and openapi.Describe renders prose only for a route the router actually serves, which is the very property that keeps the document from being able to claim an operation nothing answers. Both addresses are real and public, so without this op the only way to learn they exist is to read the ingress config. This is where that fact lives, in the product&#39;s own surface.  Public on purpose: discovery precedes credentials. It reports addresses and protocols only — never feed data, and never the caller&#39;s plan, which GET /v1/world/limits owns — so there is nothing here to leak.
-     * @return WorldIndex
+     * @return WorldWorldIndex
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public WorldIndex getWorld() throws ApiException {
-        ApiResponse<WorldIndex> localVarResp = getWorldWithHttpInfo();
+    public WorldWorldIndex getWorld() throws ApiException {
+        ApiResponse<WorldWorldIndex> localVarResp = getWorldWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Answers GET /v1/world — the product&#39;s public endpoint, naming every wire this surface answers on.
      * Answers GET /v1/world — the product&#39;s public endpoint, naming every wire this surface answers on.  It exists because two of those wires are INVISIBLE to the generated document. /v1/world/mcp and /v1/world/zap are carved off the cloud catch-all by the ingress and answered by world-gw, so the cloud router never serves them — and openapi.Describe renders prose only for a route the router actually serves, which is the very property that keeps the document from being able to claim an operation nothing answers. Both addresses are real and public, so without this op the only way to learn they exist is to read the ingress config. This is where that fact lives, in the product&#39;s own surface.  Public on purpose: discovery precedes credentials. It reports addresses and protocols only — never feed data, and never the caller&#39;s plan, which GET /v1/world/limits owns — so there is nothing here to leak.
-     * @return ApiResponse&lt;WorldIndex&gt;
+     * @return ApiResponse&lt;WorldWorldIndex&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WorldIndex> getWorldWithHttpInfo() throws ApiException {
+    public ApiResponse<WorldWorldIndex> getWorldWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getWorldValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<WorldIndex>(){}.getType();
+        Type localVarReturnType = new TypeToken<WorldWorldIndex>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -184,12 +189,13 @@ public class WorldApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWorldAsync(final ApiCallback<WorldIndex> _callback) throws ApiException {
+    public okhttp3.Call getWorldAsync(final ApiCallback<WorldWorldIndex> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWorldValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<WorldIndex>(){}.getType();
+        Type localVarReturnType = new TypeToken<WorldWorldIndex>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -204,6 +210,7 @@ public class WorldApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getWorldLimitsCall(@javax.annotation.Nullable String plan, final ApiCallback _callback) throws ApiException {
@@ -236,7 +243,8 @@ public class WorldApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -264,17 +272,18 @@ public class WorldApi {
      * Echoes a World plan&#39;s rate limits, alert quota and model-API grant, read straight from the live @hanzo/plans catalog, so agents and dashboards configure themselves against the catalog instead of hardcoding tier numbers.
      * Echoes a World plan&#39;s rate limits, alert quota and model-API grant, read straight from the live @hanzo/plans catalog, so agents and dashboards configure themselves against the catalog instead of hardcoding tier numbers.  An empty or unknown plan resolves world-free, and a catalog failure serves that same free floor rather than erroring — so this always answers 200, and it can only ever under-grant. It reports the contract; it does not enforce it.
      * @param plan Plan is a World plan id from the live @hanzo/plans catalog, e.g. world-pro. Empty means world-free, and so does an id the catalog does not know — this never fails on an unknown plan. (optional)
-     * @return LimitsView
+     * @return WorldLimitsView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public LimitsView getWorldLimits(@javax.annotation.Nullable String plan) throws ApiException {
-        ApiResponse<LimitsView> localVarResp = getWorldLimitsWithHttpInfo(plan);
+    public WorldLimitsView getWorldLimits(@javax.annotation.Nullable String plan) throws ApiException {
+        ApiResponse<WorldLimitsView> localVarResp = getWorldLimitsWithHttpInfo(plan);
         return localVarResp.getData();
     }
 
@@ -282,18 +291,19 @@ public class WorldApi {
      * Echoes a World plan&#39;s rate limits, alert quota and model-API grant, read straight from the live @hanzo/plans catalog, so agents and dashboards configure themselves against the catalog instead of hardcoding tier numbers.
      * Echoes a World plan&#39;s rate limits, alert quota and model-API grant, read straight from the live @hanzo/plans catalog, so agents and dashboards configure themselves against the catalog instead of hardcoding tier numbers.  An empty or unknown plan resolves world-free, and a catalog failure serves that same free floor rather than erroring — so this always answers 200, and it can only ever under-grant. It reports the contract; it does not enforce it.
      * @param plan Plan is a World plan id from the live @hanzo/plans catalog, e.g. world-pro. Empty means world-free, and so does an id the catalog does not know — this never fails on an unknown plan. (optional)
-     * @return ApiResponse&lt;LimitsView&gt;
+     * @return ApiResponse&lt;WorldLimitsView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LimitsView> getWorldLimitsWithHttpInfo(@javax.annotation.Nullable String plan) throws ApiException {
+    public ApiResponse<WorldLimitsView> getWorldLimitsWithHttpInfo(@javax.annotation.Nullable String plan) throws ApiException {
         okhttp3.Call localVarCall = getWorldLimitsValidateBeforeCall(plan, null);
-        Type localVarReturnType = new TypeToken<LimitsView>(){}.getType();
+        Type localVarReturnType = new TypeToken<WorldLimitsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -309,12 +319,13 @@ public class WorldApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWorldLimitsAsync(@javax.annotation.Nullable String plan, final ApiCallback<LimitsView> _callback) throws ApiException {
+    public okhttp3.Call getWorldLimitsAsync(@javax.annotation.Nullable String plan, final ApiCallback<WorldLimitsView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWorldLimitsValidateBeforeCall(plan, _callback);
-        Type localVarReturnType = new TypeToken<LimitsView>(){}.getType();
+        Type localVarReturnType = new TypeToken<WorldLimitsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -328,6 +339,7 @@ public class WorldApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getWorldNewsCall(final ApiCallback _callback) throws ApiException {
@@ -356,7 +368,8 @@ public class WorldApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -383,35 +396,37 @@ public class WorldApi {
     /**
      * Returns the caller&#39;s merged world-news feed: every source their project&#39;s pipeline names — GDELT once per keyword, plus each allowlisted RSS or Atom feed — fetched concurrently, narrowed by the pipeline&#39;s keyword/region/source filters, deduplicated by link and sorted freshest first, capped at 50 items.
      * Returns the caller&#39;s merged world-news feed: every source their project&#39;s pipeline names — GDELT once per keyword, plus each allowlisted RSS or Atom feed — fetched concurrently, narrowed by the pipeline&#39;s keyword/region/source filters, deduplicated by link and sorted freshest first, capped at 50 items.  A project with no stored pipeline gets a sensible default set of world feeds rather than an empty answer. A source that fails or times out is SKIPPED: the feed degrades to honest partial results and never 5xxs because one outlet was down. Reading also publishes the result to the /v1/world/stream subscribers of the same (org, project), so a dashboard&#39;s own refresh updates every open tab.
-     * @return NewsResponse
+     * @return WorldNewsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public NewsResponse getWorldNews() throws ApiException {
-        ApiResponse<NewsResponse> localVarResp = getWorldNewsWithHttpInfo();
+    public WorldNewsResponse getWorldNews() throws ApiException {
+        ApiResponse<WorldNewsResponse> localVarResp = getWorldNewsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller&#39;s merged world-news feed: every source their project&#39;s pipeline names — GDELT once per keyword, plus each allowlisted RSS or Atom feed — fetched concurrently, narrowed by the pipeline&#39;s keyword/region/source filters, deduplicated by link and sorted freshest first, capped at 50 items.
      * Returns the caller&#39;s merged world-news feed: every source their project&#39;s pipeline names — GDELT once per keyword, plus each allowlisted RSS or Atom feed — fetched concurrently, narrowed by the pipeline&#39;s keyword/region/source filters, deduplicated by link and sorted freshest first, capped at 50 items.  A project with no stored pipeline gets a sensible default set of world feeds rather than an empty answer. A source that fails or times out is SKIPPED: the feed degrades to honest partial results and never 5xxs because one outlet was down. Reading also publishes the result to the /v1/world/stream subscribers of the same (org, project), so a dashboard&#39;s own refresh updates every open tab.
-     * @return ApiResponse&lt;NewsResponse&gt;
+     * @return ApiResponse&lt;WorldNewsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NewsResponse> getWorldNewsWithHttpInfo() throws ApiException {
+    public ApiResponse<WorldNewsResponse> getWorldNewsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getWorldNewsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<NewsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<WorldNewsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -426,12 +441,13 @@ public class WorldApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWorldNewsAsync(final ApiCallback<NewsResponse> _callback) throws ApiException {
+    public okhttp3.Call getWorldNewsAsync(final ApiCallback<WorldNewsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWorldNewsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<NewsResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<WorldNewsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -445,6 +461,7 @@ public class WorldApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getWorldPipelineCall(final ApiCallback _callback) throws ApiException {
@@ -473,7 +490,8 @@ public class WorldApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -500,35 +518,37 @@ public class WorldApi {
     /**
      * Returns the caller project&#39;s news pipeline: which feeds it reads and how the merged result is filtered.
      * Returns the caller project&#39;s news pipeline: which feeds it reads and how the merged result is filtered. A project that has never written one is answered with the built-in world feeds and &#x60;default: true&#x60;, so a fresh project sees the same feed /v1/world/news would actually serve rather than an empty configuration.
-     * @return PipelineView
+     * @return WorldPipelineView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PipelineView getWorldPipeline() throws ApiException {
-        ApiResponse<PipelineView> localVarResp = getWorldPipelineWithHttpInfo();
+    public WorldPipelineView getWorldPipeline() throws ApiException {
+        ApiResponse<WorldPipelineView> localVarResp = getWorldPipelineWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller project&#39;s news pipeline: which feeds it reads and how the merged result is filtered.
      * Returns the caller project&#39;s news pipeline: which feeds it reads and how the merged result is filtered. A project that has never written one is answered with the built-in world feeds and &#x60;default: true&#x60;, so a fresh project sees the same feed /v1/world/news would actually serve rather than an empty configuration.
-     * @return ApiResponse&lt;PipelineView&gt;
+     * @return ApiResponse&lt;WorldPipelineView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PipelineView> getWorldPipelineWithHttpInfo() throws ApiException {
+    public ApiResponse<WorldPipelineView> getWorldPipelineWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getWorldPipelineValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PipelineView>(){}.getType();
+        Type localVarReturnType = new TypeToken<WorldPipelineView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -543,12 +563,13 @@ public class WorldApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWorldPipelineAsync(final ApiCallback<PipelineView> _callback) throws ApiException {
+    public okhttp3.Call getWorldPipelineAsync(final ApiCallback<WorldPipelineView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWorldPipelineValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PipelineView>(){}.getType();
+        Type localVarReturnType = new TypeToken<WorldPipelineView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -609,7 +630,7 @@ public class WorldApi {
 
     /**
      * Live news refreshes for the caller&#39;s org and project, as Server-Sent Events.
-     * Holds the connection open as text/event-stream and pushes a &#x60;news&#x60; event — the same {items:[…]} body GET /v1/world/news answers — each time the caller&#39;s (org, project) feed refreshes, with a &#x60;: ping&#x60; heartbeat comment every 25s. Delivery is best-effort: a slow consumer is dropped on buffer overrun and reconnects, re-fetching GET /v1/world/news, which stays the source of truth. Requires a validated principal; 403 without one.
+     * Holds the connection open as text/event-stream and pushes a &#x60;news&#x60; event — the same {items:[…]} body GET /v1/world/news answers — each time the caller&#39;s (org, project) feed refreshes, with a &#x60;: ping&#x60; heartbeat comment every 25s. Delivery is best-effort: a slow consumer is dropped on buffer overrun and reconnects, re-fetching GET /v1/world/news, which stays the source of truth. Requires a validated principal; 401 without one.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void getWorldStream() throws ApiException {
@@ -618,7 +639,7 @@ public class WorldApi {
 
     /**
      * Live news refreshes for the caller&#39;s org and project, as Server-Sent Events.
-     * Holds the connection open as text/event-stream and pushes a &#x60;news&#x60; event — the same {items:[…]} body GET /v1/world/news answers — each time the caller&#39;s (org, project) feed refreshes, with a &#x60;: ping&#x60; heartbeat comment every 25s. Delivery is best-effort: a slow consumer is dropped on buffer overrun and reconnects, re-fetching GET /v1/world/news, which stays the source of truth. Requires a validated principal; 403 without one.
+     * Holds the connection open as text/event-stream and pushes a &#x60;news&#x60; event — the same {items:[…]} body GET /v1/world/news answers — each time the caller&#39;s (org, project) feed refreshes, with a &#x60;: ping&#x60; heartbeat comment every 25s. Delivery is best-effort: a slow consumer is dropped on buffer overrun and reconnects, re-fetching GET /v1/world/news, which stays the source of truth. Requires a validated principal; 401 without one.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -629,7 +650,7 @@ public class WorldApi {
 
     /**
      * Live news refreshes for the caller&#39;s org and project, as Server-Sent Events. (asynchronously)
-     * Holds the connection open as text/event-stream and pushes a &#x60;news&#x60; event — the same {items:[…]} body GET /v1/world/news answers — each time the caller&#39;s (org, project) feed refreshes, with a &#x60;: ping&#x60; heartbeat comment every 25s. Delivery is best-effort: a slow consumer is dropped on buffer overrun and reconnects, re-fetching GET /v1/world/news, which stays the source of truth. Requires a validated principal; 403 without one.
+     * Holds the connection open as text/event-stream and pushes a &#x60;news&#x60; event — the same {items:[…]} body GET /v1/world/news answers — each time the caller&#39;s (org, project) feed refreshes, with a &#x60;: ping&#x60; heartbeat comment every 25s. Delivery is best-effort: a slow consumer is dropped on buffer overrun and reconnects, re-fetching GET /v1/world/news, which stays the source of truth. Requires a validated principal; 401 without one.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -642,7 +663,7 @@ public class WorldApi {
     }
     /**
      * Build call for putWorldPipeline
-     * @param pipelineReq  (required)
+     * @param worldPipelineReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -651,9 +672,10 @@ public class WorldApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putWorldPipelineCall(@javax.annotation.Nonnull PipelineReq pipelineReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putWorldPipelineCall(@javax.annotation.Nonnull WorldPipelineReq worldPipelineReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -667,7 +689,7 @@ public class WorldApi {
             basePath = null;
         }
 
-        Object localVarPostBody = pipelineReq;
+        Object localVarPostBody = worldPipelineReq;
 
         // create path and map variables
         String localVarPath = "/v1/world/pipeline";
@@ -679,7 +701,8 @@ public class WorldApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -699,57 +722,59 @@ public class WorldApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putWorldPipelineValidateBeforeCall(@javax.annotation.Nonnull PipelineReq pipelineReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'pipelineReq' is set
-        if (pipelineReq == null) {
-            throw new ApiException("Missing the required parameter 'pipelineReq' when calling putWorldPipeline(Async)");
+    private okhttp3.Call putWorldPipelineValidateBeforeCall(@javax.annotation.Nonnull WorldPipelineReq worldPipelineReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'worldPipelineReq' is set
+        if (worldPipelineReq == null) {
+            throw new ApiException("Missing the required parameter 'worldPipelineReq' when calling putWorldPipeline(Async)");
         }
 
-        return putWorldPipelineCall(pipelineReq, _callback);
+        return putWorldPipelineCall(worldPipelineReq, _callback);
 
     }
 
     /**
      * Replaces the caller project&#39;s news pipeline and returns what was stored.
      * Replaces the caller project&#39;s news pipeline and returns what was stored. It is a WHOLE replacement, not a patch: a field the request leaves out is stored empty, so sending only feeds clears the filters.  Every feed URL is validated HERE, at the write boundary — http(s) only, and the host must be on the server&#39;s allowlist — so a stored pipeline can never name a host the fetcher would later refuse, and the allowlist is one decision in one place rather than a check at each fetch.
-     * @param pipelineReq  (required)
-     * @return PipelineView
+     * @param worldPipelineReq  (required)
+     * @return WorldPipelineView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PipelineView putWorldPipeline(@javax.annotation.Nonnull PipelineReq pipelineReq) throws ApiException {
-        ApiResponse<PipelineView> localVarResp = putWorldPipelineWithHttpInfo(pipelineReq);
+    public WorldPipelineView putWorldPipeline(@javax.annotation.Nonnull WorldPipelineReq worldPipelineReq) throws ApiException {
+        ApiResponse<WorldPipelineView> localVarResp = putWorldPipelineWithHttpInfo(worldPipelineReq);
         return localVarResp.getData();
     }
 
     /**
      * Replaces the caller project&#39;s news pipeline and returns what was stored.
      * Replaces the caller project&#39;s news pipeline and returns what was stored. It is a WHOLE replacement, not a patch: a field the request leaves out is stored empty, so sending only feeds clears the filters.  Every feed URL is validated HERE, at the write boundary — http(s) only, and the host must be on the server&#39;s allowlist — so a stored pipeline can never name a host the fetcher would later refuse, and the allowlist is one decision in one place rather than a check at each fetch.
-     * @param pipelineReq  (required)
-     * @return ApiResponse&lt;PipelineView&gt;
+     * @param worldPipelineReq  (required)
+     * @return ApiResponse&lt;WorldPipelineView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PipelineView> putWorldPipelineWithHttpInfo(@javax.annotation.Nonnull PipelineReq pipelineReq) throws ApiException {
-        okhttp3.Call localVarCall = putWorldPipelineValidateBeforeCall(pipelineReq, null);
-        Type localVarReturnType = new TypeToken<PipelineView>(){}.getType();
+    public ApiResponse<WorldPipelineView> putWorldPipelineWithHttpInfo(@javax.annotation.Nonnull WorldPipelineReq worldPipelineReq) throws ApiException {
+        okhttp3.Call localVarCall = putWorldPipelineValidateBeforeCall(worldPipelineReq, null);
+        Type localVarReturnType = new TypeToken<WorldPipelineView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Replaces the caller project&#39;s news pipeline and returns what was stored. (asynchronously)
      * Replaces the caller project&#39;s news pipeline and returns what was stored. It is a WHOLE replacement, not a patch: a field the request leaves out is stored empty, so sending only feeds clears the filters.  Every feed URL is validated HERE, at the write boundary — http(s) only, and the host must be on the server&#39;s allowlist — so a stored pipeline can never name a host the fetcher would later refuse, and the allowlist is one decision in one place rather than a check at each fetch.
-     * @param pipelineReq  (required)
+     * @param worldPipelineReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -758,12 +783,13 @@ public class WorldApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putWorldPipelineAsync(@javax.annotation.Nonnull PipelineReq pipelineReq, final ApiCallback<PipelineView> _callback) throws ApiException {
+    public okhttp3.Call putWorldPipelineAsync(@javax.annotation.Nonnull WorldPipelineReq worldPipelineReq, final ApiCallback<WorldPipelineView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putWorldPipelineValidateBeforeCall(pipelineReq, _callback);
-        Type localVarReturnType = new TypeToken<PipelineView>(){}.getType();
+        okhttp3.Call localVarCall = putWorldPipelineValidateBeforeCall(worldPipelineReq, _callback);
+        Type localVarReturnType = new TypeToken<WorldPipelineView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

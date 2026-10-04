@@ -64,7 +64,7 @@ public class CookieAck {
   }
 
   /**
-   * Result is true when the cookie was written or cleared.
+   * Get result
    * @return result
    */
   @javax.annotation.Nullable

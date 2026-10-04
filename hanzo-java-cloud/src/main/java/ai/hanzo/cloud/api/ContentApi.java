@@ -27,15 +27,16 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.BoardPage;
-import ai.hanzo.cloud.model.ChannelList;
-import ai.hanzo.cloud.model.GenerateInput;
-import ai.hanzo.cloud.model.GenerateResult;
-import ai.hanzo.cloud.model.PublishInput;
-import ai.hanzo.cloud.model.PublishResult;
-import ai.hanzo.cloud.model.StateGraph;
-import ai.hanzo.cloud.model.TransitionIn;
-import ai.hanzo.cloud.model.TransitionResult;
+import ai.hanzo.cloud.model.ContentBoardPage;
+import ai.hanzo.cloud.model.ContentChannelList;
+import ai.hanzo.cloud.model.ContentGenerateInput;
+import ai.hanzo.cloud.model.ContentGenerateResult;
+import ai.hanzo.cloud.model.ContentPublishInput;
+import ai.hanzo.cloud.model.ContentPublishResult;
+import ai.hanzo.cloud.model.ContentStateGraph;
+import ai.hanzo.cloud.model.ContentTransitionIn;
+import ai.hanzo.cloud.model.ContentTransitionResult;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -94,6 +95,7 @@ public class ContentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getContentBoardCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -138,7 +140,8 @@ public class ContentApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -169,17 +172,18 @@ public class ContentApi {
      * @param project Project keeps only items in one brand/site sub-scope. (optional)
      * @param doctype DocType keeps only one content type; omitted, the board spans every publishable type. An unknown type is refused. (optional)
      * @param limit Limit caps the rows returned, clamped to 1000. Defaults to 200, which is also what a non-positive or unparseable value takes. (optional)
-     * @return BoardPage
+     * @return ContentBoardPage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BoardPage getContentBoard(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<BoardPage> localVarResp = getContentBoardWithHttpInfo(status, project, doctype, limit);
+    public ContentBoardPage getContentBoard(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<ContentBoardPage> localVarResp = getContentBoardWithHttpInfo(status, project, doctype, limit);
         return localVarResp.getData();
     }
 
@@ -190,18 +194,19 @@ public class ContentApi {
      * @param project Project keeps only items in one brand/site sub-scope. (optional)
      * @param doctype DocType keeps only one content type; omitted, the board spans every publishable type. An unknown type is refused. (optional)
      * @param limit Limit caps the rows returned, clamped to 1000. Defaults to 200, which is also what a non-positive or unparseable value takes. (optional)
-     * @return ApiResponse&lt;BoardPage&gt;
+     * @return ApiResponse&lt;ContentBoardPage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BoardPage> getContentBoardWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<ContentBoardPage> getContentBoardWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getContentBoardValidateBeforeCall(status, project, doctype, limit, null);
-        Type localVarReturnType = new TypeToken<BoardPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<ContentBoardPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -220,12 +225,13 @@ public class ContentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getContentBoardAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Long limit, final ApiCallback<BoardPage> _callback) throws ApiException {
+    public okhttp3.Call getContentBoardAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Long limit, final ApiCallback<ContentBoardPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getContentBoardValidateBeforeCall(status, project, doctype, limit, _callback);
-        Type localVarReturnType = new TypeToken<BoardPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<ContentBoardPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -239,6 +245,7 @@ public class ContentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getContentChannelsCall(final ApiCallback _callback) throws ApiException {
@@ -267,7 +274,8 @@ public class ContentApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -294,35 +302,37 @@ public class ContentApi {
     /**
      * Lists the distribution channels the caller&#39;s org has connected — the social integrations a publish can target.
      * Lists the distribution channels the caller&#39;s org has connected — the social integrations a publish can target. A deployment with no distribution edge wired answers 503 rather than an empty list that would read as \&quot;no channels\&quot;.
-     * @return ChannelList
+     * @return ContentChannelList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ChannelList getContentChannels() throws ApiException {
-        ApiResponse<ChannelList> localVarResp = getContentChannelsWithHttpInfo();
+    public ContentChannelList getContentChannels() throws ApiException {
+        ApiResponse<ContentChannelList> localVarResp = getContentChannelsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the distribution channels the caller&#39;s org has connected — the social integrations a publish can target.
      * Lists the distribution channels the caller&#39;s org has connected — the social integrations a publish can target. A deployment with no distribution edge wired answers 503 rather than an empty list that would read as \&quot;no channels\&quot;.
-     * @return ApiResponse&lt;ChannelList&gt;
+     * @return ApiResponse&lt;ContentChannelList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChannelList> getContentChannelsWithHttpInfo() throws ApiException {
+    public ApiResponse<ContentChannelList> getContentChannelsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getContentChannelsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ChannelList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ContentChannelList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -337,12 +347,13 @@ public class ContentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getContentChannelsAsync(final ApiCallback<ChannelList> _callback) throws ApiException {
+    public okhttp3.Call getContentChannelsAsync(final ApiCallback<ContentChannelList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getContentChannelsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ChannelList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ContentChannelList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -356,6 +367,7 @@ public class ContentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getContentLifecycleCall(final ApiCallback _callback) throws ApiException {
@@ -384,7 +396,8 @@ public class ContentApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -411,35 +424,37 @@ public class ContentApi {
     /**
      * Returns the ONE marketing-content state machine: the ordered lifecycle states, which state a fresh document starts in, which one is publicly live, and the legal successors of every state.
      * Returns the ONE marketing-content state machine: the ordered lifecycle states, which state a fresh document starts in, which one is publicly live, and the legal successors of every state. The console builds its board columns and its per-item action buttons from this single answer, so the UI and the write-time enforcement hook can never disagree about what is legal.
-     * @return StateGraph
+     * @return ContentStateGraph
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public StateGraph getContentLifecycle() throws ApiException {
-        ApiResponse<StateGraph> localVarResp = getContentLifecycleWithHttpInfo();
+    public ContentStateGraph getContentLifecycle() throws ApiException {
+        ApiResponse<ContentStateGraph> localVarResp = getContentLifecycleWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the ONE marketing-content state machine: the ordered lifecycle states, which state a fresh document starts in, which one is publicly live, and the legal successors of every state.
      * Returns the ONE marketing-content state machine: the ordered lifecycle states, which state a fresh document starts in, which one is publicly live, and the legal successors of every state. The console builds its board columns and its per-item action buttons from this single answer, so the UI and the write-time enforcement hook can never disagree about what is legal.
-     * @return ApiResponse&lt;StateGraph&gt;
+     * @return ApiResponse&lt;ContentStateGraph&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StateGraph> getContentLifecycleWithHttpInfo() throws ApiException {
+    public ApiResponse<ContentStateGraph> getContentLifecycleWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getContentLifecycleValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<StateGraph>(){}.getType();
+        Type localVarReturnType = new TypeToken<ContentStateGraph>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -454,12 +469,13 @@ public class ContentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getContentLifecycleAsync(final ApiCallback<StateGraph> _callback) throws ApiException {
+    public okhttp3.Call getContentLifecycleAsync(final ApiCallback<ContentStateGraph> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getContentLifecycleValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<StateGraph>(){}.getType();
+        Type localVarReturnType = new TypeToken<ContentStateGraph>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -467,7 +483,7 @@ public class ContentApi {
      * Build call for postContentByDoctypeByNameTransition
      * @param doctype DocType is the content type to act on, from the path. (required)
      * @param name Name is the document to act on, from the path. (required)
-     * @param transitionIn  (required)
+     * @param contentTransitionIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -476,9 +492,10 @@ public class ContentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postContentByDoctypeByNameTransitionCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull TransitionIn transitionIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postContentByDoctypeByNameTransitionCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull ContentTransitionIn contentTransitionIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -492,7 +509,7 @@ public class ContentApi {
             basePath = null;
         }
 
-        Object localVarPostBody = transitionIn;
+        Object localVarPostBody = contentTransitionIn;
 
         // create path and map variables
         String localVarPath = "/v1/content/{doctype}/{name}/transition"
@@ -506,7 +523,8 @@ public class ContentApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -526,7 +544,7 @@ public class ContentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postContentByDoctypeByNameTransitionValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull TransitionIn transitionIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postContentByDoctypeByNameTransitionValidateBeforeCall(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull ContentTransitionIn contentTransitionIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'doctype' is set
         if (doctype == null) {
             throw new ApiException("Missing the required parameter 'doctype' when calling postContentByDoctypeByNameTransition(Async)");
@@ -537,12 +555,12 @@ public class ContentApi {
             throw new ApiException("Missing the required parameter 'name' when calling postContentByDoctypeByNameTransition(Async)");
         }
 
-        // verify the required parameter 'transitionIn' is set
-        if (transitionIn == null) {
-            throw new ApiException("Missing the required parameter 'transitionIn' when calling postContentByDoctypeByNameTransition(Async)");
+        // verify the required parameter 'contentTransitionIn' is set
+        if (contentTransitionIn == null) {
+            throw new ApiException("Missing the required parameter 'contentTransitionIn' when calling postContentByDoctypeByNameTransition(Async)");
         }
 
-        return postContentByDoctypeByNameTransitionCall(doctype, name, transitionIn, _callback);
+        return postContentByDoctypeByNameTransitionCall(doctype, name, contentTransitionIn, _callback);
 
     }
 
@@ -551,18 +569,19 @@ public class ContentApi {
      * Moves one content item to a new lifecycle state and, on the move to published, fans it out to the item&#39;s channels. The edge must be legal for the item&#39;s current state — an illegal move is refused with 409 — and the status write re-validates it at the storage boundary. Distribution is best effort: its honest state is reported on the result and a distribution failure never rolls the status change back.
      * @param doctype DocType is the content type to act on, from the path. (required)
      * @param name Name is the document to act on, from the path. (required)
-     * @param transitionIn  (required)
-     * @return TransitionResult
+     * @param contentTransitionIn  (required)
+     * @return ContentTransitionResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TransitionResult postContentByDoctypeByNameTransition(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull TransitionIn transitionIn) throws ApiException {
-        ApiResponse<TransitionResult> localVarResp = postContentByDoctypeByNameTransitionWithHttpInfo(doctype, name, transitionIn);
+    public ContentTransitionResult postContentByDoctypeByNameTransition(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull ContentTransitionIn contentTransitionIn) throws ApiException {
+        ApiResponse<ContentTransitionResult> localVarResp = postContentByDoctypeByNameTransitionWithHttpInfo(doctype, name, contentTransitionIn);
         return localVarResp.getData();
     }
 
@@ -571,19 +590,20 @@ public class ContentApi {
      * Moves one content item to a new lifecycle state and, on the move to published, fans it out to the item&#39;s channels. The edge must be legal for the item&#39;s current state — an illegal move is refused with 409 — and the status write re-validates it at the storage boundary. Distribution is best effort: its honest state is reported on the result and a distribution failure never rolls the status change back.
      * @param doctype DocType is the content type to act on, from the path. (required)
      * @param name Name is the document to act on, from the path. (required)
-     * @param transitionIn  (required)
-     * @return ApiResponse&lt;TransitionResult&gt;
+     * @param contentTransitionIn  (required)
+     * @return ApiResponse&lt;ContentTransitionResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TransitionResult> postContentByDoctypeByNameTransitionWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull TransitionIn transitionIn) throws ApiException {
-        okhttp3.Call localVarCall = postContentByDoctypeByNameTransitionValidateBeforeCall(doctype, name, transitionIn, null);
-        Type localVarReturnType = new TypeToken<TransitionResult>(){}.getType();
+    public ApiResponse<ContentTransitionResult> postContentByDoctypeByNameTransitionWithHttpInfo(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull ContentTransitionIn contentTransitionIn) throws ApiException {
+        okhttp3.Call localVarCall = postContentByDoctypeByNameTransitionValidateBeforeCall(doctype, name, contentTransitionIn, null);
+        Type localVarReturnType = new TypeToken<ContentTransitionResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -592,7 +612,7 @@ public class ContentApi {
      * Moves one content item to a new lifecycle state and, on the move to published, fans it out to the item&#39;s channels. The edge must be legal for the item&#39;s current state — an illegal move is refused with 409 — and the status write re-validates it at the storage boundary. Distribution is best effort: its honest state is reported on the result and a distribution failure never rolls the status change back.
      * @param doctype DocType is the content type to act on, from the path. (required)
      * @param name Name is the document to act on, from the path. (required)
-     * @param transitionIn  (required)
+     * @param contentTransitionIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -601,18 +621,19 @@ public class ContentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postContentByDoctypeByNameTransitionAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull TransitionIn transitionIn, final ApiCallback<TransitionResult> _callback) throws ApiException {
+    public okhttp3.Call postContentByDoctypeByNameTransitionAsync(@javax.annotation.Nonnull String doctype, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull ContentTransitionIn contentTransitionIn, final ApiCallback<ContentTransitionResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postContentByDoctypeByNameTransitionValidateBeforeCall(doctype, name, transitionIn, _callback);
-        Type localVarReturnType = new TypeToken<TransitionResult>(){}.getType();
+        okhttp3.Call localVarCall = postContentByDoctypeByNameTransitionValidateBeforeCall(doctype, name, contentTransitionIn, _callback);
+        Type localVarReturnType = new TypeToken<ContentTransitionResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postContentGenerate
-     * @param generateInput  (required)
+     * @param contentGenerateInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -622,9 +643,10 @@ public class ContentApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> payment required </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postContentGenerateCall(@javax.annotation.Nonnull GenerateInput generateInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postContentGenerateCall(@javax.annotation.Nonnull ContentGenerateInput contentGenerateInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -638,7 +660,7 @@ public class ContentApi {
             basePath = null;
         }
 
-        Object localVarPostBody = generateInput;
+        Object localVarPostBody = contentGenerateInput;
 
         // create path and map variables
         String localVarPath = "/v1/content/generate";
@@ -650,7 +672,8 @@ public class ContentApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -670,21 +693,21 @@ public class ContentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postContentGenerateValidateBeforeCall(@javax.annotation.Nonnull GenerateInput generateInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'generateInput' is set
-        if (generateInput == null) {
-            throw new ApiException("Missing the required parameter 'generateInput' when calling postContentGenerate(Async)");
+    private okhttp3.Call postContentGenerateValidateBeforeCall(@javax.annotation.Nonnull ContentGenerateInput contentGenerateInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'contentGenerateInput' is set
+        if (contentGenerateInput == null) {
+            throw new ApiException("Missing the required parameter 'contentGenerateInput' when calling postContentGenerate(Async)");
         }
 
-        return postContentGenerateCall(generateInput, _callback);
+        return postContentGenerateCall(contentGenerateInput, _callback);
 
     }
 
     /**
-     * Draft a piece of marketing content and file it in the CMS as a draft.
-     * Draft a piece of marketing content and file it in the CMS as a draft.  Answers 201 with the created draft&#39;s identity — {doctype, name, status} — and the document itself lands in the CMS through the SAME validate and lifecycle-hook pipeline an ordinary create runs. This is a WRITE, not a preview: there is no dry-run, and every call that succeeds leaves a document behind.  &#x60;doctype&#x60; picks which of two generation planes runs, and they are the only two. Campaign and SocialPost are drafted as brand COPY on the platform AI plane (zen5 by default, overridable per request with &#x60;model&#x60; or per deployment); Asset is a studio image render the AI plane never sees. Everything else about the call is identical.  MONEY, metered in exactly one place per mode and never both. Copy rides the platform&#39;s own inference meter — the org&#39;s balance is authorised before the model call and debited at the exact token cost after — so content never re-bills it. A studio render is invisible to that meter, so content is the sole meter for it: the org is gated BEFORE the GPU compute and refused 402 when out of funds or over its spend cap, and the debit is recorded only once the render actually returns, because the billable event is the consumed compute and not the CMS row. &#x60;project&#x60; rides the BODY rather than a server-minted identity claim, so it attributes spend but a project-scoped cap stays soft on it — the org is the value that is enforced.  The org is the caller&#39;s own, resolved once from the validated principal and never read from the body; a caller without one is refused 403. Status is not the generator&#39;s to choose: a generated item is ALWAYS a draft, and the storage-boundary hook enforces that a second time.  It fails closed rather than inventing anything. An unknown content type is 404 and a deployment whose marketing module is not installed is 409 naming the install call. An AI plane or studio that is unconfigured or unreachable, a graph the studio rejects, and a render that does not return in time all degrade to 503 — never fabricated copy, never a fake render. A &#x60;source_media&#x60; that fails the SSRF and traversal validator is 400 raised before the billing gate and before the studio is contacted, so a hostile source never costs the caller anything.
-     * @param generateInput  (required)
-     * @return GenerateResult
+     * Draft a provider of marketing content and file it in the CMS as a draft.
+     * Draft a provider of marketing content and file it in the CMS as a draft.  Answers 201 with the created draft&#39;s identity — {doctype, name, status} — and the document itself lands in the CMS through the SAME validate and lifecycle-hook pipeline an ordinary create runs. This is a WRITE, not a preview: there is no dry-run, and every call that succeeds leaves a document behind.  &#x60;doctype&#x60; picks which of two generation planes runs, and they are the only two. Campaign and SocialPost are drafted as brand COPY on the platform AI plane (zen5 by default, overridable per request with &#x60;model&#x60; or per deployment); Asset is a studio image render the AI plane never sees. Everything else about the call is identical.  MONEY, metered in exactly one place per mode and never both. Copy rides the platform&#39;s own inference meter — the org&#39;s balance is authorised before the model call and debited at the exact token cost after — so content never re-bills it. A studio render is invisible to that meter, so content is the sole meter for it: the org is gated BEFORE the GPU compute and refused 402 when out of funds or over its spend cap, and the debit is recorded only once the render actually returns, because the billable event is the consumed compute and not the CMS row. &#x60;project&#x60; rides the BODY rather than a server-minted identity claim, so it attributes spend but a project-scoped cap stays soft on it — the org is the value that is enforced.  The org is the caller&#39;s own, resolved once from the validated principal and never read from the body; a caller without one is refused 401. Status is not the generator&#39;s to choose: a generated item is ALWAYS a draft, and the storage-boundary hook enforces that a second time.  It fails closed rather than inventing anything. An unknown content type is 404 and a deployment whose marketing module is not installed is 409 naming the install call. An AI plane or studio that is unconfigured or unreachable, a graph the studio rejects, and a render that does not return in time all degrade to 503 — never fabricated copy, never a fake render. A &#x60;source_media&#x60; that fails the SSRF and traversal validator is 400 raised before the billing gate and before the studio is contacted, so a hostile source never costs the caller anything.
+     * @param contentGenerateInput  (required)
+     * @return ContentGenerateResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -692,18 +715,19 @@ public class ContentApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> payment required </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public GenerateResult postContentGenerate(@javax.annotation.Nonnull GenerateInput generateInput) throws ApiException {
-        ApiResponse<GenerateResult> localVarResp = postContentGenerateWithHttpInfo(generateInput);
+    public ContentGenerateResult postContentGenerate(@javax.annotation.Nonnull ContentGenerateInput contentGenerateInput) throws ApiException {
+        ApiResponse<ContentGenerateResult> localVarResp = postContentGenerateWithHttpInfo(contentGenerateInput);
         return localVarResp.getData();
     }
 
     /**
-     * Draft a piece of marketing content and file it in the CMS as a draft.
-     * Draft a piece of marketing content and file it in the CMS as a draft.  Answers 201 with the created draft&#39;s identity — {doctype, name, status} — and the document itself lands in the CMS through the SAME validate and lifecycle-hook pipeline an ordinary create runs. This is a WRITE, not a preview: there is no dry-run, and every call that succeeds leaves a document behind.  &#x60;doctype&#x60; picks which of two generation planes runs, and they are the only two. Campaign and SocialPost are drafted as brand COPY on the platform AI plane (zen5 by default, overridable per request with &#x60;model&#x60; or per deployment); Asset is a studio image render the AI plane never sees. Everything else about the call is identical.  MONEY, metered in exactly one place per mode and never both. Copy rides the platform&#39;s own inference meter — the org&#39;s balance is authorised before the model call and debited at the exact token cost after — so content never re-bills it. A studio render is invisible to that meter, so content is the sole meter for it: the org is gated BEFORE the GPU compute and refused 402 when out of funds or over its spend cap, and the debit is recorded only once the render actually returns, because the billable event is the consumed compute and not the CMS row. &#x60;project&#x60; rides the BODY rather than a server-minted identity claim, so it attributes spend but a project-scoped cap stays soft on it — the org is the value that is enforced.  The org is the caller&#39;s own, resolved once from the validated principal and never read from the body; a caller without one is refused 403. Status is not the generator&#39;s to choose: a generated item is ALWAYS a draft, and the storage-boundary hook enforces that a second time.  It fails closed rather than inventing anything. An unknown content type is 404 and a deployment whose marketing module is not installed is 409 naming the install call. An AI plane or studio that is unconfigured or unreachable, a graph the studio rejects, and a render that does not return in time all degrade to 503 — never fabricated copy, never a fake render. A &#x60;source_media&#x60; that fails the SSRF and traversal validator is 400 raised before the billing gate and before the studio is contacted, so a hostile source never costs the caller anything.
-     * @param generateInput  (required)
-     * @return ApiResponse&lt;GenerateResult&gt;
+     * Draft a provider of marketing content and file it in the CMS as a draft.
+     * Draft a provider of marketing content and file it in the CMS as a draft.  Answers 201 with the created draft&#39;s identity — {doctype, name, status} — and the document itself lands in the CMS through the SAME validate and lifecycle-hook pipeline an ordinary create runs. This is a WRITE, not a preview: there is no dry-run, and every call that succeeds leaves a document behind.  &#x60;doctype&#x60; picks which of two generation planes runs, and they are the only two. Campaign and SocialPost are drafted as brand COPY on the platform AI plane (zen5 by default, overridable per request with &#x60;model&#x60; or per deployment); Asset is a studio image render the AI plane never sees. Everything else about the call is identical.  MONEY, metered in exactly one place per mode and never both. Copy rides the platform&#39;s own inference meter — the org&#39;s balance is authorised before the model call and debited at the exact token cost after — so content never re-bills it. A studio render is invisible to that meter, so content is the sole meter for it: the org is gated BEFORE the GPU compute and refused 402 when out of funds or over its spend cap, and the debit is recorded only once the render actually returns, because the billable event is the consumed compute and not the CMS row. &#x60;project&#x60; rides the BODY rather than a server-minted identity claim, so it attributes spend but a project-scoped cap stays soft on it — the org is the value that is enforced.  The org is the caller&#39;s own, resolved once from the validated principal and never read from the body; a caller without one is refused 401. Status is not the generator&#39;s to choose: a generated item is ALWAYS a draft, and the storage-boundary hook enforces that a second time.  It fails closed rather than inventing anything. An unknown content type is 404 and a deployment whose marketing module is not installed is 409 naming the install call. An AI plane or studio that is unconfigured or unreachable, a graph the studio rejects, and a render that does not return in time all degrade to 503 — never fabricated copy, never a fake render. A &#x60;source_media&#x60; that fails the SSRF and traversal validator is 400 raised before the billing gate and before the studio is contacted, so a hostile source never costs the caller anything.
+     * @param contentGenerateInput  (required)
+     * @return ApiResponse&lt;ContentGenerateResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -711,18 +735,19 @@ public class ContentApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> payment required </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GenerateResult> postContentGenerateWithHttpInfo(@javax.annotation.Nonnull GenerateInput generateInput) throws ApiException {
-        okhttp3.Call localVarCall = postContentGenerateValidateBeforeCall(generateInput, null);
-        Type localVarReturnType = new TypeToken<GenerateResult>(){}.getType();
+    public ApiResponse<ContentGenerateResult> postContentGenerateWithHttpInfo(@javax.annotation.Nonnull ContentGenerateInput contentGenerateInput) throws ApiException {
+        okhttp3.Call localVarCall = postContentGenerateValidateBeforeCall(contentGenerateInput, null);
+        Type localVarReturnType = new TypeToken<ContentGenerateResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Draft a piece of marketing content and file it in the CMS as a draft. (asynchronously)
-     * Draft a piece of marketing content and file it in the CMS as a draft.  Answers 201 with the created draft&#39;s identity — {doctype, name, status} — and the document itself lands in the CMS through the SAME validate and lifecycle-hook pipeline an ordinary create runs. This is a WRITE, not a preview: there is no dry-run, and every call that succeeds leaves a document behind.  &#x60;doctype&#x60; picks which of two generation planes runs, and they are the only two. Campaign and SocialPost are drafted as brand COPY on the platform AI plane (zen5 by default, overridable per request with &#x60;model&#x60; or per deployment); Asset is a studio image render the AI plane never sees. Everything else about the call is identical.  MONEY, metered in exactly one place per mode and never both. Copy rides the platform&#39;s own inference meter — the org&#39;s balance is authorised before the model call and debited at the exact token cost after — so content never re-bills it. A studio render is invisible to that meter, so content is the sole meter for it: the org is gated BEFORE the GPU compute and refused 402 when out of funds or over its spend cap, and the debit is recorded only once the render actually returns, because the billable event is the consumed compute and not the CMS row. &#x60;project&#x60; rides the BODY rather than a server-minted identity claim, so it attributes spend but a project-scoped cap stays soft on it — the org is the value that is enforced.  The org is the caller&#39;s own, resolved once from the validated principal and never read from the body; a caller without one is refused 403. Status is not the generator&#39;s to choose: a generated item is ALWAYS a draft, and the storage-boundary hook enforces that a second time.  It fails closed rather than inventing anything. An unknown content type is 404 and a deployment whose marketing module is not installed is 409 naming the install call. An AI plane or studio that is unconfigured or unreachable, a graph the studio rejects, and a render that does not return in time all degrade to 503 — never fabricated copy, never a fake render. A &#x60;source_media&#x60; that fails the SSRF and traversal validator is 400 raised before the billing gate and before the studio is contacted, so a hostile source never costs the caller anything.
-     * @param generateInput  (required)
+     * Draft a provider of marketing content and file it in the CMS as a draft. (asynchronously)
+     * Draft a provider of marketing content and file it in the CMS as a draft.  Answers 201 with the created draft&#39;s identity — {doctype, name, status} — and the document itself lands in the CMS through the SAME validate and lifecycle-hook pipeline an ordinary create runs. This is a WRITE, not a preview: there is no dry-run, and every call that succeeds leaves a document behind.  &#x60;doctype&#x60; picks which of two generation planes runs, and they are the only two. Campaign and SocialPost are drafted as brand COPY on the platform AI plane (zen5 by default, overridable per request with &#x60;model&#x60; or per deployment); Asset is a studio image render the AI plane never sees. Everything else about the call is identical.  MONEY, metered in exactly one place per mode and never both. Copy rides the platform&#39;s own inference meter — the org&#39;s balance is authorised before the model call and debited at the exact token cost after — so content never re-bills it. A studio render is invisible to that meter, so content is the sole meter for it: the org is gated BEFORE the GPU compute and refused 402 when out of funds or over its spend cap, and the debit is recorded only once the render actually returns, because the billable event is the consumed compute and not the CMS row. &#x60;project&#x60; rides the BODY rather than a server-minted identity claim, so it attributes spend but a project-scoped cap stays soft on it — the org is the value that is enforced.  The org is the caller&#39;s own, resolved once from the validated principal and never read from the body; a caller without one is refused 401. Status is not the generator&#39;s to choose: a generated item is ALWAYS a draft, and the storage-boundary hook enforces that a second time.  It fails closed rather than inventing anything. An unknown content type is 404 and a deployment whose marketing module is not installed is 409 naming the install call. An AI plane or studio that is unconfigured or unreachable, a graph the studio rejects, and a render that does not return in time all degrade to 503 — never fabricated copy, never a fake render. A &#x60;source_media&#x60; that fails the SSRF and traversal validator is 400 raised before the billing gate and before the studio is contacted, so a hostile source never costs the caller anything.
+     * @param contentGenerateInput  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -732,18 +757,19 @@ public class ContentApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
         <tr><td> 402 </td><td> payment required </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postContentGenerateAsync(@javax.annotation.Nonnull GenerateInput generateInput, final ApiCallback<GenerateResult> _callback) throws ApiException {
+    public okhttp3.Call postContentGenerateAsync(@javax.annotation.Nonnull ContentGenerateInput contentGenerateInput, final ApiCallback<ContentGenerateResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postContentGenerateValidateBeforeCall(generateInput, _callback);
-        Type localVarReturnType = new TypeToken<GenerateResult>(){}.getType();
+        okhttp3.Call localVarCall = postContentGenerateValidateBeforeCall(contentGenerateInput, _callback);
+        Type localVarReturnType = new TypeToken<ContentGenerateResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postContentPublish
-     * @param publishInput  (required)
+     * @param contentPublishInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -752,9 +778,10 @@ public class ContentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postContentPublishCall(@javax.annotation.Nonnull PublishInput publishInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postContentPublishCall(@javax.annotation.Nonnull ContentPublishInput contentPublishInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -768,7 +795,7 @@ public class ContentApi {
             basePath = null;
         }
 
-        Object localVarPostBody = publishInput;
+        Object localVarPostBody = contentPublishInput;
 
         // create path and map variables
         String localVarPath = "/v1/content/publish";
@@ -780,7 +807,8 @@ public class ContentApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -800,57 +828,59 @@ public class ContentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postContentPublishValidateBeforeCall(@javax.annotation.Nonnull PublishInput publishInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'publishInput' is set
-        if (publishInput == null) {
-            throw new ApiException("Missing the required parameter 'publishInput' when calling postContentPublish(Async)");
+    private okhttp3.Call postContentPublishValidateBeforeCall(@javax.annotation.Nonnull ContentPublishInput contentPublishInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'contentPublishInput' is set
+        if (contentPublishInput == null) {
+            throw new ApiException("Missing the required parameter 'contentPublishInput' when calling postContentPublish(Async)");
         }
 
-        return postContentPublishCall(publishInput, _callback);
+        return postContentPublishCall(contentPublishInput, _callback);
 
     }
 
     /**
      * Publish distributes one CMS content item to the channels recorded on it and returns the honest per-channel outcome.
      * Publish distributes one CMS content item to the channels recorded on it and returns the honest per-channel outcome. The item names itself — its caption, media and channel list are read from the stored document, not from this request. It is idempotent per channel (a channel already posted for this item is skipped), and a publish that loses the per-item lease to a live publisher answers status \&quot;in_progress\&quot; having posted nothing.
-     * @param publishInput  (required)
-     * @return PublishResult
+     * @param contentPublishInput  (required)
+     * @return ContentPublishResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PublishResult postContentPublish(@javax.annotation.Nonnull PublishInput publishInput) throws ApiException {
-        ApiResponse<PublishResult> localVarResp = postContentPublishWithHttpInfo(publishInput);
+    public ContentPublishResult postContentPublish(@javax.annotation.Nonnull ContentPublishInput contentPublishInput) throws ApiException {
+        ApiResponse<ContentPublishResult> localVarResp = postContentPublishWithHttpInfo(contentPublishInput);
         return localVarResp.getData();
     }
 
     /**
      * Publish distributes one CMS content item to the channels recorded on it and returns the honest per-channel outcome.
      * Publish distributes one CMS content item to the channels recorded on it and returns the honest per-channel outcome. The item names itself — its caption, media and channel list are read from the stored document, not from this request. It is idempotent per channel (a channel already posted for this item is skipped), and a publish that loses the per-item lease to a live publisher answers status \&quot;in_progress\&quot; having posted nothing.
-     * @param publishInput  (required)
-     * @return ApiResponse&lt;PublishResult&gt;
+     * @param contentPublishInput  (required)
+     * @return ApiResponse&lt;ContentPublishResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PublishResult> postContentPublishWithHttpInfo(@javax.annotation.Nonnull PublishInput publishInput) throws ApiException {
-        okhttp3.Call localVarCall = postContentPublishValidateBeforeCall(publishInput, null);
-        Type localVarReturnType = new TypeToken<PublishResult>(){}.getType();
+    public ApiResponse<ContentPublishResult> postContentPublishWithHttpInfo(@javax.annotation.Nonnull ContentPublishInput contentPublishInput) throws ApiException {
+        okhttp3.Call localVarCall = postContentPublishValidateBeforeCall(contentPublishInput, null);
+        Type localVarReturnType = new TypeToken<ContentPublishResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Publish distributes one CMS content item to the channels recorded on it and returns the honest per-channel outcome. (asynchronously)
      * Publish distributes one CMS content item to the channels recorded on it and returns the honest per-channel outcome. The item names itself — its caption, media and channel list are read from the stored document, not from this request. It is idempotent per channel (a channel already posted for this item is skipped), and a publish that loses the per-item lease to a live publisher answers status \&quot;in_progress\&quot; having posted nothing.
-     * @param publishInput  (required)
+     * @param contentPublishInput  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -859,12 +889,13 @@ public class ContentApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postContentPublishAsync(@javax.annotation.Nonnull PublishInput publishInput, final ApiCallback<PublishResult> _callback) throws ApiException {
+    public okhttp3.Call postContentPublishAsync(@javax.annotation.Nonnull ContentPublishInput contentPublishInput, final ApiCallback<ContentPublishResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postContentPublishValidateBeforeCall(publishInput, _callback);
-        Type localVarReturnType = new TypeToken<PublishResult>(){}.getType();
+        okhttp3.Call localVarCall = postContentPublishValidateBeforeCall(contentPublishInput, _callback);
+        Type localVarReturnType = new TypeToken<ContentPublishResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

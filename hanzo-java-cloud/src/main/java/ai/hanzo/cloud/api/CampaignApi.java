@@ -27,13 +27,14 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.CampaignPage;
-import ai.hanzo.cloud.model.CampaignRecord;
-import ai.hanzo.cloud.model.CampaignResults;
-import ai.hanzo.cloud.model.CampaignSummary;
-import ai.hanzo.cloud.model.CampaignUpdate;
-import ai.hanzo.cloud.model.CampaignWrite;
-import ai.hanzo.cloud.model.ChannelAdd;
+import ai.hanzo.cloud.model.CampaignCampaignPage;
+import ai.hanzo.cloud.model.CampaignCampaignRecord;
+import ai.hanzo.cloud.model.CampaignCampaignResults;
+import ai.hanzo.cloud.model.CampaignCampaignSummary;
+import ai.hanzo.cloud.model.CampaignCampaignUpdate;
+import ai.hanzo.cloud.model.CampaignCampaignWrite;
+import ai.hanzo.cloud.model.CampaignChannelAdd;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -89,6 +90,7 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteCampaignByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -118,6 +120,7 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -156,6 +159,7 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteCampaignById(@javax.annotation.Nonnull String id) throws ApiException {
@@ -173,6 +177,7 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteCampaignByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -192,6 +197,7 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteCampaignByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -212,6 +218,7 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteCampaignByIdChannelsByKindCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String kind, final ApiCallback _callback) throws ApiException {
@@ -242,7 +249,8 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -281,17 +289,18 @@ public class CampaignApi {
      * Drops one channel from a campaign and returns the updated campaign. 404 when the campaign carries no channel of that kind.  It removes the channel from the PLAN. A channel that is live at its provider should be paused first — dropping the row here leaves nothing to pause it with afterwards.
      * @param id ID is the campaign, from the path. (required)
      * @param kind Kind is the channel to remove: paid, organic or email. (required)
-     * @return CampaignRecord
+     * @return CampaignCampaignRecord
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignRecord deleteCampaignByIdChannelsByKind(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String kind) throws ApiException {
-        ApiResponse<CampaignRecord> localVarResp = deleteCampaignByIdChannelsByKindWithHttpInfo(id, kind);
+    public CampaignCampaignRecord deleteCampaignByIdChannelsByKind(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String kind) throws ApiException {
+        ApiResponse<CampaignCampaignRecord> localVarResp = deleteCampaignByIdChannelsByKindWithHttpInfo(id, kind);
         return localVarResp.getData();
     }
 
@@ -300,18 +309,19 @@ public class CampaignApi {
      * Drops one channel from a campaign and returns the updated campaign. 404 when the campaign carries no channel of that kind.  It removes the channel from the PLAN. A channel that is live at its provider should be paused first — dropping the row here leaves nothing to pause it with afterwards.
      * @param id ID is the campaign, from the path. (required)
      * @param kind Kind is the channel to remove: paid, organic or email. (required)
-     * @return ApiResponse&lt;CampaignRecord&gt;
+     * @return ApiResponse&lt;CampaignCampaignRecord&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignRecord> deleteCampaignByIdChannelsByKindWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String kind) throws ApiException {
+    public ApiResponse<CampaignCampaignRecord> deleteCampaignByIdChannelsByKindWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String kind) throws ApiException {
         okhttp3.Call localVarCall = deleteCampaignByIdChannelsByKindValidateBeforeCall(id, kind, null);
-        Type localVarReturnType = new TypeToken<CampaignRecord>(){}.getType();
+        Type localVarReturnType = new TypeToken<CampaignCampaignRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -328,12 +338,13 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteCampaignByIdChannelsByKindAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String kind, final ApiCallback<CampaignRecord> _callback) throws ApiException {
+    public okhttp3.Call deleteCampaignByIdChannelsByKindAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String kind, final ApiCallback<CampaignCampaignRecord> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCampaignByIdChannelsByKindValidateBeforeCall(id, kind, _callback);
-        Type localVarReturnType = new TypeToken<CampaignRecord>(){}.getType();
+        Type localVarReturnType = new TypeToken<CampaignCampaignRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -349,6 +360,7 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCampaignCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -385,7 +397,8 @@ public class CampaignApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -414,17 +427,18 @@ public class CampaignApi {
      * Returns the org&#39;s campaigns, newest first, optionally narrowed to one status.  A campaign is the top-level go-to-market object: a value that SPANS channels (paid, organic, email) and fans out to the executor for each. The listing is org-scoped server-side, so one org can never see another&#39;s campaigns.
      * @param status Status keeps only campaigns in that state: draft, live, paused or failed. Empty means any. (optional)
      * @param limit Limit bounds the page. 0 or less means the default of 200; anything above 1000 is clamped to 1000. (optional)
-     * @return CampaignPage
+     * @return CampaignCampaignPage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignPage getCampaign(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<CampaignPage> localVarResp = getCampaignWithHttpInfo(status, limit);
+    public CampaignCampaignPage getCampaign(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<CampaignCampaignPage> localVarResp = getCampaignWithHttpInfo(status, limit);
         return localVarResp.getData();
     }
 
@@ -433,18 +447,19 @@ public class CampaignApi {
      * Returns the org&#39;s campaigns, newest first, optionally narrowed to one status.  A campaign is the top-level go-to-market object: a value that SPANS channels (paid, organic, email) and fans out to the executor for each. The listing is org-scoped server-side, so one org can never see another&#39;s campaigns.
      * @param status Status keeps only campaigns in that state: draft, live, paused or failed. Empty means any. (optional)
      * @param limit Limit bounds the page. 0 or less means the default of 200; anything above 1000 is clamped to 1000. (optional)
-     * @return ApiResponse&lt;CampaignPage&gt;
+     * @return ApiResponse&lt;CampaignCampaignPage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignPage> getCampaignWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<CampaignCampaignPage> getCampaignWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getCampaignValidateBeforeCall(status, limit, null);
-        Type localVarReturnType = new TypeToken<CampaignPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<CampaignCampaignPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -461,12 +476,13 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCampaignAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit, final ApiCallback<CampaignPage> _callback) throws ApiException {
+    public okhttp3.Call getCampaignAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit, final ApiCallback<CampaignCampaignPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCampaignValidateBeforeCall(status, limit, _callback);
-        Type localVarReturnType = new TypeToken<CampaignPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<CampaignCampaignPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -481,6 +497,7 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCampaignByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -510,7 +527,8 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -543,17 +561,18 @@ public class CampaignApi {
      * Returns one campaign of the caller&#39;s org — its name, audience, creatives, channels with their per-channel launch state, schedule, budget and status.
      * Returns one campaign of the caller&#39;s org — its name, audience, creatives, channels with their per-channel launch state, schedule, budget and status. 404 when the org has no campaign with that id.
      * @param id ID is the campaign&#39;s server-minted handle, \&quot;cmp_\&quot;-prefixed. (required)
-     * @return CampaignRecord
+     * @return CampaignCampaignRecord
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignRecord getCampaignById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CampaignRecord> localVarResp = getCampaignByIdWithHttpInfo(id);
+    public CampaignCampaignRecord getCampaignById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CampaignCampaignRecord> localVarResp = getCampaignByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -561,18 +580,19 @@ public class CampaignApi {
      * Returns one campaign of the caller&#39;s org — its name, audience, creatives, channels with their per-channel launch state, schedule, budget and status.
      * Returns one campaign of the caller&#39;s org — its name, audience, creatives, channels with their per-channel launch state, schedule, budget and status. 404 when the org has no campaign with that id.
      * @param id ID is the campaign&#39;s server-minted handle, \&quot;cmp_\&quot;-prefixed. (required)
-     * @return ApiResponse&lt;CampaignRecord&gt;
+     * @return ApiResponse&lt;CampaignCampaignRecord&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignRecord> getCampaignByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<CampaignCampaignRecord> getCampaignByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getCampaignByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CampaignRecord>(){}.getType();
+        Type localVarReturnType = new TypeToken<CampaignCampaignRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -588,12 +608,13 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCampaignByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CampaignRecord> _callback) throws ApiException {
+    public okhttp3.Call getCampaignByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CampaignCampaignRecord> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCampaignByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CampaignRecord>(){}.getType();
+        Type localVarReturnType = new TypeToken<CampaignCampaignRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -611,6 +632,7 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCampaignByIdMetricsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback _callback) throws ApiException {
@@ -652,7 +674,8 @@ public class CampaignApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -688,17 +711,18 @@ public class CampaignApi {
      * @param range Range is the lookback window: 24h, 7d, 30d or 90d. Anything else, including empty, reads as 30d. (optional)
      * @param start Start is an explicit RFC3339 window start. Honored only together with End, and only when End is after it. (optional)
      * @param end End is an explicit RFC3339 window end. (optional)
-     * @return CampaignResults
+     * @return CampaignCampaignResults
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignResults getCampaignByIdMetrics(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
-        ApiResponse<CampaignResults> localVarResp = getCampaignByIdMetricsWithHttpInfo(id, range, start, end);
+    public CampaignCampaignResults getCampaignByIdMetrics(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
+        ApiResponse<CampaignCampaignResults> localVarResp = getCampaignByIdMetricsWithHttpInfo(id, range, start, end);
         return localVarResp.getData();
     }
 
@@ -709,18 +733,19 @@ public class CampaignApi {
      * @param range Range is the lookback window: 24h, 7d, 30d or 90d. Anything else, including empty, reads as 30d. (optional)
      * @param start Start is an explicit RFC3339 window start. Honored only together with End, and only when End is after it. (optional)
      * @param end End is an explicit RFC3339 window end. (optional)
-     * @return ApiResponse&lt;CampaignResults&gt;
+     * @return ApiResponse&lt;CampaignCampaignResults&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignResults> getCampaignByIdMetricsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
+    public ApiResponse<CampaignCampaignResults> getCampaignByIdMetricsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
         okhttp3.Call localVarCall = getCampaignByIdMetricsValidateBeforeCall(id, range, start, end, null);
-        Type localVarReturnType = new TypeToken<CampaignResults>(){}.getType();
+        Type localVarReturnType = new TypeToken<CampaignCampaignResults>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -739,12 +764,13 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCampaignByIdMetricsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback<CampaignResults> _callback) throws ApiException {
+    public okhttp3.Call getCampaignByIdMetricsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback<CampaignCampaignResults> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCampaignByIdMetricsValidateBeforeCall(id, range, start, end, _callback);
-        Type localVarReturnType = new TypeToken<CampaignResults>(){}.getType();
+        Type localVarReturnType = new TypeToken<CampaignCampaignResults>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -758,6 +784,7 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getCampaignSummaryCall(final ApiCallback _callback) throws ApiException {
@@ -786,7 +813,8 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -813,35 +841,37 @@ public class CampaignApi {
     /**
      * Returns the org&#39;s go-to-market roll-up: how many campaigns exist, how many are live, their total budget in cents, and which channel executors this deployment can actually reach.
      * Returns the org&#39;s go-to-market roll-up: how many campaigns exist, how many are live, their total budget in cents, and which channel executors this deployment can actually reach.  The channel list is the deployment&#39;s honest capability, not a wish: a kind missing from it is one a launch will record as \&quot;unavailable\&quot; rather than fail on.
-     * @return CampaignSummary
+     * @return CampaignCampaignSummary
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignSummary getCampaignSummary() throws ApiException {
-        ApiResponse<CampaignSummary> localVarResp = getCampaignSummaryWithHttpInfo();
+    public CampaignCampaignSummary getCampaignSummary() throws ApiException {
+        ApiResponse<CampaignCampaignSummary> localVarResp = getCampaignSummaryWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the org&#39;s go-to-market roll-up: how many campaigns exist, how many are live, their total budget in cents, and which channel executors this deployment can actually reach.
      * Returns the org&#39;s go-to-market roll-up: how many campaigns exist, how many are live, their total budget in cents, and which channel executors this deployment can actually reach.  The channel list is the deployment&#39;s honest capability, not a wish: a kind missing from it is one a launch will record as \&quot;unavailable\&quot; rather than fail on.
-     * @return ApiResponse&lt;CampaignSummary&gt;
+     * @return ApiResponse&lt;CampaignCampaignSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignSummary> getCampaignSummaryWithHttpInfo() throws ApiException {
+    public ApiResponse<CampaignCampaignSummary> getCampaignSummaryWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getCampaignSummaryValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CampaignSummary>(){}.getType();
+        Type localVarReturnType = new TypeToken<CampaignCampaignSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -856,18 +886,19 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCampaignSummaryAsync(final ApiCallback<CampaignSummary> _callback) throws ApiException {
+    public okhttp3.Call getCampaignSummaryAsync(final ApiCallback<CampaignCampaignSummary> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCampaignSummaryValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CampaignSummary>(){}.getType();
+        Type localVarReturnType = new TypeToken<CampaignCampaignSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCampaign
-     * @param campaignWrite  (required)
+     * @param campaignCampaignWrite  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -876,9 +907,10 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCampaignCall(@javax.annotation.Nonnull CampaignWrite campaignWrite, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCampaignCall(@javax.annotation.Nonnull CampaignCampaignWrite campaignCampaignWrite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -892,7 +924,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = campaignWrite;
+        Object localVarPostBody = campaignCampaignWrite;
 
         // create path and map variables
         String localVarPath = "/v1/campaign";
@@ -904,7 +936,8 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -924,57 +957,59 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCampaignValidateBeforeCall(@javax.annotation.Nonnull CampaignWrite campaignWrite, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'campaignWrite' is set
-        if (campaignWrite == null) {
-            throw new ApiException("Missing the required parameter 'campaignWrite' when calling postCampaign(Async)");
+    private okhttp3.Call postCampaignValidateBeforeCall(@javax.annotation.Nonnull CampaignCampaignWrite campaignCampaignWrite, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'campaignCampaignWrite' is set
+        if (campaignCampaignWrite == null) {
+            throw new ApiException("Missing the required parameter 'campaignCampaignWrite' when calling postCampaign(Async)");
         }
 
-        return postCampaignCall(campaignWrite, _callback);
+        return postCampaignCall(campaignCampaignWrite, _callback);
 
     }
 
     /**
      * Creates a campaign as a DRAFT and returns it.
      * Creates a campaign as a DRAFT and returns it.  A draft is inert: nothing is sent, no connector is touched and no budget is committed until the campaign is launched. The channels named here are validated and de-duplicated by kind (one executor per kind), and every channel starts \&quot;pending\&quot; whatever the caller claims — a client can never assert a launched state.
-     * @param campaignWrite  (required)
-     * @return CampaignRecord
+     * @param campaignCampaignWrite  (required)
+     * @return CampaignCampaignRecord
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignRecord postCampaign(@javax.annotation.Nonnull CampaignWrite campaignWrite) throws ApiException {
-        ApiResponse<CampaignRecord> localVarResp = postCampaignWithHttpInfo(campaignWrite);
+    public CampaignCampaignRecord postCampaign(@javax.annotation.Nonnull CampaignCampaignWrite campaignCampaignWrite) throws ApiException {
+        ApiResponse<CampaignCampaignRecord> localVarResp = postCampaignWithHttpInfo(campaignCampaignWrite);
         return localVarResp.getData();
     }
 
     /**
      * Creates a campaign as a DRAFT and returns it.
      * Creates a campaign as a DRAFT and returns it.  A draft is inert: nothing is sent, no connector is touched and no budget is committed until the campaign is launched. The channels named here are validated and de-duplicated by kind (one executor per kind), and every channel starts \&quot;pending\&quot; whatever the caller claims — a client can never assert a launched state.
-     * @param campaignWrite  (required)
-     * @return ApiResponse&lt;CampaignRecord&gt;
+     * @param campaignCampaignWrite  (required)
+     * @return ApiResponse&lt;CampaignCampaignRecord&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignRecord> postCampaignWithHttpInfo(@javax.annotation.Nonnull CampaignWrite campaignWrite) throws ApiException {
-        okhttp3.Call localVarCall = postCampaignValidateBeforeCall(campaignWrite, null);
-        Type localVarReturnType = new TypeToken<CampaignRecord>(){}.getType();
+    public ApiResponse<CampaignCampaignRecord> postCampaignWithHttpInfo(@javax.annotation.Nonnull CampaignCampaignWrite campaignCampaignWrite) throws ApiException {
+        okhttp3.Call localVarCall = postCampaignValidateBeforeCall(campaignCampaignWrite, null);
+        Type localVarReturnType = new TypeToken<CampaignCampaignRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Creates a campaign as a DRAFT and returns it. (asynchronously)
      * Creates a campaign as a DRAFT and returns it.  A draft is inert: nothing is sent, no connector is touched and no budget is committed until the campaign is launched. The channels named here are validated and de-duplicated by kind (one executor per kind), and every channel starts \&quot;pending\&quot; whatever the caller claims — a client can never assert a launched state.
-     * @param campaignWrite  (required)
+     * @param campaignCampaignWrite  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -983,19 +1018,20 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCampaignAsync(@javax.annotation.Nonnull CampaignWrite campaignWrite, final ApiCallback<CampaignRecord> _callback) throws ApiException {
+    public okhttp3.Call postCampaignAsync(@javax.annotation.Nonnull CampaignCampaignWrite campaignCampaignWrite, final ApiCallback<CampaignCampaignRecord> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCampaignValidateBeforeCall(campaignWrite, _callback);
-        Type localVarReturnType = new TypeToken<CampaignRecord>(){}.getType();
+        okhttp3.Call localVarCall = postCampaignValidateBeforeCall(campaignCampaignWrite, _callback);
+        Type localVarReturnType = new TypeToken<CampaignCampaignRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCampaignByIdChannels
      * @param id ID is the campaign to add the channel to, from the path. (required)
-     * @param channelAdd  (required)
+     * @param campaignChannelAdd  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1004,9 +1040,10 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCampaignByIdChannelsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ChannelAdd channelAdd, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCampaignByIdChannelsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CampaignChannelAdd campaignChannelAdd, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1020,7 +1057,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = channelAdd;
+        Object localVarPostBody = campaignChannelAdd;
 
         // create path and map variables
         String localVarPath = "/v1/campaign/{id}/channels"
@@ -1033,7 +1070,8 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1053,18 +1091,18 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCampaignByIdChannelsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ChannelAdd channelAdd, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCampaignByIdChannelsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CampaignChannelAdd campaignChannelAdd, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postCampaignByIdChannels(Async)");
         }
 
-        // verify the required parameter 'channelAdd' is set
-        if (channelAdd == null) {
-            throw new ApiException("Missing the required parameter 'channelAdd' when calling postCampaignByIdChannels(Async)");
+        // verify the required parameter 'campaignChannelAdd' is set
+        if (campaignChannelAdd == null) {
+            throw new ApiException("Missing the required parameter 'campaignChannelAdd' when calling postCampaignByIdChannels(Async)");
         }
 
-        return postCampaignByIdChannelsCall(id, channelAdd, _callback);
+        return postCampaignByIdChannelsCall(id, campaignChannelAdd, _callback);
 
     }
 
@@ -1072,18 +1110,19 @@ public class CampaignApi {
      * Adds a channel to a campaign, or REPLACES the one it already has of that kind, and returns the updated campaign.
      * Adds a channel to a campaign, or REPLACES the one it already has of that kind, and returns the updated campaign.  A campaign carries at most one channel per kind, because the kind IS the executor: adding a second \&quot;paid\&quot; channel would mean two ad accounts running one campaign with no way to tell their results apart. The new channel starts \&quot;pending\&quot; — adding it does not launch it.
      * @param id ID is the campaign to add the channel to, from the path. (required)
-     * @param channelAdd  (required)
-     * @return CampaignRecord
+     * @param campaignChannelAdd  (required)
+     * @return CampaignCampaignRecord
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignRecord postCampaignByIdChannels(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ChannelAdd channelAdd) throws ApiException {
-        ApiResponse<CampaignRecord> localVarResp = postCampaignByIdChannelsWithHttpInfo(id, channelAdd);
+    public CampaignCampaignRecord postCampaignByIdChannels(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CampaignChannelAdd campaignChannelAdd) throws ApiException {
+        ApiResponse<CampaignCampaignRecord> localVarResp = postCampaignByIdChannelsWithHttpInfo(id, campaignChannelAdd);
         return localVarResp.getData();
     }
 
@@ -1091,19 +1130,20 @@ public class CampaignApi {
      * Adds a channel to a campaign, or REPLACES the one it already has of that kind, and returns the updated campaign.
      * Adds a channel to a campaign, or REPLACES the one it already has of that kind, and returns the updated campaign.  A campaign carries at most one channel per kind, because the kind IS the executor: adding a second \&quot;paid\&quot; channel would mean two ad accounts running one campaign with no way to tell their results apart. The new channel starts \&quot;pending\&quot; — adding it does not launch it.
      * @param id ID is the campaign to add the channel to, from the path. (required)
-     * @param channelAdd  (required)
-     * @return ApiResponse&lt;CampaignRecord&gt;
+     * @param campaignChannelAdd  (required)
+     * @return ApiResponse&lt;CampaignCampaignRecord&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignRecord> postCampaignByIdChannelsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ChannelAdd channelAdd) throws ApiException {
-        okhttp3.Call localVarCall = postCampaignByIdChannelsValidateBeforeCall(id, channelAdd, null);
-        Type localVarReturnType = new TypeToken<CampaignRecord>(){}.getType();
+    public ApiResponse<CampaignCampaignRecord> postCampaignByIdChannelsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CampaignChannelAdd campaignChannelAdd) throws ApiException {
+        okhttp3.Call localVarCall = postCampaignByIdChannelsValidateBeforeCall(id, campaignChannelAdd, null);
+        Type localVarReturnType = new TypeToken<CampaignCampaignRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1111,7 +1151,7 @@ public class CampaignApi {
      * Adds a channel to a campaign, or REPLACES the one it already has of that kind, and returns the updated campaign. (asynchronously)
      * Adds a channel to a campaign, or REPLACES the one it already has of that kind, and returns the updated campaign.  A campaign carries at most one channel per kind, because the kind IS the executor: adding a second \&quot;paid\&quot; channel would mean two ad accounts running one campaign with no way to tell their results apart. The new channel starts \&quot;pending\&quot; — adding it does not launch it.
      * @param id ID is the campaign to add the channel to, from the path. (required)
-     * @param channelAdd  (required)
+     * @param campaignChannelAdd  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1120,12 +1160,13 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCampaignByIdChannelsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ChannelAdd channelAdd, final ApiCallback<CampaignRecord> _callback) throws ApiException {
+    public okhttp3.Call postCampaignByIdChannelsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CampaignChannelAdd campaignChannelAdd, final ApiCallback<CampaignCampaignRecord> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCampaignByIdChannelsValidateBeforeCall(id, channelAdd, _callback);
-        Type localVarReturnType = new TypeToken<CampaignRecord>(){}.getType();
+        okhttp3.Call localVarCall = postCampaignByIdChannelsValidateBeforeCall(id, campaignChannelAdd, _callback);
+        Type localVarReturnType = new TypeToken<CampaignCampaignRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1193,7 +1234,7 @@ public class CampaignApi {
 
     /**
      * Launch a campaign across every channel it declares
-     * Pushes the campaign live on each of its channels through that channel&#39;s executor and answers the whole campaign with the per-channel outcome written back onto it.  The fan-out is BEST-EFFORT PER CHANNEL, and the honest reading of the result is the rule most callers get wrong: one channel failing never aborts the others, so each channel row carries its own &#x60;live&#x60;, &#x60;failed&#x60; or &#x60;unavailable&#x60; status and detail, and a paid launch can be live while an email launch failed. The campaign itself is &#x60;live&#x60; when AT LEAST ONE channel launched and &#x60;failed&#x60; only when none did — &#x60;live&#x60; is not a claim that every channel launched. Repeating the call is safe: a channel already live is skipped, never re-launched. A campaign carrying more than one creative has its variant assigned here by the experiment client and tagged as &#x60;utm_content&#x60;.  Org-scoped and fails closed: a valid bearer is required (403 without one), the campaign is read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, and a campaign with no channels is a 400 — there is nothing to launch. Each executor resolves its own org&#39;s connector token from the org passed to it, so a launch can never spend through another tenant&#39;s connector.
+     * Pushes the campaign live on each of its channels through that channel&#39;s executor and answers the whole campaign with the per-channel outcome written back onto it.  The fan-out is BEST-EFFORT PER CHANNEL, and the honest reading of the result is the rule most callers get wrong: one channel failing never aborts the others, so each channel row carries its own &#x60;live&#x60;, &#x60;failed&#x60; or &#x60;unavailable&#x60; status and detail, and a paid launch can be live while an email launch failed. The campaign itself is &#x60;live&#x60; when AT LEAST ONE channel launched and &#x60;failed&#x60; only when none did — &#x60;live&#x60; is not a claim that every channel launched. Repeating the call is safe: a channel already live is skipped, never re-launched. A campaign carrying more than one creative has its variant assigned here by the experiment client and tagged as &#x60;utm_content&#x60;.  Org-scoped and fails closed: a valid bearer is required (401 without one), the campaign is read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, and a campaign with no channels is a 400 — there is nothing to launch. Each executor resolves its own org&#39;s connector token from the org passed to it, so a launch can never spend through another tenant&#39;s connector.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1203,7 +1244,7 @@ public class CampaignApi {
 
     /**
      * Launch a campaign across every channel it declares
-     * Pushes the campaign live on each of its channels through that channel&#39;s executor and answers the whole campaign with the per-channel outcome written back onto it.  The fan-out is BEST-EFFORT PER CHANNEL, and the honest reading of the result is the rule most callers get wrong: one channel failing never aborts the others, so each channel row carries its own &#x60;live&#x60;, &#x60;failed&#x60; or &#x60;unavailable&#x60; status and detail, and a paid launch can be live while an email launch failed. The campaign itself is &#x60;live&#x60; when AT LEAST ONE channel launched and &#x60;failed&#x60; only when none did — &#x60;live&#x60; is not a claim that every channel launched. Repeating the call is safe: a channel already live is skipped, never re-launched. A campaign carrying more than one creative has its variant assigned here by the experiment client and tagged as &#x60;utm_content&#x60;.  Org-scoped and fails closed: a valid bearer is required (403 without one), the campaign is read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, and a campaign with no channels is a 400 — there is nothing to launch. Each executor resolves its own org&#39;s connector token from the org passed to it, so a launch can never spend through another tenant&#39;s connector.
+     * Pushes the campaign live on each of its channels through that channel&#39;s executor and answers the whole campaign with the per-channel outcome written back onto it.  The fan-out is BEST-EFFORT PER CHANNEL, and the honest reading of the result is the rule most callers get wrong: one channel failing never aborts the others, so each channel row carries its own &#x60;live&#x60;, &#x60;failed&#x60; or &#x60;unavailable&#x60; status and detail, and a paid launch can be live while an email launch failed. The campaign itself is &#x60;live&#x60; when AT LEAST ONE channel launched and &#x60;failed&#x60; only when none did — &#x60;live&#x60; is not a claim that every channel launched. Repeating the call is safe: a channel already live is skipped, never re-launched. A campaign carrying more than one creative has its variant assigned here by the experiment client and tagged as &#x60;utm_content&#x60;.  Org-scoped and fails closed: a valid bearer is required (401 without one), the campaign is read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, and a campaign with no channels is a 400 — there is nothing to launch. Each executor resolves its own org&#39;s connector token from the org passed to it, so a launch can never spend through another tenant&#39;s connector.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1215,7 +1256,7 @@ public class CampaignApi {
 
     /**
      * Launch a campaign across every channel it declares (asynchronously)
-     * Pushes the campaign live on each of its channels through that channel&#39;s executor and answers the whole campaign with the per-channel outcome written back onto it.  The fan-out is BEST-EFFORT PER CHANNEL, and the honest reading of the result is the rule most callers get wrong: one channel failing never aborts the others, so each channel row carries its own &#x60;live&#x60;, &#x60;failed&#x60; or &#x60;unavailable&#x60; status and detail, and a paid launch can be live while an email launch failed. The campaign itself is &#x60;live&#x60; when AT LEAST ONE channel launched and &#x60;failed&#x60; only when none did — &#x60;live&#x60; is not a claim that every channel launched. Repeating the call is safe: a channel already live is skipped, never re-launched. A campaign carrying more than one creative has its variant assigned here by the experiment client and tagged as &#x60;utm_content&#x60;.  Org-scoped and fails closed: a valid bearer is required (403 without one), the campaign is read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, and a campaign with no channels is a 400 — there is nothing to launch. Each executor resolves its own org&#39;s connector token from the org passed to it, so a launch can never spend through another tenant&#39;s connector.
+     * Pushes the campaign live on each of its channels through that channel&#39;s executor and answers the whole campaign with the per-channel outcome written back onto it.  The fan-out is BEST-EFFORT PER CHANNEL, and the honest reading of the result is the rule most callers get wrong: one channel failing never aborts the others, so each channel row carries its own &#x60;live&#x60;, &#x60;failed&#x60; or &#x60;unavailable&#x60; status and detail, and a paid launch can be live while an email launch failed. The campaign itself is &#x60;live&#x60; when AT LEAST ONE channel launched and &#x60;failed&#x60; only when none did — &#x60;live&#x60; is not a claim that every channel launched. Repeating the call is safe: a channel already live is skipped, never re-launched. A campaign carrying more than one creative has its variant assigned here by the experiment client and tagged as &#x60;utm_content&#x60;.  Org-scoped and fails closed: a valid bearer is required (401 without one), the campaign is read under the caller&#39;s OWN org so another tenant&#39;s id is a 404, and a campaign with no channels is a 400 — there is nothing to launch. Each executor resolves its own org&#39;s connector token from the org passed to it, so a launch can never spend through another tenant&#39;s connector.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1291,7 +1332,7 @@ public class CampaignApi {
 
     /**
      * Pause every live channel on a campaign at its provider
-     * Pauses each live channel on its provider and answers the whole campaign, moved to &#x60;paused&#x60;, with the per-channel outcome written back onto it.  Only channels that are live and carry a provider reference are touched; a channel whose executor is no longer wired is marked &#x60;unavailable&#x60; and one whose pause errored is marked &#x60;failed&#x60;, with the reason on the row. The campaign still reports &#x60;paused&#x60; in both cases, and that is deliberate rather than sloppy: no live channel remains that this process will meter, and the rows say exactly which provider was not reached so it can be settled by hand.  Org-scoped and fails closed: a valid bearer is required (403 without one) and the campaign is read under the caller&#39;s OWN org, so another tenant&#39;s id is a 404.
+     * Pauses each live channel on its provider and answers the whole campaign, moved to &#x60;paused&#x60;, with the per-channel outcome written back onto it.  Only channels that are live and carry a provider reference are touched; a channel whose executor is no longer wired is marked &#x60;unavailable&#x60; and one whose pause errored is marked &#x60;failed&#x60;, with the reason on the row. The campaign still reports &#x60;paused&#x60; in both cases, and that is deliberate rather than sloppy: no live channel remains that this process will meter, and the rows say exactly which provider was not reached so it can be settled by hand.  Org-scoped and fails closed: a valid bearer is required (401 without one) and the campaign is read under the caller&#39;s OWN org, so another tenant&#39;s id is a 404.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1301,7 +1342,7 @@ public class CampaignApi {
 
     /**
      * Pause every live channel on a campaign at its provider
-     * Pauses each live channel on its provider and answers the whole campaign, moved to &#x60;paused&#x60;, with the per-channel outcome written back onto it.  Only channels that are live and carry a provider reference are touched; a channel whose executor is no longer wired is marked &#x60;unavailable&#x60; and one whose pause errored is marked &#x60;failed&#x60;, with the reason on the row. The campaign still reports &#x60;paused&#x60; in both cases, and that is deliberate rather than sloppy: no live channel remains that this process will meter, and the rows say exactly which provider was not reached so it can be settled by hand.  Org-scoped and fails closed: a valid bearer is required (403 without one) and the campaign is read under the caller&#39;s OWN org, so another tenant&#39;s id is a 404.
+     * Pauses each live channel on its provider and answers the whole campaign, moved to &#x60;paused&#x60;, with the per-channel outcome written back onto it.  Only channels that are live and carry a provider reference are touched; a channel whose executor is no longer wired is marked &#x60;unavailable&#x60; and one whose pause errored is marked &#x60;failed&#x60;, with the reason on the row. The campaign still reports &#x60;paused&#x60; in both cases, and that is deliberate rather than sloppy: no live channel remains that this process will meter, and the rows say exactly which provider was not reached so it can be settled by hand.  Org-scoped and fails closed: a valid bearer is required (401 without one) and the campaign is read under the caller&#39;s OWN org, so another tenant&#39;s id is a 404.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1313,7 +1354,7 @@ public class CampaignApi {
 
     /**
      * Pause every live channel on a campaign at its provider (asynchronously)
-     * Pauses each live channel on its provider and answers the whole campaign, moved to &#x60;paused&#x60;, with the per-channel outcome written back onto it.  Only channels that are live and carry a provider reference are touched; a channel whose executor is no longer wired is marked &#x60;unavailable&#x60; and one whose pause errored is marked &#x60;failed&#x60;, with the reason on the row. The campaign still reports &#x60;paused&#x60; in both cases, and that is deliberate rather than sloppy: no live channel remains that this process will meter, and the rows say exactly which provider was not reached so it can be settled by hand.  Org-scoped and fails closed: a valid bearer is required (403 without one) and the campaign is read under the caller&#39;s OWN org, so another tenant&#39;s id is a 404.
+     * Pauses each live channel on its provider and answers the whole campaign, moved to &#x60;paused&#x60;, with the per-channel outcome written back onto it.  Only channels that are live and carry a provider reference are touched; a channel whose executor is no longer wired is marked &#x60;unavailable&#x60; and one whose pause errored is marked &#x60;failed&#x60;, with the reason on the row. The campaign still reports &#x60;paused&#x60; in both cases, and that is deliberate rather than sloppy: no live channel remains that this process will meter, and the rows say exactly which provider was not reached so it can be settled by hand.  Org-scoped and fails closed: a valid bearer is required (401 without one) and the campaign is read under the caller&#39;s OWN org, so another tenant&#39;s id is a 404.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1328,7 +1369,7 @@ public class CampaignApi {
     /**
      * Build call for putCampaignById
      * @param id ID is the campaign to update, from the path. (required)
-     * @param campaignUpdate  (required)
+     * @param campaignCampaignUpdate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1337,9 +1378,10 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putCampaignByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CampaignUpdate campaignUpdate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCampaignByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CampaignCampaignUpdate campaignCampaignUpdate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1353,7 +1395,7 @@ public class CampaignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = campaignUpdate;
+        Object localVarPostBody = campaignCampaignUpdate;
 
         // create path and map variables
         String localVarPath = "/v1/campaign/{id}"
@@ -1366,7 +1408,8 @@ public class CampaignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1386,18 +1429,18 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putCampaignByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CampaignUpdate campaignUpdate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCampaignByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CampaignCampaignUpdate campaignCampaignUpdate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling putCampaignById(Async)");
         }
 
-        // verify the required parameter 'campaignUpdate' is set
-        if (campaignUpdate == null) {
-            throw new ApiException("Missing the required parameter 'campaignUpdate' when calling putCampaignById(Async)");
+        // verify the required parameter 'campaignCampaignUpdate' is set
+        if (campaignCampaignUpdate == null) {
+            throw new ApiException("Missing the required parameter 'campaignCampaignUpdate' when calling putCampaignById(Async)");
         }
 
-        return putCampaignByIdCall(id, campaignUpdate, _callback);
+        return putCampaignByIdCall(id, campaignCampaignUpdate, _callback);
 
     }
 
@@ -1405,18 +1448,19 @@ public class CampaignApi {
      * Rewrites a campaign&#39;s core fields — name, audience, creatives, schedule and budget — and returns the updated campaign.
      * Rewrites a campaign&#39;s core fields — name, audience, creatives, schedule and budget — and returns the updated campaign.  Channels are replaced ONLY while the campaign is still a draft. Once it is launched its channels carry provider state (an external id, a live status), so they are added and removed explicitly through the channels sub-resource instead; a whole-object write would silently orphan a running execution.
      * @param id ID is the campaign to update, from the path. (required)
-     * @param campaignUpdate  (required)
-     * @return CampaignRecord
+     * @param campaignCampaignUpdate  (required)
+     * @return CampaignCampaignRecord
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignRecord putCampaignById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CampaignUpdate campaignUpdate) throws ApiException {
-        ApiResponse<CampaignRecord> localVarResp = putCampaignByIdWithHttpInfo(id, campaignUpdate);
+    public CampaignCampaignRecord putCampaignById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CampaignCampaignUpdate campaignCampaignUpdate) throws ApiException {
+        ApiResponse<CampaignCampaignRecord> localVarResp = putCampaignByIdWithHttpInfo(id, campaignCampaignUpdate);
         return localVarResp.getData();
     }
 
@@ -1424,19 +1468,20 @@ public class CampaignApi {
      * Rewrites a campaign&#39;s core fields — name, audience, creatives, schedule and budget — and returns the updated campaign.
      * Rewrites a campaign&#39;s core fields — name, audience, creatives, schedule and budget — and returns the updated campaign.  Channels are replaced ONLY while the campaign is still a draft. Once it is launched its channels carry provider state (an external id, a live status), so they are added and removed explicitly through the channels sub-resource instead; a whole-object write would silently orphan a running execution.
      * @param id ID is the campaign to update, from the path. (required)
-     * @param campaignUpdate  (required)
-     * @return ApiResponse&lt;CampaignRecord&gt;
+     * @param campaignCampaignUpdate  (required)
+     * @return ApiResponse&lt;CampaignCampaignRecord&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignRecord> putCampaignByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CampaignUpdate campaignUpdate) throws ApiException {
-        okhttp3.Call localVarCall = putCampaignByIdValidateBeforeCall(id, campaignUpdate, null);
-        Type localVarReturnType = new TypeToken<CampaignRecord>(){}.getType();
+    public ApiResponse<CampaignCampaignRecord> putCampaignByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CampaignCampaignUpdate campaignCampaignUpdate) throws ApiException {
+        okhttp3.Call localVarCall = putCampaignByIdValidateBeforeCall(id, campaignCampaignUpdate, null);
+        Type localVarReturnType = new TypeToken<CampaignCampaignRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1444,7 +1489,7 @@ public class CampaignApi {
      * Rewrites a campaign&#39;s core fields — name, audience, creatives, schedule and budget — and returns the updated campaign. (asynchronously)
      * Rewrites a campaign&#39;s core fields — name, audience, creatives, schedule and budget — and returns the updated campaign.  Channels are replaced ONLY while the campaign is still a draft. Once it is launched its channels carry provider state (an external id, a live status), so they are added and removed explicitly through the channels sub-resource instead; a whole-object write would silently orphan a running execution.
      * @param id ID is the campaign to update, from the path. (required)
-     * @param campaignUpdate  (required)
+     * @param campaignCampaignUpdate  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1453,12 +1498,13 @@ public class CampaignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putCampaignByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CampaignUpdate campaignUpdate, final ApiCallback<CampaignRecord> _callback) throws ApiException {
+    public okhttp3.Call putCampaignByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CampaignCampaignUpdate campaignCampaignUpdate, final ApiCallback<CampaignCampaignRecord> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putCampaignByIdValidateBeforeCall(id, campaignUpdate, _callback);
-        Type localVarReturnType = new TypeToken<CampaignRecord>(){}.getType();
+        okhttp3.Call localVarCall = putCampaignByIdValidateBeforeCall(id, campaignCampaignUpdate, _callback);
+        Type localVarReturnType = new TypeToken<CampaignCampaignRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

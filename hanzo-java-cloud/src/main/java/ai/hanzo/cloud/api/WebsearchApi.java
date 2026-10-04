@@ -27,8 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.WebSearchQuery;
-import ai.hanzo.cloud.model.WebSearchResults;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.WebsearchWebSearchQuery;
+import ai.hanzo.cloud.model.WebsearchWebSearchResults;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -603,7 +604,7 @@ public class WebsearchApi {
     }
     /**
      * Build call for searchWeb
-     * @param webSearchQuery  (required)
+     * @param websearchWebSearchQuery  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -612,9 +613,10 @@ public class WebsearchApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchWebCall(@javax.annotation.Nonnull WebSearchQuery webSearchQuery, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchWebCall(@javax.annotation.Nonnull WebsearchWebSearchQuery websearchWebSearchQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -628,7 +630,7 @@ public class WebsearchApi {
             basePath = null;
         }
 
-        Object localVarPostBody = webSearchQuery;
+        Object localVarPostBody = websearchWebSearchQuery;
 
         // create path and map variables
         String localVarPath = "/v1/websearch";
@@ -640,7 +642,8 @@ public class WebsearchApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -660,57 +663,59 @@ public class WebsearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchWebValidateBeforeCall(@javax.annotation.Nonnull WebSearchQuery webSearchQuery, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'webSearchQuery' is set
-        if (webSearchQuery == null) {
-            throw new ApiException("Missing the required parameter 'webSearchQuery' when calling searchWeb(Async)");
+    private okhttp3.Call searchWebValidateBeforeCall(@javax.annotation.Nonnull WebsearchWebSearchQuery websearchWebSearchQuery, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'websearchWebSearchQuery' is set
+        if (websearchWebSearchQuery == null) {
+            throw new ApiException("Missing the required parameter 'websearchWebSearchQuery' when calling searchWeb(Async)");
         }
 
-        return searchWebCall(webSearchQuery, _callback);
+        return searchWebCall(websearchWebSearchQuery, _callback);
 
     }
 
     /**
      * Search the live web
      * Searches the live web and answers with ranked results.  This is the fleet&#39;s path to what is happening RIGHT NOW — today&#39;s weather, an outage, a release that postdates any model&#39;s training. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it to a locale. The answer is &#x60;{query, number_of_results, results:[{url, title, content, engine}]}&#x60;, where &#x60;content&#x60; is the ENGINE&#39;s snippet and not the page: read a page with POST /v1/crawl.  It is served in-process by a Go meta-search over keyless public engines — never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept, so distinct queries stay distinct results) and capped at 30. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  It fails SOFT on the engines. One that errors, times out or is served a bot-challenge page contributes zero results and never fails the call, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  Two refusals in the order they have to be asked, both in the PREAMBLE. A typed op is also an MCP tool, a call-plane operation, a graph field and a CLI command, and every one of those invokes it with no route and therefore no middleware — so what admits a caller here is asked where every caller reaches it rather than in a middleware only one of them passes through.  A VALIDATED PRINCIPAL IS REQUIRED, and there is no tenant beyond that: the results are public web pages, identical for every caller, so nothing here is scoped and nothing here can leak across orgs.  THEN THE ANTI-FORGERY TOKEN, immediately before the money, because that is what it is about. This search is the SAME bought meta-search the compat endpoint runs — the engines cost, and account.Shared/meter.go bills the caller&#39;s ledger for the answer — so a page the caller never visited must not be able to spend for them by sending their browser here with a cookie they already hold. Nothing leaks; the answer is unreadable cross-origin. What moves is money.  It is account&#39;s control, the one every operation in this estate asks, and it is a no-op the moment a caller PRESENTS a credential (Bearer, gateway, API key) — which is every service and console caller here — so it costs a CLI, an agent and an API client nothing. Only the ambient-cookie path is asked for the echoed token. The raw /v1/websearch/search route asks the same control on its group (see Mount), so the two addresses of one search are admitted alike.
-     * @param webSearchQuery  (required)
-     * @return WebSearchResults
+     * @param websearchWebSearchQuery  (required)
+     * @return WebsearchWebSearchResults
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public WebSearchResults searchWeb(@javax.annotation.Nonnull WebSearchQuery webSearchQuery) throws ApiException {
-        ApiResponse<WebSearchResults> localVarResp = searchWebWithHttpInfo(webSearchQuery);
+    public WebsearchWebSearchResults searchWeb(@javax.annotation.Nonnull WebsearchWebSearchQuery websearchWebSearchQuery) throws ApiException {
+        ApiResponse<WebsearchWebSearchResults> localVarResp = searchWebWithHttpInfo(websearchWebSearchQuery);
         return localVarResp.getData();
     }
 
     /**
      * Search the live web
      * Searches the live web and answers with ranked results.  This is the fleet&#39;s path to what is happening RIGHT NOW — today&#39;s weather, an outage, a release that postdates any model&#39;s training. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it to a locale. The answer is &#x60;{query, number_of_results, results:[{url, title, content, engine}]}&#x60;, where &#x60;content&#x60; is the ENGINE&#39;s snippet and not the page: read a page with POST /v1/crawl.  It is served in-process by a Go meta-search over keyless public engines — never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept, so distinct queries stay distinct results) and capped at 30. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  It fails SOFT on the engines. One that errors, times out or is served a bot-challenge page contributes zero results and never fails the call, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  Two refusals in the order they have to be asked, both in the PREAMBLE. A typed op is also an MCP tool, a call-plane operation, a graph field and a CLI command, and every one of those invokes it with no route and therefore no middleware — so what admits a caller here is asked where every caller reaches it rather than in a middleware only one of them passes through.  A VALIDATED PRINCIPAL IS REQUIRED, and there is no tenant beyond that: the results are public web pages, identical for every caller, so nothing here is scoped and nothing here can leak across orgs.  THEN THE ANTI-FORGERY TOKEN, immediately before the money, because that is what it is about. This search is the SAME bought meta-search the compat endpoint runs — the engines cost, and account.Shared/meter.go bills the caller&#39;s ledger for the answer — so a page the caller never visited must not be able to spend for them by sending their browser here with a cookie they already hold. Nothing leaks; the answer is unreadable cross-origin. What moves is money.  It is account&#39;s control, the one every operation in this estate asks, and it is a no-op the moment a caller PRESENTS a credential (Bearer, gateway, API key) — which is every service and console caller here — so it costs a CLI, an agent and an API client nothing. Only the ambient-cookie path is asked for the echoed token. The raw /v1/websearch/search route asks the same control on its group (see Mount), so the two addresses of one search are admitted alike.
-     * @param webSearchQuery  (required)
-     * @return ApiResponse&lt;WebSearchResults&gt;
+     * @param websearchWebSearchQuery  (required)
+     * @return ApiResponse&lt;WebsearchWebSearchResults&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WebSearchResults> searchWebWithHttpInfo(@javax.annotation.Nonnull WebSearchQuery webSearchQuery) throws ApiException {
-        okhttp3.Call localVarCall = searchWebValidateBeforeCall(webSearchQuery, null);
-        Type localVarReturnType = new TypeToken<WebSearchResults>(){}.getType();
+    public ApiResponse<WebsearchWebSearchResults> searchWebWithHttpInfo(@javax.annotation.Nonnull WebsearchWebSearchQuery websearchWebSearchQuery) throws ApiException {
+        okhttp3.Call localVarCall = searchWebValidateBeforeCall(websearchWebSearchQuery, null);
+        Type localVarReturnType = new TypeToken<WebsearchWebSearchResults>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Search the live web (asynchronously)
      * Searches the live web and answers with ranked results.  This is the fleet&#39;s path to what is happening RIGHT NOW — today&#39;s weather, an outage, a release that postdates any model&#39;s training. &#x60;q&#x60; is the query and &#x60;language&#x60; narrows it to a locale. The answer is &#x60;{query, number_of_results, results:[{url, title, content, engine}]}&#x60;, where &#x60;content&#x60; is the ENGINE&#39;s snippet and not the page: read a page with POST /v1/crawl.  It is served in-process by a Go meta-search over keyless public engines — never a third-party search API and never a search key. The enabled engines run concurrently and their hits are merged, deduplicated by normalised URL (host and path, trailing slash and fragment dropped, query kept, so distinct queries stay distinct results) and capped at 30. Ranking is deterministic rather than scored: the first configured engine&#39;s hits lead.  It fails SOFT on the engines. One that errors, times out or is served a bot-challenge page contributes zero results and never fails the call, so an empty &#x60;results&#x60; is a real answer — nothing was found — and not an outage. The array is always present, never null.  Two refusals in the order they have to be asked, both in the PREAMBLE. A typed op is also an MCP tool, a call-plane operation, a graph field and a CLI command, and every one of those invokes it with no route and therefore no middleware — so what admits a caller here is asked where every caller reaches it rather than in a middleware only one of them passes through.  A VALIDATED PRINCIPAL IS REQUIRED, and there is no tenant beyond that: the results are public web pages, identical for every caller, so nothing here is scoped and nothing here can leak across orgs.  THEN THE ANTI-FORGERY TOKEN, immediately before the money, because that is what it is about. This search is the SAME bought meta-search the compat endpoint runs — the engines cost, and account.Shared/meter.go bills the caller&#39;s ledger for the answer — so a page the caller never visited must not be able to spend for them by sending their browser here with a cookie they already hold. Nothing leaks; the answer is unreadable cross-origin. What moves is money.  It is account&#39;s control, the one every operation in this estate asks, and it is a no-op the moment a caller PRESENTS a credential (Bearer, gateway, API key) — which is every service and console caller here — so it costs a CLI, an agent and an API client nothing. Only the ambient-cookie path is asked for the echoed token. The raw /v1/websearch/search route asks the same control on its group (see Mount), so the two addresses of one search are admitted alike.
-     * @param webSearchQuery  (required)
+     * @param websearchWebSearchQuery  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -719,12 +724,13 @@ public class WebsearchApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchWebAsync(@javax.annotation.Nonnull WebSearchQuery webSearchQuery, final ApiCallback<WebSearchResults> _callback) throws ApiException {
+    public okhttp3.Call searchWebAsync(@javax.annotation.Nonnull WebsearchWebSearchQuery websearchWebSearchQuery, final ApiCallback<WebsearchWebSearchResults> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchWebValidateBeforeCall(webSearchQuery, _callback);
-        Type localVarReturnType = new TypeToken<WebSearchResults>(){}.getType();
+        okhttp3.Call localVarCall = searchWebValidateBeforeCall(websearchWebSearchQuery, _callback);
+        Type localVarReturnType = new TypeToken<WebsearchWebSearchResults>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

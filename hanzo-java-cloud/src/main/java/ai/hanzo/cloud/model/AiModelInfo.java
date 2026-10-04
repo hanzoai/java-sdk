@@ -59,6 +59,16 @@ public class AiModelInfo {
   @javax.annotation.Nullable
   private AiModelAccessInfo access;
 
+  public static final String SERIALIZED_NAME_CANONICAL_SLUG = "canonical_slug";
+  @SerializedName(SERIALIZED_NAME_CANONICAL_SLUG)
+  @javax.annotation.Nullable
+  private String canonicalSlug;
+
+  public static final String SERIALIZED_NAME_PROPERTY_CLASS = "class";
+  @SerializedName(SERIALIZED_NAME_PROPERTY_CLASS)
+  @javax.annotation.Nullable
+  private String propertyClass;
+
   public static final String SERIALIZED_NAME_CONTEXT_WINDOW = "context_window";
   @SerializedName(SERIALIZED_NAME_CONTEXT_WINDOW)
   @javax.annotation.Nullable
@@ -69,15 +79,35 @@ public class AiModelInfo {
   @javax.annotation.Nullable
   private Integer created;
 
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  @javax.annotation.Nullable
+  private String description;
+
+  public static final String SERIALIZED_NAME_FAMILY = "family";
+  @SerializedName(SERIALIZED_NAME_FAMILY)
+  @javax.annotation.Nullable
+  private String family;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
   private String id;
 
+  public static final String SERIALIZED_NAME_INPUTS = "inputs";
+  @SerializedName(SERIALIZED_NAME_INPUTS)
+  @javax.annotation.Nullable
+  private List<String> inputs = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_MAX_OUTPUT_TOKENS = "max_output_tokens";
   @SerializedName(SERIALIZED_NAME_MAX_OUTPUT_TOKENS)
   @javax.annotation.Nullable
   private Integer maxOutputTokens;
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
+  private String name;
 
   public static final String SERIALIZED_NAME_OBJECT = "object";
   @SerializedName(SERIALIZED_NAME_OBJECT)
@@ -109,6 +139,11 @@ public class AiModelInfo {
   @javax.annotation.Nullable
   private String provider;
 
+  public static final String SERIALIZED_NAME_SUPPORTS_REASONING = "supports_reasoning";
+  @SerializedName(SERIALIZED_NAME_SUPPORTS_REASONING)
+  @javax.annotation.Nullable
+  private Boolean supportsReasoning;
+
   public static final String SERIALIZED_NAME_SUPPORTS_TOOLS = "supports_tools";
   @SerializedName(SERIALIZED_NAME_SUPPORTS_TOOLS)
   @javax.annotation.Nullable
@@ -138,6 +173,44 @@ public class AiModelInfo {
 
   public void setAccess(@javax.annotation.Nullable AiModelAccessInfo access) {
     this.access = access;
+  }
+
+
+  public AiModelInfo canonicalSlug(@javax.annotation.Nullable String canonicalSlug) {
+    this.canonicalSlug = canonicalSlug;
+    return this;
+  }
+
+  /**
+   * Get canonicalSlug
+   * @return canonicalSlug
+   */
+  @javax.annotation.Nullable
+  public String getCanonicalSlug() {
+    return canonicalSlug;
+  }
+
+  public void setCanonicalSlug(@javax.annotation.Nullable String canonicalSlug) {
+    this.canonicalSlug = canonicalSlug;
+  }
+
+
+  public AiModelInfo propertyClass(@javax.annotation.Nullable String propertyClass) {
+    this.propertyClass = propertyClass;
+    return this;
+  }
+
+  /**
+   * Get propertyClass
+   * @return propertyClass
+   */
+  @javax.annotation.Nullable
+  public String getPropertyClass() {
+    return propertyClass;
+  }
+
+  public void setPropertyClass(@javax.annotation.Nullable String propertyClass) {
+    this.propertyClass = propertyClass;
   }
 
 
@@ -179,6 +252,44 @@ public class AiModelInfo {
   }
 
 
+  public AiModelInfo description(@javax.annotation.Nullable String description) {
+    this.description = description;
+    return this;
+  }
+
+  /**
+   * Get description
+   * @return description
+   */
+  @javax.annotation.Nullable
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(@javax.annotation.Nullable String description) {
+    this.description = description;
+  }
+
+
+  public AiModelInfo family(@javax.annotation.Nullable String family) {
+    this.family = family;
+    return this;
+  }
+
+  /**
+   * Get family
+   * @return family
+   */
+  @javax.annotation.Nullable
+  public String getFamily() {
+    return family;
+  }
+
+  public void setFamily(@javax.annotation.Nullable String family) {
+    this.family = family;
+  }
+
+
   public AiModelInfo id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
@@ -198,6 +309,33 @@ public class AiModelInfo {
   }
 
 
+  public AiModelInfo inputs(@javax.annotation.Nullable List<String> inputs) {
+    this.inputs = inputs;
+    return this;
+  }
+
+  public AiModelInfo addInputsItem(String inputsItem) {
+    if (this.inputs == null) {
+      this.inputs = new ArrayList<>();
+    }
+    this.inputs.add(inputsItem);
+    return this;
+  }
+
+  /**
+   * Get inputs
+   * @return inputs
+   */
+  @javax.annotation.Nullable
+  public List<String> getInputs() {
+    return inputs;
+  }
+
+  public void setInputs(@javax.annotation.Nullable List<String> inputs) {
+    this.inputs = inputs;
+  }
+
+
   public AiModelInfo maxOutputTokens(@javax.annotation.Nullable Integer maxOutputTokens) {
     this.maxOutputTokens = maxOutputTokens;
     return this;
@@ -214,6 +352,25 @@ public class AiModelInfo {
 
   public void setMaxOutputTokens(@javax.annotation.Nullable Integer maxOutputTokens) {
     this.maxOutputTokens = maxOutputTokens;
+  }
+
+
+  public AiModelInfo name(@javax.annotation.Nullable String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+   */
+  @javax.annotation.Nullable
+  public String getName() {
+    return name;
+  }
+
+  public void setName(@javax.annotation.Nullable String name) {
+    this.name = name;
   }
 
 
@@ -339,6 +496,25 @@ public class AiModelInfo {
   }
 
 
+  public AiModelInfo supportsReasoning(@javax.annotation.Nullable Boolean supportsReasoning) {
+    this.supportsReasoning = supportsReasoning;
+    return this;
+  }
+
+  /**
+   * Get supportsReasoning
+   * @return supportsReasoning
+   */
+  @javax.annotation.Nullable
+  public Boolean getSupportsReasoning() {
+    return supportsReasoning;
+  }
+
+  public void setSupportsReasoning(@javax.annotation.Nullable Boolean supportsReasoning) {
+    this.supportsReasoning = supportsReasoning;
+  }
+
+
   public AiModelInfo supportsTools(@javax.annotation.Nullable Boolean supportsTools) {
     this.supportsTools = supportsTools;
     return this;
@@ -432,16 +608,23 @@ public class AiModelInfo {
     }
     AiModelInfo aiModelInfo = (AiModelInfo) o;
     return Objects.equals(this.access, aiModelInfo.access) &&
+        Objects.equals(this.canonicalSlug, aiModelInfo.canonicalSlug) &&
+        Objects.equals(this.propertyClass, aiModelInfo.propertyClass) &&
         Objects.equals(this.contextWindow, aiModelInfo.contextWindow) &&
         Objects.equals(this.created, aiModelInfo.created) &&
+        Objects.equals(this.description, aiModelInfo.description) &&
+        Objects.equals(this.family, aiModelInfo.family) &&
         Objects.equals(this.id, aiModelInfo.id) &&
+        Objects.equals(this.inputs, aiModelInfo.inputs) &&
         Objects.equals(this.maxOutputTokens, aiModelInfo.maxOutputTokens) &&
+        Objects.equals(this.name, aiModelInfo.name) &&
         Objects.equals(this._object, aiModelInfo._object) &&
         Objects.equals(this.outputs, aiModelInfo.outputs) &&
         Objects.equals(this.ownedBy, aiModelInfo.ownedBy) &&
         Objects.equals(this.premium, aiModelInfo.premium) &&
         Objects.equals(this.pricing, aiModelInfo.pricing) &&
         Objects.equals(this.provider, aiModelInfo.provider) &&
+        Objects.equals(this.supportsReasoning, aiModelInfo.supportsReasoning) &&
         Objects.equals(this.supportsTools, aiModelInfo.supportsTools) &&
         Objects.equals(this.supportsVision, aiModelInfo.supportsVision)&&
         Objects.equals(this.additionalProperties, aiModelInfo.additionalProperties);
@@ -449,7 +632,7 @@ public class AiModelInfo {
 
   @Override
   public int hashCode() {
-    return Objects.hash(access, contextWindow, created, id, maxOutputTokens, _object, outputs, ownedBy, premium, pricing, provider, supportsTools, supportsVision, additionalProperties);
+    return Objects.hash(access, canonicalSlug, propertyClass, contextWindow, created, description, family, id, inputs, maxOutputTokens, name, _object, outputs, ownedBy, premium, pricing, provider, supportsReasoning, supportsTools, supportsVision, additionalProperties);
   }
 
   @Override
@@ -457,16 +640,23 @@ public class AiModelInfo {
     StringBuilder sb = new StringBuilder();
     sb.append("class AiModelInfo {\n");
     sb.append("    access: ").append(toIndentedString(access)).append("\n");
+    sb.append("    canonicalSlug: ").append(toIndentedString(canonicalSlug)).append("\n");
+    sb.append("    propertyClass: ").append(toIndentedString(propertyClass)).append("\n");
     sb.append("    contextWindow: ").append(toIndentedString(contextWindow)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    family: ").append(toIndentedString(family)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    inputs: ").append(toIndentedString(inputs)).append("\n");
     sb.append("    maxOutputTokens: ").append(toIndentedString(maxOutputTokens)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
     sb.append("    outputs: ").append(toIndentedString(outputs)).append("\n");
     sb.append("    ownedBy: ").append(toIndentedString(ownedBy)).append("\n");
     sb.append("    premium: ").append(toIndentedString(premium)).append("\n");
     sb.append("    pricing: ").append(toIndentedString(pricing)).append("\n");
     sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
+    sb.append("    supportsReasoning: ").append(toIndentedString(supportsReasoning)).append("\n");
     sb.append("    supportsTools: ").append(toIndentedString(supportsTools)).append("\n");
     sb.append("    supportsVision: ").append(toIndentedString(supportsVision)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -491,7 +681,7 @@ public class AiModelInfo {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("access", "context_window", "created", "id", "max_output_tokens", "object", "outputs", "owned_by", "premium", "pricing", "provider", "supports_tools", "supports_vision"));
+    openapiFields = new HashSet<String>(Arrays.asList("access", "canonical_slug", "class", "context_window", "created", "description", "family", "id", "inputs", "max_output_tokens", "name", "object", "outputs", "owned_by", "premium", "pricing", "provider", "supports_reasoning", "supports_tools", "supports_vision"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -514,8 +704,27 @@ public class AiModelInfo {
       if (jsonObj.get("access") != null && !jsonObj.get("access").isJsonNull()) {
         AiModelAccessInfo.validateJsonElement(jsonObj.get("access"));
       }
+      if ((jsonObj.get("canonical_slug") != null && !jsonObj.get("canonical_slug").isJsonNull()) && !jsonObj.get("canonical_slug").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `canonical_slug` to be a primitive type in the JSON string but got `%s`", jsonObj.get("canonical_slug").toString()));
+      }
+      if ((jsonObj.get("class") != null && !jsonObj.get("class").isJsonNull()) && !jsonObj.get("class").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("class").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if ((jsonObj.get("family") != null && !jsonObj.get("family").isJsonNull()) && !jsonObj.get("family").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `family` to be a primitive type in the JSON string but got `%s`", jsonObj.get("family").toString()));
+      }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("inputs") != null && !jsonObj.get("inputs").isJsonNull() && !jsonObj.get("inputs").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `inputs` to be an array in the JSON string but got `%s`", jsonObj.get("inputs").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));

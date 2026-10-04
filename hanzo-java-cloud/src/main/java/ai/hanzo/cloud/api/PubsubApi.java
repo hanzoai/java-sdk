@@ -27,10 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.BusAck;
-import ai.hanzo.cloud.model.BusMessage;
-import ai.hanzo.cloud.model.BusPublish;
-import ai.hanzo.cloud.model.BusRequest;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.PubsubBusAck;
+import ai.hanzo.cloud.model.PubsubBusMessage;
+import ai.hanzo.cloud.model.PubsubBusPublish;
+import ai.hanzo.cloud.model.PubsubBusRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -77,7 +78,7 @@ public class PubsubApi {
 
     /**
      * Build call for postPubsubPublish
-     * @param busPublish  (required)
+     * @param pubsubBusPublish  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -86,9 +87,10 @@ public class PubsubApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPubsubPublishCall(@javax.annotation.Nonnull BusPublish busPublish, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPubsubPublishCall(@javax.annotation.Nonnull PubsubBusPublish pubsubBusPublish, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -102,7 +104,7 @@ public class PubsubApi {
             basePath = null;
         }
 
-        Object localVarPostBody = busPublish;
+        Object localVarPostBody = pubsubBusPublish;
 
         // create path and map variables
         String localVarPath = "/v1/pubsub/publish";
@@ -114,7 +116,8 @@ public class PubsubApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -134,57 +137,59 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPubsubPublishValidateBeforeCall(@javax.annotation.Nonnull BusPublish busPublish, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'busPublish' is set
-        if (busPublish == null) {
-            throw new ApiException("Missing the required parameter 'busPublish' when calling postPubsubPublish(Async)");
+    private okhttp3.Call postPubsubPublishValidateBeforeCall(@javax.annotation.Nonnull PubsubBusPublish pubsubBusPublish, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'pubsubBusPublish' is set
+        if (pubsubBusPublish == null) {
+            throw new ApiException("Missing the required parameter 'pubsubBusPublish' when calling postPubsubPublish(Async)");
         }
 
-        return postPubsubPublishCall(busPublish, _callback);
+        return postPubsubPublishCall(pubsubBusPublish, _callback);
 
     }
 
     /**
-     * Publish puts one message on the org&#39;s bus.
-     * Publish puts one message on the org&#39;s bus. When a stream captures the subject the write is DURABLE — the receipt names the stream and sequence only after JetStream has it on storage, and a repeated Nats-Msg-Id header within the dedup window answers duplicate instead of storing twice. When nothing captures it, the message goes out core NATS: delivered to current subscribers, receipt {ok}, nothing retained.
-     * @param busPublish  (required)
-     * @return BusAck
+     * Puts one message on the org&#39;s bus.
+     * Puts one message on the org&#39;s bus. When a stream captures the subject the write is DURABLE — the receipt names the stream and sequence only after JetStream has it on storage, and a repeated Nats-Msg-Id header within the dedup window answers duplicate instead of storing twice. When nothing captures it, the message goes out core NATS: delivered to current subscribers, receipt {ok}, nothing retained.
+     * @param pubsubBusPublish  (required)
+     * @return PubsubBusAck
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BusAck postPubsubPublish(@javax.annotation.Nonnull BusPublish busPublish) throws ApiException {
-        ApiResponse<BusAck> localVarResp = postPubsubPublishWithHttpInfo(busPublish);
+    public PubsubBusAck postPubsubPublish(@javax.annotation.Nonnull PubsubBusPublish pubsubBusPublish) throws ApiException {
+        ApiResponse<PubsubBusAck> localVarResp = postPubsubPublishWithHttpInfo(pubsubBusPublish);
         return localVarResp.getData();
     }
 
     /**
-     * Publish puts one message on the org&#39;s bus.
-     * Publish puts one message on the org&#39;s bus. When a stream captures the subject the write is DURABLE — the receipt names the stream and sequence only after JetStream has it on storage, and a repeated Nats-Msg-Id header within the dedup window answers duplicate instead of storing twice. When nothing captures it, the message goes out core NATS: delivered to current subscribers, receipt {ok}, nothing retained.
-     * @param busPublish  (required)
-     * @return ApiResponse&lt;BusAck&gt;
+     * Puts one message on the org&#39;s bus.
+     * Puts one message on the org&#39;s bus. When a stream captures the subject the write is DURABLE — the receipt names the stream and sequence only after JetStream has it on storage, and a repeated Nats-Msg-Id header within the dedup window answers duplicate instead of storing twice. When nothing captures it, the message goes out core NATS: delivered to current subscribers, receipt {ok}, nothing retained.
+     * @param pubsubBusPublish  (required)
+     * @return ApiResponse&lt;PubsubBusAck&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BusAck> postPubsubPublishWithHttpInfo(@javax.annotation.Nonnull BusPublish busPublish) throws ApiException {
-        okhttp3.Call localVarCall = postPubsubPublishValidateBeforeCall(busPublish, null);
-        Type localVarReturnType = new TypeToken<BusAck>(){}.getType();
+    public ApiResponse<PubsubBusAck> postPubsubPublishWithHttpInfo(@javax.annotation.Nonnull PubsubBusPublish pubsubBusPublish) throws ApiException {
+        okhttp3.Call localVarCall = postPubsubPublishValidateBeforeCall(pubsubBusPublish, null);
+        Type localVarReturnType = new TypeToken<PubsubBusAck>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Publish puts one message on the org&#39;s bus. (asynchronously)
-     * Publish puts one message on the org&#39;s bus. When a stream captures the subject the write is DURABLE — the receipt names the stream and sequence only after JetStream has it on storage, and a repeated Nats-Msg-Id header within the dedup window answers duplicate instead of storing twice. When nothing captures it, the message goes out core NATS: delivered to current subscribers, receipt {ok}, nothing retained.
-     * @param busPublish  (required)
+     * Puts one message on the org&#39;s bus. (asynchronously)
+     * Puts one message on the org&#39;s bus. When a stream captures the subject the write is DURABLE — the receipt names the stream and sequence only after JetStream has it on storage, and a repeated Nats-Msg-Id header within the dedup window answers duplicate instead of storing twice. When nothing captures it, the message goes out core NATS: delivered to current subscribers, receipt {ok}, nothing retained.
+     * @param pubsubBusPublish  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -193,18 +198,19 @@ public class PubsubApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPubsubPublishAsync(@javax.annotation.Nonnull BusPublish busPublish, final ApiCallback<BusAck> _callback) throws ApiException {
+    public okhttp3.Call postPubsubPublishAsync(@javax.annotation.Nonnull PubsubBusPublish pubsubBusPublish, final ApiCallback<PubsubBusAck> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postPubsubPublishValidateBeforeCall(busPublish, _callback);
-        Type localVarReturnType = new TypeToken<BusAck>(){}.getType();
+        okhttp3.Call localVarCall = postPubsubPublishValidateBeforeCall(pubsubBusPublish, _callback);
+        Type localVarReturnType = new TypeToken<PubsubBusAck>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postPubsubRequest
-     * @param busRequest  (required)
+     * @param pubsubBusRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -213,9 +219,10 @@ public class PubsubApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPubsubRequestCall(@javax.annotation.Nonnull BusRequest busRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPubsubRequestCall(@javax.annotation.Nonnull PubsubBusRequest pubsubBusRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -229,7 +236,7 @@ public class PubsubApi {
             basePath = null;
         }
 
-        Object localVarPostBody = busRequest;
+        Object localVarPostBody = pubsubBusRequest;
 
         // create path and map variables
         String localVarPath = "/v1/pubsub/request";
@@ -241,7 +248,8 @@ public class PubsubApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -261,57 +269,59 @@ public class PubsubApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPubsubRequestValidateBeforeCall(@javax.annotation.Nonnull BusRequest busRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'busRequest' is set
-        if (busRequest == null) {
-            throw new ApiException("Missing the required parameter 'busRequest' when calling postPubsubRequest(Async)");
+    private okhttp3.Call postPubsubRequestValidateBeforeCall(@javax.annotation.Nonnull PubsubBusRequest pubsubBusRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'pubsubBusRequest' is set
+        if (pubsubBusRequest == null) {
+            throw new ApiException("Missing the required parameter 'pubsubBusRequest' when calling postPubsubRequest(Async)");
         }
 
-        return postPubsubRequestCall(busRequest, _callback);
+        return postPubsubRequestCall(pubsubBusRequest, _callback);
 
     }
 
     /**
-     * Request sends one request on the org&#39;s bus and waits for one reply — the synchronous half of pub/sub, for callers speaking to a responder subscribed on the NATS port.
-     * Request sends one request on the org&#39;s bus and waits for one reply — the synchronous half of pub/sub, for callers speaking to a responder subscribed on the NATS port. 404 when nobody is listening on the subject; 408 when a responder exists but no reply arrived within the timeout.
-     * @param busRequest  (required)
-     * @return BusMessage
+     * Sends one request on the org&#39;s bus and waits for one reply — the synchronous half of pub/sub, for callers speaking to a responder subscribed on the NATS port.
+     * Sends one request on the org&#39;s bus and waits for one reply — the synchronous half of pub/sub, for callers speaking to a responder subscribed on the NATS port. 404 when nobody is listening on the subject; 408 when a responder exists but no reply arrived within the timeout.
+     * @param pubsubBusRequest  (required)
+     * @return PubsubBusMessage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BusMessage postPubsubRequest(@javax.annotation.Nonnull BusRequest busRequest) throws ApiException {
-        ApiResponse<BusMessage> localVarResp = postPubsubRequestWithHttpInfo(busRequest);
+    public PubsubBusMessage postPubsubRequest(@javax.annotation.Nonnull PubsubBusRequest pubsubBusRequest) throws ApiException {
+        ApiResponse<PubsubBusMessage> localVarResp = postPubsubRequestWithHttpInfo(pubsubBusRequest);
         return localVarResp.getData();
     }
 
     /**
-     * Request sends one request on the org&#39;s bus and waits for one reply — the synchronous half of pub/sub, for callers speaking to a responder subscribed on the NATS port.
-     * Request sends one request on the org&#39;s bus and waits for one reply — the synchronous half of pub/sub, for callers speaking to a responder subscribed on the NATS port. 404 when nobody is listening on the subject; 408 when a responder exists but no reply arrived within the timeout.
-     * @param busRequest  (required)
-     * @return ApiResponse&lt;BusMessage&gt;
+     * Sends one request on the org&#39;s bus and waits for one reply — the synchronous half of pub/sub, for callers speaking to a responder subscribed on the NATS port.
+     * Sends one request on the org&#39;s bus and waits for one reply — the synchronous half of pub/sub, for callers speaking to a responder subscribed on the NATS port. 404 when nobody is listening on the subject; 408 when a responder exists but no reply arrived within the timeout.
+     * @param pubsubBusRequest  (required)
+     * @return ApiResponse&lt;PubsubBusMessage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BusMessage> postPubsubRequestWithHttpInfo(@javax.annotation.Nonnull BusRequest busRequest) throws ApiException {
-        okhttp3.Call localVarCall = postPubsubRequestValidateBeforeCall(busRequest, null);
-        Type localVarReturnType = new TypeToken<BusMessage>(){}.getType();
+    public ApiResponse<PubsubBusMessage> postPubsubRequestWithHttpInfo(@javax.annotation.Nonnull PubsubBusRequest pubsubBusRequest) throws ApiException {
+        okhttp3.Call localVarCall = postPubsubRequestValidateBeforeCall(pubsubBusRequest, null);
+        Type localVarReturnType = new TypeToken<PubsubBusMessage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Request sends one request on the org&#39;s bus and waits for one reply — the synchronous half of pub/sub, for callers speaking to a responder subscribed on the NATS port. (asynchronously)
-     * Request sends one request on the org&#39;s bus and waits for one reply — the synchronous half of pub/sub, for callers speaking to a responder subscribed on the NATS port. 404 when nobody is listening on the subject; 408 when a responder exists but no reply arrived within the timeout.
-     * @param busRequest  (required)
+     * Sends one request on the org&#39;s bus and waits for one reply — the synchronous half of pub/sub, for callers speaking to a responder subscribed on the NATS port. (asynchronously)
+     * Sends one request on the org&#39;s bus and waits for one reply — the synchronous half of pub/sub, for callers speaking to a responder subscribed on the NATS port. 404 when nobody is listening on the subject; 408 when a responder exists but no reply arrived within the timeout.
+     * @param pubsubBusRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -320,12 +330,13 @@ public class PubsubApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postPubsubRequestAsync(@javax.annotation.Nonnull BusRequest busRequest, final ApiCallback<BusMessage> _callback) throws ApiException {
+    public okhttp3.Call postPubsubRequestAsync(@javax.annotation.Nonnull PubsubBusRequest pubsubBusRequest, final ApiCallback<PubsubBusMessage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postPubsubRequestValidateBeforeCall(busRequest, _callback);
-        Type localVarReturnType = new TypeToken<BusMessage>(){}.getType();
+        okhttp3.Call localVarCall = postPubsubRequestValidateBeforeCall(pubsubBusRequest, _callback);
+        Type localVarReturnType = new TypeToken<PubsubBusMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

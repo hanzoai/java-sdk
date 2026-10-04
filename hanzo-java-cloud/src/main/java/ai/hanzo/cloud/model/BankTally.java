@@ -53,146 +53,146 @@ public class BankTally {
   public static final String SERIALIZED_NAME_INGESTED = "ingested";
   @SerializedName(SERIALIZED_NAME_INGESTED)
   @javax.annotation.Nullable
-  private Long ingested;
+  private Integer ingested;
 
   public static final String SERIALIZED_NAME_POSTED = "posted";
   @SerializedName(SERIALIZED_NAME_POSTED)
   @javax.annotation.Nullable
-  private Long posted;
+  private Integer posted;
 
   public static final String SERIALIZED_NAME_QUESTIONS = "questions";
   @SerializedName(SERIALIZED_NAME_QUESTIONS)
   @javax.annotation.Nullable
-  private Long questions;
+  private Integer questions;
 
   public static final String SERIALIZED_NAME_RECONCILED = "reconciled";
   @SerializedName(SERIALIZED_NAME_RECONCILED)
   @javax.annotation.Nullable
-  private Long reconciled;
+  private Integer reconciled;
 
   public static final String SERIALIZED_NAME_SKIPPED = "skipped";
   @SerializedName(SERIALIZED_NAME_SKIPPED)
   @javax.annotation.Nullable
-  private Long skipped;
+  private Integer skipped;
 
   public static final String SERIALIZED_NAME_TRANSFERS = "transfers";
   @SerializedName(SERIALIZED_NAME_TRANSFERS)
   @javax.annotation.Nullable
-  private Long transfers;
+  private Integer transfers;
 
   public BankTally() {
   }
 
-  public BankTally ingested(@javax.annotation.Nullable Long ingested) {
+  public BankTally ingested(@javax.annotation.Nullable Integer ingested) {
     this.ingested = ingested;
     return this;
   }
 
   /**
-   * transactions seen
+   * Get ingested
    * @return ingested
    */
   @javax.annotation.Nullable
-  public Long getIngested() {
+  public Integer getIngested() {
     return ingested;
   }
 
-  public void setIngested(@javax.annotation.Nullable Long ingested) {
+  public void setIngested(@javax.annotation.Nullable Integer ingested) {
     this.ingested = ingested;
   }
 
 
-  public BankTally posted(@javax.annotation.Nullable Long posted) {
+  public BankTally posted(@javax.annotation.Nullable Integer posted) {
     this.posted = posted;
     return this;
   }
 
   /**
-   * vouchers newly posted (outflow + reconciled)
+   * Get posted
    * @return posted
    */
   @javax.annotation.Nullable
-  public Long getPosted() {
+  public Integer getPosted() {
     return posted;
   }
 
-  public void setPosted(@javax.annotation.Nullable Long posted) {
+  public void setPosted(@javax.annotation.Nullable Integer posted) {
     this.posted = posted;
   }
 
 
-  public BankTally questions(@javax.annotation.Nullable Long questions) {
+  public BankTally questions(@javax.annotation.Nullable Integer questions) {
     this.questions = questions;
     return this;
   }
 
   /**
-   * unmatched inflows that raised a question
+   * Get questions
    * @return questions
    */
   @javax.annotation.Nullable
-  public Long getQuestions() {
+  public Integer getQuestions() {
     return questions;
   }
 
-  public void setQuestions(@javax.annotation.Nullable Long questions) {
+  public void setQuestions(@javax.annotation.Nullable Integer questions) {
     this.questions = questions;
   }
 
 
-  public BankTally reconciled(@javax.annotation.Nullable Long reconciled) {
+  public BankTally reconciled(@javax.annotation.Nullable Integer reconciled) {
     this.reconciled = reconciled;
     return this;
   }
 
   /**
-   * inflows cleared against Square-clearing
+   * Get reconciled
    * @return reconciled
    */
   @javax.annotation.Nullable
-  public Long getReconciled() {
+  public Integer getReconciled() {
     return reconciled;
   }
 
-  public void setReconciled(@javax.annotation.Nullable Long reconciled) {
+  public void setReconciled(@javax.annotation.Nullable Integer reconciled) {
     this.reconciled = reconciled;
   }
 
 
-  public BankTally skipped(@javax.annotation.Nullable Long skipped) {
+  public BankTally skipped(@javax.annotation.Nullable Integer skipped) {
     this.skipped = skipped;
     return this;
   }
 
   /**
-   * already-processed idempotent no-ops
+   * Get skipped
    * @return skipped
    */
   @javax.annotation.Nullable
-  public Long getSkipped() {
+  public Integer getSkipped() {
     return skipped;
   }
 
-  public void setSkipped(@javax.annotation.Nullable Long skipped) {
+  public void setSkipped(@javax.annotation.Nullable Integer skipped) {
     this.skipped = skipped;
   }
 
 
-  public BankTally transfers(@javax.annotation.Nullable Long transfers) {
+  public BankTally transfers(@javax.annotation.Nullable Integer transfers) {
     this.transfers = transfers;
     return this;
   }
 
   /**
-   * own-account moves recorded (no P&amp;L)
+   * Get transfers
    * @return transfers
    */
   @javax.annotation.Nullable
-  public Long getTransfers() {
+  public Integer getTransfers() {
     return transfers;
   }
 
-  public void setTransfers(@javax.annotation.Nullable Long transfers) {
+  public void setTransfers(@javax.annotation.Nullable Integer transfers) {
     this.transfers = transfers;
   }
 

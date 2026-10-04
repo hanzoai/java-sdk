@@ -86,12 +86,12 @@ public class Extracted {
   public static final String SERIALIZED_NAME_TAX_CENTS = "taxCents";
   @SerializedName(SERIALIZED_NAME_TAX_CENTS)
   @javax.annotation.Nullable
-  private Long taxCents;
+  private Integer taxCents;
 
   public static final String SERIALIZED_NAME_TOTAL_CENTS = "totalCents";
   @SerializedName(SERIALIZED_NAME_TOTAL_CENTS)
   @javax.annotation.Nullable
-  private Long totalCents;
+  private Integer totalCents;
 
   public Extracted() {
   }
@@ -102,7 +102,7 @@ public class Extracted {
   }
 
   /**
-   * Category is the expense bucket the SCANNER guessed, as a slug — a hint only. Vendor rules override it whenever they know better, so this is the model&#39;s reading and not the account the entry will land on.
+   * Get category
    * @return category
    */
   @javax.annotation.Nullable
@@ -121,7 +121,7 @@ public class Extracted {
   }
 
   /**
-   * Currency is the ISO code the document is denominated in.
+   * Get currency
    * @return currency
    */
   @javax.annotation.Nullable
@@ -140,7 +140,7 @@ public class Extracted {
   }
 
   /**
-   * IssuedAt is the document&#39;s OWN date as YYYY-MM-DD — when the bill was issued, which is not when it was uploaded or when it will post.
+   * Get issuedAt
    * @return issuedAt
    */
   @javax.annotation.Nullable
@@ -167,7 +167,7 @@ public class Extracted {
   }
 
   /**
-   * LineItems are the individual lines read off the document, where it had any. They need not sum to totalCents: a document may carry lines the scanner could not read, and the total is taken from the total.
+   * Get lineItems
    * @return lineItems
    */
   @javax.annotation.Nullable
@@ -186,7 +186,7 @@ public class Extracted {
   }
 
   /**
-   * Merchant is the supplier as printed on the document.
+   * Get merchant
    * @return merchant
    */
   @javax.annotation.Nullable
@@ -205,7 +205,7 @@ public class Extracted {
   }
 
   /**
-   * Note is anything else worth carrying from the document that has no field of its own.
+   * Get note
    * @return note
    */
   @javax.annotation.Nullable
@@ -218,40 +218,40 @@ public class Extracted {
   }
 
 
-  public Extracted taxCents(@javax.annotation.Nullable Long taxCents) {
+  public Extracted taxCents(@javax.annotation.Nullable Integer taxCents) {
     this.taxCents = taxCents;
     return this;
   }
 
   /**
-   * TaxCents is how much of that total is tax, in cents. It is part of totalCents, not additional to it.
+   * Get taxCents
    * @return taxCents
    */
   @javax.annotation.Nullable
-  public Long getTaxCents() {
+  public Integer getTaxCents() {
     return taxCents;
   }
 
-  public void setTaxCents(@javax.annotation.Nullable Long taxCents) {
+  public void setTaxCents(@javax.annotation.Nullable Integer taxCents) {
     this.taxCents = taxCents;
   }
 
 
-  public Extracted totalCents(@javax.annotation.Nullable Long totalCents) {
+  public Extracted totalCents(@javax.annotation.Nullable Integer totalCents) {
     this.totalCents = totalCents;
     return this;
   }
 
   /**
-   * TotalCents is the document total in whole cents, tax INCLUDED.
+   * Get totalCents
    * @return totalCents
    */
   @javax.annotation.Nullable
-  public Long getTotalCents() {
+  public Integer getTotalCents() {
     return totalCents;
   }
 
-  public void setTotalCents(@javax.annotation.Nullable Long totalCents) {
+  public void setTotalCents(@javax.annotation.Nullable Integer totalCents) {
     this.totalCents = totalCents;
   }
 

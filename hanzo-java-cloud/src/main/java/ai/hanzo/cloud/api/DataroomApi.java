@@ -27,31 +27,32 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.DataroomAddDocument;
-import ai.hanzo.cloud.model.DataroomCreate;
-import ai.hanzo.cloud.model.DataroomDocumentOne;
-import ai.hanzo.cloud.model.DataroomDocuments;
-import ai.hanzo.cloud.model.DataroomLinkCreate;
-import ai.hanzo.cloud.model.DataroomLinkOne;
-import ai.hanzo.cloud.model.DataroomLinkStats;
-import ai.hanzo.cloud.model.DataroomLinks;
-import ai.hanzo.cloud.model.DataroomLiveness;
-import ai.hanzo.cloud.model.DataroomMembership;
-import ai.hanzo.cloud.model.DataroomRoomDetailOne;
-import ai.hanzo.cloud.model.DataroomRoomOne;
-import ai.hanzo.cloud.model.DataroomRooms;
-import ai.hanzo.cloud.model.DataroomStats;
-import ai.hanzo.cloud.model.TrustAsk;
-import ai.hanzo.cloud.model.TrustAsked;
-import ai.hanzo.cloud.model.TrustDecision;
-import ai.hanzo.cloud.model.TrustDesk;
-import ai.hanzo.cloud.model.TrustEdit;
-import ai.hanzo.cloud.model.TrustGranted;
-import ai.hanzo.cloud.model.TrustItemView;
-import ai.hanzo.cloud.model.TrustPage;
-import ai.hanzo.cloud.model.TrustPublish;
-import ai.hanzo.cloud.model.TrustRefused;
-import ai.hanzo.cloud.model.TrustSettings;
+import ai.hanzo.cloud.model.DataroomDataroomAddDocument;
+import ai.hanzo.cloud.model.DataroomDataroomCreate;
+import ai.hanzo.cloud.model.DataroomDataroomDocumentOne;
+import ai.hanzo.cloud.model.DataroomDataroomDocuments;
+import ai.hanzo.cloud.model.DataroomDataroomLinkCreate;
+import ai.hanzo.cloud.model.DataroomDataroomLinkOne;
+import ai.hanzo.cloud.model.DataroomDataroomLinkStats;
+import ai.hanzo.cloud.model.DataroomDataroomLinks;
+import ai.hanzo.cloud.model.DataroomDataroomLiveness;
+import ai.hanzo.cloud.model.DataroomDataroomMembership;
+import ai.hanzo.cloud.model.DataroomDataroomRoomDetailOne;
+import ai.hanzo.cloud.model.DataroomDataroomRoomOne;
+import ai.hanzo.cloud.model.DataroomDataroomRooms;
+import ai.hanzo.cloud.model.DataroomDataroomStats;
+import ai.hanzo.cloud.model.DataroomTrustAsk;
+import ai.hanzo.cloud.model.DataroomTrustAsked;
+import ai.hanzo.cloud.model.DataroomTrustDecision;
+import ai.hanzo.cloud.model.DataroomTrustDesk;
+import ai.hanzo.cloud.model.DataroomTrustEdit;
+import ai.hanzo.cloud.model.DataroomTrustGranted;
+import ai.hanzo.cloud.model.DataroomTrustItemView;
+import ai.hanzo.cloud.model.DataroomTrustPage;
+import ai.hanzo.cloud.model.DataroomTrustPublish;
+import ai.hanzo.cloud.model.DataroomTrustRefused;
+import ai.hanzo.cloud.model.DataroomTrustSettings;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -107,6 +108,7 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDataroomAnalyticsDataroomByDataroomidCall(@javax.annotation.Nonnull String dataroomId, final ApiCallback _callback) throws ApiException {
@@ -136,7 +138,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -169,17 +172,18 @@ public class DataroomApi {
      * Rolls up every share link pointing at one data room: session and page-view totals for the room, plus the per-page breakdown for each link beneath it.
      * Rolls up every share link pointing at one data room: session and page-view totals for the room, plus the per-page breakdown for each link beneath it.  A room id outside the caller&#39;s own tenant store is not found. Only links that NAME the room are counted — a link created over a single document contributes nothing here, even when that document also sits in the room.
      * @param dataroomId DataroomID is the room to report on. It is the path segment, resolved in the caller&#39;s own tenant store. (required)
-     * @return DataroomStats
+     * @return DataroomDataroomStats
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomStats getDataroomAnalyticsDataroomByDataroomid(@javax.annotation.Nonnull String dataroomId) throws ApiException {
-        ApiResponse<DataroomStats> localVarResp = getDataroomAnalyticsDataroomByDataroomidWithHttpInfo(dataroomId);
+    public DataroomDataroomStats getDataroomAnalyticsDataroomByDataroomid(@javax.annotation.Nonnull String dataroomId) throws ApiException {
+        ApiResponse<DataroomDataroomStats> localVarResp = getDataroomAnalyticsDataroomByDataroomidWithHttpInfo(dataroomId);
         return localVarResp.getData();
     }
 
@@ -187,18 +191,19 @@ public class DataroomApi {
      * Rolls up every share link pointing at one data room: session and page-view totals for the room, plus the per-page breakdown for each link beneath it.
      * Rolls up every share link pointing at one data room: session and page-view totals for the room, plus the per-page breakdown for each link beneath it.  A room id outside the caller&#39;s own tenant store is not found. Only links that NAME the room are counted — a link created over a single document contributes nothing here, even when that document also sits in the room.
      * @param dataroomId DataroomID is the room to report on. It is the path segment, resolved in the caller&#39;s own tenant store. (required)
-     * @return ApiResponse&lt;DataroomStats&gt;
+     * @return ApiResponse&lt;DataroomDataroomStats&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomStats> getDataroomAnalyticsDataroomByDataroomidWithHttpInfo(@javax.annotation.Nonnull String dataroomId) throws ApiException {
+    public ApiResponse<DataroomDataroomStats> getDataroomAnalyticsDataroomByDataroomidWithHttpInfo(@javax.annotation.Nonnull String dataroomId) throws ApiException {
         okhttp3.Call localVarCall = getDataroomAnalyticsDataroomByDataroomidValidateBeforeCall(dataroomId, null);
-        Type localVarReturnType = new TypeToken<DataroomStats>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomDataroomStats>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -214,12 +219,13 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDataroomAnalyticsDataroomByDataroomidAsync(@javax.annotation.Nonnull String dataroomId, final ApiCallback<DataroomStats> _callback) throws ApiException {
+    public okhttp3.Call getDataroomAnalyticsDataroomByDataroomidAsync(@javax.annotation.Nonnull String dataroomId, final ApiCallback<DataroomDataroomStats> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDataroomAnalyticsDataroomByDataroomidValidateBeforeCall(dataroomId, _callback);
-        Type localVarReturnType = new TypeToken<DataroomStats>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomDataroomStats>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -234,6 +240,7 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDataroomAnalyticsLinkByLinkidCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
@@ -263,7 +270,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -296,17 +304,18 @@ public class DataroomApi {
      * Reports how one share link was actually read: total viewing sessions, total page views, and per page the view count, the summed dwell measure and its average.
      * Reports how one share link was actually read: total viewing sessions, total page views, and per page the view count, the summed dwell measure and its average.  The link is resolved in the caller&#39;s OWN tenant store, so another org&#39;s link id is not found — knowing a link id is enough to OPEN the room it shares, and never enough to read who has been reading it.
      * @param linkId LinkID is the link to report on. It is the path segment, resolved in the caller&#39;s own tenant store. (required)
-     * @return DataroomLinkStats
+     * @return DataroomDataroomLinkStats
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomLinkStats getDataroomAnalyticsLinkByLinkid(@javax.annotation.Nonnull String linkId) throws ApiException {
-        ApiResponse<DataroomLinkStats> localVarResp = getDataroomAnalyticsLinkByLinkidWithHttpInfo(linkId);
+    public DataroomDataroomLinkStats getDataroomAnalyticsLinkByLinkid(@javax.annotation.Nonnull String linkId) throws ApiException {
+        ApiResponse<DataroomDataroomLinkStats> localVarResp = getDataroomAnalyticsLinkByLinkidWithHttpInfo(linkId);
         return localVarResp.getData();
     }
 
@@ -314,18 +323,19 @@ public class DataroomApi {
      * Reports how one share link was actually read: total viewing sessions, total page views, and per page the view count, the summed dwell measure and its average.
      * Reports how one share link was actually read: total viewing sessions, total page views, and per page the view count, the summed dwell measure and its average.  The link is resolved in the caller&#39;s OWN tenant store, so another org&#39;s link id is not found — knowing a link id is enough to OPEN the room it shares, and never enough to read who has been reading it.
      * @param linkId LinkID is the link to report on. It is the path segment, resolved in the caller&#39;s own tenant store. (required)
-     * @return ApiResponse&lt;DataroomLinkStats&gt;
+     * @return ApiResponse&lt;DataroomDataroomLinkStats&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomLinkStats> getDataroomAnalyticsLinkByLinkidWithHttpInfo(@javax.annotation.Nonnull String linkId) throws ApiException {
+    public ApiResponse<DataroomDataroomLinkStats> getDataroomAnalyticsLinkByLinkidWithHttpInfo(@javax.annotation.Nonnull String linkId) throws ApiException {
         okhttp3.Call localVarCall = getDataroomAnalyticsLinkByLinkidValidateBeforeCall(linkId, null);
-        Type localVarReturnType = new TypeToken<DataroomLinkStats>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomDataroomLinkStats>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -341,12 +351,13 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDataroomAnalyticsLinkByLinkidAsync(@javax.annotation.Nonnull String linkId, final ApiCallback<DataroomLinkStats> _callback) throws ApiException {
+    public okhttp3.Call getDataroomAnalyticsLinkByLinkidAsync(@javax.annotation.Nonnull String linkId, final ApiCallback<DataroomDataroomLinkStats> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDataroomAnalyticsLinkByLinkidValidateBeforeCall(linkId, _callback);
-        Type localVarReturnType = new TypeToken<DataroomLinkStats>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomDataroomLinkStats>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -360,6 +371,7 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDataroomDataroomsCall(final ApiCallback _callback) throws ApiException {
@@ -388,7 +400,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -415,35 +428,37 @@ public class DataroomApi {
     /**
      * Returns every data room in the caller org&#39;s own store, newest first, with its short public id, name, description and timestamps.
      * Returns every data room in the caller org&#39;s own store, newest first, with its short public id, name, description and timestamps.  Documents are not included — a room&#39;s contents come from reading the single room.
-     * @return DataroomRooms
+     * @return DataroomDataroomRooms
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomRooms getDataroomDatarooms() throws ApiException {
-        ApiResponse<DataroomRooms> localVarResp = getDataroomDataroomsWithHttpInfo();
+    public DataroomDataroomRooms getDataroomDatarooms() throws ApiException {
+        ApiResponse<DataroomDataroomRooms> localVarResp = getDataroomDataroomsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns every data room in the caller org&#39;s own store, newest first, with its short public id, name, description and timestamps.
      * Returns every data room in the caller org&#39;s own store, newest first, with its short public id, name, description and timestamps.  Documents are not included — a room&#39;s contents come from reading the single room.
-     * @return ApiResponse&lt;DataroomRooms&gt;
+     * @return ApiResponse&lt;DataroomDataroomRooms&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomRooms> getDataroomDataroomsWithHttpInfo() throws ApiException {
+    public ApiResponse<DataroomDataroomRooms> getDataroomDataroomsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDataroomDataroomsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<DataroomRooms>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomDataroomRooms>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -458,12 +473,13 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDataroomDataroomsAsync(final ApiCallback<DataroomRooms> _callback) throws ApiException {
+    public okhttp3.Call getDataroomDataroomsAsync(final ApiCallback<DataroomDataroomRooms> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDataroomDataroomsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<DataroomRooms>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomDataroomRooms>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -478,6 +494,7 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDataroomDataroomsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -507,7 +524,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -540,17 +558,18 @@ public class DataroomApi {
      * Reads one of the caller org&#39;s data rooms together with every document in it, each carrying its membership id and order index.
      * Reads one of the caller org&#39;s data rooms together with every document in it, each carrying its membership id and order index.  The documents are sorted by that index with unordered ones last and creation time breaking ties — the SAME order a link&#39;s visitor sees, so this is what the room looks like from the outside. A room id outside the caller&#39;s own tenant store is not found.
      * @param id ID is the room to read. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @return DataroomRoomDetailOne
+     * @return DataroomDataroomRoomDetailOne
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomRoomDetailOne getDataroomDataroomsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<DataroomRoomDetailOne> localVarResp = getDataroomDataroomsByIdWithHttpInfo(id);
+    public DataroomDataroomRoomDetailOne getDataroomDataroomsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<DataroomDataroomRoomDetailOne> localVarResp = getDataroomDataroomsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -558,18 +577,19 @@ public class DataroomApi {
      * Reads one of the caller org&#39;s data rooms together with every document in it, each carrying its membership id and order index.
      * Reads one of the caller org&#39;s data rooms together with every document in it, each carrying its membership id and order index.  The documents are sorted by that index with unordered ones last and creation time breaking ties — the SAME order a link&#39;s visitor sees, so this is what the room looks like from the outside. A room id outside the caller&#39;s own tenant store is not found.
      * @param id ID is the room to read. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @return ApiResponse&lt;DataroomRoomDetailOne&gt;
+     * @return ApiResponse&lt;DataroomDataroomRoomDetailOne&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomRoomDetailOne> getDataroomDataroomsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<DataroomDataroomRoomDetailOne> getDataroomDataroomsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getDataroomDataroomsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<DataroomRoomDetailOne>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomDataroomRoomDetailOne>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -585,12 +605,13 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDataroomDataroomsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<DataroomRoomDetailOne> _callback) throws ApiException {
+    public okhttp3.Call getDataroomDataroomsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<DataroomDataroomRoomDetailOne> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDataroomDataroomsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<DataroomRoomDetailOne>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomDataroomRoomDetailOne>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -604,6 +625,7 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDataroomDocumentsCall(final ApiCallback _callback) throws ApiException {
@@ -632,7 +654,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -659,35 +682,37 @@ public class DataroomApi {
     /**
      * Returns every document in the caller org&#39;s own store, newest first — name, opaque storage key, content type, page count, size and timestamps.
      * Returns every document in the caller org&#39;s own store, newest first — name, opaque storage key, content type, page count, size and timestamps.  Tenant isolation is the per-org store itself: there is one SQLite file per org and the org is never a parameter, so no input the caller controls can address another tenant&#39;s documents. Metadata only — the bytes come from the file route.
-     * @return DataroomDocuments
+     * @return DataroomDataroomDocuments
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomDocuments getDataroomDocuments() throws ApiException {
-        ApiResponse<DataroomDocuments> localVarResp = getDataroomDocumentsWithHttpInfo();
+    public DataroomDataroomDocuments getDataroomDocuments() throws ApiException {
+        ApiResponse<DataroomDataroomDocuments> localVarResp = getDataroomDocumentsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns every document in the caller org&#39;s own store, newest first — name, opaque storage key, content type, page count, size and timestamps.
      * Returns every document in the caller org&#39;s own store, newest first — name, opaque storage key, content type, page count, size and timestamps.  Tenant isolation is the per-org store itself: there is one SQLite file per org and the org is never a parameter, so no input the caller controls can address another tenant&#39;s documents. Metadata only — the bytes come from the file route.
-     * @return ApiResponse&lt;DataroomDocuments&gt;
+     * @return ApiResponse&lt;DataroomDataroomDocuments&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomDocuments> getDataroomDocumentsWithHttpInfo() throws ApiException {
+    public ApiResponse<DataroomDataroomDocuments> getDataroomDocumentsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDataroomDocumentsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<DataroomDocuments>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomDataroomDocuments>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -702,12 +727,13 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDataroomDocumentsAsync(final ApiCallback<DataroomDocuments> _callback) throws ApiException {
+    public okhttp3.Call getDataroomDocumentsAsync(final ApiCallback<DataroomDataroomDocuments> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDataroomDocumentsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<DataroomDocuments>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomDataroomDocuments>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -722,6 +748,7 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDataroomDocumentsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -751,7 +778,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -784,17 +812,18 @@ public class DataroomApi {
      * Reads one of the caller org&#39;s documents — its name, opaque storage key, content type, page count, size and timestamps.
      * Reads one of the caller org&#39;s documents — its name, opaque storage key, content type, page count, size and timestamps.  The lookup runs in the caller&#39;s own tenant store, so an id belonging to another org is not found exactly like one that never existed. Metadata only: the bytes are a separate read.
      * @param id ID is the document to read. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @return DataroomDocumentOne
+     * @return DataroomDataroomDocumentOne
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomDocumentOne getDataroomDocumentsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<DataroomDocumentOne> localVarResp = getDataroomDocumentsByIdWithHttpInfo(id);
+    public DataroomDataroomDocumentOne getDataroomDocumentsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<DataroomDataroomDocumentOne> localVarResp = getDataroomDocumentsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -802,18 +831,19 @@ public class DataroomApi {
      * Reads one of the caller org&#39;s documents — its name, opaque storage key, content type, page count, size and timestamps.
      * Reads one of the caller org&#39;s documents — its name, opaque storage key, content type, page count, size and timestamps.  The lookup runs in the caller&#39;s own tenant store, so an id belonging to another org is not found exactly like one that never existed. Metadata only: the bytes are a separate read.
      * @param id ID is the document to read. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @return ApiResponse&lt;DataroomDocumentOne&gt;
+     * @return ApiResponse&lt;DataroomDataroomDocumentOne&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomDocumentOne> getDataroomDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<DataroomDataroomDocumentOne> getDataroomDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getDataroomDocumentsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<DataroomDocumentOne>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomDataroomDocumentOne>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -829,12 +859,13 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDataroomDocumentsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<DataroomDocumentOne> _callback) throws ApiException {
+    public okhttp3.Call getDataroomDocumentsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<DataroomDataroomDocumentOne> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDataroomDocumentsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<DataroomDocumentOne>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomDataroomDocumentOne>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -902,7 +933,7 @@ public class DataroomApi {
 
     /**
      * Download a document&#39;s bytes as its owner
-     * Streams the stored file back under the type read from its BYTES — a raster image or a PDF renders in place, and anything else is served as application/octet-stream with an attachment disposition, so a stored file never executes as markup in this origin. Every response carries nosniff, which keeps the declared type binding.  Requires a validated principal; 403 without one, and the document is resolved in the caller&#39;s own tenant store, so another org&#39;s id is a 404. This is the OWNER&#39;s path and applies no link gate at all — the per-link password, email and download controls live on the viewer surface, not here. Bytes that cannot be fetched from object storage are 502, never a truncated or empty file.
+     * Streams the stored file back under the type read from its BYTES — a raster image or a PDF renders in place, and anything else is served as application/octet-stream with an attachment disposition, so a stored file never executes as markup in this origin. Every response carries nosniff, which keeps the declared type binding.  Requires a validated principal; 401 without one, and the document is resolved in the caller&#39;s own tenant store, so another org&#39;s id is a 404. This is the OWNER&#39;s path and applies no link gate at all — the per-link password, email and download controls live on the viewer surface, not here. Bytes that cannot be fetched from object storage are 502, never a truncated or empty file.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -912,7 +943,7 @@ public class DataroomApi {
 
     /**
      * Download a document&#39;s bytes as its owner
-     * Streams the stored file back under the type read from its BYTES — a raster image or a PDF renders in place, and anything else is served as application/octet-stream with an attachment disposition, so a stored file never executes as markup in this origin. Every response carries nosniff, which keeps the declared type binding.  Requires a validated principal; 403 without one, and the document is resolved in the caller&#39;s own tenant store, so another org&#39;s id is a 404. This is the OWNER&#39;s path and applies no link gate at all — the per-link password, email and download controls live on the viewer surface, not here. Bytes that cannot be fetched from object storage are 502, never a truncated or empty file.
+     * Streams the stored file back under the type read from its BYTES — a raster image or a PDF renders in place, and anything else is served as application/octet-stream with an attachment disposition, so a stored file never executes as markup in this origin. Every response carries nosniff, which keeps the declared type binding.  Requires a validated principal; 401 without one, and the document is resolved in the caller&#39;s own tenant store, so another org&#39;s id is a 404. This is the OWNER&#39;s path and applies no link gate at all — the per-link password, email and download controls live on the viewer surface, not here. Bytes that cannot be fetched from object storage are 502, never a truncated or empty file.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -924,7 +955,7 @@ public class DataroomApi {
 
     /**
      * Download a document&#39;s bytes as its owner (asynchronously)
-     * Streams the stored file back under the type read from its BYTES — a raster image or a PDF renders in place, and anything else is served as application/octet-stream with an attachment disposition, so a stored file never executes as markup in this origin. Every response carries nosniff, which keeps the declared type binding.  Requires a validated principal; 403 without one, and the document is resolved in the caller&#39;s own tenant store, so another org&#39;s id is a 404. This is the OWNER&#39;s path and applies no link gate at all — the per-link password, email and download controls live on the viewer surface, not here. Bytes that cannot be fetched from object storage are 502, never a truncated or empty file.
+     * Streams the stored file back under the type read from its BYTES — a raster image or a PDF renders in place, and anything else is served as application/octet-stream with an attachment disposition, so a stored file never executes as markup in this origin. Every response carries nosniff, which keeps the declared type binding.  Requires a validated principal; 401 without one, and the document is resolved in the caller&#39;s own tenant store, so another org&#39;s id is a 404. This is the OWNER&#39;s path and applies no link gate at all — the per-link password, email and download controls live on the viewer surface, not here. Bytes that cannot be fetched from object storage are 502, never a truncated or empty file.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -946,6 +977,7 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDataroomHealthCall(final ApiCallback _callback) throws ApiException {
@@ -974,7 +1006,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -999,43 +1032,45 @@ public class DataroomApi {
     }
 
     /**
-     * Health reports that the data room subsystem is up.
-     * Health reports that the data room subsystem is up.  It answers before the bundle loads, holds no state and touches no store, so it stays true in exactly the situation an operator is probing for. It says nothing about whether a room can be OPENED — that is what the room operations answer — because a liveness probe that fails on a dependency takes a working process out of rotation.
-     * @return DataroomLiveness
+     * Reports that the data room subsystem is up.
+     * Reports that the data room subsystem is up.  It answers before the bundle loads, holds no state and touches no store, so it stays true in exactly the situation an operator is probing for. It says nothing about whether a room can be OPENED — that is what the room operations answer — because a liveness probe that fails on a dependency takes a working process out of rotation.
+     * @return DataroomDataroomLiveness
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomLiveness getDataroomHealth() throws ApiException {
-        ApiResponse<DataroomLiveness> localVarResp = getDataroomHealthWithHttpInfo();
+    public DataroomDataroomLiveness getDataroomHealth() throws ApiException {
+        ApiResponse<DataroomDataroomLiveness> localVarResp = getDataroomHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Health reports that the data room subsystem is up.
-     * Health reports that the data room subsystem is up.  It answers before the bundle loads, holds no state and touches no store, so it stays true in exactly the situation an operator is probing for. It says nothing about whether a room can be OPENED — that is what the room operations answer — because a liveness probe that fails on a dependency takes a working process out of rotation.
-     * @return ApiResponse&lt;DataroomLiveness&gt;
+     * Reports that the data room subsystem is up.
+     * Reports that the data room subsystem is up.  It answers before the bundle loads, holds no state and touches no store, so it stays true in exactly the situation an operator is probing for. It says nothing about whether a room can be OPENED — that is what the room operations answer — because a liveness probe that fails on a dependency takes a working process out of rotation.
+     * @return ApiResponse&lt;DataroomDataroomLiveness&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomLiveness> getDataroomHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<DataroomDataroomLiveness> getDataroomHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDataroomHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<DataroomLiveness>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomDataroomLiveness>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Health reports that the data room subsystem is up. (asynchronously)
-     * Health reports that the data room subsystem is up.  It answers before the bundle loads, holds no state and touches no store, so it stays true in exactly the situation an operator is probing for. It says nothing about whether a room can be OPENED — that is what the room operations answer — because a liveness probe that fails on a dependency takes a working process out of rotation.
+     * Reports that the data room subsystem is up. (asynchronously)
+     * Reports that the data room subsystem is up.  It answers before the bundle loads, holds no state and touches no store, so it stays true in exactly the situation an operator is probing for. It says nothing about whether a room can be OPENED — that is what the room operations answer — because a liveness probe that fails on a dependency takes a working process out of rotation.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1044,12 +1079,13 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDataroomHealthAsync(final ApiCallback<DataroomLiveness> _callback) throws ApiException {
+    public okhttp3.Call getDataroomHealthAsync(final ApiCallback<DataroomDataroomLiveness> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDataroomHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<DataroomLiveness>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomDataroomLiveness>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1063,6 +1099,7 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDataroomLinksCall(final ApiCallback _callback) throws ApiException {
@@ -1091,7 +1128,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1118,35 +1156,37 @@ public class DataroomApi {
     /**
      * Returns every live share link in the caller org&#39;s own store, newest first, with the controls a visitor will meet: whether an address is required, whether a password is set, the allow and deny lists, whether download is permitted, and when the link expires.
      * Returns every live share link in the caller org&#39;s own store, newest first, with the controls a visitor will meet: whether an address is required, whether a password is set, the allow and deny lists, whether download is permitted, and when the link expires.  Archived links are omitted entirely. A link reports only THAT a password is set — the stored form is a bcrypt hash and no route returns it.
-     * @return DataroomLinks
+     * @return DataroomDataroomLinks
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomLinks getDataroomLinks() throws ApiException {
-        ApiResponse<DataroomLinks> localVarResp = getDataroomLinksWithHttpInfo();
+    public DataroomDataroomLinks getDataroomLinks() throws ApiException {
+        ApiResponse<DataroomDataroomLinks> localVarResp = getDataroomLinksWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns every live share link in the caller org&#39;s own store, newest first, with the controls a visitor will meet: whether an address is required, whether a password is set, the allow and deny lists, whether download is permitted, and when the link expires.
      * Returns every live share link in the caller org&#39;s own store, newest first, with the controls a visitor will meet: whether an address is required, whether a password is set, the allow and deny lists, whether download is permitted, and when the link expires.  Archived links are omitted entirely. A link reports only THAT a password is set — the stored form is a bcrypt hash and no route returns it.
-     * @return ApiResponse&lt;DataroomLinks&gt;
+     * @return ApiResponse&lt;DataroomDataroomLinks&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomLinks> getDataroomLinksWithHttpInfo() throws ApiException {
+    public ApiResponse<DataroomDataroomLinks> getDataroomLinksWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDataroomLinksValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<DataroomLinks>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomDataroomLinks>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1161,12 +1201,13 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDataroomLinksAsync(final ApiCallback<DataroomLinks> _callback) throws ApiException {
+    public okhttp3.Call getDataroomLinksAsync(final ApiCallback<DataroomDataroomLinks> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDataroomLinksValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<DataroomLinks>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomDataroomLinks>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1180,6 +1221,7 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDataroomTrustCall(final ApiCallback _callback) throws ApiException {
@@ -1208,7 +1250,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1235,35 +1278,37 @@ public class DataroomApi {
     /**
      * Answers the caller org&#39;s OWN trust centre: its settings, every item it holds in both tiers, the requests waiting on it, and the grants it has made.
      * Answers the caller org&#39;s OWN trust centre: its settings, every item it holds in both tiers, the requests waiting on it, and the grants it has made.  The org is the caller&#39;s, taken from the validated bearer and from nothing else, so this op cannot be pointed at another tenant — there is no field for one. An org that has never opened a centre reads back an empty one rather than an error, because having no trust centre is an ordinary state and this is the read that tells you so.
-     * @return TrustDesk
+     * @return DataroomTrustDesk
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TrustDesk getDataroomTrust() throws ApiException {
-        ApiResponse<TrustDesk> localVarResp = getDataroomTrustWithHttpInfo();
+    public DataroomTrustDesk getDataroomTrust() throws ApiException {
+        ApiResponse<DataroomTrustDesk> localVarResp = getDataroomTrustWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Answers the caller org&#39;s OWN trust centre: its settings, every item it holds in both tiers, the requests waiting on it, and the grants it has made.
      * Answers the caller org&#39;s OWN trust centre: its settings, every item it holds in both tiers, the requests waiting on it, and the grants it has made.  The org is the caller&#39;s, taken from the validated bearer and from nothing else, so this op cannot be pointed at another tenant — there is no field for one. An org that has never opened a centre reads back an empty one rather than an error, because having no trust centre is an ordinary state and this is the read that tells you so.
-     * @return ApiResponse&lt;TrustDesk&gt;
+     * @return ApiResponse&lt;DataroomTrustDesk&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TrustDesk> getDataroomTrustWithHttpInfo() throws ApiException {
+    public ApiResponse<DataroomTrustDesk> getDataroomTrustWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDataroomTrustValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<TrustDesk>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomTrustDesk>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1278,12 +1323,13 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDataroomTrustAsync(final ApiCallback<TrustDesk> _callback) throws ApiException {
+    public okhttp3.Call getDataroomTrustAsync(final ApiCallback<DataroomTrustDesk> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDataroomTrustValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<TrustDesk>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomTrustDesk>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1298,6 +1344,7 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getDataroomTrustCenterBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -1327,7 +1374,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1360,17 +1408,18 @@ public class DataroomApi {
      * Answers an org&#39;s public trust centre: its name, the text a party must accept to ask for a document, and every item it publishes.
      * Answers an org&#39;s public trust centre: its name, the text a party must accept to ask for a document, and every item it publishes.  An item is either available NOW — the things the org states itself, its policies, its filled questionnaires, its subprocessor list, its knowledge base — or available ON REQUEST, which is everything an independent auditor put their name to. Both are listed by name and kind, so a reader can see WHAT exists before asking for it; only the second withholds the content.  No principal is involved and none is accepted: the org is resolved from the address, which answers only for a centre its owner has published. An address nobody publishes at is not found, the same answer an unpublished one gets.
      * @param slug Slug is the centre&#39;s public address. It resolves only for an org that has published; anything else is not found, so this cannot be used to learn which orgs exist. (required)
-     * @return TrustPage
+     * @return DataroomTrustPage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TrustPage getDataroomTrustCenterBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
-        ApiResponse<TrustPage> localVarResp = getDataroomTrustCenterBySlugWithHttpInfo(slug);
+    public DataroomTrustPage getDataroomTrustCenterBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<DataroomTrustPage> localVarResp = getDataroomTrustCenterBySlugWithHttpInfo(slug);
         return localVarResp.getData();
     }
 
@@ -1378,18 +1427,19 @@ public class DataroomApi {
      * Answers an org&#39;s public trust centre: its name, the text a party must accept to ask for a document, and every item it publishes.
      * Answers an org&#39;s public trust centre: its name, the text a party must accept to ask for a document, and every item it publishes.  An item is either available NOW — the things the org states itself, its policies, its filled questionnaires, its subprocessor list, its knowledge base — or available ON REQUEST, which is everything an independent auditor put their name to. Both are listed by name and kind, so a reader can see WHAT exists before asking for it; only the second withholds the content.  No principal is involved and none is accepted: the org is resolved from the address, which answers only for a centre its owner has published. An address nobody publishes at is not found, the same answer an unpublished one gets.
      * @param slug Slug is the centre&#39;s public address. It resolves only for an org that has published; anything else is not found, so this cannot be used to learn which orgs exist. (required)
-     * @return ApiResponse&lt;TrustPage&gt;
+     * @return ApiResponse&lt;DataroomTrustPage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TrustPage> getDataroomTrustCenterBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+    public ApiResponse<DataroomTrustPage> getDataroomTrustCenterBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
         okhttp3.Call localVarCall = getDataroomTrustCenterBySlugValidateBeforeCall(slug, null);
-        Type localVarReturnType = new TypeToken<TrustPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomTrustPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1405,12 +1455,13 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getDataroomTrustCenterBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<TrustPage> _callback) throws ApiException {
+    public okhttp3.Call getDataroomTrustCenterBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<DataroomTrustPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDataroomTrustCenterBySlugValidateBeforeCall(slug, _callback);
-        Type localVarReturnType = new TypeToken<TrustPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<DataroomTrustPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1731,7 +1782,7 @@ public class DataroomApi {
     /**
      * Build call for patchDataroomTrustArtifactsById
      * @param id ID is the item to change, taken from the path. (required)
-     * @param trustEdit  (required)
+     * @param dataroomTrustEdit  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1740,9 +1791,10 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchDataroomTrustArtifactsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustEdit trustEdit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchDataroomTrustArtifactsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomTrustEdit dataroomTrustEdit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1756,7 +1808,7 @@ public class DataroomApi {
             basePath = null;
         }
 
-        Object localVarPostBody = trustEdit;
+        Object localVarPostBody = dataroomTrustEdit;
 
         // create path and map variables
         String localVarPath = "/v1/dataroom/trust/artifacts/{id}"
@@ -1769,7 +1821,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1789,65 +1842,67 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchDataroomTrustArtifactsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustEdit trustEdit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchDataroomTrustArtifactsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomTrustEdit dataroomTrustEdit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling patchDataroomTrustArtifactsById(Async)");
         }
 
-        // verify the required parameter 'trustEdit' is set
-        if (trustEdit == null) {
-            throw new ApiException("Missing the required parameter 'trustEdit' when calling patchDataroomTrustArtifactsById(Async)");
+        // verify the required parameter 'dataroomTrustEdit' is set
+        if (dataroomTrustEdit == null) {
+            throw new ApiException("Missing the required parameter 'dataroomTrustEdit' when calling patchDataroomTrustArtifactsById(Async)");
         }
 
-        return patchDataroomTrustArtifactsByIdCall(id, trustEdit, _callback);
+        return patchDataroomTrustArtifactsByIdCall(id, dataroomTrustEdit, _callback);
 
     }
 
     /**
-     * Amend changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands.
-     * Amend changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands.  Retiring is the withdrawal: the item leaves the public centre immediately and can no longer be granted, while grants already made over it stand, because a release that happened is part of the record and un-happening it in the record would be a lie. Restoring is the same call with retired false.  Moving an item an independent auditor signed to the public tier is refused, and refused by the database rather than only here. Only an admin of the org may call it, and the item is resolved in that org&#39;s own store, so another org&#39;s id is not found.
+     * Changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands.
+     * Changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands.  Retiring is the withdrawal: the item leaves the public centre immediately and can no longer be granted, while grants already made over it stand, because a release that happened is part of the record and un-happening it in the record would be a lie. Restoring is the same call with retired false.  Moving an item an independent auditor signed to the public tier is refused, and refused by the database rather than only here. Only an admin of the org may call it, and the item is resolved in that org&#39;s own store, so another org&#39;s id is not found.
      * @param id ID is the item to change, taken from the path. (required)
-     * @param trustEdit  (required)
-     * @return TrustItemView
+     * @param dataroomTrustEdit  (required)
+     * @return DataroomTrustItemView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TrustItemView patchDataroomTrustArtifactsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustEdit trustEdit) throws ApiException {
-        ApiResponse<TrustItemView> localVarResp = patchDataroomTrustArtifactsByIdWithHttpInfo(id, trustEdit);
+    public DataroomTrustItemView patchDataroomTrustArtifactsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomTrustEdit dataroomTrustEdit) throws ApiException {
+        ApiResponse<DataroomTrustItemView> localVarResp = patchDataroomTrustArtifactsByIdWithHttpInfo(id, dataroomTrustEdit);
         return localVarResp.getData();
     }
 
     /**
-     * Amend changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands.
-     * Amend changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands.  Retiring is the withdrawal: the item leaves the public centre immediately and can no longer be granted, while grants already made over it stand, because a release that happened is part of the record and un-happening it in the record would be a lie. Restoring is the same call with retired false.  Moving an item an independent auditor signed to the public tier is refused, and refused by the database rather than only here. Only an admin of the org may call it, and the item is resolved in that org&#39;s own store, so another org&#39;s id is not found.
+     * Changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands.
+     * Changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands.  Retiring is the withdrawal: the item leaves the public centre immediately and can no longer be granted, while grants already made over it stand, because a release that happened is part of the record and un-happening it in the record would be a lie. Restoring is the same call with retired false.  Moving an item an independent auditor signed to the public tier is refused, and refused by the database rather than only here. Only an admin of the org may call it, and the item is resolved in that org&#39;s own store, so another org&#39;s id is not found.
      * @param id ID is the item to change, taken from the path. (required)
-     * @param trustEdit  (required)
-     * @return ApiResponse&lt;TrustItemView&gt;
+     * @param dataroomTrustEdit  (required)
+     * @return ApiResponse&lt;DataroomTrustItemView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TrustItemView> patchDataroomTrustArtifactsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustEdit trustEdit) throws ApiException {
-        okhttp3.Call localVarCall = patchDataroomTrustArtifactsByIdValidateBeforeCall(id, trustEdit, null);
-        Type localVarReturnType = new TypeToken<TrustItemView>(){}.getType();
+    public ApiResponse<DataroomTrustItemView> patchDataroomTrustArtifactsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomTrustEdit dataroomTrustEdit) throws ApiException {
+        okhttp3.Call localVarCall = patchDataroomTrustArtifactsByIdValidateBeforeCall(id, dataroomTrustEdit, null);
+        Type localVarReturnType = new TypeToken<DataroomTrustItemView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Amend changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands. (asynchronously)
-     * Amend changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands.  Retiring is the withdrawal: the item leaves the public centre immediately and can no longer be granted, while grants already made over it stand, because a release that happened is part of the record and un-happening it in the record would be a lie. Restoring is the same call with retired false.  Moving an item an independent auditor signed to the public tier is refused, and refused by the database rather than only here. Only an admin of the org may call it, and the item is resolved in that org&#39;s own store, so another org&#39;s id is not found.
+     * Changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands. (asynchronously)
+     * Changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands.  Retiring is the withdrawal: the item leaves the public centre immediately and can no longer be granted, while grants already made over it stand, because a release that happened is part of the record and un-happening it in the record would be a lie. Restoring is the same call with retired false.  Moving an item an independent auditor signed to the public tier is refused, and refused by the database rather than only here. Only an admin of the org may call it, and the item is resolved in that org&#39;s own store, so another org&#39;s id is not found.
      * @param id ID is the item to change, taken from the path. (required)
-     * @param trustEdit  (required)
+     * @param dataroomTrustEdit  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1856,18 +1911,19 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchDataroomTrustArtifactsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustEdit trustEdit, final ApiCallback<TrustItemView> _callback) throws ApiException {
+    public okhttp3.Call patchDataroomTrustArtifactsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomTrustEdit dataroomTrustEdit, final ApiCallback<DataroomTrustItemView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchDataroomTrustArtifactsByIdValidateBeforeCall(id, trustEdit, _callback);
-        Type localVarReturnType = new TypeToken<TrustItemView>(){}.getType();
+        okhttp3.Call localVarCall = patchDataroomTrustArtifactsByIdValidateBeforeCall(id, dataroomTrustEdit, _callback);
+        Type localVarReturnType = new TypeToken<DataroomTrustItemView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postDataroomDatarooms
-     * @param dataroomCreate  (required)
+     * @param dataroomDataroomCreate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1876,9 +1932,10 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDataroomDataroomsCall(@javax.annotation.Nonnull DataroomCreate dataroomCreate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDataroomDataroomsCall(@javax.annotation.Nonnull DataroomDataroomCreate dataroomDataroomCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1892,7 +1949,7 @@ public class DataroomApi {
             basePath = null;
         }
 
-        Object localVarPostBody = dataroomCreate;
+        Object localVarPostBody = dataroomDataroomCreate;
 
         // create path and map variables
         String localVarPath = "/v1/dataroom/datarooms";
@@ -1904,7 +1961,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1924,57 +1982,59 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postDataroomDataroomsValidateBeforeCall(@javax.annotation.Nonnull DataroomCreate dataroomCreate, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'dataroomCreate' is set
-        if (dataroomCreate == null) {
-            throw new ApiException("Missing the required parameter 'dataroomCreate' when calling postDataroomDatarooms(Async)");
+    private okhttp3.Call postDataroomDataroomsValidateBeforeCall(@javax.annotation.Nonnull DataroomDataroomCreate dataroomDataroomCreate, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dataroomDataroomCreate' is set
+        if (dataroomDataroomCreate == null) {
+            throw new ApiException("Missing the required parameter 'dataroomDataroomCreate' when calling postDataroomDatarooms(Async)");
         }
 
-        return postDataroomDataroomsCall(dataroomCreate, _callback);
+        return postDataroomDataroomsCall(dataroomDataroomCreate, _callback);
 
     }
 
     /**
      * Opens a new data room for the caller org and answers with it, including the short public id it is addressed by.
      * Opens a new data room for the caller org and answers with it, including the short public id it is addressed by.  &#x60;name&#x60; is required; without it the call is refused and the tenant store is untouched, because a dispatch answering 4xx rolls its transaction back. A new room holds no documents and is reachable by NOBODY until a share link is created over it — opening a room and granting access are two separate acts, so a room cannot leak by existing.
-     * @param dataroomCreate  (required)
-     * @return DataroomRoomOne
+     * @param dataroomDataroomCreate  (required)
+     * @return DataroomDataroomRoomOne
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomRoomOne postDataroomDatarooms(@javax.annotation.Nonnull DataroomCreate dataroomCreate) throws ApiException {
-        ApiResponse<DataroomRoomOne> localVarResp = postDataroomDataroomsWithHttpInfo(dataroomCreate);
+    public DataroomDataroomRoomOne postDataroomDatarooms(@javax.annotation.Nonnull DataroomDataroomCreate dataroomDataroomCreate) throws ApiException {
+        ApiResponse<DataroomDataroomRoomOne> localVarResp = postDataroomDataroomsWithHttpInfo(dataroomDataroomCreate);
         return localVarResp.getData();
     }
 
     /**
      * Opens a new data room for the caller org and answers with it, including the short public id it is addressed by.
      * Opens a new data room for the caller org and answers with it, including the short public id it is addressed by.  &#x60;name&#x60; is required; without it the call is refused and the tenant store is untouched, because a dispatch answering 4xx rolls its transaction back. A new room holds no documents and is reachable by NOBODY until a share link is created over it — opening a room and granting access are two separate acts, so a room cannot leak by existing.
-     * @param dataroomCreate  (required)
-     * @return ApiResponse&lt;DataroomRoomOne&gt;
+     * @param dataroomDataroomCreate  (required)
+     * @return ApiResponse&lt;DataroomDataroomRoomOne&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomRoomOne> postDataroomDataroomsWithHttpInfo(@javax.annotation.Nonnull DataroomCreate dataroomCreate) throws ApiException {
-        okhttp3.Call localVarCall = postDataroomDataroomsValidateBeforeCall(dataroomCreate, null);
-        Type localVarReturnType = new TypeToken<DataroomRoomOne>(){}.getType();
+    public ApiResponse<DataroomDataroomRoomOne> postDataroomDataroomsWithHttpInfo(@javax.annotation.Nonnull DataroomDataroomCreate dataroomDataroomCreate) throws ApiException {
+        okhttp3.Call localVarCall = postDataroomDataroomsValidateBeforeCall(dataroomDataroomCreate, null);
+        Type localVarReturnType = new TypeToken<DataroomDataroomRoomOne>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Opens a new data room for the caller org and answers with it, including the short public id it is addressed by. (asynchronously)
      * Opens a new data room for the caller org and answers with it, including the short public id it is addressed by.  &#x60;name&#x60; is required; without it the call is refused and the tenant store is untouched, because a dispatch answering 4xx rolls its transaction back. A new room holds no documents and is reachable by NOBODY until a share link is created over it — opening a room and granting access are two separate acts, so a room cannot leak by existing.
-     * @param dataroomCreate  (required)
+     * @param dataroomDataroomCreate  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1983,19 +2043,20 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDataroomDataroomsAsync(@javax.annotation.Nonnull DataroomCreate dataroomCreate, final ApiCallback<DataroomRoomOne> _callback) throws ApiException {
+    public okhttp3.Call postDataroomDataroomsAsync(@javax.annotation.Nonnull DataroomDataroomCreate dataroomDataroomCreate, final ApiCallback<DataroomDataroomRoomOne> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postDataroomDataroomsValidateBeforeCall(dataroomCreate, _callback);
-        Type localVarReturnType = new TypeToken<DataroomRoomOne>(){}.getType();
+        okhttp3.Call localVarCall = postDataroomDataroomsValidateBeforeCall(dataroomDataroomCreate, _callback);
+        Type localVarReturnType = new TypeToken<DataroomDataroomRoomOne>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postDataroomDataroomsByIdDocuments
      * @param id ID is the room to add to. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @param dataroomAddDocument  (required)
+     * @param dataroomDataroomAddDocument  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2004,9 +2065,10 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDataroomDataroomsByIdDocumentsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomAddDocument dataroomAddDocument, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDataroomDataroomsByIdDocumentsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomDataroomAddDocument dataroomDataroomAddDocument, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2020,7 +2082,7 @@ public class DataroomApi {
             basePath = null;
         }
 
-        Object localVarPostBody = dataroomAddDocument;
+        Object localVarPostBody = dataroomDataroomAddDocument;
 
         // create path and map variables
         String localVarPath = "/v1/dataroom/datarooms/{id}/documents"
@@ -2033,7 +2095,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2053,18 +2116,18 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postDataroomDataroomsByIdDocumentsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomAddDocument dataroomAddDocument, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDataroomDataroomsByIdDocumentsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomDataroomAddDocument dataroomDataroomAddDocument, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postDataroomDataroomsByIdDocuments(Async)");
         }
 
-        // verify the required parameter 'dataroomAddDocument' is set
-        if (dataroomAddDocument == null) {
-            throw new ApiException("Missing the required parameter 'dataroomAddDocument' when calling postDataroomDataroomsByIdDocuments(Async)");
+        // verify the required parameter 'dataroomDataroomAddDocument' is set
+        if (dataroomDataroomAddDocument == null) {
+            throw new ApiException("Missing the required parameter 'dataroomDataroomAddDocument' when calling postDataroomDataroomsByIdDocuments(Async)");
         }
 
-        return postDataroomDataroomsByIdDocumentsCall(id, dataroomAddDocument, _callback);
+        return postDataroomDataroomsByIdDocumentsCall(id, dataroomDataroomAddDocument, _callback);
 
     }
 
@@ -2072,18 +2135,19 @@ public class DataroomApi {
      * Puts an already-uploaded document into one of the caller org&#39;s data rooms and answers with the new membership id.
      * Puts an already-uploaded document into one of the caller org&#39;s data rooms and answers with the new membership id.  It ATTACHES, it never uploads: the bytes must already be stored, so the usual order is upload the document, then add it to the room. Both the room and the document must exist in the caller&#39;s own store — either missing is not found — and a document already in the room is refused as a conflict rather than duplicated.
      * @param id ID is the room to add to. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @param dataroomAddDocument  (required)
-     * @return DataroomMembership
+     * @param dataroomDataroomAddDocument  (required)
+     * @return DataroomDataroomMembership
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomMembership postDataroomDataroomsByIdDocuments(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomAddDocument dataroomAddDocument) throws ApiException {
-        ApiResponse<DataroomMembership> localVarResp = postDataroomDataroomsByIdDocumentsWithHttpInfo(id, dataroomAddDocument);
+    public DataroomDataroomMembership postDataroomDataroomsByIdDocuments(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomDataroomAddDocument dataroomDataroomAddDocument) throws ApiException {
+        ApiResponse<DataroomDataroomMembership> localVarResp = postDataroomDataroomsByIdDocumentsWithHttpInfo(id, dataroomDataroomAddDocument);
         return localVarResp.getData();
     }
 
@@ -2091,19 +2155,20 @@ public class DataroomApi {
      * Puts an already-uploaded document into one of the caller org&#39;s data rooms and answers with the new membership id.
      * Puts an already-uploaded document into one of the caller org&#39;s data rooms and answers with the new membership id.  It ATTACHES, it never uploads: the bytes must already be stored, so the usual order is upload the document, then add it to the room. Both the room and the document must exist in the caller&#39;s own store — either missing is not found — and a document already in the room is refused as a conflict rather than duplicated.
      * @param id ID is the room to add to. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @param dataroomAddDocument  (required)
-     * @return ApiResponse&lt;DataroomMembership&gt;
+     * @param dataroomDataroomAddDocument  (required)
+     * @return ApiResponse&lt;DataroomDataroomMembership&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomMembership> postDataroomDataroomsByIdDocumentsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomAddDocument dataroomAddDocument) throws ApiException {
-        okhttp3.Call localVarCall = postDataroomDataroomsByIdDocumentsValidateBeforeCall(id, dataroomAddDocument, null);
-        Type localVarReturnType = new TypeToken<DataroomMembership>(){}.getType();
+    public ApiResponse<DataroomDataroomMembership> postDataroomDataroomsByIdDocumentsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomDataroomAddDocument dataroomDataroomAddDocument) throws ApiException {
+        okhttp3.Call localVarCall = postDataroomDataroomsByIdDocumentsValidateBeforeCall(id, dataroomDataroomAddDocument, null);
+        Type localVarReturnType = new TypeToken<DataroomDataroomMembership>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2111,7 +2176,7 @@ public class DataroomApi {
      * Puts an already-uploaded document into one of the caller org&#39;s data rooms and answers with the new membership id. (asynchronously)
      * Puts an already-uploaded document into one of the caller org&#39;s data rooms and answers with the new membership id.  It ATTACHES, it never uploads: the bytes must already be stored, so the usual order is upload the document, then add it to the room. Both the room and the document must exist in the caller&#39;s own store — either missing is not found — and a document already in the room is refused as a conflict rather than duplicated.
      * @param id ID is the room to add to. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
-     * @param dataroomAddDocument  (required)
+     * @param dataroomDataroomAddDocument  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2120,12 +2185,13 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDataroomDataroomsByIdDocumentsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomAddDocument dataroomAddDocument, final ApiCallback<DataroomMembership> _callback) throws ApiException {
+    public okhttp3.Call postDataroomDataroomsByIdDocumentsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomDataroomAddDocument dataroomDataroomAddDocument, final ApiCallback<DataroomDataroomMembership> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postDataroomDataroomsByIdDocumentsValidateBeforeCall(id, dataroomAddDocument, _callback);
-        Type localVarReturnType = new TypeToken<DataroomMembership>(){}.getType();
+        okhttp3.Call localVarCall = postDataroomDataroomsByIdDocumentsValidateBeforeCall(id, dataroomDataroomAddDocument, _callback);
+        Type localVarReturnType = new TypeToken<DataroomDataroomMembership>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2186,7 +2252,7 @@ public class DataroomApi {
 
     /**
      * Upload a document&#39;s bytes and record it
-     * Takes the file ITSELF as the raw request body — not a JSON envelope, not multipart — stores it on the object-storage client, and records the metadata row, answering with the new document. &#x60;?name&#x3D;&#x60; names it (default \&quot;document\&quot;), the request&#39;s Content-Type is recorded as the document&#39;s mime type, and &#x60;?numPages&#x3D;&#x60; is optional. That recorded type is metadata the owner sees; what the file is later SERVED as is read from the bytes.  Requires a validated principal; 403 without one. An empty body is 400 and anything over 64 MiB is 413 — a data room holds decks and PDFs, not a media library.  The storage key is 128 random bits under the tenant&#39;s own key prefix, minted before the bytes are written: if the system&#39;s randomness is unavailable the upload fails 500 rather than fall back to a predictable key that could overwrite another document&#39;s bytes. A storage write that fails is 502 and no metadata row is recorded, so a document never exists without its file.
+     * Takes the file ITSELF as the raw request body — not a JSON envelope, not multipart — stores it on the object-storage client, and records the metadata row, answering with the new document. &#x60;?name&#x3D;&#x60; names it (default \&quot;document\&quot;), the request&#39;s Content-Type is recorded as the document&#39;s mime type, and &#x60;?numPages&#x3D;&#x60; is optional. That recorded type is metadata the owner sees; what the file is later SERVED as is read from the bytes.  Requires a validated principal; 401 without one. An empty body is 400 and anything over 64 MiB is 413 — a data room holds decks and PDFs, not a media library.  The storage key is 128 random bits under the tenant&#39;s own key prefix, minted before the bytes are written: if the system&#39;s randomness is unavailable the upload fails 500 rather than fall back to a predictable key that could overwrite another document&#39;s bytes. A storage write that fails is 502 and no metadata row is recorded, so a document never exists without its file.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postDataroomDocuments() throws ApiException {
@@ -2195,7 +2261,7 @@ public class DataroomApi {
 
     /**
      * Upload a document&#39;s bytes and record it
-     * Takes the file ITSELF as the raw request body — not a JSON envelope, not multipart — stores it on the object-storage client, and records the metadata row, answering with the new document. &#x60;?name&#x3D;&#x60; names it (default \&quot;document\&quot;), the request&#39;s Content-Type is recorded as the document&#39;s mime type, and &#x60;?numPages&#x3D;&#x60; is optional. That recorded type is metadata the owner sees; what the file is later SERVED as is read from the bytes.  Requires a validated principal; 403 without one. An empty body is 400 and anything over 64 MiB is 413 — a data room holds decks and PDFs, not a media library.  The storage key is 128 random bits under the tenant&#39;s own key prefix, minted before the bytes are written: if the system&#39;s randomness is unavailable the upload fails 500 rather than fall back to a predictable key that could overwrite another document&#39;s bytes. A storage write that fails is 502 and no metadata row is recorded, so a document never exists without its file.
+     * Takes the file ITSELF as the raw request body — not a JSON envelope, not multipart — stores it on the object-storage client, and records the metadata row, answering with the new document. &#x60;?name&#x3D;&#x60; names it (default \&quot;document\&quot;), the request&#39;s Content-Type is recorded as the document&#39;s mime type, and &#x60;?numPages&#x3D;&#x60; is optional. That recorded type is metadata the owner sees; what the file is later SERVED as is read from the bytes.  Requires a validated principal; 401 without one. An empty body is 400 and anything over 64 MiB is 413 — a data room holds decks and PDFs, not a media library.  The storage key is 128 random bits under the tenant&#39;s own key prefix, minted before the bytes are written: if the system&#39;s randomness is unavailable the upload fails 500 rather than fall back to a predictable key that could overwrite another document&#39;s bytes. A storage write that fails is 502 and no metadata row is recorded, so a document never exists without its file.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -2206,7 +2272,7 @@ public class DataroomApi {
 
     /**
      * Upload a document&#39;s bytes and record it (asynchronously)
-     * Takes the file ITSELF as the raw request body — not a JSON envelope, not multipart — stores it on the object-storage client, and records the metadata row, answering with the new document. &#x60;?name&#x3D;&#x60; names it (default \&quot;document\&quot;), the request&#39;s Content-Type is recorded as the document&#39;s mime type, and &#x60;?numPages&#x3D;&#x60; is optional. That recorded type is metadata the owner sees; what the file is later SERVED as is read from the bytes.  Requires a validated principal; 403 without one. An empty body is 400 and anything over 64 MiB is 413 — a data room holds decks and PDFs, not a media library.  The storage key is 128 random bits under the tenant&#39;s own key prefix, minted before the bytes are written: if the system&#39;s randomness is unavailable the upload fails 500 rather than fall back to a predictable key that could overwrite another document&#39;s bytes. A storage write that fails is 502 and no metadata row is recorded, so a document never exists without its file.
+     * Takes the file ITSELF as the raw request body — not a JSON envelope, not multipart — stores it on the object-storage client, and records the metadata row, answering with the new document. &#x60;?name&#x3D;&#x60; names it (default \&quot;document\&quot;), the request&#39;s Content-Type is recorded as the document&#39;s mime type, and &#x60;?numPages&#x3D;&#x60; is optional. That recorded type is metadata the owner sees; what the file is later SERVED as is read from the bytes.  Requires a validated principal; 401 without one. An empty body is 400 and anything over 64 MiB is 413 — a data room holds decks and PDFs, not a media library.  The storage key is 128 random bits under the tenant&#39;s own key prefix, minted before the bytes are written: if the system&#39;s randomness is unavailable the upload fails 500 rather than fall back to a predictable key that could overwrite another document&#39;s bytes. A storage write that fails is 502 and no metadata row is recorded, so a document never exists without its file.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2219,7 +2285,7 @@ public class DataroomApi {
     }
     /**
      * Build call for postDataroomLinks
-     * @param dataroomLinkCreate  (required)
+     * @param dataroomDataroomLinkCreate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2228,9 +2294,10 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDataroomLinksCall(@javax.annotation.Nonnull DataroomLinkCreate dataroomLinkCreate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDataroomLinksCall(@javax.annotation.Nonnull DataroomDataroomLinkCreate dataroomDataroomLinkCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2244,7 +2311,7 @@ public class DataroomApi {
             basePath = null;
         }
 
-        Object localVarPostBody = dataroomLinkCreate;
+        Object localVarPostBody = dataroomDataroomLinkCreate;
 
         // create path and map variables
         String localVarPath = "/v1/dataroom/links";
@@ -2256,7 +2323,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2276,57 +2344,59 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postDataroomLinksValidateBeforeCall(@javax.annotation.Nonnull DataroomLinkCreate dataroomLinkCreate, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'dataroomLinkCreate' is set
-        if (dataroomLinkCreate == null) {
-            throw new ApiException("Missing the required parameter 'dataroomLinkCreate' when calling postDataroomLinks(Async)");
+    private okhttp3.Call postDataroomLinksValidateBeforeCall(@javax.annotation.Nonnull DataroomDataroomLinkCreate dataroomDataroomLinkCreate, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dataroomDataroomLinkCreate' is set
+        if (dataroomDataroomLinkCreate == null) {
+            throw new ApiException("Missing the required parameter 'dataroomDataroomLinkCreate' when calling postDataroomLinks(Async)");
         }
 
-        return postDataroomLinksCall(dataroomLinkCreate, _callback);
+        return postDataroomLinksCall(dataroomDataroomLinkCreate, _callback);
 
     }
 
     /**
      * Grants access: it mints a public share link over one data room (&#x60;dataroomId&#x60;) or one document (&#x60;documentId&#x60;) — one of the two is required — and answers with the link, whose &#x60;id&#x60; is the token a visitor opens it with.
      * Grants access: it mints a public share link over one data room (&#x60;dataroomId&#x60;) or one document (&#x60;documentId&#x60;) — one of the two is required — and answers with the link, whose &#x60;id&#x60; is the token a visitor opens it with.  This is how a party is let in. The controls are declared HERE and enforced on the viewer surface: &#x60;password&#x60; is hashed with bcrypt before storage and is never readable back, &#x60;emailProtected&#x60; (on by default) makes a visitor state an address, &#x60;allowList&#x60;/&#x60;denyList&#x60; narrow which addresses pass, &#x60;allowDownload&#x60; (off by default) governs downloads, and &#x60;expiresAt&#x60; closes the link. The target room or document must exist in the caller&#39;s own store or it is not found.  Creating a link also writes dataroom&#39;s ONE cross-tenant row: the link id to owning org mapping an anonymous visitor is routed through. That write is part of the operation — if it fails the call is 500 — so a link that no visitor could open is never handed back as usable.  The address a visitor later states is recorded UNVERIFIED, so a link gated only by email is openable by anyone the link reaches. Use a password for a link that must not travel.
-     * @param dataroomLinkCreate  (required)
-     * @return DataroomLinkOne
+     * @param dataroomDataroomLinkCreate  (required)
+     * @return DataroomDataroomLinkOne
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomLinkOne postDataroomLinks(@javax.annotation.Nonnull DataroomLinkCreate dataroomLinkCreate) throws ApiException {
-        ApiResponse<DataroomLinkOne> localVarResp = postDataroomLinksWithHttpInfo(dataroomLinkCreate);
+    public DataroomDataroomLinkOne postDataroomLinks(@javax.annotation.Nonnull DataroomDataroomLinkCreate dataroomDataroomLinkCreate) throws ApiException {
+        ApiResponse<DataroomDataroomLinkOne> localVarResp = postDataroomLinksWithHttpInfo(dataroomDataroomLinkCreate);
         return localVarResp.getData();
     }
 
     /**
      * Grants access: it mints a public share link over one data room (&#x60;dataroomId&#x60;) or one document (&#x60;documentId&#x60;) — one of the two is required — and answers with the link, whose &#x60;id&#x60; is the token a visitor opens it with.
      * Grants access: it mints a public share link over one data room (&#x60;dataroomId&#x60;) or one document (&#x60;documentId&#x60;) — one of the two is required — and answers with the link, whose &#x60;id&#x60; is the token a visitor opens it with.  This is how a party is let in. The controls are declared HERE and enforced on the viewer surface: &#x60;password&#x60; is hashed with bcrypt before storage and is never readable back, &#x60;emailProtected&#x60; (on by default) makes a visitor state an address, &#x60;allowList&#x60;/&#x60;denyList&#x60; narrow which addresses pass, &#x60;allowDownload&#x60; (off by default) governs downloads, and &#x60;expiresAt&#x60; closes the link. The target room or document must exist in the caller&#39;s own store or it is not found.  Creating a link also writes dataroom&#39;s ONE cross-tenant row: the link id to owning org mapping an anonymous visitor is routed through. That write is part of the operation — if it fails the call is 500 — so a link that no visitor could open is never handed back as usable.  The address a visitor later states is recorded UNVERIFIED, so a link gated only by email is openable by anyone the link reaches. Use a password for a link that must not travel.
-     * @param dataroomLinkCreate  (required)
-     * @return ApiResponse&lt;DataroomLinkOne&gt;
+     * @param dataroomDataroomLinkCreate  (required)
+     * @return ApiResponse&lt;DataroomDataroomLinkOne&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomLinkOne> postDataroomLinksWithHttpInfo(@javax.annotation.Nonnull DataroomLinkCreate dataroomLinkCreate) throws ApiException {
-        okhttp3.Call localVarCall = postDataroomLinksValidateBeforeCall(dataroomLinkCreate, null);
-        Type localVarReturnType = new TypeToken<DataroomLinkOne>(){}.getType();
+    public ApiResponse<DataroomDataroomLinkOne> postDataroomLinksWithHttpInfo(@javax.annotation.Nonnull DataroomDataroomLinkCreate dataroomDataroomLinkCreate) throws ApiException {
+        okhttp3.Call localVarCall = postDataroomLinksValidateBeforeCall(dataroomDataroomLinkCreate, null);
+        Type localVarReturnType = new TypeToken<DataroomDataroomLinkOne>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Grants access: it mints a public share link over one data room (&#x60;dataroomId&#x60;) or one document (&#x60;documentId&#x60;) — one of the two is required — and answers with the link, whose &#x60;id&#x60; is the token a visitor opens it with. (asynchronously)
      * Grants access: it mints a public share link over one data room (&#x60;dataroomId&#x60;) or one document (&#x60;documentId&#x60;) — one of the two is required — and answers with the link, whose &#x60;id&#x60; is the token a visitor opens it with.  This is how a party is let in. The controls are declared HERE and enforced on the viewer surface: &#x60;password&#x60; is hashed with bcrypt before storage and is never readable back, &#x60;emailProtected&#x60; (on by default) makes a visitor state an address, &#x60;allowList&#x60;/&#x60;denyList&#x60; narrow which addresses pass, &#x60;allowDownload&#x60; (off by default) governs downloads, and &#x60;expiresAt&#x60; closes the link. The target room or document must exist in the caller&#39;s own store or it is not found.  Creating a link also writes dataroom&#39;s ONE cross-tenant row: the link id to owning org mapping an anonymous visitor is routed through. That write is part of the operation — if it fails the call is 500 — so a link that no visitor could open is never handed back as usable.  The address a visitor later states is recorded UNVERIFIED, so a link gated only by email is openable by anyone the link reaches. Use a password for a link that must not travel.
-     * @param dataroomLinkCreate  (required)
+     * @param dataroomDataroomLinkCreate  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2335,18 +2405,19 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDataroomLinksAsync(@javax.annotation.Nonnull DataroomLinkCreate dataroomLinkCreate, final ApiCallback<DataroomLinkOne> _callback) throws ApiException {
+    public okhttp3.Call postDataroomLinksAsync(@javax.annotation.Nonnull DataroomDataroomLinkCreate dataroomDataroomLinkCreate, final ApiCallback<DataroomDataroomLinkOne> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postDataroomLinksValidateBeforeCall(dataroomLinkCreate, _callback);
-        Type localVarReturnType = new TypeToken<DataroomLinkOne>(){}.getType();
+        okhttp3.Call localVarCall = postDataroomLinksValidateBeforeCall(dataroomDataroomLinkCreate, _callback);
+        Type localVarReturnType = new TypeToken<DataroomDataroomLinkOne>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postDataroomTrustArtifacts
-     * @param trustPublish  (required)
+     * @param dataroomTrustPublish  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2355,9 +2426,10 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDataroomTrustArtifactsCall(@javax.annotation.Nonnull TrustPublish trustPublish, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDataroomTrustArtifactsCall(@javax.annotation.Nonnull DataroomTrustPublish dataroomTrustPublish, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2371,7 +2443,7 @@ public class DataroomApi {
             basePath = null;
         }
 
-        Object localVarPostBody = trustPublish;
+        Object localVarPostBody = dataroomTrustPublish;
 
         // create path and map variables
         String localVarPath = "/v1/dataroom/trust/artifacts";
@@ -2383,7 +2455,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2403,57 +2476,59 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postDataroomTrustArtifactsValidateBeforeCall(@javax.annotation.Nonnull TrustPublish trustPublish, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'trustPublish' is set
-        if (trustPublish == null) {
-            throw new ApiException("Missing the required parameter 'trustPublish' when calling postDataroomTrustArtifacts(Async)");
+    private okhttp3.Call postDataroomTrustArtifactsValidateBeforeCall(@javax.annotation.Nonnull DataroomTrustPublish dataroomTrustPublish, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dataroomTrustPublish' is set
+        if (dataroomTrustPublish == null) {
+            throw new ApiException("Missing the required parameter 'dataroomTrustPublish' when calling postDataroomTrustArtifacts(Async)");
         }
 
-        return postDataroomTrustArtifactsCall(trustPublish, _callback);
+        return postDataroomTrustArtifactsCall(dataroomTrustPublish, _callback);
 
     }
 
     /**
-     * Publish puts an item on the caller org&#39;s trust centre and answers with it.
-     * Publish puts an item on the caller org&#39;s trust centre and answers with it.  The item is GATED unless it says otherwise, so a kind nobody has thought of yet arrives private and someone has to release it deliberately — that default is what keeps an auditor&#39;s report from becoming readable because a field went unset. An item whose attester is \&quot;auditor\&quot; cannot be public at all: the database refuses the pair, so no path through this API can publish one.  A file is optional and is uploaded FIRST, through POST /v1/dataroom/documents, then named here — the data room is the one place bytes enter, so a trust centre document is an ordinary data-room document and inherits its storage, its grants and its page-by-page access record. A gated item that has a file is added to the org&#39;s release room, which is what lets a party be granted the whole gated tier in one link.  Only an admin of the org may call it.
-     * @param trustPublish  (required)
-     * @return TrustItemView
+     * Puts an item on the caller org&#39;s trust centre and answers with it.
+     * Puts an item on the caller org&#39;s trust centre and answers with it.  The item is GATED unless it says otherwise, so a kind nobody has thought of yet arrives private and someone has to release it deliberately — that default is what keeps an auditor&#39;s report from becoming readable because a field went unset. An item whose attester is \&quot;auditor\&quot; cannot be public at all: the database refuses the pair, so no path through this API can publish one.  A file is optional and is uploaded FIRST, through POST /v1/dataroom/documents, then named here — the data room is the one place bytes enter, so a trust centre document is an ordinary data-room document and inherits its storage, its grants and its page-by-page access record. A gated item that has a file is added to the org&#39;s release room, which is what lets a party be granted the whole gated tier in one link.  Only an admin of the org may call it.
+     * @param dataroomTrustPublish  (required)
+     * @return DataroomTrustItemView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TrustItemView postDataroomTrustArtifacts(@javax.annotation.Nonnull TrustPublish trustPublish) throws ApiException {
-        ApiResponse<TrustItemView> localVarResp = postDataroomTrustArtifactsWithHttpInfo(trustPublish);
+    public DataroomTrustItemView postDataroomTrustArtifacts(@javax.annotation.Nonnull DataroomTrustPublish dataroomTrustPublish) throws ApiException {
+        ApiResponse<DataroomTrustItemView> localVarResp = postDataroomTrustArtifactsWithHttpInfo(dataroomTrustPublish);
         return localVarResp.getData();
     }
 
     /**
-     * Publish puts an item on the caller org&#39;s trust centre and answers with it.
-     * Publish puts an item on the caller org&#39;s trust centre and answers with it.  The item is GATED unless it says otherwise, so a kind nobody has thought of yet arrives private and someone has to release it deliberately — that default is what keeps an auditor&#39;s report from becoming readable because a field went unset. An item whose attester is \&quot;auditor\&quot; cannot be public at all: the database refuses the pair, so no path through this API can publish one.  A file is optional and is uploaded FIRST, through POST /v1/dataroom/documents, then named here — the data room is the one place bytes enter, so a trust centre document is an ordinary data-room document and inherits its storage, its grants and its page-by-page access record. A gated item that has a file is added to the org&#39;s release room, which is what lets a party be granted the whole gated tier in one link.  Only an admin of the org may call it.
-     * @param trustPublish  (required)
-     * @return ApiResponse&lt;TrustItemView&gt;
+     * Puts an item on the caller org&#39;s trust centre and answers with it.
+     * Puts an item on the caller org&#39;s trust centre and answers with it.  The item is GATED unless it says otherwise, so a kind nobody has thought of yet arrives private and someone has to release it deliberately — that default is what keeps an auditor&#39;s report from becoming readable because a field went unset. An item whose attester is \&quot;auditor\&quot; cannot be public at all: the database refuses the pair, so no path through this API can publish one.  A file is optional and is uploaded FIRST, through POST /v1/dataroom/documents, then named here — the data room is the one place bytes enter, so a trust centre document is an ordinary data-room document and inherits its storage, its grants and its page-by-page access record. A gated item that has a file is added to the org&#39;s release room, which is what lets a party be granted the whole gated tier in one link.  Only an admin of the org may call it.
+     * @param dataroomTrustPublish  (required)
+     * @return ApiResponse&lt;DataroomTrustItemView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TrustItemView> postDataroomTrustArtifactsWithHttpInfo(@javax.annotation.Nonnull TrustPublish trustPublish) throws ApiException {
-        okhttp3.Call localVarCall = postDataroomTrustArtifactsValidateBeforeCall(trustPublish, null);
-        Type localVarReturnType = new TypeToken<TrustItemView>(){}.getType();
+    public ApiResponse<DataroomTrustItemView> postDataroomTrustArtifactsWithHttpInfo(@javax.annotation.Nonnull DataroomTrustPublish dataroomTrustPublish) throws ApiException {
+        okhttp3.Call localVarCall = postDataroomTrustArtifactsValidateBeforeCall(dataroomTrustPublish, null);
+        Type localVarReturnType = new TypeToken<DataroomTrustItemView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Publish puts an item on the caller org&#39;s trust centre and answers with it. (asynchronously)
-     * Publish puts an item on the caller org&#39;s trust centre and answers with it.  The item is GATED unless it says otherwise, so a kind nobody has thought of yet arrives private and someone has to release it deliberately — that default is what keeps an auditor&#39;s report from becoming readable because a field went unset. An item whose attester is \&quot;auditor\&quot; cannot be public at all: the database refuses the pair, so no path through this API can publish one.  A file is optional and is uploaded FIRST, through POST /v1/dataroom/documents, then named here — the data room is the one place bytes enter, so a trust centre document is an ordinary data-room document and inherits its storage, its grants and its page-by-page access record. A gated item that has a file is added to the org&#39;s release room, which is what lets a party be granted the whole gated tier in one link.  Only an admin of the org may call it.
-     * @param trustPublish  (required)
+     * Puts an item on the caller org&#39;s trust centre and answers with it. (asynchronously)
+     * Puts an item on the caller org&#39;s trust centre and answers with it.  The item is GATED unless it says otherwise, so a kind nobody has thought of yet arrives private and someone has to release it deliberately — that default is what keeps an auditor&#39;s report from becoming readable because a field went unset. An item whose attester is \&quot;auditor\&quot; cannot be public at all: the database refuses the pair, so no path through this API can publish one.  A file is optional and is uploaded FIRST, through POST /v1/dataroom/documents, then named here — the data room is the one place bytes enter, so a trust centre document is an ordinary data-room document and inherits its storage, its grants and its page-by-page access record. A gated item that has a file is added to the org&#39;s release room, which is what lets a party be granted the whole gated tier in one link.  Only an admin of the org may call it.
+     * @param dataroomTrustPublish  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2462,19 +2537,20 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDataroomTrustArtifactsAsync(@javax.annotation.Nonnull TrustPublish trustPublish, final ApiCallback<TrustItemView> _callback) throws ApiException {
+    public okhttp3.Call postDataroomTrustArtifactsAsync(@javax.annotation.Nonnull DataroomTrustPublish dataroomTrustPublish, final ApiCallback<DataroomTrustItemView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postDataroomTrustArtifactsValidateBeforeCall(trustPublish, _callback);
-        Type localVarReturnType = new TypeToken<TrustItemView>(){}.getType();
+        okhttp3.Call localVarCall = postDataroomTrustArtifactsValidateBeforeCall(dataroomTrustPublish, _callback);
+        Type localVarReturnType = new TypeToken<DataroomTrustItemView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postDataroomTrustCenterBySlugRequests
      * @param slug Slug is the centre&#39;s public address, taken from the path. (required)
-     * @param trustAsk  (required)
+     * @param dataroomTrustAsk  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2483,9 +2559,10 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDataroomTrustCenterBySlugRequestsCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull TrustAsk trustAsk, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDataroomTrustCenterBySlugRequestsCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull DataroomTrustAsk dataroomTrustAsk, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2499,7 +2576,7 @@ public class DataroomApi {
             basePath = null;
         }
 
-        Object localVarPostBody = trustAsk;
+        Object localVarPostBody = dataroomTrustAsk;
 
         // create path and map variables
         String localVarPath = "/v1/dataroom/trust/center/{slug}/requests"
@@ -2512,7 +2589,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2532,18 +2610,18 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postDataroomTrustCenterBySlugRequestsValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull TrustAsk trustAsk, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDataroomTrustCenterBySlugRequestsValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull DataroomTrustAsk dataroomTrustAsk, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
             throw new ApiException("Missing the required parameter 'slug' when calling postDataroomTrustCenterBySlugRequests(Async)");
         }
 
-        // verify the required parameter 'trustAsk' is set
-        if (trustAsk == null) {
-            throw new ApiException("Missing the required parameter 'trustAsk' when calling postDataroomTrustCenterBySlugRequests(Async)");
+        // verify the required parameter 'dataroomTrustAsk' is set
+        if (dataroomTrustAsk == null) {
+            throw new ApiException("Missing the required parameter 'dataroomTrustAsk' when calling postDataroomTrustCenterBySlugRequests(Async)");
         }
 
-        return postDataroomTrustCenterBySlugRequestsCall(slug, trustAsk, _callback);
+        return postDataroomTrustCenterBySlugRequestsCall(slug, dataroomTrustAsk, _callback);
 
     }
 
@@ -2551,18 +2629,19 @@ public class DataroomApi {
      * Records a request to read what an independent auditor signed, and answers with its id.
      * Records a request to read what an independent auditor signed, and answers with its id.  The org that owns the centre decides. Nothing is released here and no link is minted: this writes the ask down, which is the whole promise the form makes. The write is the answer — a request that could not be stored is an error, never a receipt, so a form can never appear to have been sent and be gone.  &#x60;email&#x60; is required and is the ONLY address the eventual grant will admit, so an address the asker cannot read is an ask that cannot be answered. Where the centre states an NDA, &#x60;accept&#x60; must be true and the text in force is recorded verbatim against the request.  Asking twice for the same thing from the same address is the SAME ask: the second answers with the first&#39;s id rather than opening a second row, which is also what keeps an anonymous endpoint from filling a tenant&#39;s store.
      * @param slug Slug is the centre&#39;s public address, taken from the path. (required)
-     * @param trustAsk  (required)
-     * @return TrustAsked
+     * @param dataroomTrustAsk  (required)
+     * @return DataroomTrustAsked
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TrustAsked postDataroomTrustCenterBySlugRequests(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull TrustAsk trustAsk) throws ApiException {
-        ApiResponse<TrustAsked> localVarResp = postDataroomTrustCenterBySlugRequestsWithHttpInfo(slug, trustAsk);
+    public DataroomTrustAsked postDataroomTrustCenterBySlugRequests(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull DataroomTrustAsk dataroomTrustAsk) throws ApiException {
+        ApiResponse<DataroomTrustAsked> localVarResp = postDataroomTrustCenterBySlugRequestsWithHttpInfo(slug, dataroomTrustAsk);
         return localVarResp.getData();
     }
 
@@ -2570,19 +2649,20 @@ public class DataroomApi {
      * Records a request to read what an independent auditor signed, and answers with its id.
      * Records a request to read what an independent auditor signed, and answers with its id.  The org that owns the centre decides. Nothing is released here and no link is minted: this writes the ask down, which is the whole promise the form makes. The write is the answer — a request that could not be stored is an error, never a receipt, so a form can never appear to have been sent and be gone.  &#x60;email&#x60; is required and is the ONLY address the eventual grant will admit, so an address the asker cannot read is an ask that cannot be answered. Where the centre states an NDA, &#x60;accept&#x60; must be true and the text in force is recorded verbatim against the request.  Asking twice for the same thing from the same address is the SAME ask: the second answers with the first&#39;s id rather than opening a second row, which is also what keeps an anonymous endpoint from filling a tenant&#39;s store.
      * @param slug Slug is the centre&#39;s public address, taken from the path. (required)
-     * @param trustAsk  (required)
-     * @return ApiResponse&lt;TrustAsked&gt;
+     * @param dataroomTrustAsk  (required)
+     * @return ApiResponse&lt;DataroomTrustAsked&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TrustAsked> postDataroomTrustCenterBySlugRequestsWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull TrustAsk trustAsk) throws ApiException {
-        okhttp3.Call localVarCall = postDataroomTrustCenterBySlugRequestsValidateBeforeCall(slug, trustAsk, null);
-        Type localVarReturnType = new TypeToken<TrustAsked>(){}.getType();
+    public ApiResponse<DataroomTrustAsked> postDataroomTrustCenterBySlugRequestsWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull DataroomTrustAsk dataroomTrustAsk) throws ApiException {
+        okhttp3.Call localVarCall = postDataroomTrustCenterBySlugRequestsValidateBeforeCall(slug, dataroomTrustAsk, null);
+        Type localVarReturnType = new TypeToken<DataroomTrustAsked>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2590,7 +2670,7 @@ public class DataroomApi {
      * Records a request to read what an independent auditor signed, and answers with its id. (asynchronously)
      * Records a request to read what an independent auditor signed, and answers with its id.  The org that owns the centre decides. Nothing is released here and no link is minted: this writes the ask down, which is the whole promise the form makes. The write is the answer — a request that could not be stored is an error, never a receipt, so a form can never appear to have been sent and be gone.  &#x60;email&#x60; is required and is the ONLY address the eventual grant will admit, so an address the asker cannot read is an ask that cannot be answered. Where the centre states an NDA, &#x60;accept&#x60; must be true and the text in force is recorded verbatim against the request.  Asking twice for the same thing from the same address is the SAME ask: the second answers with the first&#39;s id rather than opening a second row, which is also what keeps an anonymous endpoint from filling a tenant&#39;s store.
      * @param slug Slug is the centre&#39;s public address, taken from the path. (required)
-     * @param trustAsk  (required)
+     * @param dataroomTrustAsk  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2599,19 +2679,20 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDataroomTrustCenterBySlugRequestsAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull TrustAsk trustAsk, final ApiCallback<TrustAsked> _callback) throws ApiException {
+    public okhttp3.Call postDataroomTrustCenterBySlugRequestsAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull DataroomTrustAsk dataroomTrustAsk, final ApiCallback<DataroomTrustAsked> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postDataroomTrustCenterBySlugRequestsValidateBeforeCall(slug, trustAsk, _callback);
-        Type localVarReturnType = new TypeToken<TrustAsked>(){}.getType();
+        okhttp3.Call localVarCall = postDataroomTrustCenterBySlugRequestsValidateBeforeCall(slug, dataroomTrustAsk, _callback);
+        Type localVarReturnType = new TypeToken<DataroomTrustAsked>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postDataroomTrustRequestsByIdGrant
      * @param id ID is the request to answer, taken from the path. (required)
-     * @param trustDecision  (required)
+     * @param dataroomTrustDecision  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2620,9 +2701,10 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDataroomTrustRequestsByIdGrantCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDataroomTrustRequestsByIdGrantCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomTrustDecision dataroomTrustDecision, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2636,7 +2718,7 @@ public class DataroomApi {
             basePath = null;
         }
 
-        Object localVarPostBody = trustDecision;
+        Object localVarPostBody = dataroomTrustDecision;
 
         // create path and map variables
         String localVarPath = "/v1/dataroom/trust/requests/{id}/grant"
@@ -2649,7 +2731,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2669,65 +2752,67 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postDataroomTrustRequestsByIdGrantValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDataroomTrustRequestsByIdGrantValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomTrustDecision dataroomTrustDecision, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postDataroomTrustRequestsByIdGrant(Async)");
         }
 
-        // verify the required parameter 'trustDecision' is set
-        if (trustDecision == null) {
-            throw new ApiException("Missing the required parameter 'trustDecision' when calling postDataroomTrustRequestsByIdGrant(Async)");
+        // verify the required parameter 'dataroomTrustDecision' is set
+        if (dataroomTrustDecision == null) {
+            throw new ApiException("Missing the required parameter 'dataroomTrustDecision' when calling postDataroomTrustRequestsByIdGrant(Async)");
         }
 
-        return postDataroomTrustRequestsByIdGrantCall(id, trustDecision, _callback);
+        return postDataroomTrustRequestsByIdGrantCall(id, dataroomTrustDecision, _callback);
 
     }
 
     /**
-     * Grant answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker.
-     * Grant answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker.  The link is NEVER a public URL. It carries the asker&#39;s address on its allow list, so forwarding it to somebody else does not open it, and it expires. What the party then does with it — which document, which page, for how long — is recorded by the data room&#39;s own view tracking, which is where the access record for this release lives; there is no second log.  A request that was already answered is refused rather than answered twice, so a second click cannot mint a second link. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found — which is also what stops one org deciding another&#39;s queue.  Mail is best effort and the grant does not depend on it: a deployment that sends no mail still records the grant and says so in &#x60;delivery&#x60;, so the approver knows to pass the address on themselves.
+     * Answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker.
+     * Answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker.  The link is NEVER a public URL. It carries the asker&#39;s address on its allow list, so forwarding it to somebody else does not open it, and it expires. What the party then does with it — which document, which page, for how long — is recorded by the data room&#39;s own view tracking, which is where the access record for this release lives; there is no second log.  A request that was already answered is refused rather than answered twice, so a second click cannot mint a second link. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found — which is also what stops one org deciding another&#39;s queue.  Mail is best effort and the grant does not depend on it: a deployment that sends no mail still records the grant and says so in &#x60;delivery&#x60;, so the approver knows to pass the address on themselves.
      * @param id ID is the request to answer, taken from the path. (required)
-     * @param trustDecision  (required)
-     * @return TrustGranted
+     * @param dataroomTrustDecision  (required)
+     * @return DataroomTrustGranted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TrustGranted postDataroomTrustRequestsByIdGrant(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision) throws ApiException {
-        ApiResponse<TrustGranted> localVarResp = postDataroomTrustRequestsByIdGrantWithHttpInfo(id, trustDecision);
+    public DataroomTrustGranted postDataroomTrustRequestsByIdGrant(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomTrustDecision dataroomTrustDecision) throws ApiException {
+        ApiResponse<DataroomTrustGranted> localVarResp = postDataroomTrustRequestsByIdGrantWithHttpInfo(id, dataroomTrustDecision);
         return localVarResp.getData();
     }
 
     /**
-     * Grant answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker.
-     * Grant answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker.  The link is NEVER a public URL. It carries the asker&#39;s address on its allow list, so forwarding it to somebody else does not open it, and it expires. What the party then does with it — which document, which page, for how long — is recorded by the data room&#39;s own view tracking, which is where the access record for this release lives; there is no second log.  A request that was already answered is refused rather than answered twice, so a second click cannot mint a second link. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found — which is also what stops one org deciding another&#39;s queue.  Mail is best effort and the grant does not depend on it: a deployment that sends no mail still records the grant and says so in &#x60;delivery&#x60;, so the approver knows to pass the address on themselves.
+     * Answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker.
+     * Answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker.  The link is NEVER a public URL. It carries the asker&#39;s address on its allow list, so forwarding it to somebody else does not open it, and it expires. What the party then does with it — which document, which page, for how long — is recorded by the data room&#39;s own view tracking, which is where the access record for this release lives; there is no second log.  A request that was already answered is refused rather than answered twice, so a second click cannot mint a second link. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found — which is also what stops one org deciding another&#39;s queue.  Mail is best effort and the grant does not depend on it: a deployment that sends no mail still records the grant and says so in &#x60;delivery&#x60;, so the approver knows to pass the address on themselves.
      * @param id ID is the request to answer, taken from the path. (required)
-     * @param trustDecision  (required)
-     * @return ApiResponse&lt;TrustGranted&gt;
+     * @param dataroomTrustDecision  (required)
+     * @return ApiResponse&lt;DataroomTrustGranted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TrustGranted> postDataroomTrustRequestsByIdGrantWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision) throws ApiException {
-        okhttp3.Call localVarCall = postDataroomTrustRequestsByIdGrantValidateBeforeCall(id, trustDecision, null);
-        Type localVarReturnType = new TypeToken<TrustGranted>(){}.getType();
+    public ApiResponse<DataroomTrustGranted> postDataroomTrustRequestsByIdGrantWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomTrustDecision dataroomTrustDecision) throws ApiException {
+        okhttp3.Call localVarCall = postDataroomTrustRequestsByIdGrantValidateBeforeCall(id, dataroomTrustDecision, null);
+        Type localVarReturnType = new TypeToken<DataroomTrustGranted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Grant answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker. (asynchronously)
-     * Grant answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker.  The link is NEVER a public URL. It carries the asker&#39;s address on its allow list, so forwarding it to somebody else does not open it, and it expires. What the party then does with it — which document, which page, for how long — is recorded by the data room&#39;s own view tracking, which is where the access record for this release lives; there is no second log.  A request that was already answered is refused rather than answered twice, so a second click cannot mint a second link. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found — which is also what stops one org deciding another&#39;s queue.  Mail is best effort and the grant does not depend on it: a deployment that sends no mail still records the grant and says so in &#x60;delivery&#x60;, so the approver knows to pass the address on themselves.
+     * Answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker. (asynchronously)
+     * Answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker.  The link is NEVER a public URL. It carries the asker&#39;s address on its allow list, so forwarding it to somebody else does not open it, and it expires. What the party then does with it — which document, which page, for how long — is recorded by the data room&#39;s own view tracking, which is where the access record for this release lives; there is no second log.  A request that was already answered is refused rather than answered twice, so a second click cannot mint a second link. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found — which is also what stops one org deciding another&#39;s queue.  Mail is best effort and the grant does not depend on it: a deployment that sends no mail still records the grant and says so in &#x60;delivery&#x60;, so the approver knows to pass the address on themselves.
      * @param id ID is the request to answer, taken from the path. (required)
-     * @param trustDecision  (required)
+     * @param dataroomTrustDecision  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2736,19 +2821,20 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDataroomTrustRequestsByIdGrantAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision, final ApiCallback<TrustGranted> _callback) throws ApiException {
+    public okhttp3.Call postDataroomTrustRequestsByIdGrantAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomTrustDecision dataroomTrustDecision, final ApiCallback<DataroomTrustGranted> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postDataroomTrustRequestsByIdGrantValidateBeforeCall(id, trustDecision, _callback);
-        Type localVarReturnType = new TypeToken<TrustGranted>(){}.getType();
+        okhttp3.Call localVarCall = postDataroomTrustRequestsByIdGrantValidateBeforeCall(id, dataroomTrustDecision, _callback);
+        Type localVarReturnType = new TypeToken<DataroomTrustGranted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postDataroomTrustRequestsByIdRefuse
      * @param id ID is the request to answer, taken from the path. (required)
-     * @param trustDecision  (required)
+     * @param dataroomTrustDecision  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2757,9 +2843,10 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDataroomTrustRequestsByIdRefuseCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDataroomTrustRequestsByIdRefuseCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomTrustDecision dataroomTrustDecision, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2773,7 +2860,7 @@ public class DataroomApi {
             basePath = null;
         }
 
-        Object localVarPostBody = trustDecision;
+        Object localVarPostBody = dataroomTrustDecision;
 
         // create path and map variables
         String localVarPath = "/v1/dataroom/trust/requests/{id}/refuse"
@@ -2786,7 +2873,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2806,65 +2894,67 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postDataroomTrustRequestsByIdRefuseValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDataroomTrustRequestsByIdRefuseValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomTrustDecision dataroomTrustDecision, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postDataroomTrustRequestsByIdRefuse(Async)");
         }
 
-        // verify the required parameter 'trustDecision' is set
-        if (trustDecision == null) {
-            throw new ApiException("Missing the required parameter 'trustDecision' when calling postDataroomTrustRequestsByIdRefuse(Async)");
+        // verify the required parameter 'dataroomTrustDecision' is set
+        if (dataroomTrustDecision == null) {
+            throw new ApiException("Missing the required parameter 'dataroomTrustDecision' when calling postDataroomTrustRequestsByIdRefuse(Async)");
         }
 
-        return postDataroomTrustRequestsByIdRefuseCall(id, trustDecision, _callback);
+        return postDataroomTrustRequestsByIdRefuseCall(id, dataroomTrustDecision, _callback);
 
     }
 
     /**
-     * Refuse answers a request by declining it, recording who declined and why.
-     * Refuse answers a request by declining it, recording who declined and why.  Nothing is released and no link is minted. The refusal STAYS on the record beside the ask — a request that was turned down is part of the access record exactly as one that was granted is, and deleting it would leave a queue that only ever shows the decisions somebody liked.  A request that was already answered is refused rather than answered twice. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found.
+     * Answers a request by declining it, recording who declined and why.
+     * Answers a request by declining it, recording who declined and why.  Nothing is released and no link is minted. The refusal STAYS on the record beside the ask — a request that was turned down is part of the access record exactly as one that was granted is, and deleting it would leave a queue that only ever shows the decisions somebody liked.  A request that was already answered is refused rather than answered twice. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found.
      * @param id ID is the request to answer, taken from the path. (required)
-     * @param trustDecision  (required)
-     * @return TrustRefused
+     * @param dataroomTrustDecision  (required)
+     * @return DataroomTrustRefused
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TrustRefused postDataroomTrustRequestsByIdRefuse(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision) throws ApiException {
-        ApiResponse<TrustRefused> localVarResp = postDataroomTrustRequestsByIdRefuseWithHttpInfo(id, trustDecision);
+    public DataroomTrustRefused postDataroomTrustRequestsByIdRefuse(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomTrustDecision dataroomTrustDecision) throws ApiException {
+        ApiResponse<DataroomTrustRefused> localVarResp = postDataroomTrustRequestsByIdRefuseWithHttpInfo(id, dataroomTrustDecision);
         return localVarResp.getData();
     }
 
     /**
-     * Refuse answers a request by declining it, recording who declined and why.
-     * Refuse answers a request by declining it, recording who declined and why.  Nothing is released and no link is minted. The refusal STAYS on the record beside the ask — a request that was turned down is part of the access record exactly as one that was granted is, and deleting it would leave a queue that only ever shows the decisions somebody liked.  A request that was already answered is refused rather than answered twice. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found.
+     * Answers a request by declining it, recording who declined and why.
+     * Answers a request by declining it, recording who declined and why.  Nothing is released and no link is minted. The refusal STAYS on the record beside the ask — a request that was turned down is part of the access record exactly as one that was granted is, and deleting it would leave a queue that only ever shows the decisions somebody liked.  A request that was already answered is refused rather than answered twice. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found.
      * @param id ID is the request to answer, taken from the path. (required)
-     * @param trustDecision  (required)
-     * @return ApiResponse&lt;TrustRefused&gt;
+     * @param dataroomTrustDecision  (required)
+     * @return ApiResponse&lt;DataroomTrustRefused&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TrustRefused> postDataroomTrustRequestsByIdRefuseWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision) throws ApiException {
-        okhttp3.Call localVarCall = postDataroomTrustRequestsByIdRefuseValidateBeforeCall(id, trustDecision, null);
-        Type localVarReturnType = new TypeToken<TrustRefused>(){}.getType();
+    public ApiResponse<DataroomTrustRefused> postDataroomTrustRequestsByIdRefuseWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomTrustDecision dataroomTrustDecision) throws ApiException {
+        okhttp3.Call localVarCall = postDataroomTrustRequestsByIdRefuseValidateBeforeCall(id, dataroomTrustDecision, null);
+        Type localVarReturnType = new TypeToken<DataroomTrustRefused>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Refuse answers a request by declining it, recording who declined and why. (asynchronously)
-     * Refuse answers a request by declining it, recording who declined and why.  Nothing is released and no link is minted. The refusal STAYS on the record beside the ask — a request that was turned down is part of the access record exactly as one that was granted is, and deleting it would leave a queue that only ever shows the decisions somebody liked.  A request that was already answered is refused rather than answered twice. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found.
+     * Answers a request by declining it, recording who declined and why. (asynchronously)
+     * Answers a request by declining it, recording who declined and why.  Nothing is released and no link is minted. The refusal STAYS on the record beside the ask — a request that was turned down is part of the access record exactly as one that was granted is, and deleting it would leave a queue that only ever shows the decisions somebody liked.  A request that was already answered is refused rather than answered twice. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found.
      * @param id ID is the request to answer, taken from the path. (required)
-     * @param trustDecision  (required)
+     * @param dataroomTrustDecision  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2873,12 +2963,13 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postDataroomTrustRequestsByIdRefuseAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision, final ApiCallback<TrustRefused> _callback) throws ApiException {
+    public okhttp3.Call postDataroomTrustRequestsByIdRefuseAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomTrustDecision dataroomTrustDecision, final ApiCallback<DataroomTrustRefused> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postDataroomTrustRequestsByIdRefuseValidateBeforeCall(id, trustDecision, _callback);
-        Type localVarReturnType = new TypeToken<TrustRefused>(){}.getType();
+        okhttp3.Call localVarCall = postDataroomTrustRequestsByIdRefuseValidateBeforeCall(id, dataroomTrustDecision, _callback);
+        Type localVarReturnType = new TypeToken<DataroomTrustRefused>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3080,7 +3171,7 @@ public class DataroomApi {
     }
     /**
      * Build call for putDataroomTrust
-     * @param trustSettings  (required)
+     * @param dataroomTrustSettings  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3089,9 +3180,10 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putDataroomTrustCall(@javax.annotation.Nonnull TrustSettings trustSettings, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putDataroomTrustCall(@javax.annotation.Nonnull DataroomTrustSettings dataroomTrustSettings, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3105,7 +3197,7 @@ public class DataroomApi {
             basePath = null;
         }
 
-        Object localVarPostBody = trustSettings;
+        Object localVarPostBody = dataroomTrustSettings;
 
         // create path and map variables
         String localVarPath = "/v1/dataroom/trust";
@@ -3117,7 +3209,8 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3137,57 +3230,59 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putDataroomTrustValidateBeforeCall(@javax.annotation.Nonnull TrustSettings trustSettings, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'trustSettings' is set
-        if (trustSettings == null) {
-            throw new ApiException("Missing the required parameter 'trustSettings' when calling putDataroomTrust(Async)");
+    private okhttp3.Call putDataroomTrustValidateBeforeCall(@javax.annotation.Nonnull DataroomTrustSettings dataroomTrustSettings, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'dataroomTrustSettings' is set
+        if (dataroomTrustSettings == null) {
+            throw new ApiException("Missing the required parameter 'dataroomTrustSettings' when calling putDataroomTrust(Async)");
         }
 
-        return putDataroomTrustCall(trustSettings, _callback);
+        return putDataroomTrustCall(dataroomTrustSettings, _callback);
 
     }
 
     /**
      * SetCenter opens, publishes or withdraws the caller org&#39;s trust centre and answers with the centre as it now stands.
      * SetCenter opens, publishes or withdraws the caller org&#39;s trust centre and answers with the centre as it now stands.  Publishing requires a name and an address, and the address must be free: another org already answering there is a conflict, never a takeover. Withdrawing closes the public endpoint only — items, grants and the access record are untouched, so an org can go quiet and come back without losing anything.  Only an admin of the org may call it. The org is the caller&#39;s own, so there is no field naming one and no way to point this at another tenant.
-     * @param trustSettings  (required)
-     * @return TrustDesk
+     * @param dataroomTrustSettings  (required)
+     * @return DataroomTrustDesk
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TrustDesk putDataroomTrust(@javax.annotation.Nonnull TrustSettings trustSettings) throws ApiException {
-        ApiResponse<TrustDesk> localVarResp = putDataroomTrustWithHttpInfo(trustSettings);
+    public DataroomTrustDesk putDataroomTrust(@javax.annotation.Nonnull DataroomTrustSettings dataroomTrustSettings) throws ApiException {
+        ApiResponse<DataroomTrustDesk> localVarResp = putDataroomTrustWithHttpInfo(dataroomTrustSettings);
         return localVarResp.getData();
     }
 
     /**
      * SetCenter opens, publishes or withdraws the caller org&#39;s trust centre and answers with the centre as it now stands.
      * SetCenter opens, publishes or withdraws the caller org&#39;s trust centre and answers with the centre as it now stands.  Publishing requires a name and an address, and the address must be free: another org already answering there is a conflict, never a takeover. Withdrawing closes the public endpoint only — items, grants and the access record are untouched, so an org can go quiet and come back without losing anything.  Only an admin of the org may call it. The org is the caller&#39;s own, so there is no field naming one and no way to point this at another tenant.
-     * @param trustSettings  (required)
-     * @return ApiResponse&lt;TrustDesk&gt;
+     * @param dataroomTrustSettings  (required)
+     * @return ApiResponse&lt;DataroomTrustDesk&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TrustDesk> putDataroomTrustWithHttpInfo(@javax.annotation.Nonnull TrustSettings trustSettings) throws ApiException {
-        okhttp3.Call localVarCall = putDataroomTrustValidateBeforeCall(trustSettings, null);
-        Type localVarReturnType = new TypeToken<TrustDesk>(){}.getType();
+    public ApiResponse<DataroomTrustDesk> putDataroomTrustWithHttpInfo(@javax.annotation.Nonnull DataroomTrustSettings dataroomTrustSettings) throws ApiException {
+        okhttp3.Call localVarCall = putDataroomTrustValidateBeforeCall(dataroomTrustSettings, null);
+        Type localVarReturnType = new TypeToken<DataroomTrustDesk>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * SetCenter opens, publishes or withdraws the caller org&#39;s trust centre and answers with the centre as it now stands. (asynchronously)
      * SetCenter opens, publishes or withdraws the caller org&#39;s trust centre and answers with the centre as it now stands.  Publishing requires a name and an address, and the address must be free: another org already answering there is a conflict, never a takeover. Withdrawing closes the public endpoint only — items, grants and the access record are untouched, so an org can go quiet and come back without losing anything.  Only an admin of the org may call it. The org is the caller&#39;s own, so there is no field naming one and no way to point this at another tenant.
-     * @param trustSettings  (required)
+     * @param dataroomTrustSettings  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3196,12 +3291,13 @@ public class DataroomApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putDataroomTrustAsync(@javax.annotation.Nonnull TrustSettings trustSettings, final ApiCallback<TrustDesk> _callback) throws ApiException {
+    public okhttp3.Call putDataroomTrustAsync(@javax.annotation.Nonnull DataroomTrustSettings dataroomTrustSettings, final ApiCallback<DataroomTrustDesk> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putDataroomTrustValidateBeforeCall(trustSettings, _callback);
-        Type localVarReturnType = new TypeToken<TrustDesk>(){}.getType();
+        okhttp3.Call localVarCall = putDataroomTrustValidateBeforeCall(dataroomTrustSettings, _callback);
+        Type localVarReturnType = new TypeToken<DataroomTrustDesk>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

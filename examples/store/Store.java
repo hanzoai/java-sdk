@@ -3,9 +3,9 @@ package ai.hanzo.cloud.examples;
 import ai.hanzo.Hanzo;
 import ai.hanzo.cloud.ApiException;
 import ai.hanzo.cloud.api.ProvisioningApi;
-import ai.hanzo.cloud.model.ProvisionRequest;
-import ai.hanzo.cloud.model.ProvisionResult;
-import ai.hanzo.cloud.model.ProvisionedResource;
+import ai.hanzo.cloud.model.ProvisioningProvisionRequest;
+import ai.hanzo.cloud.model.ProvisioningProvisionResult;
+import ai.hanzo.cloud.model.ProvisioningProvisionedResource;
 
 import java.util.UUID;
 
@@ -41,10 +41,10 @@ public final class Store {
         String name = "sdk-example-" + UUID.randomUUID().toString().substring(0, 8);
 
         try {
-            ProvisionResult created = kv.postProvisioningKv(new ProvisionRequest().name(name));
+            ProvisioningProvisionResult created = kv.postProvisioningKv(new ProvisioningProvisionRequest().name(name));
             System.out.printf("created  %s (%s)%n", created.getName(), created.getStatus());
 
-            ProvisionedResource read = kv.getProvisioningKvByName(name);
+            ProvisioningProvisionedResource read = kv.getProvisioningKvByName(name);
             System.out.printf("read     %s host=%s port=%s status=%s%n",
                     read.getName(), read.getHost(), read.getPort(), read.getStatus());
         } catch (ApiException e) {

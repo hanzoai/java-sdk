@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -58,7 +59,7 @@ public class AiResponsesTool {
   public static final String SERIALIZED_NAME_FORMAT = "format";
   @SerializedName(SERIALIZED_NAME_FORMAT)
   @javax.annotation.Nullable
-  private byte[] format;
+  private Object format = null;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -68,7 +69,7 @@ public class AiResponsesTool {
   public static final String SERIALIZED_NAME_PARAMETERS = "parameters";
   @SerializedName(SERIALIZED_NAME_PARAMETERS)
   @javax.annotation.Nullable
-  private byte[] parameters;
+  private Object parameters = null;
 
   public static final String SERIALIZED_NAME_STRICT = "strict";
   @SerializedName(SERIALIZED_NAME_STRICT)
@@ -102,7 +103,7 @@ public class AiResponsesTool {
   }
 
 
-  public AiResponsesTool format(@javax.annotation.Nullable byte[] format) {
+  public AiResponsesTool format(@javax.annotation.Nullable Object format) {
     this.format = format;
     return this;
   }
@@ -112,11 +113,11 @@ public class AiResponsesTool {
    * @return format
    */
   @javax.annotation.Nullable
-  public byte[] getFormat() {
+  public Object getFormat() {
     return format;
   }
 
-  public void setFormat(@javax.annotation.Nullable byte[] format) {
+  public void setFormat(@javax.annotation.Nullable Object format) {
     this.format = format;
   }
 
@@ -140,7 +141,7 @@ public class AiResponsesTool {
   }
 
 
-  public AiResponsesTool parameters(@javax.annotation.Nullable byte[] parameters) {
+  public AiResponsesTool parameters(@javax.annotation.Nullable Object parameters) {
     this.parameters = parameters;
     return this;
   }
@@ -150,11 +151,11 @@ public class AiResponsesTool {
    * @return parameters
    */
   @javax.annotation.Nullable
-  public byte[] getParameters() {
+  public Object getParameters() {
     return parameters;
   }
 
-  public void setParameters(@javax.annotation.Nullable byte[] parameters) {
+  public void setParameters(@javax.annotation.Nullable Object parameters) {
     this.parameters = parameters;
   }
 
@@ -252,17 +253,28 @@ public class AiResponsesTool {
     }
     AiResponsesTool aiResponsesTool = (AiResponsesTool) o;
     return Objects.equals(this.description, aiResponsesTool.description) &&
-        Arrays.equals(this.format, aiResponsesTool.format) &&
+        Objects.equals(this.format, aiResponsesTool.format) &&
         Objects.equals(this.name, aiResponsesTool.name) &&
-        Arrays.equals(this.parameters, aiResponsesTool.parameters) &&
+        Objects.equals(this.parameters, aiResponsesTool.parameters) &&
         Objects.equals(this.strict, aiResponsesTool.strict) &&
         Objects.equals(this.type, aiResponsesTool.type)&&
         Objects.equals(this.additionalProperties, aiResponsesTool.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(description, Arrays.hashCode(format), name, Arrays.hashCode(parameters), strict, type, additionalProperties);
+    return Objects.hash(description, format, name, parameters, strict, type, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override

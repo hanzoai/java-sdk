@@ -27,7 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Receipt;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.X402Receipt;
+import ai.hanzo.cloud.model.X402SettlementList;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -73,6 +75,144 @@ public class X402Api {
     }
 
     /**
+     * Build call for getX402Settlements
+     * @param role Role is payer — what the caller&#39;s org paid — or payee — what it was paid. Payer when empty. (optional)
+     * @param year Year keeps the calendar year (UTC) the payments settled in. Zero keeps every year. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getX402SettlementsCall(@javax.annotation.Nullable String role, @javax.annotation.Nullable Long year, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/x402/settlements";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (role != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("role", role));
+        }
+
+        if (year != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("year", year));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getX402SettlementsValidateBeforeCall(@javax.annotation.Nullable String role, @javax.annotation.Nullable Long year, final ApiCallback _callback) throws ApiException {
+        return getX402SettlementsCall(role, year, _callback);
+
+    }
+
+    /**
+     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its ledger paid; as payee, what it was paid — each settled payment with what it bought, both parties, the exact amount and when.
+     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its ledger paid; as payee, what it was paid — each settled payment with what it bought, both parties, the exact amount and when. A payer is the org whose ledger is debited, which for a SuperAdmin inspecting another org is still its own; a payee is the caller&#39;s own org. An unsettled claim is not a receipt and is never listed.
+     * @param role Role is payer — what the caller&#39;s org paid — or payee — what it was paid. Payer when empty. (optional)
+     * @param year Year keeps the calendar year (UTC) the payments settled in. Zero keeps every year. (optional)
+     * @return X402SettlementList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public X402SettlementList getX402Settlements(@javax.annotation.Nullable String role, @javax.annotation.Nullable Long year) throws ApiException {
+        ApiResponse<X402SettlementList> localVarResp = getX402SettlementsWithHttpInfo(role, year);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its ledger paid; as payee, what it was paid — each settled payment with what it bought, both parties, the exact amount and when.
+     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its ledger paid; as payee, what it was paid — each settled payment with what it bought, both parties, the exact amount and when. A payer is the org whose ledger is debited, which for a SuperAdmin inspecting another org is still its own; a payee is the caller&#39;s own org. An unsettled claim is not a receipt and is never listed.
+     * @param role Role is payer — what the caller&#39;s org paid — or payee — what it was paid. Payer when empty. (optional)
+     * @param year Year keeps the calendar year (UTC) the payments settled in. Zero keeps every year. (optional)
+     * @return ApiResponse&lt;X402SettlementList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<X402SettlementList> getX402SettlementsWithHttpInfo(@javax.annotation.Nullable String role, @javax.annotation.Nullable Long year) throws ApiException {
+        okhttp3.Call localVarCall = getX402SettlementsValidateBeforeCall(role, year, null);
+        Type localVarReturnType = new TypeToken<X402SettlementList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its ledger paid; as payee, what it was paid — each settled payment with what it bought, both parties, the exact amount and when. (asynchronously)
+     * Lists the caller&#39;s x402 receipts, newest first: as payer, what its ledger paid; as payee, what it was paid — each settled payment with what it bought, both parties, the exact amount and when. A payer is the org whose ledger is debited, which for a SuperAdmin inspecting another org is still its own; a payee is the caller&#39;s own org. An unsettled claim is not a receipt and is never listed.
+     * @param role Role is payer — what the caller&#39;s org paid — or payee — what it was paid. Payer when empty. (optional)
+     * @param year Year keeps the calendar year (UTC) the payments settled in. Zero keeps every year. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getX402SettlementsAsync(@javax.annotation.Nullable String role, @javax.annotation.Nullable Long year, final ApiCallback<X402SettlementList> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getX402SettlementsValidateBeforeCall(role, year, _callback);
+        Type localVarReturnType = new TypeToken<X402SettlementList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getX402SettlementsById
      * @param id ID is the settlement id from the URL — the deterministic keccak(from|nonce) key an x402 receipt is issued under (the &#x60;id&#x60; field of a Receipt, and the &#x60;transaction&#x60; of the SettlementResponse on the PAYMENT-RESPONSE header a paid request answers with). (required)
      * @param _callback Callback for upload/download progress
@@ -83,6 +223,7 @@ public class X402Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getX402SettlementsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -112,7 +253,8 @@ public class X402Api {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -142,45 +284,47 @@ public class X402Api {
     }
 
     /**
-     * Settlement reads one x402 payment receipt by id.
-     * Settlement reads one x402 payment receipt by id.  It is scoped to the caller&#39;s PAYER org — the ledger that was debited — so one tenant can never read another&#39;s settlement, and an id that exists but belongs to somebody else is a 404 exactly like one that does not exist. A caller with no billable identity is refused outright.
+     * Reads one x402 payment receipt by id.
+     * Reads one x402 payment receipt by id.  It is scoped to the caller&#39;s PAYER org — the ledger that was debited — so one tenant can never read another&#39;s settlement, and an id that exists but belongs to somebody else is a 404 exactly like one that does not exist. A caller with no billable identity is refused outright.
      * @param id ID is the settlement id from the URL — the deterministic keccak(from|nonce) key an x402 receipt is issued under (the &#x60;id&#x60; field of a Receipt, and the &#x60;transaction&#x60; of the SettlementResponse on the PAYMENT-RESPONSE header a paid request answers with). (required)
-     * @return Receipt
+     * @return X402Receipt
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Receipt getX402SettlementsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Receipt> localVarResp = getX402SettlementsByIdWithHttpInfo(id);
+    public X402Receipt getX402SettlementsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<X402Receipt> localVarResp = getX402SettlementsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
-     * Settlement reads one x402 payment receipt by id.
-     * Settlement reads one x402 payment receipt by id.  It is scoped to the caller&#39;s PAYER org — the ledger that was debited — so one tenant can never read another&#39;s settlement, and an id that exists but belongs to somebody else is a 404 exactly like one that does not exist. A caller with no billable identity is refused outright.
+     * Reads one x402 payment receipt by id.
+     * Reads one x402 payment receipt by id.  It is scoped to the caller&#39;s PAYER org — the ledger that was debited — so one tenant can never read another&#39;s settlement, and an id that exists but belongs to somebody else is a 404 exactly like one that does not exist. A caller with no billable identity is refused outright.
      * @param id ID is the settlement id from the URL — the deterministic keccak(from|nonce) key an x402 receipt is issued under (the &#x60;id&#x60; field of a Receipt, and the &#x60;transaction&#x60; of the SettlementResponse on the PAYMENT-RESPONSE header a paid request answers with). (required)
-     * @return ApiResponse&lt;Receipt&gt;
+     * @return ApiResponse&lt;X402Receipt&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Receipt> getX402SettlementsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<X402Receipt> getX402SettlementsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getX402SettlementsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Receipt>(){}.getType();
+        Type localVarReturnType = new TypeToken<X402Receipt>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Settlement reads one x402 payment receipt by id. (asynchronously)
-     * Settlement reads one x402 payment receipt by id.  It is scoped to the caller&#39;s PAYER org — the ledger that was debited — so one tenant can never read another&#39;s settlement, and an id that exists but belongs to somebody else is a 404 exactly like one that does not exist. A caller with no billable identity is refused outright.
+     * Reads one x402 payment receipt by id. (asynchronously)
+     * Reads one x402 payment receipt by id.  It is scoped to the caller&#39;s PAYER org — the ledger that was debited — so one tenant can never read another&#39;s settlement, and an id that exists but belongs to somebody else is a 404 exactly like one that does not exist. A caller with no billable identity is refused outright.
      * @param id ID is the settlement id from the URL — the deterministic keccak(from|nonce) key an x402 receipt is issued under (the &#x60;id&#x60; field of a Receipt, and the &#x60;transaction&#x60; of the SettlementResponse on the PAYMENT-RESPONSE header a paid request answers with). (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -190,12 +334,13 @@ public class X402Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getX402SettlementsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Receipt> _callback) throws ApiException {
+    public okhttp3.Call getX402SettlementsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<X402Receipt> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getX402SettlementsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Receipt>(){}.getType();
+        Type localVarReturnType = new TypeToken<X402Receipt>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

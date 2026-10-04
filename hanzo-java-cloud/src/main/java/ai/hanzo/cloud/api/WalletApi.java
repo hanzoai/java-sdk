@@ -27,16 +27,17 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.AccountList;
-import ai.hanzo.cloud.model.CreateAccountIn;
-import ai.hanzo.cloud.model.CreateWalletIn;
-import ai.hanzo.cloud.model.SafeProposal;
-import ai.hanzo.cloud.model.SafeTxIn;
-import ai.hanzo.cloud.model.SignIn;
-import ai.hanzo.cloud.model.Signature;
-import ai.hanzo.cloud.model.Wallet;
-import ai.hanzo.cloud.model.WalletAccount;
-import ai.hanzo.cloud.model.WalletList;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.WalletAccountList;
+import ai.hanzo.cloud.model.WalletCreateAccountIn;
+import ai.hanzo.cloud.model.WalletCreateWalletIn;
+import ai.hanzo.cloud.model.WalletSafeProposal;
+import ai.hanzo.cloud.model.WalletSafeTxIn;
+import ai.hanzo.cloud.model.WalletSignIn;
+import ai.hanzo.cloud.model.WalletSignature;
+import ai.hanzo.cloud.model.WalletWallet;
+import ai.hanzo.cloud.model.WalletWalletAccount;
+import ai.hanzo.cloud.model.WalletWalletList;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -94,6 +95,7 @@ public class WalletApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getWalletCall(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account, final ApiCallback _callback) throws ApiException {
@@ -134,7 +136,8 @@ public class WalletApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -164,17 +167,18 @@ public class WalletApi {
      * @param project Project narrows to wallets scoped to one project. Must be a url-safe segment. (optional)
      * @param agent Agent narrows to wallets scoped to one agent. Must be a url-safe segment. (optional)
      * @param account Account narrows to wallets under one account id. Must be a url-safe segment. (optional)
-     * @return WalletList
+     * @return WalletWalletList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public WalletList getWallet(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account) throws ApiException {
-        ApiResponse<WalletList> localVarResp = getWalletWithHttpInfo(project, agent, account);
+    public WalletWalletList getWallet(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account) throws ApiException {
+        ApiResponse<WalletWalletList> localVarResp = getWalletWithHttpInfo(project, agent, account);
         return localVarResp.getData();
     }
 
@@ -184,18 +188,19 @@ public class WalletApi {
      * @param project Project narrows to wallets scoped to one project. Must be a url-safe segment. (optional)
      * @param agent Agent narrows to wallets scoped to one agent. Must be a url-safe segment. (optional)
      * @param account Account narrows to wallets under one account id. Must be a url-safe segment. (optional)
-     * @return ApiResponse&lt;WalletList&gt;
+     * @return ApiResponse&lt;WalletWalletList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WalletList> getWalletWithHttpInfo(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account) throws ApiException {
+    public ApiResponse<WalletWalletList> getWalletWithHttpInfo(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account) throws ApiException {
         okhttp3.Call localVarCall = getWalletValidateBeforeCall(project, agent, account, null);
-        Type localVarReturnType = new TypeToken<WalletList>(){}.getType();
+        Type localVarReturnType = new TypeToken<WalletWalletList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -213,12 +218,13 @@ public class WalletApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWalletAsync(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account, final ApiCallback<WalletList> _callback) throws ApiException {
+    public okhttp3.Call getWalletAsync(@javax.annotation.Nullable String project, @javax.annotation.Nullable String agent, @javax.annotation.Nullable String account, final ApiCallback<WalletWalletList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWalletValidateBeforeCall(project, agent, account, _callback);
-        Type localVarReturnType = new TypeToken<WalletList>(){}.getType();
+        Type localVarReturnType = new TypeToken<WalletWalletList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -232,6 +238,7 @@ public class WalletApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getWalletAccountsCall(final ApiCallback _callback) throws ApiException {
@@ -260,7 +267,8 @@ public class WalletApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -287,35 +295,37 @@ public class WalletApi {
     /**
      * Returns the caller org&#39;s wallet accounts, newest first.
      * Returns the caller org&#39;s wallet accounts, newest first. Accounts are physically org-scoped, so another tenant&#39;s are not reachable from here.
-     * @return AccountList
+     * @return WalletAccountList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AccountList getWalletAccounts() throws ApiException {
-        ApiResponse<AccountList> localVarResp = getWalletAccountsWithHttpInfo();
+    public WalletAccountList getWalletAccounts() throws ApiException {
+        ApiResponse<WalletAccountList> localVarResp = getWalletAccountsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller org&#39;s wallet accounts, newest first.
      * Returns the caller org&#39;s wallet accounts, newest first. Accounts are physically org-scoped, so another tenant&#39;s are not reachable from here.
-     * @return ApiResponse&lt;AccountList&gt;
+     * @return ApiResponse&lt;WalletAccountList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccountList> getWalletAccountsWithHttpInfo() throws ApiException {
+    public ApiResponse<WalletAccountList> getWalletAccountsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getWalletAccountsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<AccountList>(){}.getType();
+        Type localVarReturnType = new TypeToken<WalletAccountList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -330,12 +340,13 @@ public class WalletApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWalletAccountsAsync(final ApiCallback<AccountList> _callback) throws ApiException {
+    public okhttp3.Call getWalletAccountsAsync(final ApiCallback<WalletAccountList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWalletAccountsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<AccountList>(){}.getType();
+        Type localVarReturnType = new TypeToken<WalletAccountList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -350,6 +361,7 @@ public class WalletApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getWalletByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -379,7 +391,8 @@ public class WalletApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -412,17 +425,18 @@ public class WalletApi {
      * Returns one of the caller org&#39;s wallets: its scope, custody kind, tier, chain and on-chain address.
      * Returns one of the caller org&#39;s wallets: its scope, custody kind, tier, chain and on-chain address. The custody handle to the signing material is never part of the answer. A wallet id another org owns reads as not found, so the response cannot confirm that it exists.
      * @param id  (required)
-     * @return Wallet
+     * @return WalletWallet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Wallet getWalletById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Wallet> localVarResp = getWalletByIdWithHttpInfo(id);
+    public WalletWallet getWalletById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<WalletWallet> localVarResp = getWalletByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -430,18 +444,19 @@ public class WalletApi {
      * Returns one of the caller org&#39;s wallets: its scope, custody kind, tier, chain and on-chain address.
      * Returns one of the caller org&#39;s wallets: its scope, custody kind, tier, chain and on-chain address. The custody handle to the signing material is never part of the answer. A wallet id another org owns reads as not found, so the response cannot confirm that it exists.
      * @param id  (required)
-     * @return ApiResponse&lt;Wallet&gt;
+     * @return ApiResponse&lt;WalletWallet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Wallet> getWalletByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<WalletWallet> getWalletByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getWalletByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Wallet>(){}.getType();
+        Type localVarReturnType = new TypeToken<WalletWallet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -457,18 +472,19 @@ public class WalletApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWalletByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Wallet> _callback) throws ApiException {
+    public okhttp3.Call getWalletByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<WalletWallet> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWalletByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Wallet>(){}.getType();
+        Type localVarReturnType = new TypeToken<WalletWallet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postWallet
-     * @param createWalletIn  (required)
+     * @param walletCreateWalletIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -477,9 +493,10 @@ public class WalletApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postWalletCall(@javax.annotation.Nonnull CreateWalletIn createWalletIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWalletCall(@javax.annotation.Nonnull WalletCreateWalletIn walletCreateWalletIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -493,7 +510,7 @@ public class WalletApi {
             basePath = null;
         }
 
-        Object localVarPostBody = createWalletIn;
+        Object localVarPostBody = walletCreateWalletIn;
 
         // create path and map variables
         String localVarPath = "/v1/wallet";
@@ -505,7 +522,8 @@ public class WalletApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -525,57 +543,59 @@ public class WalletApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postWalletValidateBeforeCall(@javax.annotation.Nonnull CreateWalletIn createWalletIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'createWalletIn' is set
-        if (createWalletIn == null) {
-            throw new ApiException("Missing the required parameter 'createWalletIn' when calling postWallet(Async)");
+    private okhttp3.Call postWalletValidateBeforeCall(@javax.annotation.Nonnull WalletCreateWalletIn walletCreateWalletIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'walletCreateWalletIn' is set
+        if (walletCreateWalletIn == null) {
+            throw new ApiException("Missing the required parameter 'walletCreateWalletIn' when calling postWallet(Async)");
         }
 
-        return postWalletCall(createWalletIn, _callback);
+        return postWalletCall(walletCreateWalletIn, _callback);
 
     }
 
     /**
      * Provisions a new signing identity under one of the caller org&#39;s accounts and answers the stored wallet including its on-chain address.
      * Provisions a new signing identity under one of the caller org&#39;s accounts and answers the stored wallet including its on-chain address. The custody backend generates the key material — a KMS-sealed secp256k1 key, an MPC threshold key on the ring, or a Safe smart wallet owned by one — and the HANDLE to it is kept server-side and never returned. A custody kind the deployment has not wired fails CLOSED with 503: a signature is never fabricated. The wallet is scoped to the org, the caller&#39;s ambient project, and optionally an agent and the named account; those narrowings are what its key ref is derived from, so each must be a url-safe segment.
-     * @param createWalletIn  (required)
-     * @return Wallet
+     * @param walletCreateWalletIn  (required)
+     * @return WalletWallet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Wallet postWallet(@javax.annotation.Nonnull CreateWalletIn createWalletIn) throws ApiException {
-        ApiResponse<Wallet> localVarResp = postWalletWithHttpInfo(createWalletIn);
+    public WalletWallet postWallet(@javax.annotation.Nonnull WalletCreateWalletIn walletCreateWalletIn) throws ApiException {
+        ApiResponse<WalletWallet> localVarResp = postWalletWithHttpInfo(walletCreateWalletIn);
         return localVarResp.getData();
     }
 
     /**
      * Provisions a new signing identity under one of the caller org&#39;s accounts and answers the stored wallet including its on-chain address.
      * Provisions a new signing identity under one of the caller org&#39;s accounts and answers the stored wallet including its on-chain address. The custody backend generates the key material — a KMS-sealed secp256k1 key, an MPC threshold key on the ring, or a Safe smart wallet owned by one — and the HANDLE to it is kept server-side and never returned. A custody kind the deployment has not wired fails CLOSED with 503: a signature is never fabricated. The wallet is scoped to the org, the caller&#39;s ambient project, and optionally an agent and the named account; those narrowings are what its key ref is derived from, so each must be a url-safe segment.
-     * @param createWalletIn  (required)
-     * @return ApiResponse&lt;Wallet&gt;
+     * @param walletCreateWalletIn  (required)
+     * @return ApiResponse&lt;WalletWallet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Wallet> postWalletWithHttpInfo(@javax.annotation.Nonnull CreateWalletIn createWalletIn) throws ApiException {
-        okhttp3.Call localVarCall = postWalletValidateBeforeCall(createWalletIn, null);
-        Type localVarReturnType = new TypeToken<Wallet>(){}.getType();
+    public ApiResponse<WalletWallet> postWalletWithHttpInfo(@javax.annotation.Nonnull WalletCreateWalletIn walletCreateWalletIn) throws ApiException {
+        okhttp3.Call localVarCall = postWalletValidateBeforeCall(walletCreateWalletIn, null);
+        Type localVarReturnType = new TypeToken<WalletWallet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Provisions a new signing identity under one of the caller org&#39;s accounts and answers the stored wallet including its on-chain address. (asynchronously)
      * Provisions a new signing identity under one of the caller org&#39;s accounts and answers the stored wallet including its on-chain address. The custody backend generates the key material — a KMS-sealed secp256k1 key, an MPC threshold key on the ring, or a Safe smart wallet owned by one — and the HANDLE to it is kept server-side and never returned. A custody kind the deployment has not wired fails CLOSED with 503: a signature is never fabricated. The wallet is scoped to the org, the caller&#39;s ambient project, and optionally an agent and the named account; those narrowings are what its key ref is derived from, so each must be a url-safe segment.
-     * @param createWalletIn  (required)
+     * @param walletCreateWalletIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -584,18 +604,19 @@ public class WalletApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postWalletAsync(@javax.annotation.Nonnull CreateWalletIn createWalletIn, final ApiCallback<Wallet> _callback) throws ApiException {
+    public okhttp3.Call postWalletAsync(@javax.annotation.Nonnull WalletCreateWalletIn walletCreateWalletIn, final ApiCallback<WalletWallet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postWalletValidateBeforeCall(createWalletIn, _callback);
-        Type localVarReturnType = new TypeToken<Wallet>(){}.getType();
+        okhttp3.Call localVarCall = postWalletValidateBeforeCall(walletCreateWalletIn, _callback);
+        Type localVarReturnType = new TypeToken<WalletWallet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postWalletAccounts
-     * @param createAccountIn  (required)
+     * @param walletCreateAccountIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -604,9 +625,10 @@ public class WalletApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postWalletAccountsCall(@javax.annotation.Nonnull CreateAccountIn createAccountIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWalletAccountsCall(@javax.annotation.Nonnull WalletCreateAccountIn walletCreateAccountIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -620,7 +642,7 @@ public class WalletApi {
             basePath = null;
         }
 
-        Object localVarPostBody = createAccountIn;
+        Object localVarPostBody = walletCreateAccountIn;
 
         // create path and map variables
         String localVarPath = "/v1/wallet/accounts";
@@ -632,7 +654,8 @@ public class WalletApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -652,57 +675,59 @@ public class WalletApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postWalletAccountsValidateBeforeCall(@javax.annotation.Nonnull CreateAccountIn createAccountIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'createAccountIn' is set
-        if (createAccountIn == null) {
-            throw new ApiException("Missing the required parameter 'createAccountIn' when calling postWalletAccounts(Async)");
+    private okhttp3.Call postWalletAccountsValidateBeforeCall(@javax.annotation.Nonnull WalletCreateAccountIn walletCreateAccountIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'walletCreateAccountIn' is set
+        if (walletCreateAccountIn == null) {
+            throw new ApiException("Missing the required parameter 'walletCreateAccountIn' when calling postWalletAccounts(Async)");
         }
 
-        return postWalletAccountsCall(createAccountIn, _callback);
+        return postWalletAccountsCall(walletCreateAccountIn, _callback);
 
     }
 
     /**
      * Opens a named wallet account for the caller&#39;s org.
      * Opens a named wallet account for the caller&#39;s org. An account is a GROUPING of wallets, not a key or a balance: wallets are created under one and can be listed by it. The org is stamped by the server from the validated principal, so a request can never open an account in another tenant.
-     * @param createAccountIn  (required)
-     * @return WalletAccount
+     * @param walletCreateAccountIn  (required)
+     * @return WalletWalletAccount
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public WalletAccount postWalletAccounts(@javax.annotation.Nonnull CreateAccountIn createAccountIn) throws ApiException {
-        ApiResponse<WalletAccount> localVarResp = postWalletAccountsWithHttpInfo(createAccountIn);
+    public WalletWalletAccount postWalletAccounts(@javax.annotation.Nonnull WalletCreateAccountIn walletCreateAccountIn) throws ApiException {
+        ApiResponse<WalletWalletAccount> localVarResp = postWalletAccountsWithHttpInfo(walletCreateAccountIn);
         return localVarResp.getData();
     }
 
     /**
      * Opens a named wallet account for the caller&#39;s org.
      * Opens a named wallet account for the caller&#39;s org. An account is a GROUPING of wallets, not a key or a balance: wallets are created under one and can be listed by it. The org is stamped by the server from the validated principal, so a request can never open an account in another tenant.
-     * @param createAccountIn  (required)
-     * @return ApiResponse&lt;WalletAccount&gt;
+     * @param walletCreateAccountIn  (required)
+     * @return ApiResponse&lt;WalletWalletAccount&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WalletAccount> postWalletAccountsWithHttpInfo(@javax.annotation.Nonnull CreateAccountIn createAccountIn) throws ApiException {
-        okhttp3.Call localVarCall = postWalletAccountsValidateBeforeCall(createAccountIn, null);
-        Type localVarReturnType = new TypeToken<WalletAccount>(){}.getType();
+    public ApiResponse<WalletWalletAccount> postWalletAccountsWithHttpInfo(@javax.annotation.Nonnull WalletCreateAccountIn walletCreateAccountIn) throws ApiException {
+        okhttp3.Call localVarCall = postWalletAccountsValidateBeforeCall(walletCreateAccountIn, null);
+        Type localVarReturnType = new TypeToken<WalletWalletAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Opens a named wallet account for the caller&#39;s org. (asynchronously)
      * Opens a named wallet account for the caller&#39;s org. An account is a GROUPING of wallets, not a key or a balance: wallets are created under one and can be listed by it. The org is stamped by the server from the validated principal, so a request can never open an account in another tenant.
-     * @param createAccountIn  (required)
+     * @param walletCreateAccountIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -711,12 +736,13 @@ public class WalletApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postWalletAccountsAsync(@javax.annotation.Nonnull CreateAccountIn createAccountIn, final ApiCallback<WalletAccount> _callback) throws ApiException {
+    public okhttp3.Call postWalletAccountsAsync(@javax.annotation.Nonnull WalletCreateAccountIn walletCreateAccountIn, final ApiCallback<WalletWalletAccount> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postWalletAccountsValidateBeforeCall(createAccountIn, _callback);
-        Type localVarReturnType = new TypeToken<WalletAccount>(){}.getType();
+        okhttp3.Call localVarCall = postWalletAccountsValidateBeforeCall(walletCreateAccountIn, _callback);
+        Type localVarReturnType = new TypeToken<WalletWalletAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -731,6 +757,7 @@ public class WalletApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postWalletByIdKeysCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -760,7 +787,8 @@ public class WalletApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -793,17 +821,18 @@ public class WalletApi {
      * Rolls one wallet&#39;s signing material through its own custody backend and answers the wallet with whatever address that produced.
      * Rolls one wallet&#39;s signing material through its own custody backend and answers the wallet with whatever address that produced. For KMS custody a fresh secp256k1 key is generated and sealed, which CHANGES the address — funds and approvals at the old address do not move. For a Safe the address is counterfactual and the owner shares are ring-managed, so rotation is a no-op and the address is unchanged. A backend that is not configured fails closed with 503 rather than leaving the wallet half-rotated.
      * @param id  (required)
-     * @return Wallet
+     * @return WalletWallet
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Wallet postWalletByIdKeys(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Wallet> localVarResp = postWalletByIdKeysWithHttpInfo(id);
+    public WalletWallet postWalletByIdKeys(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<WalletWallet> localVarResp = postWalletByIdKeysWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -811,18 +840,19 @@ public class WalletApi {
      * Rolls one wallet&#39;s signing material through its own custody backend and answers the wallet with whatever address that produced.
      * Rolls one wallet&#39;s signing material through its own custody backend and answers the wallet with whatever address that produced. For KMS custody a fresh secp256k1 key is generated and sealed, which CHANGES the address — funds and approvals at the old address do not move. For a Safe the address is counterfactual and the owner shares are ring-managed, so rotation is a no-op and the address is unchanged. A backend that is not configured fails closed with 503 rather than leaving the wallet half-rotated.
      * @param id  (required)
-     * @return ApiResponse&lt;Wallet&gt;
+     * @return ApiResponse&lt;WalletWallet&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Wallet> postWalletByIdKeysWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<WalletWallet> postWalletByIdKeysWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postWalletByIdKeysValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Wallet>(){}.getType();
+        Type localVarReturnType = new TypeToken<WalletWallet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -838,19 +868,20 @@ public class WalletApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postWalletByIdKeysAsync(@javax.annotation.Nonnull String id, final ApiCallback<Wallet> _callback) throws ApiException {
+    public okhttp3.Call postWalletByIdKeysAsync(@javax.annotation.Nonnull String id, final ApiCallback<WalletWallet> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postWalletByIdKeysValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Wallet>(){}.getType();
+        Type localVarReturnType = new TypeToken<WalletWallet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postWalletByIdSign
      * @param id  (required)
-     * @param signIn  (required)
+     * @param walletSignIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -859,9 +890,10 @@ public class WalletApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postWalletByIdSignCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignIn signIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWalletByIdSignCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull WalletSignIn walletSignIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -875,7 +907,7 @@ public class WalletApi {
             basePath = null;
         }
 
-        Object localVarPostBody = signIn;
+        Object localVarPostBody = walletSignIn;
 
         // create path and map variables
         String localVarPath = "/v1/wallet/{id}/sign"
@@ -888,7 +920,8 @@ public class WalletApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -908,18 +941,18 @@ public class WalletApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postWalletByIdSignValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignIn signIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postWalletByIdSignValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull WalletSignIn walletSignIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postWalletByIdSign(Async)");
         }
 
-        // verify the required parameter 'signIn' is set
-        if (signIn == null) {
-            throw new ApiException("Missing the required parameter 'signIn' when calling postWalletByIdSign(Async)");
+        // verify the required parameter 'walletSignIn' is set
+        if (walletSignIn == null) {
+            throw new ApiException("Missing the required parameter 'walletSignIn' when calling postWalletByIdSign(Async)");
         }
 
-        return postWalletByIdSignCall(id, signIn, _callback);
+        return postWalletByIdSignCall(id, walletSignIn, _callback);
 
     }
 
@@ -927,18 +960,19 @@ public class WalletApi {
      * Produces a secp256k1 signature from one of the caller org&#39;s wallets over a 32-byte digest, through whichever custody backend that wallet uses.
      * Produces a secp256k1 signature from one of the caller org&#39;s wallets over a 32-byte digest, through whichever custody backend that wallet uses. Give it either a &#x60;digest&#x60; (32 bytes as hex, signed verbatim) or a &#x60;message&#x60; (hashed with Keccak256 first) — exactly one is required. The private key never leaves its backend: KMS custody opens the sealed key in-process, MPC custody produces a threshold signature on the ring. The answer carries the digest that was signed alongside the signature, so a caller can verify what it got.
      * @param id  (required)
-     * @param signIn  (required)
-     * @return Signature
+     * @param walletSignIn  (required)
+     * @return WalletSignature
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Signature postWalletByIdSign(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignIn signIn) throws ApiException {
-        ApiResponse<Signature> localVarResp = postWalletByIdSignWithHttpInfo(id, signIn);
+    public WalletSignature postWalletByIdSign(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull WalletSignIn walletSignIn) throws ApiException {
+        ApiResponse<WalletSignature> localVarResp = postWalletByIdSignWithHttpInfo(id, walletSignIn);
         return localVarResp.getData();
     }
 
@@ -946,19 +980,20 @@ public class WalletApi {
      * Produces a secp256k1 signature from one of the caller org&#39;s wallets over a 32-byte digest, through whichever custody backend that wallet uses.
      * Produces a secp256k1 signature from one of the caller org&#39;s wallets over a 32-byte digest, through whichever custody backend that wallet uses. Give it either a &#x60;digest&#x60; (32 bytes as hex, signed verbatim) or a &#x60;message&#x60; (hashed with Keccak256 first) — exactly one is required. The private key never leaves its backend: KMS custody opens the sealed key in-process, MPC custody produces a threshold signature on the ring. The answer carries the digest that was signed alongside the signature, so a caller can verify what it got.
      * @param id  (required)
-     * @param signIn  (required)
-     * @return ApiResponse&lt;Signature&gt;
+     * @param walletSignIn  (required)
+     * @return ApiResponse&lt;WalletSignature&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Signature> postWalletByIdSignWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignIn signIn) throws ApiException {
-        okhttp3.Call localVarCall = postWalletByIdSignValidateBeforeCall(id, signIn, null);
-        Type localVarReturnType = new TypeToken<Signature>(){}.getType();
+    public ApiResponse<WalletSignature> postWalletByIdSignWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull WalletSignIn walletSignIn) throws ApiException {
+        okhttp3.Call localVarCall = postWalletByIdSignValidateBeforeCall(id, walletSignIn, null);
+        Type localVarReturnType = new TypeToken<WalletSignature>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -966,7 +1001,7 @@ public class WalletApi {
      * Produces a secp256k1 signature from one of the caller org&#39;s wallets over a 32-byte digest, through whichever custody backend that wallet uses. (asynchronously)
      * Produces a secp256k1 signature from one of the caller org&#39;s wallets over a 32-byte digest, through whichever custody backend that wallet uses. Give it either a &#x60;digest&#x60; (32 bytes as hex, signed verbatim) or a &#x60;message&#x60; (hashed with Keccak256 first) — exactly one is required. The private key never leaves its backend: KMS custody opens the sealed key in-process, MPC custody produces a threshold signature on the ring. The answer carries the digest that was signed alongside the signature, so a caller can verify what it got.
      * @param id  (required)
-     * @param signIn  (required)
+     * @param walletSignIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -975,19 +1010,20 @@ public class WalletApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postWalletByIdSignAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SignIn signIn, final ApiCallback<Signature> _callback) throws ApiException {
+    public okhttp3.Call postWalletByIdSignAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull WalletSignIn walletSignIn, final ApiCallback<WalletSignature> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postWalletByIdSignValidateBeforeCall(id, signIn, _callback);
-        Type localVarReturnType = new TypeToken<Signature>(){}.getType();
+        okhttp3.Call localVarCall = postWalletByIdSignValidateBeforeCall(id, walletSignIn, _callback);
+        Type localVarReturnType = new TypeToken<WalletSignature>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postWalletByIdTransactions
      * @param id  (required)
-     * @param safeTxIn  (required)
+     * @param walletSafeTxIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -996,9 +1032,10 @@ public class WalletApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postWalletByIdTransactionsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SafeTxIn safeTxIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWalletByIdTransactionsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull WalletSafeTxIn walletSafeTxIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1012,7 +1049,7 @@ public class WalletApi {
             basePath = null;
         }
 
-        Object localVarPostBody = safeTxIn;
+        Object localVarPostBody = walletSafeTxIn;
 
         // create path and map variables
         String localVarPath = "/v1/wallet/{id}/transactions"
@@ -1025,7 +1062,8 @@ public class WalletApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1045,18 +1083,18 @@ public class WalletApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postWalletByIdTransactionsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SafeTxIn safeTxIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postWalletByIdTransactionsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull WalletSafeTxIn walletSafeTxIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postWalletByIdTransactions(Async)");
         }
 
-        // verify the required parameter 'safeTxIn' is set
-        if (safeTxIn == null) {
-            throw new ApiException("Missing the required parameter 'safeTxIn' when calling postWalletByIdTransactions(Async)");
+        // verify the required parameter 'walletSafeTxIn' is set
+        if (walletSafeTxIn == null) {
+            throw new ApiException("Missing the required parameter 'walletSafeTxIn' when calling postWalletByIdTransactions(Async)");
         }
 
-        return postWalletByIdTransactionsCall(id, safeTxIn, _callback);
+        return postWalletByIdTransactionsCall(id, walletSafeTxIn, _callback);
 
     }
 
@@ -1064,18 +1102,19 @@ public class WalletApi {
      * Composes a Safe transaction on the MPC ring and answers its EIP-712 hash together with the owner approval the ring&#39;s threshold signature produced.
      * Composes a Safe transaction on the MPC ring and answers its EIP-712 hash together with the owner approval the ring&#39;s threshold signature produced. Only a wallet whose custody is \&quot;safe\&quot; can do this — any other custody is a 400, because the backend itself is asked whether it can propose rather than the kind being switched on. The ring computes the Safe-tx hash bound to the Safe contract and the chain id, so the hash a caller gets back is the one the Safe will verify. This PROPOSES: it does not execute the transaction.
      * @param id  (required)
-     * @param safeTxIn  (required)
-     * @return SafeProposal
+     * @param walletSafeTxIn  (required)
+     * @return WalletSafeProposal
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SafeProposal postWalletByIdTransactions(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SafeTxIn safeTxIn) throws ApiException {
-        ApiResponse<SafeProposal> localVarResp = postWalletByIdTransactionsWithHttpInfo(id, safeTxIn);
+    public WalletSafeProposal postWalletByIdTransactions(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull WalletSafeTxIn walletSafeTxIn) throws ApiException {
+        ApiResponse<WalletSafeProposal> localVarResp = postWalletByIdTransactionsWithHttpInfo(id, walletSafeTxIn);
         return localVarResp.getData();
     }
 
@@ -1083,19 +1122,20 @@ public class WalletApi {
      * Composes a Safe transaction on the MPC ring and answers its EIP-712 hash together with the owner approval the ring&#39;s threshold signature produced.
      * Composes a Safe transaction on the MPC ring and answers its EIP-712 hash together with the owner approval the ring&#39;s threshold signature produced. Only a wallet whose custody is \&quot;safe\&quot; can do this — any other custody is a 400, because the backend itself is asked whether it can propose rather than the kind being switched on. The ring computes the Safe-tx hash bound to the Safe contract and the chain id, so the hash a caller gets back is the one the Safe will verify. This PROPOSES: it does not execute the transaction.
      * @param id  (required)
-     * @param safeTxIn  (required)
-     * @return ApiResponse&lt;SafeProposal&gt;
+     * @param walletSafeTxIn  (required)
+     * @return ApiResponse&lt;WalletSafeProposal&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SafeProposal> postWalletByIdTransactionsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SafeTxIn safeTxIn) throws ApiException {
-        okhttp3.Call localVarCall = postWalletByIdTransactionsValidateBeforeCall(id, safeTxIn, null);
-        Type localVarReturnType = new TypeToken<SafeProposal>(){}.getType();
+    public ApiResponse<WalletSafeProposal> postWalletByIdTransactionsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull WalletSafeTxIn walletSafeTxIn) throws ApiException {
+        okhttp3.Call localVarCall = postWalletByIdTransactionsValidateBeforeCall(id, walletSafeTxIn, null);
+        Type localVarReturnType = new TypeToken<WalletSafeProposal>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1103,7 +1143,7 @@ public class WalletApi {
      * Composes a Safe transaction on the MPC ring and answers its EIP-712 hash together with the owner approval the ring&#39;s threshold signature produced. (asynchronously)
      * Composes a Safe transaction on the MPC ring and answers its EIP-712 hash together with the owner approval the ring&#39;s threshold signature produced. Only a wallet whose custody is \&quot;safe\&quot; can do this — any other custody is a 400, because the backend itself is asked whether it can propose rather than the kind being switched on. The ring computes the Safe-tx hash bound to the Safe contract and the chain id, so the hash a caller gets back is the one the Safe will verify. This PROPOSES: it does not execute the transaction.
      * @param id  (required)
-     * @param safeTxIn  (required)
+     * @param walletSafeTxIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1112,12 +1152,13 @@ public class WalletApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postWalletByIdTransactionsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SafeTxIn safeTxIn, final ApiCallback<SafeProposal> _callback) throws ApiException {
+    public okhttp3.Call postWalletByIdTransactionsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull WalletSafeTxIn walletSafeTxIn, final ApiCallback<WalletSafeProposal> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postWalletByIdTransactionsValidateBeforeCall(id, safeTxIn, _callback);
-        Type localVarReturnType = new TypeToken<SafeProposal>(){}.getType();
+        okhttp3.Call localVarCall = postWalletByIdTransactionsValidateBeforeCall(id, walletSafeTxIn, _callback);
+        Type localVarReturnType = new TypeToken<WalletSafeProposal>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

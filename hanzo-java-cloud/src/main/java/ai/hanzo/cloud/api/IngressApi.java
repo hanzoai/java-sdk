@@ -27,15 +27,16 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.IngressMiddlewares;
-import ai.hanzo.cloud.model.IngressRoutes;
-import ai.hanzo.cloud.model.IngressServices;
-import ai.hanzo.cloud.model.IngressStatus;
-import ai.hanzo.cloud.model.IngressTLS;
-import ai.hanzo.cloud.model.Middleware;
-import ai.hanzo.cloud.model.Route;
-import ai.hanzo.cloud.model.TLSConfig;
-import ai.hanzo.cloud.model.Upstream;
+import ai.hanzo.cloud.model.IngressIngressMiddlewares;
+import ai.hanzo.cloud.model.IngressIngressRoutes;
+import ai.hanzo.cloud.model.IngressIngressServices;
+import ai.hanzo.cloud.model.IngressIngressStatus;
+import ai.hanzo.cloud.model.IngressIngressTLS;
+import ai.hanzo.cloud.model.IngressMiddleware;
+import ai.hanzo.cloud.model.IngressRoute;
+import ai.hanzo.cloud.model.IngressTLSConfig;
+import ai.hanzo.cloud.model.IngressUpstream;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -91,6 +92,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteIngressMiddlewaresByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -120,6 +122,7 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -158,6 +161,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteIngressMiddlewaresById(@javax.annotation.Nonnull String id) throws ApiException {
@@ -175,6 +179,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteIngressMiddlewaresByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -194,6 +199,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteIngressMiddlewaresByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -213,6 +219,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteIngressRoutesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -242,6 +249,7 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -280,6 +288,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteIngressRoutesById(@javax.annotation.Nonnull String id) throws ApiException {
@@ -297,6 +306,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteIngressRoutesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -316,6 +326,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteIngressRoutesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -335,6 +346,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteIngressServicesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -364,6 +376,7 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -402,6 +415,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteIngressServicesById(@javax.annotation.Nonnull String id) throws ApiException {
@@ -419,6 +433,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteIngressServicesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -438,6 +453,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteIngressServicesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -456,6 +472,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIngressMiddlewaresCall(final ApiCallback _callback) throws ApiException {
@@ -484,7 +501,8 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -511,35 +529,37 @@ public class IngressApi {
     /**
      * Returns every edge transform the caller&#39;s org has configured, ordered by id.
      * Returns every edge transform the caller&#39;s org has configured, ordered by id. A route names the ones it wants, in order.
-     * @return IngressMiddlewares
+     * @return IngressIngressMiddlewares
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IngressMiddlewares getIngressMiddlewares() throws ApiException {
-        ApiResponse<IngressMiddlewares> localVarResp = getIngressMiddlewaresWithHttpInfo();
+    public IngressIngressMiddlewares getIngressMiddlewares() throws ApiException {
+        ApiResponse<IngressIngressMiddlewares> localVarResp = getIngressMiddlewaresWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns every edge transform the caller&#39;s org has configured, ordered by id.
      * Returns every edge transform the caller&#39;s org has configured, ordered by id. A route names the ones it wants, in order.
-     * @return ApiResponse&lt;IngressMiddlewares&gt;
+     * @return ApiResponse&lt;IngressIngressMiddlewares&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IngressMiddlewares> getIngressMiddlewaresWithHttpInfo() throws ApiException {
+    public ApiResponse<IngressIngressMiddlewares> getIngressMiddlewaresWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getIngressMiddlewaresValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<IngressMiddlewares>(){}.getType();
+        Type localVarReturnType = new TypeToken<IngressIngressMiddlewares>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -554,12 +574,13 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIngressMiddlewaresAsync(final ApiCallback<IngressMiddlewares> _callback) throws ApiException {
+    public okhttp3.Call getIngressMiddlewaresAsync(final ApiCallback<IngressIngressMiddlewares> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIngressMiddlewaresValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<IngressMiddlewares>(){}.getType();
+        Type localVarReturnType = new TypeToken<IngressIngressMiddlewares>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -574,6 +595,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIngressMiddlewaresByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -603,7 +625,8 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -636,17 +659,18 @@ public class IngressApi {
      * Returns one of the caller org&#39;s edge transforms by id.
      * Returns one of the caller org&#39;s edge transforms by id.
      * @param id ID is the object to act on, from the path. (required)
-     * @return Middleware
+     * @return IngressMiddleware
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Middleware getIngressMiddlewaresById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Middleware> localVarResp = getIngressMiddlewaresByIdWithHttpInfo(id);
+    public IngressMiddleware getIngressMiddlewaresById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<IngressMiddleware> localVarResp = getIngressMiddlewaresByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -654,18 +678,19 @@ public class IngressApi {
      * Returns one of the caller org&#39;s edge transforms by id.
      * Returns one of the caller org&#39;s edge transforms by id.
      * @param id ID is the object to act on, from the path. (required)
-     * @return ApiResponse&lt;Middleware&gt;
+     * @return ApiResponse&lt;IngressMiddleware&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Middleware> getIngressMiddlewaresByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<IngressMiddleware> getIngressMiddlewaresByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getIngressMiddlewaresByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Middleware>(){}.getType();
+        Type localVarReturnType = new TypeToken<IngressMiddleware>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -681,12 +706,13 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIngressMiddlewaresByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Middleware> _callback) throws ApiException {
+    public okhttp3.Call getIngressMiddlewaresByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<IngressMiddleware> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIngressMiddlewaresByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Middleware>(){}.getType();
+        Type localVarReturnType = new TypeToken<IngressMiddleware>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -700,6 +726,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIngressRoutesCall(final ApiCallback _callback) throws ApiException {
@@ -728,7 +755,8 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -755,35 +783,37 @@ public class IngressApi {
     /**
      * Returns every routing rule the caller&#39;s org has configured, ordered by id.
      * Returns every routing rule the caller&#39;s org has configured, ordered by id. A route maps an exact Host (and optional path prefix) to a service.
-     * @return IngressRoutes
+     * @return IngressIngressRoutes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IngressRoutes getIngressRoutes() throws ApiException {
-        ApiResponse<IngressRoutes> localVarResp = getIngressRoutesWithHttpInfo();
+    public IngressIngressRoutes getIngressRoutes() throws ApiException {
+        ApiResponse<IngressIngressRoutes> localVarResp = getIngressRoutesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns every routing rule the caller&#39;s org has configured, ordered by id.
      * Returns every routing rule the caller&#39;s org has configured, ordered by id. A route maps an exact Host (and optional path prefix) to a service.
-     * @return ApiResponse&lt;IngressRoutes&gt;
+     * @return ApiResponse&lt;IngressIngressRoutes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IngressRoutes> getIngressRoutesWithHttpInfo() throws ApiException {
+    public ApiResponse<IngressIngressRoutes> getIngressRoutesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getIngressRoutesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<IngressRoutes>(){}.getType();
+        Type localVarReturnType = new TypeToken<IngressIngressRoutes>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -798,12 +828,13 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIngressRoutesAsync(final ApiCallback<IngressRoutes> _callback) throws ApiException {
+    public okhttp3.Call getIngressRoutesAsync(final ApiCallback<IngressIngressRoutes> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIngressRoutesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<IngressRoutes>(){}.getType();
+        Type localVarReturnType = new TypeToken<IngressIngressRoutes>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -818,6 +849,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIngressRoutesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -847,7 +879,8 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -880,17 +913,18 @@ public class IngressApi {
      * Returns one of the caller org&#39;s routing rules by id.
      * Returns one of the caller org&#39;s routing rules by id.
      * @param id ID is the object to act on, from the path. (required)
-     * @return Route
+     * @return IngressRoute
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Route getIngressRoutesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Route> localVarResp = getIngressRoutesByIdWithHttpInfo(id);
+    public IngressRoute getIngressRoutesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<IngressRoute> localVarResp = getIngressRoutesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -898,18 +932,19 @@ public class IngressApi {
      * Returns one of the caller org&#39;s routing rules by id.
      * Returns one of the caller org&#39;s routing rules by id.
      * @param id ID is the object to act on, from the path. (required)
-     * @return ApiResponse&lt;Route&gt;
+     * @return ApiResponse&lt;IngressRoute&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Route> getIngressRoutesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<IngressRoute> getIngressRoutesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getIngressRoutesByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Route>(){}.getType();
+        Type localVarReturnType = new TypeToken<IngressRoute>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -925,12 +960,13 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIngressRoutesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Route> _callback) throws ApiException {
+    public okhttp3.Call getIngressRoutesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<IngressRoute> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIngressRoutesByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Route>(){}.getType();
+        Type localVarReturnType = new TypeToken<IngressRoute>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -944,6 +980,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIngressServicesCall(final ApiCallback _callback) throws ApiException {
@@ -972,7 +1009,8 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -999,35 +1037,37 @@ public class IngressApi {
     /**
      * Returns every backend pool the caller&#39;s org has configured, ordered by id.
      * Returns every backend pool the caller&#39;s org has configured, ordered by id. A service is the weighted round-robin target a route dispatches to.
-     * @return IngressServices
+     * @return IngressIngressServices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IngressServices getIngressServices() throws ApiException {
-        ApiResponse<IngressServices> localVarResp = getIngressServicesWithHttpInfo();
+    public IngressIngressServices getIngressServices() throws ApiException {
+        ApiResponse<IngressIngressServices> localVarResp = getIngressServicesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns every backend pool the caller&#39;s org has configured, ordered by id.
      * Returns every backend pool the caller&#39;s org has configured, ordered by id. A service is the weighted round-robin target a route dispatches to.
-     * @return ApiResponse&lt;IngressServices&gt;
+     * @return ApiResponse&lt;IngressIngressServices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IngressServices> getIngressServicesWithHttpInfo() throws ApiException {
+    public ApiResponse<IngressIngressServices> getIngressServicesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getIngressServicesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<IngressServices>(){}.getType();
+        Type localVarReturnType = new TypeToken<IngressIngressServices>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1042,12 +1082,13 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIngressServicesAsync(final ApiCallback<IngressServices> _callback) throws ApiException {
+    public okhttp3.Call getIngressServicesAsync(final ApiCallback<IngressIngressServices> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIngressServicesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<IngressServices>(){}.getType();
+        Type localVarReturnType = new TypeToken<IngressIngressServices>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1062,6 +1103,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIngressServicesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1091,7 +1133,8 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1124,17 +1167,18 @@ public class IngressApi {
      * Returns one of the caller org&#39;s backend pools by id.
      * Returns one of the caller org&#39;s backend pools by id.
      * @param id ID is the object to act on, from the path. (required)
-     * @return Upstream
+     * @return IngressUpstream
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Upstream getIngressServicesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Upstream> localVarResp = getIngressServicesByIdWithHttpInfo(id);
+    public IngressUpstream getIngressServicesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<IngressUpstream> localVarResp = getIngressServicesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1142,18 +1186,19 @@ public class IngressApi {
      * Returns one of the caller org&#39;s backend pools by id.
      * Returns one of the caller org&#39;s backend pools by id.
      * @param id ID is the object to act on, from the path. (required)
-     * @return ApiResponse&lt;Upstream&gt;
+     * @return ApiResponse&lt;IngressUpstream&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Upstream> getIngressServicesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<IngressUpstream> getIngressServicesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getIngressServicesByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Upstream>(){}.getType();
+        Type localVarReturnType = new TypeToken<IngressUpstream>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1169,12 +1214,13 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIngressServicesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Upstream> _callback) throws ApiException {
+    public okhttp3.Call getIngressServicesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<IngressUpstream> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIngressServicesByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Upstream>(){}.getType();
+        Type localVarReturnType = new TypeToken<IngressUpstream>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1188,6 +1234,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIngressStatusCall(final ApiCallback _callback) throws ApiException {
@@ -1216,7 +1263,8 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1241,43 +1289,45 @@ public class IngressApi {
     }
 
     /**
-     * Status reports the ingress edge&#39;s live posture: the role this instance runs in (app or edge), whether its listeners are bound and on which addresses, the ACME posture (staging flag and certificate cache directory), how many hosts the compiled route table currently serves, and how many the ACME HostPolicy will issue a certificate for.
-     * Status reports the ingress edge&#39;s live posture: the role this instance runs in (app or edge), whether its listeners are bound and on which addresses, the ACME posture (staging flag and certificate cache directory), how many hosts the compiled route table currently serves, and how many the ACME HostPolicy will issue a certificate for.
-     * @return IngressStatus
+     * Reports the ingress edge&#39;s live posture: the role this instance runs in (app or edge), whether its listeners are bound and on which addresses, the ACME posture (staging flag and certificate cache directory), how many hosts the compiled route table currently serves, and how many the ACME HostPolicy will issue a certificate for.
+     * Reports the ingress edge&#39;s live posture: the role this instance runs in (app or edge), whether its listeners are bound and on which addresses, the ACME posture (staging flag and certificate cache directory), how many hosts the compiled route table currently serves, and how many the ACME HostPolicy will issue a certificate for.
+     * @return IngressIngressStatus
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IngressStatus getIngressStatus() throws ApiException {
-        ApiResponse<IngressStatus> localVarResp = getIngressStatusWithHttpInfo();
+    public IngressIngressStatus getIngressStatus() throws ApiException {
+        ApiResponse<IngressIngressStatus> localVarResp = getIngressStatusWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Status reports the ingress edge&#39;s live posture: the role this instance runs in (app or edge), whether its listeners are bound and on which addresses, the ACME posture (staging flag and certificate cache directory), how many hosts the compiled route table currently serves, and how many the ACME HostPolicy will issue a certificate for.
-     * Status reports the ingress edge&#39;s live posture: the role this instance runs in (app or edge), whether its listeners are bound and on which addresses, the ACME posture (staging flag and certificate cache directory), how many hosts the compiled route table currently serves, and how many the ACME HostPolicy will issue a certificate for.
-     * @return ApiResponse&lt;IngressStatus&gt;
+     * Reports the ingress edge&#39;s live posture: the role this instance runs in (app or edge), whether its listeners are bound and on which addresses, the ACME posture (staging flag and certificate cache directory), how many hosts the compiled route table currently serves, and how many the ACME HostPolicy will issue a certificate for.
+     * Reports the ingress edge&#39;s live posture: the role this instance runs in (app or edge), whether its listeners are bound and on which addresses, the ACME posture (staging flag and certificate cache directory), how many hosts the compiled route table currently serves, and how many the ACME HostPolicy will issue a certificate for.
+     * @return ApiResponse&lt;IngressIngressStatus&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IngressStatus> getIngressStatusWithHttpInfo() throws ApiException {
+    public ApiResponse<IngressIngressStatus> getIngressStatusWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getIngressStatusValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<IngressStatus>(){}.getType();
+        Type localVarReturnType = new TypeToken<IngressIngressStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Status reports the ingress edge&#39;s live posture: the role this instance runs in (app or edge), whether its listeners are bound and on which addresses, the ACME posture (staging flag and certificate cache directory), how many hosts the compiled route table currently serves, and how many the ACME HostPolicy will issue a certificate for. (asynchronously)
-     * Status reports the ingress edge&#39;s live posture: the role this instance runs in (app or edge), whether its listeners are bound and on which addresses, the ACME posture (staging flag and certificate cache directory), how many hosts the compiled route table currently serves, and how many the ACME HostPolicy will issue a certificate for.
+     * Reports the ingress edge&#39;s live posture: the role this instance runs in (app or edge), whether its listeners are bound and on which addresses, the ACME posture (staging flag and certificate cache directory), how many hosts the compiled route table currently serves, and how many the ACME HostPolicy will issue a certificate for. (asynchronously)
+     * Reports the ingress edge&#39;s live posture: the role this instance runs in (app or edge), whether its listeners are bound and on which addresses, the ACME posture (staging flag and certificate cache directory), how many hosts the compiled route table currently serves, and how many the ACME HostPolicy will issue a certificate for.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1286,12 +1336,13 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIngressStatusAsync(final ApiCallback<IngressStatus> _callback) throws ApiException {
+    public okhttp3.Call getIngressStatusAsync(final ApiCallback<IngressIngressStatus> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIngressStatusValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<IngressStatus>(){}.getType();
+        Type localVarReturnType = new TypeToken<IngressIngressStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1305,6 +1356,7 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getIngressTlsCall(final ApiCallback _callback) throws ApiException {
@@ -1333,7 +1385,8 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1358,43 +1411,45 @@ public class IngressApi {
     }
 
     /**
-     * GetTLS returns the caller org&#39;s ACME intent together with the edge-wide TLS facts it lands in: which role this instance runs in, whether its listeners are bound, every host the ACME HostPolicy will issue a certificate for (the union across ALL orgs of TLS-marked routes and configured extraHosts, because one process holds one certificate cache), and the ACME directory and account email the process was started with.
-     * GetTLS returns the caller org&#39;s ACME intent together with the edge-wide TLS facts it lands in: which role this instance runs in, whether its listeners are bound, every host the ACME HostPolicy will issue a certificate for (the union across ALL orgs of TLS-marked routes and configured extraHosts, because one process holds one certificate cache), and the ACME directory and account email the process was started with.
-     * @return IngressTLS
+     * Returns the caller org&#39;s ACME intent together with the edge-wide TLS facts it lands in: which role this instance runs in, whether its listeners are bound, every host the ACME HostPolicy will issue a certificate for (the union across ALL orgs of TLS-marked routes and configured extraHosts, because one process holds one certificate cache), and the ACME directory and account email the process was started with.
+     * Returns the caller org&#39;s ACME intent together with the edge-wide TLS facts it lands in: which role this instance runs in, whether its listeners are bound, every host the ACME HostPolicy will issue a certificate for (the union across ALL orgs of TLS-marked routes and configured extraHosts, because one process holds one certificate cache), and the ACME directory and account email the process was started with.
+     * @return IngressIngressTLS
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IngressTLS getIngressTls() throws ApiException {
-        ApiResponse<IngressTLS> localVarResp = getIngressTlsWithHttpInfo();
+    public IngressIngressTLS getIngressTls() throws ApiException {
+        ApiResponse<IngressIngressTLS> localVarResp = getIngressTlsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * GetTLS returns the caller org&#39;s ACME intent together with the edge-wide TLS facts it lands in: which role this instance runs in, whether its listeners are bound, every host the ACME HostPolicy will issue a certificate for (the union across ALL orgs of TLS-marked routes and configured extraHosts, because one process holds one certificate cache), and the ACME directory and account email the process was started with.
-     * GetTLS returns the caller org&#39;s ACME intent together with the edge-wide TLS facts it lands in: which role this instance runs in, whether its listeners are bound, every host the ACME HostPolicy will issue a certificate for (the union across ALL orgs of TLS-marked routes and configured extraHosts, because one process holds one certificate cache), and the ACME directory and account email the process was started with.
-     * @return ApiResponse&lt;IngressTLS&gt;
+     * Returns the caller org&#39;s ACME intent together with the edge-wide TLS facts it lands in: which role this instance runs in, whether its listeners are bound, every host the ACME HostPolicy will issue a certificate for (the union across ALL orgs of TLS-marked routes and configured extraHosts, because one process holds one certificate cache), and the ACME directory and account email the process was started with.
+     * Returns the caller org&#39;s ACME intent together with the edge-wide TLS facts it lands in: which role this instance runs in, whether its listeners are bound, every host the ACME HostPolicy will issue a certificate for (the union across ALL orgs of TLS-marked routes and configured extraHosts, because one process holds one certificate cache), and the ACME directory and account email the process was started with.
+     * @return ApiResponse&lt;IngressIngressTLS&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IngressTLS> getIngressTlsWithHttpInfo() throws ApiException {
+    public ApiResponse<IngressIngressTLS> getIngressTlsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getIngressTlsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<IngressTLS>(){}.getType();
+        Type localVarReturnType = new TypeToken<IngressIngressTLS>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * GetTLS returns the caller org&#39;s ACME intent together with the edge-wide TLS facts it lands in: which role this instance runs in, whether its listeners are bound, every host the ACME HostPolicy will issue a certificate for (the union across ALL orgs of TLS-marked routes and configured extraHosts, because one process holds one certificate cache), and the ACME directory and account email the process was started with. (asynchronously)
-     * GetTLS returns the caller org&#39;s ACME intent together with the edge-wide TLS facts it lands in: which role this instance runs in, whether its listeners are bound, every host the ACME HostPolicy will issue a certificate for (the union across ALL orgs of TLS-marked routes and configured extraHosts, because one process holds one certificate cache), and the ACME directory and account email the process was started with.
+     * Returns the caller org&#39;s ACME intent together with the edge-wide TLS facts it lands in: which role this instance runs in, whether its listeners are bound, every host the ACME HostPolicy will issue a certificate for (the union across ALL orgs of TLS-marked routes and configured extraHosts, because one process holds one certificate cache), and the ACME directory and account email the process was started with. (asynchronously)
+     * Returns the caller org&#39;s ACME intent together with the edge-wide TLS facts it lands in: which role this instance runs in, whether its listeners are bound, every host the ACME HostPolicy will issue a certificate for (the union across ALL orgs of TLS-marked routes and configured extraHosts, because one process holds one certificate cache), and the ACME directory and account email the process was started with.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1403,18 +1458,19 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIngressTlsAsync(final ApiCallback<IngressTLS> _callback) throws ApiException {
+    public okhttp3.Call getIngressTlsAsync(final ApiCallback<IngressIngressTLS> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIngressTlsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<IngressTLS>(){}.getType();
+        Type localVarReturnType = new TypeToken<IngressIngressTLS>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postIngressMiddlewares
-     * @param middleware  (required)
+     * @param ingressMiddleware  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1423,9 +1479,10 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIngressMiddlewaresCall(@javax.annotation.Nonnull Middleware middleware, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIngressMiddlewaresCall(@javax.annotation.Nonnull IngressMiddleware ingressMiddleware, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1439,7 +1496,7 @@ public class IngressApi {
             basePath = null;
         }
 
-        Object localVarPostBody = middleware;
+        Object localVarPostBody = ingressMiddleware;
 
         // create path and map variables
         String localVarPath = "/v1/ingress/middlewares";
@@ -1451,7 +1508,8 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1471,57 +1529,59 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIngressMiddlewaresValidateBeforeCall(@javax.annotation.Nonnull Middleware middleware, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'middleware' is set
-        if (middleware == null) {
-            throw new ApiException("Missing the required parameter 'middleware' when calling postIngressMiddlewares(Async)");
+    private okhttp3.Call postIngressMiddlewaresValidateBeforeCall(@javax.annotation.Nonnull IngressMiddleware ingressMiddleware, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'ingressMiddleware' is set
+        if (ingressMiddleware == null) {
+            throw new ApiException("Missing the required parameter 'ingressMiddleware' when calling postIngressMiddlewares(Async)");
         }
 
-        return postIngressMiddlewaresCall(middleware, _callback);
+        return postIngressMiddlewaresCall(ingressMiddleware, _callback);
 
     }
 
     /**
      * Creates or replaces one edge transform and hot-applies it.
      * Creates or replaces one edge transform and hot-applies it. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. type must be one of redirectScheme, stripPrefix, addPrefix or headers, and stripPrefix/addPrefix each require their config key.
-     * @param middleware  (required)
-     * @return Middleware
+     * @param ingressMiddleware  (required)
+     * @return IngressMiddleware
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Middleware postIngressMiddlewares(@javax.annotation.Nonnull Middleware middleware) throws ApiException {
-        ApiResponse<Middleware> localVarResp = postIngressMiddlewaresWithHttpInfo(middleware);
+    public IngressMiddleware postIngressMiddlewares(@javax.annotation.Nonnull IngressMiddleware ingressMiddleware) throws ApiException {
+        ApiResponse<IngressMiddleware> localVarResp = postIngressMiddlewaresWithHttpInfo(ingressMiddleware);
         return localVarResp.getData();
     }
 
     /**
      * Creates or replaces one edge transform and hot-applies it.
      * Creates or replaces one edge transform and hot-applies it. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. type must be one of redirectScheme, stripPrefix, addPrefix or headers, and stripPrefix/addPrefix each require their config key.
-     * @param middleware  (required)
-     * @return ApiResponse&lt;Middleware&gt;
+     * @param ingressMiddleware  (required)
+     * @return ApiResponse&lt;IngressMiddleware&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Middleware> postIngressMiddlewaresWithHttpInfo(@javax.annotation.Nonnull Middleware middleware) throws ApiException {
-        okhttp3.Call localVarCall = postIngressMiddlewaresValidateBeforeCall(middleware, null);
-        Type localVarReturnType = new TypeToken<Middleware>(){}.getType();
+    public ApiResponse<IngressMiddleware> postIngressMiddlewaresWithHttpInfo(@javax.annotation.Nonnull IngressMiddleware ingressMiddleware) throws ApiException {
+        okhttp3.Call localVarCall = postIngressMiddlewaresValidateBeforeCall(ingressMiddleware, null);
+        Type localVarReturnType = new TypeToken<IngressMiddleware>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Creates or replaces one edge transform and hot-applies it. (asynchronously)
      * Creates or replaces one edge transform and hot-applies it. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. type must be one of redirectScheme, stripPrefix, addPrefix or headers, and stripPrefix/addPrefix each require their config key.
-     * @param middleware  (required)
+     * @param ingressMiddleware  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1530,18 +1590,19 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIngressMiddlewaresAsync(@javax.annotation.Nonnull Middleware middleware, final ApiCallback<Middleware> _callback) throws ApiException {
+    public okhttp3.Call postIngressMiddlewaresAsync(@javax.annotation.Nonnull IngressMiddleware ingressMiddleware, final ApiCallback<IngressMiddleware> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postIngressMiddlewaresValidateBeforeCall(middleware, _callback);
-        Type localVarReturnType = new TypeToken<Middleware>(){}.getType();
+        okhttp3.Call localVarCall = postIngressMiddlewaresValidateBeforeCall(ingressMiddleware, _callback);
+        Type localVarReturnType = new TypeToken<IngressMiddleware>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postIngressRoutes
-     * @param route  (required)
+     * @param ingressRoute  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1550,9 +1611,10 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIngressRoutesCall(@javax.annotation.Nonnull Route route, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIngressRoutesCall(@javax.annotation.Nonnull IngressRoute ingressRoute, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1566,7 +1628,7 @@ public class IngressApi {
             basePath = null;
         }
 
-        Object localVarPostBody = route;
+        Object localVarPostBody = ingressRoute;
 
         // create path and map variables
         String localVarPath = "/v1/ingress/routes";
@@ -1578,7 +1640,8 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1598,57 +1661,59 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIngressRoutesValidateBeforeCall(@javax.annotation.Nonnull Route route, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'route' is set
-        if (route == null) {
-            throw new ApiException("Missing the required parameter 'route' when calling postIngressRoutes(Async)");
+    private okhttp3.Call postIngressRoutesValidateBeforeCall(@javax.annotation.Nonnull IngressRoute ingressRoute, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'ingressRoute' is set
+        if (ingressRoute == null) {
+            throw new ApiException("Missing the required parameter 'ingressRoute' when calling postIngressRoutes(Async)");
         }
 
-        return postIngressRoutesCall(route, _callback);
+        return postIngressRoutesCall(ingressRoute, _callback);
 
     }
 
     /**
      * Creates or replaces one routing rule and hot-applies the new table — there is no config file and no restart.
      * Creates or replaces one routing rule and hot-applies the new table — there is no config file and no restart. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. A route&#39;s host is a GLOBALLY unique DNS claim: a host another org&#39;s route already holds is refused 409, so no tenant can hijack another&#39;s hostname.
-     * @param route  (required)
-     * @return Route
+     * @param ingressRoute  (required)
+     * @return IngressRoute
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Route postIngressRoutes(@javax.annotation.Nonnull Route route) throws ApiException {
-        ApiResponse<Route> localVarResp = postIngressRoutesWithHttpInfo(route);
+    public IngressRoute postIngressRoutes(@javax.annotation.Nonnull IngressRoute ingressRoute) throws ApiException {
+        ApiResponse<IngressRoute> localVarResp = postIngressRoutesWithHttpInfo(ingressRoute);
         return localVarResp.getData();
     }
 
     /**
      * Creates or replaces one routing rule and hot-applies the new table — there is no config file and no restart.
      * Creates or replaces one routing rule and hot-applies the new table — there is no config file and no restart. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. A route&#39;s host is a GLOBALLY unique DNS claim: a host another org&#39;s route already holds is refused 409, so no tenant can hijack another&#39;s hostname.
-     * @param route  (required)
-     * @return ApiResponse&lt;Route&gt;
+     * @param ingressRoute  (required)
+     * @return ApiResponse&lt;IngressRoute&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Route> postIngressRoutesWithHttpInfo(@javax.annotation.Nonnull Route route) throws ApiException {
-        okhttp3.Call localVarCall = postIngressRoutesValidateBeforeCall(route, null);
-        Type localVarReturnType = new TypeToken<Route>(){}.getType();
+    public ApiResponse<IngressRoute> postIngressRoutesWithHttpInfo(@javax.annotation.Nonnull IngressRoute ingressRoute) throws ApiException {
+        okhttp3.Call localVarCall = postIngressRoutesValidateBeforeCall(ingressRoute, null);
+        Type localVarReturnType = new TypeToken<IngressRoute>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Creates or replaces one routing rule and hot-applies the new table — there is no config file and no restart. (asynchronously)
      * Creates or replaces one routing rule and hot-applies the new table — there is no config file and no restart. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. A route&#39;s host is a GLOBALLY unique DNS claim: a host another org&#39;s route already holds is refused 409, so no tenant can hijack another&#39;s hostname.
-     * @param route  (required)
+     * @param ingressRoute  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1657,18 +1722,19 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIngressRoutesAsync(@javax.annotation.Nonnull Route route, final ApiCallback<Route> _callback) throws ApiException {
+    public okhttp3.Call postIngressRoutesAsync(@javax.annotation.Nonnull IngressRoute ingressRoute, final ApiCallback<IngressRoute> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postIngressRoutesValidateBeforeCall(route, _callback);
-        Type localVarReturnType = new TypeToken<Route>(){}.getType();
+        okhttp3.Call localVarCall = postIngressRoutesValidateBeforeCall(ingressRoute, _callback);
+        Type localVarReturnType = new TypeToken<IngressRoute>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postIngressServices
-     * @param upstream  (required)
+     * @param ingressUpstream  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1677,9 +1743,10 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIngressServicesCall(@javax.annotation.Nonnull Upstream upstream, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIngressServicesCall(@javax.annotation.Nonnull IngressUpstream ingressUpstream, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1693,7 +1760,7 @@ public class IngressApi {
             basePath = null;
         }
 
-        Object localVarPostBody = upstream;
+        Object localVarPostBody = ingressUpstream;
 
         // create path and map variables
         String localVarPath = "/v1/ingress/services";
@@ -1705,7 +1772,8 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1725,57 +1793,59 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIngressServicesValidateBeforeCall(@javax.annotation.Nonnull Upstream upstream, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'upstream' is set
-        if (upstream == null) {
-            throw new ApiException("Missing the required parameter 'upstream' when calling postIngressServices(Async)");
+    private okhttp3.Call postIngressServicesValidateBeforeCall(@javax.annotation.Nonnull IngressUpstream ingressUpstream, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'ingressUpstream' is set
+        if (ingressUpstream == null) {
+            throw new ApiException("Missing the required parameter 'ingressUpstream' when calling postIngressServices(Async)");
         }
 
-        return postIngressServicesCall(upstream, _callback);
+        return postIngressServicesCall(ingressUpstream, _callback);
 
     }
 
     /**
      * Creates or replaces one backend pool and hot-applies it.
      * Creates or replaces one backend pool and hot-applies it. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. A pool needs at least one backend and every backend URL must be http(s)://host[:port].
-     * @param upstream  (required)
-     * @return Upstream
+     * @param ingressUpstream  (required)
+     * @return IngressUpstream
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Upstream postIngressServices(@javax.annotation.Nonnull Upstream upstream) throws ApiException {
-        ApiResponse<Upstream> localVarResp = postIngressServicesWithHttpInfo(upstream);
+    public IngressUpstream postIngressServices(@javax.annotation.Nonnull IngressUpstream ingressUpstream) throws ApiException {
+        ApiResponse<IngressUpstream> localVarResp = postIngressServicesWithHttpInfo(ingressUpstream);
         return localVarResp.getData();
     }
 
     /**
      * Creates or replaces one backend pool and hot-applies it.
      * Creates or replaces one backend pool and hot-applies it. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. A pool needs at least one backend and every backend URL must be http(s)://host[:port].
-     * @param upstream  (required)
-     * @return ApiResponse&lt;Upstream&gt;
+     * @param ingressUpstream  (required)
+     * @return ApiResponse&lt;IngressUpstream&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Upstream> postIngressServicesWithHttpInfo(@javax.annotation.Nonnull Upstream upstream) throws ApiException {
-        okhttp3.Call localVarCall = postIngressServicesValidateBeforeCall(upstream, null);
-        Type localVarReturnType = new TypeToken<Upstream>(){}.getType();
+    public ApiResponse<IngressUpstream> postIngressServicesWithHttpInfo(@javax.annotation.Nonnull IngressUpstream ingressUpstream) throws ApiException {
+        okhttp3.Call localVarCall = postIngressServicesValidateBeforeCall(ingressUpstream, null);
+        Type localVarReturnType = new TypeToken<IngressUpstream>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Creates or replaces one backend pool and hot-applies it. (asynchronously)
      * Creates or replaces one backend pool and hot-applies it. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. A pool needs at least one backend and every backend URL must be http(s)://host[:port].
-     * @param upstream  (required)
+     * @param ingressUpstream  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1784,19 +1854,20 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIngressServicesAsync(@javax.annotation.Nonnull Upstream upstream, final ApiCallback<Upstream> _callback) throws ApiException {
+    public okhttp3.Call postIngressServicesAsync(@javax.annotation.Nonnull IngressUpstream ingressUpstream, final ApiCallback<IngressUpstream> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postIngressServicesValidateBeforeCall(upstream, _callback);
-        Type localVarReturnType = new TypeToken<Upstream>(){}.getType();
+        okhttp3.Call localVarCall = postIngressServicesValidateBeforeCall(ingressUpstream, _callback);
+        Type localVarReturnType = new TypeToken<IngressUpstream>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putIngressMiddlewaresById
      * @param id ID identifies the transform within the org: [A-Za-z0-9-_.], at most 128 chars. A create that omits it gets a generated one. Routes reference it by this id. (required)
-     * @param middleware  (required)
+     * @param ingressMiddleware  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1805,9 +1876,10 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putIngressMiddlewaresByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Middleware middleware, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIngressMiddlewaresByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull IngressMiddleware ingressMiddleware, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1821,7 +1893,7 @@ public class IngressApi {
             basePath = null;
         }
 
-        Object localVarPostBody = middleware;
+        Object localVarPostBody = ingressMiddleware;
 
         // create path and map variables
         String localVarPath = "/v1/ingress/middlewares/{id}"
@@ -1834,7 +1906,8 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1854,18 +1927,18 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putIngressMiddlewaresByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Middleware middleware, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putIngressMiddlewaresByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull IngressMiddleware ingressMiddleware, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling putIngressMiddlewaresById(Async)");
         }
 
-        // verify the required parameter 'middleware' is set
-        if (middleware == null) {
-            throw new ApiException("Missing the required parameter 'middleware' when calling putIngressMiddlewaresById(Async)");
+        // verify the required parameter 'ingressMiddleware' is set
+        if (ingressMiddleware == null) {
+            throw new ApiException("Missing the required parameter 'ingressMiddleware' when calling putIngressMiddlewaresById(Async)");
         }
 
-        return putIngressMiddlewaresByIdCall(id, middleware, _callback);
+        return putIngressMiddlewaresByIdCall(id, ingressMiddleware, _callback);
 
     }
 
@@ -1873,18 +1946,19 @@ public class IngressApi {
      * Creates or replaces one edge transform and hot-applies it.
      * Creates or replaces one edge transform and hot-applies it. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. type must be one of redirectScheme, stripPrefix, addPrefix or headers, and stripPrefix/addPrefix each require their config key.
      * @param id ID identifies the transform within the org: [A-Za-z0-9-_.], at most 128 chars. A create that omits it gets a generated one. Routes reference it by this id. (required)
-     * @param middleware  (required)
-     * @return Middleware
+     * @param ingressMiddleware  (required)
+     * @return IngressMiddleware
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Middleware putIngressMiddlewaresById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Middleware middleware) throws ApiException {
-        ApiResponse<Middleware> localVarResp = putIngressMiddlewaresByIdWithHttpInfo(id, middleware);
+    public IngressMiddleware putIngressMiddlewaresById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull IngressMiddleware ingressMiddleware) throws ApiException {
+        ApiResponse<IngressMiddleware> localVarResp = putIngressMiddlewaresByIdWithHttpInfo(id, ingressMiddleware);
         return localVarResp.getData();
     }
 
@@ -1892,19 +1966,20 @@ public class IngressApi {
      * Creates or replaces one edge transform and hot-applies it.
      * Creates or replaces one edge transform and hot-applies it. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. type must be one of redirectScheme, stripPrefix, addPrefix or headers, and stripPrefix/addPrefix each require their config key.
      * @param id ID identifies the transform within the org: [A-Za-z0-9-_.], at most 128 chars. A create that omits it gets a generated one. Routes reference it by this id. (required)
-     * @param middleware  (required)
-     * @return ApiResponse&lt;Middleware&gt;
+     * @param ingressMiddleware  (required)
+     * @return ApiResponse&lt;IngressMiddleware&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Middleware> putIngressMiddlewaresByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Middleware middleware) throws ApiException {
-        okhttp3.Call localVarCall = putIngressMiddlewaresByIdValidateBeforeCall(id, middleware, null);
-        Type localVarReturnType = new TypeToken<Middleware>(){}.getType();
+    public ApiResponse<IngressMiddleware> putIngressMiddlewaresByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull IngressMiddleware ingressMiddleware) throws ApiException {
+        okhttp3.Call localVarCall = putIngressMiddlewaresByIdValidateBeforeCall(id, ingressMiddleware, null);
+        Type localVarReturnType = new TypeToken<IngressMiddleware>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1912,7 +1987,7 @@ public class IngressApi {
      * Creates or replaces one edge transform and hot-applies it. (asynchronously)
      * Creates or replaces one edge transform and hot-applies it. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. type must be one of redirectScheme, stripPrefix, addPrefix or headers, and stripPrefix/addPrefix each require their config key.
      * @param id ID identifies the transform within the org: [A-Za-z0-9-_.], at most 128 chars. A create that omits it gets a generated one. Routes reference it by this id. (required)
-     * @param middleware  (required)
+     * @param ingressMiddleware  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1921,19 +1996,20 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putIngressMiddlewaresByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Middleware middleware, final ApiCallback<Middleware> _callback) throws ApiException {
+    public okhttp3.Call putIngressMiddlewaresByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull IngressMiddleware ingressMiddleware, final ApiCallback<IngressMiddleware> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putIngressMiddlewaresByIdValidateBeforeCall(id, middleware, _callback);
-        Type localVarReturnType = new TypeToken<Middleware>(){}.getType();
+        okhttp3.Call localVarCall = putIngressMiddlewaresByIdValidateBeforeCall(id, ingressMiddleware, _callback);
+        Type localVarReturnType = new TypeToken<IngressMiddleware>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putIngressRoutesById
      * @param id ID identifies the route within the org: [A-Za-z0-9-_.], at most 128 chars. A create that omits it gets a generated one. (required)
-     * @param route  (required)
+     * @param ingressRoute  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1942,9 +2018,10 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putIngressRoutesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Route route, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIngressRoutesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull IngressRoute ingressRoute, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1958,7 +2035,7 @@ public class IngressApi {
             basePath = null;
         }
 
-        Object localVarPostBody = route;
+        Object localVarPostBody = ingressRoute;
 
         // create path and map variables
         String localVarPath = "/v1/ingress/routes/{id}"
@@ -1971,7 +2048,8 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1991,18 +2069,18 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putIngressRoutesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Route route, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putIngressRoutesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull IngressRoute ingressRoute, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling putIngressRoutesById(Async)");
         }
 
-        // verify the required parameter 'route' is set
-        if (route == null) {
-            throw new ApiException("Missing the required parameter 'route' when calling putIngressRoutesById(Async)");
+        // verify the required parameter 'ingressRoute' is set
+        if (ingressRoute == null) {
+            throw new ApiException("Missing the required parameter 'ingressRoute' when calling putIngressRoutesById(Async)");
         }
 
-        return putIngressRoutesByIdCall(id, route, _callback);
+        return putIngressRoutesByIdCall(id, ingressRoute, _callback);
 
     }
 
@@ -2010,18 +2088,19 @@ public class IngressApi {
      * Creates or replaces one routing rule and hot-applies the new table — there is no config file and no restart.
      * Creates or replaces one routing rule and hot-applies the new table — there is no config file and no restart. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. A route&#39;s host is a GLOBALLY unique DNS claim: a host another org&#39;s route already holds is refused 409, so no tenant can hijack another&#39;s hostname.
      * @param id ID identifies the route within the org: [A-Za-z0-9-_.], at most 128 chars. A create that omits it gets a generated one. (required)
-     * @param route  (required)
-     * @return Route
+     * @param ingressRoute  (required)
+     * @return IngressRoute
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Route putIngressRoutesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Route route) throws ApiException {
-        ApiResponse<Route> localVarResp = putIngressRoutesByIdWithHttpInfo(id, route);
+    public IngressRoute putIngressRoutesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull IngressRoute ingressRoute) throws ApiException {
+        ApiResponse<IngressRoute> localVarResp = putIngressRoutesByIdWithHttpInfo(id, ingressRoute);
         return localVarResp.getData();
     }
 
@@ -2029,19 +2108,20 @@ public class IngressApi {
      * Creates or replaces one routing rule and hot-applies the new table — there is no config file and no restart.
      * Creates or replaces one routing rule and hot-applies the new table — there is no config file and no restart. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. A route&#39;s host is a GLOBALLY unique DNS claim: a host another org&#39;s route already holds is refused 409, so no tenant can hijack another&#39;s hostname.
      * @param id ID identifies the route within the org: [A-Za-z0-9-_.], at most 128 chars. A create that omits it gets a generated one. (required)
-     * @param route  (required)
-     * @return ApiResponse&lt;Route&gt;
+     * @param ingressRoute  (required)
+     * @return ApiResponse&lt;IngressRoute&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Route> putIngressRoutesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Route route) throws ApiException {
-        okhttp3.Call localVarCall = putIngressRoutesByIdValidateBeforeCall(id, route, null);
-        Type localVarReturnType = new TypeToken<Route>(){}.getType();
+    public ApiResponse<IngressRoute> putIngressRoutesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull IngressRoute ingressRoute) throws ApiException {
+        okhttp3.Call localVarCall = putIngressRoutesByIdValidateBeforeCall(id, ingressRoute, null);
+        Type localVarReturnType = new TypeToken<IngressRoute>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2049,7 +2129,7 @@ public class IngressApi {
      * Creates or replaces one routing rule and hot-applies the new table — there is no config file and no restart. (asynchronously)
      * Creates or replaces one routing rule and hot-applies the new table — there is no config file and no restart. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. A route&#39;s host is a GLOBALLY unique DNS claim: a host another org&#39;s route already holds is refused 409, so no tenant can hijack another&#39;s hostname.
      * @param id ID identifies the route within the org: [A-Za-z0-9-_.], at most 128 chars. A create that omits it gets a generated one. (required)
-     * @param route  (required)
+     * @param ingressRoute  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2058,19 +2138,20 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putIngressRoutesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Route route, final ApiCallback<Route> _callback) throws ApiException {
+    public okhttp3.Call putIngressRoutesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull IngressRoute ingressRoute, final ApiCallback<IngressRoute> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putIngressRoutesByIdValidateBeforeCall(id, route, _callback);
-        Type localVarReturnType = new TypeToken<Route>(){}.getType();
+        okhttp3.Call localVarCall = putIngressRoutesByIdValidateBeforeCall(id, ingressRoute, _callback);
+        Type localVarReturnType = new TypeToken<IngressRoute>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putIngressServicesById
      * @param id ID identifies the pool within the org: [A-Za-z0-9-_.], at most 128 chars. A create that omits it gets a generated one. Routes reference it by this id. (required)
-     * @param upstream  (required)
+     * @param ingressUpstream  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2079,9 +2160,10 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putIngressServicesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Upstream upstream, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIngressServicesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull IngressUpstream ingressUpstream, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2095,7 +2177,7 @@ public class IngressApi {
             basePath = null;
         }
 
-        Object localVarPostBody = upstream;
+        Object localVarPostBody = ingressUpstream;
 
         // create path and map variables
         String localVarPath = "/v1/ingress/services/{id}"
@@ -2108,7 +2190,8 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2128,18 +2211,18 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putIngressServicesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Upstream upstream, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putIngressServicesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull IngressUpstream ingressUpstream, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling putIngressServicesById(Async)");
         }
 
-        // verify the required parameter 'upstream' is set
-        if (upstream == null) {
-            throw new ApiException("Missing the required parameter 'upstream' when calling putIngressServicesById(Async)");
+        // verify the required parameter 'ingressUpstream' is set
+        if (ingressUpstream == null) {
+            throw new ApiException("Missing the required parameter 'ingressUpstream' when calling putIngressServicesById(Async)");
         }
 
-        return putIngressServicesByIdCall(id, upstream, _callback);
+        return putIngressServicesByIdCall(id, ingressUpstream, _callback);
 
     }
 
@@ -2147,18 +2230,19 @@ public class IngressApi {
      * Creates or replaces one backend pool and hot-applies it.
      * Creates or replaces one backend pool and hot-applies it. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. A pool needs at least one backend and every backend URL must be http(s)://host[:port].
      * @param id ID identifies the pool within the org: [A-Za-z0-9-_.], at most 128 chars. A create that omits it gets a generated one. Routes reference it by this id. (required)
-     * @param upstream  (required)
-     * @return Upstream
+     * @param ingressUpstream  (required)
+     * @return IngressUpstream
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Upstream putIngressServicesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Upstream upstream) throws ApiException {
-        ApiResponse<Upstream> localVarResp = putIngressServicesByIdWithHttpInfo(id, upstream);
+    public IngressUpstream putIngressServicesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull IngressUpstream ingressUpstream) throws ApiException {
+        ApiResponse<IngressUpstream> localVarResp = putIngressServicesByIdWithHttpInfo(id, ingressUpstream);
         return localVarResp.getData();
     }
 
@@ -2166,19 +2250,20 @@ public class IngressApi {
      * Creates or replaces one backend pool and hot-applies it.
      * Creates or replaces one backend pool and hot-applies it. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. A pool needs at least one backend and every backend URL must be http(s)://host[:port].
      * @param id ID identifies the pool within the org: [A-Za-z0-9-_.], at most 128 chars. A create that omits it gets a generated one. Routes reference it by this id. (required)
-     * @param upstream  (required)
-     * @return ApiResponse&lt;Upstream&gt;
+     * @param ingressUpstream  (required)
+     * @return ApiResponse&lt;IngressUpstream&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Upstream> putIngressServicesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Upstream upstream) throws ApiException {
-        okhttp3.Call localVarCall = putIngressServicesByIdValidateBeforeCall(id, upstream, null);
-        Type localVarReturnType = new TypeToken<Upstream>(){}.getType();
+    public ApiResponse<IngressUpstream> putIngressServicesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull IngressUpstream ingressUpstream) throws ApiException {
+        okhttp3.Call localVarCall = putIngressServicesByIdValidateBeforeCall(id, ingressUpstream, null);
+        Type localVarReturnType = new TypeToken<IngressUpstream>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2186,7 +2271,7 @@ public class IngressApi {
      * Creates or replaces one backend pool and hot-applies it. (asynchronously)
      * Creates or replaces one backend pool and hot-applies it. POST mints an id when the body omits one; PUT takes the id from the URL, which wins over any id in the body. A pool needs at least one backend and every backend URL must be http(s)://host[:port].
      * @param id ID identifies the pool within the org: [A-Za-z0-9-_.], at most 128 chars. A create that omits it gets a generated one. Routes reference it by this id. (required)
-     * @param upstream  (required)
+     * @param ingressUpstream  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2195,18 +2280,19 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putIngressServicesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Upstream upstream, final ApiCallback<Upstream> _callback) throws ApiException {
+    public okhttp3.Call putIngressServicesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull IngressUpstream ingressUpstream, final ApiCallback<IngressUpstream> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putIngressServicesByIdValidateBeforeCall(id, upstream, _callback);
-        Type localVarReturnType = new TypeToken<Upstream>(){}.getType();
+        okhttp3.Call localVarCall = putIngressServicesByIdValidateBeforeCall(id, ingressUpstream, _callback);
+        Type localVarReturnType = new TypeToken<IngressUpstream>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putIngressTls
-     * @param tlSConfig  (required)
+     * @param ingressTLSConfig  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2215,9 +2301,10 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putIngressTlsCall(@javax.annotation.Nonnull TLSConfig tlSConfig, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIngressTlsCall(@javax.annotation.Nonnull IngressTLSConfig ingressTLSConfig, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2231,7 +2318,7 @@ public class IngressApi {
             basePath = null;
         }
 
-        Object localVarPostBody = tlSConfig;
+        Object localVarPostBody = ingressTLSConfig;
 
         // create path and map variables
         String localVarPath = "/v1/ingress/tls";
@@ -2243,7 +2330,8 @@ public class IngressApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2263,57 +2351,59 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putIngressTlsValidateBeforeCall(@javax.annotation.Nonnull TLSConfig tlSConfig, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'tlSConfig' is set
-        if (tlSConfig == null) {
-            throw new ApiException("Missing the required parameter 'tlSConfig' when calling putIngressTls(Async)");
+    private okhttp3.Call putIngressTlsValidateBeforeCall(@javax.annotation.Nonnull IngressTLSConfig ingressTLSConfig, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'ingressTLSConfig' is set
+        if (ingressTLSConfig == null) {
+            throw new ApiException("Missing the required parameter 'ingressTLSConfig' when calling putIngressTls(Async)");
         }
 
-        return putIngressTlsCall(tlSConfig, _callback);
+        return putIngressTlsCall(ingressTLSConfig, _callback);
 
     }
 
     /**
-     * PutTLS replaces the caller org&#39;s ACME intent and hot-applies what can be hot-applied.
-     * PutTLS replaces the caller org&#39;s ACME intent and hot-applies what can be hot-applied. extraHosts are normalized and validated, then feed the ACME HostPolicy on the reload this op performs, alongside the per-route tls flags. acmeEmail and staging bind an ACME account for the lifetime of an edge process, so they only take effect when the edge (re)starts — the returned note says so.
-     * @param tlSConfig  (required)
-     * @return TLSConfig
+     * Replaces the caller org&#39;s ACME intent and hot-applies what can be hot-applied.
+     * Replaces the caller org&#39;s ACME intent and hot-applies what can be hot-applied. extraHosts are normalized and validated, then feed the ACME HostPolicy on the reload this op performs, alongside the per-route tls flags. acmeEmail and staging bind an ACME account for the lifetime of an edge process, so they only take effect when the edge (re)starts — the returned note says so.
+     * @param ingressTLSConfig  (required)
+     * @return IngressTLSConfig
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TLSConfig putIngressTls(@javax.annotation.Nonnull TLSConfig tlSConfig) throws ApiException {
-        ApiResponse<TLSConfig> localVarResp = putIngressTlsWithHttpInfo(tlSConfig);
+    public IngressTLSConfig putIngressTls(@javax.annotation.Nonnull IngressTLSConfig ingressTLSConfig) throws ApiException {
+        ApiResponse<IngressTLSConfig> localVarResp = putIngressTlsWithHttpInfo(ingressTLSConfig);
         return localVarResp.getData();
     }
 
     /**
-     * PutTLS replaces the caller org&#39;s ACME intent and hot-applies what can be hot-applied.
-     * PutTLS replaces the caller org&#39;s ACME intent and hot-applies what can be hot-applied. extraHosts are normalized and validated, then feed the ACME HostPolicy on the reload this op performs, alongside the per-route tls flags. acmeEmail and staging bind an ACME account for the lifetime of an edge process, so they only take effect when the edge (re)starts — the returned note says so.
-     * @param tlSConfig  (required)
-     * @return ApiResponse&lt;TLSConfig&gt;
+     * Replaces the caller org&#39;s ACME intent and hot-applies what can be hot-applied.
+     * Replaces the caller org&#39;s ACME intent and hot-applies what can be hot-applied. extraHosts are normalized and validated, then feed the ACME HostPolicy on the reload this op performs, alongside the per-route tls flags. acmeEmail and staging bind an ACME account for the lifetime of an edge process, so they only take effect when the edge (re)starts — the returned note says so.
+     * @param ingressTLSConfig  (required)
+     * @return ApiResponse&lt;IngressTLSConfig&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TLSConfig> putIngressTlsWithHttpInfo(@javax.annotation.Nonnull TLSConfig tlSConfig) throws ApiException {
-        okhttp3.Call localVarCall = putIngressTlsValidateBeforeCall(tlSConfig, null);
-        Type localVarReturnType = new TypeToken<TLSConfig>(){}.getType();
+    public ApiResponse<IngressTLSConfig> putIngressTlsWithHttpInfo(@javax.annotation.Nonnull IngressTLSConfig ingressTLSConfig) throws ApiException {
+        okhttp3.Call localVarCall = putIngressTlsValidateBeforeCall(ingressTLSConfig, null);
+        Type localVarReturnType = new TypeToken<IngressTLSConfig>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * PutTLS replaces the caller org&#39;s ACME intent and hot-applies what can be hot-applied. (asynchronously)
-     * PutTLS replaces the caller org&#39;s ACME intent and hot-applies what can be hot-applied. extraHosts are normalized and validated, then feed the ACME HostPolicy on the reload this op performs, alongside the per-route tls flags. acmeEmail and staging bind an ACME account for the lifetime of an edge process, so they only take effect when the edge (re)starts — the returned note says so.
-     * @param tlSConfig  (required)
+     * Replaces the caller org&#39;s ACME intent and hot-applies what can be hot-applied. (asynchronously)
+     * Replaces the caller org&#39;s ACME intent and hot-applies what can be hot-applied. extraHosts are normalized and validated, then feed the ACME HostPolicy on the reload this op performs, alongside the per-route tls flags. acmeEmail and staging bind an ACME account for the lifetime of an edge process, so they only take effect when the edge (re)starts — the returned note says so.
+     * @param ingressTLSConfig  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2322,12 +2412,13 @@ public class IngressApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putIngressTlsAsync(@javax.annotation.Nonnull TLSConfig tlSConfig, final ApiCallback<TLSConfig> _callback) throws ApiException {
+    public okhttp3.Call putIngressTlsAsync(@javax.annotation.Nonnull IngressTLSConfig ingressTLSConfig, final ApiCallback<IngressTLSConfig> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putIngressTlsValidateBeforeCall(tlSConfig, _callback);
-        Type localVarReturnType = new TypeToken<TLSConfig>(){}.getType();
+        okhttp3.Call localVarCall = putIngressTlsValidateBeforeCall(ingressTLSConfig, _callback);
+        Type localVarReturnType = new TypeToken<IngressTLSConfig>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

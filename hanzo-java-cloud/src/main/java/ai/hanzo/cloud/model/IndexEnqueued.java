@@ -68,7 +68,7 @@ public class IndexEnqueued {
   public static final String SERIALIZED_NAME_TASK_UID = "taskUid";
   @SerializedName(SERIALIZED_NAME_TASK_UID)
   @javax.annotation.Nullable
-  private Long taskUid;
+  private Integer taskUid;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -84,7 +84,7 @@ public class IndexEnqueued {
   }
 
   /**
-   * EnqueuedAt is when the task was recorded, RFC 3339 — which is also when it completed.
+   * Get enqueuedAt
    * @return enqueuedAt
    */
   @javax.annotation.Nullable
@@ -103,7 +103,7 @@ public class IndexEnqueued {
   }
 
   /**
-   * IndexUID names the index the write landed in.
+   * Get indexUid
    * @return indexUid
    */
   @javax.annotation.Nullable
@@ -122,7 +122,7 @@ public class IndexEnqueued {
   }
 
   /**
-   * Status is always &#x60;enqueued&#x60;, for dialect compatibility. The work is already done.
+   * Get status
    * @return status
    */
   @javax.annotation.Nullable
@@ -135,21 +135,21 @@ public class IndexEnqueued {
   }
 
 
-  public IndexEnqueued taskUid(@javax.annotation.Nullable Long taskUid) {
+  public IndexEnqueued taskUid(@javax.annotation.Nullable Integer taskUid) {
     this.taskUid = taskUid;
     return this;
   }
 
   /**
-   * TaskUID identifies the task for a client that polls it. Polling resolves immediately.
+   * Get taskUid
    * @return taskUid
    */
   @javax.annotation.Nullable
-  public Long getTaskUid() {
+  public Integer getTaskUid() {
     return taskUid;
   }
 
-  public void setTaskUid(@javax.annotation.Nullable Long taskUid) {
+  public void setTaskUid(@javax.annotation.Nullable Integer taskUid) {
     this.taskUid = taskUid;
   }
 
@@ -160,7 +160,7 @@ public class IndexEnqueued {
   }
 
   /**
-   * Type is the dialect&#39;s name for the kind of write: indexCreation, indexDeletion, settingsUpdate, documentAdditionOrUpdate, documentDeletion.
+   * Get type
    * @return type
    */
   @javax.annotation.Nullable

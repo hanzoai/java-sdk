@@ -14,8 +14,8 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.O11yCompositeQuery;
 import ai.hanzo.cloud.model.O11yFormatOptions;
-import ai.hanzo.cloud.model.O11yQuerybuildertypesv5CompositeQuery;
 import ai.hanzo.cloud.model.O11yVariableItem;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -59,7 +59,7 @@ public class O11yQueryRangeRequest {
   public static final String SERIALIZED_NAME_COMPOSITE_QUERY = "compositeQuery";
   @SerializedName(SERIALIZED_NAME_COMPOSITE_QUERY)
   @javax.annotation.Nullable
-  private O11yQuerybuildertypesv5CompositeQuery compositeQuery;
+  private O11yCompositeQuery compositeQuery;
 
   public static final String SERIALIZED_NAME_END = "end";
   @SerializedName(SERIALIZED_NAME_END)
@@ -99,7 +99,7 @@ public class O11yQueryRangeRequest {
   public O11yQueryRangeRequest() {
   }
 
-  public O11yQueryRangeRequest compositeQuery(@javax.annotation.Nullable O11yQuerybuildertypesv5CompositeQuery compositeQuery) {
+  public O11yQueryRangeRequest compositeQuery(@javax.annotation.Nullable O11yCompositeQuery compositeQuery) {
     this.compositeQuery = compositeQuery;
     return this;
   }
@@ -109,11 +109,11 @@ public class O11yQueryRangeRequest {
    * @return compositeQuery
    */
   @javax.annotation.Nullable
-  public O11yQuerybuildertypesv5CompositeQuery getCompositeQuery() {
+  public O11yCompositeQuery getCompositeQuery() {
     return compositeQuery;
   }
 
-  public void setCompositeQuery(@javax.annotation.Nullable O11yQuerybuildertypesv5CompositeQuery compositeQuery) {
+  public void setCompositeQuery(@javax.annotation.Nullable O11yCompositeQuery compositeQuery) {
     this.compositeQuery = compositeQuery;
   }
 
@@ -395,7 +395,7 @@ public class O11yQueryRangeRequest {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the optional field `compositeQuery`
       if (jsonObj.get("compositeQuery") != null && !jsonObj.get("compositeQuery").isJsonNull()) {
-        O11yQuerybuildertypesv5CompositeQuery.validateJsonElement(jsonObj.get("compositeQuery"));
+        O11yCompositeQuery.validateJsonElement(jsonObj.get("compositeQuery"));
       }
       // validate the optional field `formatOptions`
       if (jsonObj.get("formatOptions") != null && !jsonObj.get("formatOptions").isJsonNull()) {

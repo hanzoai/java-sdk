@@ -27,13 +27,22 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.BucketIn;
-import ai.hanzo.cloud.model.BucketItem;
-import ai.hanzo.cloud.model.BucketList;
-import ai.hanzo.cloud.model.ObjectList;
-import ai.hanzo.cloud.model.PresignResponse;
-import ai.hanzo.cloud.model.S3Health;
-import ai.hanzo.cloud.model.UploadIn;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.S3BucketIn;
+import ai.hanzo.cloud.model.S3BucketItem;
+import ai.hanzo.cloud.model.S3BucketList;
+import ai.hanzo.cloud.model.S3ObjectList;
+import ai.hanzo.cloud.model.S3PartURLs;
+import ai.hanzo.cloud.model.S3PresignResponse;
+import ai.hanzo.cloud.model.S3S3Health;
+import ai.hanzo.cloud.model.S3StoredParts;
+import ai.hanzo.cloud.model.S3UploadDone;
+import ai.hanzo.cloud.model.S3UploadGone;
+import ai.hanzo.cloud.model.S3UploadIn;
+import ai.hanzo.cloud.model.S3UploadParts;
+import ai.hanzo.cloud.model.S3UploadRef;
+import ai.hanzo.cloud.model.S3UploadStart;
+import ai.hanzo.cloud.model.S3UploadStarted;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -89,6 +98,7 @@ public class S3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteS3BucketsByBucketCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
@@ -118,6 +128,7 @@ public class S3Api {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -156,6 +167,7 @@ public class S3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteS3BucketsByBucket(@javax.annotation.Nonnull String bucket) throws ApiException {
@@ -173,6 +185,7 @@ public class S3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteS3BucketsByBucketWithHttpInfo(@javax.annotation.Nonnull String bucket) throws ApiException {
@@ -192,12 +205,163 @@ public class S3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteS3BucketsByBucketAsync(@javax.annotation.Nonnull String bucket, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteS3BucketsByBucketValidateBeforeCall(bucket, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteS3BucketsByBucketUploadsByUpload
+     * @param bucket Bucket is the bucket, from the path. (required)
+     * @param upload Upload is the upload&#39;s id, from the path. (required)
+     * @param key Key is the object key the upload was started on. In the query for a read or an abandon, in the body to complete. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteS3BucketsByBucketUploadsByUploadCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nullable String key, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/s3/buckets/{bucket}/uploads/{upload}"
+            .replace("{" + "bucket" + "}", localVarApiClient.escapeString(bucket.toString()))
+            .replace("{" + "upload" + "}", localVarApiClient.escapeString(upload.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (key != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("key", key));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteS3BucketsByBucketUploadsByUploadValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nullable String key, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'bucket' is set
+        if (bucket == null) {
+            throw new ApiException("Missing the required parameter 'bucket' when calling deleteS3BucketsByBucketUploadsByUpload(Async)");
+        }
+
+        // verify the required parameter 'upload' is set
+        if (upload == null) {
+            throw new ApiException("Missing the required parameter 'upload' when calling deleteS3BucketsByBucketUploadsByUpload(Async)");
+        }
+
+        return deleteS3BucketsByBucketUploadsByUploadCall(bucket, upload, key, _callback);
+
+    }
+
+    /**
+     * Aborts a multipart upload and deletes the parts it stored.
+     * Aborts a multipart upload and deletes the parts it stored. The object it would have become is never created.
+     * @param bucket Bucket is the bucket, from the path. (required)
+     * @param upload Upload is the upload&#39;s id, from the path. (required)
+     * @param key Key is the object key the upload was started on. In the query for a read or an abandon, in the body to complete. (optional)
+     * @return S3UploadGone
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public S3UploadGone deleteS3BucketsByBucketUploadsByUpload(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nullable String key) throws ApiException {
+        ApiResponse<S3UploadGone> localVarResp = deleteS3BucketsByBucketUploadsByUploadWithHttpInfo(bucket, upload, key);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Aborts a multipart upload and deletes the parts it stored.
+     * Aborts a multipart upload and deletes the parts it stored. The object it would have become is never created.
+     * @param bucket Bucket is the bucket, from the path. (required)
+     * @param upload Upload is the upload&#39;s id, from the path. (required)
+     * @param key Key is the object key the upload was started on. In the query for a read or an abandon, in the body to complete. (optional)
+     * @return ApiResponse&lt;S3UploadGone&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<S3UploadGone> deleteS3BucketsByBucketUploadsByUploadWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nullable String key) throws ApiException {
+        okhttp3.Call localVarCall = deleteS3BucketsByBucketUploadsByUploadValidateBeforeCall(bucket, upload, key, null);
+        Type localVarReturnType = new TypeToken<S3UploadGone>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Aborts a multipart upload and deletes the parts it stored. (asynchronously)
+     * Aborts a multipart upload and deletes the parts it stored. The object it would have become is never created.
+     * @param bucket Bucket is the bucket, from the path. (required)
+     * @param upload Upload is the upload&#39;s id, from the path. (required)
+     * @param key Key is the object key the upload was started on. In the query for a read or an abandon, in the body to complete. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteS3BucketsByBucketUploadsByUploadAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nullable String key, final ApiCallback<S3UploadGone> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteS3BucketsByBucketUploadsByUploadValidateBeforeCall(bucket, upload, key, _callback);
+        Type localVarReturnType = new TypeToken<S3UploadGone>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -210,6 +374,7 @@ public class S3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getS3BucketsCall(final ApiCallback _callback) throws ApiException {
@@ -238,7 +403,8 @@ public class S3Api {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -265,35 +431,37 @@ public class S3Api {
     /**
      * Lists the caller org&#39;s own buckets.
      * Lists the caller org&#39;s own buckets.  Only the caller&#39;s: every bucket is physically named under a per-org prefix and the listing strips that prefix, so a tenant sees friendly names and another tenant&#39;s buckets are not in the answer at all. Another org&#39;s bucket is not refused but INVISIBLE, so this cannot be used to learn that a name is taken elsewhere.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit lands only once the work has succeeded.
-     * @return BucketList
+     * @return S3BucketList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BucketList getS3Buckets() throws ApiException {
-        ApiResponse<BucketList> localVarResp = getS3BucketsWithHttpInfo();
+    public S3BucketList getS3Buckets() throws ApiException {
+        ApiResponse<S3BucketList> localVarResp = getS3BucketsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the caller org&#39;s own buckets.
      * Lists the caller org&#39;s own buckets.  Only the caller&#39;s: every bucket is physically named under a per-org prefix and the listing strips that prefix, so a tenant sees friendly names and another tenant&#39;s buckets are not in the answer at all. Another org&#39;s bucket is not refused but INVISIBLE, so this cannot be used to learn that a name is taken elsewhere.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit lands only once the work has succeeded.
-     * @return ApiResponse&lt;BucketList&gt;
+     * @return ApiResponse&lt;S3BucketList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BucketList> getS3BucketsWithHttpInfo() throws ApiException {
+    public ApiResponse<S3BucketList> getS3BucketsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getS3BucketsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<BucketList>(){}.getType();
+        Type localVarReturnType = new TypeToken<S3BucketList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -308,12 +476,13 @@ public class S3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getS3BucketsAsync(final ApiCallback<BucketList> _callback) throws ApiException {
+    public okhttp3.Call getS3BucketsAsync(final ApiCallback<S3BucketList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getS3BucketsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<BucketList>(){}.getType();
+        Type localVarReturnType = new TypeToken<S3BucketList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -330,6 +499,7 @@ public class S3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getS3BucketsByBucketObjectsCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nullable String prefix, @javax.annotation.Nullable String recursive, final ApiCallback _callback) throws ApiException {
@@ -367,7 +537,8 @@ public class S3Api {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -402,17 +573,18 @@ public class S3Api {
      * @param bucket Bucket is the bucket to list, from the path. (required)
      * @param prefix  (optional)
      * @param recursive  (optional)
-     * @return ObjectList
+     * @return S3ObjectList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ObjectList getS3BucketsByBucketObjects(@javax.annotation.Nonnull String bucket, @javax.annotation.Nullable String prefix, @javax.annotation.Nullable String recursive) throws ApiException {
-        ApiResponse<ObjectList> localVarResp = getS3BucketsByBucketObjectsWithHttpInfo(bucket, prefix, recursive);
+    public S3ObjectList getS3BucketsByBucketObjects(@javax.annotation.Nonnull String bucket, @javax.annotation.Nullable String prefix, @javax.annotation.Nullable String recursive) throws ApiException {
+        ApiResponse<S3ObjectList> localVarResp = getS3BucketsByBucketObjectsWithHttpInfo(bucket, prefix, recursive);
         return localVarResp.getData();
     }
 
@@ -422,18 +594,19 @@ public class S3Api {
      * @param bucket Bucket is the bucket to list, from the path. (required)
      * @param prefix  (optional)
      * @param recursive  (optional)
-     * @return ApiResponse&lt;ObjectList&gt;
+     * @return ApiResponse&lt;S3ObjectList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ObjectList> getS3BucketsByBucketObjectsWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nullable String prefix, @javax.annotation.Nullable String recursive) throws ApiException {
+    public ApiResponse<S3ObjectList> getS3BucketsByBucketObjectsWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nullable String prefix, @javax.annotation.Nullable String recursive) throws ApiException {
         okhttp3.Call localVarCall = getS3BucketsByBucketObjectsValidateBeforeCall(bucket, prefix, recursive, null);
-        Type localVarReturnType = new TypeToken<ObjectList>(){}.getType();
+        Type localVarReturnType = new TypeToken<S3ObjectList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -451,12 +624,163 @@ public class S3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getS3BucketsByBucketObjectsAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nullable String prefix, @javax.annotation.Nullable String recursive, final ApiCallback<ObjectList> _callback) throws ApiException {
+    public okhttp3.Call getS3BucketsByBucketObjectsAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nullable String prefix, @javax.annotation.Nullable String recursive, final ApiCallback<S3ObjectList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getS3BucketsByBucketObjectsValidateBeforeCall(bucket, prefix, recursive, _callback);
-        Type localVarReturnType = new TypeToken<ObjectList>(){}.getType();
+        Type localVarReturnType = new TypeToken<S3ObjectList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getS3BucketsByBucketUploadsByUpload
+     * @param bucket Bucket is the bucket, from the path. (required)
+     * @param upload Upload is the upload&#39;s id, from the path. (required)
+     * @param key Key is the object key the upload was started on. In the query for a read or an abandon, in the body to complete. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getS3BucketsByBucketUploadsByUploadCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nullable String key, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/s3/buckets/{bucket}/uploads/{upload}"
+            .replace("{" + "bucket" + "}", localVarApiClient.escapeString(bucket.toString()))
+            .replace("{" + "upload" + "}", localVarApiClient.escapeString(upload.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (key != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("key", key));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getS3BucketsByBucketUploadsByUploadValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nullable String key, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'bucket' is set
+        if (bucket == null) {
+            throw new ApiException("Missing the required parameter 'bucket' when calling getS3BucketsByBucketUploadsByUpload(Async)");
+        }
+
+        // verify the required parameter 'upload' is set
+        if (upload == null) {
+            throw new ApiException("Missing the required parameter 'upload' when calling getS3BucketsByBucketUploadsByUpload(Async)");
+        }
+
+        return getS3BucketsByBucketUploadsByUploadCall(bucket, upload, key, _callback);
+
+    }
+
+    /**
+     * Answers the parts a multipart upload already holds, in order: what a client resuming after a dropped connection reads to send only the rest.
+     * Answers the parts a multipart upload already holds, in order: what a client resuming after a dropped connection reads to send only the rest.
+     * @param bucket Bucket is the bucket, from the path. (required)
+     * @param upload Upload is the upload&#39;s id, from the path. (required)
+     * @param key Key is the object key the upload was started on. In the query for a read or an abandon, in the body to complete. (optional)
+     * @return S3StoredParts
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public S3StoredParts getS3BucketsByBucketUploadsByUpload(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nullable String key) throws ApiException {
+        ApiResponse<S3StoredParts> localVarResp = getS3BucketsByBucketUploadsByUploadWithHttpInfo(bucket, upload, key);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Answers the parts a multipart upload already holds, in order: what a client resuming after a dropped connection reads to send only the rest.
+     * Answers the parts a multipart upload already holds, in order: what a client resuming after a dropped connection reads to send only the rest.
+     * @param bucket Bucket is the bucket, from the path. (required)
+     * @param upload Upload is the upload&#39;s id, from the path. (required)
+     * @param key Key is the object key the upload was started on. In the query for a read or an abandon, in the body to complete. (optional)
+     * @return ApiResponse&lt;S3StoredParts&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<S3StoredParts> getS3BucketsByBucketUploadsByUploadWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nullable String key) throws ApiException {
+        okhttp3.Call localVarCall = getS3BucketsByBucketUploadsByUploadValidateBeforeCall(bucket, upload, key, null);
+        Type localVarReturnType = new TypeToken<S3StoredParts>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Answers the parts a multipart upload already holds, in order: what a client resuming after a dropped connection reads to send only the rest. (asynchronously)
+     * Answers the parts a multipart upload already holds, in order: what a client resuming after a dropped connection reads to send only the rest.
+     * @param bucket Bucket is the bucket, from the path. (required)
+     * @param upload Upload is the upload&#39;s id, from the path. (required)
+     * @param key Key is the object key the upload was started on. In the query for a read or an abandon, in the body to complete. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getS3BucketsByBucketUploadsByUploadAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nullable String key, final ApiCallback<S3StoredParts> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getS3BucketsByBucketUploadsByUploadValidateBeforeCall(bucket, upload, key, _callback);
+        Type localVarReturnType = new TypeToken<S3StoredParts>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -471,6 +795,7 @@ public class S3Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getS3HealthCall(final ApiCallback _callback) throws ApiException {
@@ -499,7 +824,8 @@ public class S3Api {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -524,9 +850,9 @@ public class S3Api {
     }
 
     /**
-     * Health reports whether this deployment can serve object storage.
-     * Health reports whether this deployment can serve object storage.  It is a REAL probe rather than a constant: 200 when admin credentials are present, so the store is reachable in principle, and 503 with the reason when they are not. It is deliberately NOT gated — liveness has to be probe-able without a token — so it is the one operation here that names no bucket and bills nothing.
-     * @return S3Health
+     * Reports whether this deployment can serve object storage.
+     * Reports whether this deployment can serve object storage.  It is a REAL probe rather than a constant: 200 when admin credentials are present, so the store is reachable in principle, and 503 with the reason when they are not. It is deliberately NOT gated — liveness has to be probe-able without a token — so it is the one operation here that names no bucket and bills nothing.
+     * @return S3S3Health
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -534,17 +860,18 @@ public class S3Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public S3Health getS3Health() throws ApiException {
-        ApiResponse<S3Health> localVarResp = getS3HealthWithHttpInfo();
+    public S3S3Health getS3Health() throws ApiException {
+        ApiResponse<S3S3Health> localVarResp = getS3HealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Health reports whether this deployment can serve object storage.
-     * Health reports whether this deployment can serve object storage.  It is a REAL probe rather than a constant: 200 when admin credentials are present, so the store is reachable in principle, and 503 with the reason when they are not. It is deliberately NOT gated — liveness has to be probe-able without a token — so it is the one operation here that names no bucket and bills nothing.
-     * @return ApiResponse&lt;S3Health&gt;
+     * Reports whether this deployment can serve object storage.
+     * Reports whether this deployment can serve object storage.  It is a REAL probe rather than a constant: 200 when admin credentials are present, so the store is reachable in principle, and 503 with the reason when they are not. It is deliberately NOT gated — liveness has to be probe-able without a token — so it is the one operation here that names no bucket and bills nothing.
+     * @return ApiResponse&lt;S3S3Health&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -552,17 +879,18 @@ public class S3Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<S3Health> getS3HealthWithHttpInfo() throws ApiException {
+    public ApiResponse<S3S3Health> getS3HealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getS3HealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<S3Health>(){}.getType();
+        Type localVarReturnType = new TypeToken<S3S3Health>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Health reports whether this deployment can serve object storage. (asynchronously)
-     * Health reports whether this deployment can serve object storage.  It is a REAL probe rather than a constant: 200 when admin credentials are present, so the store is reachable in principle, and 503 with the reason when they are not. It is deliberately NOT gated — liveness has to be probe-able without a token — so it is the one operation here that names no bucket and bills nothing.
+     * Reports whether this deployment can serve object storage. (asynchronously)
+     * Reports whether this deployment can serve object storage.  It is a REAL probe rather than a constant: 200 when admin credentials are present, so the store is reachable in principle, and 503 with the reason when they are not. It is deliberately NOT gated — liveness has to be probe-able without a token — so it is the one operation here that names no bucket and bills nothing.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -572,18 +900,19 @@ public class S3Api {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getS3HealthAsync(final ApiCallback<S3Health> _callback) throws ApiException {
+    public okhttp3.Call getS3HealthAsync(final ApiCallback<S3S3Health> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getS3HealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<S3Health>(){}.getType();
+        Type localVarReturnType = new TypeToken<S3S3Health>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postS3Buckets
-     * @param bucketIn  (required)
+     * @param s3BucketIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -592,9 +921,10 @@ public class S3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postS3BucketsCall(@javax.annotation.Nonnull BucketIn bucketIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postS3BucketsCall(@javax.annotation.Nonnull S3BucketIn s3BucketIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -608,7 +938,7 @@ public class S3Api {
             basePath = null;
         }
 
-        Object localVarPostBody = bucketIn;
+        Object localVarPostBody = s3BucketIn;
 
         // create path and map variables
         String localVarPath = "/v1/s3/buckets";
@@ -620,7 +950,8 @@ public class S3Api {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -640,57 +971,59 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postS3BucketsValidateBeforeCall(@javax.annotation.Nonnull BucketIn bucketIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'bucketIn' is set
-        if (bucketIn == null) {
-            throw new ApiException("Missing the required parameter 'bucketIn' when calling postS3Buckets(Async)");
+    private okhttp3.Call postS3BucketsValidateBeforeCall(@javax.annotation.Nonnull S3BucketIn s3BucketIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 's3BucketIn' is set
+        if (s3BucketIn == null) {
+            throw new ApiException("Missing the required parameter 's3BucketIn' when calling postS3Buckets(Async)");
         }
 
-        return postS3BucketsCall(bucketIn, _callback);
+        return postS3BucketsCall(s3BucketIn, _callback);
 
     }
 
     /**
      * Makes a new bucket for the caller&#39;s org and answers 201 with it.
      * Makes a new bucket for the caller&#39;s org and answers 201 with it.  The physical name is derived from the caller&#39;s validated org, so a tenant can only ever create inside its own namespace and no request field can redirect that. A name already taken in the org is 409.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing created, and the debit lands only once the bucket exists.
-     * @param bucketIn  (required)
-     * @return BucketItem
+     * @param s3BucketIn  (required)
+     * @return S3BucketItem
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BucketItem postS3Buckets(@javax.annotation.Nonnull BucketIn bucketIn) throws ApiException {
-        ApiResponse<BucketItem> localVarResp = postS3BucketsWithHttpInfo(bucketIn);
+    public S3BucketItem postS3Buckets(@javax.annotation.Nonnull S3BucketIn s3BucketIn) throws ApiException {
+        ApiResponse<S3BucketItem> localVarResp = postS3BucketsWithHttpInfo(s3BucketIn);
         return localVarResp.getData();
     }
 
     /**
      * Makes a new bucket for the caller&#39;s org and answers 201 with it.
      * Makes a new bucket for the caller&#39;s org and answers 201 with it.  The physical name is derived from the caller&#39;s validated org, so a tenant can only ever create inside its own namespace and no request field can redirect that. A name already taken in the org is 409.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing created, and the debit lands only once the bucket exists.
-     * @param bucketIn  (required)
-     * @return ApiResponse&lt;BucketItem&gt;
+     * @param s3BucketIn  (required)
+     * @return ApiResponse&lt;S3BucketItem&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BucketItem> postS3BucketsWithHttpInfo(@javax.annotation.Nonnull BucketIn bucketIn) throws ApiException {
-        okhttp3.Call localVarCall = postS3BucketsValidateBeforeCall(bucketIn, null);
-        Type localVarReturnType = new TypeToken<BucketItem>(){}.getType();
+    public ApiResponse<S3BucketItem> postS3BucketsWithHttpInfo(@javax.annotation.Nonnull S3BucketIn s3BucketIn) throws ApiException {
+        okhttp3.Call localVarCall = postS3BucketsValidateBeforeCall(s3BucketIn, null);
+        Type localVarReturnType = new TypeToken<S3BucketItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Makes a new bucket for the caller&#39;s org and answers 201 with it. (asynchronously)
      * Makes a new bucket for the caller&#39;s org and answers 201 with it.  The physical name is derived from the caller&#39;s validated org, so a tenant can only ever create inside its own namespace and no request field can redirect that. A name already taken in the org is 409.  Billed per call: the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing created, and the debit lands only once the bucket exists.
-     * @param bucketIn  (required)
+     * @param s3BucketIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -699,19 +1032,20 @@ public class S3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postS3BucketsAsync(@javax.annotation.Nonnull BucketIn bucketIn, final ApiCallback<BucketItem> _callback) throws ApiException {
+    public okhttp3.Call postS3BucketsAsync(@javax.annotation.Nonnull S3BucketIn s3BucketIn, final ApiCallback<S3BucketItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postS3BucketsValidateBeforeCall(bucketIn, _callback);
-        Type localVarReturnType = new TypeToken<BucketItem>(){}.getType();
+        okhttp3.Call localVarCall = postS3BucketsValidateBeforeCall(s3BucketIn, _callback);
+        Type localVarReturnType = new TypeToken<S3BucketItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postS3BucketsByBucketObjects
      * @param bucket Bucket is the bucket to upload into, from the path. (required)
-     * @param uploadIn  (required)
+     * @param s3UploadIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -720,9 +1054,10 @@ public class S3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postS3BucketsByBucketObjectsCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull UploadIn uploadIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postS3BucketsByBucketObjectsCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull S3UploadIn s3UploadIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -736,7 +1071,7 @@ public class S3Api {
             basePath = null;
         }
 
-        Object localVarPostBody = uploadIn;
+        Object localVarPostBody = s3UploadIn;
 
         // create path and map variables
         String localVarPath = "/v1/s3/buckets/{bucket}/objects"
@@ -749,7 +1084,8 @@ public class S3Api {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -769,18 +1105,18 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postS3BucketsByBucketObjectsValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull UploadIn uploadIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postS3BucketsByBucketObjectsValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull S3UploadIn s3UploadIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
             throw new ApiException("Missing the required parameter 'bucket' when calling postS3BucketsByBucketObjects(Async)");
         }
 
-        // verify the required parameter 'uploadIn' is set
-        if (uploadIn == null) {
-            throw new ApiException("Missing the required parameter 'uploadIn' when calling postS3BucketsByBucketObjects(Async)");
+        // verify the required parameter 's3UploadIn' is set
+        if (s3UploadIn == null) {
+            throw new ApiException("Missing the required parameter 's3UploadIn' when calling postS3BucketsByBucketObjects(Async)");
         }
 
-        return postS3BucketsByBucketObjectsCall(bucket, uploadIn, _callback);
+        return postS3BucketsByBucketObjectsCall(bucket, s3UploadIn, _callback);
 
     }
 
@@ -788,18 +1124,19 @@ public class S3Api {
      * Mints a presigned PUT URL the caller uploads to DIRECTLY.
      * Mints a presigned PUT URL the caller uploads to DIRECTLY.  The bytes never pass through this binary and the admin credential never leaves the server: the URL is signed against the PUBLIC host, scoped to exactly this bucket and key, and expires. A deployment with no public endpoint configured cannot mint one and answers 503 rather than a URL that will not work.  Billed per call — for MINTING the URL, which is the work this operation does; the upload that follows it goes straight to the store and is not seen here. The balance is checked BEFORE anything is touched, so an unfunded org is refused with no URL issued.
      * @param bucket Bucket is the bucket to upload into, from the path. (required)
-     * @param uploadIn  (required)
-     * @return PresignResponse
+     * @param s3UploadIn  (required)
+     * @return S3PresignResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PresignResponse postS3BucketsByBucketObjects(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull UploadIn uploadIn) throws ApiException {
-        ApiResponse<PresignResponse> localVarResp = postS3BucketsByBucketObjectsWithHttpInfo(bucket, uploadIn);
+    public S3PresignResponse postS3BucketsByBucketObjects(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull S3UploadIn s3UploadIn) throws ApiException {
+        ApiResponse<S3PresignResponse> localVarResp = postS3BucketsByBucketObjectsWithHttpInfo(bucket, s3UploadIn);
         return localVarResp.getData();
     }
 
@@ -807,19 +1144,20 @@ public class S3Api {
      * Mints a presigned PUT URL the caller uploads to DIRECTLY.
      * Mints a presigned PUT URL the caller uploads to DIRECTLY.  The bytes never pass through this binary and the admin credential never leaves the server: the URL is signed against the PUBLIC host, scoped to exactly this bucket and key, and expires. A deployment with no public endpoint configured cannot mint one and answers 503 rather than a URL that will not work.  Billed per call — for MINTING the URL, which is the work this operation does; the upload that follows it goes straight to the store and is not seen here. The balance is checked BEFORE anything is touched, so an unfunded org is refused with no URL issued.
      * @param bucket Bucket is the bucket to upload into, from the path. (required)
-     * @param uploadIn  (required)
-     * @return ApiResponse&lt;PresignResponse&gt;
+     * @param s3UploadIn  (required)
+     * @return ApiResponse&lt;S3PresignResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PresignResponse> postS3BucketsByBucketObjectsWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull UploadIn uploadIn) throws ApiException {
-        okhttp3.Call localVarCall = postS3BucketsByBucketObjectsValidateBeforeCall(bucket, uploadIn, null);
-        Type localVarReturnType = new TypeToken<PresignResponse>(){}.getType();
+    public ApiResponse<S3PresignResponse> postS3BucketsByBucketObjectsWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull S3UploadIn s3UploadIn) throws ApiException {
+        okhttp3.Call localVarCall = postS3BucketsByBucketObjectsValidateBeforeCall(bucket, s3UploadIn, null);
+        Type localVarReturnType = new TypeToken<S3PresignResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -827,7 +1165,7 @@ public class S3Api {
      * Mints a presigned PUT URL the caller uploads to DIRECTLY. (asynchronously)
      * Mints a presigned PUT URL the caller uploads to DIRECTLY.  The bytes never pass through this binary and the admin credential never leaves the server: the URL is signed against the PUBLIC host, scoped to exactly this bucket and key, and expires. A deployment with no public endpoint configured cannot mint one and answers 503 rather than a URL that will not work.  Billed per call — for MINTING the URL, which is the work this operation does; the upload that follows it goes straight to the store and is not seen here. The balance is checked BEFORE anything is touched, so an unfunded org is refused with no URL issued.
      * @param bucket Bucket is the bucket to upload into, from the path. (required)
-     * @param uploadIn  (required)
+     * @param s3UploadIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -836,12 +1174,459 @@ public class S3Api {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postS3BucketsByBucketObjectsAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull UploadIn uploadIn, final ApiCallback<PresignResponse> _callback) throws ApiException {
+    public okhttp3.Call postS3BucketsByBucketObjectsAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull S3UploadIn s3UploadIn, final ApiCallback<S3PresignResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postS3BucketsByBucketObjectsValidateBeforeCall(bucket, uploadIn, _callback);
-        Type localVarReturnType = new TypeToken<PresignResponse>(){}.getType();
+        okhttp3.Call localVarCall = postS3BucketsByBucketObjectsValidateBeforeCall(bucket, s3UploadIn, _callback);
+        Type localVarReturnType = new TypeToken<S3PresignResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postS3BucketsByBucketUploads
+     * @param bucket Bucket is the bucket to upload into, from the path. (required)
+     * @param s3UploadStart  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postS3BucketsByBucketUploadsCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull S3UploadStart s3UploadStart, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = s3UploadStart;
+
+        // create path and map variables
+        String localVarPath = "/v1/s3/buckets/{bucket}/uploads"
+            .replace("{" + "bucket" + "}", localVarApiClient.escapeString(bucket.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postS3BucketsByBucketUploadsValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull S3UploadStart s3UploadStart, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'bucket' is set
+        if (bucket == null) {
+            throw new ApiException("Missing the required parameter 'bucket' when calling postS3BucketsByBucketUploads(Async)");
+        }
+
+        // verify the required parameter 's3UploadStart' is set
+        if (s3UploadStart == null) {
+            throw new ApiException("Missing the required parameter 's3UploadStart' when calling postS3BucketsByBucketUploads(Async)");
+        }
+
+        return postS3BucketsByBucketUploadsCall(bucket, s3UploadStart, _callback);
+
+    }
+
+    /**
+     * Begins a multipart upload of a large file into one of the caller&#39;s org buckets.
+     * Begins a multipart upload of a large file into one of the caller&#39;s org buckets. Then mint presigned URLs for its parts with POST .../uploads/{upload}/parts, PUT each part&#39;s bytes to its URL — every part but the last exactly partSize bytes — and assemble the object with POST .../uploads/{upload}/complete. A dropped connection loses nothing: GET .../uploads/{upload} lists the parts already stored, so only the rest are sent again. Use this for anything over a few megabytes; a small file takes the single presigned PUT of POST /v1/s3/buckets/{bucket}/objects.
+     * @param bucket Bucket is the bucket to upload into, from the path. (required)
+     * @param s3UploadStart  (required)
+     * @return S3UploadStarted
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public S3UploadStarted postS3BucketsByBucketUploads(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull S3UploadStart s3UploadStart) throws ApiException {
+        ApiResponse<S3UploadStarted> localVarResp = postS3BucketsByBucketUploadsWithHttpInfo(bucket, s3UploadStart);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Begins a multipart upload of a large file into one of the caller&#39;s org buckets.
+     * Begins a multipart upload of a large file into one of the caller&#39;s org buckets. Then mint presigned URLs for its parts with POST .../uploads/{upload}/parts, PUT each part&#39;s bytes to its URL — every part but the last exactly partSize bytes — and assemble the object with POST .../uploads/{upload}/complete. A dropped connection loses nothing: GET .../uploads/{upload} lists the parts already stored, so only the rest are sent again. Use this for anything over a few megabytes; a small file takes the single presigned PUT of POST /v1/s3/buckets/{bucket}/objects.
+     * @param bucket Bucket is the bucket to upload into, from the path. (required)
+     * @param s3UploadStart  (required)
+     * @return ApiResponse&lt;S3UploadStarted&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<S3UploadStarted> postS3BucketsByBucketUploadsWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull S3UploadStart s3UploadStart) throws ApiException {
+        okhttp3.Call localVarCall = postS3BucketsByBucketUploadsValidateBeforeCall(bucket, s3UploadStart, null);
+        Type localVarReturnType = new TypeToken<S3UploadStarted>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Begins a multipart upload of a large file into one of the caller&#39;s org buckets. (asynchronously)
+     * Begins a multipart upload of a large file into one of the caller&#39;s org buckets. Then mint presigned URLs for its parts with POST .../uploads/{upload}/parts, PUT each part&#39;s bytes to its URL — every part but the last exactly partSize bytes — and assemble the object with POST .../uploads/{upload}/complete. A dropped connection loses nothing: GET .../uploads/{upload} lists the parts already stored, so only the rest are sent again. Use this for anything over a few megabytes; a small file takes the single presigned PUT of POST /v1/s3/buckets/{bucket}/objects.
+     * @param bucket Bucket is the bucket to upload into, from the path. (required)
+     * @param s3UploadStart  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postS3BucketsByBucketUploadsAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull S3UploadStart s3UploadStart, final ApiCallback<S3UploadStarted> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postS3BucketsByBucketUploadsValidateBeforeCall(bucket, s3UploadStart, _callback);
+        Type localVarReturnType = new TypeToken<S3UploadStarted>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postS3BucketsByBucketUploadsByUploadComplete
+     * @param bucket Bucket is the bucket, from the path. (required)
+     * @param upload Upload is the upload&#39;s id, from the path. (required)
+     * @param s3UploadRef  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postS3BucketsByBucketUploadsByUploadCompleteCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nonnull S3UploadRef s3UploadRef, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = s3UploadRef;
+
+        // create path and map variables
+        String localVarPath = "/v1/s3/buckets/{bucket}/uploads/{upload}/complete"
+            .replace("{" + "bucket" + "}", localVarApiClient.escapeString(bucket.toString()))
+            .replace("{" + "upload" + "}", localVarApiClient.escapeString(upload.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postS3BucketsByBucketUploadsByUploadCompleteValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nonnull S3UploadRef s3UploadRef, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'bucket' is set
+        if (bucket == null) {
+            throw new ApiException("Missing the required parameter 'bucket' when calling postS3BucketsByBucketUploadsByUploadComplete(Async)");
+        }
+
+        // verify the required parameter 'upload' is set
+        if (upload == null) {
+            throw new ApiException("Missing the required parameter 'upload' when calling postS3BucketsByBucketUploadsByUploadComplete(Async)");
+        }
+
+        // verify the required parameter 's3UploadRef' is set
+        if (s3UploadRef == null) {
+            throw new ApiException("Missing the required parameter 's3UploadRef' when calling postS3BucketsByBucketUploadsByUploadComplete(Async)");
+        }
+
+        return postS3BucketsByBucketUploadsByUploadCompleteCall(bucket, upload, s3UploadRef, _callback);
+
+    }
+
+    /**
+     * Assembles a multipart upload into its object from every part the store holds, in order.
+     * Assembles a multipart upload into its object from every part the store holds, in order. The parts must run 1, 2, 3 … with no gap; a gap is 409, naming the first part missing, and the upload stays open to send it.
+     * @param bucket Bucket is the bucket, from the path. (required)
+     * @param upload Upload is the upload&#39;s id, from the path. (required)
+     * @param s3UploadRef  (required)
+     * @return S3UploadDone
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public S3UploadDone postS3BucketsByBucketUploadsByUploadComplete(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nonnull S3UploadRef s3UploadRef) throws ApiException {
+        ApiResponse<S3UploadDone> localVarResp = postS3BucketsByBucketUploadsByUploadCompleteWithHttpInfo(bucket, upload, s3UploadRef);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Assembles a multipart upload into its object from every part the store holds, in order.
+     * Assembles a multipart upload into its object from every part the store holds, in order. The parts must run 1, 2, 3 … with no gap; a gap is 409, naming the first part missing, and the upload stays open to send it.
+     * @param bucket Bucket is the bucket, from the path. (required)
+     * @param upload Upload is the upload&#39;s id, from the path. (required)
+     * @param s3UploadRef  (required)
+     * @return ApiResponse&lt;S3UploadDone&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<S3UploadDone> postS3BucketsByBucketUploadsByUploadCompleteWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nonnull S3UploadRef s3UploadRef) throws ApiException {
+        okhttp3.Call localVarCall = postS3BucketsByBucketUploadsByUploadCompleteValidateBeforeCall(bucket, upload, s3UploadRef, null);
+        Type localVarReturnType = new TypeToken<S3UploadDone>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Assembles a multipart upload into its object from every part the store holds, in order. (asynchronously)
+     * Assembles a multipart upload into its object from every part the store holds, in order. The parts must run 1, 2, 3 … with no gap; a gap is 409, naming the first part missing, and the upload stays open to send it.
+     * @param bucket Bucket is the bucket, from the path. (required)
+     * @param upload Upload is the upload&#39;s id, from the path. (required)
+     * @param s3UploadRef  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postS3BucketsByBucketUploadsByUploadCompleteAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nonnull S3UploadRef s3UploadRef, final ApiCallback<S3UploadDone> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postS3BucketsByBucketUploadsByUploadCompleteValidateBeforeCall(bucket, upload, s3UploadRef, _callback);
+        Type localVarReturnType = new TypeToken<S3UploadDone>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postS3BucketsByBucketUploadsByUploadParts
+     * @param bucket Bucket is the bucket, from the path. (required)
+     * @param upload Upload is the upload&#39;s id, from the path. (required)
+     * @param s3UploadParts  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postS3BucketsByBucketUploadsByUploadPartsCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nonnull S3UploadParts s3UploadParts, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = s3UploadParts;
+
+        // create path and map variables
+        String localVarPath = "/v1/s3/buckets/{bucket}/uploads/{upload}/parts"
+            .replace("{" + "bucket" + "}", localVarApiClient.escapeString(bucket.toString()))
+            .replace("{" + "upload" + "}", localVarApiClient.escapeString(upload.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postS3BucketsByBucketUploadsByUploadPartsValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nonnull S3UploadParts s3UploadParts, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'bucket' is set
+        if (bucket == null) {
+            throw new ApiException("Missing the required parameter 'bucket' when calling postS3BucketsByBucketUploadsByUploadParts(Async)");
+        }
+
+        // verify the required parameter 'upload' is set
+        if (upload == null) {
+            throw new ApiException("Missing the required parameter 'upload' when calling postS3BucketsByBucketUploadsByUploadParts(Async)");
+        }
+
+        // verify the required parameter 's3UploadParts' is set
+        if (s3UploadParts == null) {
+            throw new ApiException("Missing the required parameter 's3UploadParts' when calling postS3BucketsByBucketUploadsByUploadParts(Async)");
+        }
+
+        return postS3BucketsByBucketUploadsByUploadPartsCall(bucket, upload, s3UploadParts, _callback);
+
+    }
+
+    /**
+     * Answers presigned PUT URLs for some parts of a multipart upload, at most 64 a call, each valid for minutes: mint them as the upload reaches them.
+     * Answers presigned PUT URLs for some parts of a multipart upload, at most 64 a call, each valid for minutes: mint them as the upload reaches them. PUT a part&#39;s bytes to its URL as they are — no headers are signed — and the store answers the part&#39;s ETag, which completing does not need.
+     * @param bucket Bucket is the bucket, from the path. (required)
+     * @param upload Upload is the upload&#39;s id, from the path. (required)
+     * @param s3UploadParts  (required)
+     * @return S3PartURLs
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public S3PartURLs postS3BucketsByBucketUploadsByUploadParts(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nonnull S3UploadParts s3UploadParts) throws ApiException {
+        ApiResponse<S3PartURLs> localVarResp = postS3BucketsByBucketUploadsByUploadPartsWithHttpInfo(bucket, upload, s3UploadParts);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Answers presigned PUT URLs for some parts of a multipart upload, at most 64 a call, each valid for minutes: mint them as the upload reaches them.
+     * Answers presigned PUT URLs for some parts of a multipart upload, at most 64 a call, each valid for minutes: mint them as the upload reaches them. PUT a part&#39;s bytes to its URL as they are — no headers are signed — and the store answers the part&#39;s ETag, which completing does not need.
+     * @param bucket Bucket is the bucket, from the path. (required)
+     * @param upload Upload is the upload&#39;s id, from the path. (required)
+     * @param s3UploadParts  (required)
+     * @return ApiResponse&lt;S3PartURLs&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<S3PartURLs> postS3BucketsByBucketUploadsByUploadPartsWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nonnull S3UploadParts s3UploadParts) throws ApiException {
+        okhttp3.Call localVarCall = postS3BucketsByBucketUploadsByUploadPartsValidateBeforeCall(bucket, upload, s3UploadParts, null);
+        Type localVarReturnType = new TypeToken<S3PartURLs>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Answers presigned PUT URLs for some parts of a multipart upload, at most 64 a call, each valid for minutes: mint them as the upload reaches them. (asynchronously)
+     * Answers presigned PUT URLs for some parts of a multipart upload, at most 64 a call, each valid for minutes: mint them as the upload reaches them. PUT a part&#39;s bytes to its URL as they are — no headers are signed — and the store answers the part&#39;s ETag, which completing does not need.
+     * @param bucket Bucket is the bucket, from the path. (required)
+     * @param upload Upload is the upload&#39;s id, from the path. (required)
+     * @param s3UploadParts  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postS3BucketsByBucketUploadsByUploadPartsAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String upload, @javax.annotation.Nonnull S3UploadParts s3UploadParts, final ApiCallback<S3PartURLs> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postS3BucketsByBucketUploadsByUploadPartsValidateBeforeCall(bucket, upload, s3UploadParts, _callback);
+        Type localVarReturnType = new TypeToken<S3PartURLs>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

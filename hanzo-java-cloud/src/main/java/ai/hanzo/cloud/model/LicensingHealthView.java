@@ -117,7 +117,7 @@ public class LicensingHealthView {
   }
 
   /**
-   * Signer names the KMS provider signing licenses here. \&quot;local\&quot; means a development key: tokens it mints are not production credentials.
+   * Signer names where the signing key lives: \&quot;kms\&quot; or \&quot;local\&quot;. \&quot;local\&quot; means a development key: tokens it mints are not production credentials.
    * @return signer
    */
   @javax.annotation.Nullable

@@ -138,7 +138,7 @@ public class LicensingPubkeyView {
   }
 
   /**
-   * Provider names the KMS holding the private half (\&quot;local\&quot; | \&quot;aws\&quot; | ...). \&quot;local\&quot; means a development key — never trust it in production.
+   * Provider names where the private half lives: \&quot;kms\&quot; (production) or \&quot;local\&quot; (a development key — never trust it in production).
    * @return provider
    */
   @javax.annotation.Nullable

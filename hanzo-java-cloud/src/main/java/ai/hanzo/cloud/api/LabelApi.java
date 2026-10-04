@@ -27,17 +27,18 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.RiskDisposeIn;
-import ai.hanzo.cloud.model.RiskDisposeOut;
-import ai.hanzo.cloud.model.RiskHoldIn;
-import ai.hanzo.cloud.model.RiskHoldOut;
-import ai.hanzo.cloud.model.RiskLabelCoverage;
-import ai.hanzo.cloud.model.RiskLabelIn;
-import ai.hanzo.cloud.model.RiskLabelOut;
-import ai.hanzo.cloud.model.RiskLabelVocabulary;
-import ai.hanzo.cloud.model.RiskLabelsOut;
-import ai.hanzo.cloud.model.RiskResolveIn;
-import ai.hanzo.cloud.model.RiskResolveOut;
+import ai.hanzo.cloud.model.LabelRiskDisposeIn;
+import ai.hanzo.cloud.model.LabelRiskDisposeOut;
+import ai.hanzo.cloud.model.LabelRiskHoldIn;
+import ai.hanzo.cloud.model.LabelRiskHoldOut;
+import ai.hanzo.cloud.model.LabelRiskLabelCoverage;
+import ai.hanzo.cloud.model.LabelRiskLabelIn;
+import ai.hanzo.cloud.model.LabelRiskLabelOut;
+import ai.hanzo.cloud.model.LabelRiskLabelVocabulary;
+import ai.hanzo.cloud.model.LabelRiskLabelsOut;
+import ai.hanzo.cloud.model.LabelRiskResolveIn;
+import ai.hanzo.cloud.model.LabelRiskResolveOut;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -84,7 +85,7 @@ public class LabelApi {
 
     /**
      * Build call for riskDisposeLabels
-     * @param riskDisposeIn  (required)
+     * @param labelRiskDisposeIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -93,9 +94,10 @@ public class LabelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskDisposeLabelsCall(@javax.annotation.Nonnull RiskDisposeIn riskDisposeIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskDisposeLabelsCall(@javax.annotation.Nonnull LabelRiskDisposeIn labelRiskDisposeIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -109,7 +111,7 @@ public class LabelApi {
             basePath = null;
         }
 
-        Object localVarPostBody = riskDisposeIn;
+        Object localVarPostBody = labelRiskDisposeIn;
 
         // create path and map variables
         String localVarPath = "/v1/label/dispose";
@@ -121,7 +123,8 @@ public class LabelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -141,57 +144,59 @@ public class LabelApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskDisposeLabelsValidateBeforeCall(@javax.annotation.Nonnull RiskDisposeIn riskDisposeIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'riskDisposeIn' is set
-        if (riskDisposeIn == null) {
-            throw new ApiException("Missing the required parameter 'riskDisposeIn' when calling riskDisposeLabels(Async)");
+    private okhttp3.Call riskDisposeLabelsValidateBeforeCall(@javax.annotation.Nonnull LabelRiskDisposeIn labelRiskDisposeIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'labelRiskDisposeIn' is set
+        if (labelRiskDisposeIn == null) {
+            throw new ApiException("Missing the required parameter 'labelRiskDisposeIn' when calling riskDisposeLabels(Async)");
         }
 
-        return riskDisposeLabelsCall(riskDisposeIn, _callback);
+        return riskDisposeLabelsCall(labelRiskDisposeIn, _callback);
 
     }
 
     /**
      * Dispose of this tenant&#39;s expired assertions, whole records only
      * Applies this tenant&#39;s retention, and only this tenant&#39;s.  It is bounded three ways, each a compliance property rather than a convenience. It refuses a boundary younger than the platform floor, because a label can be the input to an adverse action and five years is what the retention ledger holds such a record for. It never touches a record under litigation hold. And it disposes of whole records rather than redacting fields.  It removes the derived columnar copy BEFORE the record, and refuses the whole disposal if the warehouse cannot be reached. The other order would leave rows in the warehouse that nothing can identify any more, which is a disposal that did not happen and says it did.
-     * @param riskDisposeIn  (required)
-     * @return RiskDisposeOut
+     * @param labelRiskDisposeIn  (required)
+     * @return LabelRiskDisposeOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskDisposeOut riskDisposeLabels(@javax.annotation.Nonnull RiskDisposeIn riskDisposeIn) throws ApiException {
-        ApiResponse<RiskDisposeOut> localVarResp = riskDisposeLabelsWithHttpInfo(riskDisposeIn);
+    public LabelRiskDisposeOut riskDisposeLabels(@javax.annotation.Nonnull LabelRiskDisposeIn labelRiskDisposeIn) throws ApiException {
+        ApiResponse<LabelRiskDisposeOut> localVarResp = riskDisposeLabelsWithHttpInfo(labelRiskDisposeIn);
         return localVarResp.getData();
     }
 
     /**
      * Dispose of this tenant&#39;s expired assertions, whole records only
      * Applies this tenant&#39;s retention, and only this tenant&#39;s.  It is bounded three ways, each a compliance property rather than a convenience. It refuses a boundary younger than the platform floor, because a label can be the input to an adverse action and five years is what the retention ledger holds such a record for. It never touches a record under litigation hold. And it disposes of whole records rather than redacting fields.  It removes the derived columnar copy BEFORE the record, and refuses the whole disposal if the warehouse cannot be reached. The other order would leave rows in the warehouse that nothing can identify any more, which is a disposal that did not happen and says it did.
-     * @param riskDisposeIn  (required)
-     * @return ApiResponse&lt;RiskDisposeOut&gt;
+     * @param labelRiskDisposeIn  (required)
+     * @return ApiResponse&lt;LabelRiskDisposeOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskDisposeOut> riskDisposeLabelsWithHttpInfo(@javax.annotation.Nonnull RiskDisposeIn riskDisposeIn) throws ApiException {
-        okhttp3.Call localVarCall = riskDisposeLabelsValidateBeforeCall(riskDisposeIn, null);
-        Type localVarReturnType = new TypeToken<RiskDisposeOut>(){}.getType();
+    public ApiResponse<LabelRiskDisposeOut> riskDisposeLabelsWithHttpInfo(@javax.annotation.Nonnull LabelRiskDisposeIn labelRiskDisposeIn) throws ApiException {
+        okhttp3.Call localVarCall = riskDisposeLabelsValidateBeforeCall(labelRiskDisposeIn, null);
+        Type localVarReturnType = new TypeToken<LabelRiskDisposeOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Dispose of this tenant&#39;s expired assertions, whole records only (asynchronously)
      * Applies this tenant&#39;s retention, and only this tenant&#39;s.  It is bounded three ways, each a compliance property rather than a convenience. It refuses a boundary younger than the platform floor, because a label can be the input to an adverse action and five years is what the retention ledger holds such a record for. It never touches a record under litigation hold. And it disposes of whole records rather than redacting fields.  It removes the derived columnar copy BEFORE the record, and refuses the whole disposal if the warehouse cannot be reached. The other order would leave rows in the warehouse that nothing can identify any more, which is a disposal that did not happen and says it did.
-     * @param riskDisposeIn  (required)
+     * @param labelRiskDisposeIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -200,18 +205,19 @@ public class LabelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskDisposeLabelsAsync(@javax.annotation.Nonnull RiskDisposeIn riskDisposeIn, final ApiCallback<RiskDisposeOut> _callback) throws ApiException {
+    public okhttp3.Call riskDisposeLabelsAsync(@javax.annotation.Nonnull LabelRiskDisposeIn labelRiskDisposeIn, final ApiCallback<LabelRiskDisposeOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = riskDisposeLabelsValidateBeforeCall(riskDisposeIn, _callback);
-        Type localVarReturnType = new TypeToken<RiskDisposeOut>(){}.getType();
+        okhttp3.Call localVarCall = riskDisposeLabelsValidateBeforeCall(labelRiskDisposeIn, _callback);
+        Type localVarReturnType = new TypeToken<LabelRiskDisposeOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for riskHoldLabels
-     * @param riskHoldIn  (required)
+     * @param labelRiskHoldIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -220,9 +226,10 @@ public class LabelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskHoldLabelsCall(@javax.annotation.Nonnull RiskHoldIn riskHoldIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskHoldLabelsCall(@javax.annotation.Nonnull LabelRiskHoldIn labelRiskHoldIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -236,7 +243,7 @@ public class LabelApi {
             basePath = null;
         }
 
-        Object localVarPostBody = riskHoldIn;
+        Object localVarPostBody = labelRiskHoldIn;
 
         // create path and map variables
         String localVarPath = "/v1/label/hold";
@@ -248,7 +255,8 @@ public class LabelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -268,57 +276,59 @@ public class LabelApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskHoldLabelsValidateBeforeCall(@javax.annotation.Nonnull RiskHoldIn riskHoldIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'riskHoldIn' is set
-        if (riskHoldIn == null) {
-            throw new ApiException("Missing the required parameter 'riskHoldIn' when calling riskHoldLabels(Async)");
+    private okhttp3.Call riskHoldLabelsValidateBeforeCall(@javax.annotation.Nonnull LabelRiskHoldIn labelRiskHoldIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'labelRiskHoldIn' is set
+        if (labelRiskHoldIn == null) {
+            throw new ApiException("Missing the required parameter 'labelRiskHoldIn' when calling riskHoldLabels(Async)");
         }
 
-        return riskHoldLabelsCall(riskHoldIn, _callback);
+        return riskHoldLabelsCall(labelRiskHoldIn, _callback);
 
     }
 
     /**
      * Place or release a litigation hold on named records
      * Places or releases a litigation hold on named records.  A hold is a fact about the RECORD, not about the world: it says retention may not dispose of this row, and it asserts nothing about what happened. So it is not a field on an assertion and it is not folded into the content digest — carried there it was silently a no-op on any record that already existed, since re-filing the same assertion with a hold flag produced the same digest, the insert was ignored, and the caller was answered &#x60;duplicate&#x60; while the hold it asked for was never placed. This op is the one way a hold moves, in either direction, and the move is written to the audit log.  Every named id is this tenant&#39;s or is nothing. The statement runs against the tenant&#39;s own file, which holds no other tenant&#39;s rows and has no column that could name one.
-     * @param riskHoldIn  (required)
-     * @return RiskHoldOut
+     * @param labelRiskHoldIn  (required)
+     * @return LabelRiskHoldOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskHoldOut riskHoldLabels(@javax.annotation.Nonnull RiskHoldIn riskHoldIn) throws ApiException {
-        ApiResponse<RiskHoldOut> localVarResp = riskHoldLabelsWithHttpInfo(riskHoldIn);
+    public LabelRiskHoldOut riskHoldLabels(@javax.annotation.Nonnull LabelRiskHoldIn labelRiskHoldIn) throws ApiException {
+        ApiResponse<LabelRiskHoldOut> localVarResp = riskHoldLabelsWithHttpInfo(labelRiskHoldIn);
         return localVarResp.getData();
     }
 
     /**
      * Place or release a litigation hold on named records
      * Places or releases a litigation hold on named records.  A hold is a fact about the RECORD, not about the world: it says retention may not dispose of this row, and it asserts nothing about what happened. So it is not a field on an assertion and it is not folded into the content digest — carried there it was silently a no-op on any record that already existed, since re-filing the same assertion with a hold flag produced the same digest, the insert was ignored, and the caller was answered &#x60;duplicate&#x60; while the hold it asked for was never placed. This op is the one way a hold moves, in either direction, and the move is written to the audit log.  Every named id is this tenant&#39;s or is nothing. The statement runs against the tenant&#39;s own file, which holds no other tenant&#39;s rows and has no column that could name one.
-     * @param riskHoldIn  (required)
-     * @return ApiResponse&lt;RiskHoldOut&gt;
+     * @param labelRiskHoldIn  (required)
+     * @return ApiResponse&lt;LabelRiskHoldOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskHoldOut> riskHoldLabelsWithHttpInfo(@javax.annotation.Nonnull RiskHoldIn riskHoldIn) throws ApiException {
-        okhttp3.Call localVarCall = riskHoldLabelsValidateBeforeCall(riskHoldIn, null);
-        Type localVarReturnType = new TypeToken<RiskHoldOut>(){}.getType();
+    public ApiResponse<LabelRiskHoldOut> riskHoldLabelsWithHttpInfo(@javax.annotation.Nonnull LabelRiskHoldIn labelRiskHoldIn) throws ApiException {
+        okhttp3.Call localVarCall = riskHoldLabelsValidateBeforeCall(labelRiskHoldIn, null);
+        Type localVarReturnType = new TypeToken<LabelRiskHoldOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Place or release a litigation hold on named records (asynchronously)
      * Places or releases a litigation hold on named records.  A hold is a fact about the RECORD, not about the world: it says retention may not dispose of this row, and it asserts nothing about what happened. So it is not a field on an assertion and it is not folded into the content digest — carried there it was silently a no-op on any record that already existed, since re-filing the same assertion with a hold flag produced the same digest, the insert was ignored, and the caller was answered &#x60;duplicate&#x60; while the hold it asked for was never placed. This op is the one way a hold moves, in either direction, and the move is written to the audit log.  Every named id is this tenant&#39;s or is nothing. The statement runs against the tenant&#39;s own file, which holds no other tenant&#39;s rows and has no column that could name one.
-     * @param riskHoldIn  (required)
+     * @param labelRiskHoldIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -327,18 +337,19 @@ public class LabelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskHoldLabelsAsync(@javax.annotation.Nonnull RiskHoldIn riskHoldIn, final ApiCallback<RiskHoldOut> _callback) throws ApiException {
+    public okhttp3.Call riskHoldLabelsAsync(@javax.annotation.Nonnull LabelRiskHoldIn labelRiskHoldIn, final ApiCallback<LabelRiskHoldOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = riskHoldLabelsValidateBeforeCall(riskHoldIn, _callback);
-        Type localVarReturnType = new TypeToken<RiskHoldOut>(){}.getType();
+        okhttp3.Call localVarCall = riskHoldLabelsValidateBeforeCall(labelRiskHoldIn, _callback);
+        Type localVarReturnType = new TypeToken<LabelRiskHoldOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for riskLabel
-     * @param riskLabelIn  (required)
+     * @param labelRiskLabelIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -347,9 +358,10 @@ public class LabelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskLabelCall(@javax.annotation.Nonnull RiskLabelIn riskLabelIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskLabelCall(@javax.annotation.Nonnull LabelRiskLabelIn labelRiskLabelIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -363,7 +375,7 @@ public class LabelApi {
             basePath = null;
         }
 
-        Object localVarPostBody = riskLabelIn;
+        Object localVarPostBody = labelRiskLabelIn;
 
         // create path and map variables
         String localVarPath = "/v1/label";
@@ -375,7 +387,8 @@ public class LabelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -395,57 +408,59 @@ public class LabelApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskLabelValidateBeforeCall(@javax.annotation.Nonnull RiskLabelIn riskLabelIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'riskLabelIn' is set
-        if (riskLabelIn == null) {
-            throw new ApiException("Missing the required parameter 'riskLabelIn' when calling riskLabel(Async)");
+    private okhttp3.Call riskLabelValidateBeforeCall(@javax.annotation.Nonnull LabelRiskLabelIn labelRiskLabelIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'labelRiskLabelIn' is set
+        if (labelRiskLabelIn == null) {
+            throw new ApiException("Missing the required parameter 'labelRiskLabelIn' when calling riskLabel(Async)");
         }
 
-        return riskLabelCall(riskLabelIn, _callback);
+        return riskLabelCall(labelRiskLabelIn, _callback);
 
     }
 
     /**
      * Assert ground truth about events
      * Records a batch of ground truth against the entities it judges.  Each assertion carries TWO times — when the judged event happened, and when the assertion became knowable — and both are required. The second is what keeps a chargeback that landed in June out of a model that had to decide in February.  It is idempotent on the CONTENT of an assertion, so a webhook that redelivers is safe. It never overwrites: a source that corrects itself later files a NEW assertion, which wins from the moment it became knowable and leaves every earlier observation instant seeing exactly what it saw.  The asserter is stamped from the validated credential and is not a body field.
-     * @param riskLabelIn  (required)
-     * @return RiskLabelOut
+     * @param labelRiskLabelIn  (required)
+     * @return LabelRiskLabelOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskLabelOut riskLabel(@javax.annotation.Nonnull RiskLabelIn riskLabelIn) throws ApiException {
-        ApiResponse<RiskLabelOut> localVarResp = riskLabelWithHttpInfo(riskLabelIn);
+    public LabelRiskLabelOut riskLabel(@javax.annotation.Nonnull LabelRiskLabelIn labelRiskLabelIn) throws ApiException {
+        ApiResponse<LabelRiskLabelOut> localVarResp = riskLabelWithHttpInfo(labelRiskLabelIn);
         return localVarResp.getData();
     }
 
     /**
      * Assert ground truth about events
      * Records a batch of ground truth against the entities it judges.  Each assertion carries TWO times — when the judged event happened, and when the assertion became knowable — and both are required. The second is what keeps a chargeback that landed in June out of a model that had to decide in February.  It is idempotent on the CONTENT of an assertion, so a webhook that redelivers is safe. It never overwrites: a source that corrects itself later files a NEW assertion, which wins from the moment it became knowable and leaves every earlier observation instant seeing exactly what it saw.  The asserter is stamped from the validated credential and is not a body field.
-     * @param riskLabelIn  (required)
-     * @return ApiResponse&lt;RiskLabelOut&gt;
+     * @param labelRiskLabelIn  (required)
+     * @return ApiResponse&lt;LabelRiskLabelOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskLabelOut> riskLabelWithHttpInfo(@javax.annotation.Nonnull RiskLabelIn riskLabelIn) throws ApiException {
-        okhttp3.Call localVarCall = riskLabelValidateBeforeCall(riskLabelIn, null);
-        Type localVarReturnType = new TypeToken<RiskLabelOut>(){}.getType();
+    public ApiResponse<LabelRiskLabelOut> riskLabelWithHttpInfo(@javax.annotation.Nonnull LabelRiskLabelIn labelRiskLabelIn) throws ApiException {
+        okhttp3.Call localVarCall = riskLabelValidateBeforeCall(labelRiskLabelIn, null);
+        Type localVarReturnType = new TypeToken<LabelRiskLabelOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Assert ground truth about events (asynchronously)
      * Records a batch of ground truth against the entities it judges.  Each assertion carries TWO times — when the judged event happened, and when the assertion became knowable — and both are required. The second is what keeps a chargeback that landed in June out of a model that had to decide in February.  It is idempotent on the CONTENT of an assertion, so a webhook that redelivers is safe. It never overwrites: a source that corrects itself later files a NEW assertion, which wins from the moment it became knowable and leaves every earlier observation instant seeing exactly what it saw.  The asserter is stamped from the validated credential and is not a body field.
-     * @param riskLabelIn  (required)
+     * @param labelRiskLabelIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -454,12 +469,13 @@ public class LabelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskLabelAsync(@javax.annotation.Nonnull RiskLabelIn riskLabelIn, final ApiCallback<RiskLabelOut> _callback) throws ApiException {
+    public okhttp3.Call riskLabelAsync(@javax.annotation.Nonnull LabelRiskLabelIn labelRiskLabelIn, final ApiCallback<LabelRiskLabelOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = riskLabelValidateBeforeCall(riskLabelIn, _callback);
-        Type localVarReturnType = new TypeToken<RiskLabelOut>(){}.getType();
+        okhttp3.Call localVarCall = riskLabelValidateBeforeCall(labelRiskLabelIn, _callback);
+        Type localVarReturnType = new TypeToken<LabelRiskLabelOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -476,6 +492,7 @@ public class LabelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskLabelCoverageCall(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long horizon, final ApiCallback _callback) throws ApiException {
@@ -516,7 +533,8 @@ public class LabelApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -546,17 +564,18 @@ public class LabelApi {
      * @param from From and To bound the EVENT window, half-open, RFC 3339.  Unstated, the window is the 90 days ENDING where maturity begins — &#x60;to&#x60; is the horizon ago, not now. A default window running to now under a default horizon could not contain one matured event, so every count below it would be zero however much ground truth the tenant held. (optional)
      * @param to  (optional)
      * @param horizon Horizon is the maturity horizon in days the coverage is measured under. Unstated takes 120. It also moves the default window, which ends where maturity begins. (optional)
-     * @return RiskLabelCoverage
+     * @return LabelRiskLabelCoverage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskLabelCoverage riskLabelCoverage(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long horizon) throws ApiException {
-        ApiResponse<RiskLabelCoverage> localVarResp = riskLabelCoverageWithHttpInfo(from, to, horizon);
+    public LabelRiskLabelCoverage riskLabelCoverage(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long horizon) throws ApiException {
+        ApiResponse<LabelRiskLabelCoverage> localVarResp = riskLabelCoverageWithHttpInfo(from, to, horizon);
         return localVarResp.getData();
     }
 
@@ -566,18 +585,19 @@ public class LabelApi {
      * @param from From and To bound the EVENT window, half-open, RFC 3339.  Unstated, the window is the 90 days ENDING where maturity begins — &#x60;to&#x60; is the horizon ago, not now. A default window running to now under a default horizon could not contain one matured event, so every count below it would be zero however much ground truth the tenant held. (optional)
      * @param to  (optional)
      * @param horizon Horizon is the maturity horizon in days the coverage is measured under. Unstated takes 120. It also moves the default window, which ends where maturity begins. (optional)
-     * @return ApiResponse&lt;RiskLabelCoverage&gt;
+     * @return ApiResponse&lt;LabelRiskLabelCoverage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskLabelCoverage> riskLabelCoverageWithHttpInfo(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long horizon) throws ApiException {
+    public ApiResponse<LabelRiskLabelCoverage> riskLabelCoverageWithHttpInfo(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long horizon) throws ApiException {
         okhttp3.Call localVarCall = riskLabelCoverageValidateBeforeCall(from, to, horizon, null);
-        Type localVarReturnType = new TypeToken<RiskLabelCoverage>(){}.getType();
+        Type localVarReturnType = new TypeToken<LabelRiskLabelCoverage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -595,12 +615,13 @@ public class LabelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskLabelCoverageAsync(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long horizon, final ApiCallback<RiskLabelCoverage> _callback) throws ApiException {
+    public okhttp3.Call riskLabelCoverageAsync(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long horizon, final ApiCallback<LabelRiskLabelCoverage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskLabelCoverageValidateBeforeCall(from, to, horizon, _callback);
-        Type localVarReturnType = new TypeToken<RiskLabelCoverage>(){}.getType();
+        Type localVarReturnType = new TypeToken<LabelRiskLabelCoverage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -614,6 +635,7 @@ public class LabelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskLabelVocabularyCall(final ApiCallback _callback) throws ApiException {
@@ -642,7 +664,8 @@ public class LabelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -669,35 +692,37 @@ public class LabelApi {
     /**
      * The closed vocabularies and the precedence rule that resolves a conflict
      * Publishes the closed vocabularies and the precedence rule that resolves a conflict between two sources.  A precedence rule nobody can read is a rule nobody can audit or dispute, and the whole defensibility of a contested label rests on being able to say why one assertion beat another. The order returned here is derived from the same declaration the resolver reads — it is not a description of it.
-     * @return RiskLabelVocabulary
+     * @return LabelRiskLabelVocabulary
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskLabelVocabulary riskLabelVocabulary() throws ApiException {
-        ApiResponse<RiskLabelVocabulary> localVarResp = riskLabelVocabularyWithHttpInfo();
+    public LabelRiskLabelVocabulary riskLabelVocabulary() throws ApiException {
+        ApiResponse<LabelRiskLabelVocabulary> localVarResp = riskLabelVocabularyWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * The closed vocabularies and the precedence rule that resolves a conflict
      * Publishes the closed vocabularies and the precedence rule that resolves a conflict between two sources.  A precedence rule nobody can read is a rule nobody can audit or dispute, and the whole defensibility of a contested label rests on being able to say why one assertion beat another. The order returned here is derived from the same declaration the resolver reads — it is not a description of it.
-     * @return ApiResponse&lt;RiskLabelVocabulary&gt;
+     * @return ApiResponse&lt;LabelRiskLabelVocabulary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskLabelVocabulary> riskLabelVocabularyWithHttpInfo() throws ApiException {
+    public ApiResponse<LabelRiskLabelVocabulary> riskLabelVocabularyWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = riskLabelVocabularyValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<RiskLabelVocabulary>(){}.getType();
+        Type localVarReturnType = new TypeToken<LabelRiskLabelVocabulary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -712,12 +737,13 @@ public class LabelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskLabelVocabularyAsync(final ApiCallback<RiskLabelVocabulary> _callback) throws ApiException {
+    public okhttp3.Call riskLabelVocabularyAsync(final ApiCallback<LabelRiskLabelVocabulary> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskLabelVocabularyValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<RiskLabelVocabulary>(){}.getType();
+        Type localVarReturnType = new TypeToken<LabelRiskLabelVocabulary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -737,6 +763,7 @@ public class LabelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call riskLabelsCall(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -789,7 +816,8 @@ public class LabelApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -822,17 +850,18 @@ public class LabelApi {
      * @param from From and To bound the EVENT time, half-open, RFC 3339. (optional)
      * @param to  (optional)
      * @param limit Limit caps the page. Out of range takes the plane&#39;s own bound. (optional)
-     * @return RiskLabelsOut
+     * @return LabelRiskLabelsOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskLabelsOut riskLabels(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<RiskLabelsOut> localVarResp = riskLabelsWithHttpInfo(kind, subject, source, from, to, limit);
+    public LabelRiskLabelsOut riskLabels(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<LabelRiskLabelsOut> localVarResp = riskLabelsWithHttpInfo(kind, subject, source, from, to, limit);
         return localVarResp.getData();
     }
 
@@ -845,18 +874,19 @@ public class LabelApi {
      * @param from From and To bound the EVENT time, half-open, RFC 3339. (optional)
      * @param to  (optional)
      * @param limit Limit caps the page. Out of range takes the plane&#39;s own bound. (optional)
-     * @return ApiResponse&lt;RiskLabelsOut&gt;
+     * @return ApiResponse&lt;LabelRiskLabelsOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskLabelsOut> riskLabelsWithHttpInfo(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<LabelRiskLabelsOut> riskLabelsWithHttpInfo(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = riskLabelsValidateBeforeCall(kind, subject, source, from, to, limit, null);
-        Type localVarReturnType = new TypeToken<RiskLabelsOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<LabelRiskLabelsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -877,18 +907,19 @@ public class LabelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskLabelsAsync(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long limit, final ApiCallback<RiskLabelsOut> _callback) throws ApiException {
+    public okhttp3.Call riskLabelsAsync(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long limit, final ApiCallback<LabelRiskLabelsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskLabelsValidateBeforeCall(kind, subject, source, from, to, limit, _callback);
-        Type localVarReturnType = new TypeToken<RiskLabelsOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<LabelRiskLabelsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for riskResolveLabels
-     * @param riskResolveIn  (required)
+     * @param labelRiskResolveIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -897,9 +928,10 @@ public class LabelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskResolveLabelsCall(@javax.annotation.Nonnull RiskResolveIn riskResolveIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskResolveLabelsCall(@javax.annotation.Nonnull LabelRiskResolveIn labelRiskResolveIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -913,7 +945,7 @@ public class LabelApi {
             basePath = null;
         }
 
-        Object localVarPostBody = riskResolveIn;
+        Object localVarPostBody = labelRiskResolveIn;
 
         // create path and map variables
         String localVarPath = "/v1/label/resolve";
@@ -925,7 +957,8 @@ public class LabelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -945,57 +978,59 @@ public class LabelApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskResolveLabelsValidateBeforeCall(@javax.annotation.Nonnull RiskResolveIn riskResolveIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'riskResolveIn' is set
-        if (riskResolveIn == null) {
-            throw new ApiException("Missing the required parameter 'riskResolveIn' when calling riskResolveLabels(Async)");
+    private okhttp3.Call riskResolveLabelsValidateBeforeCall(@javax.annotation.Nonnull LabelRiskResolveIn labelRiskResolveIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'labelRiskResolveIn' is set
+        if (labelRiskResolveIn == null) {
+            throw new ApiException("Missing the required parameter 'labelRiskResolveIn' when calling riskResolveLabels(Async)");
         }
 
-        return riskResolveLabelsCall(riskResolveIn, _callback);
+        return riskResolveLabelsCall(labelRiskResolveIn, _callback);
 
     }
 
     /**
      * Resolve the label in force for named events, as of each event&#39;s own horizon
      * Answers, for each named event, which assertion was in force AS OF that event&#39;s own horizon — and what disagreed with it.  This is the join surface: the dataset materialiser calls it to attach ground truth to training rows, and the evaluator calls it to score a past decision against what was knowable when the decision had to be made. One mechanism for both, so a model can never be trained under one leakage rule and scored under another.  Three answers are distinct and all three are honest: a resolved label, an event that has not matured, and a matured event nobody has judged. The last is never reported as unproductive.
-     * @param riskResolveIn  (required)
-     * @return RiskResolveOut
+     * @param labelRiskResolveIn  (required)
+     * @return LabelRiskResolveOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RiskResolveOut riskResolveLabels(@javax.annotation.Nonnull RiskResolveIn riskResolveIn) throws ApiException {
-        ApiResponse<RiskResolveOut> localVarResp = riskResolveLabelsWithHttpInfo(riskResolveIn);
+    public LabelRiskResolveOut riskResolveLabels(@javax.annotation.Nonnull LabelRiskResolveIn labelRiskResolveIn) throws ApiException {
+        ApiResponse<LabelRiskResolveOut> localVarResp = riskResolveLabelsWithHttpInfo(labelRiskResolveIn);
         return localVarResp.getData();
     }
 
     /**
      * Resolve the label in force for named events, as of each event&#39;s own horizon
      * Answers, for each named event, which assertion was in force AS OF that event&#39;s own horizon — and what disagreed with it.  This is the join surface: the dataset materialiser calls it to attach ground truth to training rows, and the evaluator calls it to score a past decision against what was knowable when the decision had to be made. One mechanism for both, so a model can never be trained under one leakage rule and scored under another.  Three answers are distinct and all three are honest: a resolved label, an event that has not matured, and a matured event nobody has judged. The last is never reported as unproductive.
-     * @param riskResolveIn  (required)
-     * @return ApiResponse&lt;RiskResolveOut&gt;
+     * @param labelRiskResolveIn  (required)
+     * @return ApiResponse&lt;LabelRiskResolveOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskResolveOut> riskResolveLabelsWithHttpInfo(@javax.annotation.Nonnull RiskResolveIn riskResolveIn) throws ApiException {
-        okhttp3.Call localVarCall = riskResolveLabelsValidateBeforeCall(riskResolveIn, null);
-        Type localVarReturnType = new TypeToken<RiskResolveOut>(){}.getType();
+    public ApiResponse<LabelRiskResolveOut> riskResolveLabelsWithHttpInfo(@javax.annotation.Nonnull LabelRiskResolveIn labelRiskResolveIn) throws ApiException {
+        okhttp3.Call localVarCall = riskResolveLabelsValidateBeforeCall(labelRiskResolveIn, null);
+        Type localVarReturnType = new TypeToken<LabelRiskResolveOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Resolve the label in force for named events, as of each event&#39;s own horizon (asynchronously)
      * Answers, for each named event, which assertion was in force AS OF that event&#39;s own horizon — and what disagreed with it.  This is the join surface: the dataset materialiser calls it to attach ground truth to training rows, and the evaluator calls it to score a past decision against what was knowable when the decision had to be made. One mechanism for both, so a model can never be trained under one leakage rule and scored under another.  Three answers are distinct and all three are honest: a resolved label, an event that has not matured, and a matured event nobody has judged. The last is never reported as unproductive.
-     * @param riskResolveIn  (required)
+     * @param labelRiskResolveIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1004,12 +1039,13 @@ public class LabelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskResolveLabelsAsync(@javax.annotation.Nonnull RiskResolveIn riskResolveIn, final ApiCallback<RiskResolveOut> _callback) throws ApiException {
+    public okhttp3.Call riskResolveLabelsAsync(@javax.annotation.Nonnull LabelRiskResolveIn labelRiskResolveIn, final ApiCallback<LabelRiskResolveOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = riskResolveLabelsValidateBeforeCall(riskResolveIn, _callback);
-        Type localVarReturnType = new TypeToken<RiskResolveOut>(){}.getType();
+        okhttp3.Call localVarCall = riskResolveLabelsValidateBeforeCall(labelRiskResolveIn, _callback);
+        Type localVarReturnType = new TypeToken<LabelRiskResolveOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -27,22 +27,27 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Blob;
-import ai.hanzo.cloud.model.EndIn;
-import ai.hanzo.cloud.model.ExecRequest;
-import ai.hanzo.cloud.model.ExecResult;
-import ai.hanzo.cloud.model.LeaseIn;
-import ai.hanzo.cloud.model.Leased;
-import ai.hanzo.cloud.model.PathIn;
-import ai.hanzo.cloud.model.Ran;
-import ai.hanzo.cloud.model.RunIn;
-import ai.hanzo.cloud.model.Sandbox;
-import ai.hanzo.cloud.model.SandboxList;
-import ai.hanzo.cloud.model.StopIn;
-import ai.hanzo.cloud.model.Stopped;
-import ai.hanzo.cloud.model.TicketGrant;
-import ai.hanzo.cloud.model.WriteIn;
-import ai.hanzo.cloud.model.Wrote;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.SandboxBlob;
+import ai.hanzo.cloud.model.SandboxEndIn;
+import ai.hanzo.cloud.model.SandboxExecRequest;
+import ai.hanzo.cloud.model.SandboxExecResult;
+import ai.hanzo.cloud.model.SandboxLeaseIn;
+import ai.hanzo.cloud.model.SandboxLeased;
+import ai.hanzo.cloud.model.SandboxPathIn;
+import ai.hanzo.cloud.model.SandboxPorts;
+import ai.hanzo.cloud.model.SandboxPreviewGrant;
+import ai.hanzo.cloud.model.SandboxPreviewIn;
+import ai.hanzo.cloud.model.SandboxRan;
+import ai.hanzo.cloud.model.SandboxRunIn;
+import ai.hanzo.cloud.model.SandboxSandbox;
+import ai.hanzo.cloud.model.SandboxSandboxIn;
+import ai.hanzo.cloud.model.SandboxSandboxList;
+import ai.hanzo.cloud.model.SandboxStopIn;
+import ai.hanzo.cloud.model.SandboxStopped;
+import ai.hanzo.cloud.model.SandboxTicketGrant;
+import ai.hanzo.cloud.model.SandboxWriteIn;
+import ai.hanzo.cloud.model.SandboxWrote;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -99,6 +104,7 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteSandboxByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String purge, final ApiCallback _callback) throws ApiException {
@@ -132,6 +138,7 @@ public class SandboxApi {
         }
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -171,6 +178,7 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteSandboxById(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String purge) throws ApiException {
@@ -189,6 +197,7 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteSandboxByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String purge) throws ApiException {
@@ -209,6 +218,7 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteSandboxByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String purge, final ApiCallback<Void> _callback) throws ApiException {
@@ -219,7 +229,7 @@ public class SandboxApi {
     }
     /**
      * Build call for endSandbox
-     * @param endIn  (required)
+     * @param sandboxEndIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -228,9 +238,10 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call endSandboxCall(@javax.annotation.Nonnull EndIn endIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call endSandboxCall(@javax.annotation.Nonnull SandboxEndIn sandboxEndIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -244,7 +255,7 @@ public class SandboxApi {
             basePath = null;
         }
 
-        Object localVarPostBody = endIn;
+        Object localVarPostBody = sandboxEndIn;
 
         // create path and map variables
         String localVarPath = "/v1/sandbox/end";
@@ -256,6 +267,7 @@ public class SandboxApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -275,36 +287,37 @@ public class SandboxApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call endSandboxValidateBeforeCall(@javax.annotation.Nonnull EndIn endIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'endIn' is set
-        if (endIn == null) {
-            throw new ApiException("Missing the required parameter 'endIn' when calling endSandbox(Async)");
+    private okhttp3.Call endSandboxValidateBeforeCall(@javax.annotation.Nonnull SandboxEndIn sandboxEndIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sandboxEndIn' is set
+        if (sandboxEndIn == null) {
+            throw new ApiException("Missing the required parameter 'sandboxEndIn' when calling endSandbox(Async)");
         }
 
-        return endSandboxCall(endIn, _callback);
+        return endSandboxCall(sandboxEndIn, _callback);
 
     }
 
     /**
      * End a sandbox and release it
      * Ends the caller&#39;s sandbox lease: the pod goes, and the volume goes only when the caller asked for that too.
-     * @param endIn  (required)
+     * @param sandboxEndIn  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public void endSandbox(@javax.annotation.Nonnull EndIn endIn) throws ApiException {
-        endSandboxWithHttpInfo(endIn);
+    public void endSandbox(@javax.annotation.Nonnull SandboxEndIn sandboxEndIn) throws ApiException {
+        endSandboxWithHttpInfo(sandboxEndIn);
     }
 
     /**
      * End a sandbox and release it
      * Ends the caller&#39;s sandbox lease: the pod goes, and the volume goes only when the caller asked for that too.
-     * @param endIn  (required)
+     * @param sandboxEndIn  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -312,17 +325,18 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> endSandboxWithHttpInfo(@javax.annotation.Nonnull EndIn endIn) throws ApiException {
-        okhttp3.Call localVarCall = endSandboxValidateBeforeCall(endIn, null);
+    public ApiResponse<Void> endSandboxWithHttpInfo(@javax.annotation.Nonnull SandboxEndIn sandboxEndIn) throws ApiException {
+        okhttp3.Call localVarCall = endSandboxValidateBeforeCall(sandboxEndIn, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * End a sandbox and release it (asynchronously)
      * Ends the caller&#39;s sandbox lease: the pod goes, and the volume goes only when the caller asked for that too.
-     * @param endIn  (required)
+     * @param sandboxEndIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -331,11 +345,12 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call endSandboxAsync(@javax.annotation.Nonnull EndIn endIn, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call endSandboxAsync(@javax.annotation.Nonnull SandboxEndIn sandboxEndIn, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = endSandboxValidateBeforeCall(endIn, _callback);
+        okhttp3.Call localVarCall = endSandboxValidateBeforeCall(sandboxEndIn, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -351,6 +366,7 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSandboxCall(@javax.annotation.Nullable String project, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
@@ -387,7 +403,8 @@ public class SandboxApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -412,47 +429,49 @@ public class SandboxApi {
     }
 
     /**
-     * Lists the caller org&#39;s sandboxes, newest first.
-     * Lists the caller org&#39;s sandboxes, newest first.  &#x60;?project&#x3D;&#x60; and &#x60;?status&#x3D;&#x60; narrow it. Only the caller&#39;s org&#39;s: the store is keyed on the validated org, so another tenant&#39;s sandbox is not something this operation can return.
+     * Lists the sandboxes the caller holds, newest first.
+     * Lists the sandboxes the caller holds, newest first.  A member holds the sandboxes they leased; an admin of the org, or a SuperAdmin, holds every one in it. &#x60;?project&#x3D;&#x60; and &#x60;?status&#x3D;&#x60; narrow it. Only the caller&#39;s org&#39;s: the store is keyed on the validated org, so another tenant&#39;s sandbox is not something this operation can return.
      * @param project  (optional)
      * @param status  (optional)
-     * @return SandboxList
+     * @return SandboxSandboxList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SandboxList getSandbox(@javax.annotation.Nullable String project, @javax.annotation.Nullable String status) throws ApiException {
-        ApiResponse<SandboxList> localVarResp = getSandboxWithHttpInfo(project, status);
+    public SandboxSandboxList getSandbox(@javax.annotation.Nullable String project, @javax.annotation.Nullable String status) throws ApiException {
+        ApiResponse<SandboxSandboxList> localVarResp = getSandboxWithHttpInfo(project, status);
         return localVarResp.getData();
     }
 
     /**
-     * Lists the caller org&#39;s sandboxes, newest first.
-     * Lists the caller org&#39;s sandboxes, newest first.  &#x60;?project&#x3D;&#x60; and &#x60;?status&#x3D;&#x60; narrow it. Only the caller&#39;s org&#39;s: the store is keyed on the validated org, so another tenant&#39;s sandbox is not something this operation can return.
+     * Lists the sandboxes the caller holds, newest first.
+     * Lists the sandboxes the caller holds, newest first.  A member holds the sandboxes they leased; an admin of the org, or a SuperAdmin, holds every one in it. &#x60;?project&#x3D;&#x60; and &#x60;?status&#x3D;&#x60; narrow it. Only the caller&#39;s org&#39;s: the store is keyed on the validated org, so another tenant&#39;s sandbox is not something this operation can return.
      * @param project  (optional)
      * @param status  (optional)
-     * @return ApiResponse&lt;SandboxList&gt;
+     * @return ApiResponse&lt;SandboxSandboxList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SandboxList> getSandboxWithHttpInfo(@javax.annotation.Nullable String project, @javax.annotation.Nullable String status) throws ApiException {
+    public ApiResponse<SandboxSandboxList> getSandboxWithHttpInfo(@javax.annotation.Nullable String project, @javax.annotation.Nullable String status) throws ApiException {
         okhttp3.Call localVarCall = getSandboxValidateBeforeCall(project, status, null);
-        Type localVarReturnType = new TypeToken<SandboxList>(){}.getType();
+        Type localVarReturnType = new TypeToken<SandboxSandboxList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Lists the caller org&#39;s sandboxes, newest first. (asynchronously)
-     * Lists the caller org&#39;s sandboxes, newest first.  &#x60;?project&#x3D;&#x60; and &#x60;?status&#x3D;&#x60; narrow it. Only the caller&#39;s org&#39;s: the store is keyed on the validated org, so another tenant&#39;s sandbox is not something this operation can return.
+     * Lists the sandboxes the caller holds, newest first. (asynchronously)
+     * Lists the sandboxes the caller holds, newest first.  A member holds the sandboxes they leased; an admin of the org, or a SuperAdmin, holds every one in it. &#x60;?project&#x3D;&#x60; and &#x60;?status&#x3D;&#x60; narrow it. Only the caller&#39;s org&#39;s: the store is keyed on the validated org, so another tenant&#39;s sandbox is not something this operation can return.
      * @param project  (optional)
      * @param status  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -463,12 +482,13 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSandboxAsync(@javax.annotation.Nullable String project, @javax.annotation.Nullable String status, final ApiCallback<SandboxList> _callback) throws ApiException {
+    public okhttp3.Call getSandboxAsync(@javax.annotation.Nullable String project, @javax.annotation.Nullable String status, final ApiCallback<SandboxSandboxList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSandboxValidateBeforeCall(project, status, _callback);
-        Type localVarReturnType = new TypeToken<SandboxList>(){}.getType();
+        Type localVarReturnType = new TypeToken<SandboxSandboxList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -483,6 +503,7 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getSandboxByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -512,7 +533,8 @@ public class SandboxApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -543,44 +565,46 @@ public class SandboxApi {
 
     /**
      * Returns one sandbox: its class, project, image, the runtime it was given, its status and when its lease ends.
-     * Returns one sandbox: its class, project, image, the runtime it was given, its status and when its lease ends.  An id the caller&#39;s org does not hold is the same 404 an unknown id gives — the store is keyed on the org, so a cross-tenant id simply is not there.
+     * Returns one sandbox: its class, project, image, the runtime it was given, its status and when its lease ends.  A sandbox is its lessee&#39;s and its org admins&#39;. An id the caller does not hold — another org&#39;s, or another member&#39;s — is the same 404 an unknown id gives.
      * @param id ID is the sandbox to address, from the path. (required)
-     * @return Sandbox
+     * @return SandboxSandbox
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Sandbox getSandboxById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Sandbox> localVarResp = getSandboxByIdWithHttpInfo(id);
+    public SandboxSandbox getSandboxById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SandboxSandbox> localVarResp = getSandboxByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
      * Returns one sandbox: its class, project, image, the runtime it was given, its status and when its lease ends.
-     * Returns one sandbox: its class, project, image, the runtime it was given, its status and when its lease ends.  An id the caller&#39;s org does not hold is the same 404 an unknown id gives — the store is keyed on the org, so a cross-tenant id simply is not there.
+     * Returns one sandbox: its class, project, image, the runtime it was given, its status and when its lease ends.  A sandbox is its lessee&#39;s and its org admins&#39;. An id the caller does not hold — another org&#39;s, or another member&#39;s — is the same 404 an unknown id gives.
      * @param id ID is the sandbox to address, from the path. (required)
-     * @return ApiResponse&lt;Sandbox&gt;
+     * @return ApiResponse&lt;SandboxSandbox&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Sandbox> getSandboxByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<SandboxSandbox> getSandboxByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getSandboxByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Sandbox>(){}.getType();
+        Type localVarReturnType = new TypeToken<SandboxSandbox>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns one sandbox: its class, project, image, the runtime it was given, its status and when its lease ends. (asynchronously)
-     * Returns one sandbox: its class, project, image, the runtime it was given, its status and when its lease ends.  An id the caller&#39;s org does not hold is the same 404 an unknown id gives — the store is keyed on the org, so a cross-tenant id simply is not there.
+     * Returns one sandbox: its class, project, image, the runtime it was given, its status and when its lease ends.  A sandbox is its lessee&#39;s and its org admins&#39;. An id the caller does not hold — another org&#39;s, or another member&#39;s — is the same 404 an unknown id gives.
      * @param id ID is the sandbox to address, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -590,12 +614,13 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSandboxByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Sandbox> _callback) throws ApiException {
+    public okhttp3.Call getSandboxByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SandboxSandbox> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getSandboxByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Sandbox>(){}.getType();
+        Type localVarReturnType = new TypeToken<SandboxSandbox>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -695,6 +720,138 @@ public class SandboxApi {
 
         okhttp3.Call localVarCall = getSandboxByIdFsValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSandboxByIdPorts
+     * @param id ID is the sandbox, from the path. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSandboxByIdPortsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sandbox/{id}/ports"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSandboxByIdPortsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getSandboxByIdPorts(Async)");
+        }
+
+        return getSandboxByIdPortsCall(id, _callback);
+
+    }
+
+    /**
+     * Lists the TCP ports something listens on in a sandbox the caller holds, each with the preview host that serves it — what the sandbox&#39;s Browser can open.
+     * Lists the TCP ports something listens on in a sandbox the caller holds, each with the preview host that serves it — what the sandbox&#39;s Browser can open. A dev server started in the sandbox appears here once it listens.
+     * @param id ID is the sandbox, from the path. (required)
+     * @return SandboxPorts
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public SandboxPorts getSandboxByIdPorts(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SandboxPorts> localVarResp = getSandboxByIdPortsWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Lists the TCP ports something listens on in a sandbox the caller holds, each with the preview host that serves it — what the sandbox&#39;s Browser can open.
+     * Lists the TCP ports something listens on in a sandbox the caller holds, each with the preview host that serves it — what the sandbox&#39;s Browser can open. A dev server started in the sandbox appears here once it listens.
+     * @param id ID is the sandbox, from the path. (required)
+     * @return ApiResponse&lt;SandboxPorts&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SandboxPorts> getSandboxByIdPortsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getSandboxByIdPortsValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<SandboxPorts>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Lists the TCP ports something listens on in a sandbox the caller holds, each with the preview host that serves it — what the sandbox&#39;s Browser can open. (asynchronously)
+     * Lists the TCP ports something listens on in a sandbox the caller holds, each with the preview host that serves it — what the sandbox&#39;s Browser can open. A dev server started in the sandbox appears here once it listens.
+     * @param id ID is the sandbox, from the path. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSandboxByIdPortsAsync(@javax.annotation.Nonnull String id, final ApiCallback<SandboxPorts> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSandboxByIdPortsValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<SandboxPorts>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1091,7 +1248,7 @@ public class SandboxApi {
     }
     /**
      * Build call for leaseSandbox
-     * @param leaseIn  (required)
+     * @param sandboxLeaseIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1100,9 +1257,10 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call leaseSandboxCall(@javax.annotation.Nonnull LeaseIn leaseIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call leaseSandboxCall(@javax.annotation.Nonnull SandboxLeaseIn sandboxLeaseIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1116,7 +1274,7 @@ public class SandboxApi {
             basePath = null;
         }
 
-        Object localVarPostBody = leaseIn;
+        Object localVarPostBody = sandboxLeaseIn;
 
         // create path and map variables
         String localVarPath = "/v1/sandbox/lease";
@@ -1128,7 +1286,8 @@ public class SandboxApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1148,57 +1307,59 @@ public class SandboxApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call leaseSandboxValidateBeforeCall(@javax.annotation.Nonnull LeaseIn leaseIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'leaseIn' is set
-        if (leaseIn == null) {
-            throw new ApiException("Missing the required parameter 'leaseIn' when calling leaseSandbox(Async)");
+    private okhttp3.Call leaseSandboxValidateBeforeCall(@javax.annotation.Nonnull SandboxLeaseIn sandboxLeaseIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sandboxLeaseIn' is set
+        if (sandboxLeaseIn == null) {
+            throw new ApiException("Missing the required parameter 'sandboxLeaseIn' when calling leaseSandbox(Async)");
         }
 
-        return leaseSandboxCall(leaseIn, _callback);
+        return leaseSandboxCall(sandboxLeaseIn, _callback);
 
     }
 
     /**
      * Lease a sandbox — a real computer — or resume one you hold
-     * Leases the caller&#39;s sandbox, or returns the one it named if that lease is still running.  What comes back is a real computer: a pod under a runtime boundary with a toolchain already in it, its own filesystem, and a lease that ends it. Every other op here acts on the one this returns.
-     * @param leaseIn  (required)
-     * @return Leased
+     * Leases the caller&#39;s sandbox, or returns the one it named if that lease is still running, or gives it a pod again if it is parked — with its disk as it was left.  What comes back is a real computer: a pod under a runtime boundary with a toolchain already in it, its own filesystem, and a lease that ends it. Every other op here acts on the one this returns.
+     * @param sandboxLeaseIn  (required)
+     * @return SandboxLeased
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Leased leaseSandbox(@javax.annotation.Nonnull LeaseIn leaseIn) throws ApiException {
-        ApiResponse<Leased> localVarResp = leaseSandboxWithHttpInfo(leaseIn);
+    public SandboxLeased leaseSandbox(@javax.annotation.Nonnull SandboxLeaseIn sandboxLeaseIn) throws ApiException {
+        ApiResponse<SandboxLeased> localVarResp = leaseSandboxWithHttpInfo(sandboxLeaseIn);
         return localVarResp.getData();
     }
 
     /**
      * Lease a sandbox — a real computer — or resume one you hold
-     * Leases the caller&#39;s sandbox, or returns the one it named if that lease is still running.  What comes back is a real computer: a pod under a runtime boundary with a toolchain already in it, its own filesystem, and a lease that ends it. Every other op here acts on the one this returns.
-     * @param leaseIn  (required)
-     * @return ApiResponse&lt;Leased&gt;
+     * Leases the caller&#39;s sandbox, or returns the one it named if that lease is still running, or gives it a pod again if it is parked — with its disk as it was left.  What comes back is a real computer: a pod under a runtime boundary with a toolchain already in it, its own filesystem, and a lease that ends it. Every other op here acts on the one this returns.
+     * @param sandboxLeaseIn  (required)
+     * @return ApiResponse&lt;SandboxLeased&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Leased> leaseSandboxWithHttpInfo(@javax.annotation.Nonnull LeaseIn leaseIn) throws ApiException {
-        okhttp3.Call localVarCall = leaseSandboxValidateBeforeCall(leaseIn, null);
-        Type localVarReturnType = new TypeToken<Leased>(){}.getType();
+    public ApiResponse<SandboxLeased> leaseSandboxWithHttpInfo(@javax.annotation.Nonnull SandboxLeaseIn sandboxLeaseIn) throws ApiException {
+        okhttp3.Call localVarCall = leaseSandboxValidateBeforeCall(sandboxLeaseIn, null);
+        Type localVarReturnType = new TypeToken<SandboxLeased>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Lease a sandbox — a real computer — or resume one you hold (asynchronously)
-     * Leases the caller&#39;s sandbox, or returns the one it named if that lease is still running.  What comes back is a real computer: a pod under a runtime boundary with a toolchain already in it, its own filesystem, and a lease that ends it. Every other op here acts on the one this returns.
-     * @param leaseIn  (required)
+     * Leases the caller&#39;s sandbox, or returns the one it named if that lease is still running, or gives it a pod again if it is parked — with its disk as it was left.  What comes back is a real computer: a pod under a runtime boundary with a toolchain already in it, its own filesystem, and a lease that ends it. Every other op here acts on the one this returns.
+     * @param sandboxLeaseIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1207,18 +1368,19 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call leaseSandboxAsync(@javax.annotation.Nonnull LeaseIn leaseIn, final ApiCallback<Leased> _callback) throws ApiException {
+    public okhttp3.Call leaseSandboxAsync(@javax.annotation.Nonnull SandboxLeaseIn sandboxLeaseIn, final ApiCallback<SandboxLeased> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = leaseSandboxValidateBeforeCall(leaseIn, _callback);
-        Type localVarReturnType = new TypeToken<Leased>(){}.getType();
+        okhttp3.Call localVarCall = leaseSandboxValidateBeforeCall(sandboxLeaseIn, _callback);
+        Type localVarReturnType = new TypeToken<SandboxLeased>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postSandbox
-     * @param leaseIn  (required)
+     * @param sandboxSandboxIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1227,9 +1389,10 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSandboxCall(@javax.annotation.Nonnull LeaseIn leaseIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSandboxCall(@javax.annotation.Nonnull SandboxSandboxIn sandboxSandboxIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1243,7 +1406,7 @@ public class SandboxApi {
             basePath = null;
         }
 
-        Object localVarPostBody = leaseIn;
+        Object localVarPostBody = sandboxSandboxIn;
 
         // create path and map variables
         String localVarPath = "/v1/sandbox";
@@ -1255,7 +1418,8 @@ public class SandboxApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1275,57 +1439,59 @@ public class SandboxApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postSandboxValidateBeforeCall(@javax.annotation.Nonnull LeaseIn leaseIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'leaseIn' is set
-        if (leaseIn == null) {
-            throw new ApiException("Missing the required parameter 'leaseIn' when calling postSandbox(Async)");
+    private okhttp3.Call postSandboxValidateBeforeCall(@javax.annotation.Nonnull SandboxSandboxIn sandboxSandboxIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sandboxSandboxIn' is set
+        if (sandboxSandboxIn == null) {
+            throw new ApiException("Missing the required parameter 'sandboxSandboxIn' when calling postSandbox(Async)");
         }
 
-        return postSandboxCall(leaseIn, _callback);
+        return postSandboxCall(sandboxSandboxIn, _callback);
 
     }
 
     /**
      * Leases a sandbox — a real computer — for the caller&#39;s org.
      * Leases a sandbox — a real computer — for the caller&#39;s org.  The class decides what it is for and therefore its image, working directory and isolation. A dev or desktop sandbox is SINGLE-ATTACH per project, so asking twice for one project resumes the one that exists rather than paying for a second; an exec sandbox carries no project and is bounded per org instead, refused 429 past the ceiling because the caller&#39;s correct response is to wait.  Answers 201 with the sandbox as leased, which names the runtime it GOT — not the one that was asked for.
-     * @param leaseIn  (required)
-     * @return Sandbox
+     * @param sandboxSandboxIn  (required)
+     * @return SandboxSandbox
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Sandbox postSandbox(@javax.annotation.Nonnull LeaseIn leaseIn) throws ApiException {
-        ApiResponse<Sandbox> localVarResp = postSandboxWithHttpInfo(leaseIn);
+    public SandboxSandbox postSandbox(@javax.annotation.Nonnull SandboxSandboxIn sandboxSandboxIn) throws ApiException {
+        ApiResponse<SandboxSandbox> localVarResp = postSandboxWithHttpInfo(sandboxSandboxIn);
         return localVarResp.getData();
     }
 
     /**
      * Leases a sandbox — a real computer — for the caller&#39;s org.
      * Leases a sandbox — a real computer — for the caller&#39;s org.  The class decides what it is for and therefore its image, working directory and isolation. A dev or desktop sandbox is SINGLE-ATTACH per project, so asking twice for one project resumes the one that exists rather than paying for a second; an exec sandbox carries no project and is bounded per org instead, refused 429 past the ceiling because the caller&#39;s correct response is to wait.  Answers 201 with the sandbox as leased, which names the runtime it GOT — not the one that was asked for.
-     * @param leaseIn  (required)
-     * @return ApiResponse&lt;Sandbox&gt;
+     * @param sandboxSandboxIn  (required)
+     * @return ApiResponse&lt;SandboxSandbox&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Sandbox> postSandboxWithHttpInfo(@javax.annotation.Nonnull LeaseIn leaseIn) throws ApiException {
-        okhttp3.Call localVarCall = postSandboxValidateBeforeCall(leaseIn, null);
-        Type localVarReturnType = new TypeToken<Sandbox>(){}.getType();
+    public ApiResponse<SandboxSandbox> postSandboxWithHttpInfo(@javax.annotation.Nonnull SandboxSandboxIn sandboxSandboxIn) throws ApiException {
+        okhttp3.Call localVarCall = postSandboxValidateBeforeCall(sandboxSandboxIn, null);
+        Type localVarReturnType = new TypeToken<SandboxSandbox>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Leases a sandbox — a real computer — for the caller&#39;s org. (asynchronously)
      * Leases a sandbox — a real computer — for the caller&#39;s org.  The class decides what it is for and therefore its image, working directory and isolation. A dev or desktop sandbox is SINGLE-ATTACH per project, so asking twice for one project resumes the one that exists rather than paying for a second; an exec sandbox carries no project and is bounded per org instead, refused 429 past the ceiling because the caller&#39;s correct response is to wait.  Answers 201 with the sandbox as leased, which names the runtime it GOT — not the one that was asked for.
-     * @param leaseIn  (required)
+     * @param sandboxSandboxIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1334,19 +1500,20 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSandboxAsync(@javax.annotation.Nonnull LeaseIn leaseIn, final ApiCallback<Sandbox> _callback) throws ApiException {
+    public okhttp3.Call postSandboxAsync(@javax.annotation.Nonnull SandboxSandboxIn sandboxSandboxIn, final ApiCallback<SandboxSandbox> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postSandboxValidateBeforeCall(leaseIn, _callback);
-        Type localVarReturnType = new TypeToken<Sandbox>(){}.getType();
+        okhttp3.Call localVarCall = postSandboxValidateBeforeCall(sandboxSandboxIn, _callback);
+        Type localVarReturnType = new TypeToken<SandboxSandbox>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postSandboxByIdExec
      * @param id ID is the sandbox to run in, from the path. (required)
-     * @param execRequest  (required)
+     * @param sandboxExecRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1355,9 +1522,10 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSandboxByIdExecCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExecRequest execRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSandboxByIdExecCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SandboxExecRequest sandboxExecRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1371,7 +1539,7 @@ public class SandboxApi {
             basePath = null;
         }
 
-        Object localVarPostBody = execRequest;
+        Object localVarPostBody = sandboxExecRequest;
 
         // create path and map variables
         String localVarPath = "/v1/sandbox/{id}/exec"
@@ -1384,7 +1552,8 @@ public class SandboxApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1404,18 +1573,18 @@ public class SandboxApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postSandboxByIdExecValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExecRequest execRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSandboxByIdExecValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SandboxExecRequest sandboxExecRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postSandboxByIdExec(Async)");
         }
 
-        // verify the required parameter 'execRequest' is set
-        if (execRequest == null) {
-            throw new ApiException("Missing the required parameter 'execRequest' when calling postSandboxByIdExec(Async)");
+        // verify the required parameter 'sandboxExecRequest' is set
+        if (sandboxExecRequest == null) {
+            throw new ApiException("Missing the required parameter 'sandboxExecRequest' when calling postSandboxByIdExec(Async)");
         }
 
-        return postSandboxByIdExecCall(id, execRequest, _callback);
+        return postSandboxByIdExecCall(id, sandboxExecRequest, _callback);
 
     }
 
@@ -1423,18 +1592,19 @@ public class SandboxApi {
      * Runs one command in a sandbox the caller holds and answers with its exit code, stdout and stderr.
      * Runs one command in a sandbox the caller holds and answers with its exit code, stdout and stderr.  Send &#x60;argv&#x60; — an argument vector cannot be word-split by accident — or &#x60;command&#x60; for a shell line, which is the only input here that ever reaches a shell. A non-zero exit is a SUCCESSFUL call carrying a failed command: the status is 200 and the exit code is in the answer, because \&quot;the command failed\&quot; and \&quot;the call failed\&quot; are different facts.
      * @param id ID is the sandbox to run in, from the path. (required)
-     * @param execRequest  (required)
-     * @return ExecResult
+     * @param sandboxExecRequest  (required)
+     * @return SandboxExecResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ExecResult postSandboxByIdExec(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExecRequest execRequest) throws ApiException {
-        ApiResponse<ExecResult> localVarResp = postSandboxByIdExecWithHttpInfo(id, execRequest);
+    public SandboxExecResult postSandboxByIdExec(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SandboxExecRequest sandboxExecRequest) throws ApiException {
+        ApiResponse<SandboxExecResult> localVarResp = postSandboxByIdExecWithHttpInfo(id, sandboxExecRequest);
         return localVarResp.getData();
     }
 
@@ -1442,19 +1612,20 @@ public class SandboxApi {
      * Runs one command in a sandbox the caller holds and answers with its exit code, stdout and stderr.
      * Runs one command in a sandbox the caller holds and answers with its exit code, stdout and stderr.  Send &#x60;argv&#x60; — an argument vector cannot be word-split by accident — or &#x60;command&#x60; for a shell line, which is the only input here that ever reaches a shell. A non-zero exit is a SUCCESSFUL call carrying a failed command: the status is 200 and the exit code is in the answer, because \&quot;the command failed\&quot; and \&quot;the call failed\&quot; are different facts.
      * @param id ID is the sandbox to run in, from the path. (required)
-     * @param execRequest  (required)
-     * @return ApiResponse&lt;ExecResult&gt;
+     * @param sandboxExecRequest  (required)
+     * @return ApiResponse&lt;SandboxExecResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ExecResult> postSandboxByIdExecWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExecRequest execRequest) throws ApiException {
-        okhttp3.Call localVarCall = postSandboxByIdExecValidateBeforeCall(id, execRequest, null);
-        Type localVarReturnType = new TypeToken<ExecResult>(){}.getType();
+    public ApiResponse<SandboxExecResult> postSandboxByIdExecWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SandboxExecRequest sandboxExecRequest) throws ApiException {
+        okhttp3.Call localVarCall = postSandboxByIdExecValidateBeforeCall(id, sandboxExecRequest, null);
+        Type localVarReturnType = new TypeToken<SandboxExecResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1462,7 +1633,7 @@ public class SandboxApi {
      * Runs one command in a sandbox the caller holds and answers with its exit code, stdout and stderr. (asynchronously)
      * Runs one command in a sandbox the caller holds and answers with its exit code, stdout and stderr.  Send &#x60;argv&#x60; — an argument vector cannot be word-split by accident — or &#x60;command&#x60; for a shell line, which is the only input here that ever reaches a shell. A non-zero exit is a SUCCESSFUL call carrying a failed command: the status is 200 and the exit code is in the answer, because \&quot;the command failed\&quot; and \&quot;the call failed\&quot; are different facts.
      * @param id ID is the sandbox to run in, from the path. (required)
-     * @param execRequest  (required)
+     * @param sandboxExecRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1471,12 +1642,13 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSandboxByIdExecAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ExecRequest execRequest, final ApiCallback<ExecResult> _callback) throws ApiException {
+    public okhttp3.Call postSandboxByIdExecAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SandboxExecRequest sandboxExecRequest, final ApiCallback<SandboxExecResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postSandboxByIdExecValidateBeforeCall(id, execRequest, _callback);
-        Type localVarReturnType = new TypeToken<ExecResult>(){}.getType();
+        okhttp3.Call localVarCall = postSandboxByIdExecValidateBeforeCall(id, sandboxExecRequest, _callback);
+        Type localVarReturnType = new TypeToken<SandboxExecResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1579,6 +1751,412 @@ public class SandboxApi {
         return localVarCall;
     }
     /**
+     * Build call for postSandboxByIdPause
+     * @param id ID is the sandbox to address, from the path. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSandboxByIdPauseCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sandbox/{id}/pause"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postSandboxByIdPauseValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postSandboxByIdPause(Async)");
+        }
+
+        return postSandboxByIdPauseCall(id, _callback);
+
+    }
+
+    /**
+     * Stops the pod, keeps the row and the volume, and settles the tail: POST /v1/sandbox/:id/pause.
+     * Stops the pod, keeps the row and the volume, and settles the tail: POST /v1/sandbox/:id/pause.  The claim, the stop and the ship are ONE settlement for the same reason a retirement is — the snapshot that carries the advanced watermark has to carry the new state, or a successor hydrates a running row for a pod that is gone and bills for it until the reaper notices.
+     * @param id ID is the sandbox to address, from the path. (required)
+     * @return SandboxSandbox
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public SandboxSandbox postSandboxByIdPause(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SandboxSandbox> localVarResp = postSandboxByIdPauseWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Stops the pod, keeps the row and the volume, and settles the tail: POST /v1/sandbox/:id/pause.
+     * Stops the pod, keeps the row and the volume, and settles the tail: POST /v1/sandbox/:id/pause.  The claim, the stop and the ship are ONE settlement for the same reason a retirement is — the snapshot that carries the advanced watermark has to carry the new state, or a successor hydrates a running row for a pod that is gone and bills for it until the reaper notices.
+     * @param id ID is the sandbox to address, from the path. (required)
+     * @return ApiResponse&lt;SandboxSandbox&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SandboxSandbox> postSandboxByIdPauseWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postSandboxByIdPauseValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<SandboxSandbox>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Stops the pod, keeps the row and the volume, and settles the tail: POST /v1/sandbox/:id/pause. (asynchronously)
+     * Stops the pod, keeps the row and the volume, and settles the tail: POST /v1/sandbox/:id/pause.  The claim, the stop and the ship are ONE settlement for the same reason a retirement is — the snapshot that carries the advanced watermark has to carry the new state, or a successor hydrates a running row for a pod that is gone and bills for it until the reaper notices.
+     * @param id ID is the sandbox to address, from the path. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSandboxByIdPauseAsync(@javax.annotation.Nonnull String id, final ApiCallback<SandboxSandbox> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postSandboxByIdPauseValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<SandboxSandbox>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postSandboxByIdPreview
+     * @param id ID is the sandbox, from the path. (required)
+     * @param sandboxPreviewIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSandboxByIdPreviewCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SandboxPreviewIn sandboxPreviewIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = sandboxPreviewIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/sandbox/{id}/preview"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postSandboxByIdPreviewValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SandboxPreviewIn sandboxPreviewIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postSandboxByIdPreview(Async)");
+        }
+
+        // verify the required parameter 'sandboxPreviewIn' is set
+        if (sandboxPreviewIn == null) {
+            throw new ApiException("Missing the required parameter 'sandboxPreviewIn' when calling postSandboxByIdPreview(Async)");
+        }
+
+        return postSandboxByIdPreviewCall(id, sandboxPreviewIn, _callback);
+
+    }
+
+    /**
+     * Opens a port of a sandbox the caller holds in a browser.
+     * Opens a port of a sandbox the caller holds in a browser.  It answers a URL at an origin of the preview&#39;s own — https://sandbox-&lt;id&gt;-preview-&lt;port&gt;.&lt;apex&gt;/ — carrying a single-use ticket. Opening it sets a cookie on that origin and lands on its root, and from then on every request there is carried to the port inside the sandbox: pages, assets, APIs and WebSockets, as the app serves them on localhost. The preview stays open for twelve hours or until the sandbox stops running; a preview answering 401 is opened again by asking for another URL. A sandbox that is not running is 409.
+     * @param id ID is the sandbox, from the path. (required)
+     * @param sandboxPreviewIn  (required)
+     * @return SandboxPreviewGrant
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public SandboxPreviewGrant postSandboxByIdPreview(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SandboxPreviewIn sandboxPreviewIn) throws ApiException {
+        ApiResponse<SandboxPreviewGrant> localVarResp = postSandboxByIdPreviewWithHttpInfo(id, sandboxPreviewIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Opens a port of a sandbox the caller holds in a browser.
+     * Opens a port of a sandbox the caller holds in a browser.  It answers a URL at an origin of the preview&#39;s own — https://sandbox-&lt;id&gt;-preview-&lt;port&gt;.&lt;apex&gt;/ — carrying a single-use ticket. Opening it sets a cookie on that origin and lands on its root, and from then on every request there is carried to the port inside the sandbox: pages, assets, APIs and WebSockets, as the app serves them on localhost. The preview stays open for twelve hours or until the sandbox stops running; a preview answering 401 is opened again by asking for another URL. A sandbox that is not running is 409.
+     * @param id ID is the sandbox, from the path. (required)
+     * @param sandboxPreviewIn  (required)
+     * @return ApiResponse&lt;SandboxPreviewGrant&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SandboxPreviewGrant> postSandboxByIdPreviewWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SandboxPreviewIn sandboxPreviewIn) throws ApiException {
+        okhttp3.Call localVarCall = postSandboxByIdPreviewValidateBeforeCall(id, sandboxPreviewIn, null);
+        Type localVarReturnType = new TypeToken<SandboxPreviewGrant>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Opens a port of a sandbox the caller holds in a browser. (asynchronously)
+     * Opens a port of a sandbox the caller holds in a browser.  It answers a URL at an origin of the preview&#39;s own — https://sandbox-&lt;id&gt;-preview-&lt;port&gt;.&lt;apex&gt;/ — carrying a single-use ticket. Opening it sets a cookie on that origin and lands on its root, and from then on every request there is carried to the port inside the sandbox: pages, assets, APIs and WebSockets, as the app serves them on localhost. The preview stays open for twelve hours or until the sandbox stops running; a preview answering 401 is opened again by asking for another URL. A sandbox that is not running is 409.
+     * @param id ID is the sandbox, from the path. (required)
+     * @param sandboxPreviewIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSandboxByIdPreviewAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SandboxPreviewIn sandboxPreviewIn, final ApiCallback<SandboxPreviewGrant> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postSandboxByIdPreviewValidateBeforeCall(id, sandboxPreviewIn, _callback);
+        Type localVarReturnType = new TypeToken<SandboxPreviewGrant>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postSandboxByIdResume
+     * @param id ID is the sandbox to address, from the path. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSandboxByIdResumeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sandbox/{id}/resume"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postSandboxByIdResumeValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postSandboxByIdResume(Async)");
+        }
+
+        return postSandboxByIdResumeCall(id, _callback);
+
+    }
+
+    /**
+     * Gives a parked sandbox a pod again: POST /v1/sandbox/:id/resume.
+     * Gives a parked sandbox a pod again: POST /v1/sandbox/:id/resume.  The pod is NEW and so is its lease: a fresh pod name, because a pod name is never reused (store.go), the volume the row already names, a lease of the class&#39;s own length from now, and the RESUMING caller&#39;s credential rather than the one that took the lease — a session is short-lived and the one that parked it is gone.
+     * @param id ID is the sandbox to address, from the path. (required)
+     * @return SandboxSandbox
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public SandboxSandbox postSandboxByIdResume(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SandboxSandbox> localVarResp = postSandboxByIdResumeWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Gives a parked sandbox a pod again: POST /v1/sandbox/:id/resume.
+     * Gives a parked sandbox a pod again: POST /v1/sandbox/:id/resume.  The pod is NEW and so is its lease: a fresh pod name, because a pod name is never reused (store.go), the volume the row already names, a lease of the class&#39;s own length from now, and the RESUMING caller&#39;s credential rather than the one that took the lease — a session is short-lived and the one that parked it is gone.
+     * @param id ID is the sandbox to address, from the path. (required)
+     * @return ApiResponse&lt;SandboxSandbox&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SandboxSandbox> postSandboxByIdResumeWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postSandboxByIdResumeValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<SandboxSandbox>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Gives a parked sandbox a pod again: POST /v1/sandbox/:id/resume. (asynchronously)
+     * Gives a parked sandbox a pod again: POST /v1/sandbox/:id/resume.  The pod is NEW and so is its lease: a fresh pod name, because a pod name is never reused (store.go), the volume the row already names, a lease of the class&#39;s own length from now, and the RESUMING caller&#39;s credential rather than the one that took the lease — a session is short-lived and the one that parked it is gone.
+     * @param id ID is the sandbox to address, from the path. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSandboxByIdResumeAsync(@javax.annotation.Nonnull String id, final ApiCallback<SandboxSandbox> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postSandboxByIdResumeValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<SandboxSandbox>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for postSandboxByIdScreenTicket
      * @param id ID is the sandbox to address, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -1589,6 +2167,7 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postSandboxByIdScreenTicketCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1618,7 +2197,8 @@ public class SandboxApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1651,17 +2231,18 @@ public class SandboxApi {
      * Mints a short-lived grant to open the screen of a desktop sandbox.
      * Mints a short-lived grant to open the screen of a desktop sandbox. Same properties as the terminal ticket, for the other endpoint.
      * @param id ID is the sandbox to address, from the path. (required)
-     * @return TicketGrant
+     * @return SandboxTicketGrant
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TicketGrant postSandboxByIdScreenTicket(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<TicketGrant> localVarResp = postSandboxByIdScreenTicketWithHttpInfo(id);
+    public SandboxTicketGrant postSandboxByIdScreenTicket(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SandboxTicketGrant> localVarResp = postSandboxByIdScreenTicketWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1669,18 +2250,19 @@ public class SandboxApi {
      * Mints a short-lived grant to open the screen of a desktop sandbox.
      * Mints a short-lived grant to open the screen of a desktop sandbox. Same properties as the terminal ticket, for the other endpoint.
      * @param id ID is the sandbox to address, from the path. (required)
-     * @return ApiResponse&lt;TicketGrant&gt;
+     * @return ApiResponse&lt;SandboxTicketGrant&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TicketGrant> postSandboxByIdScreenTicketWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<SandboxTicketGrant> postSandboxByIdScreenTicketWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postSandboxByIdScreenTicketValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<TicketGrant>(){}.getType();
+        Type localVarReturnType = new TypeToken<SandboxTicketGrant>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1696,12 +2278,13 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSandboxByIdScreenTicketAsync(@javax.annotation.Nonnull String id, final ApiCallback<TicketGrant> _callback) throws ApiException {
+    public okhttp3.Call postSandboxByIdScreenTicketAsync(@javax.annotation.Nonnull String id, final ApiCallback<SandboxTicketGrant> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postSandboxByIdScreenTicketValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<TicketGrant>(){}.getType();
+        Type localVarReturnType = new TypeToken<SandboxTicketGrant>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1716,6 +2299,7 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postSandboxByIdTerminalTicketCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1745,7 +2329,8 @@ public class SandboxApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1778,17 +2363,18 @@ public class SandboxApi {
      * Mints a short-lived grant to open a terminal on a sandbox.
      * Mints a short-lived grant to open a terminal on a sandbox.  The ticket travels in the query string of the URL it answers with, because a browser cannot set an Authorization header on a WebSocket handshake. It is single-purpose and short-lived for exactly that reason. A sandbox that is not running is 409 rather than a ticket that cannot be used.
      * @param id ID is the sandbox to address, from the path. (required)
-     * @return TicketGrant
+     * @return SandboxTicketGrant
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TicketGrant postSandboxByIdTerminalTicket(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<TicketGrant> localVarResp = postSandboxByIdTerminalTicketWithHttpInfo(id);
+    public SandboxTicketGrant postSandboxByIdTerminalTicket(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SandboxTicketGrant> localVarResp = postSandboxByIdTerminalTicketWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1796,18 +2382,19 @@ public class SandboxApi {
      * Mints a short-lived grant to open a terminal on a sandbox.
      * Mints a short-lived grant to open a terminal on a sandbox.  The ticket travels in the query string of the URL it answers with, because a browser cannot set an Authorization header on a WebSocket handshake. It is single-purpose and short-lived for exactly that reason. A sandbox that is not running is 409 rather than a ticket that cannot be used.
      * @param id ID is the sandbox to address, from the path. (required)
-     * @return ApiResponse&lt;TicketGrant&gt;
+     * @return ApiResponse&lt;SandboxTicketGrant&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TicketGrant> postSandboxByIdTerminalTicketWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<SandboxTicketGrant> postSandboxByIdTerminalTicketWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postSandboxByIdTerminalTicketValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<TicketGrant>(){}.getType();
+        Type localVarReturnType = new TypeToken<SandboxTicketGrant>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1823,18 +2410,19 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postSandboxByIdTerminalTicketAsync(@javax.annotation.Nonnull String id, final ApiCallback<TicketGrant> _callback) throws ApiException {
+    public okhttp3.Call postSandboxByIdTerminalTicketAsync(@javax.annotation.Nonnull String id, final ApiCallback<SandboxTicketGrant> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postSandboxByIdTerminalTicketValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<TicketGrant>(){}.getType();
+        Type localVarReturnType = new TypeToken<SandboxTicketGrant>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for readSandboxFile
-     * @param pathIn  (required)
+     * @param sandboxPathIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1843,9 +2431,10 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call readSandboxFileCall(@javax.annotation.Nonnull PathIn pathIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readSandboxFileCall(@javax.annotation.Nonnull SandboxPathIn sandboxPathIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1859,7 +2448,7 @@ public class SandboxApi {
             basePath = null;
         }
 
-        Object localVarPostBody = pathIn;
+        Object localVarPostBody = sandboxPathIn;
 
         // create path and map variables
         String localVarPath = "/v1/sandbox/read";
@@ -1871,7 +2460,8 @@ public class SandboxApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1891,57 +2481,59 @@ public class SandboxApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readSandboxFileValidateBeforeCall(@javax.annotation.Nonnull PathIn pathIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'pathIn' is set
-        if (pathIn == null) {
-            throw new ApiException("Missing the required parameter 'pathIn' when calling readSandboxFile(Async)");
+    private okhttp3.Call readSandboxFileValidateBeforeCall(@javax.annotation.Nonnull SandboxPathIn sandboxPathIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sandboxPathIn' is set
+        if (sandboxPathIn == null) {
+            throw new ApiException("Missing the required parameter 'sandboxPathIn' when calling readSandboxFile(Async)");
         }
 
-        return readSandboxFileCall(pathIn, _callback);
+        return readSandboxFileCall(sandboxPathIn, _callback);
 
     }
 
     /**
      * Read a file from a sandbox you hold
      * Reads one path in the caller&#39;s sandbox: a file&#39;s bytes, or a directory&#39;s entries when the path names one.
-     * @param pathIn  (required)
-     * @return Blob
+     * @param sandboxPathIn  (required)
+     * @return SandboxBlob
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Blob readSandboxFile(@javax.annotation.Nonnull PathIn pathIn) throws ApiException {
-        ApiResponse<Blob> localVarResp = readSandboxFileWithHttpInfo(pathIn);
+    public SandboxBlob readSandboxFile(@javax.annotation.Nonnull SandboxPathIn sandboxPathIn) throws ApiException {
+        ApiResponse<SandboxBlob> localVarResp = readSandboxFileWithHttpInfo(sandboxPathIn);
         return localVarResp.getData();
     }
 
     /**
      * Read a file from a sandbox you hold
      * Reads one path in the caller&#39;s sandbox: a file&#39;s bytes, or a directory&#39;s entries when the path names one.
-     * @param pathIn  (required)
-     * @return ApiResponse&lt;Blob&gt;
+     * @param sandboxPathIn  (required)
+     * @return ApiResponse&lt;SandboxBlob&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Blob> readSandboxFileWithHttpInfo(@javax.annotation.Nonnull PathIn pathIn) throws ApiException {
-        okhttp3.Call localVarCall = readSandboxFileValidateBeforeCall(pathIn, null);
-        Type localVarReturnType = new TypeToken<Blob>(){}.getType();
+    public ApiResponse<SandboxBlob> readSandboxFileWithHttpInfo(@javax.annotation.Nonnull SandboxPathIn sandboxPathIn) throws ApiException {
+        okhttp3.Call localVarCall = readSandboxFileValidateBeforeCall(sandboxPathIn, null);
+        Type localVarReturnType = new TypeToken<SandboxBlob>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Read a file from a sandbox you hold (asynchronously)
      * Reads one path in the caller&#39;s sandbox: a file&#39;s bytes, or a directory&#39;s entries when the path names one.
-     * @param pathIn  (required)
+     * @param sandboxPathIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1950,18 +2542,19 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call readSandboxFileAsync(@javax.annotation.Nonnull PathIn pathIn, final ApiCallback<Blob> _callback) throws ApiException {
+    public okhttp3.Call readSandboxFileAsync(@javax.annotation.Nonnull SandboxPathIn sandboxPathIn, final ApiCallback<SandboxBlob> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = readSandboxFileValidateBeforeCall(pathIn, _callback);
-        Type localVarReturnType = new TypeToken<Blob>(){}.getType();
+        okhttp3.Call localVarCall = readSandboxFileValidateBeforeCall(sandboxPathIn, _callback);
+        Type localVarReturnType = new TypeToken<SandboxBlob>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for runInSandbox
-     * @param runIn  (required)
+     * @param sandboxRunIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1970,9 +2563,10 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call runInSandboxCall(@javax.annotation.Nonnull RunIn runIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call runInSandboxCall(@javax.annotation.Nonnull SandboxRunIn sandboxRunIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1986,7 +2580,7 @@ public class SandboxApi {
             basePath = null;
         }
 
-        Object localVarPostBody = runIn;
+        Object localVarPostBody = sandboxRunIn;
 
         // create path and map variables
         String localVarPath = "/v1/sandbox/run";
@@ -1998,7 +2592,8 @@ public class SandboxApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2018,57 +2613,59 @@ public class SandboxApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call runInSandboxValidateBeforeCall(@javax.annotation.Nonnull RunIn runIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'runIn' is set
-        if (runIn == null) {
-            throw new ApiException("Missing the required parameter 'runIn' when calling runInSandbox(Async)");
+    private okhttp3.Call runInSandboxValidateBeforeCall(@javax.annotation.Nonnull SandboxRunIn sandboxRunIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sandboxRunIn' is set
+        if (sandboxRunIn == null) {
+            throw new ApiException("Missing the required parameter 'sandboxRunIn' when calling runInSandbox(Async)");
         }
 
-        return runInSandboxCall(runIn, _callback);
+        return runInSandboxCall(sandboxRunIn, _callback);
 
     }
 
     /**
      * Run a command in a sandbox you hold and read its output
      * Runs one command inside the caller&#39;s sandbox and answers its exit code, stdout and stderr. A non-zero exit is a successful call carrying a failed program, so it comes back as data and not as an error.  Name a &#x60;session&#x60; and the command NARRATES INTO IT: its output is appended to that session&#39;s live log as the program produces it, so anything watching the session — GET /v1/agent/sessions/stream, scoped to one run with ?root&#x3D; — watches the work happen rather than waiting for the verdict. Without it the call is what it always was: silent until it returns, which for an agentic run is twenty-five minutes of blank screen.  The session is named; the TENANT is not. It is the org the caller already proved, so a session belonging to somebody else is absent from the org this call acts for and the append is refused there.
-     * @param runIn  (required)
-     * @return Ran
+     * @param sandboxRunIn  (required)
+     * @return SandboxRan
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Ran runInSandbox(@javax.annotation.Nonnull RunIn runIn) throws ApiException {
-        ApiResponse<Ran> localVarResp = runInSandboxWithHttpInfo(runIn);
+    public SandboxRan runInSandbox(@javax.annotation.Nonnull SandboxRunIn sandboxRunIn) throws ApiException {
+        ApiResponse<SandboxRan> localVarResp = runInSandboxWithHttpInfo(sandboxRunIn);
         return localVarResp.getData();
     }
 
     /**
      * Run a command in a sandbox you hold and read its output
      * Runs one command inside the caller&#39;s sandbox and answers its exit code, stdout and stderr. A non-zero exit is a successful call carrying a failed program, so it comes back as data and not as an error.  Name a &#x60;session&#x60; and the command NARRATES INTO IT: its output is appended to that session&#39;s live log as the program produces it, so anything watching the session — GET /v1/agent/sessions/stream, scoped to one run with ?root&#x3D; — watches the work happen rather than waiting for the verdict. Without it the call is what it always was: silent until it returns, which for an agentic run is twenty-five minutes of blank screen.  The session is named; the TENANT is not. It is the org the caller already proved, so a session belonging to somebody else is absent from the org this call acts for and the append is refused there.
-     * @param runIn  (required)
-     * @return ApiResponse&lt;Ran&gt;
+     * @param sandboxRunIn  (required)
+     * @return ApiResponse&lt;SandboxRan&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Ran> runInSandboxWithHttpInfo(@javax.annotation.Nonnull RunIn runIn) throws ApiException {
-        okhttp3.Call localVarCall = runInSandboxValidateBeforeCall(runIn, null);
-        Type localVarReturnType = new TypeToken<Ran>(){}.getType();
+    public ApiResponse<SandboxRan> runInSandboxWithHttpInfo(@javax.annotation.Nonnull SandboxRunIn sandboxRunIn) throws ApiException {
+        okhttp3.Call localVarCall = runInSandboxValidateBeforeCall(sandboxRunIn, null);
+        Type localVarReturnType = new TypeToken<SandboxRan>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Run a command in a sandbox you hold and read its output (asynchronously)
      * Runs one command inside the caller&#39;s sandbox and answers its exit code, stdout and stderr. A non-zero exit is a successful call carrying a failed program, so it comes back as data and not as an error.  Name a &#x60;session&#x60; and the command NARRATES INTO IT: its output is appended to that session&#39;s live log as the program produces it, so anything watching the session — GET /v1/agent/sessions/stream, scoped to one run with ?root&#x3D; — watches the work happen rather than waiting for the verdict. Without it the call is what it always was: silent until it returns, which for an agentic run is twenty-five minutes of blank screen.  The session is named; the TENANT is not. It is the org the caller already proved, so a session belonging to somebody else is absent from the org this call acts for and the append is refused there.
-     * @param runIn  (required)
+     * @param sandboxRunIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2077,18 +2674,19 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call runInSandboxAsync(@javax.annotation.Nonnull RunIn runIn, final ApiCallback<Ran> _callback) throws ApiException {
+    public okhttp3.Call runInSandboxAsync(@javax.annotation.Nonnull SandboxRunIn sandboxRunIn, final ApiCallback<SandboxRan> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = runInSandboxValidateBeforeCall(runIn, _callback);
-        Type localVarReturnType = new TypeToken<Ran>(){}.getType();
+        okhttp3.Call localVarCall = runInSandboxValidateBeforeCall(sandboxRunIn, _callback);
+        Type localVarReturnType = new TypeToken<SandboxRan>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for stopRun
-     * @param stopIn  (required)
+     * @param sandboxStopIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2097,9 +2695,10 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call stopRunCall(@javax.annotation.Nonnull StopIn stopIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call stopRunCall(@javax.annotation.Nonnull SandboxStopIn sandboxStopIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2113,7 +2712,7 @@ public class SandboxApi {
             basePath = null;
         }
 
-        Object localVarPostBody = stopIn;
+        Object localVarPostBody = sandboxStopIn;
 
         // create path and map variables
         String localVarPath = "/v1/sandbox/stop";
@@ -2125,7 +2724,8 @@ public class SandboxApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2145,57 +2745,59 @@ public class SandboxApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call stopRunValidateBeforeCall(@javax.annotation.Nonnull StopIn stopIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'stopIn' is set
-        if (stopIn == null) {
-            throw new ApiException("Missing the required parameter 'stopIn' when calling stopRun(Async)");
+    private okhttp3.Call stopRunValidateBeforeCall(@javax.annotation.Nonnull SandboxStopIn sandboxStopIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sandboxStopIn' is set
+        if (sandboxStopIn == null) {
+            throw new ApiException("Missing the required parameter 'sandboxStopIn' when calling stopRun(Async)");
         }
 
-        return stopRunCall(stopIn, _callback);
+        return stopRunCall(sandboxStopIn, _callback);
 
     }
 
     /**
      * Stop what a sandbox is running, and keep the sandbox
      * Interrupts whatever the caller&#39;s sandbox is running and answers how many commands it ended. The sandbox stays leased — stop ends the WORK, end ends the RESOURCE — so whoever stopped a run can still read what it left behind.
-     * @param stopIn  (required)
-     * @return Stopped
+     * @param sandboxStopIn  (required)
+     * @return SandboxStopped
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Stopped stopRun(@javax.annotation.Nonnull StopIn stopIn) throws ApiException {
-        ApiResponse<Stopped> localVarResp = stopRunWithHttpInfo(stopIn);
+    public SandboxStopped stopRun(@javax.annotation.Nonnull SandboxStopIn sandboxStopIn) throws ApiException {
+        ApiResponse<SandboxStopped> localVarResp = stopRunWithHttpInfo(sandboxStopIn);
         return localVarResp.getData();
     }
 
     /**
      * Stop what a sandbox is running, and keep the sandbox
      * Interrupts whatever the caller&#39;s sandbox is running and answers how many commands it ended. The sandbox stays leased — stop ends the WORK, end ends the RESOURCE — so whoever stopped a run can still read what it left behind.
-     * @param stopIn  (required)
-     * @return ApiResponse&lt;Stopped&gt;
+     * @param sandboxStopIn  (required)
+     * @return ApiResponse&lt;SandboxStopped&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Stopped> stopRunWithHttpInfo(@javax.annotation.Nonnull StopIn stopIn) throws ApiException {
-        okhttp3.Call localVarCall = stopRunValidateBeforeCall(stopIn, null);
-        Type localVarReturnType = new TypeToken<Stopped>(){}.getType();
+    public ApiResponse<SandboxStopped> stopRunWithHttpInfo(@javax.annotation.Nonnull SandboxStopIn sandboxStopIn) throws ApiException {
+        okhttp3.Call localVarCall = stopRunValidateBeforeCall(sandboxStopIn, null);
+        Type localVarReturnType = new TypeToken<SandboxStopped>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Stop what a sandbox is running, and keep the sandbox (asynchronously)
      * Interrupts whatever the caller&#39;s sandbox is running and answers how many commands it ended. The sandbox stays leased — stop ends the WORK, end ends the RESOURCE — so whoever stopped a run can still read what it left behind.
-     * @param stopIn  (required)
+     * @param sandboxStopIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2204,18 +2806,19 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call stopRunAsync(@javax.annotation.Nonnull StopIn stopIn, final ApiCallback<Stopped> _callback) throws ApiException {
+    public okhttp3.Call stopRunAsync(@javax.annotation.Nonnull SandboxStopIn sandboxStopIn, final ApiCallback<SandboxStopped> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = stopRunValidateBeforeCall(stopIn, _callback);
-        Type localVarReturnType = new TypeToken<Stopped>(){}.getType();
+        okhttp3.Call localVarCall = stopRunValidateBeforeCall(sandboxStopIn, _callback);
+        Type localVarReturnType = new TypeToken<SandboxStopped>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for writeSandboxFile
-     * @param writeIn  (required)
+     * @param sandboxWriteIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2224,9 +2827,10 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call writeSandboxFileCall(@javax.annotation.Nonnull WriteIn writeIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call writeSandboxFileCall(@javax.annotation.Nonnull SandboxWriteIn sandboxWriteIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2240,7 +2844,7 @@ public class SandboxApi {
             basePath = null;
         }
 
-        Object localVarPostBody = writeIn;
+        Object localVarPostBody = sandboxWriteIn;
 
         // create path and map variables
         String localVarPath = "/v1/sandbox/write";
@@ -2252,7 +2856,8 @@ public class SandboxApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2272,57 +2877,59 @@ public class SandboxApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call writeSandboxFileValidateBeforeCall(@javax.annotation.Nonnull WriteIn writeIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'writeIn' is set
-        if (writeIn == null) {
-            throw new ApiException("Missing the required parameter 'writeIn' when calling writeSandboxFile(Async)");
+    private okhttp3.Call writeSandboxFileValidateBeforeCall(@javax.annotation.Nonnull SandboxWriteIn sandboxWriteIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sandboxWriteIn' is set
+        if (sandboxWriteIn == null) {
+            throw new ApiException("Missing the required parameter 'sandboxWriteIn' when calling writeSandboxFile(Async)");
         }
 
-        return writeSandboxFileCall(writeIn, _callback);
+        return writeSandboxFileCall(sandboxWriteIn, _callback);
 
     }
 
     /**
      * Write a file into a sandbox you hold
      * Writes bytes to one path in the caller&#39;s sandbox, creating parents, and answers the resolved path.
-     * @param writeIn  (required)
-     * @return Wrote
+     * @param sandboxWriteIn  (required)
+     * @return SandboxWrote
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Wrote writeSandboxFile(@javax.annotation.Nonnull WriteIn writeIn) throws ApiException {
-        ApiResponse<Wrote> localVarResp = writeSandboxFileWithHttpInfo(writeIn);
+    public SandboxWrote writeSandboxFile(@javax.annotation.Nonnull SandboxWriteIn sandboxWriteIn) throws ApiException {
+        ApiResponse<SandboxWrote> localVarResp = writeSandboxFileWithHttpInfo(sandboxWriteIn);
         return localVarResp.getData();
     }
 
     /**
      * Write a file into a sandbox you hold
      * Writes bytes to one path in the caller&#39;s sandbox, creating parents, and answers the resolved path.
-     * @param writeIn  (required)
-     * @return ApiResponse&lt;Wrote&gt;
+     * @param sandboxWriteIn  (required)
+     * @return ApiResponse&lt;SandboxWrote&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Wrote> writeSandboxFileWithHttpInfo(@javax.annotation.Nonnull WriteIn writeIn) throws ApiException {
-        okhttp3.Call localVarCall = writeSandboxFileValidateBeforeCall(writeIn, null);
-        Type localVarReturnType = new TypeToken<Wrote>(){}.getType();
+    public ApiResponse<SandboxWrote> writeSandboxFileWithHttpInfo(@javax.annotation.Nonnull SandboxWriteIn sandboxWriteIn) throws ApiException {
+        okhttp3.Call localVarCall = writeSandboxFileValidateBeforeCall(sandboxWriteIn, null);
+        Type localVarReturnType = new TypeToken<SandboxWrote>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Write a file into a sandbox you hold (asynchronously)
      * Writes bytes to one path in the caller&#39;s sandbox, creating parents, and answers the resolved path.
-     * @param writeIn  (required)
+     * @param sandboxWriteIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2331,12 +2938,13 @@ public class SandboxApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call writeSandboxFileAsync(@javax.annotation.Nonnull WriteIn writeIn, final ApiCallback<Wrote> _callback) throws ApiException {
+    public okhttp3.Call writeSandboxFileAsync(@javax.annotation.Nonnull SandboxWriteIn sandboxWriteIn, final ApiCallback<SandboxWrote> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = writeSandboxFileValidateBeforeCall(writeIn, _callback);
-        Type localVarReturnType = new TypeToken<Wrote>(){}.getType();
+        okhttp3.Call localVarCall = writeSandboxFileValidateBeforeCall(sandboxWriteIn, _callback);
+        Type localVarReturnType = new TypeToken<SandboxWrote>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -27,7 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.TrailPage;
+import ai.hanzo.cloud.model.AuditTrailPage;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -91,6 +92,7 @@ public class AuditApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAuditCall(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p, final ApiCallback _callback) throws ApiException {
@@ -155,7 +157,8 @@ public class AuditApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -180,8 +183,8 @@ public class AuditApi {
     }
 
     /**
-     * List reads the caller&#39;s OWN org audit trail, newest first, with the total the filter matched so a console can page it.
-     * List reads the caller&#39;s OWN org audit trail, newest first, with the total the filter matched so a console can page it.  Every filter is optional and applies WITHIN the caller&#39;s org — the org itself is the validated principal&#39;s and can never be widened by a request. Fails closed: an absent principal is a true \&quot;not signed in\&quot; (401), and a deployment with no local tamper-evident store answers an honest 501 rather than silently serving somebody else&#39;s trail.
+     * Reads the caller&#39;s OWN org audit trail, newest first, with the total the filter matched so a console can page it.
+     * Reads the caller&#39;s OWN org audit trail, newest first, with the total the filter matched so a console can page it.  Every filter is optional and applies WITHIN the caller&#39;s org — the org itself is the validated principal&#39;s and can never be widened by a request. Fails closed: an absent principal is a true \&quot;not signed in\&quot; (401), and a deployment with no local tamper-evident store answers an honest 501 rather than silently serving somebody else&#39;s trail.
      * @param sub Sub narrows the trail to one actor — the validated subject that made the request. Blank means every actor in the org. (optional)
      * @param action Action narrows it to one action name, e.g. \&quot;machine.create\&quot;. (optional)
      * @param resource Resource narrows it to one resource TYPE, e.g. \&quot;apikey\&quot;. (optional)
@@ -191,23 +194,24 @@ public class AuditApi {
      * @param until Until is the upper time bound, RFC3339, with the same tolerance. (optional)
      * @param pageSize PageSize is rows per page, default 100. A value that is not a positive integer falls back to the default. (optional)
      * @param p Page is the 1-based page number, driving the offset. Anything below 2 reads the first page. (optional)
-     * @return TrailPage
+     * @return AuditTrailPage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TrailPage getAudit(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p) throws ApiException {
-        ApiResponse<TrailPage> localVarResp = getAuditWithHttpInfo(sub, action, resource, resourceId, result, since, until, pageSize, p);
+    public AuditTrailPage getAudit(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p) throws ApiException {
+        ApiResponse<AuditTrailPage> localVarResp = getAuditWithHttpInfo(sub, action, resource, resourceId, result, since, until, pageSize, p);
         return localVarResp.getData();
     }
 
     /**
-     * List reads the caller&#39;s OWN org audit trail, newest first, with the total the filter matched so a console can page it.
-     * List reads the caller&#39;s OWN org audit trail, newest first, with the total the filter matched so a console can page it.  Every filter is optional and applies WITHIN the caller&#39;s org — the org itself is the validated principal&#39;s and can never be widened by a request. Fails closed: an absent principal is a true \&quot;not signed in\&quot; (401), and a deployment with no local tamper-evident store answers an honest 501 rather than silently serving somebody else&#39;s trail.
+     * Reads the caller&#39;s OWN org audit trail, newest first, with the total the filter matched so a console can page it.
+     * Reads the caller&#39;s OWN org audit trail, newest first, with the total the filter matched so a console can page it.  Every filter is optional and applies WITHIN the caller&#39;s org — the org itself is the validated principal&#39;s and can never be widened by a request. Fails closed: an absent principal is a true \&quot;not signed in\&quot; (401), and a deployment with no local tamper-evident store answers an honest 501 rather than silently serving somebody else&#39;s trail.
      * @param sub Sub narrows the trail to one actor — the validated subject that made the request. Blank means every actor in the org. (optional)
      * @param action Action narrows it to one action name, e.g. \&quot;machine.create\&quot;. (optional)
      * @param resource Resource narrows it to one resource TYPE, e.g. \&quot;apikey\&quot;. (optional)
@@ -217,24 +221,25 @@ public class AuditApi {
      * @param until Until is the upper time bound, RFC3339, with the same tolerance. (optional)
      * @param pageSize PageSize is rows per page, default 100. A value that is not a positive integer falls back to the default. (optional)
      * @param p Page is the 1-based page number, driving the offset. Anything below 2 reads the first page. (optional)
-     * @return ApiResponse&lt;TrailPage&gt;
+     * @return ApiResponse&lt;AuditTrailPage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TrailPage> getAuditWithHttpInfo(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p) throws ApiException {
+    public ApiResponse<AuditTrailPage> getAuditWithHttpInfo(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p) throws ApiException {
         okhttp3.Call localVarCall = getAuditValidateBeforeCall(sub, action, resource, resourceId, result, since, until, pageSize, p, null);
-        Type localVarReturnType = new TypeToken<TrailPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<AuditTrailPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * List reads the caller&#39;s OWN org audit trail, newest first, with the total the filter matched so a console can page it. (asynchronously)
-     * List reads the caller&#39;s OWN org audit trail, newest first, with the total the filter matched so a console can page it.  Every filter is optional and applies WITHIN the caller&#39;s org — the org itself is the validated principal&#39;s and can never be widened by a request. Fails closed: an absent principal is a true \&quot;not signed in\&quot; (401), and a deployment with no local tamper-evident store answers an honest 501 rather than silently serving somebody else&#39;s trail.
+     * Reads the caller&#39;s OWN org audit trail, newest first, with the total the filter matched so a console can page it. (asynchronously)
+     * Reads the caller&#39;s OWN org audit trail, newest first, with the total the filter matched so a console can page it.  Every filter is optional and applies WITHIN the caller&#39;s org — the org itself is the validated principal&#39;s and can never be widened by a request. Fails closed: an absent principal is a true \&quot;not signed in\&quot; (401), and a deployment with no local tamper-evident store answers an honest 501 rather than silently serving somebody else&#39;s trail.
      * @param sub Sub narrows the trail to one actor — the validated subject that made the request. Blank means every actor in the org. (optional)
      * @param action Action narrows it to one action name, e.g. \&quot;machine.create\&quot;. (optional)
      * @param resource Resource narrows it to one resource TYPE, e.g. \&quot;apikey\&quot;. (optional)
@@ -252,12 +257,13 @@ public class AuditApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAuditAsync(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p, final ApiCallback<TrailPage> _callback) throws ApiException {
+    public okhttp3.Call getAuditAsync(@javax.annotation.Nullable String sub, @javax.annotation.Nullable String action, @javax.annotation.Nullable String resource, @javax.annotation.Nullable String resourceId, @javax.annotation.Nullable String result, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String pageSize, @javax.annotation.Nullable String p, final ApiCallback<AuditTrailPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAuditValidateBeforeCall(sub, action, resource, resourceId, result, since, until, pageSize, p, _callback);
-        Type localVarReturnType = new TypeToken<TrailPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<AuditTrailPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

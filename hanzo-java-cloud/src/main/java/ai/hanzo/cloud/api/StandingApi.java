@@ -27,8 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Upkeep;
-import ai.hanzo.cloud.model.UpkeepIn;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.StandingUpkeep;
+import ai.hanzo.cloud.model.StandingUpkeepIn;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -75,7 +76,7 @@ public class StandingApi {
 
     /**
      * Build call for postStandingUpkeep
-     * @param upkeepIn  (required)
+     * @param standingUpkeepIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,9 +85,10 @@ public class StandingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postStandingUpkeepCall(@javax.annotation.Nonnull UpkeepIn upkeepIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postStandingUpkeepCall(@javax.annotation.Nonnull StandingUpkeepIn standingUpkeepIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -100,7 +102,7 @@ public class StandingApi {
             basePath = null;
         }
 
-        Object localVarPostBody = upkeepIn;
+        Object localVarPostBody = standingUpkeepIn;
 
         // create path and map variables
         String localVarPath = "/v1/standing/upkeep";
@@ -112,7 +114,8 @@ public class StandingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -132,57 +135,59 @@ public class StandingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postStandingUpkeepValidateBeforeCall(@javax.annotation.Nonnull UpkeepIn upkeepIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'upkeepIn' is set
-        if (upkeepIn == null) {
-            throw new ApiException("Missing the required parameter 'upkeepIn' when calling postStandingUpkeep(Async)");
+    private okhttp3.Call postStandingUpkeepValidateBeforeCall(@javax.annotation.Nonnull StandingUpkeepIn standingUpkeepIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'standingUpkeepIn' is set
+        if (standingUpkeepIn == null) {
+            throw new ApiException("Missing the required parameter 'standingUpkeepIn' when calling postStandingUpkeep(Async)");
         }
 
-        return postStandingUpkeepCall(upkeepIn, _callback);
+        return postStandingUpkeepCall(standingUpkeepIn, _callback);
 
     }
 
     /**
      * Reports what keeping this entity costs every year, itemised.
      * Reports what keeping this entity costs every year, itemised.  This is the figure that decides where to incorporate, and the one a formation price cannot show: Delaware is cheaper to form than Wyoming for a corporation and dearer to keep, so a founder shown only the formation fee is shown the half that reverses. Each state line carries the authority that publishes it and the date it was checked, and a franchise tax that scales is marked a minimum rather than quoted as final.
-     * @param upkeepIn  (required)
-     * @return Upkeep
+     * @param standingUpkeepIn  (required)
+     * @return StandingUpkeep
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Upkeep postStandingUpkeep(@javax.annotation.Nonnull UpkeepIn upkeepIn) throws ApiException {
-        ApiResponse<Upkeep> localVarResp = postStandingUpkeepWithHttpInfo(upkeepIn);
+    public StandingUpkeep postStandingUpkeep(@javax.annotation.Nonnull StandingUpkeepIn standingUpkeepIn) throws ApiException {
+        ApiResponse<StandingUpkeep> localVarResp = postStandingUpkeepWithHttpInfo(standingUpkeepIn);
         return localVarResp.getData();
     }
 
     /**
      * Reports what keeping this entity costs every year, itemised.
      * Reports what keeping this entity costs every year, itemised.  This is the figure that decides where to incorporate, and the one a formation price cannot show: Delaware is cheaper to form than Wyoming for a corporation and dearer to keep, so a founder shown only the formation fee is shown the half that reverses. Each state line carries the authority that publishes it and the date it was checked, and a franchise tax that scales is marked a minimum rather than quoted as final.
-     * @param upkeepIn  (required)
-     * @return ApiResponse&lt;Upkeep&gt;
+     * @param standingUpkeepIn  (required)
+     * @return ApiResponse&lt;StandingUpkeep&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Upkeep> postStandingUpkeepWithHttpInfo(@javax.annotation.Nonnull UpkeepIn upkeepIn) throws ApiException {
-        okhttp3.Call localVarCall = postStandingUpkeepValidateBeforeCall(upkeepIn, null);
-        Type localVarReturnType = new TypeToken<Upkeep>(){}.getType();
+    public ApiResponse<StandingUpkeep> postStandingUpkeepWithHttpInfo(@javax.annotation.Nonnull StandingUpkeepIn standingUpkeepIn) throws ApiException {
+        okhttp3.Call localVarCall = postStandingUpkeepValidateBeforeCall(standingUpkeepIn, null);
+        Type localVarReturnType = new TypeToken<StandingUpkeep>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Reports what keeping this entity costs every year, itemised. (asynchronously)
      * Reports what keeping this entity costs every year, itemised.  This is the figure that decides where to incorporate, and the one a formation price cannot show: Delaware is cheaper to form than Wyoming for a corporation and dearer to keep, so a founder shown only the formation fee is shown the half that reverses. Each state line carries the authority that publishes it and the date it was checked, and a franchise tax that scales is marked a minimum rather than quoted as final.
-     * @param upkeepIn  (required)
+     * @param standingUpkeepIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -191,12 +196,13 @@ public class StandingApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postStandingUpkeepAsync(@javax.annotation.Nonnull UpkeepIn upkeepIn, final ApiCallback<Upkeep> _callback) throws ApiException {
+    public okhttp3.Call postStandingUpkeepAsync(@javax.annotation.Nonnull StandingUpkeepIn standingUpkeepIn, final ApiCallback<StandingUpkeep> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postStandingUpkeepValidateBeforeCall(upkeepIn, _callback);
-        Type localVarReturnType = new TypeToken<Upkeep>(){}.getType();
+        okhttp3.Call localVarCall = postStandingUpkeepValidateBeforeCall(standingUpkeepIn, _callback);
+        Type localVarReturnType = new TypeToken<StandingUpkeep>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

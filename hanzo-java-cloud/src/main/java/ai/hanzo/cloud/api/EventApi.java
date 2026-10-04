@@ -28,16 +28,20 @@ import java.io.IOException;
 
 
 import ai.hanzo.cloud.model.CaptureResult;
-import ai.hanzo.cloud.model.ErrorList;
-import ai.hanzo.cloud.model.EventList;
+import ai.hanzo.cloud.model.EventDisputeIn;
+import ai.hanzo.cloud.model.EventEconomicDispute;
+import ai.hanzo.cloud.model.EventEconomics;
+import ai.hanzo.cloud.model.EventErrorList;
+import ai.hanzo.cloud.model.EventEventList;
+import ai.hanzo.cloud.model.EventHealthReport;
+import ai.hanzo.cloud.model.EventInsightsStatus;
+import ai.hanzo.cloud.model.EventOverview;
+import ai.hanzo.cloud.model.EventTimeseries;
+import ai.hanzo.cloud.model.EventTop;
 import java.io.File;
-import ai.hanzo.cloud.model.HealthReport;
-import ai.hanzo.cloud.model.InsightsStatus;
-import ai.hanzo.cloud.model.Overview;
 import ai.hanzo.cloud.model.PostEventRequest;
+import ai.hanzo.cloud.model.ProblemDetails;
 import ai.hanzo.cloud.model.ReplayBody;
-import ai.hanzo.cloud.model.Timeseries;
-import ai.hanzo.cloud.model.Top;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -83,6 +87,173 @@ public class EventApi {
     }
 
     /**
+     * Build call for getEventEconomic
+     * @param year Year is the calendar year to read, UTC. (required)
+     * @param counterparty Counterparty keeps only payments with this org on the other side. (optional)
+     * @param rail Rail keeps only payments that moved on this rail. (optional)
+     * @param cursor Cursor continues from the next of the page before; empty starts the year. (optional)
+     * @param limit Limit is how many events to answer, default 100 and at most 1000. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getEventEconomicCall(@javax.annotation.Nonnull Long year, @javax.annotation.Nullable String counterparty, @javax.annotation.Nullable String rail, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/event/economic";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (year != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("year", year));
+        }
+
+        if (counterparty != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("counterparty", counterparty));
+        }
+
+        if (rail != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("rail", rail));
+        }
+
+        if (cursor != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getEventEconomicValidateBeforeCall(@javax.annotation.Nonnull Long year, @javax.annotation.Nullable String counterparty, @javax.annotation.Nullable String rail, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'year' is set
+        if (year == null) {
+            throw new ApiException("Missing the required parameter 'year' when calling getEventEconomic(Async)");
+        }
+
+        return getEventEconomicCall(year, counterparty, rail, cursor, limit, _callback);
+
+    }
+
+    /**
+     * Returns, oldest first and paged, the payments the caller&#39;s org made or received in a year, with the ones a correction restates named and what either party disputes — for the org&#39;s admins.
+     * Returns, oldest first and paged, the payments the caller&#39;s org made or received in a year, with the ones a correction restates named and what either party disputes — for the org&#39;s admins.
+     * @param year Year is the calendar year to read, UTC. (required)
+     * @param counterparty Counterparty keeps only payments with this org on the other side. (optional)
+     * @param rail Rail keeps only payments that moved on this rail. (optional)
+     * @param cursor Cursor continues from the next of the page before; empty starts the year. (optional)
+     * @param limit Limit is how many events to answer, default 100 and at most 1000. (optional)
+     * @return EventEconomics
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public EventEconomics getEventEconomic(@javax.annotation.Nonnull Long year, @javax.annotation.Nullable String counterparty, @javax.annotation.Nullable String rail, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<EventEconomics> localVarResp = getEventEconomicWithHttpInfo(year, counterparty, rail, cursor, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns, oldest first and paged, the payments the caller&#39;s org made or received in a year, with the ones a correction restates named and what either party disputes — for the org&#39;s admins.
+     * Returns, oldest first and paged, the payments the caller&#39;s org made or received in a year, with the ones a correction restates named and what either party disputes — for the org&#39;s admins.
+     * @param year Year is the calendar year to read, UTC. (required)
+     * @param counterparty Counterparty keeps only payments with this org on the other side. (optional)
+     * @param rail Rail keeps only payments that moved on this rail. (optional)
+     * @param cursor Cursor continues from the next of the page before; empty starts the year. (optional)
+     * @param limit Limit is how many events to answer, default 100 and at most 1000. (optional)
+     * @return ApiResponse&lt;EventEconomics&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EventEconomics> getEventEconomicWithHttpInfo(@javax.annotation.Nonnull Long year, @javax.annotation.Nullable String counterparty, @javax.annotation.Nullable String rail, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = getEventEconomicValidateBeforeCall(year, counterparty, rail, cursor, limit, null);
+        Type localVarReturnType = new TypeToken<EventEconomics>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns, oldest first and paged, the payments the caller&#39;s org made or received in a year, with the ones a correction restates named and what either party disputes — for the org&#39;s admins. (asynchronously)
+     * Returns, oldest first and paged, the payments the caller&#39;s org made or received in a year, with the ones a correction restates named and what either party disputes — for the org&#39;s admins.
+     * @param year Year is the calendar year to read, UTC. (required)
+     * @param counterparty Counterparty keeps only payments with this org on the other side. (optional)
+     * @param rail Rail keeps only payments that moved on this rail. (optional)
+     * @param cursor Cursor continues from the next of the page before; empty starts the year. (optional)
+     * @param limit Limit is how many events to answer, default 100 and at most 1000. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getEventEconomicAsync(@javax.annotation.Nonnull Long year, @javax.annotation.Nullable String counterparty, @javax.annotation.Nullable String rail, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable Long limit, final ApiCallback<EventEconomics> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getEventEconomicValidateBeforeCall(year, counterparty, rail, cursor, limit, _callback);
+        Type localVarReturnType = new TypeToken<EventEconomics>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getEventErrors
      * @param limit Limit is how many rows to return, newest first. Default 50, maximum 200; a value at or below zero, or one that is not a number, takes the default. (optional)
      * @param _callback Callback for upload/download progress
@@ -93,6 +264,7 @@ public class EventApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEventErrorsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -125,7 +297,8 @@ public class EventApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -150,45 +323,47 @@ public class EventApi {
     }
 
     /**
-     * Errors returns the caller org&#39;s most recently captured errors, newest first.
-     * Errors returns the caller org&#39;s most recently captured errors, newest first. The error-tracking read view over event.error — the plane table the write core&#39;s error facts land in (errors are DELIBERATELY not on event.event) — each with its captured exception surfaced from the attributes map as a first-class field.  The org is the validated principal&#39;s — never a parameter — and this read requires a real bearer, NEVER the write-only publishable key: pk- can attribute a write and can read nothing. 403 without a validated bearer, 503 when the warehouse is unreachable.
+     * Returns the caller org&#39;s most recently captured errors, newest first.
+     * Returns the caller org&#39;s most recently captured errors, newest first. The error-tracking read view over event.error — the plane table the write core&#39;s error facts land in (errors are DELIBERATELY not on event.event) — each with its captured exception surfaced from the attributes map as a first-class field.  The org is the validated principal&#39;s — never a parameter — and this read requires a real bearer, NEVER the write-only publishable key: pk- can attribute a write and can read nothing. 401 without a validated bearer, 503 when the warehouse is unreachable.
      * @param limit Limit is how many rows to return, newest first. Default 50, maximum 200; a value at or below zero, or one that is not a number, takes the default. (optional)
-     * @return ErrorList
+     * @return EventErrorList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ErrorList getEventErrors(@javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<ErrorList> localVarResp = getEventErrorsWithHttpInfo(limit);
+    public EventErrorList getEventErrors(@javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<EventErrorList> localVarResp = getEventErrorsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
     /**
-     * Errors returns the caller org&#39;s most recently captured errors, newest first.
-     * Errors returns the caller org&#39;s most recently captured errors, newest first. The error-tracking read view over event.error — the plane table the write core&#39;s error facts land in (errors are DELIBERATELY not on event.event) — each with its captured exception surfaced from the attributes map as a first-class field.  The org is the validated principal&#39;s — never a parameter — and this read requires a real bearer, NEVER the write-only publishable key: pk- can attribute a write and can read nothing. 403 without a validated bearer, 503 when the warehouse is unreachable.
+     * Returns the caller org&#39;s most recently captured errors, newest first.
+     * Returns the caller org&#39;s most recently captured errors, newest first. The error-tracking read view over event.error — the plane table the write core&#39;s error facts land in (errors are DELIBERATELY not on event.event) — each with its captured exception surfaced from the attributes map as a first-class field.  The org is the validated principal&#39;s — never a parameter — and this read requires a real bearer, NEVER the write-only publishable key: pk- can attribute a write and can read nothing. 401 without a validated bearer, 503 when the warehouse is unreachable.
      * @param limit Limit is how many rows to return, newest first. Default 50, maximum 200; a value at or below zero, or one that is not a number, takes the default. (optional)
-     * @return ApiResponse&lt;ErrorList&gt;
+     * @return ApiResponse&lt;EventErrorList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ErrorList> getEventErrorsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<EventErrorList> getEventErrorsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEventErrorsValidateBeforeCall(limit, null);
-        Type localVarReturnType = new TypeToken<ErrorList>(){}.getType();
+        Type localVarReturnType = new TypeToken<EventErrorList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Errors returns the caller org&#39;s most recently captured errors, newest first. (asynchronously)
-     * Errors returns the caller org&#39;s most recently captured errors, newest first. The error-tracking read view over event.error — the plane table the write core&#39;s error facts land in (errors are DELIBERATELY not on event.event) — each with its captured exception surfaced from the attributes map as a first-class field.  The org is the validated principal&#39;s — never a parameter — and this read requires a real bearer, NEVER the write-only publishable key: pk- can attribute a write and can read nothing. 403 without a validated bearer, 503 when the warehouse is unreachable.
+     * Returns the caller org&#39;s most recently captured errors, newest first. (asynchronously)
+     * Returns the caller org&#39;s most recently captured errors, newest first. The error-tracking read view over event.error — the plane table the write core&#39;s error facts land in (errors are DELIBERATELY not on event.event) — each with its captured exception surfaced from the attributes map as a first-class field.  The org is the validated principal&#39;s — never a parameter — and this read requires a real bearer, NEVER the write-only publishable key: pk- can attribute a write and can read nothing. 401 without a validated bearer, 503 when the warehouse is unreachable.
      * @param limit Limit is how many rows to return, newest first. Default 50, maximum 200; a value at or below zero, or one that is not a number, takes the default. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -198,12 +373,13 @@ public class EventApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEventErrorsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<ErrorList> _callback) throws ApiException {
+    public okhttp3.Call getEventErrorsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<EventErrorList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEventErrorsValidateBeforeCall(limit, _callback);
-        Type localVarReturnType = new TypeToken<ErrorList>(){}.getType();
+        Type localVarReturnType = new TypeToken<EventErrorList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -218,6 +394,7 @@ public class EventApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEventHealthCall(final ApiCallback _callback) throws ApiException {
@@ -246,7 +423,8 @@ public class EventApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -271,9 +449,9 @@ public class EventApi {
     }
 
     /**
-     * Health reports whether the event plane can take a write and the warehouse can answer a read.
-     * Health reports whether the event plane can take a write and the warehouse can answer a read.  It reports the analytics subsystem&#39;s own liveness in BOTH directions: plane is the event plane it WRITES (the bus and the JetStream stream every accepted event is published to, both named in the report), and datastore is the warehouse it READS, with each read lens&#39;s table reported as it is provisioned (the LLM usage ledger and the product-event table).  EITHER ONE DOWN IS A 503, and the report says WHICH — they are probed independently and never collapse into a single bit. This endpoint used to report the read half only, and answered 200/ok while every POST /v1/event failed on a stream that could not bind: a total ingest outage behind a green probe. A readiness gate here now gates on the write path too.  plane.ready IS A REAL PROBE and walks the ingest path itself — the same connection and the same stream a publish uses — so it cannot answer ready while a publish would 503. plane.reason carries the plane&#39;s own error text when it is false.  datastore IS NOT PROBED WITH A QUERY. It is the state of the process&#39;s own shared client — established, and not since closed — so a warehouse accepting connections and failing reads still reports true. Degraded CARRIES the report (status, the failing half, reason) as its body rather than an error envelope, so a gate reads the cause off the same object it got at 200.  A MISSING LENS TABLE IS NOT A FAILURE and never moves the status: a lens reported available:false answers honest-empty rather than erroring, so a fresh deployment whose collector has not emitted yet is legitimately 200 with the product-event lens unavailable. The lens block is reported whenever the warehouse is REACHABLE — including on a report degraded by the plane, where the tables genuinely were probed — and is absent only when the warehouse is not, having nothing to say about tables it could not reach.  Unauthenticated on purpose — liveness has to be probe-able — and it reads NO tenant data: table existence and stream presence only, never a row and never an event.
-     * @return HealthReport
+     * Reports whether the event plane can take a write and the warehouse can answer a read.
+     * Reports whether the event plane can take a write and the warehouse can answer a read.  It reports the analytics subsystem&#39;s own liveness in BOTH directions: plane is the event plane it WRITES (the bus and the JetStream stream every accepted event is published to, both named in the report), and datastore is the warehouse it READS, with each read lens&#39;s table reported as it is provisioned (the LLM usage ledger and the product-event table).  EITHER ONE DOWN IS A 503, and the report says WHICH — they are probed independently and never collapse into a single bit. A readiness gate on this endpoint therefore gates on the write path as well as the read path: it answers ready only when POST /v1/event can publish.  plane.ready IS A REAL PROBE and walks the ingest path itself — the same connection and the same stream a publish uses — so it cannot answer ready while a publish would 503. plane.reason carries the plane&#39;s own error text when it is false.  datastore IS NOT PROBED WITH A QUERY. It is the state of the process&#39;s own shared client — established, and not since closed — so a warehouse accepting connections and failing reads still reports true. Degraded CARRIES the report (status, the failing half, reason) as its body rather than an error envelope, so a gate reads the cause off the same object it got at 200.  A MISSING LENS TABLE IS NOT A FAILURE and never moves the status: a lens reported available:false answers honest-empty rather than erroring, so a fresh deployment whose collector has not emitted yet is legitimately 200 with the product-event lens unavailable. The lens block is reported whenever the warehouse is REACHABLE — including on a report degraded by the plane, where the tables genuinely were probed — and is absent only when the warehouse is not, having nothing to say about tables it could not reach.  Unauthenticated on purpose — liveness has to be probe-able — and it reads NO tenant data: table existence and stream presence only, never a row and never an event.
+     * @return EventHealthReport
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -281,17 +459,18 @@ public class EventApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public HealthReport getEventHealth() throws ApiException {
-        ApiResponse<HealthReport> localVarResp = getEventHealthWithHttpInfo();
+    public EventHealthReport getEventHealth() throws ApiException {
+        ApiResponse<EventHealthReport> localVarResp = getEventHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Health reports whether the event plane can take a write and the warehouse can answer a read.
-     * Health reports whether the event plane can take a write and the warehouse can answer a read.  It reports the analytics subsystem&#39;s own liveness in BOTH directions: plane is the event plane it WRITES (the bus and the JetStream stream every accepted event is published to, both named in the report), and datastore is the warehouse it READS, with each read lens&#39;s table reported as it is provisioned (the LLM usage ledger and the product-event table).  EITHER ONE DOWN IS A 503, and the report says WHICH — they are probed independently and never collapse into a single bit. This endpoint used to report the read half only, and answered 200/ok while every POST /v1/event failed on a stream that could not bind: a total ingest outage behind a green probe. A readiness gate here now gates on the write path too.  plane.ready IS A REAL PROBE and walks the ingest path itself — the same connection and the same stream a publish uses — so it cannot answer ready while a publish would 503. plane.reason carries the plane&#39;s own error text when it is false.  datastore IS NOT PROBED WITH A QUERY. It is the state of the process&#39;s own shared client — established, and not since closed — so a warehouse accepting connections and failing reads still reports true. Degraded CARRIES the report (status, the failing half, reason) as its body rather than an error envelope, so a gate reads the cause off the same object it got at 200.  A MISSING LENS TABLE IS NOT A FAILURE and never moves the status: a lens reported available:false answers honest-empty rather than erroring, so a fresh deployment whose collector has not emitted yet is legitimately 200 with the product-event lens unavailable. The lens block is reported whenever the warehouse is REACHABLE — including on a report degraded by the plane, where the tables genuinely were probed — and is absent only when the warehouse is not, having nothing to say about tables it could not reach.  Unauthenticated on purpose — liveness has to be probe-able — and it reads NO tenant data: table existence and stream presence only, never a row and never an event.
-     * @return ApiResponse&lt;HealthReport&gt;
+     * Reports whether the event plane can take a write and the warehouse can answer a read.
+     * Reports whether the event plane can take a write and the warehouse can answer a read.  It reports the analytics subsystem&#39;s own liveness in BOTH directions: plane is the event plane it WRITES (the bus and the JetStream stream every accepted event is published to, both named in the report), and datastore is the warehouse it READS, with each read lens&#39;s table reported as it is provisioned (the LLM usage ledger and the product-event table).  EITHER ONE DOWN IS A 503, and the report says WHICH — they are probed independently and never collapse into a single bit. A readiness gate on this endpoint therefore gates on the write path as well as the read path: it answers ready only when POST /v1/event can publish.  plane.ready IS A REAL PROBE and walks the ingest path itself — the same connection and the same stream a publish uses — so it cannot answer ready while a publish would 503. plane.reason carries the plane&#39;s own error text when it is false.  datastore IS NOT PROBED WITH A QUERY. It is the state of the process&#39;s own shared client — established, and not since closed — so a warehouse accepting connections and failing reads still reports true. Degraded CARRIES the report (status, the failing half, reason) as its body rather than an error envelope, so a gate reads the cause off the same object it got at 200.  A MISSING LENS TABLE IS NOT A FAILURE and never moves the status: a lens reported available:false answers honest-empty rather than erroring, so a fresh deployment whose collector has not emitted yet is legitimately 200 with the product-event lens unavailable. The lens block is reported whenever the warehouse is REACHABLE — including on a report degraded by the plane, where the tables genuinely were probed — and is absent only when the warehouse is not, having nothing to say about tables it could not reach.  Unauthenticated on purpose — liveness has to be probe-able — and it reads NO tenant data: table existence and stream presence only, never a row and never an event.
+     * @return ApiResponse&lt;EventHealthReport&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -299,17 +478,18 @@ public class EventApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<HealthReport> getEventHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<EventHealthReport> getEventHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getEventHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<HealthReport>(){}.getType();
+        Type localVarReturnType = new TypeToken<EventHealthReport>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Health reports whether the event plane can take a write and the warehouse can answer a read. (asynchronously)
-     * Health reports whether the event plane can take a write and the warehouse can answer a read.  It reports the analytics subsystem&#39;s own liveness in BOTH directions: plane is the event plane it WRITES (the bus and the JetStream stream every accepted event is published to, both named in the report), and datastore is the warehouse it READS, with each read lens&#39;s table reported as it is provisioned (the LLM usage ledger and the product-event table).  EITHER ONE DOWN IS A 503, and the report says WHICH — they are probed independently and never collapse into a single bit. This endpoint used to report the read half only, and answered 200/ok while every POST /v1/event failed on a stream that could not bind: a total ingest outage behind a green probe. A readiness gate here now gates on the write path too.  plane.ready IS A REAL PROBE and walks the ingest path itself — the same connection and the same stream a publish uses — so it cannot answer ready while a publish would 503. plane.reason carries the plane&#39;s own error text when it is false.  datastore IS NOT PROBED WITH A QUERY. It is the state of the process&#39;s own shared client — established, and not since closed — so a warehouse accepting connections and failing reads still reports true. Degraded CARRIES the report (status, the failing half, reason) as its body rather than an error envelope, so a gate reads the cause off the same object it got at 200.  A MISSING LENS TABLE IS NOT A FAILURE and never moves the status: a lens reported available:false answers honest-empty rather than erroring, so a fresh deployment whose collector has not emitted yet is legitimately 200 with the product-event lens unavailable. The lens block is reported whenever the warehouse is REACHABLE — including on a report degraded by the plane, where the tables genuinely were probed — and is absent only when the warehouse is not, having nothing to say about tables it could not reach.  Unauthenticated on purpose — liveness has to be probe-able — and it reads NO tenant data: table existence and stream presence only, never a row and never an event.
+     * Reports whether the event plane can take a write and the warehouse can answer a read. (asynchronously)
+     * Reports whether the event plane can take a write and the warehouse can answer a read.  It reports the analytics subsystem&#39;s own liveness in BOTH directions: plane is the event plane it WRITES (the bus and the JetStream stream every accepted event is published to, both named in the report), and datastore is the warehouse it READS, with each read lens&#39;s table reported as it is provisioned (the LLM usage ledger and the product-event table).  EITHER ONE DOWN IS A 503, and the report says WHICH — they are probed independently and never collapse into a single bit. A readiness gate on this endpoint therefore gates on the write path as well as the read path: it answers ready only when POST /v1/event can publish.  plane.ready IS A REAL PROBE and walks the ingest path itself — the same connection and the same stream a publish uses — so it cannot answer ready while a publish would 503. plane.reason carries the plane&#39;s own error text when it is false.  datastore IS NOT PROBED WITH A QUERY. It is the state of the process&#39;s own shared client — established, and not since closed — so a warehouse accepting connections and failing reads still reports true. Degraded CARRIES the report (status, the failing half, reason) as its body rather than an error envelope, so a gate reads the cause off the same object it got at 200.  A MISSING LENS TABLE IS NOT A FAILURE and never moves the status: a lens reported available:false answers honest-empty rather than erroring, so a fresh deployment whose collector has not emitted yet is legitimately 200 with the product-event lens unavailable. The lens block is reported whenever the warehouse is REACHABLE — including on a report degraded by the plane, where the tables genuinely were probed — and is absent only when the warehouse is not, having nothing to say about tables it could not reach.  Unauthenticated on purpose — liveness has to be probe-able — and it reads NO tenant data: table existence and stream presence only, never a row and never an event.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -319,12 +499,13 @@ public class EventApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEventHealthAsync(final ApiCallback<HealthReport> _callback) throws ApiException {
+    public okhttp3.Call getEventHealthAsync(final ApiCallback<EventHealthReport> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEventHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<HealthReport>(){}.getType();
+        Type localVarReturnType = new TypeToken<EventHealthReport>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -339,6 +520,7 @@ public class EventApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEventInsightsEventsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -371,7 +553,8 @@ public class EventApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -397,44 +580,46 @@ public class EventApi {
 
     /**
      * Returns the caller org&#39;s most recent product events, newest first.
-     * Returns the caller org&#39;s most recent product events, newest first. The console&#39;s raw-event view over event.event — the same table the capture endpoints fill — one row per stored event, with the row&#39;s attributes returned as the properties object.  The org is the validated principal&#39;s — never a parameter — and a read requires a real bearer, never the write-only publishable key. 403 without a validated bearer, 503 when the warehouse is unreachable.
+     * Returns the caller org&#39;s most recent product events, newest first. The console&#39;s raw-event view over event.event — the same table the capture endpoints fill — one row per stored event, with the row&#39;s attributes returned as the properties object.  The org is the validated principal&#39;s — never a parameter — and a read requires a real bearer, never the write-only publishable key. 401 without a validated bearer, 503 when the warehouse is unreachable.
      * @param limit Limit is how many rows to return, newest first. Default 50, maximum 200; a value at or below zero, or one that is not a number, takes the default. (optional)
-     * @return EventList
+     * @return EventEventList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EventList getEventInsightsEvents(@javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<EventList> localVarResp = getEventInsightsEventsWithHttpInfo(limit);
+    public EventEventList getEventInsightsEvents(@javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<EventEventList> localVarResp = getEventInsightsEventsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller org&#39;s most recent product events, newest first.
-     * Returns the caller org&#39;s most recent product events, newest first. The console&#39;s raw-event view over event.event — the same table the capture endpoints fill — one row per stored event, with the row&#39;s attributes returned as the properties object.  The org is the validated principal&#39;s — never a parameter — and a read requires a real bearer, never the write-only publishable key. 403 without a validated bearer, 503 when the warehouse is unreachable.
+     * Returns the caller org&#39;s most recent product events, newest first. The console&#39;s raw-event view over event.event — the same table the capture endpoints fill — one row per stored event, with the row&#39;s attributes returned as the properties object.  The org is the validated principal&#39;s — never a parameter — and a read requires a real bearer, never the write-only publishable key. 401 without a validated bearer, 503 when the warehouse is unreachable.
      * @param limit Limit is how many rows to return, newest first. Default 50, maximum 200; a value at or below zero, or one that is not a number, takes the default. (optional)
-     * @return ApiResponse&lt;EventList&gt;
+     * @return ApiResponse&lt;EventEventList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EventList> getEventInsightsEventsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<EventEventList> getEventInsightsEventsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEventInsightsEventsValidateBeforeCall(limit, null);
-        Type localVarReturnType = new TypeToken<EventList>(){}.getType();
+        Type localVarReturnType = new TypeToken<EventEventList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns the caller org&#39;s most recent product events, newest first. (asynchronously)
-     * Returns the caller org&#39;s most recent product events, newest first. The console&#39;s raw-event view over event.event — the same table the capture endpoints fill — one row per stored event, with the row&#39;s attributes returned as the properties object.  The org is the validated principal&#39;s — never a parameter — and a read requires a real bearer, never the write-only publishable key. 403 without a validated bearer, 503 when the warehouse is unreachable.
+     * Returns the caller org&#39;s most recent product events, newest first. The console&#39;s raw-event view over event.event — the same table the capture endpoints fill — one row per stored event, with the row&#39;s attributes returned as the properties object.  The org is the validated principal&#39;s — never a parameter — and a read requires a real bearer, never the write-only publishable key. 401 without a validated bearer, 503 when the warehouse is unreachable.
      * @param limit Limit is how many rows to return, newest first. Default 50, maximum 200; a value at or below zero, or one that is not a number, takes the default. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -444,12 +629,13 @@ public class EventApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEventInsightsEventsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<EventList> _callback) throws ApiException {
+    public okhttp3.Call getEventInsightsEventsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<EventEventList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEventInsightsEventsValidateBeforeCall(limit, _callback);
-        Type localVarReturnType = new TypeToken<EventList>(){}.getType();
+        Type localVarReturnType = new TypeToken<EventEventList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -463,6 +649,7 @@ public class EventApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEventInsightsHealthCall(final ApiCallback _callback) throws ApiException {
@@ -491,7 +678,8 @@ public class EventApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -518,35 +706,37 @@ public class EventApi {
     /**
      * Reports that the unified insights surface is serving.
      * Reports that the unified insights surface is serving. It reads no tenant data and consults no dependency, so it answers 200 unconditionally and needs no principal — liveness must be probe-able. The warehouse-connectivity probe is a different question and lives at GET /v1/event/health.
-     * @return InsightsStatus
+     * @return EventInsightsStatus
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public InsightsStatus getEventInsightsHealth() throws ApiException {
-        ApiResponse<InsightsStatus> localVarResp = getEventInsightsHealthWithHttpInfo();
+    public EventInsightsStatus getEventInsightsHealth() throws ApiException {
+        ApiResponse<EventInsightsStatus> localVarResp = getEventInsightsHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports that the unified insights surface is serving.
      * Reports that the unified insights surface is serving. It reads no tenant data and consults no dependency, so it answers 200 unconditionally and needs no principal — liveness must be probe-able. The warehouse-connectivity probe is a different question and lives at GET /v1/event/health.
-     * @return ApiResponse&lt;InsightsStatus&gt;
+     * @return ApiResponse&lt;EventInsightsStatus&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InsightsStatus> getEventInsightsHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<EventInsightsStatus> getEventInsightsHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getEventInsightsHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<InsightsStatus>(){}.getType();
+        Type localVarReturnType = new TypeToken<EventInsightsStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -561,12 +751,13 @@ public class EventApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEventInsightsHealthAsync(final ApiCallback<InsightsStatus> _callback) throws ApiException {
+    public okhttp3.Call getEventInsightsHealthAsync(final ApiCallback<EventInsightsStatus> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEventInsightsHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<InsightsStatus>(){}.getType();
+        Type localVarReturnType = new TypeToken<EventInsightsStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -583,6 +774,7 @@ public class EventApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEventOverviewCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback _callback) throws ApiException {
@@ -623,7 +815,8 @@ public class EventApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -648,49 +841,51 @@ public class EventApi {
     }
 
     /**
-     * Overview returns the caller org&#39;s analytics KPIs for one time window.
-     * Overview returns the caller org&#39;s analytics KPIs for one time window. Three lenses over one warehouse: llm is the live per-org LLM usage ledger (requests, tokens, spend, models, providers, errors) and is always real; web (pageviews, visitors, sessions) and commerce (orders, revenue, AOV) read the product-event table and report available&#x3D;false rather than fabricating zeros when it holds nothing yet.  The org is the validated principal&#39;s — never a parameter — so a caller can only ever read its own tenant. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
+     * Returns the caller org&#39;s analytics KPIs for one time window.
+     * Returns the caller org&#39;s analytics KPIs for one time window. Three lenses over one warehouse: llm is the live per-org LLM usage ledger (requests, tokens, spend, models, providers, errors) and is always real; web (pageviews, visitors, sessions) and commerce (orders, revenue, AOV) read the product-event table and report available&#x3D;false rather than fabricating zeros when it holds nothing yet.  The org is the validated principal&#39;s — never a parameter — so a caller can only ever read its own tenant. 401 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
      * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
-     * @return Overview
+     * @return EventOverview
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Overview getEventOverview(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
-        ApiResponse<Overview> localVarResp = getEventOverviewWithHttpInfo(range, start, end);
+    public EventOverview getEventOverview(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
+        ApiResponse<EventOverview> localVarResp = getEventOverviewWithHttpInfo(range, start, end);
         return localVarResp.getData();
     }
 
     /**
-     * Overview returns the caller org&#39;s analytics KPIs for one time window.
-     * Overview returns the caller org&#39;s analytics KPIs for one time window. Three lenses over one warehouse: llm is the live per-org LLM usage ledger (requests, tokens, spend, models, providers, errors) and is always real; web (pageviews, visitors, sessions) and commerce (orders, revenue, AOV) read the product-event table and report available&#x3D;false rather than fabricating zeros when it holds nothing yet.  The org is the validated principal&#39;s — never a parameter — so a caller can only ever read its own tenant. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
+     * Returns the caller org&#39;s analytics KPIs for one time window.
+     * Returns the caller org&#39;s analytics KPIs for one time window. Three lenses over one warehouse: llm is the live per-org LLM usage ledger (requests, tokens, spend, models, providers, errors) and is always real; web (pageviews, visitors, sessions) and commerce (orders, revenue, AOV) read the product-event table and report available&#x3D;false rather than fabricating zeros when it holds nothing yet.  The org is the validated principal&#39;s — never a parameter — so a caller can only ever read its own tenant. 401 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
      * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
-     * @return ApiResponse&lt;Overview&gt;
+     * @return ApiResponse&lt;EventOverview&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Overview> getEventOverviewWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
+    public ApiResponse<EventOverview> getEventOverviewWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
         okhttp3.Call localVarCall = getEventOverviewValidateBeforeCall(range, start, end, null);
-        Type localVarReturnType = new TypeToken<Overview>(){}.getType();
+        Type localVarReturnType = new TypeToken<EventOverview>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Overview returns the caller org&#39;s analytics KPIs for one time window. (asynchronously)
-     * Overview returns the caller org&#39;s analytics KPIs for one time window. Three lenses over one warehouse: llm is the live per-org LLM usage ledger (requests, tokens, spend, models, providers, errors) and is always real; web (pageviews, visitors, sessions) and commerce (orders, revenue, AOV) read the product-event table and report available&#x3D;false rather than fabricating zeros when it holds nothing yet.  The org is the validated principal&#39;s — never a parameter — so a caller can only ever read its own tenant. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
+     * Returns the caller org&#39;s analytics KPIs for one time window. (asynchronously)
+     * Returns the caller org&#39;s analytics KPIs for one time window. Three lenses over one warehouse: llm is the live per-org LLM usage ledger (requests, tokens, spend, models, providers, errors) and is always real; web (pageviews, visitors, sessions) and commerce (orders, revenue, AOV) read the product-event table and report available&#x3D;false rather than fabricating zeros when it holds nothing yet.  The org is the validated principal&#39;s — never a parameter — so a caller can only ever read its own tenant. 401 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
      * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
@@ -702,12 +897,140 @@ public class EventApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEventOverviewAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback<Overview> _callback) throws ApiException {
+    public okhttp3.Call getEventOverviewAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback<EventOverview> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEventOverviewValidateBeforeCall(range, start, end, _callback);
-        Type localVarReturnType = new TypeToken<Overview>(){}.getType();
+        Type localVarReturnType = new TypeToken<EventOverview>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getEventPixelByKey
+     * @param key  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getEventPixelByKeyCall(@javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/event/pixel/{key}"
+            .replace("{" + "key" + "}", localVarApiClient.escapeString(key.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "image/gif"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getEventPixelByKeyValidateBeforeCall(@javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'key' is set
+        if (key == null) {
+            throw new ApiException("Missing the required parameter 'key' when calling getEventPixelByKey(Async)");
+        }
+
+        return getEventPixelByKeyCall(key, _callback);
+
+    }
+
+    /**
+     * A site&#39;s default pixel — a page view from an image, for a page that runs no script
+     * Answers a transparent 1x1 GIF and records one page view for the project whose publishable key names the address:      &lt;img src&#x3D;\&quot;https://api.hanzo.ai/v1/event/pixel/pk-….gif\&quot; alt&#x3D;\&quot;\&quot; width&#x3D;\&quot;1\&quot; height&#x3D;\&quot;1\&quot;&gt;  The page is &#x60;?u&#x3D;&#x60; when given, else the Referer. The visitor is stamped from the request like every event, is one visitor for a day, and carries no cookie. Do-not-track and a developer&#39;s own machine record nothing. The image is answered whatever happened to the view, with no-store.
+     * @param key  (required)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public File getEventPixelByKey(@javax.annotation.Nonnull String key) throws ApiException {
+        ApiResponse<File> localVarResp = getEventPixelByKeyWithHttpInfo(key);
+        return localVarResp.getData();
+    }
+
+    /**
+     * A site&#39;s default pixel — a page view from an image, for a page that runs no script
+     * Answers a transparent 1x1 GIF and records one page view for the project whose publishable key names the address:      &lt;img src&#x3D;\&quot;https://api.hanzo.ai/v1/event/pixel/pk-….gif\&quot; alt&#x3D;\&quot;\&quot; width&#x3D;\&quot;1\&quot; height&#x3D;\&quot;1\&quot;&gt;  The page is &#x60;?u&#x3D;&#x60; when given, else the Referer. The visitor is stamped from the request like every event, is one visitor for a day, and carries no cookie. Do-not-track and a developer&#39;s own machine record nothing. The image is answered whatever happened to the view, with no-store.
+     * @param key  (required)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<File> getEventPixelByKeyWithHttpInfo(@javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = getEventPixelByKeyValidateBeforeCall(key, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * A site&#39;s default pixel — a page view from an image, for a page that runs no script (asynchronously)
+     * Answers a transparent 1x1 GIF and records one page view for the project whose publishable key names the address:      &lt;img src&#x3D;\&quot;https://api.hanzo.ai/v1/event/pixel/pk-….gif\&quot; alt&#x3D;\&quot;\&quot; width&#x3D;\&quot;1\&quot; height&#x3D;\&quot;1\&quot;&gt;  The page is &#x60;?u&#x3D;&#x60; when given, else the Referer. The visitor is stamped from the request like every event, is one visitor for a day, and carries no cookie. Do-not-track and a developer&#39;s own machine record nothing. The image is answered whatever happened to the view, with no-store.
+     * @param key  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getEventPixelByKeyAsync(@javax.annotation.Nonnull String key, final ApiCallback<File> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getEventPixelByKeyValidateBeforeCall(key, _callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -841,6 +1164,7 @@ public class EventApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEventTimeseriesCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback _callback) throws ApiException {
@@ -881,7 +1205,8 @@ public class EventApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -906,49 +1231,51 @@ public class EventApi {
     }
 
     /**
-     * Timeseries returns the caller org&#39;s LLM usage over time as an evenly-spaced series.
-     * Timeseries returns the caller org&#39;s LLM usage over time as an evenly-spaced series. One point per hour or per day — the bucket the window implies, 24h giving hours and 7d/30d giving days — carrying requests, total tokens and spend in cents. Empty buckets are filled with zeros so a client charts a continuous line.  The org is the validated principal&#39;s — never a parameter. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
+     * Returns the caller org&#39;s LLM usage over time as an evenly-spaced series.
+     * Returns the caller org&#39;s LLM usage over time as an evenly-spaced series. One point per hour or per day — the bucket the window implies, 24h giving hours and 7d/30d giving days — carrying requests, total tokens and spend in cents. Empty buckets are filled with zeros so a client charts a continuous line.  The org is the validated principal&#39;s — never a parameter. 401 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
      * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
-     * @return Timeseries
+     * @return EventTimeseries
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Timeseries getEventTimeseries(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
-        ApiResponse<Timeseries> localVarResp = getEventTimeseriesWithHttpInfo(range, start, end);
+    public EventTimeseries getEventTimeseries(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
+        ApiResponse<EventTimeseries> localVarResp = getEventTimeseriesWithHttpInfo(range, start, end);
         return localVarResp.getData();
     }
 
     /**
-     * Timeseries returns the caller org&#39;s LLM usage over time as an evenly-spaced series.
-     * Timeseries returns the caller org&#39;s LLM usage over time as an evenly-spaced series. One point per hour or per day — the bucket the window implies, 24h giving hours and 7d/30d giving days — carrying requests, total tokens and spend in cents. Empty buckets are filled with zeros so a client charts a continuous line.  The org is the validated principal&#39;s — never a parameter. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
+     * Returns the caller org&#39;s LLM usage over time as an evenly-spaced series.
+     * Returns the caller org&#39;s LLM usage over time as an evenly-spaced series. One point per hour or per day — the bucket the window implies, 24h giving hours and 7d/30d giving days — carrying requests, total tokens and spend in cents. Empty buckets are filled with zeros so a client charts a continuous line.  The org is the validated principal&#39;s — never a parameter. 401 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
      * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
-     * @return ApiResponse&lt;Timeseries&gt;
+     * @return ApiResponse&lt;EventTimeseries&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Timeseries> getEventTimeseriesWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
+    public ApiResponse<EventTimeseries> getEventTimeseriesWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
         okhttp3.Call localVarCall = getEventTimeseriesValidateBeforeCall(range, start, end, null);
-        Type localVarReturnType = new TypeToken<Timeseries>(){}.getType();
+        Type localVarReturnType = new TypeToken<EventTimeseries>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Timeseries returns the caller org&#39;s LLM usage over time as an evenly-spaced series. (asynchronously)
-     * Timeseries returns the caller org&#39;s LLM usage over time as an evenly-spaced series. One point per hour or per day — the bucket the window implies, 24h giving hours and 7d/30d giving days — carrying requests, total tokens and spend in cents. Empty buckets are filled with zeros so a client charts a continuous line.  The org is the validated principal&#39;s — never a parameter. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
+     * Returns the caller org&#39;s LLM usage over time as an evenly-spaced series. (asynchronously)
+     * Returns the caller org&#39;s LLM usage over time as an evenly-spaced series. One point per hour or per day — the bucket the window implies, 24h giving hours and 7d/30d giving days — carrying requests, total tokens and spend in cents. Empty buckets are filled with zeros so a client charts a continuous line.  The org is the validated principal&#39;s — never a parameter. 401 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
      * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
@@ -960,12 +1287,13 @@ public class EventApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEventTimeseriesAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback<Timeseries> _callback) throws ApiException {
+    public okhttp3.Call getEventTimeseriesAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback<EventTimeseries> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEventTimeseriesValidateBeforeCall(range, start, end, _callback);
-        Type localVarReturnType = new TypeToken<Timeseries>(){}.getType();
+        Type localVarReturnType = new TypeToken<EventTimeseries>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -983,6 +1311,7 @@ public class EventApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEventTopCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -1027,7 +1356,8 @@ public class EventApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1052,51 +1382,53 @@ public class EventApi {
     }
 
     /**
-     * Top returns the caller org&#39;s ranked lenses for one window, five of them at once.
-     * Top returns the caller org&#39;s ranked lenses for one window, five of them at once. models ranks LLM models by spend and is always real; products ranks commerce orders by revenue; topPages ranks requested paths, topReferrers the external referrer domains (\&quot;(direct)\&quot; for a missing or same-origin one) and topSources the utm_source campaigns (\&quot;(none)\&quot; when absent), each by pageviews. Every lens carries each row&#39;s share of the in-window total, so a top-N honestly shows the long tail.  The four event lenses report available&#x3D;false rather than fabricating zeros when the product-event table holds nothing yet. The org is the validated principal&#39;s — never a parameter. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
+     * Returns the caller org&#39;s ranked lenses for one window, five of them at once.
+     * Returns the caller org&#39;s ranked lenses for one window, five of them at once. models ranks LLM models by spend and is always real; products ranks commerce orders by revenue; topPages ranks requested paths, topReferrers the external referrer domains (\&quot;(direct)\&quot; for a missing or same-origin one) and topSources the utm_source campaigns (\&quot;(none)\&quot; when absent), each by pageviews. Every lens carries each row&#39;s share of the in-window total, so a top-N honestly shows the long tail.  The four event lenses report available&#x3D;false rather than fabricating zeros when the product-event table holds nothing yet. The org is the validated principal&#39;s — never a parameter. 401 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
      * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
      * @param limit Limit bounds every ranked lens in the response. Default 10, maximum 100; a value at or below zero, or one that is not a number, takes the default. (optional)
-     * @return Top
+     * @return EventTop
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Top getEventTop(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<Top> localVarResp = getEventTopWithHttpInfo(range, start, end, limit);
+    public EventTop getEventTop(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<EventTop> localVarResp = getEventTopWithHttpInfo(range, start, end, limit);
         return localVarResp.getData();
     }
 
     /**
-     * Top returns the caller org&#39;s ranked lenses for one window, five of them at once.
-     * Top returns the caller org&#39;s ranked lenses for one window, five of them at once. models ranks LLM models by spend and is always real; products ranks commerce orders by revenue; topPages ranks requested paths, topReferrers the external referrer domains (\&quot;(direct)\&quot; for a missing or same-origin one) and topSources the utm_source campaigns (\&quot;(none)\&quot; when absent), each by pageviews. Every lens carries each row&#39;s share of the in-window total, so a top-N honestly shows the long tail.  The four event lenses report available&#x3D;false rather than fabricating zeros when the product-event table holds nothing yet. The org is the validated principal&#39;s — never a parameter. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
+     * Returns the caller org&#39;s ranked lenses for one window, five of them at once.
+     * Returns the caller org&#39;s ranked lenses for one window, five of them at once. models ranks LLM models by spend and is always real; products ranks commerce orders by revenue; topPages ranks requested paths, topReferrers the external referrer domains (\&quot;(direct)\&quot; for a missing or same-origin one) and topSources the utm_source campaigns (\&quot;(none)\&quot; when absent), each by pageviews. Every lens carries each row&#39;s share of the in-window total, so a top-N honestly shows the long tail.  The four event lenses report available&#x3D;false rather than fabricating zeros when the product-event table holds nothing yet. The org is the validated principal&#39;s — never a parameter. 401 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
      * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
      * @param limit Limit bounds every ranked lens in the response. Default 10, maximum 100; a value at or below zero, or one that is not a number, takes the default. (optional)
-     * @return ApiResponse&lt;Top&gt;
+     * @return ApiResponse&lt;EventTop&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Top> getEventTopWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<EventTop> getEventTopWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEventTopValidateBeforeCall(range, start, end, limit, null);
-        Type localVarReturnType = new TypeToken<Top>(){}.getType();
+        Type localVarReturnType = new TypeToken<EventTop>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Top returns the caller org&#39;s ranked lenses for one window, five of them at once. (asynchronously)
-     * Top returns the caller org&#39;s ranked lenses for one window, five of them at once. models ranks LLM models by spend and is always real; products ranks commerce orders by revenue; topPages ranks requested paths, topReferrers the external referrer domains (\&quot;(direct)\&quot; for a missing or same-origin one) and topSources the utm_source campaigns (\&quot;(none)\&quot; when absent), each by pageviews. Every lens carries each row&#39;s share of the in-window total, so a top-N honestly shows the long tail.  The four event lenses report available&#x3D;false rather than fabricating zeros when the product-event table holds nothing yet. The org is the validated principal&#39;s — never a parameter. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
+     * Returns the caller org&#39;s ranked lenses for one window, five of them at once. (asynchronously)
+     * Returns the caller org&#39;s ranked lenses for one window, five of them at once. models ranks LLM models by spend and is always real; products ranks commerce orders by revenue; topPages ranks requested paths, topReferrers the external referrer domains (\&quot;(direct)\&quot; for a missing or same-origin one) and topSources the utm_source campaigns (\&quot;(none)\&quot; when absent), each by pageviews. Every lens carries each row&#39;s share of the in-window total, so a top-N honestly shows the long tail.  The four event lenses report available&#x3D;false rather than fabricating zeros when the product-event table holds nothing yet. The org is the validated principal&#39;s — never a parameter. 401 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
      * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
@@ -1109,12 +1441,13 @@ public class EventApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEventTopAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Long limit, final ApiCallback<Top> _callback) throws ApiException {
+    public okhttp3.Call getEventTopAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Long limit, final ApiCallback<EventTop> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEventTopValidateBeforeCall(range, start, end, limit, _callback);
-        Type localVarReturnType = new TypeToken<Top>(){}.getType();
+        Type localVarReturnType = new TypeToken<EventTop>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1241,14 +1574,20 @@ public class EventApi {
         return localVarCall;
     }
     /**
-     * Build call for postEventByProjectEnvelope
-     * @param project  (required)
-     * @param body  (optional)
+     * Build call for postEventEconomicDispute
+     * @param eventDisputeIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postEventByProjectEnvelopeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEventEconomicDisputeCall(@javax.annotation.Nonnull EventDisputeIn eventDisputeIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1262,11 +1601,10 @@ public class EventApi {
             basePath = null;
         }
 
-        Object localVarPostBody = body;
+        Object localVarPostBody = eventDisputeIn;
 
         // create path and map variables
-        String localVarPath = "/v1/event/{project}/envelope"
-            .replace("{" + "project" + "}", localVarApiClient.escapeString(project.toString()));
+        String localVarPath = "/v1/event/economic/dispute";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1275,6 +1613,8 @@ public class EventApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1282,7 +1622,7 @@ public class EventApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/octet-stream"
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1294,156 +1634,75 @@ public class EventApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postEventByProjectEnvelopeValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'project' is set
-        if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postEventByProjectEnvelope(Async)");
+    private okhttp3.Call postEventEconomicDisputeValidateBeforeCall(@javax.annotation.Nonnull EventDisputeIn eventDisputeIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'eventDisputeIn' is set
+        if (eventDisputeIn == null) {
+            throw new ApiException("Missing the required parameter 'eventDisputeIn' when calling postEventEconomicDispute(Async)");
         }
 
-        return postEventByProjectEnvelopeCall(project, body, _callback);
+        return postEventEconomicDisputeCall(eventDisputeIn, _callback);
 
     }
 
     /**
-     * Sentry SDK envelope ingest — errors and traces from an unmodified Sentry client
-     * Accepts the CURRENT Sentry wire — the framed envelope a modern SDK posts, carrying its items in one request — so an application already instrumented with Sentry reports into Hanzo&#39;s error tracking by pointing its DSN here and changing nothing else.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this endpoint declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a todo project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
-     * @param project  (required)
-     * @param body  (optional)
+     * Records that the caller&#39;s org disputes one payment it is party to — for the org&#39;s admins.
+     * Records that the caller&#39;s org disputes one payment it is party to — for the org&#39;s admins. A dispute is a record both parties read beside the payment, and it changes nothing about it: the amount, the parties and the tax year stay as the rail stated them, because only the rail that moved the money restates a payment.
+     * @param eventDisputeIn  (required)
+     * @return EventEconomicDispute
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
      */
-    public void postEventByProjectEnvelope(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body) throws ApiException {
-        postEventByProjectEnvelopeWithHttpInfo(project, body);
+    public EventEconomicDispute postEventEconomicDispute(@javax.annotation.Nonnull EventDisputeIn eventDisputeIn) throws ApiException {
+        ApiResponse<EventEconomicDispute> localVarResp = postEventEconomicDisputeWithHttpInfo(eventDisputeIn);
+        return localVarResp.getData();
     }
 
     /**
-     * Sentry SDK envelope ingest — errors and traces from an unmodified Sentry client
-     * Accepts the CURRENT Sentry wire — the framed envelope a modern SDK posts, carrying its items in one request — so an application already instrumented with Sentry reports into Hanzo&#39;s error tracking by pointing its DSN here and changing nothing else.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this endpoint declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a todo project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
-     * @param project  (required)
-     * @param body  (optional)
-     * @return ApiResponse&lt;Void&gt;
+     * Records that the caller&#39;s org disputes one payment it is party to — for the org&#39;s admins.
+     * Records that the caller&#39;s org disputes one payment it is party to — for the org&#39;s admins. A dispute is a record both parties read beside the payment, and it changes nothing about it: the amount, the parties and the tax year stay as the rail stated them, because only the rail that moved the money restates a payment.
+     * @param eventDisputeIn  (required)
+     * @return ApiResponse&lt;EventEconomicDispute&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postEventByProjectEnvelopeWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body) throws ApiException {
-        okhttp3.Call localVarCall = postEventByProjectEnvelopeValidateBeforeCall(project, body, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<EventEconomicDispute> postEventEconomicDisputeWithHttpInfo(@javax.annotation.Nonnull EventDisputeIn eventDisputeIn) throws ApiException {
+        okhttp3.Call localVarCall = postEventEconomicDisputeValidateBeforeCall(eventDisputeIn, null);
+        Type localVarReturnType = new TypeToken<EventEconomicDispute>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Sentry SDK envelope ingest — errors and traces from an unmodified Sentry client (asynchronously)
-     * Accepts the CURRENT Sentry wire — the framed envelope a modern SDK posts, carrying its items in one request — so an application already instrumented with Sentry reports into Hanzo&#39;s error tracking by pointing its DSN here and changing nothing else.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this endpoint declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a todo project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
-     * @param project  (required)
-     * @param body  (optional)
+     * Records that the caller&#39;s org disputes one payment it is party to — for the org&#39;s admins. (asynchronously)
+     * Records that the caller&#39;s org disputes one payment it is party to — for the org&#39;s admins. A dispute is a record both parties read beside the payment, and it changes nothing about it: the amount, the parties and the tax year stay as the rail stated them, because only the rail that moved the money restates a payment.
+     * @param eventDisputeIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postEventByProjectEnvelopeAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postEventEconomicDisputeAsync(@javax.annotation.Nonnull EventDisputeIn eventDisputeIn, final ApiCallback<EventEconomicDispute> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postEventByProjectEnvelopeValidateBeforeCall(project, body, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postEventByProjectStore
-     * @param project  (required)
-     * @param body  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postEventByProjectStoreCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = body;
-
-        // create path and map variables
-        String localVarPath = "/v1/event/{project}/store"
-            .replace("{" + "project" + "}", localVarApiClient.escapeString(project.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/octet-stream"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postEventByProjectStoreValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'project' is set
-        if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postEventByProjectStore(Async)");
-        }
-
-        return postEventByProjectStoreCall(project, body, _callback);
-
-    }
-
-    /**
-     * Sentry SDK store ingest — the legacy single-event wire
-     * Accepts the LEGACY Sentry wire: one event per request, what an SDK predating envelopes sends. Same handler, same credential, same destination as the envelope endpoint — kept open so an old client reports without being upgraded first. New instrumentation has no reason to choose it.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this endpoint declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a todo project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
-     * @param project  (required)
-     * @param body  (optional)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postEventByProjectStore(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body) throws ApiException {
-        postEventByProjectStoreWithHttpInfo(project, body);
-    }
-
-    /**
-     * Sentry SDK store ingest — the legacy single-event wire
-     * Accepts the LEGACY Sentry wire: one event per request, what an SDK predating envelopes sends. Same handler, same credential, same destination as the envelope endpoint — kept open so an old client reports without being upgraded first. New instrumentation has no reason to choose it.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this endpoint declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a todo project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
-     * @param project  (required)
-     * @param body  (optional)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postEventByProjectStoreWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body) throws ApiException {
-        okhttp3.Call localVarCall = postEventByProjectStoreValidateBeforeCall(project, body, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Sentry SDK store ingest — the legacy single-event wire (asynchronously)
-     * Accepts the LEGACY Sentry wire: one event per request, what an SDK predating envelopes sends. Same handler, same credential, same destination as the envelope endpoint — kept open so an old client reports without being upgraded first. New instrumentation has no reason to choose it.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this endpoint declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a todo project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
-     * @param project  (required)
-     * @param body  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postEventByProjectStoreAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postEventByProjectStoreValidateBeforeCall(project, body, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postEventEconomicDisputeValidateBeforeCall(eventDisputeIn, _callback);
+        Type localVarReturnType = new TypeToken<EventEconomicDispute>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

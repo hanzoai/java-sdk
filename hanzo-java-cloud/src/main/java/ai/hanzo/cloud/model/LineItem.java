@@ -53,7 +53,7 @@ public class LineItem {
   public static final String SERIALIZED_NAME_AMOUNT_CENTS = "amountCents";
   @SerializedName(SERIALIZED_NAME_AMOUNT_CENTS)
   @javax.annotation.Nullable
-  private Long amountCents;
+  private Integer amountCents;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -63,21 +63,21 @@ public class LineItem {
   public LineItem() {
   }
 
-  public LineItem amountCents(@javax.annotation.Nullable Long amountCents) {
+  public LineItem amountCents(@javax.annotation.Nullable Integer amountCents) {
     this.amountCents = amountCents;
     return this;
   }
 
   /**
-   * AmountCents is that line&#39;s amount in whole cents. The scanner is instructed to return integer cents rather than a decimal, so no float rounding can enter the ledger through here.
+   * Get amountCents
    * @return amountCents
    */
   @javax.annotation.Nullable
-  public Long getAmountCents() {
+  public Integer getAmountCents() {
     return amountCents;
   }
 
-  public void setAmountCents(@javax.annotation.Nullable Long amountCents) {
+  public void setAmountCents(@javax.annotation.Nullable Integer amountCents) {
     this.amountCents = amountCents;
   }
 
@@ -88,7 +88,7 @@ public class LineItem {
   }
 
   /**
-   * Description is the line as it appears on the document.
+   * Get description
    * @return description
    */
   @javax.annotation.Nullable

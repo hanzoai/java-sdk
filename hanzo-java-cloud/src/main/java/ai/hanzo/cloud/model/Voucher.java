@@ -87,7 +87,7 @@ public class Voucher {
   }
 
   /**
-   * Description is the human line for the event, e.g. the vendor a bill came from.
+   * Get description
    * @return description
    */
   @javax.annotation.Nullable
@@ -114,7 +114,7 @@ public class Voucher {
   }
 
   /**
-   * Legs are the sides of the posting. They must balance: Σdebit &#x3D;&#x3D; Σcredit, give or take the 2¢ round-off allowance.
+   * Get legs
    * @return legs
    */
   @javax.annotation.Nullable
@@ -133,7 +133,7 @@ public class Voucher {
   }
 
   /**
-   * PostingAt is the RFC3339 instant the event posts at — the time every statement window filters on.
+   * Get postingAt
    * @return postingAt
    */
   @javax.annotation.Nullable
@@ -152,7 +152,7 @@ public class Voucher {
   }
 
   /**
-   * SourceID is the source event&#39;s own id within that namespace. Together with SourceKind it is the key that makes a repeat posting a no-op.
+   * Get sourceId
    * @return sourceId
    */
   @javax.annotation.Nullable
@@ -171,7 +171,7 @@ public class Voucher {
   }
 
   /**
-   * SourceKind is the idempotency namespace naming what booked this, e.g. \&quot;scan\&quot;.
+   * Get sourceKind
    * @return sourceKind
    */
   @javax.annotation.Nullable

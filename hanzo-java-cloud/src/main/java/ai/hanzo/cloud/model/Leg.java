@@ -58,12 +58,12 @@ public class Leg {
   public static final String SERIALIZED_NAME_CREDIT = "credit";
   @SerializedName(SERIALIZED_NAME_CREDIT)
   @javax.annotation.Nullable
-  private Long credit;
+  private Integer credit;
 
   public static final String SERIALIZED_NAME_DEBIT = "debit";
   @SerializedName(SERIALIZED_NAME_DEBIT)
   @javax.annotation.Nullable
-  private Long debit;
+  private Integer debit;
 
   public Leg() {
   }
@@ -74,7 +74,7 @@ public class Leg {
   }
 
   /**
-   * Account is the chart-of-accounts number this side posts to, e.g. \&quot;5300\&quot;.
+   * Get account
    * @return account
    */
   @javax.annotation.Nullable
@@ -87,40 +87,40 @@ public class Leg {
   }
 
 
-  public Leg credit(@javax.annotation.Nullable Long credit) {
+  public Leg credit(@javax.annotation.Nullable Integer credit) {
     this.credit = credit;
     return this;
   }
 
   /**
-   * Credit is the leg&#39;s credit in exact cents. Set this or Debit, not both.
+   * Get credit
    * @return credit
    */
   @javax.annotation.Nullable
-  public Long getCredit() {
+  public Integer getCredit() {
     return credit;
   }
 
-  public void setCredit(@javax.annotation.Nullable Long credit) {
+  public void setCredit(@javax.annotation.Nullable Integer credit) {
     this.credit = credit;
   }
 
 
-  public Leg debit(@javax.annotation.Nullable Long debit) {
+  public Leg debit(@javax.annotation.Nullable Integer debit) {
     this.debit = debit;
     return this;
   }
 
   /**
-   * Debit is the leg&#39;s debit in exact cents. Set this or Credit, not both.
+   * Get debit
    * @return debit
    */
   @javax.annotation.Nullable
-  public Long getDebit() {
+  public Integer getDebit() {
     return debit;
   }
 
-  public void setDebit(@javax.annotation.Nullable Long debit) {
+  public void setDebit(@javax.annotation.Nullable Integer debit) {
     this.debit = debit;
   }
 

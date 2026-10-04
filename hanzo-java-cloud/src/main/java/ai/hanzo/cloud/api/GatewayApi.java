@@ -27,8 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Policy;
-import ai.hanzo.cloud.model.TrafficView;
+import ai.hanzo.cloud.model.GatewayPolicy;
+import ai.hanzo.cloud.model.GatewayTrafficView;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -83,6 +84,7 @@ public class GatewayApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call gatewayTrafficCall(final ApiCallback _callback) throws ApiException {
@@ -111,7 +113,8 @@ public class GatewayApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -137,42 +140,44 @@ public class GatewayApi {
 
     /**
      * Report who is calling this org&#39;s API right now
-     * Traffic reports who is calling this organization&#39;s API right now: the request count for the last minute split by AGENCY LANE — agent, human, bot, unknown — and the busiest callers behind it, each with its request count, its authentication-failure count, how many distinct paths it touched, and any verdict currently held against it.  The lane split is the answer to the question a generic bot filter cannot answer: which of this traffic is the customer&#39;s own automation and which is somebody working through a list. It is computed from credentials we issued, not from the client&#39;s self-description, so a scraper cannot move itself into the agent lane by editing a header.  A validated caller appears as a FINGERPRINT — a one-way, per-process digest. It is stable enough to recognise the same caller across a minute and cannot be turned back into a key, so this report is safe to read, screenshot and paste.  It also reports what the sensor&#39;s own ceilings are doing (strain, tracked, ceiling, refused) and how many screens the scorer did not answer (unscored), so a control that has stopped measuring or a judge that has stopped answering is a number here rather than a quiet day.  Scoped to the caller&#39;s own validated organization. A SuperAdmin may inspect a specific tenant with ?org&#x3D;&lt;slug&gt;, or the lane that has no tenant — every caller the identity boundary could not validate — with an empty ?org&#x3D;.
-     * @return TrafficView
+     * Reports who is calling this organization&#39;s API right now: the request count for the last minute split by AGENCY LANE — agent, human, bot, unknown — and the busiest callers behind it, each with its request count, its authentication-failure count, how many distinct paths it touched, and any verdict currently held against it.  The lane split is the answer to the question a generic bot filter cannot answer: which of this traffic is the customer&#39;s own automation and which is somebody working through a list. It is computed from credentials we issued, not from the client&#39;s self-description, so a scraper cannot move itself into the agent lane by editing a header.  A validated caller appears as a FINGERPRINT — a one-way, per-process digest. It is stable enough to recognise the same caller across a minute and cannot be turned back into a key, so this report is safe to read, screenshot and paste.  It also reports what the sensor&#39;s own ceilings are doing (strain, tracked, ceiling, refused) and how many screens the scorer did not answer (unscored), so a control that has stopped measuring or a judge that has stopped answering is a number here rather than a quiet day.  Scoped to the caller&#39;s own validated organization. A SuperAdmin may inspect a specific tenant with ?org&#x3D;&lt;slug&gt;, or the lane that has no tenant — every caller the identity boundary could not validate — with an empty ?org&#x3D;.
+     * @return GatewayTrafficView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TrafficView gatewayTraffic() throws ApiException {
-        ApiResponse<TrafficView> localVarResp = gatewayTrafficWithHttpInfo();
+    public GatewayTrafficView gatewayTraffic() throws ApiException {
+        ApiResponse<GatewayTrafficView> localVarResp = gatewayTrafficWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Report who is calling this org&#39;s API right now
-     * Traffic reports who is calling this organization&#39;s API right now: the request count for the last minute split by AGENCY LANE — agent, human, bot, unknown — and the busiest callers behind it, each with its request count, its authentication-failure count, how many distinct paths it touched, and any verdict currently held against it.  The lane split is the answer to the question a generic bot filter cannot answer: which of this traffic is the customer&#39;s own automation and which is somebody working through a list. It is computed from credentials we issued, not from the client&#39;s self-description, so a scraper cannot move itself into the agent lane by editing a header.  A validated caller appears as a FINGERPRINT — a one-way, per-process digest. It is stable enough to recognise the same caller across a minute and cannot be turned back into a key, so this report is safe to read, screenshot and paste.  It also reports what the sensor&#39;s own ceilings are doing (strain, tracked, ceiling, refused) and how many screens the scorer did not answer (unscored), so a control that has stopped measuring or a judge that has stopped answering is a number here rather than a quiet day.  Scoped to the caller&#39;s own validated organization. A SuperAdmin may inspect a specific tenant with ?org&#x3D;&lt;slug&gt;, or the lane that has no tenant — every caller the identity boundary could not validate — with an empty ?org&#x3D;.
-     * @return ApiResponse&lt;TrafficView&gt;
+     * Reports who is calling this organization&#39;s API right now: the request count for the last minute split by AGENCY LANE — agent, human, bot, unknown — and the busiest callers behind it, each with its request count, its authentication-failure count, how many distinct paths it touched, and any verdict currently held against it.  The lane split is the answer to the question a generic bot filter cannot answer: which of this traffic is the customer&#39;s own automation and which is somebody working through a list. It is computed from credentials we issued, not from the client&#39;s self-description, so a scraper cannot move itself into the agent lane by editing a header.  A validated caller appears as a FINGERPRINT — a one-way, per-process digest. It is stable enough to recognise the same caller across a minute and cannot be turned back into a key, so this report is safe to read, screenshot and paste.  It also reports what the sensor&#39;s own ceilings are doing (strain, tracked, ceiling, refused) and how many screens the scorer did not answer (unscored), so a control that has stopped measuring or a judge that has stopped answering is a number here rather than a quiet day.  Scoped to the caller&#39;s own validated organization. A SuperAdmin may inspect a specific tenant with ?org&#x3D;&lt;slug&gt;, or the lane that has no tenant — every caller the identity boundary could not validate — with an empty ?org&#x3D;.
+     * @return ApiResponse&lt;GatewayTrafficView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TrafficView> gatewayTrafficWithHttpInfo() throws ApiException {
+    public ApiResponse<GatewayTrafficView> gatewayTrafficWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = gatewayTrafficValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<TrafficView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GatewayTrafficView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Report who is calling this org&#39;s API right now (asynchronously)
-     * Traffic reports who is calling this organization&#39;s API right now: the request count for the last minute split by AGENCY LANE — agent, human, bot, unknown — and the busiest callers behind it, each with its request count, its authentication-failure count, how many distinct paths it touched, and any verdict currently held against it.  The lane split is the answer to the question a generic bot filter cannot answer: which of this traffic is the customer&#39;s own automation and which is somebody working through a list. It is computed from credentials we issued, not from the client&#39;s self-description, so a scraper cannot move itself into the agent lane by editing a header.  A validated caller appears as a FINGERPRINT — a one-way, per-process digest. It is stable enough to recognise the same caller across a minute and cannot be turned back into a key, so this report is safe to read, screenshot and paste.  It also reports what the sensor&#39;s own ceilings are doing (strain, tracked, ceiling, refused) and how many screens the scorer did not answer (unscored), so a control that has stopped measuring or a judge that has stopped answering is a number here rather than a quiet day.  Scoped to the caller&#39;s own validated organization. A SuperAdmin may inspect a specific tenant with ?org&#x3D;&lt;slug&gt;, or the lane that has no tenant — every caller the identity boundary could not validate — with an empty ?org&#x3D;.
+     * Reports who is calling this organization&#39;s API right now: the request count for the last minute split by AGENCY LANE — agent, human, bot, unknown — and the busiest callers behind it, each with its request count, its authentication-failure count, how many distinct paths it touched, and any verdict currently held against it.  The lane split is the answer to the question a generic bot filter cannot answer: which of this traffic is the customer&#39;s own automation and which is somebody working through a list. It is computed from credentials we issued, not from the client&#39;s self-description, so a scraper cannot move itself into the agent lane by editing a header.  A validated caller appears as a FINGERPRINT — a one-way, per-process digest. It is stable enough to recognise the same caller across a minute and cannot be turned back into a key, so this report is safe to read, screenshot and paste.  It also reports what the sensor&#39;s own ceilings are doing (strain, tracked, ceiling, refused) and how many screens the scorer did not answer (unscored), so a control that has stopped measuring or a judge that has stopped answering is a number here rather than a quiet day.  Scoped to the caller&#39;s own validated organization. A SuperAdmin may inspect a specific tenant with ?org&#x3D;&lt;slug&gt;, or the lane that has no tenant — every caller the identity boundary could not validate — with an empty ?org&#x3D;.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -181,12 +186,13 @@ public class GatewayApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call gatewayTrafficAsync(final ApiCallback<TrafficView> _callback) throws ApiException {
+    public okhttp3.Call gatewayTrafficAsync(final ApiCallback<GatewayTrafficView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = gatewayTrafficValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<TrafficView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GatewayTrafficView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -200,6 +206,7 @@ public class GatewayApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getGatewayConfigCall(final ApiCallback _callback) throws ApiException {
@@ -228,7 +235,8 @@ public class GatewayApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -253,43 +261,45 @@ public class GatewayApi {
     }
 
     /**
-     * Read returns the EFFECTIVE edge policy the caller is subject to: the platform CORS allowlist and pre-auth per-IP flood cap in force, plus the caller&#39;s own authenticated rate ceiling, edge-cache TTLs and accepted-method allowlist.
-     * Read returns the EFFECTIVE edge policy the caller is subject to: the platform CORS allowlist and pre-auth per-IP flood cap in force, plus the caller&#39;s own authenticated rate ceiling, edge-cache TTLs and accepted-method allowlist. A SuperAdmin may inspect a specific tenant&#39;s effective policy with ?org&#x3D;&lt;slug&gt;.
-     * @return Policy
+     * Returns the EFFECTIVE edge policy the caller is subject to: the platform CORS allowlist and pre-auth per-IP flood cap in force, plus the caller&#39;s own authenticated rate ceiling, edge-cache TTLs and accepted-method allowlist.
+     * Returns the EFFECTIVE edge policy the caller is subject to: the platform CORS allowlist and pre-auth per-IP flood cap in force, plus the caller&#39;s own authenticated rate ceiling, edge-cache TTLs and accepted-method allowlist. A SuperAdmin may inspect a specific tenant&#39;s effective policy with ?org&#x3D;&lt;slug&gt;.
+     * @return GatewayPolicy
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Policy getGatewayConfig() throws ApiException {
-        ApiResponse<Policy> localVarResp = getGatewayConfigWithHttpInfo();
+    public GatewayPolicy getGatewayConfig() throws ApiException {
+        ApiResponse<GatewayPolicy> localVarResp = getGatewayConfigWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Read returns the EFFECTIVE edge policy the caller is subject to: the platform CORS allowlist and pre-auth per-IP flood cap in force, plus the caller&#39;s own authenticated rate ceiling, edge-cache TTLs and accepted-method allowlist.
-     * Read returns the EFFECTIVE edge policy the caller is subject to: the platform CORS allowlist and pre-auth per-IP flood cap in force, plus the caller&#39;s own authenticated rate ceiling, edge-cache TTLs and accepted-method allowlist. A SuperAdmin may inspect a specific tenant&#39;s effective policy with ?org&#x3D;&lt;slug&gt;.
-     * @return ApiResponse&lt;Policy&gt;
+     * Returns the EFFECTIVE edge policy the caller is subject to: the platform CORS allowlist and pre-auth per-IP flood cap in force, plus the caller&#39;s own authenticated rate ceiling, edge-cache TTLs and accepted-method allowlist.
+     * Returns the EFFECTIVE edge policy the caller is subject to: the platform CORS allowlist and pre-auth per-IP flood cap in force, plus the caller&#39;s own authenticated rate ceiling, edge-cache TTLs and accepted-method allowlist. A SuperAdmin may inspect a specific tenant&#39;s effective policy with ?org&#x3D;&lt;slug&gt;.
+     * @return ApiResponse&lt;GatewayPolicy&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Policy> getGatewayConfigWithHttpInfo() throws ApiException {
+    public ApiResponse<GatewayPolicy> getGatewayConfigWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getGatewayConfigValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Policy>(){}.getType();
+        Type localVarReturnType = new TypeToken<GatewayPolicy>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Read returns the EFFECTIVE edge policy the caller is subject to: the platform CORS allowlist and pre-auth per-IP flood cap in force, plus the caller&#39;s own authenticated rate ceiling, edge-cache TTLs and accepted-method allowlist. (asynchronously)
-     * Read returns the EFFECTIVE edge policy the caller is subject to: the platform CORS allowlist and pre-auth per-IP flood cap in force, plus the caller&#39;s own authenticated rate ceiling, edge-cache TTLs and accepted-method allowlist. A SuperAdmin may inspect a specific tenant&#39;s effective policy with ?org&#x3D;&lt;slug&gt;.
+     * Returns the EFFECTIVE edge policy the caller is subject to: the platform CORS allowlist and pre-auth per-IP flood cap in force, plus the caller&#39;s own authenticated rate ceiling, edge-cache TTLs and accepted-method allowlist. (asynchronously)
+     * Returns the EFFECTIVE edge policy the caller is subject to: the platform CORS allowlist and pre-auth per-IP flood cap in force, plus the caller&#39;s own authenticated rate ceiling, edge-cache TTLs and accepted-method allowlist. A SuperAdmin may inspect a specific tenant&#39;s effective policy with ?org&#x3D;&lt;slug&gt;.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -298,18 +308,19 @@ public class GatewayApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGatewayConfigAsync(final ApiCallback<Policy> _callback) throws ApiException {
+    public okhttp3.Call getGatewayConfigAsync(final ApiCallback<GatewayPolicy> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getGatewayConfigValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Policy>(){}.getType();
+        Type localVarReturnType = new TypeToken<GatewayPolicy>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putGatewayConfig
-     * @param policy  (required)
+     * @param gatewayPolicy  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -318,9 +329,10 @@ public class GatewayApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putGatewayConfigCall(@javax.annotation.Nonnull Policy policy, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putGatewayConfigCall(@javax.annotation.Nonnull GatewayPolicy gatewayPolicy, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -334,7 +346,7 @@ public class GatewayApi {
             basePath = null;
         }
 
-        Object localVarPostBody = policy;
+        Object localVarPostBody = gatewayPolicy;
 
         // create path and map variables
         String localVarPath = "/v1/gateway/config";
@@ -346,7 +358,8 @@ public class GatewayApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -366,57 +379,59 @@ public class GatewayApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putGatewayConfigValidateBeforeCall(@javax.annotation.Nonnull Policy policy, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'policy' is set
-        if (policy == null) {
-            throw new ApiException("Missing the required parameter 'policy' when calling putGatewayConfig(Async)");
+    private okhttp3.Call putGatewayConfigValidateBeforeCall(@javax.annotation.Nonnull GatewayPolicy gatewayPolicy, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'gatewayPolicy' is set
+        if (gatewayPolicy == null) {
+            throw new ApiException("Missing the required parameter 'gatewayPolicy' when calling putGatewayConfig(Async)");
         }
 
-        return putGatewayConfigCall(policy, _callback);
+        return putGatewayConfigCall(gatewayPolicy, _callback);
 
     }
 
     /**
-     * Write updates one policy scope and returns the policy in force after the write.
-     * Write updates one policy scope and returns the policy in force after the write. A body carrying any PLATFORM field (cors_origins, per_ip_rpm, window_sec) is a platform write and requires SuperAdmin; otherwise it is a per-org write (org_rpm, cache_ttl_sec, cache_paths, methods) scoped to the caller&#39;s own org — or, for a SuperAdmin, the tenant named by ?org&#x3D;&lt;slug&gt;. A body that sets nothing is a 400. The abuse gate&#39;s mode is an OPERATOR field: setting it requires SuperAdmin, whichever organization it lands on. updated_at and updated_by are server-stamped; a client-supplied value is ignored.
-     * @param policy  (required)
-     * @return Policy
+     * Updates one policy scope and returns the policy in force after the write.
+     * Updates one policy scope and returns the policy in force after the write. A body carrying any PLATFORM field (cors_origins, per_ip_rpm, window_sec) is a platform write and requires SuperAdmin; otherwise it is a per-org write (org_rpm, cache_ttl_sec, cache_paths, methods) scoped to the caller&#39;s own org — or, for a SuperAdmin, the tenant named by ?org&#x3D;&lt;slug&gt;. A body that sets nothing is a 400. The abuse gate&#39;s mode is an OPERATOR field: setting it requires SuperAdmin, whichever organization it lands on. updated_at and updated_by are server-stamped; a client-supplied value is ignored.
+     * @param gatewayPolicy  (required)
+     * @return GatewayPolicy
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Policy putGatewayConfig(@javax.annotation.Nonnull Policy policy) throws ApiException {
-        ApiResponse<Policy> localVarResp = putGatewayConfigWithHttpInfo(policy);
+    public GatewayPolicy putGatewayConfig(@javax.annotation.Nonnull GatewayPolicy gatewayPolicy) throws ApiException {
+        ApiResponse<GatewayPolicy> localVarResp = putGatewayConfigWithHttpInfo(gatewayPolicy);
         return localVarResp.getData();
     }
 
     /**
-     * Write updates one policy scope and returns the policy in force after the write.
-     * Write updates one policy scope and returns the policy in force after the write. A body carrying any PLATFORM field (cors_origins, per_ip_rpm, window_sec) is a platform write and requires SuperAdmin; otherwise it is a per-org write (org_rpm, cache_ttl_sec, cache_paths, methods) scoped to the caller&#39;s own org — or, for a SuperAdmin, the tenant named by ?org&#x3D;&lt;slug&gt;. A body that sets nothing is a 400. The abuse gate&#39;s mode is an OPERATOR field: setting it requires SuperAdmin, whichever organization it lands on. updated_at and updated_by are server-stamped; a client-supplied value is ignored.
-     * @param policy  (required)
-     * @return ApiResponse&lt;Policy&gt;
+     * Updates one policy scope and returns the policy in force after the write.
+     * Updates one policy scope and returns the policy in force after the write. A body carrying any PLATFORM field (cors_origins, per_ip_rpm, window_sec) is a platform write and requires SuperAdmin; otherwise it is a per-org write (org_rpm, cache_ttl_sec, cache_paths, methods) scoped to the caller&#39;s own org — or, for a SuperAdmin, the tenant named by ?org&#x3D;&lt;slug&gt;. A body that sets nothing is a 400. The abuse gate&#39;s mode is an OPERATOR field: setting it requires SuperAdmin, whichever organization it lands on. updated_at and updated_by are server-stamped; a client-supplied value is ignored.
+     * @param gatewayPolicy  (required)
+     * @return ApiResponse&lt;GatewayPolicy&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Policy> putGatewayConfigWithHttpInfo(@javax.annotation.Nonnull Policy policy) throws ApiException {
-        okhttp3.Call localVarCall = putGatewayConfigValidateBeforeCall(policy, null);
-        Type localVarReturnType = new TypeToken<Policy>(){}.getType();
+    public ApiResponse<GatewayPolicy> putGatewayConfigWithHttpInfo(@javax.annotation.Nonnull GatewayPolicy gatewayPolicy) throws ApiException {
+        okhttp3.Call localVarCall = putGatewayConfigValidateBeforeCall(gatewayPolicy, null);
+        Type localVarReturnType = new TypeToken<GatewayPolicy>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Write updates one policy scope and returns the policy in force after the write. (asynchronously)
-     * Write updates one policy scope and returns the policy in force after the write. A body carrying any PLATFORM field (cors_origins, per_ip_rpm, window_sec) is a platform write and requires SuperAdmin; otherwise it is a per-org write (org_rpm, cache_ttl_sec, cache_paths, methods) scoped to the caller&#39;s own org — or, for a SuperAdmin, the tenant named by ?org&#x3D;&lt;slug&gt;. A body that sets nothing is a 400. The abuse gate&#39;s mode is an OPERATOR field: setting it requires SuperAdmin, whichever organization it lands on. updated_at and updated_by are server-stamped; a client-supplied value is ignored.
-     * @param policy  (required)
+     * Updates one policy scope and returns the policy in force after the write. (asynchronously)
+     * Updates one policy scope and returns the policy in force after the write. A body carrying any PLATFORM field (cors_origins, per_ip_rpm, window_sec) is a platform write and requires SuperAdmin; otherwise it is a per-org write (org_rpm, cache_ttl_sec, cache_paths, methods) scoped to the caller&#39;s own org — or, for a SuperAdmin, the tenant named by ?org&#x3D;&lt;slug&gt;. A body that sets nothing is a 400. The abuse gate&#39;s mode is an OPERATOR field: setting it requires SuperAdmin, whichever organization it lands on. updated_at and updated_by are server-stamped; a client-supplied value is ignored.
+     * @param gatewayPolicy  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -425,12 +440,13 @@ public class GatewayApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putGatewayConfigAsync(@javax.annotation.Nonnull Policy policy, final ApiCallback<Policy> _callback) throws ApiException {
+    public okhttp3.Call putGatewayConfigAsync(@javax.annotation.Nonnull GatewayPolicy gatewayPolicy, final ApiCallback<GatewayPolicy> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putGatewayConfigValidateBeforeCall(policy, _callback);
-        Type localVarReturnType = new TypeToken<Policy>(){}.getType();
+        okhttp3.Call localVarCall = putGatewayConfigValidateBeforeCall(gatewayPolicy, _callback);
+        Type localVarReturnType = new TypeToken<GatewayPolicy>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

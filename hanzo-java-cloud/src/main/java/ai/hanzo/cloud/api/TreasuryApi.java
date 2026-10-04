@@ -27,8 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.AccountsOut;
-import ai.hanzo.cloud.model.TreasuryReport;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.TreasuryAccountsOut;
+import ai.hanzo.cloud.model.TreasuryTreasuryReport;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -83,6 +84,7 @@ public class TreasuryApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTreasuryCall(final ApiCallback _callback) throws ApiException {
@@ -111,7 +113,8 @@ public class TreasuryApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -138,35 +141,37 @@ public class TreasuryApi {
     /**
      * Returns the reserve fund&#39;s health and the current revenue-share policy for any validated caller.
      * Returns the reserve fund&#39;s health and the current revenue-share policy for any validated caller. It is a TRANSPARENCY view — a partner or author can see that the pool backing their payouts is solvent — and NOT per-org money, which is the customer&#39;s own commerce balance at /v1/billing/balance. The policy is read-only here; only a SuperAdmin sets it.
-     * @return TreasuryReport
+     * @return TreasuryTreasuryReport
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TreasuryReport getTreasury() throws ApiException {
-        ApiResponse<TreasuryReport> localVarResp = getTreasuryWithHttpInfo();
+    public TreasuryTreasuryReport getTreasury() throws ApiException {
+        ApiResponse<TreasuryTreasuryReport> localVarResp = getTreasuryWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the reserve fund&#39;s health and the current revenue-share policy for any validated caller.
      * Returns the reserve fund&#39;s health and the current revenue-share policy for any validated caller. It is a TRANSPARENCY view — a partner or author can see that the pool backing their payouts is solvent — and NOT per-org money, which is the customer&#39;s own commerce balance at /v1/billing/balance. The policy is read-only here; only a SuperAdmin sets it.
-     * @return ApiResponse&lt;TreasuryReport&gt;
+     * @return ApiResponse&lt;TreasuryTreasuryReport&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TreasuryReport> getTreasuryWithHttpInfo() throws ApiException {
+    public ApiResponse<TreasuryTreasuryReport> getTreasuryWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getTreasuryValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<TreasuryReport>(){}.getType();
+        Type localVarReturnType = new TypeToken<TreasuryTreasuryReport>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -181,12 +186,13 @@ public class TreasuryApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTreasuryAsync(final ApiCallback<TreasuryReport> _callback) throws ApiException {
+    public okhttp3.Call getTreasuryAsync(final ApiCallback<TreasuryTreasuryReport> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTreasuryValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<TreasuryReport>(){}.getType();
+        Type localVarReturnType = new TypeToken<TreasuryTreasuryReport>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -202,6 +208,7 @@ public class TreasuryApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTreasuryAccountsCall(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
@@ -238,7 +245,8 @@ public class TreasuryApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -267,17 +275,18 @@ public class TreasuryApi {
      * Returns the ledger accounts the caller may see, with their balances. It is tenant-isolated SERVER-SIDE: an ordinary caller sees ONLY accounts under its own \&quot;org:&lt;tenant&gt;:\&quot; prefix, never house accounts and never another tenant&#39;s. A SuperAdmin may widen with ?scope&#x3D;house (the reserve, revenue and payout house accounts) or ?org&#x3D;&lt;tenant&gt; — the only way to cross the tenant boundary, and only for platform sudo. The answer is honestly empty until a tenant has ledger postings.
      * @param scope Scope is \&quot;house\&quot; to read the reserve/revenue/payout house accounts. SuperAdmin only. (optional)
      * @param org Org names another tenant to read. SuperAdmin only; ignored when scope&#x3D;house. (optional)
-     * @return AccountsOut
+     * @return TreasuryAccountsOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AccountsOut getTreasuryAccounts(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org) throws ApiException {
-        ApiResponse<AccountsOut> localVarResp = getTreasuryAccountsWithHttpInfo(scope, org);
+    public TreasuryAccountsOut getTreasuryAccounts(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org) throws ApiException {
+        ApiResponse<TreasuryAccountsOut> localVarResp = getTreasuryAccountsWithHttpInfo(scope, org);
         return localVarResp.getData();
     }
 
@@ -286,18 +295,19 @@ public class TreasuryApi {
      * Returns the ledger accounts the caller may see, with their balances. It is tenant-isolated SERVER-SIDE: an ordinary caller sees ONLY accounts under its own \&quot;org:&lt;tenant&gt;:\&quot; prefix, never house accounts and never another tenant&#39;s. A SuperAdmin may widen with ?scope&#x3D;house (the reserve, revenue and payout house accounts) or ?org&#x3D;&lt;tenant&gt; — the only way to cross the tenant boundary, and only for platform sudo. The answer is honestly empty until a tenant has ledger postings.
      * @param scope Scope is \&quot;house\&quot; to read the reserve/revenue/payout house accounts. SuperAdmin only. (optional)
      * @param org Org names another tenant to read. SuperAdmin only; ignored when scope&#x3D;house. (optional)
-     * @return ApiResponse&lt;AccountsOut&gt;
+     * @return ApiResponse&lt;TreasuryAccountsOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccountsOut> getTreasuryAccountsWithHttpInfo(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org) throws ApiException {
+    public ApiResponse<TreasuryAccountsOut> getTreasuryAccountsWithHttpInfo(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org) throws ApiException {
         okhttp3.Call localVarCall = getTreasuryAccountsValidateBeforeCall(scope, org, null);
-        Type localVarReturnType = new TypeToken<AccountsOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<TreasuryAccountsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -314,12 +324,13 @@ public class TreasuryApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTreasuryAccountsAsync(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org, final ApiCallback<AccountsOut> _callback) throws ApiException {
+    public okhttp3.Call getTreasuryAccountsAsync(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org, final ApiCallback<TreasuryAccountsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTreasuryAccountsValidateBeforeCall(scope, org, _callback);
-        Type localVarReturnType = new TypeToken<AccountsOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<TreasuryAccountsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

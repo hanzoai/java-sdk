@@ -27,12 +27,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.DashResp;
-import ai.hanzo.cloud.model.ReportReq;
-import ai.hanzo.cloud.model.ReportResp;
-import ai.hanzo.cloud.model.UsageAnalyticsAccess;
-import ai.hanzo.cloud.model.UsageAnalyticsView;
-import ai.hanzo.cloud.model.UsageSummary;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.UsageDashResp;
+import ai.hanzo.cloud.model.UsageReportReq;
+import ai.hanzo.cloud.model.UsageReportResp;
+import ai.hanzo.cloud.model.UsageUsageAnalyticsAccess;
+import ai.hanzo.cloud.model.UsageUsageAnalyticsView;
+import ai.hanzo.cloud.model.UsageUsageSummary;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -91,6 +92,7 @@ public class UsageApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getUsageAnalyticsCall(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start, final ApiCallback _callback) throws ApiException {
@@ -135,7 +137,8 @@ public class UsageApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -166,17 +169,18 @@ public class UsageApi {
      * @param plan Plan is the plan id whose entitlement decides access and retention. INTERIM: cloud has no org-to-plan resolver yet, so the caller names the plan; when that resolver lands this becomes the caller org&#39;s own plan. (optional)
      * @param range Range is the window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all, custom. Empty means 24h. The window is then clamped forward to the plan&#39;s retention entitlement. (optional)
      * @param start Start is the inclusive window start, RFC3339. Read only when Range is custom, and clamped forward to the plan&#39;s retention floor. (optional)
-     * @return UsageAnalyticsView
+     * @return UsageUsageAnalyticsView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public UsageAnalyticsView getUsageAnalytics(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start) throws ApiException {
-        ApiResponse<UsageAnalyticsView> localVarResp = getUsageAnalyticsWithHttpInfo(end, plan, range, start);
+    public UsageUsageAnalyticsView getUsageAnalytics(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start) throws ApiException {
+        ApiResponse<UsageUsageAnalyticsView> localVarResp = getUsageAnalyticsWithHttpInfo(end, plan, range, start);
         return localVarResp.getData();
     }
 
@@ -187,18 +191,19 @@ public class UsageApi {
      * @param plan Plan is the plan id whose entitlement decides access and retention. INTERIM: cloud has no org-to-plan resolver yet, so the caller names the plan; when that resolver lands this becomes the caller org&#39;s own plan. (optional)
      * @param range Range is the window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all, custom. Empty means 24h. The window is then clamped forward to the plan&#39;s retention entitlement. (optional)
      * @param start Start is the inclusive window start, RFC3339. Read only when Range is custom, and clamped forward to the plan&#39;s retention floor. (optional)
-     * @return ApiResponse&lt;UsageAnalyticsView&gt;
+     * @return ApiResponse&lt;UsageUsageAnalyticsView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UsageAnalyticsView> getUsageAnalyticsWithHttpInfo(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start) throws ApiException {
+    public ApiResponse<UsageUsageAnalyticsView> getUsageAnalyticsWithHttpInfo(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start) throws ApiException {
         okhttp3.Call localVarCall = getUsageAnalyticsValidateBeforeCall(end, plan, range, start, null);
-        Type localVarReturnType = new TypeToken<UsageAnalyticsView>(){}.getType();
+        Type localVarReturnType = new TypeToken<UsageUsageAnalyticsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -217,12 +222,13 @@ public class UsageApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getUsageAnalyticsAsync(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start, final ApiCallback<UsageAnalyticsView> _callback) throws ApiException {
+    public okhttp3.Call getUsageAnalyticsAsync(@javax.annotation.Nullable String end, @javax.annotation.Nullable String plan, @javax.annotation.Nullable String range, @javax.annotation.Nullable String start, final ApiCallback<UsageUsageAnalyticsView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getUsageAnalyticsValidateBeforeCall(end, plan, range, start, _callback);
-        Type localVarReturnType = new TypeToken<UsageAnalyticsView>(){}.getType();
+        Type localVarReturnType = new TypeToken<UsageUsageAnalyticsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -237,6 +243,7 @@ public class UsageApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getUsageAnalyticsAccessCall(@javax.annotation.Nullable String plan, final ApiCallback _callback) throws ApiException {
@@ -269,7 +276,8 @@ public class UsageApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -297,17 +305,18 @@ public class UsageApi {
      * Echoes a plan&#39;s resolved analytics entitlement so a dashboard can configure itself against the LIVE catalog instead of hardcoding tier numbers.
      * Echoes a plan&#39;s resolved analytics entitlement so a dashboard can configure itself against the LIVE catalog instead of hardcoding tier numbers. An empty plan resolves the free floor, and a catalog resolution failure serves that same floor rather than erroring — so this always answers 200. It is a read-only contract echo and carries no tenant data.
      * @param plan Plan is a plan id from the live @hanzo/plans catalog. Empty resolves the free floor, and so does an id the catalog does not know — this never fails on an unknown plan. (optional)
-     * @return UsageAnalyticsAccess
+     * @return UsageUsageAnalyticsAccess
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public UsageAnalyticsAccess getUsageAnalyticsAccess(@javax.annotation.Nullable String plan) throws ApiException {
-        ApiResponse<UsageAnalyticsAccess> localVarResp = getUsageAnalyticsAccessWithHttpInfo(plan);
+    public UsageUsageAnalyticsAccess getUsageAnalyticsAccess(@javax.annotation.Nullable String plan) throws ApiException {
+        ApiResponse<UsageUsageAnalyticsAccess> localVarResp = getUsageAnalyticsAccessWithHttpInfo(plan);
         return localVarResp.getData();
     }
 
@@ -315,18 +324,19 @@ public class UsageApi {
      * Echoes a plan&#39;s resolved analytics entitlement so a dashboard can configure itself against the LIVE catalog instead of hardcoding tier numbers.
      * Echoes a plan&#39;s resolved analytics entitlement so a dashboard can configure itself against the LIVE catalog instead of hardcoding tier numbers. An empty plan resolves the free floor, and a catalog resolution failure serves that same floor rather than erroring — so this always answers 200. It is a read-only contract echo and carries no tenant data.
      * @param plan Plan is a plan id from the live @hanzo/plans catalog. Empty resolves the free floor, and so does an id the catalog does not know — this never fails on an unknown plan. (optional)
-     * @return ApiResponse&lt;UsageAnalyticsAccess&gt;
+     * @return ApiResponse&lt;UsageUsageAnalyticsAccess&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UsageAnalyticsAccess> getUsageAnalyticsAccessWithHttpInfo(@javax.annotation.Nullable String plan) throws ApiException {
+    public ApiResponse<UsageUsageAnalyticsAccess> getUsageAnalyticsAccessWithHttpInfo(@javax.annotation.Nullable String plan) throws ApiException {
         okhttp3.Call localVarCall = getUsageAnalyticsAccessValidateBeforeCall(plan, null);
-        Type localVarReturnType = new TypeToken<UsageAnalyticsAccess>(){}.getType();
+        Type localVarReturnType = new TypeToken<UsageUsageAnalyticsAccess>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -342,12 +352,13 @@ public class UsageApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getUsageAnalyticsAccessAsync(@javax.annotation.Nullable String plan, final ApiCallback<UsageAnalyticsAccess> _callback) throws ApiException {
+    public okhttp3.Call getUsageAnalyticsAccessAsync(@javax.annotation.Nullable String plan, final ApiCallback<UsageUsageAnalyticsAccess> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getUsageAnalyticsAccessValidateBeforeCall(plan, _callback);
-        Type localVarReturnType = new TypeToken<UsageAnalyticsAccess>(){}.getType();
+        Type localVarReturnType = new TypeToken<UsageUsageAnalyticsAccess>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -365,6 +376,7 @@ public class UsageApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getUsageSamplesCall(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window, final ApiCallback _callback) throws ApiException {
@@ -409,7 +421,8 @@ public class UsageApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -440,17 +453,18 @@ public class UsageApi {
      * @param provider Provider is the upstream to read, e.g. anthropic. Required. (optional)
      * @param range Range is the window to read: a count and a unit — 1h, 24h, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Empty means 24h. A label that is not a count, or one reaching past the 730-day horizon, is refused rather than silently replaced. (optional)
      * @param window Window narrows to ONE window class: 6h, day, week or month. Empty covers every class. (optional)
-     * @return DashResp
+     * @return UsageDashResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DashResp getUsageSamples(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window) throws ApiException {
-        ApiResponse<DashResp> localVarResp = getUsageSamplesWithHttpInfo(account, provider, range, window);
+    public UsageDashResp getUsageSamples(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window) throws ApiException {
+        ApiResponse<UsageDashResp> localVarResp = getUsageSamplesWithHttpInfo(account, provider, range, window);
         return localVarResp.getData();
     }
 
@@ -461,18 +475,19 @@ public class UsageApi {
      * @param provider Provider is the upstream to read, e.g. anthropic. Required. (optional)
      * @param range Range is the window to read: a count and a unit — 1h, 24h, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Empty means 24h. A label that is not a count, or one reaching past the 730-day horizon, is refused rather than silently replaced. (optional)
      * @param window Window narrows to ONE window class: 6h, day, week or month. Empty covers every class. (optional)
-     * @return ApiResponse&lt;DashResp&gt;
+     * @return ApiResponse&lt;UsageDashResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DashResp> getUsageSamplesWithHttpInfo(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window) throws ApiException {
+    public ApiResponse<UsageDashResp> getUsageSamplesWithHttpInfo(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window) throws ApiException {
         okhttp3.Call localVarCall = getUsageSamplesValidateBeforeCall(account, provider, range, window, null);
-        Type localVarReturnType = new TypeToken<DashResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<UsageDashResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -491,12 +506,13 @@ public class UsageApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getUsageSamplesAsync(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window, final ApiCallback<DashResp> _callback) throws ApiException {
+    public okhttp3.Call getUsageSamplesAsync(@javax.annotation.Nullable String account, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String range, @javax.annotation.Nullable String window, final ApiCallback<UsageDashResp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getUsageSamplesValidateBeforeCall(account, provider, range, window, _callback);
-        Type localVarReturnType = new TypeToken<DashResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<UsageDashResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -513,6 +529,7 @@ public class UsageApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getUsageSummaryCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback _callback) throws ApiException {
@@ -553,7 +570,8 @@ public class UsageApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -583,17 +601,18 @@ public class UsageApi {
      * @param range Range is the window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all, custom. Empty means 24h. A label this surface does not know, or one reaching past the 730-day horizon, is refused rather than silently replaced. (optional)
      * @param start Start is the inclusive window start, RFC3339. Read only when Range is custom. (optional)
      * @param end End is the exclusive window end, RFC3339. Read only when Range is custom. (optional)
-     * @return UsageSummary
+     * @return UsageUsageSummary
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public UsageSummary getUsageSummary(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
-        ApiResponse<UsageSummary> localVarResp = getUsageSummaryWithHttpInfo(range, start, end);
+    public UsageUsageSummary getUsageSummary(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
+        ApiResponse<UsageUsageSummary> localVarResp = getUsageSummaryWithHttpInfo(range, start, end);
         return localVarResp.getData();
     }
 
@@ -603,18 +622,19 @@ public class UsageApi {
      * @param range Range is the window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all, custom. Empty means 24h. A label this surface does not know, or one reaching past the 730-day horizon, is refused rather than silently replaced. (optional)
      * @param start Start is the inclusive window start, RFC3339. Read only when Range is custom. (optional)
      * @param end End is the exclusive window end, RFC3339. Read only when Range is custom. (optional)
-     * @return ApiResponse&lt;UsageSummary&gt;
+     * @return ApiResponse&lt;UsageUsageSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UsageSummary> getUsageSummaryWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
+    public ApiResponse<UsageUsageSummary> getUsageSummaryWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
         okhttp3.Call localVarCall = getUsageSummaryValidateBeforeCall(range, start, end, null);
-        Type localVarReturnType = new TypeToken<UsageSummary>(){}.getType();
+        Type localVarReturnType = new TypeToken<UsageUsageSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -632,18 +652,19 @@ public class UsageApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getUsageSummaryAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback<UsageSummary> _callback) throws ApiException {
+    public okhttp3.Call getUsageSummaryAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback<UsageUsageSummary> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getUsageSummaryValidateBeforeCall(range, start, end, _callback);
-        Type localVarReturnType = new TypeToken<UsageSummary>(){}.getType();
+        Type localVarReturnType = new TypeToken<UsageUsageSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postUsage
-     * @param reportReq  (required)
+     * @param usageReportReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -652,9 +673,10 @@ public class UsageApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postUsageCall(@javax.annotation.Nonnull ReportReq reportReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postUsageCall(@javax.annotation.Nonnull UsageReportReq usageReportReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -668,7 +690,7 @@ public class UsageApi {
             basePath = null;
         }
 
-        Object localVarPostBody = reportReq;
+        Object localVarPostBody = usageReportReq;
 
         // create path and map variables
         String localVarPath = "/v1/usage";
@@ -680,7 +702,8 @@ public class UsageApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -700,57 +723,59 @@ public class UsageApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postUsageValidateBeforeCall(@javax.annotation.Nonnull ReportReq reportReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'reportReq' is set
-        if (reportReq == null) {
-            throw new ApiException("Missing the required parameter 'reportReq' when calling postUsage(Async)");
+    private okhttp3.Call postUsageValidateBeforeCall(@javax.annotation.Nonnull UsageReportReq usageReportReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'usageReportReq' is set
+        if (usageReportReq == null) {
+            throw new ApiException("Missing the required parameter 'usageReportReq' when calling postUsage(Async)");
         }
 
-        return postUsageCall(reportReq, _callback);
+        return postUsageCall(usageReportReq, _callback);
 
     }
 
     /**
      * Ingests a batch of account-usage samples — what a developer&#39;s OWN AI accounts have consumed of their OWN plans, metered from each provider&#39;s own login — and appends them to the warehouse series.
      * Ingests a batch of account-usage samples — what a developer&#39;s OWN AI accounts have consumed of their OWN plans, metered from each provider&#39;s own login — and appends them to the warehouse series. Answers 202.  Send either a &#x60;samples&#x60; array or one sample&#39;s fields at the top level. Every sample needs a provider, a machine and a known window class; an unknown window or kind is refused rather than silently rewritten, because a dash filled with a class nobody reported is worse than an error. There is no timestamp field: the server owns the observation clock, and a sample says which window it measured with windowStart or resetsAt.  It is FAIL-SOFT on storage: a warehouse outage costs a poll of history (stored:false), never a failed request. It records usage ONLY — the link registry is refreshed separately via POST /v1/link, so there is one and only one way to update an account row.
-     * @param reportReq  (required)
-     * @return ReportResp
+     * @param usageReportReq  (required)
+     * @return UsageReportResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ReportResp postUsage(@javax.annotation.Nonnull ReportReq reportReq) throws ApiException {
-        ApiResponse<ReportResp> localVarResp = postUsageWithHttpInfo(reportReq);
+    public UsageReportResp postUsage(@javax.annotation.Nonnull UsageReportReq usageReportReq) throws ApiException {
+        ApiResponse<UsageReportResp> localVarResp = postUsageWithHttpInfo(usageReportReq);
         return localVarResp.getData();
     }
 
     /**
      * Ingests a batch of account-usage samples — what a developer&#39;s OWN AI accounts have consumed of their OWN plans, metered from each provider&#39;s own login — and appends them to the warehouse series.
      * Ingests a batch of account-usage samples — what a developer&#39;s OWN AI accounts have consumed of their OWN plans, metered from each provider&#39;s own login — and appends them to the warehouse series. Answers 202.  Send either a &#x60;samples&#x60; array or one sample&#39;s fields at the top level. Every sample needs a provider, a machine and a known window class; an unknown window or kind is refused rather than silently rewritten, because a dash filled with a class nobody reported is worse than an error. There is no timestamp field: the server owns the observation clock, and a sample says which window it measured with windowStart or resetsAt.  It is FAIL-SOFT on storage: a warehouse outage costs a poll of history (stored:false), never a failed request. It records usage ONLY — the link registry is refreshed separately via POST /v1/link, so there is one and only one way to update an account row.
-     * @param reportReq  (required)
-     * @return ApiResponse&lt;ReportResp&gt;
+     * @param usageReportReq  (required)
+     * @return ApiResponse&lt;UsageReportResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReportResp> postUsageWithHttpInfo(@javax.annotation.Nonnull ReportReq reportReq) throws ApiException {
-        okhttp3.Call localVarCall = postUsageValidateBeforeCall(reportReq, null);
-        Type localVarReturnType = new TypeToken<ReportResp>(){}.getType();
+    public ApiResponse<UsageReportResp> postUsageWithHttpInfo(@javax.annotation.Nonnull UsageReportReq usageReportReq) throws ApiException {
+        okhttp3.Call localVarCall = postUsageValidateBeforeCall(usageReportReq, null);
+        Type localVarReturnType = new TypeToken<UsageReportResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Ingests a batch of account-usage samples — what a developer&#39;s OWN AI accounts have consumed of their OWN plans, metered from each provider&#39;s own login — and appends them to the warehouse series. (asynchronously)
      * Ingests a batch of account-usage samples — what a developer&#39;s OWN AI accounts have consumed of their OWN plans, metered from each provider&#39;s own login — and appends them to the warehouse series. Answers 202.  Send either a &#x60;samples&#x60; array or one sample&#39;s fields at the top level. Every sample needs a provider, a machine and a known window class; an unknown window or kind is refused rather than silently rewritten, because a dash filled with a class nobody reported is worse than an error. There is no timestamp field: the server owns the observation clock, and a sample says which window it measured with windowStart or resetsAt.  It is FAIL-SOFT on storage: a warehouse outage costs a poll of history (stored:false), never a failed request. It records usage ONLY — the link registry is refreshed separately via POST /v1/link, so there is one and only one way to update an account row.
-     * @param reportReq  (required)
+     * @param usageReportReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -759,12 +784,13 @@ public class UsageApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postUsageAsync(@javax.annotation.Nonnull ReportReq reportReq, final ApiCallback<ReportResp> _callback) throws ApiException {
+    public okhttp3.Call postUsageAsync(@javax.annotation.Nonnull UsageReportReq usageReportReq, final ApiCallback<UsageReportResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postUsageValidateBeforeCall(reportReq, _callback);
-        Type localVarReturnType = new TypeToken<ReportResp>(){}.getType();
+        okhttp3.Call localVarCall = postUsageValidateBeforeCall(usageReportReq, _callback);
+        Type localVarReturnType = new TypeToken<UsageReportResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

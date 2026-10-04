@@ -59,7 +59,7 @@ public class ProjectsDeployment {
   public static final String SERIALIZED_NAME_BYTES = "bytes";
   @SerializedName(SERIALIZED_NAME_BYTES)
   @javax.annotation.Nullable
-  private Long bytes;
+  private Integer bytes;
 
   public static final String SERIALIZED_NAME_COMMIT = "commit";
   @SerializedName(SERIALIZED_NAME_COMMIT)
@@ -69,12 +69,12 @@ public class ProjectsDeployment {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Long createdAt;
+  private Integer createdAt;
 
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private Long files;
+  private Integer files;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -114,7 +114,7 @@ public class ProjectsDeployment {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Long updatedAt;
+  private Integer updatedAt;
 
   public static final String SERIALIZED_NAME_UPLOAD = "upload";
   @SerializedName(SERIALIZED_NAME_UPLOAD)
@@ -124,7 +124,7 @@ public class ProjectsDeployment {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   @javax.annotation.Nullable
-  private Long version;
+  private Integer version;
 
   public ProjectsDeployment() {
   }
@@ -135,7 +135,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Bucket is the object-store bucket its files were written to.
+   * Get bucket
    * @return bucket
    */
   @javax.annotation.Nullable
@@ -148,21 +148,21 @@ public class ProjectsDeployment {
   }
 
 
-  public ProjectsDeployment bytes(@javax.annotation.Nullable Long bytes) {
+  public ProjectsDeployment bytes(@javax.annotation.Nullable Integer bytes) {
     this.bytes = bytes;
     return this;
   }
 
   /**
-   * Bytes is their total size in bytes.
+   * Get bytes
    * @return bytes
    */
   @javax.annotation.Nullable
-  public Long getBytes() {
+  public Integer getBytes() {
     return bytes;
   }
 
-  public void setBytes(@javax.annotation.Nullable Long bytes) {
+  public void setBytes(@javax.annotation.Nullable Integer bytes) {
     this.bytes = bytes;
   }
 
@@ -173,7 +173,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Commit is the revision that was built, for a deployment that came from a repository. Absent for an uploaded artifact, which has no revision.
+   * Get commit
    * @return commit
    */
   @javax.annotation.Nullable
@@ -186,40 +186,40 @@ public class ProjectsDeployment {
   }
 
 
-  public ProjectsDeployment createdAt(@javax.annotation.Nullable Long createdAt) {
+  public ProjectsDeployment createdAt(@javax.annotation.Nullable Integer createdAt) {
     this.createdAt = createdAt;
     return this;
   }
 
   /**
-   * CreatedAt is when the deployment was queued, as Unix seconds.
+   * Get createdAt
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Long getCreatedAt() {
+  public Integer getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
     this.createdAt = createdAt;
   }
 
 
-  public ProjectsDeployment files(@javax.annotation.Nullable Long files) {
+  public ProjectsDeployment files(@javax.annotation.Nullable Integer files) {
     this.files = files;
     return this;
   }
 
   /**
-   * Files is how many objects the deployment published.
+   * Get files
    * @return files
    */
   @javax.annotation.Nullable
-  public Long getFiles() {
+  public Integer getFiles() {
     return files;
   }
 
-  public void setFiles(@javax.annotation.Nullable Long files) {
+  public void setFiles(@javax.annotation.Nullable Integer files) {
     this.files = files;
   }
 
@@ -230,7 +230,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * ID identifies this one deployment attempt, and is what CI quotes back to complete it.
+   * Get id
    * @return id
    */
   @javax.annotation.Nullable
@@ -249,7 +249,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * LiveURL is where this deployment serves, once it is live.
+   * Get liveUrl
    * @return liveUrl
    */
   @javax.annotation.Nullable
@@ -268,7 +268,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Message is what happened, in words — the build&#39;s own note, or on a failure why it failed.
+   * Get message
    * @return message
    */
   @javax.annotation.Nullable
@@ -287,7 +287,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Prefix is the key prefix within that bucket holding EXACTLY this deployment&#39;s objects — the unit an upload grant is scoped to, so a grant for one deployment cannot write over another.
+   * Get prefix
    * @return prefix
    */
   @javax.annotation.Nullable
@@ -306,7 +306,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * ProjectID is the project this deployment belongs to.
+   * Get projectId
    * @return projectId
    */
   @javax.annotation.Nullable
@@ -325,7 +325,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Source is what caused the deployment — a git push, an uploaded artifact, a generated site.
+   * Get source
    * @return source
    */
   @javax.annotation.Nullable
@@ -344,7 +344,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Status is where the attempt got to — queued, live, or failed. A deployment that is live is not necessarily the one SERVING: the project&#39;s own currentDeploymentId says which is.
+   * Get status
    * @return status
    */
   @javax.annotation.Nullable
@@ -357,21 +357,21 @@ public class ProjectsDeployment {
   }
 
 
-  public ProjectsDeployment updatedAt(@javax.annotation.Nullable Long updatedAt) {
+  public ProjectsDeployment updatedAt(@javax.annotation.Nullable Integer updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
 
   /**
-   * UpdatedAt is when it last changed state, as Unix seconds — so the gap between the two is how long the build took.
+   * Get updatedAt
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Long getUpdatedAt() {
+  public Integer getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
     this.updatedAt = updatedAt;
   }
 
@@ -382,7 +382,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Upload is the prefix-scoped, short-lived S3 write grant handed to CI with a queued git deployment, so it needs no bucket credential (grant.go). Present ONLY on the 202 that creates the deployment — it is never stored and never replayed on a later read, so a grant cannot outlive the build it was minted for by being fetched again.
+   * Get upload
    * @return upload
    */
   @javax.annotation.Nullable
@@ -395,21 +395,21 @@ public class ProjectsDeployment {
   }
 
 
-  public ProjectsDeployment version(@javax.annotation.Nullable Long version) {
+  public ProjectsDeployment version(@javax.annotation.Nullable Integer version) {
     this.version = version;
     return this;
   }
 
   /**
-   * Version counts deployments of this project from 1, so the history reads as an ordered sequence rather than by timestamp. It is per project, not global.
+   * Get version
    * @return version
    */
   @javax.annotation.Nullable
-  public Long getVersion() {
+  public Integer getVersion() {
     return version;
   }
 
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@javax.annotation.Nullable Integer version) {
     this.version = version;
   }
 

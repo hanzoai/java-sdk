@@ -14,8 +14,8 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.O11yCollectedLogAttribute;
-import ai.hanzo.cloud.model.O11yCollectedMetric;
+import ai.hanzo.cloud.model.O11yCloudintegrationtypesCollectedLogAttribute;
+import ai.hanzo.cloud.model.O11yCloudintegrationtypesCollectedMetric;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -57,22 +57,22 @@ public class O11yDataCollected {
   public static final String SERIALIZED_NAME_LOGS = "logs";
   @SerializedName(SERIALIZED_NAME_LOGS)
   @javax.annotation.Nullable
-  private List<O11yCollectedLogAttribute> logs = new ArrayList<>();
+  private List<O11yCloudintegrationtypesCollectedLogAttribute> logs = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_METRICS = "metrics";
   @SerializedName(SERIALIZED_NAME_METRICS)
   @javax.annotation.Nullable
-  private List<O11yCollectedMetric> metrics = new ArrayList<>();
+  private List<O11yCloudintegrationtypesCollectedMetric> metrics = new ArrayList<>();
 
   public O11yDataCollected() {
   }
 
-  public O11yDataCollected logs(@javax.annotation.Nullable List<O11yCollectedLogAttribute> logs) {
+  public O11yDataCollected logs(@javax.annotation.Nullable List<O11yCloudintegrationtypesCollectedLogAttribute> logs) {
     this.logs = logs;
     return this;
   }
 
-  public O11yDataCollected addLogsItem(O11yCollectedLogAttribute logsItem) {
+  public O11yDataCollected addLogsItem(O11yCloudintegrationtypesCollectedLogAttribute logsItem) {
     if (this.logs == null) {
       this.logs = new ArrayList<>();
     }
@@ -85,21 +85,21 @@ public class O11yDataCollected {
    * @return logs
    */
   @javax.annotation.Nullable
-  public List<O11yCollectedLogAttribute> getLogs() {
+  public List<O11yCloudintegrationtypesCollectedLogAttribute> getLogs() {
     return logs;
   }
 
-  public void setLogs(@javax.annotation.Nullable List<O11yCollectedLogAttribute> logs) {
+  public void setLogs(@javax.annotation.Nullable List<O11yCloudintegrationtypesCollectedLogAttribute> logs) {
     this.logs = logs;
   }
 
 
-  public O11yDataCollected metrics(@javax.annotation.Nullable List<O11yCollectedMetric> metrics) {
+  public O11yDataCollected metrics(@javax.annotation.Nullable List<O11yCloudintegrationtypesCollectedMetric> metrics) {
     this.metrics = metrics;
     return this;
   }
 
-  public O11yDataCollected addMetricsItem(O11yCollectedMetric metricsItem) {
+  public O11yDataCollected addMetricsItem(O11yCloudintegrationtypesCollectedMetric metricsItem) {
     if (this.metrics == null) {
       this.metrics = new ArrayList<>();
     }
@@ -112,11 +112,11 @@ public class O11yDataCollected {
    * @return metrics
    */
   @javax.annotation.Nullable
-  public List<O11yCollectedMetric> getMetrics() {
+  public List<O11yCloudintegrationtypesCollectedMetric> getMetrics() {
     return metrics;
   }
 
-  public void setMetrics(@javax.annotation.Nullable List<O11yCollectedMetric> metrics) {
+  public void setMetrics(@javax.annotation.Nullable List<O11yCloudintegrationtypesCollectedMetric> metrics) {
     this.metrics = metrics;
   }
 
@@ -242,7 +242,7 @@ public class O11yDataCollected {
 
           // validate the optional field `logs` (array)
           for (int i = 0; i < jsonArraylogs.size(); i++) {
-            O11yCollectedLogAttribute.validateJsonElement(jsonArraylogs.get(i));
+            O11yCloudintegrationtypesCollectedLogAttribute.validateJsonElement(jsonArraylogs.get(i));
           };
         }
       }
@@ -256,7 +256,7 @@ public class O11yDataCollected {
 
           // validate the optional field `metrics` (array)
           for (int i = 0; i < jsonArraymetrics.size(); i++) {
-            O11yCollectedMetric.validateJsonElement(jsonArraymetrics.get(i));
+            O11yCloudintegrationtypesCollectedMetric.validateJsonElement(jsonArraymetrics.get(i));
           };
         }
       }

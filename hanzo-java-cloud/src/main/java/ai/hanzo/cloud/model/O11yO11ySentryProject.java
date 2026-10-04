@@ -56,11 +56,6 @@ public class O11yO11ySentryProject {
   @javax.annotation.Nullable
   private OffsetDateTime createdAt;
 
-  public static final String SERIALIZED_NAME_DSN = "dsn";
-  @SerializedName(SERIALIZED_NAME_DSN)
-  @javax.annotation.Nullable
-  private String dsn;
-
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
@@ -110,25 +105,6 @@ public class O11yO11ySentryProject {
 
   public void setCreatedAt(@javax.annotation.Nullable OffsetDateTime createdAt) {
     this.createdAt = createdAt;
-  }
-
-
-  public O11yO11ySentryProject dsn(@javax.annotation.Nullable String dsn) {
-    this.dsn = dsn;
-    return this;
-  }
-
-  /**
-   * DSN is the project&#39;s freshly-derived ingest DSN.
-   * @return dsn
-   */
-  @javax.annotation.Nullable
-  public String getDsn() {
-    return dsn;
-  }
-
-  public void setDsn(@javax.annotation.Nullable String dsn) {
-    this.dsn = dsn;
   }
 
 
@@ -301,7 +277,6 @@ public class O11yO11ySentryProject {
     }
     O11yO11ySentryProject o11yO11ySentryProject = (O11yO11ySentryProject) o;
     return Objects.equals(this.createdAt, o11yO11ySentryProject.createdAt) &&
-        Objects.equals(this.dsn, o11yO11ySentryProject.dsn) &&
         Objects.equals(this.id, o11yO11ySentryProject.id) &&
         Objects.equals(this.name, o11yO11ySentryProject.name) &&
         Objects.equals(this.platform, o11yO11ySentryProject.platform) &&
@@ -313,7 +288,7 @@ public class O11yO11ySentryProject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, dsn, id, name, platform, slug, status, updatedAt, additionalProperties);
+    return Objects.hash(createdAt, id, name, platform, slug, status, updatedAt, additionalProperties);
   }
 
   @Override
@@ -321,7 +296,6 @@ public class O11yO11ySentryProject {
     StringBuilder sb = new StringBuilder();
     sb.append("class O11yO11ySentryProject {\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-    sb.append("    dsn: ").append(toIndentedString(dsn)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
@@ -350,7 +324,7 @@ public class O11yO11ySentryProject {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("createdAt", "dsn", "id", "name", "platform", "slug", "status", "updatedAt"));
+    openapiFields = new HashSet<String>(Arrays.asList("createdAt", "id", "name", "platform", "slug", "status", "updatedAt"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -369,9 +343,6 @@ public class O11yO11ySentryProject {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("dsn") != null && !jsonObj.get("dsn").isJsonNull()) && !jsonObj.get("dsn").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `dsn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dsn").toString()));
-      }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }

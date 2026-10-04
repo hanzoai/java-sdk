@@ -12,19 +12,21 @@ was cut from.
 
 ## Install
 
-On Maven Central. Java 11 or newer.
+On [Maven Central](https://central.sonatype.com/artifact/ai.hanzo/hanzo-java-cloud).
+Java 11 or newer. Every cloud release cuts a patch, so both lines below take the
+newest one of the 8.5 line:
 
 ```groovy
 repositories { mavenCentral() }
 
-dependencies { implementation 'ai.hanzo:hanzo-java-cloud:8.5.156' }
+dependencies { implementation 'ai.hanzo:hanzo-java-cloud:8.5.+' }
 ```
 
 ```xml
 <dependency>
   <groupId>ai.hanzo</groupId>
   <artifactId>hanzo-java-cloud</artifactId>
-  <version>8.5.156</version>
+  <version>[8.5,8.6)</version>
 </dependency>
 ```
 
@@ -34,12 +36,13 @@ writes the same coordinates, with sources and javadoc, to `~/.m2`.
 ## Authenticate
 
 The document declares one security scheme — `bearer` — and applies it to every
-operation except four. `setBearerToken` is the one place a token goes in:
+operation but the few it marks open. `setBearerToken` is the one place a token
+goes in:
 
 ```java
 ApiClient hanzo = new ApiClient();
 hanzo.setBearerToken(token);          // Authorization: Bearer …
-new AiApi(hanzo).getModels();         // one of the four that need no token
+new AiApi(hanzo).getModels();         // answers with or without a token
 ```
 
 [`ai.hanzo.Hanzo`](hanzo-java-cloud/src/main/java/ai/hanzo/Hanzo.java) is the
@@ -74,7 +77,7 @@ import ai.hanzo.Hanzo;
 import ai.hanzo.cloud.ApiClient;
 import ai.hanzo.cloud.ApiException;
 import ai.hanzo.cloud.api.AccountApi;
-import ai.hanzo.cloud.model.ApiKey;
+import ai.hanzo.cloud.model.AccountApiKey;
 
 import java.util.List;
 import java.util.Objects;
@@ -83,7 +86,7 @@ public class Whoami {
     public static void main(String[] args) throws ApiException {
         ApiClient hanzo = Hanzo.client();
 
-        List<ApiKey> keys = Objects.requireNonNullElse(new AccountApi(hanzo).getAccountKeys().getKeys(), List.of());
+        List<AccountApiKey> keys = Objects.requireNonNullElse(new AccountApi(hanzo).getAccountKeys().getKeys(), List.of());
         keys.forEach(key -> System.out.println(key.getType() + " " + key.getPrefix()));
     }
 }
@@ -114,9 +117,9 @@ against the client.
 | [`hello`](examples/hello) | `GET /v1/account/keys` — prove the key works |
 | [`chat`](examples/chat) | `POST /v1/chat/completions` — one completion |
 | [`money`](examples/money) | `GET /v1/billing/balance`, `GET /v1/billing/usage` |
-| [`store`](examples/store) | `POST /v1/kv`, then `GET` and `DELETE /v1/kv/{name}` |
-| [`agent`](examples/agent) | `POST /v1/agents`, `.../run`, poll `.../runs` until terminal |
-| [`tools`](examples/tools) | `GET /v1/tools` — the tools this key can reach |
+| [`store`](examples/store) | `POST /v1/provisioning/kv`, then `GET` and `DELETE /v1/provisioning/kv/{name}` |
+| [`agent`](examples/agent) | `POST /v1/agent`, `.../run`, poll `.../runs` until terminal |
+| [`tools`](examples/tools) | `GET /v1/tool` — the tools this key can reach |
 
 One command each, against the live gateway:
 
@@ -139,10 +142,9 @@ usage    HTTP 200
 `agent` asks for `zen5`; `HANZO_MODEL` overrides it, and
 `curl https://catalog.hanzo.ai/v1/models` lists the rest.
 
-`chat` and `money` print a status rather than a body: those routes are published
-with no request or response schema, so the generated methods take no argument
-and return `void`. When the document declares the shapes, a regeneration prints
-them.
+`money` prints a status rather than a body: those routes are published with no
+response schema, so the generated methods return `void`. `chat` is typed — it
+sends an `OpenaiChatCompletionRequest` and prints `choices[0].message.content`.
 
 ## Build
 

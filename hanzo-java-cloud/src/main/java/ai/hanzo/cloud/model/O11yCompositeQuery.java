@@ -14,9 +14,6 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.O11yBuilderQuery;
-import ai.hanzo.cloud.model.O11yDatastoreQuery;
-import ai.hanzo.cloud.model.O11yPromQuery;
 import ai.hanzo.cloud.model.O11yQueryEnvelope;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -26,9 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -58,167 +53,13 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class O11yCompositeQuery {
-  public static final String SERIALIZED_NAME_BUILDER_QUERIES = "builderQueries";
-  @SerializedName(SERIALIZED_NAME_BUILDER_QUERIES)
-  @javax.annotation.Nullable
-  private Map<String, O11yBuilderQuery> builderQueries = new HashMap<>();
-
-  public static final String SERIALIZED_NAME_CH_QUERIES = "chQueries";
-  @SerializedName(SERIALIZED_NAME_CH_QUERIES)
-  @javax.annotation.Nullable
-  private Map<String, O11yDatastoreQuery> chQueries = new HashMap<>();
-
-  public static final String SERIALIZED_NAME_FILL_GAPS = "fillGaps";
-  @SerializedName(SERIALIZED_NAME_FILL_GAPS)
-  @javax.annotation.Nullable
-  private Boolean fillGaps;
-
-  public static final String SERIALIZED_NAME_PANEL_TYPE = "panelType";
-  @SerializedName(SERIALIZED_NAME_PANEL_TYPE)
-  @javax.annotation.Nullable
-  private String panelType;
-
-  public static final String SERIALIZED_NAME_PROM_QUERIES = "promQueries";
-  @SerializedName(SERIALIZED_NAME_PROM_QUERIES)
-  @javax.annotation.Nullable
-  private Map<String, O11yPromQuery> promQueries = new HashMap<>();
-
   public static final String SERIALIZED_NAME_QUERIES = "queries";
   @SerializedName(SERIALIZED_NAME_QUERIES)
   @javax.annotation.Nullable
   private List<O11yQueryEnvelope> queries = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_QUERY_TYPE = "queryType";
-  @SerializedName(SERIALIZED_NAME_QUERY_TYPE)
-  @javax.annotation.Nullable
-  private String queryType;
-
-  public static final String SERIALIZED_NAME_UNIT = "unit";
-  @SerializedName(SERIALIZED_NAME_UNIT)
-  @javax.annotation.Nullable
-  private String unit;
-
   public O11yCompositeQuery() {
   }
-
-  public O11yCompositeQuery builderQueries(@javax.annotation.Nullable Map<String, O11yBuilderQuery> builderQueries) {
-    this.builderQueries = builderQueries;
-    return this;
-  }
-
-  public O11yCompositeQuery putBuilderQueriesItem(String key, O11yBuilderQuery builderQueriesItem) {
-    if (this.builderQueries == null) {
-      this.builderQueries = new HashMap<>();
-    }
-    this.builderQueries.put(key, builderQueriesItem);
-    return this;
-  }
-
-  /**
-   * Get builderQueries
-   * @return builderQueries
-   */
-  @javax.annotation.Nullable
-  public Map<String, O11yBuilderQuery> getBuilderQueries() {
-    return builderQueries;
-  }
-
-  public void setBuilderQueries(@javax.annotation.Nullable Map<String, O11yBuilderQuery> builderQueries) {
-    this.builderQueries = builderQueries;
-  }
-
-
-  public O11yCompositeQuery chQueries(@javax.annotation.Nullable Map<String, O11yDatastoreQuery> chQueries) {
-    this.chQueries = chQueries;
-    return this;
-  }
-
-  public O11yCompositeQuery putChQueriesItem(String key, O11yDatastoreQuery chQueriesItem) {
-    if (this.chQueries == null) {
-      this.chQueries = new HashMap<>();
-    }
-    this.chQueries.put(key, chQueriesItem);
-    return this;
-  }
-
-  /**
-   * Get chQueries
-   * @return chQueries
-   */
-  @javax.annotation.Nullable
-  public Map<String, O11yDatastoreQuery> getChQueries() {
-    return chQueries;
-  }
-
-  public void setChQueries(@javax.annotation.Nullable Map<String, O11yDatastoreQuery> chQueries) {
-    this.chQueries = chQueries;
-  }
-
-
-  public O11yCompositeQuery fillGaps(@javax.annotation.Nullable Boolean fillGaps) {
-    this.fillGaps = fillGaps;
-    return this;
-  }
-
-  /**
-   * FillGaps is used to fill the gaps in the time series data
-   * @return fillGaps
-   */
-  @javax.annotation.Nullable
-  public Boolean getFillGaps() {
-    return fillGaps;
-  }
-
-  public void setFillGaps(@javax.annotation.Nullable Boolean fillGaps) {
-    this.fillGaps = fillGaps;
-  }
-
-
-  public O11yCompositeQuery panelType(@javax.annotation.Nullable String panelType) {
-    this.panelType = panelType;
-    return this;
-  }
-
-  /**
-   * Get panelType
-   * @return panelType
-   */
-  @javax.annotation.Nullable
-  public String getPanelType() {
-    return panelType;
-  }
-
-  public void setPanelType(@javax.annotation.Nullable String panelType) {
-    this.panelType = panelType;
-  }
-
-
-  public O11yCompositeQuery promQueries(@javax.annotation.Nullable Map<String, O11yPromQuery> promQueries) {
-    this.promQueries = promQueries;
-    return this;
-  }
-
-  public O11yCompositeQuery putPromQueriesItem(String key, O11yPromQuery promQueriesItem) {
-    if (this.promQueries == null) {
-      this.promQueries = new HashMap<>();
-    }
-    this.promQueries.put(key, promQueriesItem);
-    return this;
-  }
-
-  /**
-   * Get promQueries
-   * @return promQueries
-   */
-  @javax.annotation.Nullable
-  public Map<String, O11yPromQuery> getPromQueries() {
-    return promQueries;
-  }
-
-  public void setPromQueries(@javax.annotation.Nullable Map<String, O11yPromQuery> promQueries) {
-    this.promQueries = promQueries;
-  }
-
 
   public O11yCompositeQuery queries(@javax.annotation.Nullable List<O11yQueryEnvelope> queries) {
     this.queries = queries;
@@ -234,7 +75,7 @@ public class O11yCompositeQuery {
   }
 
   /**
-   * Get queries
+   * Queries is the queries to use for the request.
    * @return queries
    */
   @javax.annotation.Nullable
@@ -244,44 +85,6 @@ public class O11yCompositeQuery {
 
   public void setQueries(@javax.annotation.Nullable List<O11yQueryEnvelope> queries) {
     this.queries = queries;
-  }
-
-
-  public O11yCompositeQuery queryType(@javax.annotation.Nullable String queryType) {
-    this.queryType = queryType;
-    return this;
-  }
-
-  /**
-   * Get queryType
-   * @return queryType
-   */
-  @javax.annotation.Nullable
-  public String getQueryType() {
-    return queryType;
-  }
-
-  public void setQueryType(@javax.annotation.Nullable String queryType) {
-    this.queryType = queryType;
-  }
-
-
-  public O11yCompositeQuery unit(@javax.annotation.Nullable String unit) {
-    this.unit = unit;
-    return this;
-  }
-
-  /**
-   * Unit for the time series data shown in the graph This is used in alerts to format the value and threshold
-   * @return unit
-   */
-  @javax.annotation.Nullable
-  public String getUnit() {
-    return unit;
-  }
-
-  public void setUnit(@javax.annotation.Nullable String unit) {
-    this.unit = unit;
   }
 
   /**
@@ -339,34 +142,20 @@ public class O11yCompositeQuery {
       return false;
     }
     O11yCompositeQuery o11yCompositeQuery = (O11yCompositeQuery) o;
-    return Objects.equals(this.builderQueries, o11yCompositeQuery.builderQueries) &&
-        Objects.equals(this.chQueries, o11yCompositeQuery.chQueries) &&
-        Objects.equals(this.fillGaps, o11yCompositeQuery.fillGaps) &&
-        Objects.equals(this.panelType, o11yCompositeQuery.panelType) &&
-        Objects.equals(this.promQueries, o11yCompositeQuery.promQueries) &&
-        Objects.equals(this.queries, o11yCompositeQuery.queries) &&
-        Objects.equals(this.queryType, o11yCompositeQuery.queryType) &&
-        Objects.equals(this.unit, o11yCompositeQuery.unit)&&
+    return Objects.equals(this.queries, o11yCompositeQuery.queries)&&
         Objects.equals(this.additionalProperties, o11yCompositeQuery.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(builderQueries, chQueries, fillGaps, panelType, promQueries, queries, queryType, unit, additionalProperties);
+    return Objects.hash(queries, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class O11yCompositeQuery {\n");
-    sb.append("    builderQueries: ").append(toIndentedString(builderQueries)).append("\n");
-    sb.append("    chQueries: ").append(toIndentedString(chQueries)).append("\n");
-    sb.append("    fillGaps: ").append(toIndentedString(fillGaps)).append("\n");
-    sb.append("    panelType: ").append(toIndentedString(panelType)).append("\n");
-    sb.append("    promQueries: ").append(toIndentedString(promQueries)).append("\n");
     sb.append("    queries: ").append(toIndentedString(queries)).append("\n");
-    sb.append("    queryType: ").append(toIndentedString(queryType)).append("\n");
-    sb.append("    unit: ").append(toIndentedString(unit)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -389,7 +178,7 @@ public class O11yCompositeQuery {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("builderQueries", "chQueries", "fillGaps", "panelType", "promQueries", "queries", "queryType", "unit"));
+    openapiFields = new HashSet<String>(Arrays.asList("queries"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -408,9 +197,6 @@ public class O11yCompositeQuery {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("panelType") != null && !jsonObj.get("panelType").isJsonNull()) && !jsonObj.get("panelType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `panelType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("panelType").toString()));
-      }
       if (jsonObj.get("queries") != null && !jsonObj.get("queries").isJsonNull()) {
         JsonArray jsonArrayqueries = jsonObj.getAsJsonArray("queries");
         if (jsonArrayqueries != null) {
@@ -424,12 +210,6 @@ public class O11yCompositeQuery {
             O11yQueryEnvelope.validateJsonElement(jsonArrayqueries.get(i));
           };
         }
-      }
-      if ((jsonObj.get("queryType") != null && !jsonObj.get("queryType").isJsonNull()) && !jsonObj.get("queryType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `queryType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("queryType").toString()));
-      }
-      if ((jsonObj.get("unit") != null && !jsonObj.get("unit").isJsonNull()) && !jsonObj.get("unit").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `unit` to be a primitive type in the JSON string but got `%s`", jsonObj.get("unit").toString()));
       }
   }
 

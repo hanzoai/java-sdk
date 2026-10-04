@@ -27,9 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.MemoryEntry;
-import ai.hanzo.cloud.model.MemoryPage;
-import ai.hanzo.cloud.model.ReviewRequest;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.TranslateMemoryEntry;
+import ai.hanzo.cloud.model.TranslateMemoryPage;
+import ai.hanzo.cloud.model.TranslateReviewRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -87,6 +88,7 @@ public class TranslateApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTranslateMemoryCall(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -127,7 +129,8 @@ public class TranslateApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -152,49 +155,51 @@ public class TranslateApi {
     }
 
     /**
-     * List returns the org&#39;s own translation-memory entries, newest first, optionally narrowed to one target language and/or one position on the review ladder.
-     * List returns the org&#39;s own translation-memory entries, newest first, optionally narrowed to one target language and/or one position on the review ladder. It is the review lane&#39;s read: what a human reviewer works through.  The org is ALWAYS the validated principal&#39;s org, never a request field, so one tenant can never read another&#39;s memory — the entries hold customer source text.
+     * Returns the org&#39;s own translation-memory entries, newest first, optionally narrowed to one target language and/or one position on the review ladder.
+     * Returns the org&#39;s own translation-memory entries, newest first, optionally narrowed to one target language and/or one position on the review ladder. It is the review lane&#39;s read: what a human reviewer works through.  The org is ALWAYS the validated principal&#39;s org, never a request field, so one tenant can never read another&#39;s memory — the entries hold customer source text.
      * @param target Target narrows to one target language tag (BCP-47, e.g. \&quot;es\&quot; or \&quot;pt-BR\&quot;). (optional)
      * @param state State narrows to one position on the review ladder: machine, suggested, approved or published. (optional)
      * @param limit Limit caps the rows returned. Non-positive or unparseable means the server default (200); the ceiling is 1000. (optional)
-     * @return MemoryPage
+     * @return TranslateMemoryPage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MemoryPage getTranslateMemory(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<MemoryPage> localVarResp = getTranslateMemoryWithHttpInfo(target, state, limit);
+    public TranslateMemoryPage getTranslateMemory(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<TranslateMemoryPage> localVarResp = getTranslateMemoryWithHttpInfo(target, state, limit);
         return localVarResp.getData();
     }
 
     /**
-     * List returns the org&#39;s own translation-memory entries, newest first, optionally narrowed to one target language and/or one position on the review ladder.
-     * List returns the org&#39;s own translation-memory entries, newest first, optionally narrowed to one target language and/or one position on the review ladder. It is the review lane&#39;s read: what a human reviewer works through.  The org is ALWAYS the validated principal&#39;s org, never a request field, so one tenant can never read another&#39;s memory — the entries hold customer source text.
+     * Returns the org&#39;s own translation-memory entries, newest first, optionally narrowed to one target language and/or one position on the review ladder.
+     * Returns the org&#39;s own translation-memory entries, newest first, optionally narrowed to one target language and/or one position on the review ladder. It is the review lane&#39;s read: what a human reviewer works through.  The org is ALWAYS the validated principal&#39;s org, never a request field, so one tenant can never read another&#39;s memory — the entries hold customer source text.
      * @param target Target narrows to one target language tag (BCP-47, e.g. \&quot;es\&quot; or \&quot;pt-BR\&quot;). (optional)
      * @param state State narrows to one position on the review ladder: machine, suggested, approved or published. (optional)
      * @param limit Limit caps the rows returned. Non-positive or unparseable means the server default (200); the ceiling is 1000. (optional)
-     * @return ApiResponse&lt;MemoryPage&gt;
+     * @return ApiResponse&lt;TranslateMemoryPage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MemoryPage> getTranslateMemoryWithHttpInfo(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<TranslateMemoryPage> getTranslateMemoryWithHttpInfo(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getTranslateMemoryValidateBeforeCall(target, state, limit, null);
-        Type localVarReturnType = new TypeToken<MemoryPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<TranslateMemoryPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * List returns the org&#39;s own translation-memory entries, newest first, optionally narrowed to one target language and/or one position on the review ladder. (asynchronously)
-     * List returns the org&#39;s own translation-memory entries, newest first, optionally narrowed to one target language and/or one position on the review ladder. It is the review lane&#39;s read: what a human reviewer works through.  The org is ALWAYS the validated principal&#39;s org, never a request field, so one tenant can never read another&#39;s memory — the entries hold customer source text.
+     * Returns the org&#39;s own translation-memory entries, newest first, optionally narrowed to one target language and/or one position on the review ladder. (asynchronously)
+     * Returns the org&#39;s own translation-memory entries, newest first, optionally narrowed to one target language and/or one position on the review ladder. It is the review lane&#39;s read: what a human reviewer works through.  The org is ALWAYS the validated principal&#39;s org, never a request field, so one tenant can never read another&#39;s memory — the entries hold customer source text.
      * @param target Target narrows to one target language tag (BCP-47, e.g. \&quot;es\&quot; or \&quot;pt-BR\&quot;). (optional)
      * @param state State narrows to one position on the review ladder: machine, suggested, approved or published. (optional)
      * @param limit Limit caps the rows returned. Non-positive or unparseable means the server default (200); the ceiling is 1000. (optional)
@@ -206,12 +211,13 @@ public class TranslateApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTranslateMemoryAsync(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit, final ApiCallback<MemoryPage> _callback) throws ApiException {
+    public okhttp3.Call getTranslateMemoryAsync(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit, final ApiCallback<TranslateMemoryPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTranslateMemoryValidateBeforeCall(target, state, limit, _callback);
-        Type localVarReturnType = new TypeToken<MemoryPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<TranslateMemoryPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -305,7 +311,7 @@ public class TranslateApi {
     }
     /**
      * Build call for putTranslateMemory
-     * @param reviewRequest  (required)
+     * @param translateReviewRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -314,9 +320,10 @@ public class TranslateApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putTranslateMemoryCall(@javax.annotation.Nonnull ReviewRequest reviewRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putTranslateMemoryCall(@javax.annotation.Nonnull TranslateReviewRequest translateReviewRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -330,7 +337,7 @@ public class TranslateApi {
             basePath = null;
         }
 
-        Object localVarPostBody = reviewRequest;
+        Object localVarPostBody = translateReviewRequest;
 
         // create path and map variables
         String localVarPath = "/v1/translate/memory";
@@ -342,7 +349,8 @@ public class TranslateApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -362,57 +370,59 @@ public class TranslateApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putTranslateMemoryValidateBeforeCall(@javax.annotation.Nonnull ReviewRequest reviewRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'reviewRequest' is set
-        if (reviewRequest == null) {
-            throw new ApiException("Missing the required parameter 'reviewRequest' when calling putTranslateMemory(Async)");
+    private okhttp3.Call putTranslateMemoryValidateBeforeCall(@javax.annotation.Nonnull TranslateReviewRequest translateReviewRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'translateReviewRequest' is set
+        if (translateReviewRequest == null) {
+            throw new ApiException("Missing the required parameter 'translateReviewRequest' when calling putTranslateMemory(Async)");
         }
 
-        return putTranslateMemoryCall(reviewRequest, _callback);
+        return putTranslateMemoryCall(translateReviewRequest, _callback);
 
     }
 
     /**
-     * Review records a human decision on one translation-memory entry, and returns the entry as stored.
-     * Review records a human decision on one translation-memory entry, and returns the entry as stored. A human write always wins over the stored value, and once it lands at approved or published no machine write can move it again — which is what makes a locale rebuild safe to run against reviewed work.  The org is ALWAYS the validated principal&#39;s org, never a request field, so a review can only ever land in the caller&#39;s own memory.
-     * @param reviewRequest  (required)
-     * @return MemoryEntry
+     * Records a human decision on one translation-memory entry, and returns the entry as stored.
+     * Records a human decision on one translation-memory entry, and returns the entry as stored. A human write always wins over the stored value, and once it lands at approved or published no machine write can move it again — which is what makes a locale rebuild safe to run against reviewed work.  The org is ALWAYS the validated principal&#39;s org, never a request field, so a review can only ever land in the caller&#39;s own memory.
+     * @param translateReviewRequest  (required)
+     * @return TranslateMemoryEntry
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MemoryEntry putTranslateMemory(@javax.annotation.Nonnull ReviewRequest reviewRequest) throws ApiException {
-        ApiResponse<MemoryEntry> localVarResp = putTranslateMemoryWithHttpInfo(reviewRequest);
+    public TranslateMemoryEntry putTranslateMemory(@javax.annotation.Nonnull TranslateReviewRequest translateReviewRequest) throws ApiException {
+        ApiResponse<TranslateMemoryEntry> localVarResp = putTranslateMemoryWithHttpInfo(translateReviewRequest);
         return localVarResp.getData();
     }
 
     /**
-     * Review records a human decision on one translation-memory entry, and returns the entry as stored.
-     * Review records a human decision on one translation-memory entry, and returns the entry as stored. A human write always wins over the stored value, and once it lands at approved or published no machine write can move it again — which is what makes a locale rebuild safe to run against reviewed work.  The org is ALWAYS the validated principal&#39;s org, never a request field, so a review can only ever land in the caller&#39;s own memory.
-     * @param reviewRequest  (required)
-     * @return ApiResponse&lt;MemoryEntry&gt;
+     * Records a human decision on one translation-memory entry, and returns the entry as stored.
+     * Records a human decision on one translation-memory entry, and returns the entry as stored. A human write always wins over the stored value, and once it lands at approved or published no machine write can move it again — which is what makes a locale rebuild safe to run against reviewed work.  The org is ALWAYS the validated principal&#39;s org, never a request field, so a review can only ever land in the caller&#39;s own memory.
+     * @param translateReviewRequest  (required)
+     * @return ApiResponse&lt;TranslateMemoryEntry&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MemoryEntry> putTranslateMemoryWithHttpInfo(@javax.annotation.Nonnull ReviewRequest reviewRequest) throws ApiException {
-        okhttp3.Call localVarCall = putTranslateMemoryValidateBeforeCall(reviewRequest, null);
-        Type localVarReturnType = new TypeToken<MemoryEntry>(){}.getType();
+    public ApiResponse<TranslateMemoryEntry> putTranslateMemoryWithHttpInfo(@javax.annotation.Nonnull TranslateReviewRequest translateReviewRequest) throws ApiException {
+        okhttp3.Call localVarCall = putTranslateMemoryValidateBeforeCall(translateReviewRequest, null);
+        Type localVarReturnType = new TypeToken<TranslateMemoryEntry>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Review records a human decision on one translation-memory entry, and returns the entry as stored. (asynchronously)
-     * Review records a human decision on one translation-memory entry, and returns the entry as stored. A human write always wins over the stored value, and once it lands at approved or published no machine write can move it again — which is what makes a locale rebuild safe to run against reviewed work.  The org is ALWAYS the validated principal&#39;s org, never a request field, so a review can only ever land in the caller&#39;s own memory.
-     * @param reviewRequest  (required)
+     * Records a human decision on one translation-memory entry, and returns the entry as stored. (asynchronously)
+     * Records a human decision on one translation-memory entry, and returns the entry as stored. A human write always wins over the stored value, and once it lands at approved or published no machine write can move it again — which is what makes a locale rebuild safe to run against reviewed work.  The org is ALWAYS the validated principal&#39;s org, never a request field, so a review can only ever land in the caller&#39;s own memory.
+     * @param translateReviewRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -421,12 +431,13 @@ public class TranslateApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putTranslateMemoryAsync(@javax.annotation.Nonnull ReviewRequest reviewRequest, final ApiCallback<MemoryEntry> _callback) throws ApiException {
+    public okhttp3.Call putTranslateMemoryAsync(@javax.annotation.Nonnull TranslateReviewRequest translateReviewRequest, final ApiCallback<TranslateMemoryEntry> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putTranslateMemoryValidateBeforeCall(reviewRequest, _callback);
-        Type localVarReturnType = new TypeToken<MemoryEntry>(){}.getType();
+        okhttp3.Call localVarCall = putTranslateMemoryValidateBeforeCall(translateReviewRequest, _callback);
+        Type localVarReturnType = new TypeToken<TranslateMemoryEntry>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -100,7 +100,7 @@ public class O11yO11yUser {
   }
 
   /**
-   * CreatedAt is when they joined.
+   * Get createdAt
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -119,7 +119,7 @@ public class O11yO11yUser {
   }
 
   /**
-   * DisplayName is what the console shows for them.
+   * Get displayName
    * @return displayName
    */
   @javax.annotation.Nullable
@@ -138,7 +138,7 @@ public class O11yO11yUser {
   }
 
   /**
-   * Email is their address.
+   * Get email
    * @return email
    */
   @javax.annotation.Nullable
@@ -157,7 +157,7 @@ public class O11yO11yUser {
   }
 
   /**
-   * ID is the user id.
+   * Get id
    * @return id
    */
   @javax.annotation.Nullable
@@ -176,7 +176,7 @@ public class O11yO11yUser {
   }
 
   /**
-   * IsRoot marks the org&#39;s root user, which cannot be deleted or demoted.
+   * Get isRoot
    * @return isRoot
    */
   @javax.annotation.Nullable
@@ -195,7 +195,7 @@ public class O11yO11yUser {
   }
 
   /**
-   * OrgID is the org they belong to.
+   * Get orgId
    * @return orgId
    */
   @javax.annotation.Nullable
@@ -214,7 +214,7 @@ public class O11yO11yUser {
   }
 
   /**
-   * Status is their lifecycle state — active, pending_invite or deleted.
+   * Get status
    * @return status
    */
   @javax.annotation.Nullable
@@ -233,7 +233,7 @@ public class O11yO11yUser {
   }
 
   /**
-   * UpdatedAt is when their record last changed.
+   * Get updatedAt
    * @return updatedAt
    */
   @javax.annotation.Nullable

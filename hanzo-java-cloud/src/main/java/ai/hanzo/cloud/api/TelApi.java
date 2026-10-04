@@ -27,16 +27,17 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.BuyInput;
-import ai.hanzo.cloud.model.Call;
-import ai.hanzo.cloud.model.CallInput;
-import ai.hanzo.cloud.model.CallList;
-import ai.hanzo.cloud.model.MessageInput;
-import ai.hanzo.cloud.model.MessageList;
-import ai.hanzo.cloud.model.NumberList;
-import ai.hanzo.cloud.model.SMS;
-import ai.hanzo.cloud.model.Summary;
+import ai.hanzo.cloud.model.ProblemDetails;
+import ai.hanzo.cloud.model.TelBuyInput;
+import ai.hanzo.cloud.model.TelCall;
+import ai.hanzo.cloud.model.TelCallInput;
+import ai.hanzo.cloud.model.TelCallList;
+import ai.hanzo.cloud.model.TelMessageInput;
+import ai.hanzo.cloud.model.TelMessageList;
 import ai.hanzo.cloud.model.TelNumber;
+import ai.hanzo.cloud.model.TelNumberList;
+import ai.hanzo.cloud.model.TelSMS;
+import ai.hanzo.cloud.model.TelSummary;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -92,6 +93,7 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteTelCallsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -121,6 +123,7 @@ public class TelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -159,6 +162,7 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteTelCallsById(@javax.annotation.Nonnull String id) throws ApiException {
@@ -176,6 +180,7 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteTelCallsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -195,6 +200,7 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteTelCallsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -214,6 +220,7 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteTelNumbersByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -243,6 +250,7 @@ public class TelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -281,6 +289,7 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteTelNumbersById(@javax.annotation.Nonnull String id) throws ApiException {
@@ -298,6 +307,7 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteTelNumbersByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -317,6 +327,7 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteTelNumbersByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -335,6 +346,7 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTelCallsCall(final ApiCallback _callback) throws ApiException {
@@ -363,7 +375,8 @@ public class TelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -390,35 +403,37 @@ public class TelApi {
     /**
      * Lists the calls this org has placed or received, newest first.
      * Lists the calls this org has placed or received, newest first. Like the message list beside it, these are our own records rather than the carrier&#39;s.
-     * @return CallList
+     * @return TelCallList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CallList getTelCalls() throws ApiException {
-        ApiResponse<CallList> localVarResp = getTelCallsWithHttpInfo();
+    public TelCallList getTelCalls() throws ApiException {
+        ApiResponse<TelCallList> localVarResp = getTelCallsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the calls this org has placed or received, newest first.
      * Lists the calls this org has placed or received, newest first. Like the message list beside it, these are our own records rather than the carrier&#39;s.
-     * @return ApiResponse&lt;CallList&gt;
+     * @return ApiResponse&lt;TelCallList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CallList> getTelCallsWithHttpInfo() throws ApiException {
+    public ApiResponse<TelCallList> getTelCallsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getTelCallsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CallList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TelCallList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -433,12 +448,13 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTelCallsAsync(final ApiCallback<CallList> _callback) throws ApiException {
+    public okhttp3.Call getTelCallsAsync(final ApiCallback<TelCallList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTelCallsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CallList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TelCallList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -452,6 +468,7 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTelMessagesCall(final ApiCallback _callback) throws ApiException {
@@ -480,7 +497,8 @@ public class TelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -507,35 +525,37 @@ public class TelApi {
     /**
      * Lists the messages this org has sent or received, newest first.
      * Lists the messages this org has sent or received, newest first. Records from our own store, not the carrier&#39;s — so it is what this platform did on the org&#39;s behalf, which is the set an audit or a bill has to agree with.
-     * @return MessageList
+     * @return TelMessageList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MessageList getTelMessages() throws ApiException {
-        ApiResponse<MessageList> localVarResp = getTelMessagesWithHttpInfo();
+    public TelMessageList getTelMessages() throws ApiException {
+        ApiResponse<TelMessageList> localVarResp = getTelMessagesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the messages this org has sent or received, newest first.
      * Lists the messages this org has sent or received, newest first. Records from our own store, not the carrier&#39;s — so it is what this platform did on the org&#39;s behalf, which is the set an audit or a bill has to agree with.
-     * @return ApiResponse&lt;MessageList&gt;
+     * @return ApiResponse&lt;TelMessageList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MessageList> getTelMessagesWithHttpInfo() throws ApiException {
+    public ApiResponse<TelMessageList> getTelMessagesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getTelMessagesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<MessageList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TelMessageList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -550,12 +570,13 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTelMessagesAsync(final ApiCallback<MessageList> _callback) throws ApiException {
+    public okhttp3.Call getTelMessagesAsync(final ApiCallback<TelMessageList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTelMessagesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<MessageList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TelMessageList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -569,6 +590,7 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTelNumbersCall(final ApiCallback _callback) throws ApiException {
@@ -597,7 +619,8 @@ public class TelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -624,35 +647,37 @@ public class TelApi {
     /**
      * Lists the phone numbers this org HOLDS — the ones it has bought and not released.
      * Lists the phone numbers this org HOLDS — the ones it has bought and not released. Distinct from the availability search one path down (&#x60;/numbers/available&#x60;), which asks the carrier what could be bought: this answers only from our own store, so it is what an org owns rather than what it could own.
-     * @return NumberList
+     * @return TelNumberList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public NumberList getTelNumbers() throws ApiException {
-        ApiResponse<NumberList> localVarResp = getTelNumbersWithHttpInfo();
+    public TelNumberList getTelNumbers() throws ApiException {
+        ApiResponse<TelNumberList> localVarResp = getTelNumbersWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the phone numbers this org HOLDS — the ones it has bought and not released.
      * Lists the phone numbers this org HOLDS — the ones it has bought and not released. Distinct from the availability search one path down (&#x60;/numbers/available&#x60;), which asks the carrier what could be bought: this answers only from our own store, so it is what an org owns rather than what it could own.
-     * @return ApiResponse&lt;NumberList&gt;
+     * @return ApiResponse&lt;TelNumberList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NumberList> getTelNumbersWithHttpInfo() throws ApiException {
+    public ApiResponse<TelNumberList> getTelNumbersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getTelNumbersValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<NumberList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TelNumberList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -667,12 +692,13 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTelNumbersAsync(final ApiCallback<NumberList> _callback) throws ApiException {
+    public okhttp3.Call getTelNumbersAsync(final ApiCallback<TelNumberList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTelNumbersValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<NumberList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TelNumberList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -690,6 +716,7 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTelNumbersAvailableCall(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -734,7 +761,8 @@ public class TelApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -765,17 +793,18 @@ public class TelApi {
      * @param area  (optional)
      * @param type  (optional)
      * @param limit  (optional)
-     * @return NumberList
+     * @return TelNumberList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public NumberList getTelNumbersAvailable(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<NumberList> localVarResp = getTelNumbersAvailableWithHttpInfo(country, area, type, limit);
+    public TelNumberList getTelNumbersAvailable(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<TelNumberList> localVarResp = getTelNumbersAvailableWithHttpInfo(country, area, type, limit);
         return localVarResp.getData();
     }
 
@@ -786,18 +815,19 @@ public class TelApi {
      * @param area  (optional)
      * @param type  (optional)
      * @param limit  (optional)
-     * @return ApiResponse&lt;NumberList&gt;
+     * @return ApiResponse&lt;TelNumberList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NumberList> getTelNumbersAvailableWithHttpInfo(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<TelNumberList> getTelNumbersAvailableWithHttpInfo(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getTelNumbersAvailableValidateBeforeCall(country, area, type, limit, null);
-        Type localVarReturnType = new TypeToken<NumberList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TelNumberList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -816,12 +846,13 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTelNumbersAvailableAsync(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Long limit, final ApiCallback<NumberList> _callback) throws ApiException {
+    public okhttp3.Call getTelNumbersAvailableAsync(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Long limit, final ApiCallback<TelNumberList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTelNumbersAvailableValidateBeforeCall(country, area, type, limit, _callback);
-        Type localVarReturnType = new TypeToken<NumberList>(){}.getType();
+        Type localVarReturnType = new TypeToken<TelNumberList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -835,6 +866,7 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getTelSummaryCall(final ApiCallback _callback) throws ApiException {
@@ -863,7 +895,8 @@ public class TelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -890,35 +923,37 @@ public class TelApi {
     /**
      * Counts what this org holds on the telephony plane: its numbers, its calls and its messages.
      * Counts what this org holds on the telephony plane: its numbers, its calls and its messages. The one read a dashboard makes before it asks for any list, so it answers three totals and no rows.
-     * @return Summary
+     * @return TelSummary
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Summary getTelSummary() throws ApiException {
-        ApiResponse<Summary> localVarResp = getTelSummaryWithHttpInfo();
+    public TelSummary getTelSummary() throws ApiException {
+        ApiResponse<TelSummary> localVarResp = getTelSummaryWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Counts what this org holds on the telephony plane: its numbers, its calls and its messages.
      * Counts what this org holds on the telephony plane: its numbers, its calls and its messages. The one read a dashboard makes before it asks for any list, so it answers three totals and no rows.
-     * @return ApiResponse&lt;Summary&gt;
+     * @return ApiResponse&lt;TelSummary&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Summary> getTelSummaryWithHttpInfo() throws ApiException {
+    public ApiResponse<TelSummary> getTelSummaryWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getTelSummaryValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Summary>(){}.getType();
+        Type localVarReturnType = new TypeToken<TelSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -933,18 +968,19 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTelSummaryAsync(final ApiCallback<Summary> _callback) throws ApiException {
+    public okhttp3.Call getTelSummaryAsync(final ApiCallback<TelSummary> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTelSummaryValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Summary>(){}.getType();
+        Type localVarReturnType = new TypeToken<TelSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postTelCalls
-     * @param callInput  (required)
+     * @param telCallInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -953,9 +989,10 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postTelCallsCall(@javax.annotation.Nonnull CallInput callInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postTelCallsCall(@javax.annotation.Nonnull TelCallInput telCallInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -969,7 +1006,7 @@ public class TelApi {
             basePath = null;
         }
 
-        Object localVarPostBody = callInput;
+        Object localVarPostBody = telCallInput;
 
         // create path and map variables
         String localVarPath = "/v1/tel/calls";
@@ -981,7 +1018,8 @@ public class TelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1001,57 +1039,59 @@ public class TelApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postTelCallsValidateBeforeCall(@javax.annotation.Nonnull CallInput callInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'callInput' is set
-        if (callInput == null) {
-            throw new ApiException("Missing the required parameter 'callInput' when calling postTelCalls(Async)");
+    private okhttp3.Call postTelCallsValidateBeforeCall(@javax.annotation.Nonnull TelCallInput telCallInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'telCallInput' is set
+        if (telCallInput == null) {
+            throw new ApiException("Missing the required parameter 'telCallInput' when calling postTelCalls(Async)");
         }
 
-        return postTelCallsCall(callInput, _callback);
+        return postTelCallsCall(telCallInput, _callback);
 
     }
 
     /**
      * Dials.
      * Dials. An &#x60;agent&#x60; names a Hanzo assistant to answer it; the call is refused up front when no assistant plane is configured, because a call that connects to silence has already cost the person who answered it.
-     * @param callInput  (required)
-     * @return Call
+     * @param telCallInput  (required)
+     * @return TelCall
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Call postTelCalls(@javax.annotation.Nonnull CallInput callInput) throws ApiException {
-        ApiResponse<Call> localVarResp = postTelCallsWithHttpInfo(callInput);
+    public TelCall postTelCalls(@javax.annotation.Nonnull TelCallInput telCallInput) throws ApiException {
+        ApiResponse<TelCall> localVarResp = postTelCallsWithHttpInfo(telCallInput);
         return localVarResp.getData();
     }
 
     /**
      * Dials.
      * Dials. An &#x60;agent&#x60; names a Hanzo assistant to answer it; the call is refused up front when no assistant plane is configured, because a call that connects to silence has already cost the person who answered it.
-     * @param callInput  (required)
-     * @return ApiResponse&lt;Call&gt;
+     * @param telCallInput  (required)
+     * @return ApiResponse&lt;TelCall&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Call> postTelCallsWithHttpInfo(@javax.annotation.Nonnull CallInput callInput) throws ApiException {
-        okhttp3.Call localVarCall = postTelCallsValidateBeforeCall(callInput, null);
-        Type localVarReturnType = new TypeToken<Call>(){}.getType();
+    public ApiResponse<TelCall> postTelCallsWithHttpInfo(@javax.annotation.Nonnull TelCallInput telCallInput) throws ApiException {
+        okhttp3.Call localVarCall = postTelCallsValidateBeforeCall(telCallInput, null);
+        Type localVarReturnType = new TypeToken<TelCall>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Dials. (asynchronously)
      * Dials. An &#x60;agent&#x60; names a Hanzo assistant to answer it; the call is refused up front when no assistant plane is configured, because a call that connects to silence has already cost the person who answered it.
-     * @param callInput  (required)
+     * @param telCallInput  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1060,18 +1100,19 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postTelCallsAsync(@javax.annotation.Nonnull CallInput callInput, final ApiCallback<Call> _callback) throws ApiException {
+    public okhttp3.Call postTelCallsAsync(@javax.annotation.Nonnull TelCallInput telCallInput, final ApiCallback<TelCall> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postTelCallsValidateBeforeCall(callInput, _callback);
-        Type localVarReturnType = new TypeToken<Call>(){}.getType();
+        okhttp3.Call localVarCall = postTelCallsValidateBeforeCall(telCallInput, _callback);
+        Type localVarReturnType = new TypeToken<TelCall>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postTelMessages
-     * @param messageInput  (required)
+     * @param telMessageInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1080,9 +1121,10 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postTelMessagesCall(@javax.annotation.Nonnull MessageInput messageInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postTelMessagesCall(@javax.annotation.Nonnull TelMessageInput telMessageInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1096,7 +1138,7 @@ public class TelApi {
             basePath = null;
         }
 
-        Object localVarPostBody = messageInput;
+        Object localVarPostBody = telMessageInput;
 
         // create path and map variables
         String localVarPath = "/v1/tel/messages";
@@ -1108,7 +1150,8 @@ public class TelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1128,57 +1171,59 @@ public class TelApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postTelMessagesValidateBeforeCall(@javax.annotation.Nonnull MessageInput messageInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'messageInput' is set
-        if (messageInput == null) {
-            throw new ApiException("Missing the required parameter 'messageInput' when calling postTelMessages(Async)");
+    private okhttp3.Call postTelMessagesValidateBeforeCall(@javax.annotation.Nonnull TelMessageInput telMessageInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'telMessageInput' is set
+        if (telMessageInput == null) {
+            throw new ApiException("Missing the required parameter 'telMessageInput' when calling postTelMessages(Async)");
         }
 
-        return postTelMessagesCall(messageInput, _callback);
+        return postTelMessagesCall(telMessageInput, _callback);
 
     }
 
     /**
      * Sends a message from one of this org&#39;s own numbers.
      * Sends a message from one of this org&#39;s own numbers.  &#x60;from&#x60; must be a number the org HOLDS, checked against the store rather than taken on trust — a caller that could send from any number could impersonate one, and the carrier would deliver it. &#x60;to&#x60; is required, and the body needs text or media, because a message with neither is delivered as nothing and billed as something.
-     * @param messageInput  (required)
-     * @return SMS
+     * @param telMessageInput  (required)
+     * @return TelSMS
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SMS postTelMessages(@javax.annotation.Nonnull MessageInput messageInput) throws ApiException {
-        ApiResponse<SMS> localVarResp = postTelMessagesWithHttpInfo(messageInput);
+    public TelSMS postTelMessages(@javax.annotation.Nonnull TelMessageInput telMessageInput) throws ApiException {
+        ApiResponse<TelSMS> localVarResp = postTelMessagesWithHttpInfo(telMessageInput);
         return localVarResp.getData();
     }
 
     /**
      * Sends a message from one of this org&#39;s own numbers.
      * Sends a message from one of this org&#39;s own numbers.  &#x60;from&#x60; must be a number the org HOLDS, checked against the store rather than taken on trust — a caller that could send from any number could impersonate one, and the carrier would deliver it. &#x60;to&#x60; is required, and the body needs text or media, because a message with neither is delivered as nothing and billed as something.
-     * @param messageInput  (required)
-     * @return ApiResponse&lt;SMS&gt;
+     * @param telMessageInput  (required)
+     * @return ApiResponse&lt;TelSMS&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SMS> postTelMessagesWithHttpInfo(@javax.annotation.Nonnull MessageInput messageInput) throws ApiException {
-        okhttp3.Call localVarCall = postTelMessagesValidateBeforeCall(messageInput, null);
-        Type localVarReturnType = new TypeToken<SMS>(){}.getType();
+    public ApiResponse<TelSMS> postTelMessagesWithHttpInfo(@javax.annotation.Nonnull TelMessageInput telMessageInput) throws ApiException {
+        okhttp3.Call localVarCall = postTelMessagesValidateBeforeCall(telMessageInput, null);
+        Type localVarReturnType = new TypeToken<TelSMS>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Sends a message from one of this org&#39;s own numbers. (asynchronously)
      * Sends a message from one of this org&#39;s own numbers.  &#x60;from&#x60; must be a number the org HOLDS, checked against the store rather than taken on trust — a caller that could send from any number could impersonate one, and the carrier would deliver it. &#x60;to&#x60; is required, and the body needs text or media, because a message with neither is delivered as nothing and billed as something.
-     * @param messageInput  (required)
+     * @param telMessageInput  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1187,18 +1232,19 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postTelMessagesAsync(@javax.annotation.Nonnull MessageInput messageInput, final ApiCallback<SMS> _callback) throws ApiException {
+    public okhttp3.Call postTelMessagesAsync(@javax.annotation.Nonnull TelMessageInput telMessageInput, final ApiCallback<TelSMS> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postTelMessagesValidateBeforeCall(messageInput, _callback);
-        Type localVarReturnType = new TypeToken<SMS>(){}.getType();
+        okhttp3.Call localVarCall = postTelMessagesValidateBeforeCall(telMessageInput, _callback);
+        Type localVarReturnType = new TypeToken<TelSMS>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postTelNumbers
-     * @param buyInput  (required)
+     * @param telBuyInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1207,9 +1253,10 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postTelNumbersCall(@javax.annotation.Nonnull BuyInput buyInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postTelNumbersCall(@javax.annotation.Nonnull TelBuyInput telBuyInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1223,7 +1270,7 @@ public class TelApi {
             basePath = null;
         }
 
-        Object localVarPostBody = buyInput;
+        Object localVarPostBody = telBuyInput;
 
         // create path and map variables
         String localVarPath = "/v1/tel/numbers";
@@ -1235,7 +1282,8 @@ public class TelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1255,20 +1303,20 @@ public class TelApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postTelNumbersValidateBeforeCall(@javax.annotation.Nonnull BuyInput buyInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'buyInput' is set
-        if (buyInput == null) {
-            throw new ApiException("Missing the required parameter 'buyInput' when calling postTelNumbers(Async)");
+    private okhttp3.Call postTelNumbersValidateBeforeCall(@javax.annotation.Nonnull TelBuyInput telBuyInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'telBuyInput' is set
+        if (telBuyInput == null) {
+            throw new ApiException("Missing the required parameter 'telBuyInput' when calling postTelNumbers(Async)");
         }
 
-        return postTelNumbersCall(buyInput, _callback);
+        return postTelNumbersCall(telBuyInput, _callback);
 
     }
 
     /**
      * Provisions with the carrier FIRST and records second.
      * Provisions with the carrier FIRST and records second. The other order records a holding that may not exist, and a number the platform believes it owns but cannot use is worse than one it failed to buy.
-     * @param buyInput  (required)
+     * @param telBuyInput  (required)
      * @return TelNumber
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1276,17 +1324,18 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public TelNumber postTelNumbers(@javax.annotation.Nonnull BuyInput buyInput) throws ApiException {
-        ApiResponse<TelNumber> localVarResp = postTelNumbersWithHttpInfo(buyInput);
+    public TelNumber postTelNumbers(@javax.annotation.Nonnull TelBuyInput telBuyInput) throws ApiException {
+        ApiResponse<TelNumber> localVarResp = postTelNumbersWithHttpInfo(telBuyInput);
         return localVarResp.getData();
     }
 
     /**
      * Provisions with the carrier FIRST and records second.
      * Provisions with the carrier FIRST and records second. The other order records a holding that may not exist, and a number the platform believes it owns but cannot use is worse than one it failed to buy.
-     * @param buyInput  (required)
+     * @param telBuyInput  (required)
      * @return ApiResponse&lt;TelNumber&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1294,10 +1343,11 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TelNumber> postTelNumbersWithHttpInfo(@javax.annotation.Nonnull BuyInput buyInput) throws ApiException {
-        okhttp3.Call localVarCall = postTelNumbersValidateBeforeCall(buyInput, null);
+    public ApiResponse<TelNumber> postTelNumbersWithHttpInfo(@javax.annotation.Nonnull TelBuyInput telBuyInput) throws ApiException {
+        okhttp3.Call localVarCall = postTelNumbersValidateBeforeCall(telBuyInput, null);
         Type localVarReturnType = new TypeToken<TelNumber>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1305,7 +1355,7 @@ public class TelApi {
     /**
      * Provisions with the carrier FIRST and records second. (asynchronously)
      * Provisions with the carrier FIRST and records second. The other order records a holding that may not exist, and a number the platform believes it owns but cannot use is worse than one it failed to buy.
-     * @param buyInput  (required)
+     * @param telBuyInput  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1314,11 +1364,12 @@ public class TelApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postTelNumbersAsync(@javax.annotation.Nonnull BuyInput buyInput, final ApiCallback<TelNumber> _callback) throws ApiException {
+    public okhttp3.Call postTelNumbersAsync(@javax.annotation.Nonnull TelBuyInput telBuyInput, final ApiCallback<TelNumber> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postTelNumbersValidateBeforeCall(buyInput, _callback);
+        okhttp3.Call localVarCall = postTelNumbersValidateBeforeCall(telBuyInput, _callback);
         Type localVarReturnType = new TypeToken<TelNumber>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

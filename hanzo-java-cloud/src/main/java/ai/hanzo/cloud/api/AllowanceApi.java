@@ -27,7 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Allowance;
+import ai.hanzo.cloud.model.AllowanceAllowance;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -82,6 +83,7 @@ public class AllowanceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAllowanceCall(final ApiCallback _callback) throws ApiException {
@@ -110,7 +112,8 @@ public class AllowanceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -136,42 +139,44 @@ public class AllowanceApi {
 
     /**
      * Answers what the CALLER has left of their plan&#39;s free-call allowance this period, and the instant the count starts again.
-     * Answers what the CALLER has left of their plan&#39;s free-call allowance this period, and the instant the count starts again.  This is the number a product shows beside the composer — \&quot;17 of 20 left today\&quot; — and the moment to offer a plan is when it reaches zero. It READS: asking does not spend, so a page that polls it costs the caller nothing.  The subject is the caller&#39;s own, resolved from the verified credential, and can never be named in the request — so this is a mirror, not a lookup of someone else. An unauthenticated caller is refused: there is no allowance without someone to hold it.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return Allowance
+     * Answers what the CALLER has left of their plan&#39;s free-call allowance this period, and the instant the count starts again.  This is the number a product shows beside the composer — \&quot;17 of 20 left today\&quot; — and the moment to offer a plan is when it reaches zero. It READS: asking does not spend, so a page that polls it costs the caller nothing.  A bounded caller is POOLED: the Free plan is limited usage from one pool every free user shares — the platform&#39;s vendor accounts for free models — so the answer says so (pooled) and carries that pool&#39;s standing: available, busy or exhausted, and when it refills. The pool is read from the process that spends it and is absent when that process does not answer, never guessed. A paid plan is not pooled and carries no pool: its usage is metered in money.  The subject is the caller&#39;s own, resolved from the verified credential, and can never be named in the request — so this is a mirror, not a lookup of someone else. An unauthenticated caller is refused: there is no allowance without someone to hold it.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @return AllowanceAllowance
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Allowance getAllowance() throws ApiException {
-        ApiResponse<Allowance> localVarResp = getAllowanceWithHttpInfo();
+    public AllowanceAllowance getAllowance() throws ApiException {
+        ApiResponse<AllowanceAllowance> localVarResp = getAllowanceWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Answers what the CALLER has left of their plan&#39;s free-call allowance this period, and the instant the count starts again.
-     * Answers what the CALLER has left of their plan&#39;s free-call allowance this period, and the instant the count starts again.  This is the number a product shows beside the composer — \&quot;17 of 20 left today\&quot; — and the moment to offer a plan is when it reaches zero. It READS: asking does not spend, so a page that polls it costs the caller nothing.  The subject is the caller&#39;s own, resolved from the verified credential, and can never be named in the request — so this is a mirror, not a lookup of someone else. An unauthenticated caller is refused: there is no allowance without someone to hold it.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
-     * @return ApiResponse&lt;Allowance&gt;
+     * Answers what the CALLER has left of their plan&#39;s free-call allowance this period, and the instant the count starts again.  This is the number a product shows beside the composer — \&quot;17 of 20 left today\&quot; — and the moment to offer a plan is when it reaches zero. It READS: asking does not spend, so a page that polls it costs the caller nothing.  A bounded caller is POOLED: the Free plan is limited usage from one pool every free user shares — the platform&#39;s vendor accounts for free models — so the answer says so (pooled) and carries that pool&#39;s standing: available, busy or exhausted, and when it refills. The pool is read from the process that spends it and is absent when that process does not answer, never guessed. A paid plan is not pooled and carries no pool: its usage is metered in money.  The subject is the caller&#39;s own, resolved from the verified credential, and can never be named in the request — so this is a mirror, not a lookup of someone else. An unauthenticated caller is refused: there is no allowance without someone to hold it.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @return ApiResponse&lt;AllowanceAllowance&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Allowance> getAllowanceWithHttpInfo() throws ApiException {
+    public ApiResponse<AllowanceAllowance> getAllowanceWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getAllowanceValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Allowance>(){}.getType();
+        Type localVarReturnType = new TypeToken<AllowanceAllowance>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Answers what the CALLER has left of their plan&#39;s free-call allowance this period, and the instant the count starts again. (asynchronously)
-     * Answers what the CALLER has left of their plan&#39;s free-call allowance this period, and the instant the count starts again.  This is the number a product shows beside the composer — \&quot;17 of 20 left today\&quot; — and the moment to offer a plan is when it reaches zero. It READS: asking does not spend, so a page that polls it costs the caller nothing.  The subject is the caller&#39;s own, resolved from the verified credential, and can never be named in the request — so this is a mirror, not a lookup of someone else. An unauthenticated caller is refused: there is no allowance without someone to hold it.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * Answers what the CALLER has left of their plan&#39;s free-call allowance this period, and the instant the count starts again.  This is the number a product shows beside the composer — \&quot;17 of 20 left today\&quot; — and the moment to offer a plan is when it reaches zero. It READS: asking does not spend, so a page that polls it costs the caller nothing.  A bounded caller is POOLED: the Free plan is limited usage from one pool every free user shares — the platform&#39;s vendor accounts for free models — so the answer says so (pooled) and carries that pool&#39;s standing: available, busy or exhausted, and when it refills. The pool is read from the process that spends it and is absent when that process does not answer, never guessed. A paid plan is not pooled and carries no pool: its usage is metered in money.  The subject is the caller&#39;s own, resolved from the verified credential, and can never be named in the request — so this is a mirror, not a lookup of someone else. An unauthenticated caller is refused: there is no allowance without someone to hold it.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -180,12 +185,13 @@ public class AllowanceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAllowanceAsync(final ApiCallback<Allowance> _callback) throws ApiException {
+    public okhttp3.Call getAllowanceAsync(final ApiCallback<AllowanceAllowance> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAllowanceValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Allowance>(){}.getType();
+        Type localVarReturnType = new TypeToken<AllowanceAllowance>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

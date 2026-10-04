@@ -27,8 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.CrawlRequest;
-import ai.hanzo.cloud.model.CrawlResult;
+import ai.hanzo.cloud.model.CrawlCrawlRequest;
+import ai.hanzo.cloud.model.CrawlCrawlResult;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -75,7 +76,7 @@ public class CrawlApi {
 
     /**
      * Build call for readPage
-     * @param crawlRequest  (required)
+     * @param crawlCrawlRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -85,9 +86,10 @@ public class CrawlApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call readPageCall(@javax.annotation.Nonnull CrawlRequest crawlRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call readPageCall(@javax.annotation.Nonnull CrawlCrawlRequest crawlCrawlRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -101,7 +103,7 @@ public class CrawlApi {
             basePath = null;
         }
 
-        Object localVarPostBody = crawlRequest;
+        Object localVarPostBody = crawlCrawlRequest;
 
         // create path and map variables
         String localVarPath = "/v1/crawl";
@@ -113,7 +115,8 @@ public class CrawlApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -133,21 +136,21 @@ public class CrawlApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call readPageValidateBeforeCall(@javax.annotation.Nonnull CrawlRequest crawlRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'crawlRequest' is set
-        if (crawlRequest == null) {
-            throw new ApiException("Missing the required parameter 'crawlRequest' when calling readPage(Async)");
+    private okhttp3.Call readPageValidateBeforeCall(@javax.annotation.Nonnull CrawlCrawlRequest crawlCrawlRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'crawlCrawlRequest' is set
+        if (crawlCrawlRequest == null) {
+            throw new ApiException("Missing the required parameter 'crawlCrawlRequest' when calling readPage(Async)");
         }
 
-        return readPageCall(crawlRequest, _callback);
+        return readPageCall(crawlCrawlRequest, _callback);
 
     }
 
     /**
      * Fetch one URL and read it back as markdown
      * Reads one URL and answers with the page as markdown.  It fetches a single URL from inside the cluster and answers with the address it actually landed on, the document&#39;s title, its content rendered to MARKDOWN, and whatever the page said about itself. One URL per call: batching would make the answer a partial-failure envelope every caller then has to unpack.  A PAGE THAT COULD NOT BE FETCHED IS A NORMAL ANSWER, not a fault. An unreachable host, a refused address and a content type that is not a document all answer 200 with &#x60;success:false&#x60; and the reason in &#x60;error&#x60;, because the caller sent a well-formed ask and gets a well-formed answer. Non-2xx is reserved for a caller problem — 400 with the same body when there is no url, 401 for a bad key, 503 when the surface is unconfigured — so error handling can trust the status. Check &#x60;success&#x60; before reading &#x60;data&#x60;.  Admission is either a validated principal or the shared service key, presented as X-API-Key or a Bearer; neither is refused, and an unset key fails closed rather than opening the fetcher to the private network. Pages are archived under the scope of the VERIFIED principal and NEVER a scope named in the body, so a URL already read under that scope is answered from the archive without touching the network; a service caller has no org and its pages land in the shared corpus.  The URL is caller-supplied and dialled from INSIDE the cluster, which makes this a request-forgery primitive by construction. Only http and https are accepted, and every address actually dialled must be public unicast — loopback, link-local, private and multicast are refused. The check lives in the DIALER rather than on the hostname, because resolving a name to validate it and then letting the transport resolve it again is a gap DNS rebinding walks straight through; redirects re-enter the same dialer.
-     * @param crawlRequest  (required)
-     * @return CrawlResult
+     * @param crawlCrawlRequest  (required)
+     * @return CrawlCrawlResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -155,18 +158,19 @@ public class CrawlApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CrawlResult readPage(@javax.annotation.Nonnull CrawlRequest crawlRequest) throws ApiException {
-        ApiResponse<CrawlResult> localVarResp = readPageWithHttpInfo(crawlRequest);
+    public CrawlCrawlResult readPage(@javax.annotation.Nonnull CrawlCrawlRequest crawlCrawlRequest) throws ApiException {
+        ApiResponse<CrawlCrawlResult> localVarResp = readPageWithHttpInfo(crawlCrawlRequest);
         return localVarResp.getData();
     }
 
     /**
      * Fetch one URL and read it back as markdown
      * Reads one URL and answers with the page as markdown.  It fetches a single URL from inside the cluster and answers with the address it actually landed on, the document&#39;s title, its content rendered to MARKDOWN, and whatever the page said about itself. One URL per call: batching would make the answer a partial-failure envelope every caller then has to unpack.  A PAGE THAT COULD NOT BE FETCHED IS A NORMAL ANSWER, not a fault. An unreachable host, a refused address and a content type that is not a document all answer 200 with &#x60;success:false&#x60; and the reason in &#x60;error&#x60;, because the caller sent a well-formed ask and gets a well-formed answer. Non-2xx is reserved for a caller problem — 400 with the same body when there is no url, 401 for a bad key, 503 when the surface is unconfigured — so error handling can trust the status. Check &#x60;success&#x60; before reading &#x60;data&#x60;.  Admission is either a validated principal or the shared service key, presented as X-API-Key or a Bearer; neither is refused, and an unset key fails closed rather than opening the fetcher to the private network. Pages are archived under the scope of the VERIFIED principal and NEVER a scope named in the body, so a URL already read under that scope is answered from the archive without touching the network; a service caller has no org and its pages land in the shared corpus.  The URL is caller-supplied and dialled from INSIDE the cluster, which makes this a request-forgery primitive by construction. Only http and https are accepted, and every address actually dialled must be public unicast — loopback, link-local, private and multicast are refused. The check lives in the DIALER rather than on the hostname, because resolving a name to validate it and then letting the transport resolve it again is a gap DNS rebinding walks straight through; redirects re-enter the same dialer.
-     * @param crawlRequest  (required)
-     * @return ApiResponse&lt;CrawlResult&gt;
+     * @param crawlCrawlRequest  (required)
+     * @return ApiResponse&lt;CrawlCrawlResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -174,18 +178,19 @@ public class CrawlApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CrawlResult> readPageWithHttpInfo(@javax.annotation.Nonnull CrawlRequest crawlRequest) throws ApiException {
-        okhttp3.Call localVarCall = readPageValidateBeforeCall(crawlRequest, null);
-        Type localVarReturnType = new TypeToken<CrawlResult>(){}.getType();
+    public ApiResponse<CrawlCrawlResult> readPageWithHttpInfo(@javax.annotation.Nonnull CrawlCrawlRequest crawlCrawlRequest) throws ApiException {
+        okhttp3.Call localVarCall = readPageValidateBeforeCall(crawlCrawlRequest, null);
+        Type localVarReturnType = new TypeToken<CrawlCrawlResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Fetch one URL and read it back as markdown (asynchronously)
      * Reads one URL and answers with the page as markdown.  It fetches a single URL from inside the cluster and answers with the address it actually landed on, the document&#39;s title, its content rendered to MARKDOWN, and whatever the page said about itself. One URL per call: batching would make the answer a partial-failure envelope every caller then has to unpack.  A PAGE THAT COULD NOT BE FETCHED IS A NORMAL ANSWER, not a fault. An unreachable host, a refused address and a content type that is not a document all answer 200 with &#x60;success:false&#x60; and the reason in &#x60;error&#x60;, because the caller sent a well-formed ask and gets a well-formed answer. Non-2xx is reserved for a caller problem — 400 with the same body when there is no url, 401 for a bad key, 503 when the surface is unconfigured — so error handling can trust the status. Check &#x60;success&#x60; before reading &#x60;data&#x60;.  Admission is either a validated principal or the shared service key, presented as X-API-Key or a Bearer; neither is refused, and an unset key fails closed rather than opening the fetcher to the private network. Pages are archived under the scope of the VERIFIED principal and NEVER a scope named in the body, so a URL already read under that scope is answered from the archive without touching the network; a service caller has no org and its pages land in the shared corpus.  The URL is caller-supplied and dialled from INSIDE the cluster, which makes this a request-forgery primitive by construction. Only http and https are accepted, and every address actually dialled must be public unicast — loopback, link-local, private and multicast are refused. The check lives in the DIALER rather than on the hostname, because resolving a name to validate it and then letting the transport resolve it again is a gap DNS rebinding walks straight through; redirects re-enter the same dialer.
-     * @param crawlRequest  (required)
+     * @param crawlCrawlRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -195,12 +200,13 @@ public class CrawlApi {
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call readPageAsync(@javax.annotation.Nonnull CrawlRequest crawlRequest, final ApiCallback<CrawlResult> _callback) throws ApiException {
+    public okhttp3.Call readPageAsync(@javax.annotation.Nonnull CrawlCrawlRequest crawlCrawlRequest, final ApiCallback<CrawlCrawlResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = readPageValidateBeforeCall(crawlRequest, _callback);
-        Type localVarReturnType = new TypeToken<CrawlResult>(){}.getType();
+        okhttp3.Call localVarCall = readPageValidateBeforeCall(crawlCrawlRequest, _callback);
+        Type localVarReturnType = new TypeToken<CrawlCrawlResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -27,17 +27,16 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.ActionsView;
-import ai.hanzo.cloud.model.AnalyticsView;
-import ai.hanzo.cloud.model.BlueprintVersionsView;
-import ai.hanzo.cloud.model.BlueprintView;
-import ai.hanzo.cloud.model.ChatRequest;
-import ai.hanzo.cloud.model.ChatResponse;
-import ai.hanzo.cloud.model.CorpusView;
-import ai.hanzo.cloud.model.CurriculumView;
-import ai.hanzo.cloud.model.OverviewView;
-import ai.hanzo.cloud.model.ProfileResponse;
-import ai.hanzo.cloud.model.SuggestResponse;
+import ai.hanzo.cloud.model.GuideActionsView;
+import ai.hanzo.cloud.model.GuideAnalyticsView;
+import ai.hanzo.cloud.model.GuideChatRequest;
+import ai.hanzo.cloud.model.GuideChatResponse;
+import ai.hanzo.cloud.model.GuideCorpusView;
+import ai.hanzo.cloud.model.GuideCurriculumView;
+import ai.hanzo.cloud.model.GuideOverviewView;
+import ai.hanzo.cloud.model.GuideProfileResponse;
+import ai.hanzo.cloud.model.GuideSuggestResponse;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -92,6 +91,7 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteGuideCurriculumCall(final ApiCallback _callback) throws ApiException {
@@ -120,7 +120,8 @@ public class GuideApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -147,35 +148,37 @@ public class GuideApi {
     /**
      * Clears the caller org&#39;s curriculum override and returns the journey it falls back to — the brand blueprint, else the embedded fixture.
      * Clears the caller org&#39;s curriculum override and returns the journey it falls back to — the brand blueprint, else the embedded fixture. Clearing an org that never set one is a no-op that answers the same default.
-     * @return CurriculumView
+     * @return GuideCurriculumView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CurriculumView deleteGuideCurriculum() throws ApiException {
-        ApiResponse<CurriculumView> localVarResp = deleteGuideCurriculumWithHttpInfo();
+    public GuideCurriculumView deleteGuideCurriculum() throws ApiException {
+        ApiResponse<GuideCurriculumView> localVarResp = deleteGuideCurriculumWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Clears the caller org&#39;s curriculum override and returns the journey it falls back to — the brand blueprint, else the embedded fixture.
      * Clears the caller org&#39;s curriculum override and returns the journey it falls back to — the brand blueprint, else the embedded fixture. Clearing an org that never set one is a no-op that answers the same default.
-     * @return ApiResponse&lt;CurriculumView&gt;
+     * @return ApiResponse&lt;GuideCurriculumView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CurriculumView> deleteGuideCurriculumWithHttpInfo() throws ApiException {
+    public ApiResponse<GuideCurriculumView> deleteGuideCurriculumWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = deleteGuideCurriculumValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CurriculumView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideCurriculumView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -190,12 +193,13 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteGuideCurriculumAsync(final ApiCallback<CurriculumView> _callback) throws ApiException {
+    public okhttp3.Call deleteGuideCurriculumAsync(final ApiCallback<GuideCurriculumView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteGuideCurriculumValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CurriculumView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideCurriculumView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -209,6 +213,7 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getGuideCall(final ApiCallback _callback) throws ApiException {
@@ -237,7 +242,8 @@ public class GuideApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -262,43 +268,45 @@ public class GuideApi {
     }
 
     /**
-     * Overview returns the caller org&#39;s launch journey: the active curriculum&#39;s version and title, every step with its state, whether it is available, what blocks it and whether the Business AI can run it, the done/total/percent progress with the next step to take, and the org&#39;s analytics funnel folded in.
-     * Overview returns the caller org&#39;s launch journey: the active curriculum&#39;s version and title, every step with its state, whether it is available, what blocks it and whether the Business AI can run it, the done/total/percent progress with the next step to take, and the org&#39;s analytics funnel folded in. Auto-detect runs first, so a step the org has already completed elsewhere reads done without anyone marking it.
-     * @return OverviewView
+     * Returns the caller org&#39;s launch journey: the active curriculum&#39;s version and title, every step with its state, whether it is available, what blocks it and whether the Business AI can run it, the done/total/percent progress with the next step to take, and the org&#39;s analytics funnel folded in.
+     * Returns the caller org&#39;s launch journey: the active curriculum&#39;s version and title, every step with its state, whether it is available, what blocks it and whether the Business AI can run it, the done/total/percent progress with the next step to take, and the org&#39;s analytics funnel folded in. Auto-detect runs first, so a step the org has already completed elsewhere reads done without anyone marking it.
+     * @return GuideOverviewView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public OverviewView getGuide() throws ApiException {
-        ApiResponse<OverviewView> localVarResp = getGuideWithHttpInfo();
+    public GuideOverviewView getGuide() throws ApiException {
+        ApiResponse<GuideOverviewView> localVarResp = getGuideWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Overview returns the caller org&#39;s launch journey: the active curriculum&#39;s version and title, every step with its state, whether it is available, what blocks it and whether the Business AI can run it, the done/total/percent progress with the next step to take, and the org&#39;s analytics funnel folded in.
-     * Overview returns the caller org&#39;s launch journey: the active curriculum&#39;s version and title, every step with its state, whether it is available, what blocks it and whether the Business AI can run it, the done/total/percent progress with the next step to take, and the org&#39;s analytics funnel folded in. Auto-detect runs first, so a step the org has already completed elsewhere reads done without anyone marking it.
-     * @return ApiResponse&lt;OverviewView&gt;
+     * Returns the caller org&#39;s launch journey: the active curriculum&#39;s version and title, every step with its state, whether it is available, what blocks it and whether the Business AI can run it, the done/total/percent progress with the next step to take, and the org&#39;s analytics funnel folded in.
+     * Returns the caller org&#39;s launch journey: the active curriculum&#39;s version and title, every step with its state, whether it is available, what blocks it and whether the Business AI can run it, the done/total/percent progress with the next step to take, and the org&#39;s analytics funnel folded in. Auto-detect runs first, so a step the org has already completed elsewhere reads done without anyone marking it.
+     * @return ApiResponse&lt;GuideOverviewView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OverviewView> getGuideWithHttpInfo() throws ApiException {
+    public ApiResponse<GuideOverviewView> getGuideWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getGuideValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideOverviewView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Overview returns the caller org&#39;s launch journey: the active curriculum&#39;s version and title, every step with its state, whether it is available, what blocks it and whether the Business AI can run it, the done/total/percent progress with the next step to take, and the org&#39;s analytics funnel folded in. (asynchronously)
-     * Overview returns the caller org&#39;s launch journey: the active curriculum&#39;s version and title, every step with its state, whether it is available, what blocks it and whether the Business AI can run it, the done/total/percent progress with the next step to take, and the org&#39;s analytics funnel folded in. Auto-detect runs first, so a step the org has already completed elsewhere reads done without anyone marking it.
+     * Returns the caller org&#39;s launch journey: the active curriculum&#39;s version and title, every step with its state, whether it is available, what blocks it and whether the Business AI can run it, the done/total/percent progress with the next step to take, and the org&#39;s analytics funnel folded in. (asynchronously)
+     * Returns the caller org&#39;s launch journey: the active curriculum&#39;s version and title, every step with its state, whether it is available, what blocks it and whether the Business AI can run it, the done/total/percent progress with the next step to take, and the org&#39;s analytics funnel folded in. Auto-detect runs first, so a step the org has already completed elsewhere reads done without anyone marking it.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -307,12 +315,13 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGuideAsync(final ApiCallback<OverviewView> _callback) throws ApiException {
+    public okhttp3.Call getGuideAsync(final ApiCallback<GuideOverviewView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getGuideValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideOverviewView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -326,6 +335,7 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getGuideActionsCall(final ApiCallback _callback) throws ApiException {
@@ -354,7 +364,8 @@ public class GuideApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -381,35 +392,37 @@ public class GuideApi {
     /**
      * Returns the caller org&#39;s Business AI action ledger, most recent first: every \&quot;do it for me\&quot; tool call, the arguments it ran with, its result and whether it succeeded.
      * Returns the caller org&#39;s Business AI action ledger, most recent first: every \&quot;do it for me\&quot; tool call, the arguments it ran with, its result and whether it succeeded. It is the audit-visible record of what the agent did on the org&#39;s behalf, and the backing state for the \&quot;acted\&quot; auto-detect signal.
-     * @return ActionsView
+     * @return GuideActionsView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ActionsView getGuideActions() throws ApiException {
-        ApiResponse<ActionsView> localVarResp = getGuideActionsWithHttpInfo();
+    public GuideActionsView getGuideActions() throws ApiException {
+        ApiResponse<GuideActionsView> localVarResp = getGuideActionsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller org&#39;s Business AI action ledger, most recent first: every \&quot;do it for me\&quot; tool call, the arguments it ran with, its result and whether it succeeded.
      * Returns the caller org&#39;s Business AI action ledger, most recent first: every \&quot;do it for me\&quot; tool call, the arguments it ran with, its result and whether it succeeded. It is the audit-visible record of what the agent did on the org&#39;s behalf, and the backing state for the \&quot;acted\&quot; auto-detect signal.
-     * @return ApiResponse&lt;ActionsView&gt;
+     * @return ApiResponse&lt;GuideActionsView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ActionsView> getGuideActionsWithHttpInfo() throws ApiException {
+    public ApiResponse<GuideActionsView> getGuideActionsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getGuideActionsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ActionsView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideActionsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -424,12 +437,13 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGuideActionsAsync(final ApiCallback<ActionsView> _callback) throws ApiException {
+    public okhttp3.Call getGuideActionsAsync(final ApiCallback<GuideActionsView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getGuideActionsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ActionsView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideActionsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -443,6 +457,7 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getGuideAnalyticsCall(final ApiCallback _callback) throws ApiException {
@@ -471,7 +486,8 @@ public class GuideApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -496,43 +512,45 @@ public class GuideApi {
     }
 
     /**
-     * Analytics returns the caller org&#39;s funnel from the analytics lens plus the GTM recommendations derived from it.
-     * Analytics returns the caller org&#39;s funnel from the analytics lens plus the GTM recommendations derived from it. It is the Business AI&#39;s data-grounded read — what the funnel is doing, and the next-best action to move its weakest stage. An unreachable or silent warehouse answers available&#x3D;false, never a fabricated number.
-     * @return AnalyticsView
+     * Returns the caller org&#39;s funnel from the analytics lens plus the GTM recommendations derived from it.
+     * Returns the caller org&#39;s funnel from the analytics lens plus the GTM recommendations derived from it. It is the Business AI&#39;s data-grounded read — what the funnel is doing, and the next-best action to move its weakest stage. An unreachable or silent warehouse answers available&#x3D;false, never a fabricated number.
+     * @return GuideAnalyticsView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AnalyticsView getGuideAnalytics() throws ApiException {
-        ApiResponse<AnalyticsView> localVarResp = getGuideAnalyticsWithHttpInfo();
+    public GuideAnalyticsView getGuideAnalytics() throws ApiException {
+        ApiResponse<GuideAnalyticsView> localVarResp = getGuideAnalyticsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Analytics returns the caller org&#39;s funnel from the analytics lens plus the GTM recommendations derived from it.
-     * Analytics returns the caller org&#39;s funnel from the analytics lens plus the GTM recommendations derived from it. It is the Business AI&#39;s data-grounded read — what the funnel is doing, and the next-best action to move its weakest stage. An unreachable or silent warehouse answers available&#x3D;false, never a fabricated number.
-     * @return ApiResponse&lt;AnalyticsView&gt;
+     * Returns the caller org&#39;s funnel from the analytics lens plus the GTM recommendations derived from it.
+     * Returns the caller org&#39;s funnel from the analytics lens plus the GTM recommendations derived from it. It is the Business AI&#39;s data-grounded read — what the funnel is doing, and the next-best action to move its weakest stage. An unreachable or silent warehouse answers available&#x3D;false, never a fabricated number.
+     * @return ApiResponse&lt;GuideAnalyticsView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AnalyticsView> getGuideAnalyticsWithHttpInfo() throws ApiException {
+    public ApiResponse<GuideAnalyticsView> getGuideAnalyticsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getGuideAnalyticsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<AnalyticsView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideAnalyticsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Analytics returns the caller org&#39;s funnel from the analytics lens plus the GTM recommendations derived from it. (asynchronously)
-     * Analytics returns the caller org&#39;s funnel from the analytics lens plus the GTM recommendations derived from it. It is the Business AI&#39;s data-grounded read — what the funnel is doing, and the next-best action to move its weakest stage. An unreachable or silent warehouse answers available&#x3D;false, never a fabricated number.
+     * Returns the caller org&#39;s funnel from the analytics lens plus the GTM recommendations derived from it. (asynchronously)
+     * Returns the caller org&#39;s funnel from the analytics lens plus the GTM recommendations derived from it. It is the Business AI&#39;s data-grounded read — what the funnel is doing, and the next-best action to move its weakest stage. An unreachable or silent warehouse answers available&#x3D;false, never a fabricated number.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -541,246 +559,13 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGuideAnalyticsAsync(final ApiCallback<AnalyticsView> _callback) throws ApiException {
+    public okhttp3.Call getGuideAnalyticsAsync(final ApiCallback<GuideAnalyticsView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getGuideAnalyticsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<AnalyticsView>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getGuideBlueprint
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getGuideBlueprintCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/guide/blueprint";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getGuideBlueprintValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getGuideBlueprintCall(_callback);
-
-    }
-
-    /**
-     * Returns the FULL authored brand blueprint — every principle, section, step, strategy and template WITH its enabled flag made explicit, including the disabled items the org-facing reads never see — plus the active version number, the brand key it is stored under and the item counts.
-     * Returns the FULL authored brand blueprint — every principle, section, step, strategy and template WITH its enabled flag made explicit, including the disabled items the org-facing reads never see — plus the active version number, the brand key it is stored under and the item counts. It is the SuperAdmin authoring view of the platform blueprint, so it is refused 403 for anyone else, including a per-org admin: the brand blueprint is shared platform content, not a per-customer surface.
-     * @return BlueprintView
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public BlueprintView getGuideBlueprint() throws ApiException {
-        ApiResponse<BlueprintView> localVarResp = getGuideBlueprintWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns the FULL authored brand blueprint — every principle, section, step, strategy and template WITH its enabled flag made explicit, including the disabled items the org-facing reads never see — plus the active version number, the brand key it is stored under and the item counts.
-     * Returns the FULL authored brand blueprint — every principle, section, step, strategy and template WITH its enabled flag made explicit, including the disabled items the org-facing reads never see — plus the active version number, the brand key it is stored under and the item counts. It is the SuperAdmin authoring view of the platform blueprint, so it is refused 403 for anyone else, including a per-org admin: the brand blueprint is shared platform content, not a per-customer surface.
-     * @return ApiResponse&lt;BlueprintView&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<BlueprintView> getGuideBlueprintWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getGuideBlueprintValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<BlueprintView>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns the FULL authored brand blueprint — every principle, section, step, strategy and template WITH its enabled flag made explicit, including the disabled items the org-facing reads never see — plus the active version number, the brand key it is stored under and the item counts. (asynchronously)
-     * Returns the FULL authored brand blueprint — every principle, section, step, strategy and template WITH its enabled flag made explicit, including the disabled items the org-facing reads never see — plus the active version number, the brand key it is stored under and the item counts. It is the SuperAdmin authoring view of the platform blueprint, so it is refused 403 for anyone else, including a per-org admin: the brand blueprint is shared platform content, not a per-customer surface.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getGuideBlueprintAsync(final ApiCallback<BlueprintView> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getGuideBlueprintValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<BlueprintView>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getGuideBlueprintVersions
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getGuideBlueprintVersionsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/guide/blueprint/versions";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getGuideBlueprintVersionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getGuideBlueprintVersionsCall(_callback);
-
-    }
-
-    /**
-     * Returns the brand blueprint&#39;s version history — every stored version&#39;s number and edit time, newest first — which is the point-in-time-recovery and audit trail behind the authoring plane.
-     * Returns the brand blueprint&#39;s version history — every stored version&#39;s number and edit time, newest first — which is the point-in-time-recovery and audit trail behind the authoring plane. Metadata only: the documents are not returned. SuperAdmin only, like the rest of this plane. The history is listable even when the current stored document no longer parses, so a schema-drifted row can still be diagnosed.
-     * @return BlueprintVersionsView
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public BlueprintVersionsView getGuideBlueprintVersions() throws ApiException {
-        ApiResponse<BlueprintVersionsView> localVarResp = getGuideBlueprintVersionsWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns the brand blueprint&#39;s version history — every stored version&#39;s number and edit time, newest first — which is the point-in-time-recovery and audit trail behind the authoring plane.
-     * Returns the brand blueprint&#39;s version history — every stored version&#39;s number and edit time, newest first — which is the point-in-time-recovery and audit trail behind the authoring plane. Metadata only: the documents are not returned. SuperAdmin only, like the rest of this plane. The history is listable even when the current stored document no longer parses, so a schema-drifted row can still be diagnosed.
-     * @return ApiResponse&lt;BlueprintVersionsView&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<BlueprintVersionsView> getGuideBlueprintVersionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getGuideBlueprintVersionsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<BlueprintVersionsView>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns the brand blueprint&#39;s version history — every stored version&#39;s number and edit time, newest first — which is the point-in-time-recovery and audit trail behind the authoring plane. (asynchronously)
-     * Returns the brand blueprint&#39;s version history — every stored version&#39;s number and edit time, newest first — which is the point-in-time-recovery and audit trail behind the authoring plane. Metadata only: the documents are not returned. SuperAdmin only, like the rest of this plane. The history is listable even when the current stored document no longer parses, so a schema-drifted row can still be diagnosed.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getGuideBlueprintVersionsAsync(final ApiCallback<BlueprintVersionsView> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getGuideBlueprintVersionsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<BlueprintVersionsView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideAnalyticsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -794,6 +579,7 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getGuideCurriculumCall(final ApiCallback _callback) throws ApiException {
@@ -822,7 +608,8 @@ public class GuideApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -849,35 +636,37 @@ public class GuideApi {
     /**
      * Returns the journey the caller&#39;s org is actually running, and whether it comes from the org&#39;s OWN override (custom) or from the platform default — the brand blueprint, else the embedded fixture.
      * Returns the journey the caller&#39;s org is actually running, and whether it comes from the org&#39;s OWN override (custom) or from the platform default — the brand blueprint, else the embedded fixture.
-     * @return CurriculumView
+     * @return GuideCurriculumView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CurriculumView getGuideCurriculum() throws ApiException {
-        ApiResponse<CurriculumView> localVarResp = getGuideCurriculumWithHttpInfo();
+    public GuideCurriculumView getGuideCurriculum() throws ApiException {
+        ApiResponse<GuideCurriculumView> localVarResp = getGuideCurriculumWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the journey the caller&#39;s org is actually running, and whether it comes from the org&#39;s OWN override (custom) or from the platform default — the brand blueprint, else the embedded fixture.
      * Returns the journey the caller&#39;s org is actually running, and whether it comes from the org&#39;s OWN override (custom) or from the platform default — the brand blueprint, else the embedded fixture.
-     * @return ApiResponse&lt;CurriculumView&gt;
+     * @return ApiResponse&lt;GuideCurriculumView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CurriculumView> getGuideCurriculumWithHttpInfo() throws ApiException {
+    public ApiResponse<GuideCurriculumView> getGuideCurriculumWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getGuideCurriculumValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CurriculumView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideCurriculumView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -892,12 +681,13 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGuideCurriculumAsync(final ApiCallback<CurriculumView> _callback) throws ApiException {
+    public okhttp3.Call getGuideCurriculumAsync(final ApiCallback<GuideCurriculumView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getGuideCurriculumValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CurriculumView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideCurriculumView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -911,6 +701,7 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getGuideProfileCall(final ApiCallback _callback) throws ApiException {
@@ -939,7 +730,8 @@ public class GuideApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -964,43 +756,45 @@ public class GuideApi {
     }
 
     /**
-     * Profile returns the caller org&#39;s OBSERVED growth profile — the signal set, the classified growth stage, and the org&#39;s own key metrics.
-     * Profile returns the caller org&#39;s OBSERVED growth profile — the signal set, the classified growth stage, and the org&#39;s own key metrics. It is a pure READ, recomputed from the org&#39;s CURRENT state each request (real-time by pull): it reuses the reconcile path (snapshotFor runs the detectors) for launch progress and runs the growth probes (observe) for the signals — it never caches, never runs a billable effect, never targets another org. Org-scoped on the validated principal; fail-closed without one. It PRODUCES the profile and classifies the stage; it decides NO recommendation (that is a later surface).
-     * @return ProfileResponse
+     * Returns the caller org&#39;s OBSERVED growth profile — the signal set, the classified growth stage, and the org&#39;s own key metrics.
+     * Returns the caller org&#39;s OBSERVED growth profile — the signal set, the classified growth stage, and the org&#39;s own key metrics. It is a pure READ, recomputed from the org&#39;s CURRENT state each request (real-time by pull): it reuses the reconcile path (snapshotFor runs the detectors) for launch progress and runs the growth probes (observe) for the signals — it never caches, never runs a billable effect, never targets another org. Org-scoped on the validated principal; fail-closed without one. It PRODUCES the profile and classifies the stage; it decides NO recommendation (that is a later surface).
+     * @return GuideProfileResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ProfileResponse getGuideProfile() throws ApiException {
-        ApiResponse<ProfileResponse> localVarResp = getGuideProfileWithHttpInfo();
+    public GuideProfileResponse getGuideProfile() throws ApiException {
+        ApiResponse<GuideProfileResponse> localVarResp = getGuideProfileWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Profile returns the caller org&#39;s OBSERVED growth profile — the signal set, the classified growth stage, and the org&#39;s own key metrics.
-     * Profile returns the caller org&#39;s OBSERVED growth profile — the signal set, the classified growth stage, and the org&#39;s own key metrics. It is a pure READ, recomputed from the org&#39;s CURRENT state each request (real-time by pull): it reuses the reconcile path (snapshotFor runs the detectors) for launch progress and runs the growth probes (observe) for the signals — it never caches, never runs a billable effect, never targets another org. Org-scoped on the validated principal; fail-closed without one. It PRODUCES the profile and classifies the stage; it decides NO recommendation (that is a later surface).
-     * @return ApiResponse&lt;ProfileResponse&gt;
+     * Returns the caller org&#39;s OBSERVED growth profile — the signal set, the classified growth stage, and the org&#39;s own key metrics.
+     * Returns the caller org&#39;s OBSERVED growth profile — the signal set, the classified growth stage, and the org&#39;s own key metrics. It is a pure READ, recomputed from the org&#39;s CURRENT state each request (real-time by pull): it reuses the reconcile path (snapshotFor runs the detectors) for launch progress and runs the growth probes (observe) for the signals — it never caches, never runs a billable effect, never targets another org. Org-scoped on the validated principal; fail-closed without one. It PRODUCES the profile and classifies the stage; it decides NO recommendation (that is a later surface).
+     * @return ApiResponse&lt;GuideProfileResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProfileResponse> getGuideProfileWithHttpInfo() throws ApiException {
+    public ApiResponse<GuideProfileResponse> getGuideProfileWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getGuideProfileValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ProfileResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideProfileResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Profile returns the caller org&#39;s OBSERVED growth profile — the signal set, the classified growth stage, and the org&#39;s own key metrics. (asynchronously)
-     * Profile returns the caller org&#39;s OBSERVED growth profile — the signal set, the classified growth stage, and the org&#39;s own key metrics. It is a pure READ, recomputed from the org&#39;s CURRENT state each request (real-time by pull): it reuses the reconcile path (snapshotFor runs the detectors) for launch progress and runs the growth probes (observe) for the signals — it never caches, never runs a billable effect, never targets another org. Org-scoped on the validated principal; fail-closed without one. It PRODUCES the profile and classifies the stage; it decides NO recommendation (that is a later surface).
+     * Returns the caller org&#39;s OBSERVED growth profile — the signal set, the classified growth stage, and the org&#39;s own key metrics. (asynchronously)
+     * Returns the caller org&#39;s OBSERVED growth profile — the signal set, the classified growth stage, and the org&#39;s own key metrics. It is a pure READ, recomputed from the org&#39;s CURRENT state each request (real-time by pull): it reuses the reconcile path (snapshotFor runs the detectors) for launch progress and runs the growth probes (observe) for the signals — it never caches, never runs a billable effect, never targets another org. Org-scoped on the validated principal; fail-closed without one. It PRODUCES the profile and classifies the stage; it decides NO recommendation (that is a later surface).
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1009,12 +803,13 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGuideProfileAsync(final ApiCallback<ProfileResponse> _callback) throws ApiException {
+    public okhttp3.Call getGuideProfileAsync(final ApiCallback<GuideProfileResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getGuideProfileValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ProfileResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideProfileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1031,6 +826,7 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getGuideStrategiesCall(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload, final ApiCallback _callback) throws ApiException {
@@ -1071,7 +867,8 @@ public class GuideApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1096,49 +893,51 @@ public class GuideApi {
     }
 
     /**
-     * Strategies returns the ENABLED tactics corpus for the caller&#39;s org: the tactics library narrowed by the explicit category/workload filters AND by the org&#39;s OBSERVED growth stage and capability signals (a tactic&#39;s tags are preconditions, so it surfaces only once the org can act on it).
-     * Strategies returns the ENABLED tactics corpus for the caller&#39;s org: the tactics library narrowed by the explicit category/workload filters AND by the org&#39;s OBSERVED growth stage and capability signals (a tactic&#39;s tags are preconditions, so it surfaces only once the org can act on it). Passing stage PREVIEWS the corpus at that stage instead of the observed one. The content is shared platform data — no org&#39;s records — and the read is never a billable effect.
+     * Returns the ENABLED tactics corpus for the caller&#39;s org: the tactics library narrowed by the explicit category/workload filters AND by the org&#39;s OBSERVED growth stage and capability signals (a tactic&#39;s tags are preconditions, so it surfaces only once the org can act on it).
+     * Returns the ENABLED tactics corpus for the caller&#39;s org: the tactics library narrowed by the explicit category/workload filters AND by the org&#39;s OBSERVED growth stage and capability signals (a tactic&#39;s tags are preconditions, so it surfaces only once the org can act on it). Passing stage PREVIEWS the corpus at that stage instead of the observed one. The content is shared platform data — no org&#39;s records — and the read is never a billable effect.
      * @param category Category filters to tactics in exactly this category. (optional)
      * @param stage Stage previews the corpus at a chosen growth stage (research|formed|launched|activated|scaling), overriding the org&#39;s observed one. An unknown value is ignored and the observed stage stands. (optional)
      * @param workload Workload filters to tactics with exactly this workload. (optional)
-     * @return CorpusView
+     * @return GuideCorpusView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CorpusView getGuideStrategies(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload) throws ApiException {
-        ApiResponse<CorpusView> localVarResp = getGuideStrategiesWithHttpInfo(category, stage, workload);
+    public GuideCorpusView getGuideStrategies(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload) throws ApiException {
+        ApiResponse<GuideCorpusView> localVarResp = getGuideStrategiesWithHttpInfo(category, stage, workload);
         return localVarResp.getData();
     }
 
     /**
-     * Strategies returns the ENABLED tactics corpus for the caller&#39;s org: the tactics library narrowed by the explicit category/workload filters AND by the org&#39;s OBSERVED growth stage and capability signals (a tactic&#39;s tags are preconditions, so it surfaces only once the org can act on it).
-     * Strategies returns the ENABLED tactics corpus for the caller&#39;s org: the tactics library narrowed by the explicit category/workload filters AND by the org&#39;s OBSERVED growth stage and capability signals (a tactic&#39;s tags are preconditions, so it surfaces only once the org can act on it). Passing stage PREVIEWS the corpus at that stage instead of the observed one. The content is shared platform data — no org&#39;s records — and the read is never a billable effect.
+     * Returns the ENABLED tactics corpus for the caller&#39;s org: the tactics library narrowed by the explicit category/workload filters AND by the org&#39;s OBSERVED growth stage and capability signals (a tactic&#39;s tags are preconditions, so it surfaces only once the org can act on it).
+     * Returns the ENABLED tactics corpus for the caller&#39;s org: the tactics library narrowed by the explicit category/workload filters AND by the org&#39;s OBSERVED growth stage and capability signals (a tactic&#39;s tags are preconditions, so it surfaces only once the org can act on it). Passing stage PREVIEWS the corpus at that stage instead of the observed one. The content is shared platform data — no org&#39;s records — and the read is never a billable effect.
      * @param category Category filters to tactics in exactly this category. (optional)
      * @param stage Stage previews the corpus at a chosen growth stage (research|formed|launched|activated|scaling), overriding the org&#39;s observed one. An unknown value is ignored and the observed stage stands. (optional)
      * @param workload Workload filters to tactics with exactly this workload. (optional)
-     * @return ApiResponse&lt;CorpusView&gt;
+     * @return ApiResponse&lt;GuideCorpusView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CorpusView> getGuideStrategiesWithHttpInfo(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload) throws ApiException {
+    public ApiResponse<GuideCorpusView> getGuideStrategiesWithHttpInfo(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload) throws ApiException {
         okhttp3.Call localVarCall = getGuideStrategiesValidateBeforeCall(category, stage, workload, null);
-        Type localVarReturnType = new TypeToken<CorpusView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideCorpusView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Strategies returns the ENABLED tactics corpus for the caller&#39;s org: the tactics library narrowed by the explicit category/workload filters AND by the org&#39;s OBSERVED growth stage and capability signals (a tactic&#39;s tags are preconditions, so it surfaces only once the org can act on it). (asynchronously)
-     * Strategies returns the ENABLED tactics corpus for the caller&#39;s org: the tactics library narrowed by the explicit category/workload filters AND by the org&#39;s OBSERVED growth stage and capability signals (a tactic&#39;s tags are preconditions, so it surfaces only once the org can act on it). Passing stage PREVIEWS the corpus at that stage instead of the observed one. The content is shared platform data — no org&#39;s records — and the read is never a billable effect.
+     * Returns the ENABLED tactics corpus for the caller&#39;s org: the tactics library narrowed by the explicit category/workload filters AND by the org&#39;s OBSERVED growth stage and capability signals (a tactic&#39;s tags are preconditions, so it surfaces only once the org can act on it). (asynchronously)
+     * Returns the ENABLED tactics corpus for the caller&#39;s org: the tactics library narrowed by the explicit category/workload filters AND by the org&#39;s OBSERVED growth stage and capability signals (a tactic&#39;s tags are preconditions, so it surfaces only once the org can act on it). Passing stage PREVIEWS the corpus at that stage instead of the observed one. The content is shared platform data — no org&#39;s records — and the read is never a billable effect.
      * @param category Category filters to tactics in exactly this category. (optional)
      * @param stage Stage previews the corpus at a chosen growth stage (research|formed|launched|activated|scaling), overriding the org&#39;s observed one. An unknown value is ignored and the observed stage stands. (optional)
      * @param workload Workload filters to tactics with exactly this workload. (optional)
@@ -1150,12 +949,13 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGuideStrategiesAsync(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload, final ApiCallback<CorpusView> _callback) throws ApiException {
+    public okhttp3.Call getGuideStrategiesAsync(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload, final ApiCallback<GuideCorpusView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getGuideStrategiesValidateBeforeCall(category, stage, workload, _callback);
-        Type localVarReturnType = new TypeToken<CorpusView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideCorpusView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1169,6 +969,7 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getGuideSuggestCall(final ApiCallback _callback) throws ApiException {
@@ -1197,7 +998,8 @@ public class GuideApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1222,43 +1024,45 @@ public class GuideApi {
     }
 
     /**
-     * Suggest returns the caller org&#39;s next-best quests: the available, non-terminal steps of its journey ranked by how much downstream work each unblocks, each with the grounded reason it is a good next move and whether the Business AI can run it, plus the org&#39;s funnel and the GTM recommendations derived from it.
-     * Suggest returns the caller org&#39;s next-best quests: the available, non-terminal steps of its journey ranked by how much downstream work each unblocks, each with the grounded reason it is a good next move and whether the Business AI can run it, plus the org&#39;s funnel and the GTM recommendations derived from it. A best-effort AI narrative over exactly those quests and numbers is included when an AI plane is wired. READ-ONLY: it advises and never runs a step — the only executing path is POST /v1/guide/steps/{id}/do.
-     * @return SuggestResponse
+     * Returns the caller org&#39;s next-best quests: the available, non-terminal steps of its journey ranked by how much downstream work each unblocks, each with the grounded reason it is a good next move and whether the Business AI can run it, plus the org&#39;s funnel and the GTM recommendations derived from it.
+     * Returns the caller org&#39;s next-best quests: the available, non-terminal steps of its journey ranked by how much downstream work each unblocks, each with the grounded reason it is a good next move and whether the Business AI can run it, plus the org&#39;s funnel and the GTM recommendations derived from it. A best-effort AI narrative over exactly those quests and numbers is included when an AI plane is wired. READ-ONLY: it advises and never runs a step — the only executing path is POST /v1/guide/steps/{id}/do.
+     * @return GuideSuggestResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SuggestResponse getGuideSuggest() throws ApiException {
-        ApiResponse<SuggestResponse> localVarResp = getGuideSuggestWithHttpInfo();
+    public GuideSuggestResponse getGuideSuggest() throws ApiException {
+        ApiResponse<GuideSuggestResponse> localVarResp = getGuideSuggestWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Suggest returns the caller org&#39;s next-best quests: the available, non-terminal steps of its journey ranked by how much downstream work each unblocks, each with the grounded reason it is a good next move and whether the Business AI can run it, plus the org&#39;s funnel and the GTM recommendations derived from it.
-     * Suggest returns the caller org&#39;s next-best quests: the available, non-terminal steps of its journey ranked by how much downstream work each unblocks, each with the grounded reason it is a good next move and whether the Business AI can run it, plus the org&#39;s funnel and the GTM recommendations derived from it. A best-effort AI narrative over exactly those quests and numbers is included when an AI plane is wired. READ-ONLY: it advises and never runs a step — the only executing path is POST /v1/guide/steps/{id}/do.
-     * @return ApiResponse&lt;SuggestResponse&gt;
+     * Returns the caller org&#39;s next-best quests: the available, non-terminal steps of its journey ranked by how much downstream work each unblocks, each with the grounded reason it is a good next move and whether the Business AI can run it, plus the org&#39;s funnel and the GTM recommendations derived from it.
+     * Returns the caller org&#39;s next-best quests: the available, non-terminal steps of its journey ranked by how much downstream work each unblocks, each with the grounded reason it is a good next move and whether the Business AI can run it, plus the org&#39;s funnel and the GTM recommendations derived from it. A best-effort AI narrative over exactly those quests and numbers is included when an AI plane is wired. READ-ONLY: it advises and never runs a step — the only executing path is POST /v1/guide/steps/{id}/do.
+     * @return ApiResponse&lt;GuideSuggestResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SuggestResponse> getGuideSuggestWithHttpInfo() throws ApiException {
+    public ApiResponse<GuideSuggestResponse> getGuideSuggestWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getGuideSuggestValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<SuggestResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideSuggestResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Suggest returns the caller org&#39;s next-best quests: the available, non-terminal steps of its journey ranked by how much downstream work each unblocks, each with the grounded reason it is a good next move and whether the Business AI can run it, plus the org&#39;s funnel and the GTM recommendations derived from it. (asynchronously)
-     * Suggest returns the caller org&#39;s next-best quests: the available, non-terminal steps of its journey ranked by how much downstream work each unblocks, each with the grounded reason it is a good next move and whether the Business AI can run it, plus the org&#39;s funnel and the GTM recommendations derived from it. A best-effort AI narrative over exactly those quests and numbers is included when an AI plane is wired. READ-ONLY: it advises and never runs a step — the only executing path is POST /v1/guide/steps/{id}/do.
+     * Returns the caller org&#39;s next-best quests: the available, non-terminal steps of its journey ranked by how much downstream work each unblocks, each with the grounded reason it is a good next move and whether the Business AI can run it, plus the org&#39;s funnel and the GTM recommendations derived from it. (asynchronously)
+     * Returns the caller org&#39;s next-best quests: the available, non-terminal steps of its journey ranked by how much downstream work each unblocks, each with the grounded reason it is a good next move and whether the Business AI can run it, plus the org&#39;s funnel and the GTM recommendations derived from it. A best-effort AI narrative over exactly those quests and numbers is included when an AI plane is wired. READ-ONLY: it advises and never runs a step — the only executing path is POST /v1/guide/steps/{id}/do.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1267,126 +1071,19 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGuideSuggestAsync(final ApiCallback<SuggestResponse> _callback) throws ApiException {
+    public okhttp3.Call getGuideSuggestAsync(final ApiCallback<GuideSuggestResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getGuideSuggestValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<SuggestResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideSuggestResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchGuideBlueprintByCollectionById
-     * @param collection  (required)
-     * @param id  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call patchGuideBlueprintByCollectionByIdCall(@javax.annotation.Nonnull String collection, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/guide/blueprint/{collection}/{id}"
-            .replace("{" + "collection" + "}", localVarApiClient.escapeString(collection.toString()))
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchGuideBlueprintByCollectionByIdValidateBeforeCall(@javax.annotation.Nonnull String collection, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'collection' is set
-        if (collection == null) {
-            throw new ApiException("Missing the required parameter 'collection' when calling patchGuideBlueprintByCollectionById(Async)");
-        }
-
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling patchGuideBlueprintByCollectionById(Async)");
-        }
-
-        return patchGuideBlueprintByCollectionByIdCall(collection, id, _callback);
-
-    }
-
-    /**
-     * Edit — or retire — one item of the brand blueprint
-     * Edits a single item of the brand blueprint by id and saves it as a NEW VERSION, answering the whole blueprint after the edit. &#x60;collection&#x60; is one of &#x60;sections&#x60;, &#x60;steps&#x60;, &#x60;strategies&#x60; or &#x60;templates&#x60;; anything else is 400, and an id that collection does not hold is 404. This is also the retire lever: &#x60;{\&quot;enabled\&quot;: false}&#x60; takes an item out of every org&#39;s journey without deleting it or its history.  SuperAdmin ONLY, like the rest of the authoring plane; a per-org admin is 403. The write is audited.  The patch is a SHALLOW merge over the item&#39;s own top-level keys — a key you send replaces that key whole, a key you omit is left alone — and &#x60;id&#x60; is dropped from the patch before it is applied, so an edit can never rekey an item. That is why the body has no declarable shape: its keys are the patched item&#39;s, not this route&#39;s.  Fail-closed on the WHOLE document, not just the item: the blueprint is re-validated after the merge, so a patch that would dangle a dependency, break the step DAG or empty the journey is 422 and nothing is saved. An empty patch is 400 and one over 16 MiB is 413.
-     * @param collection  (required)
-     * @param id  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void patchGuideBlueprintByCollectionById(@javax.annotation.Nonnull String collection, @javax.annotation.Nonnull String id) throws ApiException {
-        patchGuideBlueprintByCollectionByIdWithHttpInfo(collection, id);
-    }
-
-    /**
-     * Edit — or retire — one item of the brand blueprint
-     * Edits a single item of the brand blueprint by id and saves it as a NEW VERSION, answering the whole blueprint after the edit. &#x60;collection&#x60; is one of &#x60;sections&#x60;, &#x60;steps&#x60;, &#x60;strategies&#x60; or &#x60;templates&#x60;; anything else is 400, and an id that collection does not hold is 404. This is also the retire lever: &#x60;{\&quot;enabled\&quot;: false}&#x60; takes an item out of every org&#39;s journey without deleting it or its history.  SuperAdmin ONLY, like the rest of the authoring plane; a per-org admin is 403. The write is audited.  The patch is a SHALLOW merge over the item&#39;s own top-level keys — a key you send replaces that key whole, a key you omit is left alone — and &#x60;id&#x60; is dropped from the patch before it is applied, so an edit can never rekey an item. That is why the body has no declarable shape: its keys are the patched item&#39;s, not this route&#39;s.  Fail-closed on the WHOLE document, not just the item: the blueprint is re-validated after the merge, so a patch that would dangle a dependency, break the step DAG or empty the journey is 422 and nothing is saved. An empty patch is 400 and one over 16 MiB is 413.
-     * @param collection  (required)
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> patchGuideBlueprintByCollectionByIdWithHttpInfo(@javax.annotation.Nonnull String collection, @javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = patchGuideBlueprintByCollectionByIdValidateBeforeCall(collection, id, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Edit — or retire — one item of the brand blueprint (asynchronously)
-     * Edits a single item of the brand blueprint by id and saves it as a NEW VERSION, answering the whole blueprint after the edit. &#x60;collection&#x60; is one of &#x60;sections&#x60;, &#x60;steps&#x60;, &#x60;strategies&#x60; or &#x60;templates&#x60;; anything else is 400, and an id that collection does not hold is 404. This is also the retire lever: &#x60;{\&quot;enabled\&quot;: false}&#x60; takes an item out of every org&#39;s journey without deleting it or its history.  SuperAdmin ONLY, like the rest of the authoring plane; a per-org admin is 403. The write is audited.  The patch is a SHALLOW merge over the item&#39;s own top-level keys — a key you send replaces that key whole, a key you omit is left alone — and &#x60;id&#x60; is dropped from the patch before it is applied, so an edit can never rekey an item. That is why the body has no declarable shape: its keys are the patched item&#39;s, not this route&#39;s.  Fail-closed on the WHOLE document, not just the item: the blueprint is re-validated after the merge, so a patch that would dangle a dependency, break the step DAG or empty the journey is 422 and nothing is saved. An empty patch is 400 and one over 16 MiB is 413.
-     * @param collection  (required)
-     * @param id  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call patchGuideBlueprintByCollectionByIdAsync(@javax.annotation.Nonnull String collection, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = patchGuideBlueprintByCollectionByIdValidateBeforeCall(collection, id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for postGuideChat
-     * @param chatRequest  (required)
+     * @param guideChatRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1395,9 +1092,10 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postGuideChatCall(@javax.annotation.Nonnull ChatRequest chatRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGuideChatCall(@javax.annotation.Nonnull GuideChatRequest guideChatRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1411,7 +1109,7 @@ public class GuideApi {
             basePath = null;
         }
 
-        Object localVarPostBody = chatRequest;
+        Object localVarPostBody = guideChatRequest;
 
         // create path and map variables
         String localVarPath = "/v1/guide/chat";
@@ -1423,7 +1121,8 @@ public class GuideApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1443,57 +1142,59 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postGuideChatValidateBeforeCall(@javax.annotation.Nonnull ChatRequest chatRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'chatRequest' is set
-        if (chatRequest == null) {
-            throw new ApiException("Missing the required parameter 'chatRequest' when calling postGuideChat(Async)");
+    private okhttp3.Call postGuideChatValidateBeforeCall(@javax.annotation.Nonnull GuideChatRequest guideChatRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'guideChatRequest' is set
+        if (guideChatRequest == null) {
+            throw new ApiException("Missing the required parameter 'guideChatRequest' when calling postGuideChat(Async)");
         }
 
-        return postGuideChatCall(chatRequest, _callback);
+        return postGuideChatCall(guideChatRequest, _callback);
 
     }
 
     /**
-     * Chat answers a founder&#39;s question about their launch journey as the Business AI coach: it grounds the reply in the org&#39;s REAL progress, its ranked available quests and its analytics funnel, and returns those candidate quests alongside so the caller can act on one.
-     * Chat answers a founder&#39;s question about their launch journey as the Business AI coach: it grounds the reply in the org&#39;s REAL progress, its ranked available quests and its analytics funnel, and returns those candidate quests alongside so the caller can act on one. READ-ONLY — it advises and never runs a step, so it cannot be talked into performing an action; the only executing path is POST /v1/guide/steps/{id}/do. One AI completion per call, billed to the caller&#39;s own payer.
-     * @param chatRequest  (required)
-     * @return ChatResponse
+     * Answers a founder&#39;s question about their launch journey as the Business AI coach: it grounds the reply in the org&#39;s REAL progress, its ranked available quests and its analytics funnel, and returns those candidate quests alongside so the caller can act on one.
+     * Answers a founder&#39;s question about their launch journey as the Business AI coach: it grounds the reply in the org&#39;s REAL progress, its ranked available quests and its analytics funnel, and returns those candidate quests alongside so the caller can act on one. READ-ONLY — it advises and never runs a step, so it cannot be talked into performing an action; the only executing path is POST /v1/guide/steps/{id}/do. One AI completion per call, billed to the caller&#39;s own payer.
+     * @param guideChatRequest  (required)
+     * @return GuideChatResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ChatResponse postGuideChat(@javax.annotation.Nonnull ChatRequest chatRequest) throws ApiException {
-        ApiResponse<ChatResponse> localVarResp = postGuideChatWithHttpInfo(chatRequest);
+    public GuideChatResponse postGuideChat(@javax.annotation.Nonnull GuideChatRequest guideChatRequest) throws ApiException {
+        ApiResponse<GuideChatResponse> localVarResp = postGuideChatWithHttpInfo(guideChatRequest);
         return localVarResp.getData();
     }
 
     /**
-     * Chat answers a founder&#39;s question about their launch journey as the Business AI coach: it grounds the reply in the org&#39;s REAL progress, its ranked available quests and its analytics funnel, and returns those candidate quests alongside so the caller can act on one.
-     * Chat answers a founder&#39;s question about their launch journey as the Business AI coach: it grounds the reply in the org&#39;s REAL progress, its ranked available quests and its analytics funnel, and returns those candidate quests alongside so the caller can act on one. READ-ONLY — it advises and never runs a step, so it cannot be talked into performing an action; the only executing path is POST /v1/guide/steps/{id}/do. One AI completion per call, billed to the caller&#39;s own payer.
-     * @param chatRequest  (required)
-     * @return ApiResponse&lt;ChatResponse&gt;
+     * Answers a founder&#39;s question about their launch journey as the Business AI coach: it grounds the reply in the org&#39;s REAL progress, its ranked available quests and its analytics funnel, and returns those candidate quests alongside so the caller can act on one.
+     * Answers a founder&#39;s question about their launch journey as the Business AI coach: it grounds the reply in the org&#39;s REAL progress, its ranked available quests and its analytics funnel, and returns those candidate quests alongside so the caller can act on one. READ-ONLY — it advises and never runs a step, so it cannot be talked into performing an action; the only executing path is POST /v1/guide/steps/{id}/do. One AI completion per call, billed to the caller&#39;s own payer.
+     * @param guideChatRequest  (required)
+     * @return ApiResponse&lt;GuideChatResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChatResponse> postGuideChatWithHttpInfo(@javax.annotation.Nonnull ChatRequest chatRequest) throws ApiException {
-        okhttp3.Call localVarCall = postGuideChatValidateBeforeCall(chatRequest, null);
-        Type localVarReturnType = new TypeToken<ChatResponse>(){}.getType();
+    public ApiResponse<GuideChatResponse> postGuideChatWithHttpInfo(@javax.annotation.Nonnull GuideChatRequest guideChatRequest) throws ApiException {
+        okhttp3.Call localVarCall = postGuideChatValidateBeforeCall(guideChatRequest, null);
+        Type localVarReturnType = new TypeToken<GuideChatResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Chat answers a founder&#39;s question about their launch journey as the Business AI coach: it grounds the reply in the org&#39;s REAL progress, its ranked available quests and its analytics funnel, and returns those candidate quests alongside so the caller can act on one. (asynchronously)
-     * Chat answers a founder&#39;s question about their launch journey as the Business AI coach: it grounds the reply in the org&#39;s REAL progress, its ranked available quests and its analytics funnel, and returns those candidate quests alongside so the caller can act on one. READ-ONLY — it advises and never runs a step, so it cannot be talked into performing an action; the only executing path is POST /v1/guide/steps/{id}/do. One AI completion per call, billed to the caller&#39;s own payer.
-     * @param chatRequest  (required)
+     * Answers a founder&#39;s question about their launch journey as the Business AI coach: it grounds the reply in the org&#39;s REAL progress, its ranked available quests and its analytics funnel, and returns those candidate quests alongside so the caller can act on one. (asynchronously)
+     * Answers a founder&#39;s question about their launch journey as the Business AI coach: it grounds the reply in the org&#39;s REAL progress, its ranked available quests and its analytics funnel, and returns those candidate quests alongside so the caller can act on one. READ-ONLY — it advises and never runs a step, so it cannot be talked into performing an action; the only executing path is POST /v1/guide/steps/{id}/do. One AI completion per call, billed to the caller&#39;s own payer.
+     * @param guideChatRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1502,12 +1203,13 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postGuideChatAsync(@javax.annotation.Nonnull ChatRequest chatRequest, final ApiCallback<ChatResponse> _callback) throws ApiException {
+    public okhttp3.Call postGuideChatAsync(@javax.annotation.Nonnull GuideChatRequest guideChatRequest, final ApiCallback<GuideChatResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postGuideChatValidateBeforeCall(chatRequest, _callback);
-        Type localVarReturnType = new TypeToken<ChatResponse>(){}.getType();
+        okhttp3.Call localVarCall = postGuideChatValidateBeforeCall(guideChatRequest, _callback);
+        Type localVarReturnType = new TypeToken<GuideChatResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1575,7 +1277,7 @@ public class GuideApi {
 
     /**
      * Have the Business AI actually do the step for you
-     * Executes one step of the caller org&#39;s journey through that principal&#39;s OWN tool plane and answers the action log — &#x60;{step, events, state}&#x60; — so the caller sees every tool call the agent made and where the step ended up. This is the ONE executing path in guide: suggest and chat advise, this acts, and the work is charged to the calling principal&#39;s ledger.  Ask for it live and the same actions arrive as Server-Sent Events instead, on either of two triggers — &#x60;Accept: text/event-stream&#x60; or &#x60;?stream&#x3D;1&#x60;. The stream opens with a comment, emits one frame per action as it happens, and closes with an &#x60;end&#x60; frame carrying &#x60;ok&#x60; and the final state. The streamed run is detached and bounded at 120 seconds, so it finishes on its own clock once the response has begun.  An agent that FAILS is not a failed request: the JSON answer still comes back 200 with &#x60;error&#x60; beside the events it did manage, and the stream still ends with &#x60;ok:false&#x60;. The refusals are the ones before the agent runs — 409 with &#x60;{error, step, blockedBy}&#x60; for a step whose dependencies are unfinished, 404 for an id the journey does not contain, 403 without a validated org.
+     * Executes one step of the caller org&#39;s journey through that principal&#39;s OWN tool plane and answers the action log — &#x60;{step, events, state}&#x60; — so the caller sees every tool call the agent made and where the step ended up. This is the ONE executing path in guide: suggest and chat advise, this acts, and the work is charged to the calling principal&#39;s ledger.  Ask for it live and the same actions arrive as Server-Sent Events instead, on either of two triggers — &#x60;Accept: text/event-stream&#x60; or &#x60;?stream&#x3D;1&#x60;. The stream opens with a comment, emits one frame per action as it happens, and closes with an &#x60;end&#x60; frame carrying &#x60;ok&#x60; and the final state. The streamed run is detached and bounded at 120 seconds, so it finishes on its own clock once the response has begun.  An agent that FAILS is not a failed request: the JSON answer still comes back 200 with &#x60;error&#x60; beside the events it did manage, and the stream still ends with &#x60;ok:false&#x60;. The refusals are the ones before the agent runs — 409 with &#x60;{error, step, blockedBy}&#x60; for a step whose dependencies are unfinished, 404 for an id the journey does not contain, 401 without a principal and 403 without an org.
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1585,7 +1287,7 @@ public class GuideApi {
 
     /**
      * Have the Business AI actually do the step for you
-     * Executes one step of the caller org&#39;s journey through that principal&#39;s OWN tool plane and answers the action log — &#x60;{step, events, state}&#x60; — so the caller sees every tool call the agent made and where the step ended up. This is the ONE executing path in guide: suggest and chat advise, this acts, and the work is charged to the calling principal&#39;s ledger.  Ask for it live and the same actions arrive as Server-Sent Events instead, on either of two triggers — &#x60;Accept: text/event-stream&#x60; or &#x60;?stream&#x3D;1&#x60;. The stream opens with a comment, emits one frame per action as it happens, and closes with an &#x60;end&#x60; frame carrying &#x60;ok&#x60; and the final state. The streamed run is detached and bounded at 120 seconds, so it finishes on its own clock once the response has begun.  An agent that FAILS is not a failed request: the JSON answer still comes back 200 with &#x60;error&#x60; beside the events it did manage, and the stream still ends with &#x60;ok:false&#x60;. The refusals are the ones before the agent runs — 409 with &#x60;{error, step, blockedBy}&#x60; for a step whose dependencies are unfinished, 404 for an id the journey does not contain, 403 without a validated org.
+     * Executes one step of the caller org&#39;s journey through that principal&#39;s OWN tool plane and answers the action log — &#x60;{step, events, state}&#x60; — so the caller sees every tool call the agent made and where the step ended up. This is the ONE executing path in guide: suggest and chat advise, this acts, and the work is charged to the calling principal&#39;s ledger.  Ask for it live and the same actions arrive as Server-Sent Events instead, on either of two triggers — &#x60;Accept: text/event-stream&#x60; or &#x60;?stream&#x3D;1&#x60;. The stream opens with a comment, emits one frame per action as it happens, and closes with an &#x60;end&#x60; frame carrying &#x60;ok&#x60; and the final state. The streamed run is detached and bounded at 120 seconds, so it finishes on its own clock once the response has begun.  An agent that FAILS is not a failed request: the JSON answer still comes back 200 with &#x60;error&#x60; beside the events it did manage, and the stream still ends with &#x60;ok:false&#x60;. The refusals are the ones before the agent runs — 409 with &#x60;{error, step, blockedBy}&#x60; for a step whose dependencies are unfinished, 404 for an id the journey does not contain, 401 without a principal and 403 without an org.
      * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1597,7 +1299,7 @@ public class GuideApi {
 
     /**
      * Have the Business AI actually do the step for you (asynchronously)
-     * Executes one step of the caller org&#39;s journey through that principal&#39;s OWN tool plane and answers the action log — &#x60;{step, events, state}&#x60; — so the caller sees every tool call the agent made and where the step ended up. This is the ONE executing path in guide: suggest and chat advise, this acts, and the work is charged to the calling principal&#39;s ledger.  Ask for it live and the same actions arrive as Server-Sent Events instead, on either of two triggers — &#x60;Accept: text/event-stream&#x60; or &#x60;?stream&#x3D;1&#x60;. The stream opens with a comment, emits one frame per action as it happens, and closes with an &#x60;end&#x60; frame carrying &#x60;ok&#x60; and the final state. The streamed run is detached and bounded at 120 seconds, so it finishes on its own clock once the response has begun.  An agent that FAILS is not a failed request: the JSON answer still comes back 200 with &#x60;error&#x60; beside the events it did manage, and the stream still ends with &#x60;ok:false&#x60;. The refusals are the ones before the agent runs — 409 with &#x60;{error, step, blockedBy}&#x60; for a step whose dependencies are unfinished, 404 for an id the journey does not contain, 403 without a validated org.
+     * Executes one step of the caller org&#39;s journey through that principal&#39;s OWN tool plane and answers the action log — &#x60;{step, events, state}&#x60; — so the caller sees every tool call the agent made and where the step ended up. This is the ONE executing path in guide: suggest and chat advise, this acts, and the work is charged to the calling principal&#39;s ledger.  Ask for it live and the same actions arrive as Server-Sent Events instead, on either of two triggers — &#x60;Accept: text/event-stream&#x60; or &#x60;?stream&#x3D;1&#x60;. The stream opens with a comment, emits one frame per action as it happens, and closes with an &#x60;end&#x60; frame carrying &#x60;ok&#x60; and the final state. The streamed run is detached and bounded at 120 seconds, so it finishes on its own clock once the response has begun.  An agent that FAILS is not a failed request: the JSON answer still comes back 200 with &#x60;error&#x60; beside the events it did manage, and the stream still ends with &#x60;ok:false&#x60;. The refusals are the ones before the agent runs — 409 with &#x60;{error, step, blockedBy}&#x60; for a step whose dependencies are unfinished, 404 for an id the journey does not contain, 401 without a principal and 403 without an org.
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1620,6 +1322,7 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postGuideStepsByIdDoneCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1649,7 +1352,8 @@ public class GuideApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1682,17 +1386,18 @@ public class GuideApi {
      * Marks one step of the caller org&#39;s journey complete and returns the refreshed journey.
      * Marks one step of the caller org&#39;s journey complete and returns the refreshed journey.  Dependency-GATED, exactly as start is: a step whose prerequisites are unfinished is refused 409 carrying {error, step, blockedBy} naming what is in the way.
      * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
-     * @return OverviewView
+     * @return GuideOverviewView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public OverviewView postGuideStepsByIdDone(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<OverviewView> localVarResp = postGuideStepsByIdDoneWithHttpInfo(id);
+    public GuideOverviewView postGuideStepsByIdDone(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<GuideOverviewView> localVarResp = postGuideStepsByIdDoneWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1700,18 +1405,19 @@ public class GuideApi {
      * Marks one step of the caller org&#39;s journey complete and returns the refreshed journey.
      * Marks one step of the caller org&#39;s journey complete and returns the refreshed journey.  Dependency-GATED, exactly as start is: a step whose prerequisites are unfinished is refused 409 carrying {error, step, blockedBy} naming what is in the way.
      * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
-     * @return ApiResponse&lt;OverviewView&gt;
+     * @return ApiResponse&lt;GuideOverviewView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OverviewView> postGuideStepsByIdDoneWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<GuideOverviewView> postGuideStepsByIdDoneWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postGuideStepsByIdDoneValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideOverviewView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1727,12 +1433,13 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postGuideStepsByIdDoneAsync(@javax.annotation.Nonnull String id, final ApiCallback<OverviewView> _callback) throws ApiException {
+    public okhttp3.Call postGuideStepsByIdDoneAsync(@javax.annotation.Nonnull String id, final ApiCallback<GuideOverviewView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postGuideStepsByIdDoneValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideOverviewView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1747,6 +1454,7 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postGuideStepsByIdResetCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1776,7 +1484,8 @@ public class GuideApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1809,17 +1518,18 @@ public class GuideApi {
      * Returns one step of the caller org&#39;s journey to todo — clearing a manual mark or a skip — and returns the refreshed journey.
      * Returns one step of the caller org&#39;s journey to todo — clearing a manual mark or a skip — and returns the refreshed journey. Reset is never dependency-gated. Auto-detect runs on the next read, so a step the org has in fact completed elsewhere goes straight back to done.
      * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
-     * @return OverviewView
+     * @return GuideOverviewView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public OverviewView postGuideStepsByIdReset(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<OverviewView> localVarResp = postGuideStepsByIdResetWithHttpInfo(id);
+    public GuideOverviewView postGuideStepsByIdReset(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<GuideOverviewView> localVarResp = postGuideStepsByIdResetWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1827,18 +1537,19 @@ public class GuideApi {
      * Returns one step of the caller org&#39;s journey to todo — clearing a manual mark or a skip — and returns the refreshed journey.
      * Returns one step of the caller org&#39;s journey to todo — clearing a manual mark or a skip — and returns the refreshed journey. Reset is never dependency-gated. Auto-detect runs on the next read, so a step the org has in fact completed elsewhere goes straight back to done.
      * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
-     * @return ApiResponse&lt;OverviewView&gt;
+     * @return ApiResponse&lt;GuideOverviewView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OverviewView> postGuideStepsByIdResetWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<GuideOverviewView> postGuideStepsByIdResetWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postGuideStepsByIdResetValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideOverviewView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1854,12 +1565,13 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postGuideStepsByIdResetAsync(@javax.annotation.Nonnull String id, final ApiCallback<OverviewView> _callback) throws ApiException {
+    public okhttp3.Call postGuideStepsByIdResetAsync(@javax.annotation.Nonnull String id, final ApiCallback<GuideOverviewView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postGuideStepsByIdResetValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideOverviewView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1874,6 +1586,7 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postGuideStepsByIdSkipCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1903,7 +1616,8 @@ public class GuideApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1936,17 +1650,18 @@ public class GuideApi {
      * Marks one step of the caller org&#39;s journey skipped and returns the refreshed journey.
      * Marks one step of the caller org&#39;s journey skipped and returns the refreshed journey. Skipping is never dependency-gated — the founder is declaring the step does not apply to them — so a step whose dependencies are unfinished can still be skipped, and a skipped step counts as terminal for everything downstream of it.
      * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
-     * @return OverviewView
+     * @return GuideOverviewView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public OverviewView postGuideStepsByIdSkip(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<OverviewView> localVarResp = postGuideStepsByIdSkipWithHttpInfo(id);
+    public GuideOverviewView postGuideStepsByIdSkip(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<GuideOverviewView> localVarResp = postGuideStepsByIdSkipWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1954,18 +1669,19 @@ public class GuideApi {
      * Marks one step of the caller org&#39;s journey skipped and returns the refreshed journey.
      * Marks one step of the caller org&#39;s journey skipped and returns the refreshed journey. Skipping is never dependency-gated — the founder is declaring the step does not apply to them — so a step whose dependencies are unfinished can still be skipped, and a skipped step counts as terminal for everything downstream of it.
      * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
-     * @return ApiResponse&lt;OverviewView&gt;
+     * @return ApiResponse&lt;GuideOverviewView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OverviewView> postGuideStepsByIdSkipWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<GuideOverviewView> postGuideStepsByIdSkipWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postGuideStepsByIdSkipValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideOverviewView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1981,12 +1697,13 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postGuideStepsByIdSkipAsync(@javax.annotation.Nonnull String id, final ApiCallback<OverviewView> _callback) throws ApiException {
+    public okhttp3.Call postGuideStepsByIdSkipAsync(@javax.annotation.Nonnull String id, final ApiCallback<GuideOverviewView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postGuideStepsByIdSkipValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideOverviewView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2001,6 +1718,7 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postGuideStepsByIdStartCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -2030,7 +1748,8 @@ public class GuideApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2063,17 +1782,18 @@ public class GuideApi {
      * Marks one step of the caller org&#39;s journey in progress and returns the refreshed journey.
      * Marks one step of the caller org&#39;s journey in progress and returns the refreshed journey.  Dependency-GATED: a step whose prerequisites are unfinished is refused 409 carrying {error, step, blockedBy}, where blockedBy names the exact steps in the way — enough to render the reason without asking again.
      * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
-     * @return OverviewView
+     * @return GuideOverviewView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public OverviewView postGuideStepsByIdStart(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<OverviewView> localVarResp = postGuideStepsByIdStartWithHttpInfo(id);
+    public GuideOverviewView postGuideStepsByIdStart(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<GuideOverviewView> localVarResp = postGuideStepsByIdStartWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -2081,18 +1801,19 @@ public class GuideApi {
      * Marks one step of the caller org&#39;s journey in progress and returns the refreshed journey.
      * Marks one step of the caller org&#39;s journey in progress and returns the refreshed journey.  Dependency-GATED: a step whose prerequisites are unfinished is refused 409 carrying {error, step, blockedBy}, where blockedBy names the exact steps in the way — enough to render the reason without asking again.
      * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
-     * @return ApiResponse&lt;OverviewView&gt;
+     * @return ApiResponse&lt;GuideOverviewView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OverviewView> postGuideStepsByIdStartWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<GuideOverviewView> postGuideStepsByIdStartWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postGuideStepsByIdStartValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideOverviewView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2108,101 +1829,14 @@ public class GuideApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postGuideStepsByIdStartAsync(@javax.annotation.Nonnull String id, final ApiCallback<OverviewView> _callback) throws ApiException {
+    public okhttp3.Call postGuideStepsByIdStartAsync(@javax.annotation.Nonnull String id, final ApiCallback<GuideOverviewView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postGuideStepsByIdStartValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
+        Type localVarReturnType = new TypeToken<GuideOverviewView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for putGuideBlueprint
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call putGuideBlueprintCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/guide/blueprint";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call putGuideBlueprintValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return putGuideBlueprintCall(_callback);
-
-    }
-
-    /**
-     * Publish a new version of the brand blueprint
-     * Replaces the deployment&#39;s brand blueprint — the shared journey, sections, strategies and templates every org starts from — as a NEW VERSION, and answers the stored document with its key and version number. The previous versions are kept, so /blueprint/versions is a real recovery trail.  SuperAdmin ONLY. A per-org admin is 403: this is platform content, not a per-customer surface — the per-customer surface is /v1/guide/curriculum. The write is audited.  The body is a blueprint document accepted as YAML **or** JSON, which is the caller-visible reason it takes a raw body. It must parse AND validate — unique ids throughout, an acyclic step graph with no dangling dependencies, every step&#39;s section and every strategy&#39;s principle resolving to a real one — or it is 422 and never becomes active, leaving the version already serving authoritative. An empty body is 400 and one over 16 MiB is 413.  Edits are live: the next resolve reads the newest version. A stored document that is itself corrupt or schema-drifted does not block this write — the target is resolved without parsing what is there — so a bad version can always be published over.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void putGuideBlueprint() throws ApiException {
-        putGuideBlueprintWithHttpInfo();
-    }
-
-    /**
-     * Publish a new version of the brand blueprint
-     * Replaces the deployment&#39;s brand blueprint — the shared journey, sections, strategies and templates every org starts from — as a NEW VERSION, and answers the stored document with its key and version number. The previous versions are kept, so /blueprint/versions is a real recovery trail.  SuperAdmin ONLY. A per-org admin is 403: this is platform content, not a per-customer surface — the per-customer surface is /v1/guide/curriculum. The write is audited.  The body is a blueprint document accepted as YAML **or** JSON, which is the caller-visible reason it takes a raw body. It must parse AND validate — unique ids throughout, an acyclic step graph with no dangling dependencies, every step&#39;s section and every strategy&#39;s principle resolving to a real one — or it is 422 and never becomes active, leaving the version already serving authoritative. An empty body is 400 and one over 16 MiB is 413.  Edits are live: the next resolve reads the newest version. A stored document that is itself corrupt or schema-drifted does not block this write — the target is resolved without parsing what is there — so a bad version can always be published over.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> putGuideBlueprintWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = putGuideBlueprintValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Publish a new version of the brand blueprint (asynchronously)
-     * Replaces the deployment&#39;s brand blueprint — the shared journey, sections, strategies and templates every org starts from — as a NEW VERSION, and answers the stored document with its key and version number. The previous versions are kept, so /blueprint/versions is a real recovery trail.  SuperAdmin ONLY. A per-org admin is 403: this is platform content, not a per-customer surface — the per-customer surface is /v1/guide/curriculum. The write is audited.  The body is a blueprint document accepted as YAML **or** JSON, which is the caller-visible reason it takes a raw body. It must parse AND validate — unique ids throughout, an acyclic step graph with no dangling dependencies, every step&#39;s section and every strategy&#39;s principle resolving to a real one — or it is 422 and never becomes active, leaving the version already serving authoritative. An empty body is 400 and one over 16 MiB is 413.  Edits are live: the next resolve reads the newest version. A stored document that is itself corrupt or schema-drifted does not block this write — the target is resolved without parsing what is there — so a bad version can always be published over.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call putGuideBlueprintAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = putGuideBlueprintValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -2262,7 +1896,7 @@ public class GuideApi {
 
     /**
      * Replace your org&#39;s journey with a curriculum you author
-     * Sets the caller org&#39;s OWN curriculum — the per-customer override — and answers the journey now in force with &#x60;custom: true&#x60;. The body is a curriculum document, and it is accepted as YAML **or** JSON: that is the caller-visible reason this takes a raw body rather than a declared shape. Whatever the syntax, the CANONICAL parsed form is what is stored, so the document the engine runs never depends on how it was written.  Fail-closed: a body that does not parse, or parses but is not a valid journey (unique step ids, no dangling or cyclic dependencies), is 422 and NEVER becomes active — the org keeps the journey it had. Requires a validated org; 403 without one. An empty body is 400 and one over 256 KiB is 413.  This is tier one only. It overrides nothing but this org&#39;s own journey; the shared brand blueprint is a different surface with a different gate. DELETE the same path to drop the override and fall back to it.
+     * Sets the caller org&#39;s OWN curriculum — the per-customer override — and answers the journey now in force with &#x60;custom: true&#x60;. The body is a curriculum document, and it is accepted as YAML **or** JSON: that is the caller-visible reason this takes a raw body rather than a declared shape. Whatever the syntax, the CANONICAL parsed form is what is stored, so the document the engine runs never depends on how it was written.  Fail-closed: a body that does not parse, or parses but is not a valid journey (unique step ids, no dangling or cyclic dependencies), is 422 and NEVER becomes active — the org keeps the journey it had. Requires a validated org: 401 without a principal, 403 without an org. An empty body is 400 and one over 256 KiB is 413.  This is tier one only. It overrides nothing but this org&#39;s own journey; the shared brand blueprint is a different surface with a different gate. DELETE the same path to drop the override and fall back to it.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void putGuideCurriculum() throws ApiException {
@@ -2271,7 +1905,7 @@ public class GuideApi {
 
     /**
      * Replace your org&#39;s journey with a curriculum you author
-     * Sets the caller org&#39;s OWN curriculum — the per-customer override — and answers the journey now in force with &#x60;custom: true&#x60;. The body is a curriculum document, and it is accepted as YAML **or** JSON: that is the caller-visible reason this takes a raw body rather than a declared shape. Whatever the syntax, the CANONICAL parsed form is what is stored, so the document the engine runs never depends on how it was written.  Fail-closed: a body that does not parse, or parses but is not a valid journey (unique step ids, no dangling or cyclic dependencies), is 422 and NEVER becomes active — the org keeps the journey it had. Requires a validated org; 403 without one. An empty body is 400 and one over 256 KiB is 413.  This is tier one only. It overrides nothing but this org&#39;s own journey; the shared brand blueprint is a different surface with a different gate. DELETE the same path to drop the override and fall back to it.
+     * Sets the caller org&#39;s OWN curriculum — the per-customer override — and answers the journey now in force with &#x60;custom: true&#x60;. The body is a curriculum document, and it is accepted as YAML **or** JSON: that is the caller-visible reason this takes a raw body rather than a declared shape. Whatever the syntax, the CANONICAL parsed form is what is stored, so the document the engine runs never depends on how it was written.  Fail-closed: a body that does not parse, or parses but is not a valid journey (unique step ids, no dangling or cyclic dependencies), is 422 and NEVER becomes active — the org keeps the journey it had. Requires a validated org: 401 without a principal, 403 without an org. An empty body is 400 and one over 256 KiB is 413.  This is tier one only. It overrides nothing but this org&#39;s own journey; the shared brand blueprint is a different surface with a different gate. DELETE the same path to drop the override and fall back to it.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -2282,7 +1916,7 @@ public class GuideApi {
 
     /**
      * Replace your org&#39;s journey with a curriculum you author (asynchronously)
-     * Sets the caller org&#39;s OWN curriculum — the per-customer override — and answers the journey now in force with &#x60;custom: true&#x60;. The body is a curriculum document, and it is accepted as YAML **or** JSON: that is the caller-visible reason this takes a raw body rather than a declared shape. Whatever the syntax, the CANONICAL parsed form is what is stored, so the document the engine runs never depends on how it was written.  Fail-closed: a body that does not parse, or parses but is not a valid journey (unique step ids, no dangling or cyclic dependencies), is 422 and NEVER becomes active — the org keeps the journey it had. Requires a validated org; 403 without one. An empty body is 400 and one over 256 KiB is 413.  This is tier one only. It overrides nothing but this org&#39;s own journey; the shared brand blueprint is a different surface with a different gate. DELETE the same path to drop the override and fall back to it.
+     * Sets the caller org&#39;s OWN curriculum — the per-customer override — and answers the journey now in force with &#x60;custom: true&#x60;. The body is a curriculum document, and it is accepted as YAML **or** JSON: that is the caller-visible reason this takes a raw body rather than a declared shape. Whatever the syntax, the CANONICAL parsed form is what is stored, so the document the engine runs never depends on how it was written.  Fail-closed: a body that does not parse, or parses but is not a valid journey (unique step ids, no dangling or cyclic dependencies), is 422 and NEVER becomes active — the org keeps the journey it had. Requires a validated org: 401 without a principal, 403 without an org. An empty body is 400 and one over 256 KiB is 413.  This is tier one only. It overrides nothing but this org&#39;s own journey; the shared brand blueprint is a different surface with a different gate. DELETE the same path to drop the override and fall back to it.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

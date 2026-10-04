@@ -27,21 +27,22 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.AccList;
-import ai.hanzo.cloud.model.AccView;
-import ai.hanzo.cloud.model.AccreditationDecision;
-import ai.hanzo.cloud.model.AccreditationReq;
-import ai.hanzo.cloud.model.AuditList;
-import ai.hanzo.cloud.model.CheckList;
-import ai.hanzo.cloud.model.CheckView;
-import ai.hanzo.cloud.model.HealthView;
-import ai.hanzo.cloud.model.RecordList;
-import ai.hanzo.cloud.model.StatusView;
-import ai.hanzo.cloud.model.Subject;
-import ai.hanzo.cloud.model.SubjectList;
-import ai.hanzo.cloud.model.SubjectReq;
-import ai.hanzo.cloud.model.VerificationDecision;
-import ai.hanzo.cloud.model.VerificationReq;
+import ai.hanzo.cloud.model.ComplianceAccList;
+import ai.hanzo.cloud.model.ComplianceAccView;
+import ai.hanzo.cloud.model.ComplianceAccreditationDecision;
+import ai.hanzo.cloud.model.ComplianceAccreditationReq;
+import ai.hanzo.cloud.model.ComplianceAuditList;
+import ai.hanzo.cloud.model.ComplianceCheckList;
+import ai.hanzo.cloud.model.ComplianceCheckView;
+import ai.hanzo.cloud.model.ComplianceHealthView;
+import ai.hanzo.cloud.model.ComplianceRecordList;
+import ai.hanzo.cloud.model.ComplianceStatusView;
+import ai.hanzo.cloud.model.ComplianceSubject;
+import ai.hanzo.cloud.model.ComplianceSubjectList;
+import ai.hanzo.cloud.model.ComplianceSubjectReq;
+import ai.hanzo.cloud.model.ComplianceVerificationDecision;
+import ai.hanzo.cloud.model.ComplianceVerificationReq;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -97,6 +98,7 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getComplianceAccreditationCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -129,7 +131,8 @@ public class ComplianceApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -157,17 +160,18 @@ public class ComplianceApi {
      * Returns the org&#39;s tracked accreditation-state records, newest first — evidence entries the org keeps, never a platform certification.
      * Returns the org&#39;s tracked accreditation-state records, newest first — evidence entries the org keeps, never a platform certification.
      * @param limit Limit caps the rows returned; non-positive means the server default. (optional)
-     * @return AccList
+     * @return ComplianceAccList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AccList getComplianceAccreditation(@javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<AccList> localVarResp = getComplianceAccreditationWithHttpInfo(limit);
+    public ComplianceAccList getComplianceAccreditation(@javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<ComplianceAccList> localVarResp = getComplianceAccreditationWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -175,18 +179,19 @@ public class ComplianceApi {
      * Returns the org&#39;s tracked accreditation-state records, newest first — evidence entries the org keeps, never a platform certification.
      * Returns the org&#39;s tracked accreditation-state records, newest first — evidence entries the org keeps, never a platform certification.
      * @param limit Limit caps the rows returned; non-positive means the server default. (optional)
-     * @return ApiResponse&lt;AccList&gt;
+     * @return ApiResponse&lt;ComplianceAccList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccList> getComplianceAccreditationWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<ComplianceAccList> getComplianceAccreditationWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getComplianceAccreditationValidateBeforeCall(limit, null);
-        Type localVarReturnType = new TypeToken<AccList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceAccList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -202,12 +207,13 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceAccreditationAsync(@javax.annotation.Nullable Long limit, final ApiCallback<AccList> _callback) throws ApiException {
+    public okhttp3.Call getComplianceAccreditationAsync(@javax.annotation.Nullable Long limit, final ApiCallback<ComplianceAccList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceAccreditationValidateBeforeCall(limit, _callback);
-        Type localVarReturnType = new TypeToken<AccList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceAccList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -222,6 +228,7 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getComplianceAccreditationByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -251,7 +258,8 @@ public class ComplianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -284,17 +292,18 @@ public class ComplianceApi {
      * Returns one tracked accreditation record.
      * Returns one tracked accreditation record.
      * @param id ID is the accreditation record to read, from the path. (required)
-     * @return AccView
+     * @return ComplianceAccView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AccView getComplianceAccreditationById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<AccView> localVarResp = getComplianceAccreditationByIdWithHttpInfo(id);
+    public ComplianceAccView getComplianceAccreditationById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ComplianceAccView> localVarResp = getComplianceAccreditationByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -302,18 +311,19 @@ public class ComplianceApi {
      * Returns one tracked accreditation record.
      * Returns one tracked accreditation record.
      * @param id ID is the accreditation record to read, from the path. (required)
-     * @return ApiResponse&lt;AccView&gt;
+     * @return ApiResponse&lt;ComplianceAccView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccView> getComplianceAccreditationByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<ComplianceAccView> getComplianceAccreditationByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getComplianceAccreditationByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<AccView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceAccView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -329,12 +339,13 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceAccreditationByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<AccView> _callback) throws ApiException {
+    public okhttp3.Call getComplianceAccreditationByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<ComplianceAccView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceAccreditationByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<AccView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceAccView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -349,6 +360,7 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getComplianceAuditCall(@javax.annotation.Nullable String result, final ApiCallback _callback) throws ApiException {
@@ -381,7 +393,8 @@ public class ComplianceApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -407,44 +420,46 @@ public class ComplianceApi {
 
     /**
      * AuditRead is the compliance read of the SHARED tamper-evident audit plane — the SOC 2 posture surface (privileged actions: who started/decided what, when).
-     * AuditRead is the compliance read of the SHARED tamper-evident audit plane — the SOC 2 posture surface (privileged actions: who started/decided what, when). The org is PINNED to the caller&#39;s validated org and the rows are narrowed to compliance.* actions. Fail-closed: no principal is a 403, no configured audit store a 501.
+     * AuditRead is the compliance read of the SHARED tamper-evident audit plane — the SOC 2 posture surface (privileged actions: who started/decided what, when). The org is PINNED to the caller&#39;s validated org and the rows are narrowed to compliance.* actions. Fail-closed: no principal is a 401, no configured audit store a 501.
      * @param result Result filters rows by outcome result: success, deny, or error; empty means all. (optional)
-     * @return AuditList
+     * @return ComplianceAuditList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AuditList getComplianceAudit(@javax.annotation.Nullable String result) throws ApiException {
-        ApiResponse<AuditList> localVarResp = getComplianceAuditWithHttpInfo(result);
+    public ComplianceAuditList getComplianceAudit(@javax.annotation.Nullable String result) throws ApiException {
+        ApiResponse<ComplianceAuditList> localVarResp = getComplianceAuditWithHttpInfo(result);
         return localVarResp.getData();
     }
 
     /**
      * AuditRead is the compliance read of the SHARED tamper-evident audit plane — the SOC 2 posture surface (privileged actions: who started/decided what, when).
-     * AuditRead is the compliance read of the SHARED tamper-evident audit plane — the SOC 2 posture surface (privileged actions: who started/decided what, when). The org is PINNED to the caller&#39;s validated org and the rows are narrowed to compliance.* actions. Fail-closed: no principal is a 403, no configured audit store a 501.
+     * AuditRead is the compliance read of the SHARED tamper-evident audit plane — the SOC 2 posture surface (privileged actions: who started/decided what, when). The org is PINNED to the caller&#39;s validated org and the rows are narrowed to compliance.* actions. Fail-closed: no principal is a 401, no configured audit store a 501.
      * @param result Result filters rows by outcome result: success, deny, or error; empty means all. (optional)
-     * @return ApiResponse&lt;AuditList&gt;
+     * @return ApiResponse&lt;ComplianceAuditList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AuditList> getComplianceAuditWithHttpInfo(@javax.annotation.Nullable String result) throws ApiException {
+    public ApiResponse<ComplianceAuditList> getComplianceAuditWithHttpInfo(@javax.annotation.Nullable String result) throws ApiException {
         okhttp3.Call localVarCall = getComplianceAuditValidateBeforeCall(result, null);
-        Type localVarReturnType = new TypeToken<AuditList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceAuditList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * AuditRead is the compliance read of the SHARED tamper-evident audit plane — the SOC 2 posture surface (privileged actions: who started/decided what, when). (asynchronously)
-     * AuditRead is the compliance read of the SHARED tamper-evident audit plane — the SOC 2 posture surface (privileged actions: who started/decided what, when). The org is PINNED to the caller&#39;s validated org and the rows are narrowed to compliance.* actions. Fail-closed: no principal is a 403, no configured audit store a 501.
+     * AuditRead is the compliance read of the SHARED tamper-evident audit plane — the SOC 2 posture surface (privileged actions: who started/decided what, when). The org is PINNED to the caller&#39;s validated org and the rows are narrowed to compliance.* actions. Fail-closed: no principal is a 401, no configured audit store a 501.
      * @param result Result filters rows by outcome result: success, deny, or error; empty means all. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -454,12 +469,13 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceAuditAsync(@javax.annotation.Nullable String result, final ApiCallback<AuditList> _callback) throws ApiException {
+    public okhttp3.Call getComplianceAuditAsync(@javax.annotation.Nullable String result, final ApiCallback<ComplianceAuditList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceAuditValidateBeforeCall(result, _callback);
-        Type localVarReturnType = new TypeToken<AuditList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceAuditList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -473,6 +489,7 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getComplianceHealthCall(final ApiCallback _callback) throws ApiException {
@@ -501,7 +518,8 @@ public class ComplianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -526,43 +544,45 @@ public class ComplianceApi {
     }
 
     /**
-     * Health reports subsystem liveness and the wired verification provider.
-     * Health reports subsystem liveness and the wired verification provider. Fail-open on purpose: it never probes the external provider, so a provider outage cannot fail liveness.
-     * @return HealthView
+     * Reports subsystem liveness and the wired verification provider.
+     * Reports subsystem liveness and the wired verification provider. Fail-open on purpose: it never probes the external provider, so a provider outage cannot fail liveness.
+     * @return ComplianceHealthView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public HealthView getComplianceHealth() throws ApiException {
-        ApiResponse<HealthView> localVarResp = getComplianceHealthWithHttpInfo();
+    public ComplianceHealthView getComplianceHealth() throws ApiException {
+        ApiResponse<ComplianceHealthView> localVarResp = getComplianceHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Health reports subsystem liveness and the wired verification provider.
-     * Health reports subsystem liveness and the wired verification provider. Fail-open on purpose: it never probes the external provider, so a provider outage cannot fail liveness.
-     * @return ApiResponse&lt;HealthView&gt;
+     * Reports subsystem liveness and the wired verification provider.
+     * Reports subsystem liveness and the wired verification provider. Fail-open on purpose: it never probes the external provider, so a provider outage cannot fail liveness.
+     * @return ApiResponse&lt;ComplianceHealthView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<HealthView> getComplianceHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<ComplianceHealthView> getComplianceHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getComplianceHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<HealthView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceHealthView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Health reports subsystem liveness and the wired verification provider. (asynchronously)
-     * Health reports subsystem liveness and the wired verification provider. Fail-open on purpose: it never probes the external provider, so a provider outage cannot fail liveness.
+     * Reports subsystem liveness and the wired verification provider. (asynchronously)
+     * Reports subsystem liveness and the wired verification provider. Fail-open on purpose: it never probes the external provider, so a provider outage cannot fail liveness.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -571,12 +591,13 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceHealthAsync(final ApiCallback<HealthView> _callback) throws ApiException {
+    public okhttp3.Call getComplianceHealthAsync(final ApiCallback<ComplianceHealthView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<HealthView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceHealthView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -591,6 +612,7 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getComplianceRecordsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -623,7 +645,8 @@ public class ComplianceApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -651,17 +674,18 @@ public class ComplianceApi {
      * ListRecords is the unified compliance-record view for the org: its verifications and accreditation records together, each provider-reported or tracked, never platform-asserted.
      * ListRecords is the unified compliance-record view for the org: its verifications and accreditation records together, each provider-reported or tracked, never platform-asserted. PII stays in the subject store; records carry only opaque ids and statuses.
      * @param limit Limit caps the rows returned; non-positive means the server default. (optional)
-     * @return RecordList
+     * @return ComplianceRecordList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RecordList getComplianceRecords(@javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<RecordList> localVarResp = getComplianceRecordsWithHttpInfo(limit);
+    public ComplianceRecordList getComplianceRecords(@javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<ComplianceRecordList> localVarResp = getComplianceRecordsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -669,18 +693,19 @@ public class ComplianceApi {
      * ListRecords is the unified compliance-record view for the org: its verifications and accreditation records together, each provider-reported or tracked, never platform-asserted.
      * ListRecords is the unified compliance-record view for the org: its verifications and accreditation records together, each provider-reported or tracked, never platform-asserted. PII stays in the subject store; records carry only opaque ids and statuses.
      * @param limit Limit caps the rows returned; non-positive means the server default. (optional)
-     * @return ApiResponse&lt;RecordList&gt;
+     * @return ApiResponse&lt;ComplianceRecordList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RecordList> getComplianceRecordsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<ComplianceRecordList> getComplianceRecordsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getComplianceRecordsValidateBeforeCall(limit, null);
-        Type localVarReturnType = new TypeToken<RecordList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceRecordList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -696,12 +721,13 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceRecordsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<RecordList> _callback) throws ApiException {
+    public okhttp3.Call getComplianceRecordsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<ComplianceRecordList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceRecordsValidateBeforeCall(limit, _callback);
-        Type localVarReturnType = new TypeToken<RecordList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceRecordList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -715,6 +741,7 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getComplianceStatusCall(final ApiCallback _callback) throws ApiException {
@@ -743,7 +770,8 @@ public class ComplianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -770,35 +798,37 @@ public class ComplianceApi {
     /**
      * Status is the org&#39;s honest posture read: the wired provider and the per-status tally of its verifications.
      * Status is the org&#39;s honest posture read: the wired provider and the per-status tally of its verifications. It is deliberately NOT a boolean \&quot;compliant\&quot; — it reports counts of provider-reported states and carries the boundary disclaimer.
-     * @return StatusView
+     * @return ComplianceStatusView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public StatusView getComplianceStatus() throws ApiException {
-        ApiResponse<StatusView> localVarResp = getComplianceStatusWithHttpInfo();
+    public ComplianceStatusView getComplianceStatus() throws ApiException {
+        ApiResponse<ComplianceStatusView> localVarResp = getComplianceStatusWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Status is the org&#39;s honest posture read: the wired provider and the per-status tally of its verifications.
      * Status is the org&#39;s honest posture read: the wired provider and the per-status tally of its verifications. It is deliberately NOT a boolean \&quot;compliant\&quot; — it reports counts of provider-reported states and carries the boundary disclaimer.
-     * @return ApiResponse&lt;StatusView&gt;
+     * @return ApiResponse&lt;ComplianceStatusView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StatusView> getComplianceStatusWithHttpInfo() throws ApiException {
+    public ApiResponse<ComplianceStatusView> getComplianceStatusWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getComplianceStatusValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<StatusView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceStatusView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -813,12 +843,13 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceStatusAsync(final ApiCallback<StatusView> _callback) throws ApiException {
+    public okhttp3.Call getComplianceStatusAsync(final ApiCallback<ComplianceStatusView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceStatusValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<StatusView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceStatusView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -833,6 +864,7 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getComplianceSubjectsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -865,7 +897,8 @@ public class ComplianceApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -893,17 +926,18 @@ public class ComplianceApi {
      * Returns the org&#39;s subjects as PII-MINIMIZED summaries — no name or email, only whether an email is on file.
      * Returns the org&#39;s subjects as PII-MINIMIZED summaries — no name or email, only whether an email is on file. The full record is returned only by the explicit single-subject read.
      * @param limit Limit caps the rows returned; non-positive means the server default. (optional)
-     * @return SubjectList
+     * @return ComplianceSubjectList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SubjectList getComplianceSubjects(@javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<SubjectList> localVarResp = getComplianceSubjectsWithHttpInfo(limit);
+    public ComplianceSubjectList getComplianceSubjects(@javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<ComplianceSubjectList> localVarResp = getComplianceSubjectsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -911,18 +945,19 @@ public class ComplianceApi {
      * Returns the org&#39;s subjects as PII-MINIMIZED summaries — no name or email, only whether an email is on file.
      * Returns the org&#39;s subjects as PII-MINIMIZED summaries — no name or email, only whether an email is on file. The full record is returned only by the explicit single-subject read.
      * @param limit Limit caps the rows returned; non-positive means the server default. (optional)
-     * @return ApiResponse&lt;SubjectList&gt;
+     * @return ApiResponse&lt;ComplianceSubjectList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SubjectList> getComplianceSubjectsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<ComplianceSubjectList> getComplianceSubjectsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getComplianceSubjectsValidateBeforeCall(limit, null);
-        Type localVarReturnType = new TypeToken<SubjectList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceSubjectList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -938,12 +973,13 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceSubjectsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<SubjectList> _callback) throws ApiException {
+    public okhttp3.Call getComplianceSubjectsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<ComplianceSubjectList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceSubjectsValidateBeforeCall(limit, _callback);
-        Type localVarReturnType = new TypeToken<SubjectList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceSubjectList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -958,6 +994,7 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getComplianceSubjectsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -987,7 +1024,8 @@ public class ComplianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1020,17 +1058,18 @@ public class ComplianceApi {
      * Returns one subject WITH its contact PII — the only surface that returns it, and only to the owning org.
      * Returns one subject WITH its contact PII — the only surface that returns it, and only to the owning org. The response is never cached by any intermediary.
      * @param id ID is the subject to read, from the path. (required)
-     * @return Subject
+     * @return ComplianceSubject
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Subject getComplianceSubjectsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Subject> localVarResp = getComplianceSubjectsByIdWithHttpInfo(id);
+    public ComplianceSubject getComplianceSubjectsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ComplianceSubject> localVarResp = getComplianceSubjectsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1038,18 +1077,19 @@ public class ComplianceApi {
      * Returns one subject WITH its contact PII — the only surface that returns it, and only to the owning org.
      * Returns one subject WITH its contact PII — the only surface that returns it, and only to the owning org. The response is never cached by any intermediary.
      * @param id ID is the subject to read, from the path. (required)
-     * @return ApiResponse&lt;Subject&gt;
+     * @return ApiResponse&lt;ComplianceSubject&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Subject> getComplianceSubjectsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<ComplianceSubject> getComplianceSubjectsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getComplianceSubjectsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Subject>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceSubject>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1065,12 +1105,13 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceSubjectsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Subject> _callback) throws ApiException {
+    public okhttp3.Call getComplianceSubjectsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<ComplianceSubject> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceSubjectsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Subject>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceSubject>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1085,6 +1126,7 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getComplianceVerificationsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -1117,7 +1159,8 @@ public class ComplianceApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1145,17 +1188,18 @@ public class ComplianceApi {
      * Returns the org&#39;s KYC/KYB verifications, newest first — opaque subject references and provider-reported statuses only, no subject PII.
      * Returns the org&#39;s KYC/KYB verifications, newest first — opaque subject references and provider-reported statuses only, no subject PII.
      * @param limit Limit caps the rows returned; non-positive means the server default. (optional)
-     * @return CheckList
+     * @return ComplianceCheckList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CheckList getComplianceVerifications(@javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<CheckList> localVarResp = getComplianceVerificationsWithHttpInfo(limit);
+    public ComplianceCheckList getComplianceVerifications(@javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<ComplianceCheckList> localVarResp = getComplianceVerificationsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -1163,18 +1207,19 @@ public class ComplianceApi {
      * Returns the org&#39;s KYC/KYB verifications, newest first — opaque subject references and provider-reported statuses only, no subject PII.
      * Returns the org&#39;s KYC/KYB verifications, newest first — opaque subject references and provider-reported statuses only, no subject PII.
      * @param limit Limit caps the rows returned; non-positive means the server default. (optional)
-     * @return ApiResponse&lt;CheckList&gt;
+     * @return ApiResponse&lt;ComplianceCheckList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckList> getComplianceVerificationsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<ComplianceCheckList> getComplianceVerificationsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getComplianceVerificationsValidateBeforeCall(limit, null);
-        Type localVarReturnType = new TypeToken<CheckList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceCheckList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1190,12 +1235,13 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceVerificationsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<CheckList> _callback) throws ApiException {
+    public okhttp3.Call getComplianceVerificationsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<ComplianceCheckList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceVerificationsValidateBeforeCall(limit, _callback);
-        Type localVarReturnType = new TypeToken<CheckList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceCheckList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1210,6 +1256,7 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getComplianceVerificationsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1239,7 +1286,8 @@ public class ComplianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1272,17 +1320,18 @@ public class ComplianceApi {
      * Returns one verification — its opaque subject reference and provider-reported status, no subject PII.
      * Returns one verification — its opaque subject reference and provider-reported status, no subject PII.
      * @param id ID is the verification to act on, from the path. (required)
-     * @return CheckView
+     * @return ComplianceCheckView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CheckView getComplianceVerificationsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CheckView> localVarResp = getComplianceVerificationsByIdWithHttpInfo(id);
+    public ComplianceCheckView getComplianceVerificationsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ComplianceCheckView> localVarResp = getComplianceVerificationsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1290,18 +1339,19 @@ public class ComplianceApi {
      * Returns one verification — its opaque subject reference and provider-reported status, no subject PII.
      * Returns one verification — its opaque subject reference and provider-reported status, no subject PII.
      * @param id ID is the verification to act on, from the path. (required)
-     * @return ApiResponse&lt;CheckView&gt;
+     * @return ApiResponse&lt;ComplianceCheckView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckView> getComplianceVerificationsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<ComplianceCheckView> getComplianceVerificationsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getComplianceVerificationsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CheckView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceCheckView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1317,18 +1367,19 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceVerificationsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CheckView> _callback) throws ApiException {
+    public okhttp3.Call getComplianceVerificationsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<ComplianceCheckView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceVerificationsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CheckView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceCheckView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postComplianceAccreditation
-     * @param accreditationReq  (required)
+     * @param complianceAccreditationReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1337,9 +1388,10 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postComplianceAccreditationCall(@javax.annotation.Nonnull AccreditationReq accreditationReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postComplianceAccreditationCall(@javax.annotation.Nonnull ComplianceAccreditationReq complianceAccreditationReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1353,7 +1405,7 @@ public class ComplianceApi {
             basePath = null;
         }
 
-        Object localVarPostBody = accreditationReq;
+        Object localVarPostBody = complianceAccreditationReq;
 
         // create path and map variables
         String localVarPath = "/v1/compliance/accreditation";
@@ -1365,7 +1417,8 @@ public class ComplianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1385,57 +1438,59 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postComplianceAccreditationValidateBeforeCall(@javax.annotation.Nonnull AccreditationReq accreditationReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'accreditationReq' is set
-        if (accreditationReq == null) {
-            throw new ApiException("Missing the required parameter 'accreditationReq' when calling postComplianceAccreditation(Async)");
+    private okhttp3.Call postComplianceAccreditationValidateBeforeCall(@javax.annotation.Nonnull ComplianceAccreditationReq complianceAccreditationReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'complianceAccreditationReq' is set
+        if (complianceAccreditationReq == null) {
+            throw new ApiException("Missing the required parameter 'complianceAccreditationReq' when calling postComplianceAccreditation(Async)");
         }
 
-        return postComplianceAccreditationCall(accreditationReq, _callback);
+        return postComplianceAccreditationCall(complianceAccreditationReq, _callback);
 
     }
 
     /**
      * Records an ASSERTED accreditation state for a subject — the subject&#39;s own assertion, with no verifier.
      * Records an ASSERTED accreditation state for a subject — the subject&#39;s own assertion, with no verifier. Every CONFIRMED state (provider_verified, reviewer_confirmed) and every rejected/expired state is a DECISION recorded via the decision endpoint, attributed to the reviewer — a create can never stamp a confirmation. The underlying figures (income, net worth) are never stored; only the method, category, and state.
-     * @param accreditationReq  (required)
-     * @return AccView
+     * @param complianceAccreditationReq  (required)
+     * @return ComplianceAccView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AccView postComplianceAccreditation(@javax.annotation.Nonnull AccreditationReq accreditationReq) throws ApiException {
-        ApiResponse<AccView> localVarResp = postComplianceAccreditationWithHttpInfo(accreditationReq);
+    public ComplianceAccView postComplianceAccreditation(@javax.annotation.Nonnull ComplianceAccreditationReq complianceAccreditationReq) throws ApiException {
+        ApiResponse<ComplianceAccView> localVarResp = postComplianceAccreditationWithHttpInfo(complianceAccreditationReq);
         return localVarResp.getData();
     }
 
     /**
      * Records an ASSERTED accreditation state for a subject — the subject&#39;s own assertion, with no verifier.
      * Records an ASSERTED accreditation state for a subject — the subject&#39;s own assertion, with no verifier. Every CONFIRMED state (provider_verified, reviewer_confirmed) and every rejected/expired state is a DECISION recorded via the decision endpoint, attributed to the reviewer — a create can never stamp a confirmation. The underlying figures (income, net worth) are never stored; only the method, category, and state.
-     * @param accreditationReq  (required)
-     * @return ApiResponse&lt;AccView&gt;
+     * @param complianceAccreditationReq  (required)
+     * @return ApiResponse&lt;ComplianceAccView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccView> postComplianceAccreditationWithHttpInfo(@javax.annotation.Nonnull AccreditationReq accreditationReq) throws ApiException {
-        okhttp3.Call localVarCall = postComplianceAccreditationValidateBeforeCall(accreditationReq, null);
-        Type localVarReturnType = new TypeToken<AccView>(){}.getType();
+    public ApiResponse<ComplianceAccView> postComplianceAccreditationWithHttpInfo(@javax.annotation.Nonnull ComplianceAccreditationReq complianceAccreditationReq) throws ApiException {
+        okhttp3.Call localVarCall = postComplianceAccreditationValidateBeforeCall(complianceAccreditationReq, null);
+        Type localVarReturnType = new TypeToken<ComplianceAccView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Records an ASSERTED accreditation state for a subject — the subject&#39;s own assertion, with no verifier. (asynchronously)
      * Records an ASSERTED accreditation state for a subject — the subject&#39;s own assertion, with no verifier. Every CONFIRMED state (provider_verified, reviewer_confirmed) and every rejected/expired state is a DECISION recorded via the decision endpoint, attributed to the reviewer — a create can never stamp a confirmation. The underlying figures (income, net worth) are never stored; only the method, category, and state.
-     * @param accreditationReq  (required)
+     * @param complianceAccreditationReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1444,19 +1499,20 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postComplianceAccreditationAsync(@javax.annotation.Nonnull AccreditationReq accreditationReq, final ApiCallback<AccView> _callback) throws ApiException {
+    public okhttp3.Call postComplianceAccreditationAsync(@javax.annotation.Nonnull ComplianceAccreditationReq complianceAccreditationReq, final ApiCallback<ComplianceAccView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postComplianceAccreditationValidateBeforeCall(accreditationReq, _callback);
-        Type localVarReturnType = new TypeToken<AccView>(){}.getType();
+        okhttp3.Call localVarCall = postComplianceAccreditationValidateBeforeCall(complianceAccreditationReq, _callback);
+        Type localVarReturnType = new TypeToken<ComplianceAccView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postComplianceAccreditationByIdDecision
      * @param id ID is the accreditation record to decide, from the path. (required)
-     * @param accreditationDecision  (required)
+     * @param complianceAccreditationDecision  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1465,9 +1521,10 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postComplianceAccreditationByIdDecisionCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccreditationDecision accreditationDecision, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postComplianceAccreditationByIdDecisionCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComplianceAccreditationDecision complianceAccreditationDecision, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1481,7 +1538,7 @@ public class ComplianceApi {
             basePath = null;
         }
 
-        Object localVarPostBody = accreditationDecision;
+        Object localVarPostBody = complianceAccreditationDecision;
 
         // create path and map variables
         String localVarPath = "/v1/compliance/accreditation/{id}/decision"
@@ -1494,7 +1551,8 @@ public class ComplianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1514,18 +1572,18 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postComplianceAccreditationByIdDecisionValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccreditationDecision accreditationDecision, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postComplianceAccreditationByIdDecisionValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComplianceAccreditationDecision complianceAccreditationDecision, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postComplianceAccreditationByIdDecision(Async)");
         }
 
-        // verify the required parameter 'accreditationDecision' is set
-        if (accreditationDecision == null) {
-            throw new ApiException("Missing the required parameter 'accreditationDecision' when calling postComplianceAccreditationByIdDecision(Async)");
+        // verify the required parameter 'complianceAccreditationDecision' is set
+        if (complianceAccreditationDecision == null) {
+            throw new ApiException("Missing the required parameter 'complianceAccreditationDecision' when calling postComplianceAccreditationByIdDecision(Async)");
         }
 
-        return postComplianceAccreditationByIdDecisionCall(id, accreditationDecision, _callback);
+        return postComplianceAccreditationByIdDecisionCall(id, complianceAccreditationDecision, _callback);
 
     }
 
@@ -1533,18 +1591,19 @@ public class ComplianceApi {
      * Records an org reviewer&#39;s decision on an accreditation record — a reviewer confirmation, a provider verification the reviewer has evidence of (a CPA/attorney letter, a verifier report), a rejection, or an expiry.
      * Records an org reviewer&#39;s decision on an accreditation record — a reviewer confirmation, a provider verification the reviewer has evidence of (a CPA/attorney letter, a verifier report), a rejection, or an expiry. ROLE-GATED (an org admin or platform reviewer) and ATTRIBUTED: the reviewer&#39;s identity is recorded as ReviewerSub and audited. Human-in-the-loop: the platform never confirms on its own, and even a provider_verified state carries the reviewer who recorded it.
      * @param id ID is the accreditation record to decide, from the path. (required)
-     * @param accreditationDecision  (required)
-     * @return AccView
+     * @param complianceAccreditationDecision  (required)
+     * @return ComplianceAccView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AccView postComplianceAccreditationByIdDecision(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccreditationDecision accreditationDecision) throws ApiException {
-        ApiResponse<AccView> localVarResp = postComplianceAccreditationByIdDecisionWithHttpInfo(id, accreditationDecision);
+    public ComplianceAccView postComplianceAccreditationByIdDecision(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComplianceAccreditationDecision complianceAccreditationDecision) throws ApiException {
+        ApiResponse<ComplianceAccView> localVarResp = postComplianceAccreditationByIdDecisionWithHttpInfo(id, complianceAccreditationDecision);
         return localVarResp.getData();
     }
 
@@ -1552,19 +1611,20 @@ public class ComplianceApi {
      * Records an org reviewer&#39;s decision on an accreditation record — a reviewer confirmation, a provider verification the reviewer has evidence of (a CPA/attorney letter, a verifier report), a rejection, or an expiry.
      * Records an org reviewer&#39;s decision on an accreditation record — a reviewer confirmation, a provider verification the reviewer has evidence of (a CPA/attorney letter, a verifier report), a rejection, or an expiry. ROLE-GATED (an org admin or platform reviewer) and ATTRIBUTED: the reviewer&#39;s identity is recorded as ReviewerSub and audited. Human-in-the-loop: the platform never confirms on its own, and even a provider_verified state carries the reviewer who recorded it.
      * @param id ID is the accreditation record to decide, from the path. (required)
-     * @param accreditationDecision  (required)
-     * @return ApiResponse&lt;AccView&gt;
+     * @param complianceAccreditationDecision  (required)
+     * @return ApiResponse&lt;ComplianceAccView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccView> postComplianceAccreditationByIdDecisionWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccreditationDecision accreditationDecision) throws ApiException {
-        okhttp3.Call localVarCall = postComplianceAccreditationByIdDecisionValidateBeforeCall(id, accreditationDecision, null);
-        Type localVarReturnType = new TypeToken<AccView>(){}.getType();
+    public ApiResponse<ComplianceAccView> postComplianceAccreditationByIdDecisionWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComplianceAccreditationDecision complianceAccreditationDecision) throws ApiException {
+        okhttp3.Call localVarCall = postComplianceAccreditationByIdDecisionValidateBeforeCall(id, complianceAccreditationDecision, null);
+        Type localVarReturnType = new TypeToken<ComplianceAccView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1572,7 +1632,7 @@ public class ComplianceApi {
      * Records an org reviewer&#39;s decision on an accreditation record — a reviewer confirmation, a provider verification the reviewer has evidence of (a CPA/attorney letter, a verifier report), a rejection, or an expiry. (asynchronously)
      * Records an org reviewer&#39;s decision on an accreditation record — a reviewer confirmation, a provider verification the reviewer has evidence of (a CPA/attorney letter, a verifier report), a rejection, or an expiry. ROLE-GATED (an org admin or platform reviewer) and ATTRIBUTED: the reviewer&#39;s identity is recorded as ReviewerSub and audited. Human-in-the-loop: the platform never confirms on its own, and even a provider_verified state carries the reviewer who recorded it.
      * @param id ID is the accreditation record to decide, from the path. (required)
-     * @param accreditationDecision  (required)
+     * @param complianceAccreditationDecision  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1581,18 +1641,19 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postComplianceAccreditationByIdDecisionAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccreditationDecision accreditationDecision, final ApiCallback<AccView> _callback) throws ApiException {
+    public okhttp3.Call postComplianceAccreditationByIdDecisionAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComplianceAccreditationDecision complianceAccreditationDecision, final ApiCallback<ComplianceAccView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postComplianceAccreditationByIdDecisionValidateBeforeCall(id, accreditationDecision, _callback);
-        Type localVarReturnType = new TypeToken<AccView>(){}.getType();
+        okhttp3.Call localVarCall = postComplianceAccreditationByIdDecisionValidateBeforeCall(id, complianceAccreditationDecision, _callback);
+        Type localVarReturnType = new TypeToken<ComplianceAccView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postComplianceSubjects
-     * @param subjectReq  (required)
+     * @param complianceSubjectReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1601,9 +1662,10 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postComplianceSubjectsCall(@javax.annotation.Nonnull SubjectReq subjectReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postComplianceSubjectsCall(@javax.annotation.Nonnull ComplianceSubjectReq complianceSubjectReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1617,7 +1679,7 @@ public class ComplianceApi {
             basePath = null;
         }
 
-        Object localVarPostBody = subjectReq;
+        Object localVarPostBody = complianceSubjectReq;
 
         // create path and map variables
         String localVarPath = "/v1/compliance/subjects";
@@ -1629,7 +1691,8 @@ public class ComplianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1649,57 +1712,59 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postComplianceSubjectsValidateBeforeCall(@javax.annotation.Nonnull SubjectReq subjectReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'subjectReq' is set
-        if (subjectReq == null) {
-            throw new ApiException("Missing the required parameter 'subjectReq' when calling postComplianceSubjects(Async)");
+    private okhttp3.Call postComplianceSubjectsValidateBeforeCall(@javax.annotation.Nonnull ComplianceSubjectReq complianceSubjectReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'complianceSubjectReq' is set
+        if (complianceSubjectReq == null) {
+            throw new ApiException("Missing the required parameter 'complianceSubjectReq' when calling postComplianceSubjects(Async)");
         }
 
-        return postComplianceSubjectsCall(subjectReq, _callback);
+        return postComplianceSubjectsCall(complianceSubjectReq, _callback);
 
     }
 
     /**
      * Records a party the org is verifying as part of its own onboarding/compliance — a team member, vendor, customer, or counterparty.
      * Records a party the org is verifying as part of its own onboarding/compliance — a team member, vendor, customer, or counterparty. The subject&#39;s contact PII (name/email) is sealed at rest and returned only to the owning org; downstream records reference the subject by opaque id.
-     * @param subjectReq  (required)
-     * @return Subject
+     * @param complianceSubjectReq  (required)
+     * @return ComplianceSubject
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Subject postComplianceSubjects(@javax.annotation.Nonnull SubjectReq subjectReq) throws ApiException {
-        ApiResponse<Subject> localVarResp = postComplianceSubjectsWithHttpInfo(subjectReq);
+    public ComplianceSubject postComplianceSubjects(@javax.annotation.Nonnull ComplianceSubjectReq complianceSubjectReq) throws ApiException {
+        ApiResponse<ComplianceSubject> localVarResp = postComplianceSubjectsWithHttpInfo(complianceSubjectReq);
         return localVarResp.getData();
     }
 
     /**
      * Records a party the org is verifying as part of its own onboarding/compliance — a team member, vendor, customer, or counterparty.
      * Records a party the org is verifying as part of its own onboarding/compliance — a team member, vendor, customer, or counterparty. The subject&#39;s contact PII (name/email) is sealed at rest and returned only to the owning org; downstream records reference the subject by opaque id.
-     * @param subjectReq  (required)
-     * @return ApiResponse&lt;Subject&gt;
+     * @param complianceSubjectReq  (required)
+     * @return ApiResponse&lt;ComplianceSubject&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Subject> postComplianceSubjectsWithHttpInfo(@javax.annotation.Nonnull SubjectReq subjectReq) throws ApiException {
-        okhttp3.Call localVarCall = postComplianceSubjectsValidateBeforeCall(subjectReq, null);
-        Type localVarReturnType = new TypeToken<Subject>(){}.getType();
+    public ApiResponse<ComplianceSubject> postComplianceSubjectsWithHttpInfo(@javax.annotation.Nonnull ComplianceSubjectReq complianceSubjectReq) throws ApiException {
+        okhttp3.Call localVarCall = postComplianceSubjectsValidateBeforeCall(complianceSubjectReq, null);
+        Type localVarReturnType = new TypeToken<ComplianceSubject>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Records a party the org is verifying as part of its own onboarding/compliance — a team member, vendor, customer, or counterparty. (asynchronously)
      * Records a party the org is verifying as part of its own onboarding/compliance — a team member, vendor, customer, or counterparty. The subject&#39;s contact PII (name/email) is sealed at rest and returned only to the owning org; downstream records reference the subject by opaque id.
-     * @param subjectReq  (required)
+     * @param complianceSubjectReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1708,18 +1773,19 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postComplianceSubjectsAsync(@javax.annotation.Nonnull SubjectReq subjectReq, final ApiCallback<Subject> _callback) throws ApiException {
+    public okhttp3.Call postComplianceSubjectsAsync(@javax.annotation.Nonnull ComplianceSubjectReq complianceSubjectReq, final ApiCallback<ComplianceSubject> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postComplianceSubjectsValidateBeforeCall(subjectReq, _callback);
-        Type localVarReturnType = new TypeToken<Subject>(){}.getType();
+        okhttp3.Call localVarCall = postComplianceSubjectsValidateBeforeCall(complianceSubjectReq, _callback);
+        Type localVarReturnType = new TypeToken<ComplianceSubject>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postComplianceVerifications
-     * @param verificationReq  (required)
+     * @param complianceVerificationReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1728,9 +1794,10 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postComplianceVerificationsCall(@javax.annotation.Nonnull VerificationReq verificationReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postComplianceVerificationsCall(@javax.annotation.Nonnull ComplianceVerificationReq complianceVerificationReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1744,7 +1811,7 @@ public class ComplianceApi {
             basePath = null;
         }
 
-        Object localVarPostBody = verificationReq;
+        Object localVarPostBody = complianceVerificationReq;
 
         // create path and map variables
         String localVarPath = "/v1/compliance/verifications";
@@ -1756,7 +1823,8 @@ public class ComplianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1776,57 +1844,59 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postComplianceVerificationsValidateBeforeCall(@javax.annotation.Nonnull VerificationReq verificationReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'verificationReq' is set
-        if (verificationReq == null) {
-            throw new ApiException("Missing the required parameter 'verificationReq' when calling postComplianceVerifications(Async)");
+    private okhttp3.Call postComplianceVerificationsValidateBeforeCall(@javax.annotation.Nonnull ComplianceVerificationReq complianceVerificationReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'complianceVerificationReq' is set
+        if (complianceVerificationReq == null) {
+            throw new ApiException("Missing the required parameter 'complianceVerificationReq' when calling postComplianceVerifications(Async)");
         }
 
-        return postComplianceVerificationsCall(verificationReq, _callback);
+        return postComplianceVerificationsCall(complianceVerificationReq, _callback);
 
     }
 
     /**
      * Begins a KYC/KYB verification of a subject through the wired provider — an existing subject by id, or one created inline from the request.
      * Begins a KYC/KYB verification of a subject through the wired provider — an existing subject by id, or one created inline from the request. The returned status is provider-reported and never terminal on a fresh start: starting a verification can never yield a verified record, and a provider error is a 502, never a verification.
-     * @param verificationReq  (required)
-     * @return CheckView
+     * @param complianceVerificationReq  (required)
+     * @return ComplianceCheckView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CheckView postComplianceVerifications(@javax.annotation.Nonnull VerificationReq verificationReq) throws ApiException {
-        ApiResponse<CheckView> localVarResp = postComplianceVerificationsWithHttpInfo(verificationReq);
+    public ComplianceCheckView postComplianceVerifications(@javax.annotation.Nonnull ComplianceVerificationReq complianceVerificationReq) throws ApiException {
+        ApiResponse<ComplianceCheckView> localVarResp = postComplianceVerificationsWithHttpInfo(complianceVerificationReq);
         return localVarResp.getData();
     }
 
     /**
      * Begins a KYC/KYB verification of a subject through the wired provider — an existing subject by id, or one created inline from the request.
      * Begins a KYC/KYB verification of a subject through the wired provider — an existing subject by id, or one created inline from the request. The returned status is provider-reported and never terminal on a fresh start: starting a verification can never yield a verified record, and a provider error is a 502, never a verification.
-     * @param verificationReq  (required)
-     * @return ApiResponse&lt;CheckView&gt;
+     * @param complianceVerificationReq  (required)
+     * @return ApiResponse&lt;ComplianceCheckView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckView> postComplianceVerificationsWithHttpInfo(@javax.annotation.Nonnull VerificationReq verificationReq) throws ApiException {
-        okhttp3.Call localVarCall = postComplianceVerificationsValidateBeforeCall(verificationReq, null);
-        Type localVarReturnType = new TypeToken<CheckView>(){}.getType();
+    public ApiResponse<ComplianceCheckView> postComplianceVerificationsWithHttpInfo(@javax.annotation.Nonnull ComplianceVerificationReq complianceVerificationReq) throws ApiException {
+        okhttp3.Call localVarCall = postComplianceVerificationsValidateBeforeCall(complianceVerificationReq, null);
+        Type localVarReturnType = new TypeToken<ComplianceCheckView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Begins a KYC/KYB verification of a subject through the wired provider — an existing subject by id, or one created inline from the request. (asynchronously)
      * Begins a KYC/KYB verification of a subject through the wired provider — an existing subject by id, or one created inline from the request. The returned status is provider-reported and never terminal on a fresh start: starting a verification can never yield a verified record, and a provider error is a 502, never a verification.
-     * @param verificationReq  (required)
+     * @param complianceVerificationReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1835,19 +1905,20 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postComplianceVerificationsAsync(@javax.annotation.Nonnull VerificationReq verificationReq, final ApiCallback<CheckView> _callback) throws ApiException {
+    public okhttp3.Call postComplianceVerificationsAsync(@javax.annotation.Nonnull ComplianceVerificationReq complianceVerificationReq, final ApiCallback<ComplianceCheckView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postComplianceVerificationsValidateBeforeCall(verificationReq, _callback);
-        Type localVarReturnType = new TypeToken<CheckView>(){}.getType();
+        okhttp3.Call localVarCall = postComplianceVerificationsValidateBeforeCall(complianceVerificationReq, _callback);
+        Type localVarReturnType = new TypeToken<ComplianceCheckView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postComplianceVerificationsByIdDecision
      * @param id ID is the verification to decide, from the path. (required)
-     * @param verificationDecision  (required)
+     * @param complianceVerificationDecision  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1856,9 +1927,10 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postComplianceVerificationsByIdDecisionCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull VerificationDecision verificationDecision, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postComplianceVerificationsByIdDecisionCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComplianceVerificationDecision complianceVerificationDecision, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1872,7 +1944,7 @@ public class ComplianceApi {
             basePath = null;
         }
 
-        Object localVarPostBody = verificationDecision;
+        Object localVarPostBody = complianceVerificationDecision;
 
         // create path and map variables
         String localVarPath = "/v1/compliance/verifications/{id}/decision"
@@ -1885,7 +1957,8 @@ public class ComplianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1905,18 +1978,18 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postComplianceVerificationsByIdDecisionValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull VerificationDecision verificationDecision, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postComplianceVerificationsByIdDecisionValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComplianceVerificationDecision complianceVerificationDecision, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postComplianceVerificationsByIdDecision(Async)");
         }
 
-        // verify the required parameter 'verificationDecision' is set
-        if (verificationDecision == null) {
-            throw new ApiException("Missing the required parameter 'verificationDecision' when calling postComplianceVerificationsByIdDecision(Async)");
+        // verify the required parameter 'complianceVerificationDecision' is set
+        if (complianceVerificationDecision == null) {
+            throw new ApiException("Missing the required parameter 'complianceVerificationDecision' when calling postComplianceVerificationsByIdDecision(Async)");
         }
 
-        return postComplianceVerificationsByIdDecisionCall(id, verificationDecision, _callback);
+        return postComplianceVerificationsByIdDecisionCall(id, complianceVerificationDecision, _callback);
 
     }
 
@@ -1924,18 +1997,19 @@ public class ComplianceApi {
      * Records a privileged reviewer&#39;s MANUAL decision on a verification — the human-in-the-loop path, and the ONLY route to a passing status when no real provider is wired.
      * Records a privileged reviewer&#39;s MANUAL decision on a verification — the human-in-the-loop path, and the ONLY route to a passing status when no real provider is wired. It produces a DISTINCT reviewer_confirmed, never a provider_verified (a provider decision is the provider&#39;s to report, via the webhook or a reconcile), and it is ROLE-GATED (an org admin or platform reviewer) AND ATTRIBUTED (the reviewer&#39;s user id is DecidedBy), so a manual pass is always accountable.
      * @param id ID is the verification to decide, from the path. (required)
-     * @param verificationDecision  (required)
-     * @return CheckView
+     * @param complianceVerificationDecision  (required)
+     * @return ComplianceCheckView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CheckView postComplianceVerificationsByIdDecision(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull VerificationDecision verificationDecision) throws ApiException {
-        ApiResponse<CheckView> localVarResp = postComplianceVerificationsByIdDecisionWithHttpInfo(id, verificationDecision);
+    public ComplianceCheckView postComplianceVerificationsByIdDecision(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComplianceVerificationDecision complianceVerificationDecision) throws ApiException {
+        ApiResponse<ComplianceCheckView> localVarResp = postComplianceVerificationsByIdDecisionWithHttpInfo(id, complianceVerificationDecision);
         return localVarResp.getData();
     }
 
@@ -1943,19 +2017,20 @@ public class ComplianceApi {
      * Records a privileged reviewer&#39;s MANUAL decision on a verification — the human-in-the-loop path, and the ONLY route to a passing status when no real provider is wired.
      * Records a privileged reviewer&#39;s MANUAL decision on a verification — the human-in-the-loop path, and the ONLY route to a passing status when no real provider is wired. It produces a DISTINCT reviewer_confirmed, never a provider_verified (a provider decision is the provider&#39;s to report, via the webhook or a reconcile), and it is ROLE-GATED (an org admin or platform reviewer) AND ATTRIBUTED (the reviewer&#39;s user id is DecidedBy), so a manual pass is always accountable.
      * @param id ID is the verification to decide, from the path. (required)
-     * @param verificationDecision  (required)
-     * @return ApiResponse&lt;CheckView&gt;
+     * @param complianceVerificationDecision  (required)
+     * @return ApiResponse&lt;ComplianceCheckView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckView> postComplianceVerificationsByIdDecisionWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull VerificationDecision verificationDecision) throws ApiException {
-        okhttp3.Call localVarCall = postComplianceVerificationsByIdDecisionValidateBeforeCall(id, verificationDecision, null);
-        Type localVarReturnType = new TypeToken<CheckView>(){}.getType();
+    public ApiResponse<ComplianceCheckView> postComplianceVerificationsByIdDecisionWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComplianceVerificationDecision complianceVerificationDecision) throws ApiException {
+        okhttp3.Call localVarCall = postComplianceVerificationsByIdDecisionValidateBeforeCall(id, complianceVerificationDecision, null);
+        Type localVarReturnType = new TypeToken<ComplianceCheckView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1963,7 +2038,7 @@ public class ComplianceApi {
      * Records a privileged reviewer&#39;s MANUAL decision on a verification — the human-in-the-loop path, and the ONLY route to a passing status when no real provider is wired. (asynchronously)
      * Records a privileged reviewer&#39;s MANUAL decision on a verification — the human-in-the-loop path, and the ONLY route to a passing status when no real provider is wired. It produces a DISTINCT reviewer_confirmed, never a provider_verified (a provider decision is the provider&#39;s to report, via the webhook or a reconcile), and it is ROLE-GATED (an org admin or platform reviewer) AND ATTRIBUTED (the reviewer&#39;s user id is DecidedBy), so a manual pass is always accountable.
      * @param id ID is the verification to decide, from the path. (required)
-     * @param verificationDecision  (required)
+     * @param complianceVerificationDecision  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1972,12 +2047,13 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postComplianceVerificationsByIdDecisionAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull VerificationDecision verificationDecision, final ApiCallback<CheckView> _callback) throws ApiException {
+    public okhttp3.Call postComplianceVerificationsByIdDecisionAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComplianceVerificationDecision complianceVerificationDecision, final ApiCallback<ComplianceCheckView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postComplianceVerificationsByIdDecisionValidateBeforeCall(id, verificationDecision, _callback);
-        Type localVarReturnType = new TypeToken<CheckView>(){}.getType();
+        okhttp3.Call localVarCall = postComplianceVerificationsByIdDecisionValidateBeforeCall(id, complianceVerificationDecision, _callback);
+        Type localVarReturnType = new TypeToken<ComplianceCheckView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1992,6 +2068,7 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postComplianceVerificationsByIdRefreshCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -2021,7 +2098,8 @@ public class ComplianceApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2054,17 +2132,18 @@ public class ComplianceApi {
      * Polls the wired provider for its current decision and records it, ATTRIBUTED to the provider — the internal PULL reconcile.
      * Polls the wired provider for its current decision and records it, ATTRIBUTED to the provider — the internal PULL reconcile. For the Manual provider the check stays pending; for a hosted provider it reflects the provider&#39;s settled status. A poll error is a 502, never a verification.
      * @param id ID is the verification to act on, from the path. (required)
-     * @return CheckView
+     * @return ComplianceCheckView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CheckView postComplianceVerificationsByIdRefresh(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CheckView> localVarResp = postComplianceVerificationsByIdRefreshWithHttpInfo(id);
+    public ComplianceCheckView postComplianceVerificationsByIdRefresh(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ComplianceCheckView> localVarResp = postComplianceVerificationsByIdRefreshWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -2072,18 +2151,19 @@ public class ComplianceApi {
      * Polls the wired provider for its current decision and records it, ATTRIBUTED to the provider — the internal PULL reconcile.
      * Polls the wired provider for its current decision and records it, ATTRIBUTED to the provider — the internal PULL reconcile. For the Manual provider the check stays pending; for a hosted provider it reflects the provider&#39;s settled status. A poll error is a 502, never a verification.
      * @param id ID is the verification to act on, from the path. (required)
-     * @return ApiResponse&lt;CheckView&gt;
+     * @return ApiResponse&lt;ComplianceCheckView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckView> postComplianceVerificationsByIdRefreshWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<ComplianceCheckView> postComplianceVerificationsByIdRefreshWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postComplianceVerificationsByIdRefreshValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<CheckView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceCheckView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2099,12 +2179,13 @@ public class ComplianceApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postComplianceVerificationsByIdRefreshAsync(@javax.annotation.Nonnull String id, final ApiCallback<CheckView> _callback) throws ApiException {
+    public okhttp3.Call postComplianceVerificationsByIdRefreshAsync(@javax.annotation.Nonnull String id, final ApiCallback<ComplianceCheckView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postComplianceVerificationsByIdRefreshValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<CheckView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComplianceCheckView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

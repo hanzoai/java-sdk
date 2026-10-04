@@ -15,6 +15,7 @@ package ai.hanzo.cloud.model;
 
 import java.util.Objects;
 import ai.hanzo.cloud.model.DeclareEnv;
+import ai.hanzo.cloud.model.SecretRef;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -63,6 +64,11 @@ public class Declaration {
   @javax.annotation.Nullable
   private Boolean automated;
 
+  public static final String SERIALIZED_NAME_COMPONENT = "component";
+  @SerializedName(SERIALIZED_NAME_COMPONENT)
+  @javax.annotation.Nullable
+  private String component;
+
   public static final String SERIALIZED_NAME_DIGEST = "digest";
   @SerializedName(SERIALIZED_NAME_DIGEST)
   @javax.annotation.Nullable
@@ -88,6 +94,11 @@ public class Declaration {
   @javax.annotation.Nullable
   private String org;
 
+  public static final String SERIALIZED_NAME_PART_OF = "partOf";
+  @SerializedName(SERIALIZED_NAME_PART_OF)
+  @javax.annotation.Nullable
+  private String partOf;
+
   public static final String SERIALIZED_NAME_PATH = "path";
   @SerializedName(SERIALIZED_NAME_PATH)
   @javax.annotation.Nullable
@@ -101,12 +112,17 @@ public class Declaration {
   public static final String SERIALIZED_NAME_REPLICAS = "replicas";
   @SerializedName(SERIALIZED_NAME_REPLICAS)
   @javax.annotation.Nullable
-  private Long replicas;
+  private Integer replicas;
 
   public static final String SERIALIZED_NAME_REPOSITORY = "repository";
   @SerializedName(SERIALIZED_NAME_REPOSITORY)
   @javax.annotation.Nullable
   private String repository;
+
+  public static final String SERIALIZED_NAME_SECRETS = "secrets";
+  @SerializedName(SERIALIZED_NAME_SECRETS)
+  @javax.annotation.Nullable
+  private List<SecretRef> secrets = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
@@ -122,7 +138,7 @@ public class Declaration {
   }
 
   /**
-   * Application is the CD Application name the generator mints: &lt;org&gt;-&lt;name&gt;. It is the join key against /v1/platform/cd.
+   * Get application
    * @return application
    */
   @javax.annotation.Nullable
@@ -141,7 +157,7 @@ public class Declaration {
   }
 
   /**
-   * Automated is cd.automated: false means the Application reports drift and NOTHING moves. It is off by default for a new file on purpose.
+   * Get automated
    * @return automated
    */
   @javax.annotation.Nullable
@@ -154,13 +170,32 @@ public class Declaration {
   }
 
 
+  public Declaration component(@javax.annotation.Nullable String component) {
+    this.component = component;
+    return this;
+  }
+
+  /**
+   * Get component
+   * @return component
+   */
+  @javax.annotation.Nullable
+  public String getComponent() {
+    return component;
+  }
+
+  public void setComponent(@javax.annotation.Nullable String component) {
+    this.component = component;
+  }
+
+
   public Declaration digest(@javax.annotation.Nullable String digest) {
     this.digest = digest;
     return this;
   }
 
   /**
-   * image.digest — wins over tag
+   * Get digest
    * @return digest
    */
   @javax.annotation.Nullable
@@ -187,7 +222,7 @@ public class Declaration {
   }
 
   /**
-   * Env is the declared container environment, as the chart&#39;s list of {name,value}. It is read back so a re-declare of an identical body is a no-op rather than a refusal — idempotency is what makes a retry safe.
+   * Get env
    * @return env
    */
   @javax.annotation.Nullable
@@ -214,7 +249,7 @@ public class Declaration {
   }
 
   /**
-   * ingress.hosts, both shapes flattened
+   * Get hosts
    * @return hosts
    */
   @javax.annotation.Nullable
@@ -233,7 +268,7 @@ public class Declaration {
   }
 
   /**
-   * the Helm release name — the file&#39;s basename
+   * Get name
    * @return name
    */
   @javax.annotation.Nullable
@@ -252,7 +287,7 @@ public class Declaration {
   }
 
   /**
-   * Org is the owner. It is ALSO the values directory and the destination namespace, because those are one value under one name — see the header.
+   * Get org
    * @return org
    */
   @javax.annotation.Nullable
@@ -265,13 +300,32 @@ public class Declaration {
   }
 
 
+  public Declaration partOf(@javax.annotation.Nullable String partOf) {
+    this.partOf = partOf;
+    return this;
+  }
+
+  /**
+   * Get partOf
+   * @return partOf
+   */
+  @javax.annotation.Nullable
+  public String getPartOf() {
+    return partOf;
+  }
+
+  public void setPartOf(@javax.annotation.Nullable String partOf) {
+    this.partOf = partOf;
+  }
+
+
   public Declaration path(@javax.annotation.Nullable String path) {
     this.path = path;
     return this;
   }
 
   /**
-   * Path is the file, relative to the repository root.
+   * Get path
    * @return path
    */
   @javax.annotation.Nullable
@@ -290,7 +344,7 @@ public class Declaration {
   }
 
   /**
-   * Project is the AppProject the sync is admitted under, derived from the directory exactly as the ApplicationSet derives it. It differs from Org for a reserved directory, which syncs under the platform fence.
+   * Get project
    * @return project
    */
   @javax.annotation.Nullable
@@ -303,7 +357,7 @@ public class Declaration {
   }
 
 
-  public Declaration replicas(@javax.annotation.Nullable Long replicas) {
+  public Declaration replicas(@javax.annotation.Nullable Integer replicas) {
     this.replicas = replicas;
     return this;
   }
@@ -313,11 +367,11 @@ public class Declaration {
    * @return replicas
    */
   @javax.annotation.Nullable
-  public Long getReplicas() {
+  public Integer getReplicas() {
     return replicas;
   }
 
-  public void setReplicas(@javax.annotation.Nullable Long replicas) {
+  public void setReplicas(@javax.annotation.Nullable Integer replicas) {
     this.replicas = replicas;
   }
 
@@ -328,7 +382,7 @@ public class Declaration {
   }
 
   /**
-   * image.repository
+   * Get repository
    * @return repository
    */
   @javax.annotation.Nullable
@@ -341,13 +395,40 @@ public class Declaration {
   }
 
 
+  public Declaration secrets(@javax.annotation.Nullable List<SecretRef> secrets) {
+    this.secrets = secrets;
+    return this;
+  }
+
+  public Declaration addSecretsItem(SecretRef secretsItem) {
+    if (this.secrets == null) {
+      this.secrets = new ArrayList<>();
+    }
+    this.secrets.add(secretsItem);
+    return this;
+  }
+
+  /**
+   * Get secrets
+   * @return secrets
+   */
+  @javax.annotation.Nullable
+  public List<SecretRef> getSecrets() {
+    return secrets;
+  }
+
+  public void setSecrets(@javax.annotation.Nullable List<SecretRef> secrets) {
+    this.secrets = secrets;
+  }
+
+
   public Declaration tag(@javax.annotation.Nullable String tag) {
     this.tag = tag;
     return this;
   }
 
   /**
-   * image.tag
+   * Get tag
    * @return tag
    */
   @javax.annotation.Nullable
@@ -416,22 +497,25 @@ public class Declaration {
     Declaration declaration = (Declaration) o;
     return Objects.equals(this.application, declaration.application) &&
         Objects.equals(this.automated, declaration.automated) &&
+        Objects.equals(this.component, declaration.component) &&
         Objects.equals(this.digest, declaration.digest) &&
         Objects.equals(this.env, declaration.env) &&
         Objects.equals(this.hosts, declaration.hosts) &&
         Objects.equals(this.name, declaration.name) &&
         Objects.equals(this.org, declaration.org) &&
+        Objects.equals(this.partOf, declaration.partOf) &&
         Objects.equals(this.path, declaration.path) &&
         Objects.equals(this.project, declaration.project) &&
         Objects.equals(this.replicas, declaration.replicas) &&
         Objects.equals(this.repository, declaration.repository) &&
+        Objects.equals(this.secrets, declaration.secrets) &&
         Objects.equals(this.tag, declaration.tag)&&
         Objects.equals(this.additionalProperties, declaration.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(application, automated, digest, env, hosts, name, org, path, project, replicas, repository, tag, additionalProperties);
+    return Objects.hash(application, automated, component, digest, env, hosts, name, org, partOf, path, project, replicas, repository, secrets, tag, additionalProperties);
   }
 
   @Override
@@ -440,15 +524,18 @@ public class Declaration {
     sb.append("class Declaration {\n");
     sb.append("    application: ").append(toIndentedString(application)).append("\n");
     sb.append("    automated: ").append(toIndentedString(automated)).append("\n");
+    sb.append("    component: ").append(toIndentedString(component)).append("\n");
     sb.append("    digest: ").append(toIndentedString(digest)).append("\n");
     sb.append("    env: ").append(toIndentedString(env)).append("\n");
     sb.append("    hosts: ").append(toIndentedString(hosts)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    org: ").append(toIndentedString(org)).append("\n");
+    sb.append("    partOf: ").append(toIndentedString(partOf)).append("\n");
     sb.append("    path: ").append(toIndentedString(path)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("    replicas: ").append(toIndentedString(replicas)).append("\n");
     sb.append("    repository: ").append(toIndentedString(repository)).append("\n");
+    sb.append("    secrets: ").append(toIndentedString(secrets)).append("\n");
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -472,7 +559,7 @@ public class Declaration {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("application", "automated", "digest", "env", "hosts", "name", "org", "path", "project", "replicas", "repository", "tag"));
+    openapiFields = new HashSet<String>(Arrays.asList("application", "automated", "component", "digest", "env", "hosts", "name", "org", "partOf", "path", "project", "replicas", "repository", "secrets", "tag"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -493,6 +580,9 @@ public class Declaration {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("application") != null && !jsonObj.get("application").isJsonNull()) && !jsonObj.get("application").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `application` to be a primitive type in the JSON string but got `%s`", jsonObj.get("application").toString()));
+      }
+      if ((jsonObj.get("component") != null && !jsonObj.get("component").isJsonNull()) && !jsonObj.get("component").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `component` to be a primitive type in the JSON string but got `%s`", jsonObj.get("component").toString()));
       }
       if ((jsonObj.get("digest") != null && !jsonObj.get("digest").isJsonNull()) && !jsonObj.get("digest").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `digest` to be a primitive type in the JSON string but got `%s`", jsonObj.get("digest").toString()));
@@ -521,6 +611,9 @@ public class Declaration {
       if ((jsonObj.get("org") != null && !jsonObj.get("org").isJsonNull()) && !jsonObj.get("org").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `org` to be a primitive type in the JSON string but got `%s`", jsonObj.get("org").toString()));
       }
+      if ((jsonObj.get("partOf") != null && !jsonObj.get("partOf").isJsonNull()) && !jsonObj.get("partOf").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `partOf` to be a primitive type in the JSON string but got `%s`", jsonObj.get("partOf").toString()));
+      }
       if ((jsonObj.get("path") != null && !jsonObj.get("path").isJsonNull()) && !jsonObj.get("path").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `path` to be a primitive type in the JSON string but got `%s`", jsonObj.get("path").toString()));
       }
@@ -529,6 +622,20 @@ public class Declaration {
       }
       if ((jsonObj.get("repository") != null && !jsonObj.get("repository").isJsonNull()) && !jsonObj.get("repository").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `repository` to be a primitive type in the JSON string but got `%s`", jsonObj.get("repository").toString()));
+      }
+      if (jsonObj.get("secrets") != null && !jsonObj.get("secrets").isJsonNull()) {
+        JsonArray jsonArraysecrets = jsonObj.getAsJsonArray("secrets");
+        if (jsonArraysecrets != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("secrets").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `secrets` to be an array in the JSON string but got `%s`", jsonObj.get("secrets").toString()));
+          }
+
+          // validate the optional field `secrets` (array)
+          for (int i = 0; i < jsonArraysecrets.size(); i++) {
+            SecretRef.validateJsonElement(jsonArraysecrets.get(i));
+          };
+        }
       }
       if ((jsonObj.get("tag") != null && !jsonObj.get("tag").isJsonNull()) && !jsonObj.get("tag").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `tag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tag").toString()));

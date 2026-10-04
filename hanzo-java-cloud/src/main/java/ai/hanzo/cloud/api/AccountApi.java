@@ -27,15 +27,16 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.ApiKeyList;
-import ai.hanzo.cloud.model.Appearance;
-import ai.hanzo.cloud.model.CsrfResp;
-import ai.hanzo.cloud.model.EmbedStatusResp;
-import ai.hanzo.cloud.model.KeyTypeIn;
-import ai.hanzo.cloud.model.MintedKey;
-import ai.hanzo.cloud.model.OnboardReq;
-import ai.hanzo.cloud.model.OnboardResp;
-import ai.hanzo.cloud.model.RevokedKey;
+import ai.hanzo.cloud.model.AccountApiKeyList;
+import ai.hanzo.cloud.model.AccountAppearance;
+import ai.hanzo.cloud.model.AccountCsrfResp;
+import ai.hanzo.cloud.model.AccountEmbedStatusResp;
+import ai.hanzo.cloud.model.AccountKeyTypeIn;
+import ai.hanzo.cloud.model.AccountMintedKey;
+import ai.hanzo.cloud.model.AccountOnboardReq;
+import ai.hanzo.cloud.model.AccountOnboardResp;
+import ai.hanzo.cloud.model.AccountRevokedKey;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -91,6 +92,7 @@ public class AccountApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteAccountKeysCall(@javax.annotation.Nullable String type, final ApiCallback _callback) throws ApiException {
@@ -123,7 +125,8 @@ public class AccountApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -149,44 +152,46 @@ public class AccountApi {
 
     /**
      * Revokes the caller&#39;s own API key of the requested class.
-     * Revokes the caller&#39;s own API key of the requested class. The class is the same field mint takes — &#x60;?type&#x3D;publishable&#x60;, defaulting to secret — so revoking the key that ships in a browser bundle does not sign its holder out of their own API: the other key keeps working.  Revoking is how a key is replaced when it does not need replacing; minting the same class again rotates it in one step. IAM drops the credential immediately, but the gateway caches keys for a few minutes, so a request that beat the cache expiry may still be served.  For callers written against the older shape, the class is also accepted in a JSON request body, read only when &#x60;?type&#x3D;&#x60; is absent.
+     * Revokes the caller&#39;s own API key of the requested class. The class is the same field mint takes — &#x60;?type&#x3D;publishable&#x60;, defaulting to secret — so revoking the key that ships in a browser bundle does not sign its holder out of their own API: the other key keeps working.  Revoking is how a key is replaced when it does not need replacing; minting the same class again rotates it in one step. IAM drops the credential immediately, but cloud caches a home key&#39;s principal for up to 60s, so a request inside that window may still be served. A member&#39;s key is never cached.  For callers written against the older shape, the class is also accepted in a JSON request body, read only when &#x60;?type&#x3D;&#x60; is absent.
      * @param type Type is the key class to act on: \&quot;secret\&quot; (sk-, session-equivalent, belongs on a server) or \&quot;publishable\&quot; (pk-, org-identifying, safe in a browser bundle). Omitted means secret, which is what every existing caller means. (optional)
-     * @return RevokedKey
+     * @return AccountRevokedKey
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RevokedKey deleteAccountKeys(@javax.annotation.Nullable String type) throws ApiException {
-        ApiResponse<RevokedKey> localVarResp = deleteAccountKeysWithHttpInfo(type);
+    public AccountRevokedKey deleteAccountKeys(@javax.annotation.Nullable String type) throws ApiException {
+        ApiResponse<AccountRevokedKey> localVarResp = deleteAccountKeysWithHttpInfo(type);
         return localVarResp.getData();
     }
 
     /**
      * Revokes the caller&#39;s own API key of the requested class.
-     * Revokes the caller&#39;s own API key of the requested class. The class is the same field mint takes — &#x60;?type&#x3D;publishable&#x60;, defaulting to secret — so revoking the key that ships in a browser bundle does not sign its holder out of their own API: the other key keeps working.  Revoking is how a key is replaced when it does not need replacing; minting the same class again rotates it in one step. IAM drops the credential immediately, but the gateway caches keys for a few minutes, so a request that beat the cache expiry may still be served.  For callers written against the older shape, the class is also accepted in a JSON request body, read only when &#x60;?type&#x3D;&#x60; is absent.
+     * Revokes the caller&#39;s own API key of the requested class. The class is the same field mint takes — &#x60;?type&#x3D;publishable&#x60;, defaulting to secret — so revoking the key that ships in a browser bundle does not sign its holder out of their own API: the other key keeps working.  Revoking is how a key is replaced when it does not need replacing; minting the same class again rotates it in one step. IAM drops the credential immediately, but cloud caches a home key&#39;s principal for up to 60s, so a request inside that window may still be served. A member&#39;s key is never cached.  For callers written against the older shape, the class is also accepted in a JSON request body, read only when &#x60;?type&#x3D;&#x60; is absent.
      * @param type Type is the key class to act on: \&quot;secret\&quot; (sk-, session-equivalent, belongs on a server) or \&quot;publishable\&quot; (pk-, org-identifying, safe in a browser bundle). Omitted means secret, which is what every existing caller means. (optional)
-     * @return ApiResponse&lt;RevokedKey&gt;
+     * @return ApiResponse&lt;AccountRevokedKey&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RevokedKey> deleteAccountKeysWithHttpInfo(@javax.annotation.Nullable String type) throws ApiException {
+    public ApiResponse<AccountRevokedKey> deleteAccountKeysWithHttpInfo(@javax.annotation.Nullable String type) throws ApiException {
         okhttp3.Call localVarCall = deleteAccountKeysValidateBeforeCall(type, null);
-        Type localVarReturnType = new TypeToken<RevokedKey>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountRevokedKey>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Revokes the caller&#39;s own API key of the requested class. (asynchronously)
-     * Revokes the caller&#39;s own API key of the requested class. The class is the same field mint takes — &#x60;?type&#x3D;publishable&#x60;, defaulting to secret — so revoking the key that ships in a browser bundle does not sign its holder out of their own API: the other key keeps working.  Revoking is how a key is replaced when it does not need replacing; minting the same class again rotates it in one step. IAM drops the credential immediately, but the gateway caches keys for a few minutes, so a request that beat the cache expiry may still be served.  For callers written against the older shape, the class is also accepted in a JSON request body, read only when &#x60;?type&#x3D;&#x60; is absent.
+     * Revokes the caller&#39;s own API key of the requested class. The class is the same field mint takes — &#x60;?type&#x3D;publishable&#x60;, defaulting to secret — so revoking the key that ships in a browser bundle does not sign its holder out of their own API: the other key keeps working.  Revoking is how a key is replaced when it does not need replacing; minting the same class again rotates it in one step. IAM drops the credential immediately, but cloud caches a home key&#39;s principal for up to 60s, so a request inside that window may still be served. A member&#39;s key is never cached.  For callers written against the older shape, the class is also accepted in a JSON request body, read only when &#x60;?type&#x3D;&#x60; is absent.
      * @param type Type is the key class to act on: \&quot;secret\&quot; (sk-, session-equivalent, belongs on a server) or \&quot;publishable\&quot; (pk-, org-identifying, safe in a browser bundle). Omitted means secret, which is what every existing caller means. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -196,12 +201,13 @@ public class AccountApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAccountKeysAsync(@javax.annotation.Nullable String type, final ApiCallback<RevokedKey> _callback) throws ApiException {
+    public okhttp3.Call deleteAccountKeysAsync(@javax.annotation.Nullable String type, final ApiCallback<AccountRevokedKey> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteAccountKeysValidateBeforeCall(type, _callback);
-        Type localVarReturnType = new TypeToken<RevokedKey>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountRevokedKey>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -215,6 +221,7 @@ public class AccountApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAccountAppearanceCall(final ApiCallback _callback) throws ApiException {
@@ -243,7 +250,8 @@ public class AccountApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -270,35 +278,37 @@ public class AccountApi {
     /**
      * Returns the signed-in caller&#39;s own appearance preference — text size, density and accent — read from their IAM account so it is the same on every device and every Hanzo surface.
      * Returns the signed-in caller&#39;s own appearance preference — text size, density and accent — read from their IAM account so it is the same on every device and every Hanzo surface. An unset preference is an empty object.  A transient IAM read failure reports the empty preference rather than a 5xx, so a surface applies its published default and never error-toasts on load — the same fail-soft the key read uses.
-     * @return Appearance
+     * @return AccountAppearance
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Appearance getAccountAppearance() throws ApiException {
-        ApiResponse<Appearance> localVarResp = getAccountAppearanceWithHttpInfo();
+    public AccountAppearance getAccountAppearance() throws ApiException {
+        ApiResponse<AccountAppearance> localVarResp = getAccountAppearanceWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the signed-in caller&#39;s own appearance preference — text size, density and accent — read from their IAM account so it is the same on every device and every Hanzo surface.
      * Returns the signed-in caller&#39;s own appearance preference — text size, density and accent — read from their IAM account so it is the same on every device and every Hanzo surface. An unset preference is an empty object.  A transient IAM read failure reports the empty preference rather than a 5xx, so a surface applies its published default and never error-toasts on load — the same fail-soft the key read uses.
-     * @return ApiResponse&lt;Appearance&gt;
+     * @return ApiResponse&lt;AccountAppearance&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Appearance> getAccountAppearanceWithHttpInfo() throws ApiException {
+    public ApiResponse<AccountAppearance> getAccountAppearanceWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getAccountAppearanceValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Appearance>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountAppearance>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -313,12 +323,13 @@ public class AccountApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAccountAppearanceAsync(final ApiCallback<Appearance> _callback) throws ApiException {
+    public okhttp3.Call getAccountAppearanceAsync(final ApiCallback<AccountAppearance> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAccountAppearanceValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Appearance>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountAppearance>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -450,6 +461,7 @@ public class AccountApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAccountCsrfCall(final ApiCallback _callback) throws ApiException {
@@ -478,7 +490,8 @@ public class AccountApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -503,43 +516,45 @@ public class AccountApi {
     }
 
     /**
-     * IssueCSRFToken mints the anti-forgery token a browser echoes as X-CSRF-Token on every change it asks for.
-     * IssueCSRFToken mints the anti-forgery token a browser echoes as X-CSRF-Token on every change it asks for. The token is bound to the caller&#39;s validated identity and expires, so one minted for one identity cannot authorize a change as another.  It is answered no-store, so it is never cached by a shared proxy. This is the same-origin endpoint the embedded console reads — the Same-Origin Policy is what stops a cross-site page from reading the response and forging a change.
-     * @return CsrfResp
+     * Mints the anti-forgery token a browser echoes as X-CSRF-Token on every change it asks for.
+     * Mints the anti-forgery token a browser echoes as X-CSRF-Token on every change it asks for. The token is bound to the caller&#39;s validated identity and expires, so one minted for one identity cannot authorize a change as another.  It is answered no-store, so it is never cached by a shared proxy. This is the same-origin endpoint the embedded console reads — the Same-Origin Policy is what stops a cross-site page from reading the response and forging a change.
+     * @return AccountCsrfResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public CsrfResp getAccountCsrf() throws ApiException {
-        ApiResponse<CsrfResp> localVarResp = getAccountCsrfWithHttpInfo();
+    public AccountCsrfResp getAccountCsrf() throws ApiException {
+        ApiResponse<AccountCsrfResp> localVarResp = getAccountCsrfWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * IssueCSRFToken mints the anti-forgery token a browser echoes as X-CSRF-Token on every change it asks for.
-     * IssueCSRFToken mints the anti-forgery token a browser echoes as X-CSRF-Token on every change it asks for. The token is bound to the caller&#39;s validated identity and expires, so one minted for one identity cannot authorize a change as another.  It is answered no-store, so it is never cached by a shared proxy. This is the same-origin endpoint the embedded console reads — the Same-Origin Policy is what stops a cross-site page from reading the response and forging a change.
-     * @return ApiResponse&lt;CsrfResp&gt;
+     * Mints the anti-forgery token a browser echoes as X-CSRF-Token on every change it asks for.
+     * Mints the anti-forgery token a browser echoes as X-CSRF-Token on every change it asks for. The token is bound to the caller&#39;s validated identity and expires, so one minted for one identity cannot authorize a change as another.  It is answered no-store, so it is never cached by a shared proxy. This is the same-origin endpoint the embedded console reads — the Same-Origin Policy is what stops a cross-site page from reading the response and forging a change.
+     * @return ApiResponse&lt;AccountCsrfResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CsrfResp> getAccountCsrfWithHttpInfo() throws ApiException {
+    public ApiResponse<AccountCsrfResp> getAccountCsrfWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getAccountCsrfValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<CsrfResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountCsrfResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * IssueCSRFToken mints the anti-forgery token a browser echoes as X-CSRF-Token on every change it asks for. (asynchronously)
-     * IssueCSRFToken mints the anti-forgery token a browser echoes as X-CSRF-Token on every change it asks for. The token is bound to the caller&#39;s validated identity and expires, so one minted for one identity cannot authorize a change as another.  It is answered no-store, so it is never cached by a shared proxy. This is the same-origin endpoint the embedded console reads — the Same-Origin Policy is what stops a cross-site page from reading the response and forging a change.
+     * Mints the anti-forgery token a browser echoes as X-CSRF-Token on every change it asks for. (asynchronously)
+     * Mints the anti-forgery token a browser echoes as X-CSRF-Token on every change it asks for. The token is bound to the caller&#39;s validated identity and expires, so one minted for one identity cannot authorize a change as another.  It is answered no-store, so it is never cached by a shared proxy. This is the same-origin endpoint the embedded console reads — the Same-Origin Policy is what stops a cross-site page from reading the response and forging a change.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -548,12 +563,13 @@ public class AccountApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAccountCsrfAsync(final ApiCallback<CsrfResp> _callback) throws ApiException {
+    public okhttp3.Call getAccountCsrfAsync(final ApiCallback<AccountCsrfResp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAccountCsrfValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<CsrfResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountCsrfResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -568,6 +584,7 @@ public class AccountApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAccountEmbedCall(@javax.annotation.Nullable String app, final ApiCallback _callback) throws ApiException {
@@ -600,7 +617,8 @@ public class AccountApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -628,17 +646,18 @@ public class AccountApi {
      * Reports whether one of this brand&#39;s shared embedded apps (cms, erp, help) may be framed by the caller and is actually running, so a console module can choose between the embed and the provision panel.
      * Reports whether one of this brand&#39;s shared embedded apps (cms, erp, help) may be framed by the caller and is actually running, so a console module can choose between the embed and the provision panel.  It answers two questions the browser cannot answer for itself. ENTITLEMENT is server-authoritative: each app is a single shared per-BRAND instance, so only a member of the owning brand org — or a SuperAdmin — is given the embed URL; every other caller gets phase \&quot;not-entitled\&quot; and no URL. REACHABILITY is a probe of that origin, which a cross-origin page cannot read for itself.  The probed host is always &lt;app&gt;.&lt;this deployment&#39;s own brand domain&gt;: no part of it comes from the request, so this can never be steered into probing an arbitrary origin.
      * @param app App is the embedded app to report on: cms (Content Studio), erp or help. (optional)
-     * @return EmbedStatusResp
+     * @return AccountEmbedStatusResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EmbedStatusResp getAccountEmbed(@javax.annotation.Nullable String app) throws ApiException {
-        ApiResponse<EmbedStatusResp> localVarResp = getAccountEmbedWithHttpInfo(app);
+    public AccountEmbedStatusResp getAccountEmbed(@javax.annotation.Nullable String app) throws ApiException {
+        ApiResponse<AccountEmbedStatusResp> localVarResp = getAccountEmbedWithHttpInfo(app);
         return localVarResp.getData();
     }
 
@@ -646,18 +665,19 @@ public class AccountApi {
      * Reports whether one of this brand&#39;s shared embedded apps (cms, erp, help) may be framed by the caller and is actually running, so a console module can choose between the embed and the provision panel.
      * Reports whether one of this brand&#39;s shared embedded apps (cms, erp, help) may be framed by the caller and is actually running, so a console module can choose between the embed and the provision panel.  It answers two questions the browser cannot answer for itself. ENTITLEMENT is server-authoritative: each app is a single shared per-BRAND instance, so only a member of the owning brand org — or a SuperAdmin — is given the embed URL; every other caller gets phase \&quot;not-entitled\&quot; and no URL. REACHABILITY is a probe of that origin, which a cross-origin page cannot read for itself.  The probed host is always &lt;app&gt;.&lt;this deployment&#39;s own brand domain&gt;: no part of it comes from the request, so this can never be steered into probing an arbitrary origin.
      * @param app App is the embedded app to report on: cms (Content Studio), erp or help. (optional)
-     * @return ApiResponse&lt;EmbedStatusResp&gt;
+     * @return ApiResponse&lt;AccountEmbedStatusResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EmbedStatusResp> getAccountEmbedWithHttpInfo(@javax.annotation.Nullable String app) throws ApiException {
+    public ApiResponse<AccountEmbedStatusResp> getAccountEmbedWithHttpInfo(@javax.annotation.Nullable String app) throws ApiException {
         okhttp3.Call localVarCall = getAccountEmbedValidateBeforeCall(app, null);
-        Type localVarReturnType = new TypeToken<EmbedStatusResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountEmbedStatusResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -673,12 +693,13 @@ public class AccountApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAccountEmbedAsync(@javax.annotation.Nullable String app, final ApiCallback<EmbedStatusResp> _callback) throws ApiException {
+    public okhttp3.Call getAccountEmbedAsync(@javax.annotation.Nullable String app, final ApiCallback<AccountEmbedStatusResp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAccountEmbedValidateBeforeCall(app, _callback);
-        Type localVarReturnType = new TypeToken<EmbedStatusResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountEmbedStatusResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -692,6 +713,7 @@ public class AccountApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getAccountKeysCall(final ApiCallback _callback) throws ApiException {
@@ -720,7 +742,8 @@ public class AccountApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -747,35 +770,37 @@ public class AccountApi {
     /**
      * Returns the caller&#39;s own API keys — every type they hold, read AUTHORITATIVELY from IAM rather than from the session claim, which lags a key minted moments ago.
      * Returns the caller&#39;s own API keys — every type they hold, read AUTHORITATIVELY from IAM rather than from the session claim, which lags a key minted moments ago. No secret material comes back: a secret key is represented by its prefix, and only a publishable key (public by construction) carries its full value.  A transient IAM read failure reports an empty set rather than a 5xx, so the page shows the honest empty state and never a fabricated key.
-     * @return ApiKeyList
+     * @return AccountApiKeyList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiKeyList getAccountKeys() throws ApiException {
-        ApiResponse<ApiKeyList> localVarResp = getAccountKeysWithHttpInfo();
+    public AccountApiKeyList getAccountKeys() throws ApiException {
+        ApiResponse<AccountApiKeyList> localVarResp = getAccountKeysWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller&#39;s own API keys — every type they hold, read AUTHORITATIVELY from IAM rather than from the session claim, which lags a key minted moments ago.
      * Returns the caller&#39;s own API keys — every type they hold, read AUTHORITATIVELY from IAM rather than from the session claim, which lags a key minted moments ago. No secret material comes back: a secret key is represented by its prefix, and only a publishable key (public by construction) carries its full value.  A transient IAM read failure reports an empty set rather than a 5xx, so the page shows the honest empty state and never a fabricated key.
-     * @return ApiResponse&lt;ApiKeyList&gt;
+     * @return ApiResponse&lt;AccountApiKeyList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiKeyList> getAccountKeysWithHttpInfo() throws ApiException {
+    public ApiResponse<AccountApiKeyList> getAccountKeysWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getAccountKeysValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ApiKeyList>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountApiKeyList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -790,18 +815,19 @@ public class AccountApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAccountKeysAsync(final ApiCallback<ApiKeyList> _callback) throws ApiException {
+    public okhttp3.Call getAccountKeysAsync(final ApiCallback<AccountApiKeyList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAccountKeysValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ApiKeyList>(){}.getType();
+        Type localVarReturnType = new TypeToken<AccountApiKeyList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postAccountAppearance
-     * @param appearance  (required)
+     * @param accountAppearance  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -810,9 +836,10 @@ public class AccountApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAccountAppearanceCall(@javax.annotation.Nonnull Appearance appearance, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAccountAppearanceCall(@javax.annotation.Nonnull AccountAppearance accountAppearance, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -826,7 +853,7 @@ public class AccountApi {
             basePath = null;
         }
 
-        Object localVarPostBody = appearance;
+        Object localVarPostBody = accountAppearance;
 
         // create path and map variables
         String localVarPath = "/v1/account/appearance";
@@ -838,7 +865,8 @@ public class AccountApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -858,57 +886,59 @@ public class AccountApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAccountAppearanceValidateBeforeCall(@javax.annotation.Nonnull Appearance appearance, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'appearance' is set
-        if (appearance == null) {
-            throw new ApiException("Missing the required parameter 'appearance' when calling postAccountAppearance(Async)");
+    private okhttp3.Call postAccountAppearanceValidateBeforeCall(@javax.annotation.Nonnull AccountAppearance accountAppearance, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountAppearance' is set
+        if (accountAppearance == null) {
+            throw new ApiException("Missing the required parameter 'accountAppearance' when calling postAccountAppearance(Async)");
         }
 
-        return postAccountAppearanceCall(appearance, _callback);
+        return postAccountAppearanceCall(accountAppearance, _callback);
 
     }
 
     /**
      * Stores the caller&#39;s appearance preference on their IAM account, preserving every other field of the row.
      * Stores the caller&#39;s appearance preference on their IAM account, preserving every other field of the row. The accent is validated as a real colour token before it is stored; an unset or invalid axis is dropped rather than stored.
-     * @param appearance  (required)
-     * @return Appearance
+     * @param accountAppearance  (required)
+     * @return AccountAppearance
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public Appearance postAccountAppearance(@javax.annotation.Nonnull Appearance appearance) throws ApiException {
-        ApiResponse<Appearance> localVarResp = postAccountAppearanceWithHttpInfo(appearance);
+    public AccountAppearance postAccountAppearance(@javax.annotation.Nonnull AccountAppearance accountAppearance) throws ApiException {
+        ApiResponse<AccountAppearance> localVarResp = postAccountAppearanceWithHttpInfo(accountAppearance);
         return localVarResp.getData();
     }
 
     /**
      * Stores the caller&#39;s appearance preference on their IAM account, preserving every other field of the row.
      * Stores the caller&#39;s appearance preference on their IAM account, preserving every other field of the row. The accent is validated as a real colour token before it is stored; an unset or invalid axis is dropped rather than stored.
-     * @param appearance  (required)
-     * @return ApiResponse&lt;Appearance&gt;
+     * @param accountAppearance  (required)
+     * @return ApiResponse&lt;AccountAppearance&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Appearance> postAccountAppearanceWithHttpInfo(@javax.annotation.Nonnull Appearance appearance) throws ApiException {
-        okhttp3.Call localVarCall = postAccountAppearanceValidateBeforeCall(appearance, null);
-        Type localVarReturnType = new TypeToken<Appearance>(){}.getType();
+    public ApiResponse<AccountAppearance> postAccountAppearanceWithHttpInfo(@javax.annotation.Nonnull AccountAppearance accountAppearance) throws ApiException {
+        okhttp3.Call localVarCall = postAccountAppearanceValidateBeforeCall(accountAppearance, null);
+        Type localVarReturnType = new TypeToken<AccountAppearance>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Stores the caller&#39;s appearance preference on their IAM account, preserving every other field of the row. (asynchronously)
      * Stores the caller&#39;s appearance preference on their IAM account, preserving every other field of the row. The accent is validated as a real colour token before it is stored; an unset or invalid axis is dropped rather than stored.
-     * @param appearance  (required)
+     * @param accountAppearance  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -917,12 +947,13 @@ public class AccountApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAccountAppearanceAsync(@javax.annotation.Nonnull Appearance appearance, final ApiCallback<Appearance> _callback) throws ApiException {
+    public okhttp3.Call postAccountAppearanceAsync(@javax.annotation.Nonnull AccountAppearance accountAppearance, final ApiCallback<AccountAppearance> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAccountAppearanceValidateBeforeCall(appearance, _callback);
-        Type localVarReturnType = new TypeToken<Appearance>(){}.getType();
+        okhttp3.Call localVarCall = postAccountAppearanceValidateBeforeCall(accountAppearance, _callback);
+        Type localVarReturnType = new TypeToken<AccountAppearance>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1016,7 +1047,7 @@ public class AccountApi {
     }
     /**
      * Build call for postAccountKeys
-     * @param keyTypeIn  (required)
+     * @param accountKeyTypeIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1025,9 +1056,10 @@ public class AccountApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAccountKeysCall(@javax.annotation.Nonnull KeyTypeIn keyTypeIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAccountKeysCall(@javax.annotation.Nonnull AccountKeyTypeIn accountKeyTypeIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1041,7 +1073,7 @@ public class AccountApi {
             basePath = null;
         }
 
-        Object localVarPostBody = keyTypeIn;
+        Object localVarPostBody = accountKeyTypeIn;
 
         // create path and map variables
         String localVarPath = "/v1/account/keys";
@@ -1053,7 +1085,8 @@ public class AccountApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1073,57 +1106,59 @@ public class AccountApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAccountKeysValidateBeforeCall(@javax.annotation.Nonnull KeyTypeIn keyTypeIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'keyTypeIn' is set
-        if (keyTypeIn == null) {
-            throw new ApiException("Missing the required parameter 'keyTypeIn' when calling postAccountKeys(Async)");
+    private okhttp3.Call postAccountKeysValidateBeforeCall(@javax.annotation.Nonnull AccountKeyTypeIn accountKeyTypeIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountKeyTypeIn' is set
+        if (accountKeyTypeIn == null) {
+            throw new ApiException("Missing the required parameter 'accountKeyTypeIn' when calling postAccountKeys(Async)");
         }
 
-        return postAccountKeysCall(keyTypeIn, _callback);
+        return postAccountKeysCall(accountKeyTypeIn, _callback);
 
     }
 
     /**
      * Creates — or rotates — the caller&#39;s API key of the requested type and returns it ONCE.
      * Creates — or rotates — the caller&#39;s API key of the requested type and returns it ONCE. A real IAM failure surfaces as 502, never a fabricated key.  Rotating is what creating means here: a user holds one key per type, so the endpoint is idempotent by (caller, type) and the superseded credential stops working. Two live secrets for one user would make \&quot;revoke my key\&quot; a lie.
-     * @param keyTypeIn  (required)
-     * @return MintedKey
+     * @param accountKeyTypeIn  (required)
+     * @return AccountMintedKey
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MintedKey postAccountKeys(@javax.annotation.Nonnull KeyTypeIn keyTypeIn) throws ApiException {
-        ApiResponse<MintedKey> localVarResp = postAccountKeysWithHttpInfo(keyTypeIn);
+    public AccountMintedKey postAccountKeys(@javax.annotation.Nonnull AccountKeyTypeIn accountKeyTypeIn) throws ApiException {
+        ApiResponse<AccountMintedKey> localVarResp = postAccountKeysWithHttpInfo(accountKeyTypeIn);
         return localVarResp.getData();
     }
 
     /**
      * Creates — or rotates — the caller&#39;s API key of the requested type and returns it ONCE.
      * Creates — or rotates — the caller&#39;s API key of the requested type and returns it ONCE. A real IAM failure surfaces as 502, never a fabricated key.  Rotating is what creating means here: a user holds one key per type, so the endpoint is idempotent by (caller, type) and the superseded credential stops working. Two live secrets for one user would make \&quot;revoke my key\&quot; a lie.
-     * @param keyTypeIn  (required)
-     * @return ApiResponse&lt;MintedKey&gt;
+     * @param accountKeyTypeIn  (required)
+     * @return ApiResponse&lt;AccountMintedKey&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MintedKey> postAccountKeysWithHttpInfo(@javax.annotation.Nonnull KeyTypeIn keyTypeIn) throws ApiException {
-        okhttp3.Call localVarCall = postAccountKeysValidateBeforeCall(keyTypeIn, null);
-        Type localVarReturnType = new TypeToken<MintedKey>(){}.getType();
+    public ApiResponse<AccountMintedKey> postAccountKeysWithHttpInfo(@javax.annotation.Nonnull AccountKeyTypeIn accountKeyTypeIn) throws ApiException {
+        okhttp3.Call localVarCall = postAccountKeysValidateBeforeCall(accountKeyTypeIn, null);
+        Type localVarReturnType = new TypeToken<AccountMintedKey>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Creates — or rotates — the caller&#39;s API key of the requested type and returns it ONCE. (asynchronously)
      * Creates — or rotates — the caller&#39;s API key of the requested type and returns it ONCE. A real IAM failure surfaces as 502, never a fabricated key.  Rotating is what creating means here: a user holds one key per type, so the endpoint is idempotent by (caller, type) and the superseded credential stops working. Two live secrets for one user would make \&quot;revoke my key\&quot; a lie.
-     * @param keyTypeIn  (required)
+     * @param accountKeyTypeIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1132,18 +1167,19 @@ public class AccountApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAccountKeysAsync(@javax.annotation.Nonnull KeyTypeIn keyTypeIn, final ApiCallback<MintedKey> _callback) throws ApiException {
+    public okhttp3.Call postAccountKeysAsync(@javax.annotation.Nonnull AccountKeyTypeIn accountKeyTypeIn, final ApiCallback<AccountMintedKey> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAccountKeysValidateBeforeCall(keyTypeIn, _callback);
-        Type localVarReturnType = new TypeToken<MintedKey>(){}.getType();
+        okhttp3.Call localVarCall = postAccountKeysValidateBeforeCall(accountKeyTypeIn, _callback);
+        Type localVarReturnType = new TypeToken<AccountMintedKey>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postAccountOrgs
-     * @param onboardReq  (required)
+     * @param accountOnboardReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1152,9 +1188,10 @@ public class AccountApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAccountOrgsCall(@javax.annotation.Nonnull OnboardReq onboardReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAccountOrgsCall(@javax.annotation.Nonnull AccountOnboardReq accountOnboardReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1168,7 +1205,7 @@ public class AccountApi {
             basePath = null;
         }
 
-        Object localVarPostBody = onboardReq;
+        Object localVarPostBody = accountOnboardReq;
 
         // create path and map variables
         String localVarPath = "/v1/account/orgs";
@@ -1180,7 +1217,8 @@ public class AccountApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1200,57 +1238,59 @@ public class AccountApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAccountOrgsValidateBeforeCall(@javax.annotation.Nonnull OnboardReq onboardReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'onboardReq' is set
-        if (onboardReq == null) {
-            throw new ApiException("Missing the required parameter 'onboardReq' when calling postAccountOrgs(Async)");
+    private okhttp3.Call postAccountOrgsValidateBeforeCall(@javax.annotation.Nonnull AccountOnboardReq accountOnboardReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'accountOnboardReq' is set
+        if (accountOnboardReq == null) {
+            throw new ApiException("Missing the required parameter 'accountOnboardReq' when calling postAccountOrgs(Async)");
         }
 
-        return postAccountOrgsCall(onboardReq, _callback);
+        return postAccountOrgsCall(accountOnboardReq, _callback);
 
     }
 
     /**
-     * Onboard creates the caller&#39;s organization.
-     * Onboard creates the caller&#39;s organization. Two flows, keyed on whether the caller already has a home org (mirrors app/onboard/route.ts):    - FIRST-RUN (no home org): create + MOVE the user in as admin, so their next     JWT carries the new owner and the cloud scopes everything to it. This is the     path a fresh OAuth sign-up takes, from the sign-up application&#39;s org.   - ADDITIONAL (owner set): create the org but do NOT move the user — a move     changes their IAM owner (stripping a SuperAdmin&#39;s status + orphaning their     current org). They reach the new org via the OrgSwitcher, which re-scopes     X-Org-Id without touching IAM membership. A personal-org request from someone     who already has an org is meaningless → 409.
-     * @param onboardReq  (required)
-     * @return OnboardResp
+     * Creates the caller&#39;s organization.
+     * Creates the caller&#39;s organization. Two flows, keyed on whether the caller already has a home org (mirrors app/onboard/route.ts):    - FIRST-RUN (no home org): create + MOVE the user in as admin, so their next     JWT carries the new owner and the cloud scopes everything to it. This is the     path a fresh OAuth sign-up takes, from the sign-up application&#39;s org.   - ADDITIONAL (owner set): create the org but do NOT move the user — a move     changes their IAM owner (stripping a SuperAdmin&#39;s status + orphaning their     current org). They reach the new org via the OrgSwitcher, which re-scopes     X-Org-Id without touching IAM membership. A personal-org request from someone     who already has an org is meaningless → 409.
+     * @param accountOnboardReq  (required)
+     * @return AccountOnboardResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public OnboardResp postAccountOrgs(@javax.annotation.Nonnull OnboardReq onboardReq) throws ApiException {
-        ApiResponse<OnboardResp> localVarResp = postAccountOrgsWithHttpInfo(onboardReq);
+    public AccountOnboardResp postAccountOrgs(@javax.annotation.Nonnull AccountOnboardReq accountOnboardReq) throws ApiException {
+        ApiResponse<AccountOnboardResp> localVarResp = postAccountOrgsWithHttpInfo(accountOnboardReq);
         return localVarResp.getData();
     }
 
     /**
-     * Onboard creates the caller&#39;s organization.
-     * Onboard creates the caller&#39;s organization. Two flows, keyed on whether the caller already has a home org (mirrors app/onboard/route.ts):    - FIRST-RUN (no home org): create + MOVE the user in as admin, so their next     JWT carries the new owner and the cloud scopes everything to it. This is the     path a fresh OAuth sign-up takes, from the sign-up application&#39;s org.   - ADDITIONAL (owner set): create the org but do NOT move the user — a move     changes their IAM owner (stripping a SuperAdmin&#39;s status + orphaning their     current org). They reach the new org via the OrgSwitcher, which re-scopes     X-Org-Id without touching IAM membership. A personal-org request from someone     who already has an org is meaningless → 409.
-     * @param onboardReq  (required)
-     * @return ApiResponse&lt;OnboardResp&gt;
+     * Creates the caller&#39;s organization.
+     * Creates the caller&#39;s organization. Two flows, keyed on whether the caller already has a home org (mirrors app/onboard/route.ts):    - FIRST-RUN (no home org): create + MOVE the user in as admin, so their next     JWT carries the new owner and the cloud scopes everything to it. This is the     path a fresh OAuth sign-up takes, from the sign-up application&#39;s org.   - ADDITIONAL (owner set): create the org but do NOT move the user — a move     changes their IAM owner (stripping a SuperAdmin&#39;s status + orphaning their     current org). They reach the new org via the OrgSwitcher, which re-scopes     X-Org-Id without touching IAM membership. A personal-org request from someone     who already has an org is meaningless → 409.
+     * @param accountOnboardReq  (required)
+     * @return ApiResponse&lt;AccountOnboardResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OnboardResp> postAccountOrgsWithHttpInfo(@javax.annotation.Nonnull OnboardReq onboardReq) throws ApiException {
-        okhttp3.Call localVarCall = postAccountOrgsValidateBeforeCall(onboardReq, null);
-        Type localVarReturnType = new TypeToken<OnboardResp>(){}.getType();
+    public ApiResponse<AccountOnboardResp> postAccountOrgsWithHttpInfo(@javax.annotation.Nonnull AccountOnboardReq accountOnboardReq) throws ApiException {
+        okhttp3.Call localVarCall = postAccountOrgsValidateBeforeCall(accountOnboardReq, null);
+        Type localVarReturnType = new TypeToken<AccountOnboardResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Onboard creates the caller&#39;s organization. (asynchronously)
-     * Onboard creates the caller&#39;s organization. Two flows, keyed on whether the caller already has a home org (mirrors app/onboard/route.ts):    - FIRST-RUN (no home org): create + MOVE the user in as admin, so their next     JWT carries the new owner and the cloud scopes everything to it. This is the     path a fresh OAuth sign-up takes, from the sign-up application&#39;s org.   - ADDITIONAL (owner set): create the org but do NOT move the user — a move     changes their IAM owner (stripping a SuperAdmin&#39;s status + orphaning their     current org). They reach the new org via the OrgSwitcher, which re-scopes     X-Org-Id without touching IAM membership. A personal-org request from someone     who already has an org is meaningless → 409.
-     * @param onboardReq  (required)
+     * Creates the caller&#39;s organization. (asynchronously)
+     * Creates the caller&#39;s organization. Two flows, keyed on whether the caller already has a home org (mirrors app/onboard/route.ts):    - FIRST-RUN (no home org): create + MOVE the user in as admin, so their next     JWT carries the new owner and the cloud scopes everything to it. This is the     path a fresh OAuth sign-up takes, from the sign-up application&#39;s org.   - ADDITIONAL (owner set): create the org but do NOT move the user — a move     changes their IAM owner (stripping a SuperAdmin&#39;s status + orphaning their     current org). They reach the new org via the OrgSwitcher, which re-scopes     X-Org-Id without touching IAM membership. A personal-org request from someone     who already has an org is meaningless → 409.
+     * @param accountOnboardReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1259,12 +1299,13 @@ public class AccountApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAccountOrgsAsync(@javax.annotation.Nonnull OnboardReq onboardReq, final ApiCallback<OnboardResp> _callback) throws ApiException {
+    public okhttp3.Call postAccountOrgsAsync(@javax.annotation.Nonnull AccountOnboardReq accountOnboardReq, final ApiCallback<AccountOnboardResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAccountOrgsValidateBeforeCall(onboardReq, _callback);
-        Type localVarReturnType = new TypeToken<OnboardResp>(){}.getType();
+        okhttp3.Call localVarCall = postAccountOrgsValidateBeforeCall(accountOnboardReq, _callback);
+        Type localVarReturnType = new TypeToken<AccountOnboardResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

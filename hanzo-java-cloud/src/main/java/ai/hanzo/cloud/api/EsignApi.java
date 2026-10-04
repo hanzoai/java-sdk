@@ -27,23 +27,24 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.EsignCompletion;
-import ai.hanzo.cloud.model.EsignDocument;
-import ai.hanzo.cloud.model.EsignDocuments;
-import ai.hanzo.cloud.model.EsignFieldIn;
-import ai.hanzo.cloud.model.EsignHealth;
-import ai.hanzo.cloud.model.EsignInsertion;
-import ai.hanzo.cloud.model.EsignInvite;
-import ai.hanzo.cloud.model.EsignLinks;
-import ai.hanzo.cloud.model.EsignPDF;
-import ai.hanzo.cloud.model.EsignPlacement;
-import ai.hanzo.cloud.model.EsignRecipientIn;
-import ai.hanzo.cloud.model.EsignRejectIn;
-import ai.hanzo.cloud.model.EsignRejection;
-import ai.hanzo.cloud.model.EsignSession;
-import ai.hanzo.cloud.model.EsignTrail;
-import ai.hanzo.cloud.model.EsignUploadIn;
-import ai.hanzo.cloud.model.EsignValueIn;
+import ai.hanzo.cloud.model.EsignEsignCompletion;
+import ai.hanzo.cloud.model.EsignEsignDocument;
+import ai.hanzo.cloud.model.EsignEsignDocuments;
+import ai.hanzo.cloud.model.EsignEsignFieldIn;
+import ai.hanzo.cloud.model.EsignEsignHealth;
+import ai.hanzo.cloud.model.EsignEsignInsertion;
+import ai.hanzo.cloud.model.EsignEsignInvite;
+import ai.hanzo.cloud.model.EsignEsignLinks;
+import ai.hanzo.cloud.model.EsignEsignPDF;
+import ai.hanzo.cloud.model.EsignEsignPlacement;
+import ai.hanzo.cloud.model.EsignEsignRecipientIn;
+import ai.hanzo.cloud.model.EsignEsignRejectIn;
+import ai.hanzo.cloud.model.EsignEsignRejection;
+import ai.hanzo.cloud.model.EsignEsignSession;
+import ai.hanzo.cloud.model.EsignEsignTrail;
+import ai.hanzo.cloud.model.EsignEsignUploadIn;
+import ai.hanzo.cloud.model.EsignEsignValueIn;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -98,6 +99,7 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEsignDocumentsCall(final ApiCallback _callback) throws ApiException {
@@ -126,7 +128,8 @@ public class EsignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -153,35 +156,37 @@ public class EsignApi {
     /**
      * Returns your org&#39;s documents, newest first.
      * Returns your org&#39;s documents, newest first.  Each carries its status, recipients and field layout. The listing is capped at 200 and there is no paging, so treat it as the recent window rather than a complete export. It reads the caller&#39;s own tenant store, so no other org&#39;s documents can appear in it.
-     * @return EsignDocuments
+     * @return EsignEsignDocuments
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EsignDocuments getEsignDocuments() throws ApiException {
-        ApiResponse<EsignDocuments> localVarResp = getEsignDocumentsWithHttpInfo();
+    public EsignEsignDocuments getEsignDocuments() throws ApiException {
+        ApiResponse<EsignEsignDocuments> localVarResp = getEsignDocumentsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns your org&#39;s documents, newest first.
      * Returns your org&#39;s documents, newest first.  Each carries its status, recipients and field layout. The listing is capped at 200 and there is no paging, so treat it as the recent window rather than a complete export. It reads the caller&#39;s own tenant store, so no other org&#39;s documents can appear in it.
-     * @return ApiResponse&lt;EsignDocuments&gt;
+     * @return ApiResponse&lt;EsignEsignDocuments&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EsignDocuments> getEsignDocumentsWithHttpInfo() throws ApiException {
+    public ApiResponse<EsignEsignDocuments> getEsignDocumentsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getEsignDocumentsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<EsignDocuments>(){}.getType();
+        Type localVarReturnType = new TypeToken<EsignEsignDocuments>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -196,12 +201,13 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEsignDocumentsAsync(final ApiCallback<EsignDocuments> _callback) throws ApiException {
+    public okhttp3.Call getEsignDocumentsAsync(final ApiCallback<EsignEsignDocuments> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEsignDocumentsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<EsignDocuments>(){}.getType();
+        Type localVarReturnType = new TypeToken<EsignEsignDocuments>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -216,6 +222,7 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEsignDocumentsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -245,7 +252,8 @@ public class EsignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -278,17 +286,18 @@ public class EsignApi {
      * Returns one document with its recipients and field layout.
      * Returns one document with its recipients and field layout.  It answers the document, its recipients with each one&#39;s read and signing status, and every field with its type, page and position — the view a sender&#39;s UI renders, and where the field ids come from. The id is resolved in the caller&#39;s OWN tenant store, so another org&#39;s document id is a 404 rather than a refusal that would confirm it exists.
      * @param id ID is the document to act on. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id belonging to another tenant is simply not found. (required)
-     * @return EsignDocument
+     * @return EsignEsignDocument
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EsignDocument getEsignDocumentsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<EsignDocument> localVarResp = getEsignDocumentsByIdWithHttpInfo(id);
+    public EsignEsignDocument getEsignDocumentsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<EsignEsignDocument> localVarResp = getEsignDocumentsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -296,18 +305,19 @@ public class EsignApi {
      * Returns one document with its recipients and field layout.
      * Returns one document with its recipients and field layout.  It answers the document, its recipients with each one&#39;s read and signing status, and every field with its type, page and position — the view a sender&#39;s UI renders, and where the field ids come from. The id is resolved in the caller&#39;s OWN tenant store, so another org&#39;s document id is a 404 rather than a refusal that would confirm it exists.
      * @param id ID is the document to act on. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id belonging to another tenant is simply not found. (required)
-     * @return ApiResponse&lt;EsignDocument&gt;
+     * @return ApiResponse&lt;EsignEsignDocument&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EsignDocument> getEsignDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<EsignEsignDocument> getEsignDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getEsignDocumentsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<EsignDocument>(){}.getType();
+        Type localVarReturnType = new TypeToken<EsignEsignDocument>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -323,12 +333,13 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEsignDocumentsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<EsignDocument> _callback) throws ApiException {
+    public okhttp3.Call getEsignDocumentsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<EsignEsignDocument> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEsignDocumentsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<EsignDocument>(){}.getType();
+        Type localVarReturnType = new TypeToken<EsignEsignDocument>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -343,6 +354,7 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEsignDocumentsByIdAuditCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -372,7 +384,8 @@ public class EsignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -405,17 +418,18 @@ public class EsignApi {
      * Returns the document&#39;s full audit trail, oldest first.
      * Returns the document&#39;s full audit trail, oldest first.  It answers every recorded event for the document in order — created, recipient added, field created, sent, opened, each field inserted, each recipient completed or rejected, and completion — with the actor and timestamp on each. This is the evidence record behind a signature, so it is append-only and nothing in the surface edits it.  The id is resolved in the caller&#39;s OWN tenant store, so another org&#39;s document id is a 404.
      * @param id ID is the document to act on. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id belonging to another tenant is simply not found. (required)
-     * @return EsignTrail
+     * @return EsignEsignTrail
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EsignTrail getEsignDocumentsByIdAudit(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<EsignTrail> localVarResp = getEsignDocumentsByIdAuditWithHttpInfo(id);
+    public EsignEsignTrail getEsignDocumentsByIdAudit(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<EsignEsignTrail> localVarResp = getEsignDocumentsByIdAuditWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -423,18 +437,19 @@ public class EsignApi {
      * Returns the document&#39;s full audit trail, oldest first.
      * Returns the document&#39;s full audit trail, oldest first.  It answers every recorded event for the document in order — created, recipient added, field created, sent, opened, each field inserted, each recipient completed or rejected, and completion — with the actor and timestamp on each. This is the evidence record behind a signature, so it is append-only and nothing in the surface edits it.  The id is resolved in the caller&#39;s OWN tenant store, so another org&#39;s document id is a 404.
      * @param id ID is the document to act on. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id belonging to another tenant is simply not found. (required)
-     * @return ApiResponse&lt;EsignTrail&gt;
+     * @return ApiResponse&lt;EsignEsignTrail&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EsignTrail> getEsignDocumentsByIdAuditWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<EsignEsignTrail> getEsignDocumentsByIdAuditWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getEsignDocumentsByIdAuditValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<EsignTrail>(){}.getType();
+        Type localVarReturnType = new TypeToken<EsignEsignTrail>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -450,12 +465,13 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEsignDocumentsByIdAuditAsync(@javax.annotation.Nonnull String id, final ApiCallback<EsignTrail> _callback) throws ApiException {
+    public okhttp3.Call getEsignDocumentsByIdAuditAsync(@javax.annotation.Nonnull String id, final ApiCallback<EsignEsignTrail> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEsignDocumentsByIdAuditValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<EsignTrail>(){}.getType();
+        Type localVarReturnType = new TypeToken<EsignEsignTrail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -470,6 +486,7 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEsignDocumentsByIdDownloadCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -499,7 +516,8 @@ public class EsignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -532,17 +550,18 @@ public class EsignApi {
      * Returns the document — the sealed PDF once it is complete.
      * Returns the document — the sealed PDF once it is complete.  It answers the document&#39;s current PDF as base64 with a sealed flag and a filename. Before completion that is the original upload; once every signer has finished it is the SEALED artifact, with the field values rendered onto the page and a real x509 PKCS#7 digital signature applied. There is one pdfBase64 field either way, so sealed is what tells you which you are holding.  The id is resolved in the caller&#39;s OWN tenant store, so another org&#39;s document id is a 404.
      * @param id ID is the document to act on. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id belonging to another tenant is simply not found. (required)
-     * @return EsignPDF
+     * @return EsignEsignPDF
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EsignPDF getEsignDocumentsByIdDownload(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<EsignPDF> localVarResp = getEsignDocumentsByIdDownloadWithHttpInfo(id);
+    public EsignEsignPDF getEsignDocumentsByIdDownload(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<EsignEsignPDF> localVarResp = getEsignDocumentsByIdDownloadWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -550,18 +569,19 @@ public class EsignApi {
      * Returns the document — the sealed PDF once it is complete.
      * Returns the document — the sealed PDF once it is complete.  It answers the document&#39;s current PDF as base64 with a sealed flag and a filename. Before completion that is the original upload; once every signer has finished it is the SEALED artifact, with the field values rendered onto the page and a real x509 PKCS#7 digital signature applied. There is one pdfBase64 field either way, so sealed is what tells you which you are holding.  The id is resolved in the caller&#39;s OWN tenant store, so another org&#39;s document id is a 404.
      * @param id ID is the document to act on. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id belonging to another tenant is simply not found. (required)
-     * @return ApiResponse&lt;EsignPDF&gt;
+     * @return ApiResponse&lt;EsignEsignPDF&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EsignPDF> getEsignDocumentsByIdDownloadWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<EsignEsignPDF> getEsignDocumentsByIdDownloadWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getEsignDocumentsByIdDownloadValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<EsignPDF>(){}.getType();
+        Type localVarReturnType = new TypeToken<EsignEsignPDF>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -577,12 +597,13 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEsignDocumentsByIdDownloadAsync(@javax.annotation.Nonnull String id, final ApiCallback<EsignPDF> _callback) throws ApiException {
+    public okhttp3.Call getEsignDocumentsByIdDownloadAsync(@javax.annotation.Nonnull String id, final ApiCallback<EsignEsignPDF> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEsignDocumentsByIdDownloadValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<EsignPDF>(){}.getType();
+        Type localVarReturnType = new TypeToken<EsignEsignPDF>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -596,6 +617,7 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEsignHealthCall(final ApiCallback _callback) throws ApiException {
@@ -624,7 +646,8 @@ public class EsignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -651,35 +674,37 @@ public class EsignApi {
     /**
      * Reports whether the e-signature surface is mounted.
      * Reports whether the e-signature surface is mounted.  It answers ok whenever the subsystem is mounted, takes no tenant and needs no principal. It is deliberately shallow: it is registered before the document host is built, so it still answers on a deployment that came up WITHOUT object storage and therefore serves nothing else. Read it as reachability, never as a promise that documents can be stored.
-     * @return EsignHealth
+     * @return EsignEsignHealth
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EsignHealth getEsignHealth() throws ApiException {
-        ApiResponse<EsignHealth> localVarResp = getEsignHealthWithHttpInfo();
+    public EsignEsignHealth getEsignHealth() throws ApiException {
+        ApiResponse<EsignEsignHealth> localVarResp = getEsignHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports whether the e-signature surface is mounted.
      * Reports whether the e-signature surface is mounted.  It answers ok whenever the subsystem is mounted, takes no tenant and needs no principal. It is deliberately shallow: it is registered before the document host is built, so it still answers on a deployment that came up WITHOUT object storage and therefore serves nothing else. Read it as reachability, never as a promise that documents can be stored.
-     * @return ApiResponse&lt;EsignHealth&gt;
+     * @return ApiResponse&lt;EsignEsignHealth&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EsignHealth> getEsignHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<EsignEsignHealth> getEsignHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getEsignHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<EsignHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<EsignEsignHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -694,12 +719,13 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEsignHealthAsync(final ApiCallback<EsignHealth> _callback) throws ApiException {
+    public okhttp3.Call getEsignHealthAsync(final ApiCallback<EsignEsignHealth> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEsignHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<EsignHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<EsignEsignHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -715,6 +741,7 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getEsignOByOrgSignByTokenCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
@@ -745,7 +772,8 @@ public class EsignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -784,17 +812,18 @@ public class EsignApi {
      * Opens a document you were asked to sign, using your signing link.  It answers the document, the recipient the link identifies, the fields THAT recipient must fill, and the PDF to display. The first open also marks the recipient as having opened it and records that on the audit trail, so this read has a side effect by design.  This surface takes NO account: the signing token is the entire credential, and it names the recipient, so a signer sees only their own fields and never the other recipients&#39; tokens. The token resolves to its owning tenant FIRST, before any per-tenant store is opened, and the org segment is only checked against that answer. An unknown or wrong-org token is one and the same 404, never a hint that some other document exists.
      * @param org  (required)
      * @param token  (required)
-     * @return EsignSession
+     * @return EsignEsignSession
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EsignSession getEsignOByOrgSignByToken(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
-        ApiResponse<EsignSession> localVarResp = getEsignOByOrgSignByTokenWithHttpInfo(org, token);
+    public EsignEsignSession getEsignOByOrgSignByToken(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
+        ApiResponse<EsignEsignSession> localVarResp = getEsignOByOrgSignByTokenWithHttpInfo(org, token);
         return localVarResp.getData();
     }
 
@@ -803,18 +832,19 @@ public class EsignApi {
      * Opens a document you were asked to sign, using your signing link.  It answers the document, the recipient the link identifies, the fields THAT recipient must fill, and the PDF to display. The first open also marks the recipient as having opened it and records that on the audit trail, so this read has a side effect by design.  This surface takes NO account: the signing token is the entire credential, and it names the recipient, so a signer sees only their own fields and never the other recipients&#39; tokens. The token resolves to its owning tenant FIRST, before any per-tenant store is opened, and the org segment is only checked against that answer. An unknown or wrong-org token is one and the same 404, never a hint that some other document exists.
      * @param org  (required)
      * @param token  (required)
-     * @return ApiResponse&lt;EsignSession&gt;
+     * @return ApiResponse&lt;EsignEsignSession&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EsignSession> getEsignOByOrgSignByTokenWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
+    public ApiResponse<EsignEsignSession> getEsignOByOrgSignByTokenWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
         okhttp3.Call localVarCall = getEsignOByOrgSignByTokenValidateBeforeCall(org, token, null);
-        Type localVarReturnType = new TypeToken<EsignSession>(){}.getType();
+        Type localVarReturnType = new TypeToken<EsignEsignSession>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -831,18 +861,19 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEsignOByOrgSignByTokenAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback<EsignSession> _callback) throws ApiException {
+    public okhttp3.Call getEsignOByOrgSignByTokenAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback<EsignEsignSession> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEsignOByOrgSignByTokenValidateBeforeCall(org, token, _callback);
-        Type localVarReturnType = new TypeToken<EsignSession>(){}.getType();
+        Type localVarReturnType = new TypeToken<EsignEsignSession>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postEsignDocuments
-     * @param esignUploadIn  (required)
+     * @param esignEsignUploadIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -851,9 +882,10 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEsignDocumentsCall(@javax.annotation.Nonnull EsignUploadIn esignUploadIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEsignDocumentsCall(@javax.annotation.Nonnull EsignEsignUploadIn esignEsignUploadIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -867,7 +899,7 @@ public class EsignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = esignUploadIn;
+        Object localVarPostBody = esignEsignUploadIn;
 
         // create path and map variables
         String localVarPath = "/v1/esign/documents";
@@ -879,7 +911,8 @@ public class EsignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -899,57 +932,59 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postEsignDocumentsValidateBeforeCall(@javax.annotation.Nonnull EsignUploadIn esignUploadIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'esignUploadIn' is set
-        if (esignUploadIn == null) {
-            throw new ApiException("Missing the required parameter 'esignUploadIn' when calling postEsignDocuments(Async)");
+    private okhttp3.Call postEsignDocumentsValidateBeforeCall(@javax.annotation.Nonnull EsignEsignUploadIn esignEsignUploadIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'esignEsignUploadIn' is set
+        if (esignEsignUploadIn == null) {
+            throw new ApiException("Missing the required parameter 'esignEsignUploadIn' when calling postEsignDocuments(Async)");
         }
 
-        return postEsignDocumentsCall(esignUploadIn, _callback);
+        return postEsignDocumentsCall(esignEsignUploadIn, _callback);
 
     }
 
     /**
      * Uploads a PDF and opens a draft ready for recipients and fields.
      * Uploads a PDF and opens a draft ready for recipients and fields.  It answers 201 with the document in DRAFT — the state where recipients and fields may still be added, and the only state they may. The bytes go to object storage rather than into the tenant database, and the original is kept under its own key so it survives sealing untouched: a completed document can always be compared against what was uploaded. Creation is recorded on the audit trail.  This is the sender&#39;s surface: a validated principal is required, and the document lands in that principal&#39;s OWN org. Isolation is physical rather than a filter — each tenant has its own store — so another org&#39;s document id is simply not there. A body over 32 MiB is refused with 413.
-     * @param esignUploadIn  (required)
-     * @return EsignDocument
+     * @param esignEsignUploadIn  (required)
+     * @return EsignEsignDocument
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EsignDocument postEsignDocuments(@javax.annotation.Nonnull EsignUploadIn esignUploadIn) throws ApiException {
-        ApiResponse<EsignDocument> localVarResp = postEsignDocumentsWithHttpInfo(esignUploadIn);
+    public EsignEsignDocument postEsignDocuments(@javax.annotation.Nonnull EsignEsignUploadIn esignEsignUploadIn) throws ApiException {
+        ApiResponse<EsignEsignDocument> localVarResp = postEsignDocumentsWithHttpInfo(esignEsignUploadIn);
         return localVarResp.getData();
     }
 
     /**
      * Uploads a PDF and opens a draft ready for recipients and fields.
      * Uploads a PDF and opens a draft ready for recipients and fields.  It answers 201 with the document in DRAFT — the state where recipients and fields may still be added, and the only state they may. The bytes go to object storage rather than into the tenant database, and the original is kept under its own key so it survives sealing untouched: a completed document can always be compared against what was uploaded. Creation is recorded on the audit trail.  This is the sender&#39;s surface: a validated principal is required, and the document lands in that principal&#39;s OWN org. Isolation is physical rather than a filter — each tenant has its own store — so another org&#39;s document id is simply not there. A body over 32 MiB is refused with 413.
-     * @param esignUploadIn  (required)
-     * @return ApiResponse&lt;EsignDocument&gt;
+     * @param esignEsignUploadIn  (required)
+     * @return ApiResponse&lt;EsignEsignDocument&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EsignDocument> postEsignDocumentsWithHttpInfo(@javax.annotation.Nonnull EsignUploadIn esignUploadIn) throws ApiException {
-        okhttp3.Call localVarCall = postEsignDocumentsValidateBeforeCall(esignUploadIn, null);
-        Type localVarReturnType = new TypeToken<EsignDocument>(){}.getType();
+    public ApiResponse<EsignEsignDocument> postEsignDocumentsWithHttpInfo(@javax.annotation.Nonnull EsignEsignUploadIn esignEsignUploadIn) throws ApiException {
+        okhttp3.Call localVarCall = postEsignDocumentsValidateBeforeCall(esignEsignUploadIn, null);
+        Type localVarReturnType = new TypeToken<EsignEsignDocument>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Uploads a PDF and opens a draft ready for recipients and fields. (asynchronously)
      * Uploads a PDF and opens a draft ready for recipients and fields.  It answers 201 with the document in DRAFT — the state where recipients and fields may still be added, and the only state they may. The bytes go to object storage rather than into the tenant database, and the original is kept under its own key so it survives sealing untouched: a completed document can always be compared against what was uploaded. Creation is recorded on the audit trail.  This is the sender&#39;s surface: a validated principal is required, and the document lands in that principal&#39;s OWN org. Isolation is physical rather than a filter — each tenant has its own store — so another org&#39;s document id is simply not there. A body over 32 MiB is refused with 413.
-     * @param esignUploadIn  (required)
+     * @param esignEsignUploadIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -958,19 +993,20 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEsignDocumentsAsync(@javax.annotation.Nonnull EsignUploadIn esignUploadIn, final ApiCallback<EsignDocument> _callback) throws ApiException {
+    public okhttp3.Call postEsignDocumentsAsync(@javax.annotation.Nonnull EsignEsignUploadIn esignEsignUploadIn, final ApiCallback<EsignEsignDocument> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postEsignDocumentsValidateBeforeCall(esignUploadIn, _callback);
-        Type localVarReturnType = new TypeToken<EsignDocument>(){}.getType();
+        okhttp3.Call localVarCall = postEsignDocumentsValidateBeforeCall(esignEsignUploadIn, _callback);
+        Type localVarReturnType = new TypeToken<EsignEsignDocument>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postEsignDocumentsByIdFields
      * @param id  (required)
-     * @param esignFieldIn  (required)
+     * @param esignEsignFieldIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -979,9 +1015,10 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEsignDocumentsByIdFieldsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignFieldIn esignFieldIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEsignDocumentsByIdFieldsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignEsignFieldIn esignEsignFieldIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -995,7 +1032,7 @@ public class EsignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = esignFieldIn;
+        Object localVarPostBody = esignEsignFieldIn;
 
         // create path and map variables
         String localVarPath = "/v1/esign/documents/{id}/fields"
@@ -1008,7 +1045,8 @@ public class EsignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1028,18 +1066,18 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postEsignDocumentsByIdFieldsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignFieldIn esignFieldIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEsignDocumentsByIdFieldsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignEsignFieldIn esignEsignFieldIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postEsignDocumentsByIdFields(Async)");
         }
 
-        // verify the required parameter 'esignFieldIn' is set
-        if (esignFieldIn == null) {
-            throw new ApiException("Missing the required parameter 'esignFieldIn' when calling postEsignDocumentsByIdFields(Async)");
+        // verify the required parameter 'esignEsignFieldIn' is set
+        if (esignEsignFieldIn == null) {
+            throw new ApiException("Missing the required parameter 'esignEsignFieldIn' when calling postEsignDocumentsByIdFields(Async)");
         }
 
-        return postEsignDocumentsByIdFieldsCall(id, esignFieldIn, _callback);
+        return postEsignDocumentsByIdFieldsCall(id, esignEsignFieldIn, _callback);
 
     }
 
@@ -1047,18 +1085,19 @@ public class EsignApi {
      * Places a field on the page for one recipient to fill.
      * Places a field on the page for one recipient to fill.  It adds a signature, date, name, email or text box at a page and position for ONE named recipient, and answers 201 with its id. The recipient must belong to this document; one from elsewhere is refused.  Fields are what make a recipient signable: a document cannot be sent while any signing recipient has none. Only while DRAFT — adding a field to a sent document is a 409 — and an unknown document is a 404. The addition is recorded on the audit trail.
      * @param id  (required)
-     * @param esignFieldIn  (required)
-     * @return EsignPlacement
+     * @param esignEsignFieldIn  (required)
+     * @return EsignEsignPlacement
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EsignPlacement postEsignDocumentsByIdFields(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignFieldIn esignFieldIn) throws ApiException {
-        ApiResponse<EsignPlacement> localVarResp = postEsignDocumentsByIdFieldsWithHttpInfo(id, esignFieldIn);
+    public EsignEsignPlacement postEsignDocumentsByIdFields(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignEsignFieldIn esignEsignFieldIn) throws ApiException {
+        ApiResponse<EsignEsignPlacement> localVarResp = postEsignDocumentsByIdFieldsWithHttpInfo(id, esignEsignFieldIn);
         return localVarResp.getData();
     }
 
@@ -1066,19 +1105,20 @@ public class EsignApi {
      * Places a field on the page for one recipient to fill.
      * Places a field on the page for one recipient to fill.  It adds a signature, date, name, email or text box at a page and position for ONE named recipient, and answers 201 with its id. The recipient must belong to this document; one from elsewhere is refused.  Fields are what make a recipient signable: a document cannot be sent while any signing recipient has none. Only while DRAFT — adding a field to a sent document is a 409 — and an unknown document is a 404. The addition is recorded on the audit trail.
      * @param id  (required)
-     * @param esignFieldIn  (required)
-     * @return ApiResponse&lt;EsignPlacement&gt;
+     * @param esignEsignFieldIn  (required)
+     * @return ApiResponse&lt;EsignEsignPlacement&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EsignPlacement> postEsignDocumentsByIdFieldsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignFieldIn esignFieldIn) throws ApiException {
-        okhttp3.Call localVarCall = postEsignDocumentsByIdFieldsValidateBeforeCall(id, esignFieldIn, null);
-        Type localVarReturnType = new TypeToken<EsignPlacement>(){}.getType();
+    public ApiResponse<EsignEsignPlacement> postEsignDocumentsByIdFieldsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignEsignFieldIn esignEsignFieldIn) throws ApiException {
+        okhttp3.Call localVarCall = postEsignDocumentsByIdFieldsValidateBeforeCall(id, esignEsignFieldIn, null);
+        Type localVarReturnType = new TypeToken<EsignEsignPlacement>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1086,7 +1126,7 @@ public class EsignApi {
      * Places a field on the page for one recipient to fill. (asynchronously)
      * Places a field on the page for one recipient to fill.  It adds a signature, date, name, email or text box at a page and position for ONE named recipient, and answers 201 with its id. The recipient must belong to this document; one from elsewhere is refused.  Fields are what make a recipient signable: a document cannot be sent while any signing recipient has none. Only while DRAFT — adding a field to a sent document is a 409 — and an unknown document is a 404. The addition is recorded on the audit trail.
      * @param id  (required)
-     * @param esignFieldIn  (required)
+     * @param esignEsignFieldIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1095,19 +1135,20 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEsignDocumentsByIdFieldsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignFieldIn esignFieldIn, final ApiCallback<EsignPlacement> _callback) throws ApiException {
+    public okhttp3.Call postEsignDocumentsByIdFieldsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignEsignFieldIn esignEsignFieldIn, final ApiCallback<EsignEsignPlacement> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postEsignDocumentsByIdFieldsValidateBeforeCall(id, esignFieldIn, _callback);
-        Type localVarReturnType = new TypeToken<EsignPlacement>(){}.getType();
+        okhttp3.Call localVarCall = postEsignDocumentsByIdFieldsValidateBeforeCall(id, esignEsignFieldIn, _callback);
+        Type localVarReturnType = new TypeToken<EsignEsignPlacement>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postEsignDocumentsByIdRecipients
      * @param id  (required)
-     * @param esignRecipientIn  (required)
+     * @param esignEsignRecipientIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1116,9 +1157,10 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEsignDocumentsByIdRecipientsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignRecipientIn esignRecipientIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEsignDocumentsByIdRecipientsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignEsignRecipientIn esignEsignRecipientIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1132,7 +1174,7 @@ public class EsignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = esignRecipientIn;
+        Object localVarPostBody = esignEsignRecipientIn;
 
         // create path and map variables
         String localVarPath = "/v1/esign/documents/{id}/recipients"
@@ -1145,7 +1187,8 @@ public class EsignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1165,18 +1208,18 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postEsignDocumentsByIdRecipientsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignRecipientIn esignRecipientIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEsignDocumentsByIdRecipientsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignEsignRecipientIn esignEsignRecipientIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postEsignDocumentsByIdRecipients(Async)");
         }
 
-        // verify the required parameter 'esignRecipientIn' is set
-        if (esignRecipientIn == null) {
-            throw new ApiException("Missing the required parameter 'esignRecipientIn' when calling postEsignDocumentsByIdRecipients(Async)");
+        // verify the required parameter 'esignEsignRecipientIn' is set
+        if (esignEsignRecipientIn == null) {
+            throw new ApiException("Missing the required parameter 'esignEsignRecipientIn' when calling postEsignDocumentsByIdRecipients(Async)");
         }
 
-        return postEsignDocumentsByIdRecipientsCall(id, esignRecipientIn, _callback);
+        return postEsignDocumentsByIdRecipientsCall(id, esignEsignRecipientIn, _callback);
 
     }
 
@@ -1184,18 +1227,19 @@ public class EsignApi {
      * Adds someone to a draft and mints their signing token.
      * Adds someone to a draft and mints their signing token.  It answers 201 with the recipient&#39;s id and their signing TOKEN — the crypto-random capability that is the only credential the signer&#39;s surface accepts — so this response is where the signing link is built from. A CC recipient is recorded as already complete, because they are never asked to sign.  Only while DRAFT: adding a recipient to a document already sent is a 409, because the field layout and the turn order were fixed when it went out. An unknown document is a 404. The addition is recorded on the audit trail.
      * @param id  (required)
-     * @param esignRecipientIn  (required)
-     * @return EsignInvite
+     * @param esignEsignRecipientIn  (required)
+     * @return EsignEsignInvite
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EsignInvite postEsignDocumentsByIdRecipients(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignRecipientIn esignRecipientIn) throws ApiException {
-        ApiResponse<EsignInvite> localVarResp = postEsignDocumentsByIdRecipientsWithHttpInfo(id, esignRecipientIn);
+    public EsignEsignInvite postEsignDocumentsByIdRecipients(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignEsignRecipientIn esignEsignRecipientIn) throws ApiException {
+        ApiResponse<EsignEsignInvite> localVarResp = postEsignDocumentsByIdRecipientsWithHttpInfo(id, esignEsignRecipientIn);
         return localVarResp.getData();
     }
 
@@ -1203,19 +1247,20 @@ public class EsignApi {
      * Adds someone to a draft and mints their signing token.
      * Adds someone to a draft and mints their signing token.  It answers 201 with the recipient&#39;s id and their signing TOKEN — the crypto-random capability that is the only credential the signer&#39;s surface accepts — so this response is where the signing link is built from. A CC recipient is recorded as already complete, because they are never asked to sign.  Only while DRAFT: adding a recipient to a document already sent is a 409, because the field layout and the turn order were fixed when it went out. An unknown document is a 404. The addition is recorded on the audit trail.
      * @param id  (required)
-     * @param esignRecipientIn  (required)
-     * @return ApiResponse&lt;EsignInvite&gt;
+     * @param esignEsignRecipientIn  (required)
+     * @return ApiResponse&lt;EsignEsignInvite&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EsignInvite> postEsignDocumentsByIdRecipientsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignRecipientIn esignRecipientIn) throws ApiException {
-        okhttp3.Call localVarCall = postEsignDocumentsByIdRecipientsValidateBeforeCall(id, esignRecipientIn, null);
-        Type localVarReturnType = new TypeToken<EsignInvite>(){}.getType();
+    public ApiResponse<EsignEsignInvite> postEsignDocumentsByIdRecipientsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignEsignRecipientIn esignEsignRecipientIn) throws ApiException {
+        okhttp3.Call localVarCall = postEsignDocumentsByIdRecipientsValidateBeforeCall(id, esignEsignRecipientIn, null);
+        Type localVarReturnType = new TypeToken<EsignEsignInvite>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1223,7 +1268,7 @@ public class EsignApi {
      * Adds someone to a draft and mints their signing token. (asynchronously)
      * Adds someone to a draft and mints their signing token.  It answers 201 with the recipient&#39;s id and their signing TOKEN — the crypto-random capability that is the only credential the signer&#39;s surface accepts — so this response is where the signing link is built from. A CC recipient is recorded as already complete, because they are never asked to sign.  Only while DRAFT: adding a recipient to a document already sent is a 409, because the field layout and the turn order were fixed when it went out. An unknown document is a 404. The addition is recorded on the audit trail.
      * @param id  (required)
-     * @param esignRecipientIn  (required)
+     * @param esignEsignRecipientIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1232,12 +1277,13 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEsignDocumentsByIdRecipientsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignRecipientIn esignRecipientIn, final ApiCallback<EsignInvite> _callback) throws ApiException {
+    public okhttp3.Call postEsignDocumentsByIdRecipientsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EsignEsignRecipientIn esignEsignRecipientIn, final ApiCallback<EsignEsignInvite> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postEsignDocumentsByIdRecipientsValidateBeforeCall(id, esignRecipientIn, _callback);
-        Type localVarReturnType = new TypeToken<EsignInvite>(){}.getType();
+        okhttp3.Call localVarCall = postEsignDocumentsByIdRecipientsValidateBeforeCall(id, esignEsignRecipientIn, _callback);
+        Type localVarReturnType = new TypeToken<EsignEsignInvite>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1252,6 +1298,7 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postEsignDocumentsByIdSendCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1281,7 +1328,8 @@ public class EsignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1314,17 +1362,18 @@ public class EsignApi {
      * Sends the document out and answers each signer&#39;s link.
      * Sends the document out and answers each signer&#39;s link.  It moves the document from DRAFT to PENDING and answers the signing tokens — one per signing recipient, with the path to hand them — which is how the links reach the people who must sign. Nothing is emailed by this call; delivering the links is the caller&#39;s.  It refuses to send an unsignable document: no recipients at all is a 400, and so is any signing recipient with no fields to fill, named in the error. Re-sending an already-pending document is allowed and re-issues the same links rather than restarting anything; a completed document is a 409, and an unknown one a 404. The send is recorded on the audit trail.
      * @param id ID is the document to send. The URL is the addressing authority. (required)
-     * @return EsignLinks
+     * @return EsignEsignLinks
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EsignLinks postEsignDocumentsByIdSend(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<EsignLinks> localVarResp = postEsignDocumentsByIdSendWithHttpInfo(id);
+    public EsignEsignLinks postEsignDocumentsByIdSend(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<EsignEsignLinks> localVarResp = postEsignDocumentsByIdSendWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1332,18 +1381,19 @@ public class EsignApi {
      * Sends the document out and answers each signer&#39;s link.
      * Sends the document out and answers each signer&#39;s link.  It moves the document from DRAFT to PENDING and answers the signing tokens — one per signing recipient, with the path to hand them — which is how the links reach the people who must sign. Nothing is emailed by this call; delivering the links is the caller&#39;s.  It refuses to send an unsignable document: no recipients at all is a 400, and so is any signing recipient with no fields to fill, named in the error. Re-sending an already-pending document is allowed and re-issues the same links rather than restarting anything; a completed document is a 409, and an unknown one a 404. The send is recorded on the audit trail.
      * @param id ID is the document to send. The URL is the addressing authority. (required)
-     * @return ApiResponse&lt;EsignLinks&gt;
+     * @return ApiResponse&lt;EsignEsignLinks&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EsignLinks> postEsignDocumentsByIdSendWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<EsignEsignLinks> postEsignDocumentsByIdSendWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postEsignDocumentsByIdSendValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<EsignLinks>(){}.getType();
+        Type localVarReturnType = new TypeToken<EsignEsignLinks>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1359,12 +1409,13 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEsignDocumentsByIdSendAsync(@javax.annotation.Nonnull String id, final ApiCallback<EsignLinks> _callback) throws ApiException {
+    public okhttp3.Call postEsignDocumentsByIdSendAsync(@javax.annotation.Nonnull String id, final ApiCallback<EsignEsignLinks> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postEsignDocumentsByIdSendValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<EsignLinks>(){}.getType();
+        Type localVarReturnType = new TypeToken<EsignEsignLinks>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1380,6 +1431,7 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postEsignOByOrgSignByTokenCompleteCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
@@ -1410,7 +1462,8 @@ public class EsignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1449,17 +1502,18 @@ public class EsignApi {
      * Finishes your signing — and seals the document if you were the last.  It marks this recipient as done and answers whether the DOCUMENT sealed with it. When every signing recipient has completed, sealing happens right here in the same call: the collected values are rendered onto the PDF, a real x509 PKCS#7 signature is applied, the sealed bytes are stored beside the untouched original, and the document moves to COMPLETED. Until then the answer is the recipient&#39;s own completion with the document still pending.  It refuses to complete a half-filled signature: a recipient with any unfilled field is a 400 naming how many remain. A document not out for signature is a 409, as is a recipient who has already completed, and under SEQUENTIAL order a signer out of turn is a 403. The token is the whole credential — no account, and a token that does not resolve under the org segment is a 404. Sealing and completion are one transaction, so a failure anywhere leaves the document exactly as it was.
      * @param org  (required)
      * @param token  (required)
-     * @return EsignCompletion
+     * @return EsignEsignCompletion
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EsignCompletion postEsignOByOrgSignByTokenComplete(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
-        ApiResponse<EsignCompletion> localVarResp = postEsignOByOrgSignByTokenCompleteWithHttpInfo(org, token);
+    public EsignEsignCompletion postEsignOByOrgSignByTokenComplete(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
+        ApiResponse<EsignEsignCompletion> localVarResp = postEsignOByOrgSignByTokenCompleteWithHttpInfo(org, token);
         return localVarResp.getData();
     }
 
@@ -1468,18 +1522,19 @@ public class EsignApi {
      * Finishes your signing — and seals the document if you were the last.  It marks this recipient as done and answers whether the DOCUMENT sealed with it. When every signing recipient has completed, sealing happens right here in the same call: the collected values are rendered onto the PDF, a real x509 PKCS#7 signature is applied, the sealed bytes are stored beside the untouched original, and the document moves to COMPLETED. Until then the answer is the recipient&#39;s own completion with the document still pending.  It refuses to complete a half-filled signature: a recipient with any unfilled field is a 400 naming how many remain. A document not out for signature is a 409, as is a recipient who has already completed, and under SEQUENTIAL order a signer out of turn is a 403. The token is the whole credential — no account, and a token that does not resolve under the org segment is a 404. Sealing and completion are one transaction, so a failure anywhere leaves the document exactly as it was.
      * @param org  (required)
      * @param token  (required)
-     * @return ApiResponse&lt;EsignCompletion&gt;
+     * @return ApiResponse&lt;EsignEsignCompletion&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EsignCompletion> postEsignOByOrgSignByTokenCompleteWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
+    public ApiResponse<EsignEsignCompletion> postEsignOByOrgSignByTokenCompleteWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token) throws ApiException {
         okhttp3.Call localVarCall = postEsignOByOrgSignByTokenCompleteValidateBeforeCall(org, token, null);
-        Type localVarReturnType = new TypeToken<EsignCompletion>(){}.getType();
+        Type localVarReturnType = new TypeToken<EsignEsignCompletion>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1496,12 +1551,13 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEsignOByOrgSignByTokenCompleteAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback<EsignCompletion> _callback) throws ApiException {
+    public okhttp3.Call postEsignOByOrgSignByTokenCompleteAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, final ApiCallback<EsignEsignCompletion> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postEsignOByOrgSignByTokenCompleteValidateBeforeCall(org, token, _callback);
-        Type localVarReturnType = new TypeToken<EsignCompletion>(){}.getType();
+        Type localVarReturnType = new TypeToken<EsignEsignCompletion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1510,7 +1566,7 @@ public class EsignApi {
      * @param org  (required)
      * @param token  (required)
      * @param fieldId  (required)
-     * @param esignValueIn  (required)
+     * @param esignEsignValueIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1519,9 +1575,10 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEsignOByOrgSignByTokenFieldsByFieldidCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId, @javax.annotation.Nonnull EsignValueIn esignValueIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEsignOByOrgSignByTokenFieldsByFieldidCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId, @javax.annotation.Nonnull EsignEsignValueIn esignEsignValueIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1535,7 +1592,7 @@ public class EsignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = esignValueIn;
+        Object localVarPostBody = esignEsignValueIn;
 
         // create path and map variables
         String localVarPath = "/v1/esign/o/{org}/sign/{token}/fields/{fieldId}"
@@ -1550,7 +1607,8 @@ public class EsignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1570,7 +1628,7 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postEsignOByOrgSignByTokenFieldsByFieldidValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId, @javax.annotation.Nonnull EsignValueIn esignValueIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEsignOByOrgSignByTokenFieldsByFieldidValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId, @javax.annotation.Nonnull EsignEsignValueIn esignEsignValueIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
             throw new ApiException("Missing the required parameter 'org' when calling postEsignOByOrgSignByTokenFieldsByFieldid(Async)");
@@ -1586,12 +1644,12 @@ public class EsignApi {
             throw new ApiException("Missing the required parameter 'fieldId' when calling postEsignOByOrgSignByTokenFieldsByFieldid(Async)");
         }
 
-        // verify the required parameter 'esignValueIn' is set
-        if (esignValueIn == null) {
-            throw new ApiException("Missing the required parameter 'esignValueIn' when calling postEsignOByOrgSignByTokenFieldsByFieldid(Async)");
+        // verify the required parameter 'esignEsignValueIn' is set
+        if (esignEsignValueIn == null) {
+            throw new ApiException("Missing the required parameter 'esignEsignValueIn' when calling postEsignOByOrgSignByTokenFieldsByFieldid(Async)");
         }
 
-        return postEsignOByOrgSignByTokenFieldsByFieldidCall(org, token, fieldId, esignValueIn, _callback);
+        return postEsignOByOrgSignByTokenFieldsByFieldidCall(org, token, fieldId, esignEsignValueIn, _callback);
 
     }
 
@@ -1601,18 +1659,19 @@ public class EsignApi {
      * @param org  (required)
      * @param token  (required)
      * @param fieldId  (required)
-     * @param esignValueIn  (required)
-     * @return EsignInsertion
+     * @param esignEsignValueIn  (required)
+     * @return EsignEsignInsertion
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EsignInsertion postEsignOByOrgSignByTokenFieldsByFieldid(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId, @javax.annotation.Nonnull EsignValueIn esignValueIn) throws ApiException {
-        ApiResponse<EsignInsertion> localVarResp = postEsignOByOrgSignByTokenFieldsByFieldidWithHttpInfo(org, token, fieldId, esignValueIn);
+    public EsignEsignInsertion postEsignOByOrgSignByTokenFieldsByFieldid(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId, @javax.annotation.Nonnull EsignEsignValueIn esignEsignValueIn) throws ApiException {
+        ApiResponse<EsignEsignInsertion> localVarResp = postEsignOByOrgSignByTokenFieldsByFieldidWithHttpInfo(org, token, fieldId, esignEsignValueIn);
         return localVarResp.getData();
     }
 
@@ -1622,19 +1681,20 @@ public class EsignApi {
      * @param org  (required)
      * @param token  (required)
      * @param fieldId  (required)
-     * @param esignValueIn  (required)
-     * @return ApiResponse&lt;EsignInsertion&gt;
+     * @param esignEsignValueIn  (required)
+     * @return ApiResponse&lt;EsignEsignInsertion&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EsignInsertion> postEsignOByOrgSignByTokenFieldsByFieldidWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId, @javax.annotation.Nonnull EsignValueIn esignValueIn) throws ApiException {
-        okhttp3.Call localVarCall = postEsignOByOrgSignByTokenFieldsByFieldidValidateBeforeCall(org, token, fieldId, esignValueIn, null);
-        Type localVarReturnType = new TypeToken<EsignInsertion>(){}.getType();
+    public ApiResponse<EsignEsignInsertion> postEsignOByOrgSignByTokenFieldsByFieldidWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId, @javax.annotation.Nonnull EsignEsignValueIn esignEsignValueIn) throws ApiException {
+        okhttp3.Call localVarCall = postEsignOByOrgSignByTokenFieldsByFieldidValidateBeforeCall(org, token, fieldId, esignEsignValueIn, null);
+        Type localVarReturnType = new TypeToken<EsignEsignInsertion>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1644,7 +1704,7 @@ public class EsignApi {
      * @param org  (required)
      * @param token  (required)
      * @param fieldId  (required)
-     * @param esignValueIn  (required)
+     * @param esignEsignValueIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1653,12 +1713,13 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEsignOByOrgSignByTokenFieldsByFieldidAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId, @javax.annotation.Nonnull EsignValueIn esignValueIn, final ApiCallback<EsignInsertion> _callback) throws ApiException {
+    public okhttp3.Call postEsignOByOrgSignByTokenFieldsByFieldidAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull String fieldId, @javax.annotation.Nonnull EsignEsignValueIn esignEsignValueIn, final ApiCallback<EsignEsignInsertion> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postEsignOByOrgSignByTokenFieldsByFieldidValidateBeforeCall(org, token, fieldId, esignValueIn, _callback);
-        Type localVarReturnType = new TypeToken<EsignInsertion>(){}.getType();
+        okhttp3.Call localVarCall = postEsignOByOrgSignByTokenFieldsByFieldidValidateBeforeCall(org, token, fieldId, esignEsignValueIn, _callback);
+        Type localVarReturnType = new TypeToken<EsignEsignInsertion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1666,7 +1727,7 @@ public class EsignApi {
      * Build call for postEsignOByOrgSignByTokenReject
      * @param org  (required)
      * @param token  (required)
-     * @param esignRejectIn  (required)
+     * @param esignEsignRejectIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1675,9 +1736,10 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEsignOByOrgSignByTokenRejectCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull EsignRejectIn esignRejectIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEsignOByOrgSignByTokenRejectCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull EsignEsignRejectIn esignEsignRejectIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1691,7 +1753,7 @@ public class EsignApi {
             basePath = null;
         }
 
-        Object localVarPostBody = esignRejectIn;
+        Object localVarPostBody = esignEsignRejectIn;
 
         // create path and map variables
         String localVarPath = "/v1/esign/o/{org}/sign/{token}/reject"
@@ -1705,7 +1767,8 @@ public class EsignApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1725,7 +1788,7 @@ public class EsignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postEsignOByOrgSignByTokenRejectValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull EsignRejectIn esignRejectIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEsignOByOrgSignByTokenRejectValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull EsignEsignRejectIn esignEsignRejectIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
             throw new ApiException("Missing the required parameter 'org' when calling postEsignOByOrgSignByTokenReject(Async)");
@@ -1736,12 +1799,12 @@ public class EsignApi {
             throw new ApiException("Missing the required parameter 'token' when calling postEsignOByOrgSignByTokenReject(Async)");
         }
 
-        // verify the required parameter 'esignRejectIn' is set
-        if (esignRejectIn == null) {
-            throw new ApiException("Missing the required parameter 'esignRejectIn' when calling postEsignOByOrgSignByTokenReject(Async)");
+        // verify the required parameter 'esignEsignRejectIn' is set
+        if (esignEsignRejectIn == null) {
+            throw new ApiException("Missing the required parameter 'esignEsignRejectIn' when calling postEsignOByOrgSignByTokenReject(Async)");
         }
 
-        return postEsignOByOrgSignByTokenRejectCall(org, token, esignRejectIn, _callback);
+        return postEsignOByOrgSignByTokenRejectCall(org, token, esignEsignRejectIn, _callback);
 
     }
 
@@ -1750,18 +1813,19 @@ public class EsignApi {
      * Declines to sign, with an optional reason.  It records this recipient&#39;s refusal and moves the WHOLE DOCUMENT to REJECTED — one declining signer ends it for everyone, and there is no route back: the document cannot then be signed or completed. An optional reason is stored and written onto the audit trail with the rejection, which is what the sender sees.  A document not out for signature is a 409, and so is a recipient who has already signed or already rejected — a refusal cannot be taken back or repeated. The token is the whole credential; one that does not resolve under the org segment is a 404.
      * @param org  (required)
      * @param token  (required)
-     * @param esignRejectIn  (required)
-     * @return EsignRejection
+     * @param esignEsignRejectIn  (required)
+     * @return EsignEsignRejection
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public EsignRejection postEsignOByOrgSignByTokenReject(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull EsignRejectIn esignRejectIn) throws ApiException {
-        ApiResponse<EsignRejection> localVarResp = postEsignOByOrgSignByTokenRejectWithHttpInfo(org, token, esignRejectIn);
+    public EsignEsignRejection postEsignOByOrgSignByTokenReject(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull EsignEsignRejectIn esignEsignRejectIn) throws ApiException {
+        ApiResponse<EsignEsignRejection> localVarResp = postEsignOByOrgSignByTokenRejectWithHttpInfo(org, token, esignEsignRejectIn);
         return localVarResp.getData();
     }
 
@@ -1770,19 +1834,20 @@ public class EsignApi {
      * Declines to sign, with an optional reason.  It records this recipient&#39;s refusal and moves the WHOLE DOCUMENT to REJECTED — one declining signer ends it for everyone, and there is no route back: the document cannot then be signed or completed. An optional reason is stored and written onto the audit trail with the rejection, which is what the sender sees.  A document not out for signature is a 409, and so is a recipient who has already signed or already rejected — a refusal cannot be taken back or repeated. The token is the whole credential; one that does not resolve under the org segment is a 404.
      * @param org  (required)
      * @param token  (required)
-     * @param esignRejectIn  (required)
-     * @return ApiResponse&lt;EsignRejection&gt;
+     * @param esignEsignRejectIn  (required)
+     * @return ApiResponse&lt;EsignEsignRejection&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EsignRejection> postEsignOByOrgSignByTokenRejectWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull EsignRejectIn esignRejectIn) throws ApiException {
-        okhttp3.Call localVarCall = postEsignOByOrgSignByTokenRejectValidateBeforeCall(org, token, esignRejectIn, null);
-        Type localVarReturnType = new TypeToken<EsignRejection>(){}.getType();
+    public ApiResponse<EsignEsignRejection> postEsignOByOrgSignByTokenRejectWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull EsignEsignRejectIn esignEsignRejectIn) throws ApiException {
+        okhttp3.Call localVarCall = postEsignOByOrgSignByTokenRejectValidateBeforeCall(org, token, esignEsignRejectIn, null);
+        Type localVarReturnType = new TypeToken<EsignEsignRejection>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1791,7 +1856,7 @@ public class EsignApi {
      * Declines to sign, with an optional reason.  It records this recipient&#39;s refusal and moves the WHOLE DOCUMENT to REJECTED — one declining signer ends it for everyone, and there is no route back: the document cannot then be signed or completed. An optional reason is stored and written onto the audit trail with the rejection, which is what the sender sees.  A document not out for signature is a 409, and so is a recipient who has already signed or already rejected — a refusal cannot be taken back or repeated. The token is the whole credential; one that does not resolve under the org segment is a 404.
      * @param org  (required)
      * @param token  (required)
-     * @param esignRejectIn  (required)
+     * @param esignEsignRejectIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1800,12 +1865,13 @@ public class EsignApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postEsignOByOrgSignByTokenRejectAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull EsignRejectIn esignRejectIn, final ApiCallback<EsignRejection> _callback) throws ApiException {
+    public okhttp3.Call postEsignOByOrgSignByTokenRejectAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String token, @javax.annotation.Nonnull EsignEsignRejectIn esignEsignRejectIn, final ApiCallback<EsignEsignRejection> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postEsignOByOrgSignByTokenRejectValidateBeforeCall(org, token, esignRejectIn, _callback);
-        Type localVarReturnType = new TypeToken<EsignRejection>(){}.getType();
+        okhttp3.Call localVarCall = postEsignOByOrgSignByTokenRejectValidateBeforeCall(org, token, esignEsignRejectIn, _callback);
+        Type localVarReturnType = new TypeToken<EsignEsignRejection>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -308,16 +308,16 @@ public class TelNumber {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TelNumber number = (TelNumber) o;
-    return Objects.equals(this.capable, number.capable) &&
-        Objects.equals(this.country, number.country) &&
-        Objects.equals(this.currency, number.currency) &&
-        Objects.equals(this.e164, number.e164) &&
-        Objects.equals(this.id, number.id) &&
-        Objects.equals(this.monthly, number.monthly) &&
-        Objects.equals(this.org, number.org) &&
-        Objects.equals(this.type, number.type)&&
-        Objects.equals(this.additionalProperties, number.additionalProperties);
+    TelNumber telNumber = (TelNumber) o;
+    return Objects.equals(this.capable, telNumber.capable) &&
+        Objects.equals(this.country, telNumber.country) &&
+        Objects.equals(this.currency, telNumber.currency) &&
+        Objects.equals(this.e164, telNumber.e164) &&
+        Objects.equals(this.id, telNumber.id) &&
+        Objects.equals(this.monthly, telNumber.monthly) &&
+        Objects.equals(this.org, telNumber.org) &&
+        Objects.equals(this.type, telNumber.type)&&
+        Objects.equals(this.additionalProperties, telNumber.additionalProperties);
   }
 
   @Override

@@ -27,8 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.BlueprintHealth;
-import ai.hanzo.cloud.model.BlueprintIndex;
+import ai.hanzo.cloud.model.BlueprintBlueprintHealth;
+import ai.hanzo.cloud.model.BlueprintBlueprintIndex;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -83,6 +84,7 @@ public class BlueprintApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBlueprintCall(final ApiCallback _callback) throws ApiException {
@@ -111,7 +113,8 @@ public class BlueprintApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -138,35 +141,37 @@ public class BlueprintApi {
     /**
      * Returns every deployable blueprint with its service count and estimated monthly compute cost.
      * Returns every deployable blueprint with its service count and estimated monthly compute cost.  It is the lightweight index the console renders as a template gallery before drilling into one stack&#39;s bill of images — GET /v1/blueprint/sbom?template&#x3D;&lt;id&gt; is the detail view. The cost is the same figure the deploy path meters the deploying org on and the 20% author royalty is taken from, priced from the active rate card (GET /v1/blueprint/health echoes that card).
-     * @return BlueprintIndex
+     * @return BlueprintBlueprintIndex
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BlueprintIndex getBlueprint() throws ApiException {
-        ApiResponse<BlueprintIndex> localVarResp = getBlueprintWithHttpInfo();
+    public BlueprintBlueprintIndex getBlueprint() throws ApiException {
+        ApiResponse<BlueprintBlueprintIndex> localVarResp = getBlueprintWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns every deployable blueprint with its service count and estimated monthly compute cost.
      * Returns every deployable blueprint with its service count and estimated monthly compute cost.  It is the lightweight index the console renders as a template gallery before drilling into one stack&#39;s bill of images — GET /v1/blueprint/sbom?template&#x3D;&lt;id&gt; is the detail view. The cost is the same figure the deploy path meters the deploying org on and the 20% author royalty is taken from, priced from the active rate card (GET /v1/blueprint/health echoes that card).
-     * @return ApiResponse&lt;BlueprintIndex&gt;
+     * @return ApiResponse&lt;BlueprintBlueprintIndex&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BlueprintIndex> getBlueprintWithHttpInfo() throws ApiException {
+    public ApiResponse<BlueprintBlueprintIndex> getBlueprintWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBlueprintValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<BlueprintIndex>(){}.getType();
+        Type localVarReturnType = new TypeToken<BlueprintBlueprintIndex>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -181,12 +186,13 @@ public class BlueprintApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBlueprintAsync(final ApiCallback<BlueprintIndex> _callback) throws ApiException {
+    public okhttp3.Call getBlueprintAsync(final ApiCallback<BlueprintBlueprintIndex> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBlueprintValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<BlueprintIndex>(){}.getType();
+        Type localVarReturnType = new TypeToken<BlueprintBlueprintIndex>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -200,6 +206,7 @@ public class BlueprintApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getBlueprintHealthCall(final ApiCallback _callback) throws ApiException {
@@ -228,7 +235,8 @@ public class BlueprintApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -255,35 +263,37 @@ public class BlueprintApi {
     /**
      * Reports blueprint liveness and echoes the compute rate card in force.
      * Reports blueprint liveness and echoes the compute rate card in force.  The rate card is the one the estimator actually applies after the operator env overlay, so an operator can confirm a tuned knob took effect rather than inferring it from a price. Not JWT-gated — a liveness probe must be reachable — and it always answers 200 while the subsystem is mounted.
-     * @return BlueprintHealth
+     * @return BlueprintBlueprintHealth
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BlueprintHealth getBlueprintHealth() throws ApiException {
-        ApiResponse<BlueprintHealth> localVarResp = getBlueprintHealthWithHttpInfo();
+    public BlueprintBlueprintHealth getBlueprintHealth() throws ApiException {
+        ApiResponse<BlueprintBlueprintHealth> localVarResp = getBlueprintHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports blueprint liveness and echoes the compute rate card in force.
      * Reports blueprint liveness and echoes the compute rate card in force.  The rate card is the one the estimator actually applies after the operator env overlay, so an operator can confirm a tuned knob took effect rather than inferring it from a price. Not JWT-gated — a liveness probe must be reachable — and it always answers 200 while the subsystem is mounted.
-     * @return ApiResponse&lt;BlueprintHealth&gt;
+     * @return ApiResponse&lt;BlueprintBlueprintHealth&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BlueprintHealth> getBlueprintHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<BlueprintBlueprintHealth> getBlueprintHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getBlueprintHealthValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<BlueprintHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<BlueprintBlueprintHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -298,12 +308,13 @@ public class BlueprintApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBlueprintHealthAsync(final ApiCallback<BlueprintHealth> _callback) throws ApiException {
+    public okhttp3.Call getBlueprintHealthAsync(final ApiCallback<BlueprintBlueprintHealth> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBlueprintHealthValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<BlueprintHealth>(){}.getType();
+        Type localVarReturnType = new TypeToken<BlueprintBlueprintHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

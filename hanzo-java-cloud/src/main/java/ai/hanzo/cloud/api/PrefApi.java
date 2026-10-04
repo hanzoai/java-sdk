@@ -27,7 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.PrefsView;
+import ai.hanzo.cloud.model.PrefPrefsView;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -82,6 +83,7 @@ public class PrefApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getPrefCall(final ApiCallback _callback) throws ApiException {
@@ -110,7 +112,8 @@ public class PrefApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -137,35 +140,37 @@ public class PrefApi {
     /**
      * Returns the signed-in caller&#39;s OWN preference document — the theme, density and pinned nav that follow them across every Hanzo surface.
      * Returns the signed-in caller&#39;s OWN preference document — the theme, density and pinned nav that follow them across every Hanzo surface. There is no path to another user&#39;s preferences: not for an org admin, not for a platform SuperAdmin, because the subject is built from the validated credential and is the mandatory predicate on the read. A caller who has never saved anything gets an empty document at 200, never a 404, so the user menu always renders.
-     * @return PrefsView
+     * @return PrefPrefsView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public PrefsView getPref() throws ApiException {
-        ApiResponse<PrefsView> localVarResp = getPrefWithHttpInfo();
+    public PrefPrefsView getPref() throws ApiException {
+        ApiResponse<PrefPrefsView> localVarResp = getPrefWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the signed-in caller&#39;s OWN preference document — the theme, density and pinned nav that follow them across every Hanzo surface.
      * Returns the signed-in caller&#39;s OWN preference document — the theme, density and pinned nav that follow them across every Hanzo surface. There is no path to another user&#39;s preferences: not for an org admin, not for a platform SuperAdmin, because the subject is built from the validated credential and is the mandatory predicate on the read. A caller who has never saved anything gets an empty document at 200, never a 404, so the user menu always renders.
-     * @return ApiResponse&lt;PrefsView&gt;
+     * @return ApiResponse&lt;PrefPrefsView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PrefsView> getPrefWithHttpInfo() throws ApiException {
+    public ApiResponse<PrefPrefsView> getPrefWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPrefValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<PrefsView>(){}.getType();
+        Type localVarReturnType = new TypeToken<PrefPrefsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -180,12 +185,13 @@ public class PrefApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getPrefAsync(final ApiCallback<PrefsView> _callback) throws ApiException {
+    public okhttp3.Call getPrefAsync(final ApiCallback<PrefPrefsView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPrefValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<PrefsView>(){}.getType();
+        Type localVarReturnType = new TypeToken<PrefPrefsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

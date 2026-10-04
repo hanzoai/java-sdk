@@ -27,9 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.MlCreate;
-import ai.hanzo.cloud.model.MlResource;
-import ai.hanzo.cloud.model.MlResourceList;
+import ai.hanzo.cloud.model.MlMlCreate;
+import ai.hanzo.cloud.model.MlMlResource;
+import ai.hanzo.cloud.model.MlMlResourceList;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -85,6 +86,7 @@ public class MlApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteMlModelsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -114,6 +116,7 @@ public class MlApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -152,6 +155,7 @@ public class MlApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteMlModelsByName(@javax.annotation.Nonnull String name) throws ApiException {
@@ -169,6 +173,7 @@ public class MlApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteMlModelsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
@@ -188,6 +193,7 @@ public class MlApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteMlModelsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
@@ -294,6 +300,7 @@ public class MlApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMlModelsCall(final ApiCallback _callback) throws ApiException {
@@ -322,7 +329,8 @@ public class MlApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -349,35 +357,37 @@ public class MlApi {
     /**
      * Lists the inference models deployed in the caller&#39;s org.
      * Lists the inference models deployed in the caller&#39;s org. Each entry carries the model&#39;s name, when Kubernetes admitted it, and kserve&#39;s live status — the spec is on the single-model read. An org that has deployed nothing gets an empty list.
-     * @return MlResourceList
+     * @return MlMlResourceList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MlResourceList getMlModels() throws ApiException {
-        ApiResponse<MlResourceList> localVarResp = getMlModelsWithHttpInfo();
+    public MlMlResourceList getMlModels() throws ApiException {
+        ApiResponse<MlMlResourceList> localVarResp = getMlModelsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the inference models deployed in the caller&#39;s org.
      * Lists the inference models deployed in the caller&#39;s org. Each entry carries the model&#39;s name, when Kubernetes admitted it, and kserve&#39;s live status — the spec is on the single-model read. An org that has deployed nothing gets an empty list.
-     * @return ApiResponse&lt;MlResourceList&gt;
+     * @return ApiResponse&lt;MlMlResourceList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MlResourceList> getMlModelsWithHttpInfo() throws ApiException {
+    public ApiResponse<MlMlResourceList> getMlModelsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getMlModelsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<MlResourceList>(){}.getType();
+        Type localVarReturnType = new TypeToken<MlMlResourceList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -392,12 +402,13 @@ public class MlApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMlModelsAsync(final ApiCallback<MlResourceList> _callback) throws ApiException {
+    public okhttp3.Call getMlModelsAsync(final ApiCallback<MlMlResourceList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMlModelsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<MlResourceList>(){}.getType();
+        Type localVarReturnType = new TypeToken<MlMlResourceList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -412,6 +423,7 @@ public class MlApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMlModelsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -441,7 +453,8 @@ public class MlApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -474,17 +487,18 @@ public class MlApi {
      * Returns one deployed inference model.
      * Returns one deployed inference model. Its spec comes with it, and kserve&#39;s live status, which is where readiness and the serving address appear. A name the caller&#39;s org does not own answers 404, exactly as an unknown name does, so a probe learns nothing about another tenant&#39;s models.
      * @param name Name is the resource to act on, taken from the path. Lower-cased and trimmed to the DNS-1123 label a CustomResource&#39;s metadata.name must be. (required)
-     * @return MlResource
+     * @return MlMlResource
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MlResource getMlModelsByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<MlResource> localVarResp = getMlModelsByNameWithHttpInfo(name);
+    public MlMlResource getMlModelsByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<MlMlResource> localVarResp = getMlModelsByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -492,18 +506,19 @@ public class MlApi {
      * Returns one deployed inference model.
      * Returns one deployed inference model. Its spec comes with it, and kserve&#39;s live status, which is where readiness and the serving address appear. A name the caller&#39;s org does not own answers 404, exactly as an unknown name does, so a probe learns nothing about another tenant&#39;s models.
      * @param name Name is the resource to act on, taken from the path. Lower-cased and trimmed to the DNS-1123 label a CustomResource&#39;s metadata.name must be. (required)
-     * @return ApiResponse&lt;MlResource&gt;
+     * @return ApiResponse&lt;MlMlResource&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MlResource> getMlModelsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<MlMlResource> getMlModelsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getMlModelsByNameValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<MlResource>(){}.getType();
+        Type localVarReturnType = new TypeToken<MlMlResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -519,12 +534,13 @@ public class MlApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMlModelsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<MlResource> _callback) throws ApiException {
+    public okhttp3.Call getMlModelsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<MlMlResource> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMlModelsByNameValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<MlResource>(){}.getType();
+        Type localVarReturnType = new TypeToken<MlMlResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -628,7 +644,7 @@ public class MlApi {
     }
     /**
      * Build call for postMlModels
-     * @param mlCreate  (required)
+     * @param mlMlCreate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -637,9 +653,10 @@ public class MlApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postMlModelsCall(@javax.annotation.Nonnull MlCreate mlCreate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMlModelsCall(@javax.annotation.Nonnull MlMlCreate mlMlCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -653,7 +670,7 @@ public class MlApi {
             basePath = null;
         }
 
-        Object localVarPostBody = mlCreate;
+        Object localVarPostBody = mlMlCreate;
 
         // create path and map variables
         String localVarPath = "/v1/ml/models";
@@ -665,7 +682,8 @@ public class MlApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -685,57 +703,59 @@ public class MlApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postMlModelsValidateBeforeCall(@javax.annotation.Nonnull MlCreate mlCreate, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'mlCreate' is set
-        if (mlCreate == null) {
-            throw new ApiException("Missing the required parameter 'mlCreate' when calling postMlModels(Async)");
+    private okhttp3.Call postMlModelsValidateBeforeCall(@javax.annotation.Nonnull MlMlCreate mlMlCreate, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'mlMlCreate' is set
+        if (mlMlCreate == null) {
+            throw new ApiException("Missing the required parameter 'mlMlCreate' when calling postMlModels(Async)");
         }
 
-        return postMlModelsCall(mlCreate, _callback);
+        return postMlModelsCall(mlMlCreate, _callback);
 
     }
 
     /**
      * Deploys one inference model for the caller&#39;s org, and answers 201 with the model as Kubernetes admitted it.
      * Deploys one inference model for the caller&#39;s org, and answers 201 with the model as Kubernetes admitted it.  The &#x60;spec&#x60; is a kserve InferenceService spec, passed through unchanged — this plane owns the tenancy, the billing and the namespace, and kserve owns what a model IS. An unfunded org is refused BEFORE anything is created, so nobody runs free GPU compute and nobody is charged for a resource that was never made.
-     * @param mlCreate  (required)
-     * @return MlResource
+     * @param mlMlCreate  (required)
+     * @return MlMlResource
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MlResource postMlModels(@javax.annotation.Nonnull MlCreate mlCreate) throws ApiException {
-        ApiResponse<MlResource> localVarResp = postMlModelsWithHttpInfo(mlCreate);
+    public MlMlResource postMlModels(@javax.annotation.Nonnull MlMlCreate mlMlCreate) throws ApiException {
+        ApiResponse<MlMlResource> localVarResp = postMlModelsWithHttpInfo(mlMlCreate);
         return localVarResp.getData();
     }
 
     /**
      * Deploys one inference model for the caller&#39;s org, and answers 201 with the model as Kubernetes admitted it.
      * Deploys one inference model for the caller&#39;s org, and answers 201 with the model as Kubernetes admitted it.  The &#x60;spec&#x60; is a kserve InferenceService spec, passed through unchanged — this plane owns the tenancy, the billing and the namespace, and kserve owns what a model IS. An unfunded org is refused BEFORE anything is created, so nobody runs free GPU compute and nobody is charged for a resource that was never made.
-     * @param mlCreate  (required)
-     * @return ApiResponse&lt;MlResource&gt;
+     * @param mlMlCreate  (required)
+     * @return ApiResponse&lt;MlMlResource&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MlResource> postMlModelsWithHttpInfo(@javax.annotation.Nonnull MlCreate mlCreate) throws ApiException {
-        okhttp3.Call localVarCall = postMlModelsValidateBeforeCall(mlCreate, null);
-        Type localVarReturnType = new TypeToken<MlResource>(){}.getType();
+    public ApiResponse<MlMlResource> postMlModelsWithHttpInfo(@javax.annotation.Nonnull MlMlCreate mlMlCreate) throws ApiException {
+        okhttp3.Call localVarCall = postMlModelsValidateBeforeCall(mlMlCreate, null);
+        Type localVarReturnType = new TypeToken<MlMlResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Deploys one inference model for the caller&#39;s org, and answers 201 with the model as Kubernetes admitted it. (asynchronously)
      * Deploys one inference model for the caller&#39;s org, and answers 201 with the model as Kubernetes admitted it.  The &#x60;spec&#x60; is a kserve InferenceService spec, passed through unchanged — this plane owns the tenancy, the billing and the namespace, and kserve owns what a model IS. An unfunded org is refused BEFORE anything is created, so nobody runs free GPU compute and nobody is charged for a resource that was never made.
-     * @param mlCreate  (required)
+     * @param mlMlCreate  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -744,12 +764,13 @@ public class MlApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postMlModelsAsync(@javax.annotation.Nonnull MlCreate mlCreate, final ApiCallback<MlResource> _callback) throws ApiException {
+    public okhttp3.Call postMlModelsAsync(@javax.annotation.Nonnull MlMlCreate mlMlCreate, final ApiCallback<MlMlResource> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postMlModelsValidateBeforeCall(mlCreate, _callback);
-        Type localVarReturnType = new TypeToken<MlResource>(){}.getType();
+        okhttp3.Call localVarCall = postMlModelsValidateBeforeCall(mlMlCreate, _callback);
+        Type localVarReturnType = new TypeToken<MlMlResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

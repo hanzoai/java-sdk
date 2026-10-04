@@ -59,7 +59,7 @@ public class O11yVariableItem {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   @javax.annotation.Nullable
-  private Object value;
+  private Object value = null;
 
   public O11yVariableItem() {
   }

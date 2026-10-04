@@ -27,11 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.HelpArticle;
-import ai.hanzo.cloud.model.HelpArticleList;
-import ai.hanzo.cloud.model.HelpCategoryList;
-import ai.hanzo.cloud.model.HelpTicketFiled;
-import ai.hanzo.cloud.model.HelpTicketIntake;
+import ai.hanzo.cloud.model.HelpHelpArticle;
+import ai.hanzo.cloud.model.HelpHelpArticleList;
+import ai.hanzo.cloud.model.HelpHelpCategoryList;
+import ai.hanzo.cloud.model.HelpHelpTicketFiled;
+import ai.hanzo.cloud.model.HelpHelpTicketIntake;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -88,6 +89,7 @@ public class HelpApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getHelpArticlesCall(@javax.annotation.Nullable String category, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
@@ -124,7 +126,8 @@ public class HelpApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -150,46 +153,48 @@ public class HelpApi {
 
     /**
      * Returns the public knowledge base: the help center&#39;s Published, publicly-visible articles as cards.
-     * Returns the public knowledge base: the help center&#39;s Published, publicly-visible articles as cards. The org is server-fixed and the status/is_public filter is server-set, so neither the tenant nor the visibility can be widened by the caller. A deployment with no help center answers 404.
+     * Returns the public knowledge base: the help center&#39;s Published, publicly-visible articles as cards. The org is server-fixed and the status/is_public filter is server-set, so neither the tenant nor the visibility can be widened by the caller. A deployment with no help center answers 404, and one whose center has not installed the Help model answers an empty list.
      * @param category Category narrows the list to one knowledge-base section, matched against the article&#39;s category by exact name. Empty lists every section. (optional)
      * @param limit Limit caps how many articles are returned. Anything that is not a positive integer uses 50, and values above 200 are clamped to 200. (optional)
-     * @return HelpArticleList
+     * @return HelpHelpArticleList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public HelpArticleList getHelpArticles(@javax.annotation.Nullable String category, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<HelpArticleList> localVarResp = getHelpArticlesWithHttpInfo(category, limit);
+    public HelpHelpArticleList getHelpArticles(@javax.annotation.Nullable String category, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<HelpHelpArticleList> localVarResp = getHelpArticlesWithHttpInfo(category, limit);
         return localVarResp.getData();
     }
 
     /**
      * Returns the public knowledge base: the help center&#39;s Published, publicly-visible articles as cards.
-     * Returns the public knowledge base: the help center&#39;s Published, publicly-visible articles as cards. The org is server-fixed and the status/is_public filter is server-set, so neither the tenant nor the visibility can be widened by the caller. A deployment with no help center answers 404.
+     * Returns the public knowledge base: the help center&#39;s Published, publicly-visible articles as cards. The org is server-fixed and the status/is_public filter is server-set, so neither the tenant nor the visibility can be widened by the caller. A deployment with no help center answers 404, and one whose center has not installed the Help model answers an empty list.
      * @param category Category narrows the list to one knowledge-base section, matched against the article&#39;s category by exact name. Empty lists every section. (optional)
      * @param limit Limit caps how many articles are returned. Anything that is not a positive integer uses 50, and values above 200 are clamped to 200. (optional)
-     * @return ApiResponse&lt;HelpArticleList&gt;
+     * @return ApiResponse&lt;HelpHelpArticleList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<HelpArticleList> getHelpArticlesWithHttpInfo(@javax.annotation.Nullable String category, @javax.annotation.Nullable Long limit) throws ApiException {
+    public ApiResponse<HelpHelpArticleList> getHelpArticlesWithHttpInfo(@javax.annotation.Nullable String category, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getHelpArticlesValidateBeforeCall(category, limit, null);
-        Type localVarReturnType = new TypeToken<HelpArticleList>(){}.getType();
+        Type localVarReturnType = new TypeToken<HelpHelpArticleList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns the public knowledge base: the help center&#39;s Published, publicly-visible articles as cards. (asynchronously)
-     * Returns the public knowledge base: the help center&#39;s Published, publicly-visible articles as cards. The org is server-fixed and the status/is_public filter is server-set, so neither the tenant nor the visibility can be widened by the caller. A deployment with no help center answers 404.
+     * Returns the public knowledge base: the help center&#39;s Published, publicly-visible articles as cards. The org is server-fixed and the status/is_public filter is server-set, so neither the tenant nor the visibility can be widened by the caller. A deployment with no help center answers 404, and one whose center has not installed the Help model answers an empty list.
      * @param category Category narrows the list to one knowledge-base section, matched against the article&#39;s category by exact name. Empty lists every section. (optional)
      * @param limit Limit caps how many articles are returned. Anything that is not a positive integer uses 50, and values above 200 are clamped to 200. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -200,12 +205,13 @@ public class HelpApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getHelpArticlesAsync(@javax.annotation.Nullable String category, @javax.annotation.Nullable Long limit, final ApiCallback<HelpArticleList> _callback) throws ApiException {
+    public okhttp3.Call getHelpArticlesAsync(@javax.annotation.Nullable String category, @javax.annotation.Nullable Long limit, final ApiCallback<HelpHelpArticleList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getHelpArticlesValidateBeforeCall(category, limit, _callback);
-        Type localVarReturnType = new TypeToken<HelpArticleList>(){}.getType();
+        Type localVarReturnType = new TypeToken<HelpHelpArticleList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -220,6 +226,7 @@ public class HelpApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getHelpArticlesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
@@ -249,7 +256,8 @@ public class HelpApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -282,17 +290,18 @@ public class HelpApi {
      * Returns one public article by slug, with its body.
      * Returns one public article by slug, with its body. A missing, Draft, or internal (non-public) article is 404 — fail-closed, so this route is no existence oracle for anything beyond \&quot;published and public\&quot;.
      * @param slug Slug is the article&#39;s public identifier, from the path. It IS the document name in the help center&#39;s store. (required)
-     * @return HelpArticle
+     * @return HelpHelpArticle
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public HelpArticle getHelpArticlesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
-        ApiResponse<HelpArticle> localVarResp = getHelpArticlesBySlugWithHttpInfo(slug);
+    public HelpHelpArticle getHelpArticlesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<HelpHelpArticle> localVarResp = getHelpArticlesBySlugWithHttpInfo(slug);
         return localVarResp.getData();
     }
 
@@ -300,18 +309,19 @@ public class HelpApi {
      * Returns one public article by slug, with its body.
      * Returns one public article by slug, with its body. A missing, Draft, or internal (non-public) article is 404 — fail-closed, so this route is no existence oracle for anything beyond \&quot;published and public\&quot;.
      * @param slug Slug is the article&#39;s public identifier, from the path. It IS the document name in the help center&#39;s store. (required)
-     * @return ApiResponse&lt;HelpArticle&gt;
+     * @return ApiResponse&lt;HelpHelpArticle&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<HelpArticle> getHelpArticlesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+    public ApiResponse<HelpHelpArticle> getHelpArticlesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
         okhttp3.Call localVarCall = getHelpArticlesBySlugValidateBeforeCall(slug, null);
-        Type localVarReturnType = new TypeToken<HelpArticle>(){}.getType();
+        Type localVarReturnType = new TypeToken<HelpHelpArticle>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -327,12 +337,13 @@ public class HelpApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getHelpArticlesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<HelpArticle> _callback) throws ApiException {
+    public okhttp3.Call getHelpArticlesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<HelpHelpArticle> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getHelpArticlesBySlugValidateBeforeCall(slug, _callback);
-        Type localVarReturnType = new TypeToken<HelpArticle>(){}.getType();
+        Type localVarReturnType = new TypeToken<HelpHelpArticle>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -346,6 +357,7 @@ public class HelpApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getHelpCategoriesCall(final ApiCallback _callback) throws ApiException {
@@ -374,7 +386,8 @@ public class HelpApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -400,42 +413,44 @@ public class HelpApi {
 
     /**
      * Returns the knowledge-base sections for the public center&#39;s navigation — but ONLY the sections that front at least one Published, public article, so an internal (agent-only) category name or description never leaks.
-     * Returns the knowledge-base sections for the public center&#39;s navigation — but ONLY the sections that front at least one Published, public article, so an internal (agent-only) category name or description never leaks. A section with no public article is invisible; a center with no public articles has no sections, which is an empty list rather than an error.
-     * @return HelpCategoryList
+     * Returns the knowledge-base sections for the public center&#39;s navigation — but ONLY the sections that front at least one Published, public article, so an internal (agent-only) category name or description never leaks. A section with no public article is invisible; a center with no public articles has no sections, which is an empty list rather than an error — as is a center that has not installed the Help model.
+     * @return HelpHelpCategoryList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public HelpCategoryList getHelpCategories() throws ApiException {
-        ApiResponse<HelpCategoryList> localVarResp = getHelpCategoriesWithHttpInfo();
+    public HelpHelpCategoryList getHelpCategories() throws ApiException {
+        ApiResponse<HelpHelpCategoryList> localVarResp = getHelpCategoriesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the knowledge-base sections for the public center&#39;s navigation — but ONLY the sections that front at least one Published, public article, so an internal (agent-only) category name or description never leaks.
-     * Returns the knowledge-base sections for the public center&#39;s navigation — but ONLY the sections that front at least one Published, public article, so an internal (agent-only) category name or description never leaks. A section with no public article is invisible; a center with no public articles has no sections, which is an empty list rather than an error.
-     * @return ApiResponse&lt;HelpCategoryList&gt;
+     * Returns the knowledge-base sections for the public center&#39;s navigation — but ONLY the sections that front at least one Published, public article, so an internal (agent-only) category name or description never leaks. A section with no public article is invisible; a center with no public articles has no sections, which is an empty list rather than an error — as is a center that has not installed the Help model.
+     * @return ApiResponse&lt;HelpHelpCategoryList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<HelpCategoryList> getHelpCategoriesWithHttpInfo() throws ApiException {
+    public ApiResponse<HelpHelpCategoryList> getHelpCategoriesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getHelpCategoriesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<HelpCategoryList>(){}.getType();
+        Type localVarReturnType = new TypeToken<HelpHelpCategoryList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns the knowledge-base sections for the public center&#39;s navigation — but ONLY the sections that front at least one Published, public article, so an internal (agent-only) category name or description never leaks. (asynchronously)
-     * Returns the knowledge-base sections for the public center&#39;s navigation — but ONLY the sections that front at least one Published, public article, so an internal (agent-only) category name or description never leaks. A section with no public article is invisible; a center with no public articles has no sections, which is an empty list rather than an error.
+     * Returns the knowledge-base sections for the public center&#39;s navigation — but ONLY the sections that front at least one Published, public article, so an internal (agent-only) category name or description never leaks. A section with no public article is invisible; a center with no public articles has no sections, which is an empty list rather than an error — as is a center that has not installed the Help model.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -444,18 +459,19 @@ public class HelpApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getHelpCategoriesAsync(final ApiCallback<HelpCategoryList> _callback) throws ApiException {
+    public okhttp3.Call getHelpCategoriesAsync(final ApiCallback<HelpHelpCategoryList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getHelpCategoriesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<HelpCategoryList>(){}.getType();
+        Type localVarReturnType = new TypeToken<HelpHelpCategoryList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postHelpTickets
-     * @param helpTicketIntake  (required)
+     * @param helpHelpTicketIntake  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -464,9 +480,10 @@ public class HelpApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postHelpTicketsCall(@javax.annotation.Nonnull HelpTicketIntake helpTicketIntake, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postHelpTicketsCall(@javax.annotation.Nonnull HelpHelpTicketIntake helpHelpTicketIntake, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -480,7 +497,7 @@ public class HelpApi {
             basePath = null;
         }
 
-        Object localVarPostBody = helpTicketIntake;
+        Object localVarPostBody = helpHelpTicketIntake;
 
         // create path and map variables
         String localVarPath = "/v1/help/tickets";
@@ -492,7 +509,8 @@ public class HelpApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -512,57 +530,59 @@ public class HelpApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postHelpTicketsValidateBeforeCall(@javax.annotation.Nonnull HelpTicketIntake helpTicketIntake, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'helpTicketIntake' is set
-        if (helpTicketIntake == null) {
-            throw new ApiException("Missing the required parameter 'helpTicketIntake' when calling postHelpTickets(Async)");
+    private okhttp3.Call postHelpTicketsValidateBeforeCall(@javax.annotation.Nonnull HelpHelpTicketIntake helpHelpTicketIntake, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'helpHelpTicketIntake' is set
+        if (helpHelpTicketIntake == null) {
+            throw new ApiException("Missing the required parameter 'helpHelpTicketIntake' when calling postHelpTickets(Async)");
         }
 
-        return postHelpTicketsCall(helpTicketIntake, _callback);
+        return postHelpTicketsCall(helpHelpTicketIntake, _callback);
 
     }
 
     /**
      * Files a customer support ticket into the public help center.
      * Files a customer support ticket into the public help center. It creates the ticket (status Open, source portal) with the customer&#39;s message on the description, then records that same message as the opening entry of the ticket&#39;s conversation thread; the description carries it regardless, so failing to write that entry loses nothing. Answers 201 with an opaque reference.  A deployment with no help center answers 404, one whose center has not installed the Help model answers 503, and a body over 64 KiB answers 413 — in that order, which is the order the route has always decided them in.
-     * @param helpTicketIntake  (required)
-     * @return HelpTicketFiled
+     * @param helpHelpTicketIntake  (required)
+     * @return HelpHelpTicketFiled
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public HelpTicketFiled postHelpTickets(@javax.annotation.Nonnull HelpTicketIntake helpTicketIntake) throws ApiException {
-        ApiResponse<HelpTicketFiled> localVarResp = postHelpTicketsWithHttpInfo(helpTicketIntake);
+    public HelpHelpTicketFiled postHelpTickets(@javax.annotation.Nonnull HelpHelpTicketIntake helpHelpTicketIntake) throws ApiException {
+        ApiResponse<HelpHelpTicketFiled> localVarResp = postHelpTicketsWithHttpInfo(helpHelpTicketIntake);
         return localVarResp.getData();
     }
 
     /**
      * Files a customer support ticket into the public help center.
      * Files a customer support ticket into the public help center. It creates the ticket (status Open, source portal) with the customer&#39;s message on the description, then records that same message as the opening entry of the ticket&#39;s conversation thread; the description carries it regardless, so failing to write that entry loses nothing. Answers 201 with an opaque reference.  A deployment with no help center answers 404, one whose center has not installed the Help model answers 503, and a body over 64 KiB answers 413 — in that order, which is the order the route has always decided them in.
-     * @param helpTicketIntake  (required)
-     * @return ApiResponse&lt;HelpTicketFiled&gt;
+     * @param helpHelpTicketIntake  (required)
+     * @return ApiResponse&lt;HelpHelpTicketFiled&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<HelpTicketFiled> postHelpTicketsWithHttpInfo(@javax.annotation.Nonnull HelpTicketIntake helpTicketIntake) throws ApiException {
-        okhttp3.Call localVarCall = postHelpTicketsValidateBeforeCall(helpTicketIntake, null);
-        Type localVarReturnType = new TypeToken<HelpTicketFiled>(){}.getType();
+    public ApiResponse<HelpHelpTicketFiled> postHelpTicketsWithHttpInfo(@javax.annotation.Nonnull HelpHelpTicketIntake helpHelpTicketIntake) throws ApiException {
+        okhttp3.Call localVarCall = postHelpTicketsValidateBeforeCall(helpHelpTicketIntake, null);
+        Type localVarReturnType = new TypeToken<HelpHelpTicketFiled>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Files a customer support ticket into the public help center. (asynchronously)
      * Files a customer support ticket into the public help center. It creates the ticket (status Open, source portal) with the customer&#39;s message on the description, then records that same message as the opening entry of the ticket&#39;s conversation thread; the description carries it regardless, so failing to write that entry loses nothing. Answers 201 with an opaque reference.  A deployment with no help center answers 404, one whose center has not installed the Help model answers 503, and a body over 64 KiB answers 413 — in that order, which is the order the route has always decided them in.
-     * @param helpTicketIntake  (required)
+     * @param helpHelpTicketIntake  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -571,12 +591,13 @@ public class HelpApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postHelpTicketsAsync(@javax.annotation.Nonnull HelpTicketIntake helpTicketIntake, final ApiCallback<HelpTicketFiled> _callback) throws ApiException {
+    public okhttp3.Call postHelpTicketsAsync(@javax.annotation.Nonnull HelpHelpTicketIntake helpHelpTicketIntake, final ApiCallback<HelpHelpTicketFiled> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postHelpTicketsValidateBeforeCall(helpTicketIntake, _callback);
-        Type localVarReturnType = new TypeToken<HelpTicketFiled>(){}.getType();
+        okhttp3.Call localVarCall = postHelpTicketsValidateBeforeCall(helpHelpTicketIntake, _callback);
+        Type localVarReturnType = new TypeToken<HelpHelpTicketFiled>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

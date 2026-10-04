@@ -51,54 +51,126 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class AiModelPricingInfo {
-  public static final String SERIALIZED_NAME_INPUT = "input";
-  @SerializedName(SERIALIZED_NAME_INPUT)
+  public static final String SERIALIZED_NAME_COMPLETION = "completion";
+  @SerializedName(SERIALIZED_NAME_COMPLETION)
   @javax.annotation.Nullable
-  private BigDecimal input;
+  private String completion;
 
-  public static final String SERIALIZED_NAME_OUTPUT = "output";
-  @SerializedName(SERIALIZED_NAME_OUTPUT)
+  public static final String SERIALIZED_NAME_INPUT_PER_MILLION = "input_per_million";
+  @SerializedName(SERIALIZED_NAME_INPUT_PER_MILLION)
   @javax.annotation.Nullable
-  private BigDecimal output;
+  private BigDecimal inputPerMillion;
+
+  public static final String SERIALIZED_NAME_OUTPUT_PER_MILLION = "output_per_million";
+  @SerializedName(SERIALIZED_NAME_OUTPUT_PER_MILLION)
+  @javax.annotation.Nullable
+  private BigDecimal outputPerMillion;
+
+  public static final String SERIALIZED_NAME_PROMPT = "prompt";
+  @SerializedName(SERIALIZED_NAME_PROMPT)
+  @javax.annotation.Nullable
+  private String prompt;
+
+  public static final String SERIALIZED_NAME_VARIABLE = "variable";
+  @SerializedName(SERIALIZED_NAME_VARIABLE)
+  @javax.annotation.Nullable
+  private Boolean variable;
 
   public AiModelPricingInfo() {
   }
 
-  public AiModelPricingInfo input(@javax.annotation.Nullable BigDecimal input) {
-    this.input = input;
+  public AiModelPricingInfo completion(@javax.annotation.Nullable String completion) {
+    this.completion = completion;
     return this;
   }
 
   /**
-   * Get input
-   * @return input
+   * Get completion
+   * @return completion
    */
   @javax.annotation.Nullable
-  public BigDecimal getInput() {
-    return input;
+  public String getCompletion() {
+    return completion;
   }
 
-  public void setInput(@javax.annotation.Nullable BigDecimal input) {
-    this.input = input;
+  public void setCompletion(@javax.annotation.Nullable String completion) {
+    this.completion = completion;
   }
 
 
-  public AiModelPricingInfo output(@javax.annotation.Nullable BigDecimal output) {
-    this.output = output;
+  public AiModelPricingInfo inputPerMillion(@javax.annotation.Nullable BigDecimal inputPerMillion) {
+    this.inputPerMillion = inputPerMillion;
     return this;
   }
 
   /**
-   * Get output
-   * @return output
+   * Get inputPerMillion
+   * @return inputPerMillion
    */
   @javax.annotation.Nullable
-  public BigDecimal getOutput() {
-    return output;
+  public BigDecimal getInputPerMillion() {
+    return inputPerMillion;
   }
 
-  public void setOutput(@javax.annotation.Nullable BigDecimal output) {
-    this.output = output;
+  public void setInputPerMillion(@javax.annotation.Nullable BigDecimal inputPerMillion) {
+    this.inputPerMillion = inputPerMillion;
+  }
+
+
+  public AiModelPricingInfo outputPerMillion(@javax.annotation.Nullable BigDecimal outputPerMillion) {
+    this.outputPerMillion = outputPerMillion;
+    return this;
+  }
+
+  /**
+   * Get outputPerMillion
+   * @return outputPerMillion
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getOutputPerMillion() {
+    return outputPerMillion;
+  }
+
+  public void setOutputPerMillion(@javax.annotation.Nullable BigDecimal outputPerMillion) {
+    this.outputPerMillion = outputPerMillion;
+  }
+
+
+  public AiModelPricingInfo prompt(@javax.annotation.Nullable String prompt) {
+    this.prompt = prompt;
+    return this;
+  }
+
+  /**
+   * Get prompt
+   * @return prompt
+   */
+  @javax.annotation.Nullable
+  public String getPrompt() {
+    return prompt;
+  }
+
+  public void setPrompt(@javax.annotation.Nullable String prompt) {
+    this.prompt = prompt;
+  }
+
+
+  public AiModelPricingInfo variable(@javax.annotation.Nullable Boolean variable) {
+    this.variable = variable;
+    return this;
+  }
+
+  /**
+   * Get variable
+   * @return variable
+   */
+  @javax.annotation.Nullable
+  public Boolean getVariable() {
+    return variable;
+  }
+
+  public void setVariable(@javax.annotation.Nullable Boolean variable) {
+    this.variable = variable;
   }
 
   /**
@@ -156,22 +228,28 @@ public class AiModelPricingInfo {
       return false;
     }
     AiModelPricingInfo aiModelPricingInfo = (AiModelPricingInfo) o;
-    return Objects.equals(this.input, aiModelPricingInfo.input) &&
-        Objects.equals(this.output, aiModelPricingInfo.output)&&
+    return Objects.equals(this.completion, aiModelPricingInfo.completion) &&
+        Objects.equals(this.inputPerMillion, aiModelPricingInfo.inputPerMillion) &&
+        Objects.equals(this.outputPerMillion, aiModelPricingInfo.outputPerMillion) &&
+        Objects.equals(this.prompt, aiModelPricingInfo.prompt) &&
+        Objects.equals(this.variable, aiModelPricingInfo.variable)&&
         Objects.equals(this.additionalProperties, aiModelPricingInfo.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(input, output, additionalProperties);
+    return Objects.hash(completion, inputPerMillion, outputPerMillion, prompt, variable, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AiModelPricingInfo {\n");
-    sb.append("    input: ").append(toIndentedString(input)).append("\n");
-    sb.append("    output: ").append(toIndentedString(output)).append("\n");
+    sb.append("    completion: ").append(toIndentedString(completion)).append("\n");
+    sb.append("    inputPerMillion: ").append(toIndentedString(inputPerMillion)).append("\n");
+    sb.append("    outputPerMillion: ").append(toIndentedString(outputPerMillion)).append("\n");
+    sb.append("    prompt: ").append(toIndentedString(prompt)).append("\n");
+    sb.append("    variable: ").append(toIndentedString(variable)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -194,7 +272,7 @@ public class AiModelPricingInfo {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("input", "output"));
+    openapiFields = new HashSet<String>(Arrays.asList("completion", "input_per_million", "output_per_million", "prompt", "variable"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -213,6 +291,12 @@ public class AiModelPricingInfo {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("completion") != null && !jsonObj.get("completion").isJsonNull()) && !jsonObj.get("completion").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `completion` to be a primitive type in the JSON string but got `%s`", jsonObj.get("completion").toString()));
+      }
+      if ((jsonObj.get("prompt") != null && !jsonObj.get("prompt").isJsonNull()) && !jsonObj.get("prompt").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `prompt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("prompt").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -27,8 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.IndexersOut;
-import ai.hanzo.cloud.model.OraclesOut;
+import ai.hanzo.cloud.model.ExplorerIndexersOut;
+import ai.hanzo.cloud.model.ExplorerOraclesOut;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -83,6 +84,7 @@ public class ExplorerApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getExplorerIndexersCall(final ApiCallback _callback) throws ApiException {
@@ -111,7 +113,8 @@ public class ExplorerApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -138,35 +141,37 @@ public class ExplorerApi {
     /**
      * Reports the deployment&#39;s chain indexer(s) and how far each has indexed.
      * Reports the deployment&#39;s chain indexer(s) and how far each has indexed. Identity and health come from the indexer&#39;s /health; the latest indexed block (height + time) from its /v1/explorer/blocks. The row EXISTS if EITHER call reaches the indexer; when the indexer is entirely unreachable the answer degrades to an honest-EMPTY list at 200, not a 502. No chain HEAD is exposed by the indexer REST, so &#x60;lag&#x60; is honestly omitted rather than fabricated.
-     * @return IndexersOut
+     * @return ExplorerIndexersOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IndexersOut getExplorerIndexers() throws ApiException {
-        ApiResponse<IndexersOut> localVarResp = getExplorerIndexersWithHttpInfo();
+    public ExplorerIndexersOut getExplorerIndexers() throws ApiException {
+        ApiResponse<ExplorerIndexersOut> localVarResp = getExplorerIndexersWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports the deployment&#39;s chain indexer(s) and how far each has indexed.
      * Reports the deployment&#39;s chain indexer(s) and how far each has indexed. Identity and health come from the indexer&#39;s /health; the latest indexed block (height + time) from its /v1/explorer/blocks. The row EXISTS if EITHER call reaches the indexer; when the indexer is entirely unreachable the answer degrades to an honest-EMPTY list at 200, not a 502. No chain HEAD is exposed by the indexer REST, so &#x60;lag&#x60; is honestly omitted rather than fabricated.
-     * @return ApiResponse&lt;IndexersOut&gt;
+     * @return ApiResponse&lt;ExplorerIndexersOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexersOut> getExplorerIndexersWithHttpInfo() throws ApiException {
+    public ApiResponse<ExplorerIndexersOut> getExplorerIndexersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getExplorerIndexersValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<IndexersOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExplorerIndexersOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -181,12 +186,13 @@ public class ExplorerApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getExplorerIndexersAsync(final ApiCallback<IndexersOut> _callback) throws ApiException {
+    public okhttp3.Call getExplorerIndexersAsync(final ApiCallback<ExplorerIndexersOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getExplorerIndexersValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<IndexersOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExplorerIndexersOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -200,6 +206,7 @@ public class ExplorerApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getExplorerOraclesCall(final ApiCallback _callback) throws ApiException {
@@ -228,7 +235,8 @@ public class ExplorerApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -255,35 +263,37 @@ public class ExplorerApi {
     /**
      * Reports the on-chain price/data oracles from the graph&#39;s O-Chain PriceFeed registry.
      * Reports the on-chain price/data oracles from the graph&#39;s O-Chain PriceFeed registry. A reachable graph with no feeds answers an honest empty list; an unreachable or erroring graph likewise degrades to an empty list at 200 rather than a 502, so the console never error-toasts. No feed is ever fabricated.
-     * @return OraclesOut
+     * @return ExplorerOraclesOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public OraclesOut getExplorerOracles() throws ApiException {
-        ApiResponse<OraclesOut> localVarResp = getExplorerOraclesWithHttpInfo();
+    public ExplorerOraclesOut getExplorerOracles() throws ApiException {
+        ApiResponse<ExplorerOraclesOut> localVarResp = getExplorerOraclesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Reports the on-chain price/data oracles from the graph&#39;s O-Chain PriceFeed registry.
      * Reports the on-chain price/data oracles from the graph&#39;s O-Chain PriceFeed registry. A reachable graph with no feeds answers an honest empty list; an unreachable or erroring graph likewise degrades to an empty list at 200 rather than a 502, so the console never error-toasts. No feed is ever fabricated.
-     * @return ApiResponse&lt;OraclesOut&gt;
+     * @return ApiResponse&lt;ExplorerOraclesOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OraclesOut> getExplorerOraclesWithHttpInfo() throws ApiException {
+    public ApiResponse<ExplorerOraclesOut> getExplorerOraclesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getExplorerOraclesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<OraclesOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExplorerOraclesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -298,12 +308,13 @@ public class ExplorerApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getExplorerOraclesAsync(final ApiCallback<OraclesOut> _callback) throws ApiException {
+    public okhttp3.Call getExplorerOraclesAsync(final ApiCallback<ExplorerOraclesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getExplorerOraclesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<OraclesOut>(){}.getType();
+        Type localVarReturnType = new TypeToken<ExplorerOraclesOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

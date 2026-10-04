@@ -238,6 +238,11 @@ public class IamUser {
   @javax.annotation.Nullable
   private String custom;
 
+  public static final String SERIALIZED_NAME_CUSTOM10 = "custom10";
+  @SerializedName(SERIALIZED_NAME_CUSTOM10)
+  @javax.annotation.Nullable
+  private String custom10;
+
   public static final String SERIALIZED_NAME_CUSTOM2 = "custom2";
   @SerializedName(SERIALIZED_NAME_CUSTOM2)
   @javax.annotation.Nullable
@@ -277,11 +282,6 @@ public class IamUser {
   @SerializedName(SERIALIZED_NAME_CUSTOM9)
   @javax.annotation.Nullable
   private String custom9;
-
-  public static final String SERIALIZED_NAME_CUSTOM10 = "custom10";
-  @SerializedName(SERIALIZED_NAME_CUSTOM10)
-  @javax.annotation.Nullable
-  private String custom10;
 
   public static final String SERIALIZED_NAME_DAILYMOTION = "dailymotion";
   @SerializedName(SERIALIZED_NAME_DAILYMOTION)
@@ -673,6 +673,11 @@ public class IamUser {
   @javax.annotation.Nullable
   private String name;
 
+  public static final String SERIALIZED_NAME_NAME_KEY = "nameKey";
+  @SerializedName(SERIALIZED_NAME_NAME_KEY)
+  @javax.annotation.Nullable
+  private String nameKey;
+
   public static final String SERIALIZED_NAME_NAVER = "naver";
   @SerializedName(SERIALIZED_NAME_NAVER)
   @javax.annotation.Nullable
@@ -984,6 +989,13 @@ public class IamUser {
   private String zoom;
 
   public IamUser() {
+  }
+
+  public IamUser(
+     String nameKey
+  ) {
+    this();
+    this.nameKey = nameKey;
   }
 
   public IamUser accessKey(@javax.annotation.Nullable String accessKey) {
@@ -1683,6 +1695,25 @@ public class IamUser {
   }
 
 
+  public IamUser custom10(@javax.annotation.Nullable String custom10) {
+    this.custom10 = custom10;
+    return this;
+  }
+
+  /**
+   * Get custom10
+   * @return custom10
+   */
+  @javax.annotation.Nullable
+  public String getCustom10() {
+    return custom10;
+  }
+
+  public void setCustom10(@javax.annotation.Nullable String custom10) {
+    this.custom10 = custom10;
+  }
+
+
   public IamUser custom2(@javax.annotation.Nullable String custom2) {
     this.custom2 = custom2;
     return this;
@@ -1832,25 +1863,6 @@ public class IamUser {
 
   public void setCustom9(@javax.annotation.Nullable String custom9) {
     this.custom9 = custom9;
-  }
-
-
-  public IamUser custom10(@javax.annotation.Nullable String custom10) {
-    this.custom10 = custom10;
-    return this;
-  }
-
-  /**
-   * Get custom10
-   * @return custom10
-   */
-  @javax.annotation.Nullable
-  public String getCustom10() {
-    return custom10;
-  }
-
-  public void setCustom10(@javax.annotation.Nullable String custom10) {
-    this.custom10 = custom10;
   }
 
 
@@ -3376,6 +3388,17 @@ public class IamUser {
   }
 
 
+  /**
+   * Get nameKey
+   * @return nameKey
+   */
+  @javax.annotation.Nullable
+  public String getNameKey() {
+    return nameKey;
+  }
+
+
+
   public IamUser naver(@javax.annotation.Nullable String naver) {
     this.naver = naver;
     return this;
@@ -4667,6 +4690,7 @@ public class IamUser {
         Objects.equals(this.createdTime, iamUser.createdTime) &&
         Objects.equals(this.currency, iamUser.currency) &&
         Objects.equals(this.custom, iamUser.custom) &&
+        Objects.equals(this.custom10, iamUser.custom10) &&
         Objects.equals(this.custom2, iamUser.custom2) &&
         Objects.equals(this.custom3, iamUser.custom3) &&
         Objects.equals(this.custom4, iamUser.custom4) &&
@@ -4675,7 +4699,6 @@ public class IamUser {
         Objects.equals(this.custom7, iamUser.custom7) &&
         Objects.equals(this.custom8, iamUser.custom8) &&
         Objects.equals(this.custom9, iamUser.custom9) &&
-        Objects.equals(this.custom10, iamUser.custom10) &&
         Objects.equals(this.dailymotion, iamUser.dailymotion) &&
         Objects.equals(this.deezer, iamUser.deezer) &&
         Objects.equals(this.deleted, iamUser.deleted) &&
@@ -4754,6 +4777,7 @@ public class IamUser {
         Objects.equals(this.microsoftonline, iamUser.microsoftonline) &&
         Objects.equals(this.multiFactorAuths, iamUser.multiFactorAuths) &&
         Objects.equals(this.name, iamUser.name) &&
+        Objects.equals(this.nameKey, iamUser.nameKey) &&
         Objects.equals(this.naver, iamUser.naver) &&
         Objects.equals(this.needUpdatePassword, iamUser.needUpdatePassword) &&
         Objects.equals(this.nextcloud, iamUser.nextcloud) &&
@@ -4821,7 +4845,7 @@ public class IamUser {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessKey, accessSecret, accessSecretHash, accessToken, address, addresses, adfs, affiliation, alipay, amazon, apple, applicationScopes, auth0, avatar, avatarType, azuread, azureadb2c, baidu, balance, balanceCredit, balanceCurrency, battlenet, bilibili, bio, birthday, bitbucket, box, cart, cloudfoundry, countryCode, createdAt, createdIp, createdTime, currency, custom, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, dailymotion, deezer, deleted, deletedTime, digitalocean, dingtalk, discord, displayName, douyin, dropbox, education, email, emailVerified, eveonline, externalId, faceIds, facebook, firstName, fitbit, gender, gitea, gitee, github, gitlab, google, hash, heroku, homepage, iam, id, idCard, idCardType, influxcloud, infoflow, instagram, intercom, invitation, invitationCode, ipWhitelist, isAdmin, isDefaultAvatar, isDeleted, isForbidden, isOnline, isVerified, kakao, karma, kwai, language, lark, lastChangePasswordTime, lastName, lastSigninIp, lastSigninTime, lastSigninWrongTime, lastfm, ldap, line, linkedin, location, mailru, managedAccounts, meetup, mfaAccounts, mfaEmailEnabled, mfaItems, mfaPhoneEnabled, mfaPushEnabled, mfaPushProvider, mfaPushReceiver, mfaRadiusEnabled, mfaRadiusProvider, mfaRadiusUsername, mfaRememberDeadline, mfaRememberDigest, microsoftonline, multiFactorAuths, name, naver, needUpdatePassword, nextcloud, okta, onedrive, originalRefreshToken, originalToken, oura, owner, passwordHash, passwordSalt, passwordType, patreon, paypal, permanentAvatar, phone, preHash, preferredMfaType, properties, qq, ranking, realName, recoveryCodes, region, registerSource, registerType, salesforce, score, shopify, signinWrongTimes, signupApplication, slack, soundcloud, spotify, steam, strava, stripe, tag, telegram, tiktok, title, totpSecret, tumblr, twitch, twitter, type, typetalk, uber, updatedAt, updatedTime, verificationCode, vk, webauthnCredentials, wechat, wecom, weibo, wepay, xero, yahoo, yammer, yandex, zoom, additionalProperties);
+    return Objects.hash(accessKey, accessSecret, accessSecretHash, accessToken, address, addresses, adfs, affiliation, alipay, amazon, apple, applicationScopes, auth0, avatar, avatarType, azuread, azureadb2c, baidu, balance, balanceCredit, balanceCurrency, battlenet, bilibili, bio, birthday, bitbucket, box, cart, cloudfoundry, countryCode, createdAt, createdIp, createdTime, currency, custom, custom10, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, dailymotion, deezer, deleted, deletedTime, digitalocean, dingtalk, discord, displayName, douyin, dropbox, education, email, emailVerified, eveonline, externalId, faceIds, facebook, firstName, fitbit, gender, gitea, gitee, github, gitlab, google, hash, heroku, homepage, iam, id, idCard, idCardType, influxcloud, infoflow, instagram, intercom, invitation, invitationCode, ipWhitelist, isAdmin, isDefaultAvatar, isDeleted, isForbidden, isOnline, isVerified, kakao, karma, kwai, language, lark, lastChangePasswordTime, lastName, lastSigninIp, lastSigninTime, lastSigninWrongTime, lastfm, ldap, line, linkedin, location, mailru, managedAccounts, meetup, mfaAccounts, mfaEmailEnabled, mfaItems, mfaPhoneEnabled, mfaPushEnabled, mfaPushProvider, mfaPushReceiver, mfaRadiusEnabled, mfaRadiusProvider, mfaRadiusUsername, mfaRememberDeadline, mfaRememberDigest, microsoftonline, multiFactorAuths, name, nameKey, naver, needUpdatePassword, nextcloud, okta, onedrive, originalRefreshToken, originalToken, oura, owner, passwordHash, passwordSalt, passwordType, patreon, paypal, permanentAvatar, phone, preHash, preferredMfaType, properties, qq, ranking, realName, recoveryCodes, region, registerSource, registerType, salesforce, score, shopify, signinWrongTimes, signupApplication, slack, soundcloud, spotify, steam, strava, stripe, tag, telegram, tiktok, title, totpSecret, tumblr, twitch, twitter, type, typetalk, uber, updatedAt, updatedTime, verificationCode, vk, webauthnCredentials, wechat, wecom, weibo, wepay, xero, yahoo, yammer, yandex, zoom, additionalProperties);
   }
 
   @Override
@@ -4863,6 +4887,7 @@ public class IamUser {
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    custom: ").append(toIndentedString(custom)).append("\n");
+    sb.append("    custom10: ").append(toIndentedString(custom10)).append("\n");
     sb.append("    custom2: ").append(toIndentedString(custom2)).append("\n");
     sb.append("    custom3: ").append(toIndentedString(custom3)).append("\n");
     sb.append("    custom4: ").append(toIndentedString(custom4)).append("\n");
@@ -4871,7 +4896,6 @@ public class IamUser {
     sb.append("    custom7: ").append(toIndentedString(custom7)).append("\n");
     sb.append("    custom8: ").append(toIndentedString(custom8)).append("\n");
     sb.append("    custom9: ").append(toIndentedString(custom9)).append("\n");
-    sb.append("    custom10: ").append(toIndentedString(custom10)).append("\n");
     sb.append("    dailymotion: ").append(toIndentedString(dailymotion)).append("\n");
     sb.append("    deezer: ").append(toIndentedString(deezer)).append("\n");
     sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
@@ -4950,6 +4974,7 @@ public class IamUser {
     sb.append("    microsoftonline: ").append(toIndentedString(microsoftonline)).append("\n");
     sb.append("    multiFactorAuths: ").append(toIndentedString(multiFactorAuths)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    nameKey: ").append(toIndentedString(nameKey)).append("\n");
     sb.append("    naver: ").append(toIndentedString(naver)).append("\n");
     sb.append("    needUpdatePassword: ").append(toIndentedString(needUpdatePassword)).append("\n");
     sb.append("    nextcloud: ").append(toIndentedString(nextcloud)).append("\n");
@@ -5034,7 +5059,7 @@ public class IamUser {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("accessKey", "accessSecret", "accessSecretHash", "accessToken", "address", "addresses", "adfs", "affiliation", "alipay", "amazon", "apple", "applicationScopes", "auth0", "avatar", "avatarType", "azuread", "azureadb2c", "baidu", "balance", "balanceCredit", "balanceCurrency", "battlenet", "bilibili", "bio", "birthday", "bitbucket", "box", "cart", "cloudfoundry", "countryCode", "createdAt", "createdIp", "createdTime", "currency", "custom", "custom2", "custom3", "custom4", "custom5", "custom6", "custom7", "custom8", "custom9", "custom10", "dailymotion", "deezer", "deleted", "deletedTime", "digitalocean", "dingtalk", "discord", "displayName", "douyin", "dropbox", "education", "email", "emailVerified", "eveonline", "externalId", "faceIds", "facebook", "firstName", "fitbit", "gender", "gitea", "gitee", "github", "gitlab", "google", "hash", "heroku", "homepage", "iam", "id", "idCard", "idCardType", "influxcloud", "infoflow", "instagram", "intercom", "invitation", "invitationCode", "ipWhitelist", "isAdmin", "isDefaultAvatar", "isDeleted", "isForbidden", "isOnline", "isVerified", "kakao", "karma", "kwai", "language", "lark", "lastChangePasswordTime", "lastName", "lastSigninIp", "lastSigninTime", "lastSigninWrongTime", "lastfm", "ldap", "line", "linkedin", "location", "mailru", "managedAccounts", "meetup", "mfaAccounts", "mfaEmailEnabled", "mfaItems", "mfaPhoneEnabled", "mfaPushEnabled", "mfaPushProvider", "mfaPushReceiver", "mfaRadiusEnabled", "mfaRadiusProvider", "mfaRadiusUsername", "mfaRememberDeadline", "mfaRememberDigest", "microsoftonline", "multiFactorAuths", "name", "naver", "needUpdatePassword", "nextcloud", "okta", "onedrive", "originalRefreshToken", "originalToken", "oura", "owner", "passwordHash", "passwordSalt", "passwordType", "patreon", "paypal", "permanentAvatar", "phone", "preHash", "preferredMfaType", "properties", "qq", "ranking", "realName", "recoveryCodes", "region", "registerSource", "registerType", "salesforce", "score", "shopify", "signinWrongTimes", "signupApplication", "slack", "soundcloud", "spotify", "steam", "strava", "stripe", "tag", "telegram", "tiktok", "title", "totpSecret", "tumblr", "twitch", "twitter", "type", "typetalk", "uber", "updatedAt", "updatedTime", "verificationCode", "vk", "webauthnCredentials", "wechat", "wecom", "weibo", "wepay", "xero", "yahoo", "yammer", "yandex", "zoom"));
+    openapiFields = new HashSet<String>(Arrays.asList("accessKey", "accessSecret", "accessSecretHash", "accessToken", "address", "addresses", "adfs", "affiliation", "alipay", "amazon", "apple", "applicationScopes", "auth0", "avatar", "avatarType", "azuread", "azureadb2c", "baidu", "balance", "balanceCredit", "balanceCurrency", "battlenet", "bilibili", "bio", "birthday", "bitbucket", "box", "cart", "cloudfoundry", "countryCode", "createdAt", "createdIp", "createdTime", "currency", "custom", "custom10", "custom2", "custom3", "custom4", "custom5", "custom6", "custom7", "custom8", "custom9", "dailymotion", "deezer", "deleted", "deletedTime", "digitalocean", "dingtalk", "discord", "displayName", "douyin", "dropbox", "education", "email", "emailVerified", "eveonline", "externalId", "faceIds", "facebook", "firstName", "fitbit", "gender", "gitea", "gitee", "github", "gitlab", "google", "hash", "heroku", "homepage", "iam", "id", "idCard", "idCardType", "influxcloud", "infoflow", "instagram", "intercom", "invitation", "invitationCode", "ipWhitelist", "isAdmin", "isDefaultAvatar", "isDeleted", "isForbidden", "isOnline", "isVerified", "kakao", "karma", "kwai", "language", "lark", "lastChangePasswordTime", "lastName", "lastSigninIp", "lastSigninTime", "lastSigninWrongTime", "lastfm", "ldap", "line", "linkedin", "location", "mailru", "managedAccounts", "meetup", "mfaAccounts", "mfaEmailEnabled", "mfaItems", "mfaPhoneEnabled", "mfaPushEnabled", "mfaPushProvider", "mfaPushReceiver", "mfaRadiusEnabled", "mfaRadiusProvider", "mfaRadiusUsername", "mfaRememberDeadline", "mfaRememberDigest", "microsoftonline", "multiFactorAuths", "name", "nameKey", "naver", "needUpdatePassword", "nextcloud", "okta", "onedrive", "originalRefreshToken", "originalToken", "oura", "owner", "passwordHash", "passwordSalt", "passwordType", "patreon", "paypal", "permanentAvatar", "phone", "preHash", "preferredMfaType", "properties", "qq", "ranking", "realName", "recoveryCodes", "region", "registerSource", "registerType", "salesforce", "score", "shopify", "signinWrongTimes", "signupApplication", "slack", "soundcloud", "spotify", "steam", "strava", "stripe", "tag", "telegram", "tiktok", "title", "totpSecret", "tumblr", "twitch", "twitter", "type", "typetalk", "uber", "updatedAt", "updatedTime", "verificationCode", "vk", "webauthnCredentials", "wechat", "wecom", "weibo", "wepay", "xero", "yahoo", "yammer", "yandex", "zoom"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -5183,6 +5208,9 @@ public class IamUser {
       if ((jsonObj.get("custom") != null && !jsonObj.get("custom").isJsonNull()) && !jsonObj.get("custom").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `custom` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom").toString()));
       }
+      if ((jsonObj.get("custom10") != null && !jsonObj.get("custom10").isJsonNull()) && !jsonObj.get("custom10").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `custom10` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom10").toString()));
+      }
       if ((jsonObj.get("custom2") != null && !jsonObj.get("custom2").isJsonNull()) && !jsonObj.get("custom2").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `custom2` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom2").toString()));
       }
@@ -5206,9 +5234,6 @@ public class IamUser {
       }
       if ((jsonObj.get("custom9") != null && !jsonObj.get("custom9").isJsonNull()) && !jsonObj.get("custom9").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `custom9` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom9").toString()));
-      }
-      if ((jsonObj.get("custom10") != null && !jsonObj.get("custom10").isJsonNull()) && !jsonObj.get("custom10").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `custom10` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom10").toString()));
       }
       if ((jsonObj.get("dailymotion") != null && !jsonObj.get("dailymotion").isJsonNull()) && !jsonObj.get("dailymotion").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `dailymotion` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dailymotion").toString()));
@@ -5459,6 +5484,9 @@ public class IamUser {
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("nameKey") != null && !jsonObj.get("nameKey").isJsonNull()) && !jsonObj.get("nameKey").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `nameKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nameKey").toString()));
       }
       if ((jsonObj.get("naver") != null && !jsonObj.get("naver").isJsonNull()) && !jsonObj.get("naver").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `naver` to be a primitive type in the JSON string but got `%s`", jsonObj.get("naver").toString()));

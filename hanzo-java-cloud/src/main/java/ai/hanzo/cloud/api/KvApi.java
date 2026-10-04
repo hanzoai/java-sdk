@@ -27,12 +27,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.BucketRecord;
-import ai.hanzo.cloud.model.BucketWrite;
-import ai.hanzo.cloud.model.KvAck;
-import ai.hanzo.cloud.model.KvEntry;
-import ai.hanzo.cloud.model.KvPage;
-import ai.hanzo.cloud.model.KvWrite;
+import ai.hanzo.cloud.model.KvBucketRecord;
+import ai.hanzo.cloud.model.KvBucketWrite;
+import ai.hanzo.cloud.model.KvKvAck;
+import ai.hanzo.cloud.model.KvKvEntry;
+import ai.hanzo.cloud.model.KvKvPage;
+import ai.hanzo.cloud.model.KvKvWrite;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -88,6 +89,7 @@ public class KvApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteKvByBucketCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
@@ -117,6 +119,7 @@ public class KvApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -155,6 +158,7 @@ public class KvApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteKvByBucket(@javax.annotation.Nonnull String bucket) throws ApiException {
@@ -172,6 +176,7 @@ public class KvApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteKvByBucketWithHttpInfo(@javax.annotation.Nonnull String bucket) throws ApiException {
@@ -191,6 +196,7 @@ public class KvApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteKvByBucketAsync(@javax.annotation.Nonnull String bucket, final ApiCallback<Void> _callback) throws ApiException {
@@ -211,6 +217,7 @@ public class KvApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteKvByBucketByKeyCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
@@ -241,6 +248,7 @@ public class KvApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -285,6 +293,7 @@ public class KvApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteKvByBucketByKey(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
@@ -303,6 +312,7 @@ public class KvApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteKvByBucketByKeyWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
@@ -323,6 +333,7 @@ public class KvApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteKvByBucketByKeyAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
@@ -343,6 +354,7 @@ public class KvApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getKvByBucketByKeyCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
@@ -373,7 +385,8 @@ public class KvApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -408,47 +421,49 @@ public class KvApi {
     }
 
     /**
-     * Get returns one key&#39;s current value and revision.
-     * Get returns one key&#39;s current value and revision. 404 when the bucket does not exist, the key was never written, or its latest revision is a delete.
+     * Returns one key&#39;s current value and revision.
+     * Returns one key&#39;s current value and revision. 404 when the bucket does not exist, the key was never written, or its latest revision is a delete.
      * @param bucket Bucket is the bucket, from the path. (required)
      * @param key Key is the key, from the path. (required)
-     * @return KvEntry
+     * @return KvKvEntry
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public KvEntry getKvByBucketByKey(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
-        ApiResponse<KvEntry> localVarResp = getKvByBucketByKeyWithHttpInfo(bucket, key);
+    public KvKvEntry getKvByBucketByKey(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
+        ApiResponse<KvKvEntry> localVarResp = getKvByBucketByKeyWithHttpInfo(bucket, key);
         return localVarResp.getData();
     }
 
     /**
-     * Get returns one key&#39;s current value and revision.
-     * Get returns one key&#39;s current value and revision. 404 when the bucket does not exist, the key was never written, or its latest revision is a delete.
+     * Returns one key&#39;s current value and revision.
+     * Returns one key&#39;s current value and revision. 404 when the bucket does not exist, the key was never written, or its latest revision is a delete.
      * @param bucket Bucket is the bucket, from the path. (required)
      * @param key Key is the key, from the path. (required)
-     * @return ApiResponse&lt;KvEntry&gt;
+     * @return ApiResponse&lt;KvKvEntry&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KvEntry> getKvByBucketByKeyWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
+    public ApiResponse<KvKvEntry> getKvByBucketByKeyWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
         okhttp3.Call localVarCall = getKvByBucketByKeyValidateBeforeCall(bucket, key, null);
-        Type localVarReturnType = new TypeToken<KvEntry>(){}.getType();
+        Type localVarReturnType = new TypeToken<KvKvEntry>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get returns one key&#39;s current value and revision. (asynchronously)
-     * Get returns one key&#39;s current value and revision. 404 when the bucket does not exist, the key was never written, or its latest revision is a delete.
+     * Returns one key&#39;s current value and revision. (asynchronously)
+     * Returns one key&#39;s current value and revision. 404 when the bucket does not exist, the key was never written, or its latest revision is a delete.
      * @param bucket Bucket is the bucket, from the path. (required)
      * @param key Key is the key, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -459,12 +474,13 @@ public class KvApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getKvByBucketByKeyAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback<KvEntry> _callback) throws ApiException {
+    public okhttp3.Call getKvByBucketByKeyAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback<KvKvEntry> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getKvByBucketByKeyValidateBeforeCall(bucket, key, _callback);
-        Type localVarReturnType = new TypeToken<KvEntry>(){}.getType();
+        Type localVarReturnType = new TypeToken<KvKvEntry>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -480,6 +496,7 @@ public class KvApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getKvByBucketByKeyHistoryCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
@@ -510,7 +527,8 @@ public class KvApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -545,47 +563,49 @@ public class KvApi {
     }
 
     /**
-     * History returns one key&#39;s retained revisions, oldest first — every put and every delete marker up to the bucket&#39;s History depth.
-     * History returns one key&#39;s retained revisions, oldest first — every put and every delete marker up to the bucket&#39;s History depth. 404 when the bucket does not exist or the key was never written.
+     * Returns one key&#39;s retained revisions, oldest first — every put and every delete marker up to the bucket&#39;s History depth.
+     * Returns one key&#39;s retained revisions, oldest first — every put and every delete marker up to the bucket&#39;s History depth. 404 when the bucket does not exist or the key was never written.
      * @param bucket Bucket is the bucket, from the path. (required)
      * @param key Key is the key, from the path. (required)
-     * @return KvPage
+     * @return KvKvPage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public KvPage getKvByBucketByKeyHistory(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
-        ApiResponse<KvPage> localVarResp = getKvByBucketByKeyHistoryWithHttpInfo(bucket, key);
+    public KvKvPage getKvByBucketByKeyHistory(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
+        ApiResponse<KvKvPage> localVarResp = getKvByBucketByKeyHistoryWithHttpInfo(bucket, key);
         return localVarResp.getData();
     }
 
     /**
-     * History returns one key&#39;s retained revisions, oldest first — every put and every delete marker up to the bucket&#39;s History depth.
-     * History returns one key&#39;s retained revisions, oldest first — every put and every delete marker up to the bucket&#39;s History depth. 404 when the bucket does not exist or the key was never written.
+     * Returns one key&#39;s retained revisions, oldest first — every put and every delete marker up to the bucket&#39;s History depth.
+     * Returns one key&#39;s retained revisions, oldest first — every put and every delete marker up to the bucket&#39;s History depth. 404 when the bucket does not exist or the key was never written.
      * @param bucket Bucket is the bucket, from the path. (required)
      * @param key Key is the key, from the path. (required)
-     * @return ApiResponse&lt;KvPage&gt;
+     * @return ApiResponse&lt;KvKvPage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KvPage> getKvByBucketByKeyHistoryWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
+    public ApiResponse<KvKvPage> getKvByBucketByKeyHistoryWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key) throws ApiException {
         okhttp3.Call localVarCall = getKvByBucketByKeyHistoryValidateBeforeCall(bucket, key, null);
-        Type localVarReturnType = new TypeToken<KvPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<KvKvPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * History returns one key&#39;s retained revisions, oldest first — every put and every delete marker up to the bucket&#39;s History depth. (asynchronously)
-     * History returns one key&#39;s retained revisions, oldest first — every put and every delete marker up to the bucket&#39;s History depth. 404 when the bucket does not exist or the key was never written.
+     * Returns one key&#39;s retained revisions, oldest first — every put and every delete marker up to the bucket&#39;s History depth. (asynchronously)
+     * Returns one key&#39;s retained revisions, oldest first — every put and every delete marker up to the bucket&#39;s History depth. 404 when the bucket does not exist or the key was never written.
      * @param bucket Bucket is the bucket, from the path. (required)
      * @param key Key is the key, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -596,19 +616,20 @@ public class KvApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getKvByBucketByKeyHistoryAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback<KvPage> _callback) throws ApiException {
+    public okhttp3.Call getKvByBucketByKeyHistoryAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, final ApiCallback<KvKvPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getKvByBucketByKeyHistoryValidateBeforeCall(bucket, key, _callback);
-        Type localVarReturnType = new TypeToken<KvPage>(){}.getType();
+        Type localVarReturnType = new TypeToken<KvKvPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postKvByBucket
      * @param bucket Bucket is the bucket&#39;s name within the org, from the path: 1–64 of [A-Za-z0-9_], no dash. (required)
-     * @param bucketWrite  (required)
+     * @param kvBucketWrite  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -617,9 +638,10 @@ public class KvApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postKvByBucketCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull BucketWrite bucketWrite, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postKvByBucketCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull KvBucketWrite kvBucketWrite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -633,7 +655,7 @@ public class KvApi {
             basePath = null;
         }
 
-        Object localVarPostBody = bucketWrite;
+        Object localVarPostBody = kvBucketWrite;
 
         // create path and map variables
         String localVarPath = "/v1/kv/{bucket}"
@@ -646,7 +668,8 @@ public class KvApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -666,18 +689,18 @@ public class KvApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postKvByBucketValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull BucketWrite bucketWrite, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postKvByBucketValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull KvBucketWrite kvBucketWrite, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
             throw new ApiException("Missing the required parameter 'bucket' when calling postKvByBucket(Async)");
         }
 
-        // verify the required parameter 'bucketWrite' is set
-        if (bucketWrite == null) {
-            throw new ApiException("Missing the required parameter 'bucketWrite' when calling postKvByBucket(Async)");
+        // verify the required parameter 'kvBucketWrite' is set
+        if (kvBucketWrite == null) {
+            throw new ApiException("Missing the required parameter 'kvBucketWrite' when calling postKvByBucket(Async)");
         }
 
-        return postKvByBucketCall(bucket, bucketWrite, _callback);
+        return postKvByBucketCall(bucket, kvBucketWrite, _callback);
 
     }
 
@@ -685,18 +708,19 @@ public class KvApi {
      * Creates a KV bucket and returns it.
      * Creates a KV bucket and returns it. A bucket is keyed state on the same durable plane as the streams: each key holds up to History revisions, entries can expire by TTL, and watchers on the NATS port see every write. 409 when the org already has a bucket of that name.
      * @param bucket Bucket is the bucket&#39;s name within the org, from the path: 1–64 of [A-Za-z0-9_], no dash. (required)
-     * @param bucketWrite  (required)
-     * @return BucketRecord
+     * @param kvBucketWrite  (required)
+     * @return KvBucketRecord
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BucketRecord postKvByBucket(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull BucketWrite bucketWrite) throws ApiException {
-        ApiResponse<BucketRecord> localVarResp = postKvByBucketWithHttpInfo(bucket, bucketWrite);
+    public KvBucketRecord postKvByBucket(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull KvBucketWrite kvBucketWrite) throws ApiException {
+        ApiResponse<KvBucketRecord> localVarResp = postKvByBucketWithHttpInfo(bucket, kvBucketWrite);
         return localVarResp.getData();
     }
 
@@ -704,19 +728,20 @@ public class KvApi {
      * Creates a KV bucket and returns it.
      * Creates a KV bucket and returns it. A bucket is keyed state on the same durable plane as the streams: each key holds up to History revisions, entries can expire by TTL, and watchers on the NATS port see every write. 409 when the org already has a bucket of that name.
      * @param bucket Bucket is the bucket&#39;s name within the org, from the path: 1–64 of [A-Za-z0-9_], no dash. (required)
-     * @param bucketWrite  (required)
-     * @return ApiResponse&lt;BucketRecord&gt;
+     * @param kvBucketWrite  (required)
+     * @return ApiResponse&lt;KvBucketRecord&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BucketRecord> postKvByBucketWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull BucketWrite bucketWrite) throws ApiException {
-        okhttp3.Call localVarCall = postKvByBucketValidateBeforeCall(bucket, bucketWrite, null);
-        Type localVarReturnType = new TypeToken<BucketRecord>(){}.getType();
+    public ApiResponse<KvBucketRecord> postKvByBucketWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull KvBucketWrite kvBucketWrite) throws ApiException {
+        okhttp3.Call localVarCall = postKvByBucketValidateBeforeCall(bucket, kvBucketWrite, null);
+        Type localVarReturnType = new TypeToken<KvBucketRecord>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -724,7 +749,7 @@ public class KvApi {
      * Creates a KV bucket and returns it. (asynchronously)
      * Creates a KV bucket and returns it. A bucket is keyed state on the same durable plane as the streams: each key holds up to History revisions, entries can expire by TTL, and watchers on the NATS port see every write. 409 when the org already has a bucket of that name.
      * @param bucket Bucket is the bucket&#39;s name within the org, from the path: 1–64 of [A-Za-z0-9_], no dash. (required)
-     * @param bucketWrite  (required)
+     * @param kvBucketWrite  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -733,12 +758,13 @@ public class KvApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postKvByBucketAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull BucketWrite bucketWrite, final ApiCallback<BucketRecord> _callback) throws ApiException {
+    public okhttp3.Call postKvByBucketAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull KvBucketWrite kvBucketWrite, final ApiCallback<KvBucketRecord> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postKvByBucketValidateBeforeCall(bucket, bucketWrite, _callback);
-        Type localVarReturnType = new TypeToken<BucketRecord>(){}.getType();
+        okhttp3.Call localVarCall = postKvByBucketValidateBeforeCall(bucket, kvBucketWrite, _callback);
+        Type localVarReturnType = new TypeToken<KvBucketRecord>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -746,7 +772,7 @@ public class KvApi {
      * Build call for putKvByBucketByKey
      * @param bucket Bucket is the bucket, from the path. (required)
      * @param key Key is the key, from the path. (required)
-     * @param kvWrite  (required)
+     * @param kvKvWrite  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -755,9 +781,10 @@ public class KvApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putKvByBucketByKeyCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvWrite kvWrite, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putKvByBucketByKeyCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvKvWrite kvKvWrite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -771,7 +798,7 @@ public class KvApi {
             basePath = null;
         }
 
-        Object localVarPostBody = kvWrite;
+        Object localVarPostBody = kvKvWrite;
 
         // create path and map variables
         String localVarPath = "/v1/kv/{bucket}/{key}"
@@ -785,7 +812,8 @@ public class KvApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -805,7 +833,7 @@ public class KvApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putKvByBucketByKeyValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvWrite kvWrite, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putKvByBucketByKeyValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvKvWrite kvKvWrite, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
             throw new ApiException("Missing the required parameter 'bucket' when calling putKvByBucketByKey(Async)");
@@ -816,62 +844,64 @@ public class KvApi {
             throw new ApiException("Missing the required parameter 'key' when calling putKvByBucketByKey(Async)");
         }
 
-        // verify the required parameter 'kvWrite' is set
-        if (kvWrite == null) {
-            throw new ApiException("Missing the required parameter 'kvWrite' when calling putKvByBucketByKey(Async)");
+        // verify the required parameter 'kvKvWrite' is set
+        if (kvKvWrite == null) {
+            throw new ApiException("Missing the required parameter 'kvKvWrite' when calling putKvByBucketByKey(Async)");
         }
 
-        return putKvByBucketByKeyCall(bucket, key, kvWrite, _callback);
+        return putKvByBucketByKeyCall(bucket, key, kvKvWrite, _callback);
 
     }
 
     /**
-     * Put sets one key to one value and returns the revision the write created.
-     * Put sets one key to one value and returns the revision the write created. Writes are versioned: each put is a new revision and the bucket retains up to its History of them per key.
+     * Sets one key to one value and returns the revision the write created.
+     * Sets one key to one value and returns the revision the write created. Writes are versioned: each put is a new revision and the bucket retains up to its History of them per key.
      * @param bucket Bucket is the bucket, from the path. (required)
      * @param key Key is the key, from the path. (required)
-     * @param kvWrite  (required)
-     * @return KvAck
+     * @param kvKvWrite  (required)
+     * @return KvKvAck
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public KvAck putKvByBucketByKey(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvWrite kvWrite) throws ApiException {
-        ApiResponse<KvAck> localVarResp = putKvByBucketByKeyWithHttpInfo(bucket, key, kvWrite);
+    public KvKvAck putKvByBucketByKey(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvKvWrite kvKvWrite) throws ApiException {
+        ApiResponse<KvKvAck> localVarResp = putKvByBucketByKeyWithHttpInfo(bucket, key, kvKvWrite);
         return localVarResp.getData();
     }
 
     /**
-     * Put sets one key to one value and returns the revision the write created.
-     * Put sets one key to one value and returns the revision the write created. Writes are versioned: each put is a new revision and the bucket retains up to its History of them per key.
+     * Sets one key to one value and returns the revision the write created.
+     * Sets one key to one value and returns the revision the write created. Writes are versioned: each put is a new revision and the bucket retains up to its History of them per key.
      * @param bucket Bucket is the bucket, from the path. (required)
      * @param key Key is the key, from the path. (required)
-     * @param kvWrite  (required)
-     * @return ApiResponse&lt;KvAck&gt;
+     * @param kvKvWrite  (required)
+     * @return ApiResponse&lt;KvKvAck&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KvAck> putKvByBucketByKeyWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvWrite kvWrite) throws ApiException {
-        okhttp3.Call localVarCall = putKvByBucketByKeyValidateBeforeCall(bucket, key, kvWrite, null);
-        Type localVarReturnType = new TypeToken<KvAck>(){}.getType();
+    public ApiResponse<KvKvAck> putKvByBucketByKeyWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvKvWrite kvKvWrite) throws ApiException {
+        okhttp3.Call localVarCall = putKvByBucketByKeyValidateBeforeCall(bucket, key, kvKvWrite, null);
+        Type localVarReturnType = new TypeToken<KvKvAck>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Put sets one key to one value and returns the revision the write created. (asynchronously)
-     * Put sets one key to one value and returns the revision the write created. Writes are versioned: each put is a new revision and the bucket retains up to its History of them per key.
+     * Sets one key to one value and returns the revision the write created. (asynchronously)
+     * Sets one key to one value and returns the revision the write created. Writes are versioned: each put is a new revision and the bucket retains up to its History of them per key.
      * @param bucket Bucket is the bucket, from the path. (required)
      * @param key Key is the key, from the path. (required)
-     * @param kvWrite  (required)
+     * @param kvKvWrite  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -880,12 +910,13 @@ public class KvApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putKvByBucketByKeyAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvWrite kvWrite, final ApiCallback<KvAck> _callback) throws ApiException {
+    public okhttp3.Call putKvByBucketByKeyAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String key, @javax.annotation.Nonnull KvKvWrite kvKvWrite, final ApiCallback<KvKvAck> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putKvByBucketByKeyValidateBeforeCall(bucket, key, kvWrite, _callback);
-        Type localVarReturnType = new TypeToken<KvAck>(){}.getType();
+        okhttp3.Call localVarCall = putKvByBucketByKeyValidateBeforeCall(bucket, key, kvKvWrite, _callback);
+        Type localVarReturnType = new TypeToken<KvKvAck>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

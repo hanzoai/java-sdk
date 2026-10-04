@@ -27,31 +27,32 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.AgentBinding;
-import ai.hanzo.cloud.model.BindAgentReq;
-import ai.hanzo.cloud.model.BindingList;
-import ai.hanzo.cloud.model.ClusterAttach;
-import ai.hanzo.cloud.model.ClusterDetached;
-import ai.hanzo.cloud.model.ClusterDetailView;
-import ai.hanzo.cloud.model.ClusterList;
-import ai.hanzo.cloud.model.ClusterView;
-import ai.hanzo.cloud.model.CreateClusterReq;
-import ai.hanzo.cloud.model.FleetBoard;
-import ai.hanzo.cloud.model.GpuAlertList;
-import ai.hanzo.cloud.model.GpuList;
-import ai.hanzo.cloud.model.JobCancel;
-import ai.hanzo.cloud.model.JobCanceled;
-import ai.hanzo.cloud.model.JobList;
-import ai.hanzo.cloud.model.MachineList;
-import ai.hanzo.cloud.model.MachineView;
-import ai.hanzo.cloud.model.NodeList;
-import ai.hanzo.cloud.model.NodePoolView;
-import ai.hanzo.cloud.model.PoolCreate;
-import ai.hanzo.cloud.model.PoolScale;
-import ai.hanzo.cloud.model.SampleAccepted;
-import ai.hanzo.cloud.model.SampleIngest;
-import ai.hanzo.cloud.model.SampleList;
-import ai.hanzo.cloud.model.WorkerList;
+import ai.hanzo.cloud.model.ComputeAgentBinding;
+import ai.hanzo.cloud.model.ComputeBindAgentReq;
+import ai.hanzo.cloud.model.ComputeBindingList;
+import ai.hanzo.cloud.model.ComputeClusterAttach;
+import ai.hanzo.cloud.model.ComputeClusterDetached;
+import ai.hanzo.cloud.model.ComputeClusterDetailView;
+import ai.hanzo.cloud.model.ComputeClusterList;
+import ai.hanzo.cloud.model.ComputeClusterView;
+import ai.hanzo.cloud.model.ComputeCreateClusterReq;
+import ai.hanzo.cloud.model.ComputeFleetBoard;
+import ai.hanzo.cloud.model.ComputeGpuAlertList;
+import ai.hanzo.cloud.model.ComputeGpuList;
+import ai.hanzo.cloud.model.ComputeJobCancel;
+import ai.hanzo.cloud.model.ComputeJobCanceled;
+import ai.hanzo.cloud.model.ComputeJobList;
+import ai.hanzo.cloud.model.ComputeMachineList;
+import ai.hanzo.cloud.model.ComputeMachineView;
+import ai.hanzo.cloud.model.ComputeNodeList;
+import ai.hanzo.cloud.model.ComputeNodePoolView;
+import ai.hanzo.cloud.model.ComputePoolCreate;
+import ai.hanzo.cloud.model.ComputePoolScale;
+import ai.hanzo.cloud.model.ComputeSampleAccepted;
+import ai.hanzo.cloud.model.ComputeSampleIngest;
+import ai.hanzo.cloud.model.ComputeSampleList;
+import ai.hanzo.cloud.model.ComputeWorkerList;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -98,7 +99,7 @@ public class ComputeApi {
 
     /**
      * Build call for attachCluster
-     * @param clusterAttach  (required)
+     * @param computeClusterAttach  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -107,9 +108,10 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call attachClusterCall(@javax.annotation.Nonnull ClusterAttach clusterAttach, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call attachClusterCall(@javax.annotation.Nonnull ComputeClusterAttach computeClusterAttach, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -123,7 +125,7 @@ public class ComputeApi {
             basePath = null;
         }
 
-        Object localVarPostBody = clusterAttach;
+        Object localVarPostBody = computeClusterAttach;
 
         // create path and map variables
         String localVarPath = "/v1/compute/clusters";
@@ -135,7 +137,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -155,57 +158,59 @@ public class ComputeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call attachClusterValidateBeforeCall(@javax.annotation.Nonnull ClusterAttach clusterAttach, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'clusterAttach' is set
-        if (clusterAttach == null) {
-            throw new ApiException("Missing the required parameter 'clusterAttach' when calling attachCluster(Async)");
+    private okhttp3.Call attachClusterValidateBeforeCall(@javax.annotation.Nonnull ComputeClusterAttach computeClusterAttach, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'computeClusterAttach' is set
+        if (computeClusterAttach == null) {
+            throw new ApiException("Missing the required parameter 'computeClusterAttach' when calling attachCluster(Async)");
         }
 
-        return attachClusterCall(clusterAttach, _callback);
+        return attachClusterCall(computeClusterAttach, _callback);
 
     }
 
     /**
      * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/compute/clusters.
      * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/compute/clusters. Billed the nominal management fee: the customer brings the compute, Hanzo meters the management plane.
-     * @param clusterAttach  (required)
-     * @return ClusterView
+     * @param computeClusterAttach  (required)
+     * @return ComputeClusterView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ClusterView attachCluster(@javax.annotation.Nonnull ClusterAttach clusterAttach) throws ApiException {
-        ApiResponse<ClusterView> localVarResp = attachClusterWithHttpInfo(clusterAttach);
+    public ComputeClusterView attachCluster(@javax.annotation.Nonnull ComputeClusterAttach computeClusterAttach) throws ApiException {
+        ApiResponse<ComputeClusterView> localVarResp = attachClusterWithHttpInfo(computeClusterAttach);
         return localVarResp.getData();
     }
 
     /**
      * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/compute/clusters.
      * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/compute/clusters. Billed the nominal management fee: the customer brings the compute, Hanzo meters the management plane.
-     * @param clusterAttach  (required)
-     * @return ApiResponse&lt;ClusterView&gt;
+     * @param computeClusterAttach  (required)
+     * @return ApiResponse&lt;ComputeClusterView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ClusterView> attachClusterWithHttpInfo(@javax.annotation.Nonnull ClusterAttach clusterAttach) throws ApiException {
-        okhttp3.Call localVarCall = attachClusterValidateBeforeCall(clusterAttach, null);
-        Type localVarReturnType = new TypeToken<ClusterView>(){}.getType();
+    public ApiResponse<ComputeClusterView> attachClusterWithHttpInfo(@javax.annotation.Nonnull ComputeClusterAttach computeClusterAttach) throws ApiException {
+        okhttp3.Call localVarCall = attachClusterValidateBeforeCall(computeClusterAttach, null);
+        Type localVarReturnType = new TypeToken<ComputeClusterView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/compute/clusters. (asynchronously)
      * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/compute/clusters. Billed the nominal management fee: the customer brings the compute, Hanzo meters the management plane.
-     * @param clusterAttach  (required)
+     * @param computeClusterAttach  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -214,19 +219,20 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call attachClusterAsync(@javax.annotation.Nonnull ClusterAttach clusterAttach, final ApiCallback<ClusterView> _callback) throws ApiException {
+    public okhttp3.Call attachClusterAsync(@javax.annotation.Nonnull ComputeClusterAttach computeClusterAttach, final ApiCallback<ComputeClusterView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = attachClusterValidateBeforeCall(clusterAttach, _callback);
-        Type localVarReturnType = new TypeToken<ClusterView>(){}.getType();
+        okhttp3.Call localVarCall = attachClusterValidateBeforeCall(computeClusterAttach, _callback);
+        Type localVarReturnType = new TypeToken<ComputeClusterView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for bindMachineAgent
      * @param id ID is the machine to bind, from the URL path. (required)
-     * @param bindAgentReq  (required)
+     * @param computeBindAgentReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -235,9 +241,10 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bindMachineAgentCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BindAgentReq bindAgentReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call bindMachineAgentCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComputeBindAgentReq computeBindAgentReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -251,7 +258,7 @@ public class ComputeApi {
             basePath = null;
         }
 
-        Object localVarPostBody = bindAgentReq;
+        Object localVarPostBody = computeBindAgentReq;
 
         // create path and map variables
         String localVarPath = "/v1/compute/machines/{id}/agent"
@@ -264,7 +271,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -284,18 +292,18 @@ public class ComputeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call bindMachineAgentValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BindAgentReq bindAgentReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call bindMachineAgentValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComputeBindAgentReq computeBindAgentReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling bindMachineAgent(Async)");
         }
 
-        // verify the required parameter 'bindAgentReq' is set
-        if (bindAgentReq == null) {
-            throw new ApiException("Missing the required parameter 'bindAgentReq' when calling bindMachineAgent(Async)");
+        // verify the required parameter 'computeBindAgentReq' is set
+        if (computeBindAgentReq == null) {
+            throw new ApiException("Missing the required parameter 'computeBindAgentReq' when calling bindMachineAgent(Async)");
         }
 
-        return bindMachineAgentCall(id, bindAgentReq, _callback);
+        return bindMachineAgentCall(id, computeBindAgentReq, _callback);
 
     }
 
@@ -303,18 +311,19 @@ public class ComputeApi {
      * Binds a cloud Agent to one of the caller org&#39;s machines: the machine is recorded as running that Agent&#39;s @hanzo/bot runtime.
      * Binds a cloud Agent to one of the caller org&#39;s machines: the machine is recorded as running that Agent&#39;s @hanzo/bot runtime. The owning org is the validated tenant, never a client field.
      * @param id ID is the machine to bind, from the URL path. (required)
-     * @param bindAgentReq  (required)
-     * @return AgentBinding
+     * @param computeBindAgentReq  (required)
+     * @return ComputeAgentBinding
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AgentBinding bindMachineAgent(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BindAgentReq bindAgentReq) throws ApiException {
-        ApiResponse<AgentBinding> localVarResp = bindMachineAgentWithHttpInfo(id, bindAgentReq);
+    public ComputeAgentBinding bindMachineAgent(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComputeBindAgentReq computeBindAgentReq) throws ApiException {
+        ApiResponse<ComputeAgentBinding> localVarResp = bindMachineAgentWithHttpInfo(id, computeBindAgentReq);
         return localVarResp.getData();
     }
 
@@ -322,19 +331,20 @@ public class ComputeApi {
      * Binds a cloud Agent to one of the caller org&#39;s machines: the machine is recorded as running that Agent&#39;s @hanzo/bot runtime.
      * Binds a cloud Agent to one of the caller org&#39;s machines: the machine is recorded as running that Agent&#39;s @hanzo/bot runtime. The owning org is the validated tenant, never a client field.
      * @param id ID is the machine to bind, from the URL path. (required)
-     * @param bindAgentReq  (required)
-     * @return ApiResponse&lt;AgentBinding&gt;
+     * @param computeBindAgentReq  (required)
+     * @return ApiResponse&lt;ComputeAgentBinding&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AgentBinding> bindMachineAgentWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BindAgentReq bindAgentReq) throws ApiException {
-        okhttp3.Call localVarCall = bindMachineAgentValidateBeforeCall(id, bindAgentReq, null);
-        Type localVarReturnType = new TypeToken<AgentBinding>(){}.getType();
+    public ApiResponse<ComputeAgentBinding> bindMachineAgentWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComputeBindAgentReq computeBindAgentReq) throws ApiException {
+        okhttp3.Call localVarCall = bindMachineAgentValidateBeforeCall(id, computeBindAgentReq, null);
+        Type localVarReturnType = new TypeToken<ComputeAgentBinding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -342,7 +352,7 @@ public class ComputeApi {
      * Binds a cloud Agent to one of the caller org&#39;s machines: the machine is recorded as running that Agent&#39;s @hanzo/bot runtime. (asynchronously)
      * Binds a cloud Agent to one of the caller org&#39;s machines: the machine is recorded as running that Agent&#39;s @hanzo/bot runtime. The owning org is the validated tenant, never a client field.
      * @param id ID is the machine to bind, from the URL path. (required)
-     * @param bindAgentReq  (required)
+     * @param computeBindAgentReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -351,19 +361,20 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call bindMachineAgentAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull BindAgentReq bindAgentReq, final ApiCallback<AgentBinding> _callback) throws ApiException {
+    public okhttp3.Call bindMachineAgentAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComputeBindAgentReq computeBindAgentReq, final ApiCallback<ComputeAgentBinding> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = bindMachineAgentValidateBeforeCall(id, bindAgentReq, _callback);
-        Type localVarReturnType = new TypeToken<AgentBinding>(){}.getType();
+        okhttp3.Call localVarCall = bindMachineAgentValidateBeforeCall(id, computeBindAgentReq, _callback);
+        Type localVarReturnType = new TypeToken<ComputeAgentBinding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for cancelFleetJob
      * @param id ID is the job (activity) id, from the URL path. (required)
-     * @param jobCancel  (required)
+     * @param computeJobCancel  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -372,9 +383,10 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cancelFleetJobCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull JobCancel jobCancel, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cancelFleetJobCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComputeJobCancel computeJobCancel, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -388,7 +400,7 @@ public class ComputeApi {
             basePath = null;
         }
 
-        Object localVarPostBody = jobCancel;
+        Object localVarPostBody = computeJobCancel;
 
         // create path and map variables
         String localVarPath = "/v1/compute/fleet/jobs/{id}/cancel"
@@ -401,7 +413,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -421,18 +434,18 @@ public class ComputeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cancelFleetJobValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull JobCancel jobCancel, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cancelFleetJobValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComputeJobCancel computeJobCancel, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling cancelFleetJob(Async)");
         }
 
-        // verify the required parameter 'jobCancel' is set
-        if (jobCancel == null) {
-            throw new ApiException("Missing the required parameter 'jobCancel' when calling cancelFleetJob(Async)");
+        // verify the required parameter 'computeJobCancel' is set
+        if (computeJobCancel == null) {
+            throw new ApiException("Missing the required parameter 'computeJobCancel' when calling cancelFleetJob(Async)");
         }
 
-        return cancelFleetJobCall(id, jobCancel, _callback);
+        return cancelFleetJobCall(id, computeJobCancel, _callback);
 
     }
 
@@ -440,18 +453,19 @@ public class ComputeApi {
      * Cancels a queued or running render in the caller&#39;s org.
      * Cancels a queued or running render in the caller&#39;s org. The engine cancel is org-scoped, so a tenant can only ever cancel its OWN job: a job in another tenant&#39;s shard is 404, exactly like one that never existed. An already-finished job is 409.
      * @param id ID is the job (activity) id, from the URL path. (required)
-     * @param jobCancel  (required)
-     * @return JobCanceled
+     * @param computeJobCancel  (required)
+     * @return ComputeJobCanceled
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public JobCanceled cancelFleetJob(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull JobCancel jobCancel) throws ApiException {
-        ApiResponse<JobCanceled> localVarResp = cancelFleetJobWithHttpInfo(id, jobCancel);
+    public ComputeJobCanceled cancelFleetJob(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComputeJobCancel computeJobCancel) throws ApiException {
+        ApiResponse<ComputeJobCanceled> localVarResp = cancelFleetJobWithHttpInfo(id, computeJobCancel);
         return localVarResp.getData();
     }
 
@@ -459,19 +473,20 @@ public class ComputeApi {
      * Cancels a queued or running render in the caller&#39;s org.
      * Cancels a queued or running render in the caller&#39;s org. The engine cancel is org-scoped, so a tenant can only ever cancel its OWN job: a job in another tenant&#39;s shard is 404, exactly like one that never existed. An already-finished job is 409.
      * @param id ID is the job (activity) id, from the URL path. (required)
-     * @param jobCancel  (required)
-     * @return ApiResponse&lt;JobCanceled&gt;
+     * @param computeJobCancel  (required)
+     * @return ApiResponse&lt;ComputeJobCanceled&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<JobCanceled> cancelFleetJobWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull JobCancel jobCancel) throws ApiException {
-        okhttp3.Call localVarCall = cancelFleetJobValidateBeforeCall(id, jobCancel, null);
-        Type localVarReturnType = new TypeToken<JobCanceled>(){}.getType();
+    public ApiResponse<ComputeJobCanceled> cancelFleetJobWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComputeJobCancel computeJobCancel) throws ApiException {
+        okhttp3.Call localVarCall = cancelFleetJobValidateBeforeCall(id, computeJobCancel, null);
+        Type localVarReturnType = new TypeToken<ComputeJobCanceled>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -479,7 +494,7 @@ public class ComputeApi {
      * Cancels a queued or running render in the caller&#39;s org. (asynchronously)
      * Cancels a queued or running render in the caller&#39;s org. The engine cancel is org-scoped, so a tenant can only ever cancel its OWN job: a job in another tenant&#39;s shard is 404, exactly like one that never existed. An already-finished job is 409.
      * @param id ID is the job (activity) id, from the URL path. (required)
-     * @param jobCancel  (required)
+     * @param computeJobCancel  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -488,18 +503,19 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cancelFleetJobAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull JobCancel jobCancel, final ApiCallback<JobCanceled> _callback) throws ApiException {
+    public okhttp3.Call cancelFleetJobAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ComputeJobCancel computeJobCancel, final ApiCallback<ComputeJobCanceled> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cancelFleetJobValidateBeforeCall(id, jobCancel, _callback);
-        Type localVarReturnType = new TypeToken<JobCanceled>(){}.getType();
+        okhttp3.Call localVarCall = cancelFleetJobValidateBeforeCall(id, computeJobCancel, _callback);
+        Type localVarReturnType = new TypeToken<ComputeJobCanceled>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for createKubernetesCluster
-     * @param createClusterReq  (required)
+     * @param computeCreateClusterReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -508,9 +524,10 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createKubernetesClusterCall(@javax.annotation.Nonnull CreateClusterReq createClusterReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createKubernetesClusterCall(@javax.annotation.Nonnull ComputeCreateClusterReq computeCreateClusterReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -524,7 +541,7 @@ public class ComputeApi {
             basePath = null;
         }
 
-        Object localVarPostBody = createClusterReq;
+        Object localVarPostBody = computeCreateClusterReq;
 
         // create path and map variables
         String localVarPath = "/v1/compute/k8s/clusters";
@@ -536,7 +553,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -556,57 +574,59 @@ public class ComputeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createKubernetesClusterValidateBeforeCall(@javax.annotation.Nonnull CreateClusterReq createClusterReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'createClusterReq' is set
-        if (createClusterReq == null) {
-            throw new ApiException("Missing the required parameter 'createClusterReq' when calling createKubernetesCluster(Async)");
+    private okhttp3.Call createKubernetesClusterValidateBeforeCall(@javax.annotation.Nonnull ComputeCreateClusterReq computeCreateClusterReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'computeCreateClusterReq' is set
+        if (computeCreateClusterReq == null) {
+            throw new ApiException("Missing the required parameter 'computeCreateClusterReq' when calling createKubernetesCluster(Async)");
         }
 
-        return createKubernetesClusterCall(createClusterReq, _callback);
+        return createKubernetesClusterCall(computeCreateClusterReq, _callback);
 
     }
 
     /**
      * Provisions a DOKS cluster for the caller&#39;s org and answers 201.
      * Provisions a DOKS cluster for the caller&#39;s org and answers 201. ADMIN-GATED — a SuperAdmin, or an OrgAdmin of the caller&#39;s own org — because provisioning spends real infrastructure on the house account. The request is validated at this boundary, then Visor owns provisioning and the hanzo-org ownership tag.
-     * @param createClusterReq  (required)
-     * @return ClusterView
+     * @param computeCreateClusterReq  (required)
+     * @return ComputeClusterView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ClusterView createKubernetesCluster(@javax.annotation.Nonnull CreateClusterReq createClusterReq) throws ApiException {
-        ApiResponse<ClusterView> localVarResp = createKubernetesClusterWithHttpInfo(createClusterReq);
+    public ComputeClusterView createKubernetesCluster(@javax.annotation.Nonnull ComputeCreateClusterReq computeCreateClusterReq) throws ApiException {
+        ApiResponse<ComputeClusterView> localVarResp = createKubernetesClusterWithHttpInfo(computeCreateClusterReq);
         return localVarResp.getData();
     }
 
     /**
      * Provisions a DOKS cluster for the caller&#39;s org and answers 201.
      * Provisions a DOKS cluster for the caller&#39;s org and answers 201. ADMIN-GATED — a SuperAdmin, or an OrgAdmin of the caller&#39;s own org — because provisioning spends real infrastructure on the house account. The request is validated at this boundary, then Visor owns provisioning and the hanzo-org ownership tag.
-     * @param createClusterReq  (required)
-     * @return ApiResponse&lt;ClusterView&gt;
+     * @param computeCreateClusterReq  (required)
+     * @return ApiResponse&lt;ComputeClusterView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ClusterView> createKubernetesClusterWithHttpInfo(@javax.annotation.Nonnull CreateClusterReq createClusterReq) throws ApiException {
-        okhttp3.Call localVarCall = createKubernetesClusterValidateBeforeCall(createClusterReq, null);
-        Type localVarReturnType = new TypeToken<ClusterView>(){}.getType();
+    public ApiResponse<ComputeClusterView> createKubernetesClusterWithHttpInfo(@javax.annotation.Nonnull ComputeCreateClusterReq computeCreateClusterReq) throws ApiException {
+        okhttp3.Call localVarCall = createKubernetesClusterValidateBeforeCall(computeCreateClusterReq, null);
+        Type localVarReturnType = new TypeToken<ComputeClusterView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Provisions a DOKS cluster for the caller&#39;s org and answers 201. (asynchronously)
      * Provisions a DOKS cluster for the caller&#39;s org and answers 201. ADMIN-GATED — a SuperAdmin, or an OrgAdmin of the caller&#39;s own org — because provisioning spends real infrastructure on the house account. The request is validated at this boundary, then Visor owns provisioning and the hanzo-org ownership tag.
-     * @param createClusterReq  (required)
+     * @param computeCreateClusterReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -615,19 +635,20 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createKubernetesClusterAsync(@javax.annotation.Nonnull CreateClusterReq createClusterReq, final ApiCallback<ClusterView> _callback) throws ApiException {
+    public okhttp3.Call createKubernetesClusterAsync(@javax.annotation.Nonnull ComputeCreateClusterReq computeCreateClusterReq, final ApiCallback<ComputeClusterView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createKubernetesClusterValidateBeforeCall(createClusterReq, _callback);
-        Type localVarReturnType = new TypeToken<ClusterView>(){}.getType();
+        okhttp3.Call localVarCall = createKubernetesClusterValidateBeforeCall(computeCreateClusterReq, _callback);
+        Type localVarReturnType = new TypeToken<ComputeClusterView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for createNodePool
      * @param clusterId ClusterID is the cluster to add the pool to, from the URL path. (required)
-     * @param poolCreate  (required)
+     * @param computePoolCreate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -636,9 +657,10 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createNodePoolCall(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull PoolCreate poolCreate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createNodePoolCall(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull ComputePoolCreate computePoolCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -652,7 +674,7 @@ public class ComputeApi {
             basePath = null;
         }
 
-        Object localVarPostBody = poolCreate;
+        Object localVarPostBody = computePoolCreate;
 
         // create path and map variables
         String localVarPath = "/v1/compute/clusters/{clusterId}/pools"
@@ -665,7 +687,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -685,18 +708,18 @@ public class ComputeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createNodePoolValidateBeforeCall(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull PoolCreate poolCreate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createNodePoolValidateBeforeCall(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull ComputePoolCreate computePoolCreate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'clusterId' is set
         if (clusterId == null) {
             throw new ApiException("Missing the required parameter 'clusterId' when calling createNodePool(Async)");
         }
 
-        // verify the required parameter 'poolCreate' is set
-        if (poolCreate == null) {
-            throw new ApiException("Missing the required parameter 'poolCreate' when calling createNodePool(Async)");
+        // verify the required parameter 'computePoolCreate' is set
+        if (computePoolCreate == null) {
+            throw new ApiException("Missing the required parameter 'computePoolCreate' when calling createNodePool(Async)");
         }
 
-        return createNodePoolCall(clusterId, poolCreate, _callback);
+        return createNodePoolCall(clusterId, computePoolCreate, _callback);
 
     }
 
@@ -704,18 +727,19 @@ public class ComputeApi {
      * Adds a node pool to one of the caller org&#39;s clusters and answers 201 with the created pool.
      * Adds a node pool to one of the caller org&#39;s clusters and answers 201 with the created pool. Only the CreateNodePoolSpec fields are forwarded; owner/provider/clusterId ride in the query exactly as Visor expects them.
      * @param clusterId ClusterID is the cluster to add the pool to, from the URL path. (required)
-     * @param poolCreate  (required)
-     * @return NodePoolView
+     * @param computePoolCreate  (required)
+     * @return ComputeNodePoolView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public NodePoolView createNodePool(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull PoolCreate poolCreate) throws ApiException {
-        ApiResponse<NodePoolView> localVarResp = createNodePoolWithHttpInfo(clusterId, poolCreate);
+    public ComputeNodePoolView createNodePool(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull ComputePoolCreate computePoolCreate) throws ApiException {
+        ApiResponse<ComputeNodePoolView> localVarResp = createNodePoolWithHttpInfo(clusterId, computePoolCreate);
         return localVarResp.getData();
     }
 
@@ -723,19 +747,20 @@ public class ComputeApi {
      * Adds a node pool to one of the caller org&#39;s clusters and answers 201 with the created pool.
      * Adds a node pool to one of the caller org&#39;s clusters and answers 201 with the created pool. Only the CreateNodePoolSpec fields are forwarded; owner/provider/clusterId ride in the query exactly as Visor expects them.
      * @param clusterId ClusterID is the cluster to add the pool to, from the URL path. (required)
-     * @param poolCreate  (required)
-     * @return ApiResponse&lt;NodePoolView&gt;
+     * @param computePoolCreate  (required)
+     * @return ApiResponse&lt;ComputeNodePoolView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NodePoolView> createNodePoolWithHttpInfo(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull PoolCreate poolCreate) throws ApiException {
-        okhttp3.Call localVarCall = createNodePoolValidateBeforeCall(clusterId, poolCreate, null);
-        Type localVarReturnType = new TypeToken<NodePoolView>(){}.getType();
+    public ApiResponse<ComputeNodePoolView> createNodePoolWithHttpInfo(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull ComputePoolCreate computePoolCreate) throws ApiException {
+        okhttp3.Call localVarCall = createNodePoolValidateBeforeCall(clusterId, computePoolCreate, null);
+        Type localVarReturnType = new TypeToken<ComputeNodePoolView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -743,7 +768,7 @@ public class ComputeApi {
      * Adds a node pool to one of the caller org&#39;s clusters and answers 201 with the created pool. (asynchronously)
      * Adds a node pool to one of the caller org&#39;s clusters and answers 201 with the created pool. Only the CreateNodePoolSpec fields are forwarded; owner/provider/clusterId ride in the query exactly as Visor expects them.
      * @param clusterId ClusterID is the cluster to add the pool to, from the URL path. (required)
-     * @param poolCreate  (required)
+     * @param computePoolCreate  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -752,12 +777,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createNodePoolAsync(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull PoolCreate poolCreate, final ApiCallback<NodePoolView> _callback) throws ApiException {
+    public okhttp3.Call createNodePoolAsync(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull ComputePoolCreate computePoolCreate, final ApiCallback<ComputeNodePoolView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createNodePoolValidateBeforeCall(clusterId, poolCreate, _callback);
-        Type localVarReturnType = new TypeToken<NodePoolView>(){}.getType();
+        okhttp3.Call localVarCall = createNodePoolValidateBeforeCall(clusterId, computePoolCreate, _callback);
+        Type localVarReturnType = new TypeToken<ComputeNodePoolView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -772,6 +798,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteKubernetesClusterCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -801,6 +828,7 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -839,6 +867,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteKubernetesCluster(@javax.annotation.Nonnull String id) throws ApiException {
@@ -856,6 +885,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteKubernetesClusterWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -875,6 +905,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteKubernetesClusterAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -894,6 +925,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteMachineCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -923,6 +955,7 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -961,6 +994,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteMachine(@javax.annotation.Nonnull String id) throws ApiException {
@@ -978,6 +1012,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteMachineWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -997,6 +1032,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteMachineAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
@@ -1018,6 +1054,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteNodePoolCall(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull String poolId, @javax.annotation.Nullable String provider, final ApiCallback _callback) throws ApiException {
@@ -1052,6 +1089,7 @@ public class ComputeApi {
         }
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1097,6 +1135,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void deleteNodePool(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull String poolId, @javax.annotation.Nullable String provider) throws ApiException {
@@ -1116,6 +1155,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> deleteNodePoolWithHttpInfo(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull String poolId, @javax.annotation.Nullable String provider) throws ApiException {
@@ -1137,6 +1177,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteNodePoolAsync(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull String poolId, @javax.annotation.Nullable String provider, final ApiCallback<Void> _callback) throws ApiException {
@@ -1156,6 +1197,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call detachClusterCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1185,7 +1227,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1218,17 +1261,18 @@ public class ComputeApi {
      * Removes a BYO cluster from the caller org&#39;s fleet.
      * Removes a BYO cluster from the caller org&#39;s fleet. It only ever touches BYO clusters — a managed cluster&#39;s nodes are removed through the node-pool routes — and answers 404 when the name is not in this org&#39;s fleet.
      * @param id ID is the cluster&#39;s fleet name (the &#x60;name&#x60; it was attached under), matched lower-cased. (required)
-     * @return ClusterDetached
+     * @return ComputeClusterDetached
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ClusterDetached detachCluster(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<ClusterDetached> localVarResp = detachClusterWithHttpInfo(id);
+    public ComputeClusterDetached detachCluster(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ComputeClusterDetached> localVarResp = detachClusterWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1236,18 +1280,19 @@ public class ComputeApi {
      * Removes a BYO cluster from the caller org&#39;s fleet.
      * Removes a BYO cluster from the caller org&#39;s fleet. It only ever touches BYO clusters — a managed cluster&#39;s nodes are removed through the node-pool routes — and answers 404 when the name is not in this org&#39;s fleet.
      * @param id ID is the cluster&#39;s fleet name (the &#x60;name&#x60; it was attached under), matched lower-cased. (required)
-     * @return ApiResponse&lt;ClusterDetached&gt;
+     * @return ApiResponse&lt;ComputeClusterDetached&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ClusterDetached> detachClusterWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<ComputeClusterDetached> detachClusterWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = detachClusterValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<ClusterDetached>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeClusterDetached>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1263,12 +1308,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call detachClusterAsync(@javax.annotation.Nonnull String id, final ApiCallback<ClusterDetached> _callback) throws ApiException {
+    public okhttp3.Call detachClusterAsync(@javax.annotation.Nonnull String id, final ApiCallback<ComputeClusterDetached> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = detachClusterValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<ClusterDetached>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeClusterDetached>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1282,6 +1328,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getComputeRegionsCall(final ApiCallback _callback) throws ApiException {
@@ -1310,7 +1357,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1335,8 +1383,8 @@ public class ComputeApi {
     }
 
     /**
-     * Regions lists the regions a machine can be launched in.
-     * Regions lists the regions a machine can be launched in.  The catalog is GLOBAL — identical for every tenant — so no owner is forwarded upstream. It is still org-gated, because a catalog is a map of what this deployment can spend money in and an anonymous caller has no business reading it.
+     * Lists the regions a machine can be launched in.
+     * Lists the regions a machine can be launched in.  The catalog is GLOBAL — identical for every tenant — so no owner is forwarded upstream. It is still org-gated, because a catalog is a map of what this deployment can spend money in and an anonymous caller has no business reading it.
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1344,6 +1392,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Object getComputeRegions() throws ApiException {
@@ -1352,8 +1401,8 @@ public class ComputeApi {
     }
 
     /**
-     * Regions lists the regions a machine can be launched in.
-     * Regions lists the regions a machine can be launched in.  The catalog is GLOBAL — identical for every tenant — so no owner is forwarded upstream. It is still org-gated, because a catalog is a map of what this deployment can spend money in and an anonymous caller has no business reading it.
+     * Lists the regions a machine can be launched in.
+     * Lists the regions a machine can be launched in.  The catalog is GLOBAL — identical for every tenant — so no owner is forwarded upstream. It is still org-gated, because a catalog is a map of what this deployment can spend money in and an anonymous caller has no business reading it.
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1361,6 +1410,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> getComputeRegionsWithHttpInfo() throws ApiException {
@@ -1370,8 +1420,8 @@ public class ComputeApi {
     }
 
     /**
-     * Regions lists the regions a machine can be launched in. (asynchronously)
-     * Regions lists the regions a machine can be launched in.  The catalog is GLOBAL — identical for every tenant — so no owner is forwarded upstream. It is still org-gated, because a catalog is a map of what this deployment can spend money in and an anonymous caller has no business reading it.
+     * Lists the regions a machine can be launched in. (asynchronously)
+     * Lists the regions a machine can be launched in.  The catalog is GLOBAL — identical for every tenant — so no owner is forwarded upstream. It is still org-gated, because a catalog is a map of what this deployment can spend money in and an anonymous caller has no business reading it.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1380,6 +1430,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getComputeRegionsAsync(final ApiCallback<Object> _callback) throws ApiException {
@@ -1399,6 +1450,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getComputeSizesCall(final ApiCallback _callback) throws ApiException {
@@ -1427,7 +1479,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1452,8 +1505,8 @@ public class ComputeApi {
     }
 
     /**
-     * Sizes lists the machine sizes available to launch, with their specifications.
-     * Sizes lists the machine sizes available to launch, with their specifications.  Global and org-gated, exactly as the region catalog is, and for the same reasons.
+     * Lists the machine sizes available to launch, with their specifications.
+     * Lists the machine sizes available to launch, with their specifications.  Global and org-gated, exactly as the region catalog is, and for the same reasons.
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1461,6 +1514,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public Object getComputeSizes() throws ApiException {
@@ -1469,8 +1523,8 @@ public class ComputeApi {
     }
 
     /**
-     * Sizes lists the machine sizes available to launch, with their specifications.
-     * Sizes lists the machine sizes available to launch, with their specifications.  Global and org-gated, exactly as the region catalog is, and for the same reasons.
+     * Lists the machine sizes available to launch, with their specifications.
+     * Lists the machine sizes available to launch, with their specifications.  Global and org-gated, exactly as the region catalog is, and for the same reasons.
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1478,6 +1532,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Object> getComputeSizesWithHttpInfo() throws ApiException {
@@ -1487,8 +1542,8 @@ public class ComputeApi {
     }
 
     /**
-     * Sizes lists the machine sizes available to launch, with their specifications. (asynchronously)
-     * Sizes lists the machine sizes available to launch, with their specifications.  Global and org-gated, exactly as the region catalog is, and for the same reasons.
+     * Lists the machine sizes available to launch, with their specifications. (asynchronously)
+     * Lists the machine sizes available to launch, with their specifications.  Global and org-gated, exactly as the region catalog is, and for the same reasons.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1497,6 +1552,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getComputeSizesAsync(final ApiCallback<Object> _callback) throws ApiException {
@@ -1517,6 +1573,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getKubernetesClusterCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1546,7 +1603,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1579,17 +1637,18 @@ public class ComputeApi {
      * Returns one cluster&#39;s detail: node pools + worker nodes.
      * Returns one cluster&#39;s detail: node pools + worker nodes. Visor scopes the lookup to the org (a foreign or missing id resolves to not-found), so a tenant can never read another tenant&#39;s cluster by guessing an id.
      * @param id ID is the provider&#39;s DOKS cluster id. Visor scopes the lookup to the caller&#39;s org, so another tenant&#39;s id resolves to not-found rather than their cluster. (required)
-     * @return ClusterDetailView
+     * @return ComputeClusterDetailView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ClusterDetailView getKubernetesCluster(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<ClusterDetailView> localVarResp = getKubernetesClusterWithHttpInfo(id);
+    public ComputeClusterDetailView getKubernetesCluster(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ComputeClusterDetailView> localVarResp = getKubernetesClusterWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1597,18 +1656,19 @@ public class ComputeApi {
      * Returns one cluster&#39;s detail: node pools + worker nodes.
      * Returns one cluster&#39;s detail: node pools + worker nodes. Visor scopes the lookup to the org (a foreign or missing id resolves to not-found), so a tenant can never read another tenant&#39;s cluster by guessing an id.
      * @param id ID is the provider&#39;s DOKS cluster id. Visor scopes the lookup to the caller&#39;s org, so another tenant&#39;s id resolves to not-found rather than their cluster. (required)
-     * @return ApiResponse&lt;ClusterDetailView&gt;
+     * @return ApiResponse&lt;ComputeClusterDetailView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ClusterDetailView> getKubernetesClusterWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<ComputeClusterDetailView> getKubernetesClusterWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getKubernetesClusterValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<ClusterDetailView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeClusterDetailView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1624,12 +1684,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getKubernetesClusterAsync(@javax.annotation.Nonnull String id, final ApiCallback<ClusterDetailView> _callback) throws ApiException {
+    public okhttp3.Call getKubernetesClusterAsync(@javax.annotation.Nonnull String id, final ApiCallback<ComputeClusterDetailView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getKubernetesClusterValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<ClusterDetailView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeClusterDetailView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1644,6 +1705,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMachineCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1673,7 +1735,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1706,17 +1769,18 @@ public class ComputeApi {
      * Returns one of the caller org&#39;s machines by its org-scoped name.
      * Returns one of the caller org&#39;s machines by its org-scoped name. Visor keys the lookup by owner/name, so an id belonging to another tenant resolves to not-found rather than another org&#39;s machine.
      * @param id ID is the machine&#39;s org-scoped NAME — the stable key Visor addresses a machine by (owner/name), not the ephemeral provider id. (required)
-     * @return MachineView
+     * @return ComputeMachineView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MachineView getMachine(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<MachineView> localVarResp = getMachineWithHttpInfo(id);
+    public ComputeMachineView getMachine(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ComputeMachineView> localVarResp = getMachineWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1724,18 +1788,19 @@ public class ComputeApi {
      * Returns one of the caller org&#39;s machines by its org-scoped name.
      * Returns one of the caller org&#39;s machines by its org-scoped name. Visor keys the lookup by owner/name, so an id belonging to another tenant resolves to not-found rather than another org&#39;s machine.
      * @param id ID is the machine&#39;s org-scoped NAME — the stable key Visor addresses a machine by (owner/name), not the ephemeral provider id. (required)
-     * @return ApiResponse&lt;MachineView&gt;
+     * @return ApiResponse&lt;ComputeMachineView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MachineView> getMachineWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<ComputeMachineView> getMachineWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getMachineValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<MachineView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeMachineView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1751,12 +1816,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMachineAsync(@javax.annotation.Nonnull String id, final ApiCallback<MachineView> _callback) throws ApiException {
+    public okhttp3.Call getMachineAsync(@javax.annotation.Nonnull String id, final ApiCallback<ComputeMachineView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMachineValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<MachineView>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeMachineView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1771,6 +1837,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getMachineAgentCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -1800,7 +1867,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1833,17 +1901,18 @@ public class ComputeApi {
      * Returns the agent binding of one of the caller org&#39;s machines, or 404 when the machine runs no bot runtime.
      * Returns the agent binding of one of the caller org&#39;s machines, or 404 when the machine runs no bot runtime.
      * @param id ID is the machine&#39;s org-scoped NAME — the stable key Visor addresses a machine by (owner/name), not the ephemeral provider id. (required)
-     * @return AgentBinding
+     * @return ComputeAgentBinding
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AgentBinding getMachineAgent(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<AgentBinding> localVarResp = getMachineAgentWithHttpInfo(id);
+    public ComputeAgentBinding getMachineAgent(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ComputeAgentBinding> localVarResp = getMachineAgentWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1851,18 +1920,19 @@ public class ComputeApi {
      * Returns the agent binding of one of the caller org&#39;s machines, or 404 when the machine runs no bot runtime.
      * Returns the agent binding of one of the caller org&#39;s machines, or 404 when the machine runs no bot runtime.
      * @param id ID is the machine&#39;s org-scoped NAME — the stable key Visor addresses a machine by (owner/name), not the ephemeral provider id. (required)
-     * @return ApiResponse&lt;AgentBinding&gt;
+     * @return ApiResponse&lt;ComputeAgentBinding&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AgentBinding> getMachineAgentWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<ComputeAgentBinding> getMachineAgentWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getMachineAgentValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<AgentBinding>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeAgentBinding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1878,12 +1948,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMachineAgentAsync(@javax.annotation.Nonnull String id, final ApiCallback<AgentBinding> _callback) throws ApiException {
+    public okhttp3.Call getMachineAgentAsync(@javax.annotation.Nonnull String id, final ApiCallback<ComputeAgentBinding> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMachineAgentValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<AgentBinding>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeAgentBinding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1897,6 +1968,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call listClustersCall(final ApiCallback _callback) throws ApiException {
@@ -1925,7 +1997,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1952,35 +2025,37 @@ public class ComputeApi {
     /**
      * Returns the caller org&#39;s clusters from both sources: the managed clusters projected from Visor&#39;s node pools, and the BYO clusters attached to the caller&#39;s project.
      * Returns the caller org&#39;s clusters from both sources: the managed clusters projected from Visor&#39;s node pools, and the BYO clusters attached to the caller&#39;s project. A Visor outage costs the managed half only — the BYO half still lists, because a page that 502s on an optional provider is worse than a page that shows what it can.
-     * @return ClusterList
+     * @return ComputeClusterList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ClusterList listClusters() throws ApiException {
-        ApiResponse<ClusterList> localVarResp = listClustersWithHttpInfo();
+    public ComputeClusterList listClusters() throws ApiException {
+        ApiResponse<ComputeClusterList> localVarResp = listClustersWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller org&#39;s clusters from both sources: the managed clusters projected from Visor&#39;s node pools, and the BYO clusters attached to the caller&#39;s project.
      * Returns the caller org&#39;s clusters from both sources: the managed clusters projected from Visor&#39;s node pools, and the BYO clusters attached to the caller&#39;s project. A Visor outage costs the managed half only — the BYO half still lists, because a page that 502s on an optional provider is worse than a page that shows what it can.
-     * @return ApiResponse&lt;ClusterList&gt;
+     * @return ApiResponse&lt;ComputeClusterList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ClusterList> listClustersWithHttpInfo() throws ApiException {
+    public ApiResponse<ComputeClusterList> listClustersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = listClustersValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ClusterList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeClusterList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1995,12 +2070,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listClustersAsync(final ApiCallback<ClusterList> _callback) throws ApiException {
+    public okhttp3.Call listClustersAsync(final ApiCallback<ComputeClusterList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listClustersValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ClusterList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeClusterList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2014,6 +2090,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call listFleetCall(final ApiCallback _callback) throws ApiException {
@@ -2042,7 +2119,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2069,35 +2147,37 @@ public class ComputeApi {
     /**
      * Returns every compute unit the caller&#39;s org has, from every source, each carrying its latest utilization: agent run-targets, the BYO machines that dialed in, attached BYO clusters and Visor-provisioned machines.
      * Returns every compute unit the caller&#39;s org has, from every source, each carrying its latest utilization: agent run-targets, the BYO machines that dialed in, attached BYO clusters and Visor-provisioned machines.  A unit with a live snapshot of its own keeps it; the rest are overlaid from the utilization series, and only when the sample agrees about the SOURCE — two planes could mint the same unit id, and a board must never show one machine&#39;s load on another&#39;s row. BYO GPU units also carry their gpu-jobs queue depth. Every source is folded in independently: a broken one costs its own rows and nothing else.
-     * @return FleetBoard
+     * @return ComputeFleetBoard
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public FleetBoard listFleet() throws ApiException {
-        ApiResponse<FleetBoard> localVarResp = listFleetWithHttpInfo();
+    public ComputeFleetBoard listFleet() throws ApiException {
+        ApiResponse<ComputeFleetBoard> localVarResp = listFleetWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns every compute unit the caller&#39;s org has, from every source, each carrying its latest utilization: agent run-targets, the BYO machines that dialed in, attached BYO clusters and Visor-provisioned machines.
      * Returns every compute unit the caller&#39;s org has, from every source, each carrying its latest utilization: agent run-targets, the BYO machines that dialed in, attached BYO clusters and Visor-provisioned machines.  A unit with a live snapshot of its own keeps it; the rest are overlaid from the utilization series, and only when the sample agrees about the SOURCE — two planes could mint the same unit id, and a board must never show one machine&#39;s load on another&#39;s row. BYO GPU units also carry their gpu-jobs queue depth. Every source is folded in independently: a broken one costs its own rows and nothing else.
-     * @return ApiResponse&lt;FleetBoard&gt;
+     * @return ApiResponse&lt;ComputeFleetBoard&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FleetBoard> listFleetWithHttpInfo() throws ApiException {
+    public ApiResponse<ComputeFleetBoard> listFleetWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = listFleetValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<FleetBoard>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeFleetBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2112,12 +2192,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listFleetAsync(final ApiCallback<FleetBoard> _callback) throws ApiException {
+    public okhttp3.Call listFleetAsync(final ApiCallback<ComputeFleetBoard> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listFleetValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<FleetBoard>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeFleetBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2133,6 +2214,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call listFleetJobsCall(@javax.annotation.Nullable String gpu, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
@@ -2169,7 +2251,8 @@ public class ComputeApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2198,17 +2281,18 @@ public class ComputeApi {
      * Returns the caller org&#39;s gpu-jobs render queue, each row tagged with the GPU it targets (empty &#x3D; the shared any-GPU lane) and the node claiming it, optionally narrowed to one GPU&#39;s queue and/or one status.  A job whose worker died — STARTED with an elapsed lease and not yet reclaimed — reads \&quot;stalled\&quot;, not \&quot;running\&quot;. Fail-soft: an unavailable tasks engine yields an empty queue rather than an error.
      * @param gpu GPU selects one node&#39;s lane: jobs TARGETED at it (gpu:&lt;node&gt;) or CLAIMED by it. The literal \&quot;shared\&quot; selects the any-GPU lane — no target, no claimant. Matched case-insensitively. (optional)
      * @param status Status selects one lifecycle state: queued, running, stalled, completed, failed or canceled. (optional)
-     * @return JobList
+     * @return ComputeJobList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public JobList listFleetJobs(@javax.annotation.Nullable String gpu, @javax.annotation.Nullable String status) throws ApiException {
-        ApiResponse<JobList> localVarResp = listFleetJobsWithHttpInfo(gpu, status);
+    public ComputeJobList listFleetJobs(@javax.annotation.Nullable String gpu, @javax.annotation.Nullable String status) throws ApiException {
+        ApiResponse<ComputeJobList> localVarResp = listFleetJobsWithHttpInfo(gpu, status);
         return localVarResp.getData();
     }
 
@@ -2217,18 +2301,19 @@ public class ComputeApi {
      * Returns the caller org&#39;s gpu-jobs render queue, each row tagged with the GPU it targets (empty &#x3D; the shared any-GPU lane) and the node claiming it, optionally narrowed to one GPU&#39;s queue and/or one status.  A job whose worker died — STARTED with an elapsed lease and not yet reclaimed — reads \&quot;stalled\&quot;, not \&quot;running\&quot;. Fail-soft: an unavailable tasks engine yields an empty queue rather than an error.
      * @param gpu GPU selects one node&#39;s lane: jobs TARGETED at it (gpu:&lt;node&gt;) or CLAIMED by it. The literal \&quot;shared\&quot; selects the any-GPU lane — no target, no claimant. Matched case-insensitively. (optional)
      * @param status Status selects one lifecycle state: queued, running, stalled, completed, failed or canceled. (optional)
-     * @return ApiResponse&lt;JobList&gt;
+     * @return ApiResponse&lt;ComputeJobList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<JobList> listFleetJobsWithHttpInfo(@javax.annotation.Nullable String gpu, @javax.annotation.Nullable String status) throws ApiException {
+    public ApiResponse<ComputeJobList> listFleetJobsWithHttpInfo(@javax.annotation.Nullable String gpu, @javax.annotation.Nullable String status) throws ApiException {
         okhttp3.Call localVarCall = listFleetJobsValidateBeforeCall(gpu, status, null);
-        Type localVarReturnType = new TypeToken<JobList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeJobList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2245,12 +2330,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listFleetJobsAsync(@javax.annotation.Nullable String gpu, @javax.annotation.Nullable String status, final ApiCallback<JobList> _callback) throws ApiException {
+    public okhttp3.Call listFleetJobsAsync(@javax.annotation.Nullable String gpu, @javax.annotation.Nullable String status, final ApiCallback<ComputeJobList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listFleetJobsValidateBeforeCall(gpu, status, _callback);
-        Type localVarReturnType = new TypeToken<JobList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeJobList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2267,6 +2353,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call listFleetSamplesCall(@javax.annotation.Nullable String unit, @javax.annotation.Nullable String source, @javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
@@ -2307,7 +2394,8 @@ public class ComputeApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2337,17 +2425,18 @@ public class ComputeApi {
      * @param unit Unit selects one compute unit&#39;s series by its source-local id. (optional)
      * @param source Source selects one plane: \&quot;agent\&quot;, \&quot;byo\&quot; or \&quot;visor\&quot;. (optional)
      * @param range Range is the lookback window (e.g. \&quot;1h\&quot;, \&quot;24h\&quot;, \&quot;7d\&quot;); empty takes the warehouse default. (optional)
-     * @return SampleList
+     * @return ComputeSampleList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SampleList listFleetSamples(@javax.annotation.Nullable String unit, @javax.annotation.Nullable String source, @javax.annotation.Nullable String range) throws ApiException {
-        ApiResponse<SampleList> localVarResp = listFleetSamplesWithHttpInfo(unit, source, range);
+    public ComputeSampleList listFleetSamples(@javax.annotation.Nullable String unit, @javax.annotation.Nullable String source, @javax.annotation.Nullable String range) throws ApiException {
+        ApiResponse<ComputeSampleList> localVarResp = listFleetSamplesWithHttpInfo(unit, source, range);
         return localVarResp.getData();
     }
 
@@ -2357,18 +2446,19 @@ public class ComputeApi {
      * @param unit Unit selects one compute unit&#39;s series by its source-local id. (optional)
      * @param source Source selects one plane: \&quot;agent\&quot;, \&quot;byo\&quot; or \&quot;visor\&quot;. (optional)
      * @param range Range is the lookback window (e.g. \&quot;1h\&quot;, \&quot;24h\&quot;, \&quot;7d\&quot;); empty takes the warehouse default. (optional)
-     * @return ApiResponse&lt;SampleList&gt;
+     * @return ApiResponse&lt;ComputeSampleList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SampleList> listFleetSamplesWithHttpInfo(@javax.annotation.Nullable String unit, @javax.annotation.Nullable String source, @javax.annotation.Nullable String range) throws ApiException {
+    public ApiResponse<ComputeSampleList> listFleetSamplesWithHttpInfo(@javax.annotation.Nullable String unit, @javax.annotation.Nullable String source, @javax.annotation.Nullable String range) throws ApiException {
         okhttp3.Call localVarCall = listFleetSamplesValidateBeforeCall(unit, source, range, null);
-        Type localVarReturnType = new TypeToken<SampleList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeSampleList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2386,12 +2476,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listFleetSamplesAsync(@javax.annotation.Nullable String unit, @javax.annotation.Nullable String source, @javax.annotation.Nullable String range, final ApiCallback<SampleList> _callback) throws ApiException {
+    public okhttp3.Call listFleetSamplesAsync(@javax.annotation.Nullable String unit, @javax.annotation.Nullable String source, @javax.annotation.Nullable String range, final ApiCallback<ComputeSampleList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listFleetSamplesValidateBeforeCall(unit, source, range, _callback);
-        Type localVarReturnType = new TypeToken<SampleList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeSampleList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2405,6 +2496,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call listFleetWorkersCall(final ApiCallback _callback) throws ApiException {
@@ -2433,7 +2525,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2460,35 +2553,37 @@ public class ComputeApi {
     /**
      * Returns the caller org&#39;s BYO machines — the ones that dialed in via &#x60;hanzo link&#x60; — with everything each host reported about itself.
      * Returns the caller org&#39;s BYO machines — the ones that dialed in via &#x60;hanzo link&#x60; — with everything each host reported about itself. The Machines and GPUs pages fold the same data into their normalized shapes; this is the canonical raw list a fleet view (or the CLI&#39;s &#x60;status&#x60;) reads.
-     * @return WorkerList
+     * @return ComputeWorkerList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public WorkerList listFleetWorkers() throws ApiException {
-        ApiResponse<WorkerList> localVarResp = listFleetWorkersWithHttpInfo();
+    public ComputeWorkerList listFleetWorkers() throws ApiException {
+        ApiResponse<ComputeWorkerList> localVarResp = listFleetWorkersWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the caller org&#39;s BYO machines — the ones that dialed in via &#x60;hanzo link&#x60; — with everything each host reported about itself.
      * Returns the caller org&#39;s BYO machines — the ones that dialed in via &#x60;hanzo link&#x60; — with everything each host reported about itself. The Machines and GPUs pages fold the same data into their normalized shapes; this is the canonical raw list a fleet view (or the CLI&#39;s &#x60;status&#x60;) reads.
-     * @return ApiResponse&lt;WorkerList&gt;
+     * @return ApiResponse&lt;ComputeWorkerList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WorkerList> listFleetWorkersWithHttpInfo() throws ApiException {
+    public ApiResponse<ComputeWorkerList> listFleetWorkersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = listFleetWorkersValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<WorkerList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeWorkerList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2503,12 +2598,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listFleetWorkersAsync(final ApiCallback<WorkerList> _callback) throws ApiException {
+    public okhttp3.Call listFleetWorkersAsync(final ApiCallback<ComputeWorkerList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listFleetWorkersValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<WorkerList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeWorkerList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2522,6 +2618,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call listGpuAlertsCall(final ApiCallback _callback) throws ApiException {
@@ -2550,7 +2647,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2577,35 +2675,37 @@ public class ComputeApi {
     /**
      * Is an HONEST empty surface: Visor exposes no GPU alert inventory, so this returns [] rather than fabricating alerts.
      * Is an HONEST empty surface: Visor exposes no GPU alert inventory, so this returns [] rather than fabricating alerts. It stays a real, tenant-gated route so the console&#39;s alerts fetch resolves (200 [], not a 404) — an honest \&quot;no alerts\&quot;, the same discipline the rest of the surface follows.
-     * @return GpuAlertList
+     * @return ComputeGpuAlertList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public GpuAlertList listGpuAlerts() throws ApiException {
-        ApiResponse<GpuAlertList> localVarResp = listGpuAlertsWithHttpInfo();
+    public ComputeGpuAlertList listGpuAlerts() throws ApiException {
+        ApiResponse<ComputeGpuAlertList> localVarResp = listGpuAlertsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Is an HONEST empty surface: Visor exposes no GPU alert inventory, so this returns [] rather than fabricating alerts.
      * Is an HONEST empty surface: Visor exposes no GPU alert inventory, so this returns [] rather than fabricating alerts. It stays a real, tenant-gated route so the console&#39;s alerts fetch resolves (200 [], not a 404) — an honest \&quot;no alerts\&quot;, the same discipline the rest of the surface follows.
-     * @return ApiResponse&lt;GpuAlertList&gt;
+     * @return ApiResponse&lt;ComputeGpuAlertList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GpuAlertList> listGpuAlertsWithHttpInfo() throws ApiException {
+    public ApiResponse<ComputeGpuAlertList> listGpuAlertsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = listGpuAlertsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GpuAlertList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeGpuAlertList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2620,12 +2720,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listGpuAlertsAsync(final ApiCallback<GpuAlertList> _callback) throws ApiException {
+    public okhttp3.Call listGpuAlertsAsync(final ApiCallback<ComputeGpuAlertList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listGpuAlertsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GpuAlertList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeGpuAlertList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2639,6 +2740,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call listGpusCall(final ApiCallback _callback) throws ApiException {
@@ -2667,7 +2769,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2694,35 +2797,37 @@ public class ComputeApi {
     /**
      * Returns one row per physical accelerator the caller&#39;s org has, derived from its real GPU machines (the size slug says how many cards a node holds) and from the accelerators BYO workers report through nvidia-smi.
      * Returns one row per physical accelerator the caller&#39;s org has, derived from its real GPU machines (the size slug says how many cards a node holds) and from the accelerators BYO workers report through nvidia-smi.  Live telemetry is absent on Visor rows because Visor&#39;s machine object carries none — an honest omission the console renders as \&quot;—\&quot;, never a fabricated 0.
-     * @return GpuList
+     * @return ComputeGpuList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public GpuList listGpus() throws ApiException {
-        ApiResponse<GpuList> localVarResp = listGpusWithHttpInfo();
+    public ComputeGpuList listGpus() throws ApiException {
+        ApiResponse<ComputeGpuList> localVarResp = listGpusWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns one row per physical accelerator the caller&#39;s org has, derived from its real GPU machines (the size slug says how many cards a node holds) and from the accelerators BYO workers report through nvidia-smi.
      * Returns one row per physical accelerator the caller&#39;s org has, derived from its real GPU machines (the size slug says how many cards a node holds) and from the accelerators BYO workers report through nvidia-smi.  Live telemetry is absent on Visor rows because Visor&#39;s machine object carries none — an honest omission the console renders as \&quot;—\&quot;, never a fabricated 0.
-     * @return ApiResponse&lt;GpuList&gt;
+     * @return ApiResponse&lt;ComputeGpuList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GpuList> listGpusWithHttpInfo() throws ApiException {
+    public ApiResponse<ComputeGpuList> listGpusWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = listGpusValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<GpuList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeGpuList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2737,12 +2842,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listGpusAsync(final ApiCallback<GpuList> _callback) throws ApiException {
+    public okhttp3.Call listGpusAsync(final ApiCallback<ComputeGpuList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listGpusValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<GpuList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeGpuList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2756,6 +2862,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call listKubernetesClustersCall(final ApiCallback _callback) throws ApiException {
@@ -2784,7 +2891,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2811,35 +2919,37 @@ public class ComputeApi {
     /**
      * Lists the org&#39;s DOKS clusters (Visor, house account) folded with the org&#39;s BYO clusters — ONE fleet cluster view under the unified k8s noun.
      * Lists the org&#39;s DOKS clusters (Visor, house account) folded with the org&#39;s BYO clusters — ONE fleet cluster view under the unified k8s noun. A Visor outage is logged and skipped so a down optional provider never hides the BYO list.
-     * @return ClusterList
+     * @return ComputeClusterList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ClusterList listKubernetesClusters() throws ApiException {
-        ApiResponse<ClusterList> localVarResp = listKubernetesClustersWithHttpInfo();
+    public ComputeClusterList listKubernetesClusters() throws ApiException {
+        ApiResponse<ComputeClusterList> localVarResp = listKubernetesClustersWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the org&#39;s DOKS clusters (Visor, house account) folded with the org&#39;s BYO clusters — ONE fleet cluster view under the unified k8s noun.
      * Lists the org&#39;s DOKS clusters (Visor, house account) folded with the org&#39;s BYO clusters — ONE fleet cluster view under the unified k8s noun. A Visor outage is logged and skipped so a down optional provider never hides the BYO list.
-     * @return ApiResponse&lt;ClusterList&gt;
+     * @return ApiResponse&lt;ComputeClusterList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ClusterList> listKubernetesClustersWithHttpInfo() throws ApiException {
+    public ApiResponse<ComputeClusterList> listKubernetesClustersWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = listKubernetesClustersValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ClusterList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeClusterList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2854,12 +2964,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listKubernetesClustersAsync(final ApiCallback<ClusterList> _callback) throws ApiException {
+    public okhttp3.Call listKubernetesClustersAsync(final ApiCallback<ComputeClusterList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listKubernetesClustersValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ClusterList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeClusterList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2873,6 +2984,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call listKubernetesNodesCall(final ApiCallback _callback) throws ApiException {
@@ -2901,7 +3013,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2928,35 +3041,37 @@ public class ComputeApi {
     /**
      * Returns every DOKS worker node in the org&#39;s clusters as a machine — the SAME set the fleet folds in (managedMachines), exposed directly under the k8s noun.
      * Returns every DOKS worker node in the org&#39;s clusters as a machine — the SAME set the fleet folds in (managedMachines), exposed directly under the k8s noun. House account (hanzo-org cluster tag) + BYOC, deduped by Visor.
-     * @return NodeList
+     * @return ComputeNodeList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public NodeList listKubernetesNodes() throws ApiException {
-        ApiResponse<NodeList> localVarResp = listKubernetesNodesWithHttpInfo();
+    public ComputeNodeList listKubernetesNodes() throws ApiException {
+        ApiResponse<ComputeNodeList> localVarResp = listKubernetesNodesWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns every DOKS worker node in the org&#39;s clusters as a machine — the SAME set the fleet folds in (managedMachines), exposed directly under the k8s noun.
      * Returns every DOKS worker node in the org&#39;s clusters as a machine — the SAME set the fleet folds in (managedMachines), exposed directly under the k8s noun. House account (hanzo-org cluster tag) + BYOC, deduped by Visor.
-     * @return ApiResponse&lt;NodeList&gt;
+     * @return ApiResponse&lt;ComputeNodeList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NodeList> listKubernetesNodesWithHttpInfo() throws ApiException {
+    public ApiResponse<ComputeNodeList> listKubernetesNodesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = listKubernetesNodesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<NodeList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeNodeList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -2971,12 +3086,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listKubernetesNodesAsync(final ApiCallback<NodeList> _callback) throws ApiException {
+    public okhttp3.Call listKubernetesNodesAsync(final ApiCallback<ComputeNodeList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listKubernetesNodesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<NodeList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeNodeList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2990,6 +3106,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call listMachineAgentsCall(final ApiCallback _callback) throws ApiException {
@@ -3018,7 +3135,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3045,35 +3163,37 @@ public class ComputeApi {
     /**
      * Returns every agent↔machine binding in the caller&#39;s org — which machines are running which cloud Agent, with vm&#39;s own reconciled status.
      * Returns every agent↔machine binding in the caller&#39;s org — which machines are running which cloud Agent, with vm&#39;s own reconciled status.
-     * @return BindingList
+     * @return ComputeBindingList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BindingList listMachineAgents() throws ApiException {
-        ApiResponse<BindingList> localVarResp = listMachineAgentsWithHttpInfo();
+    public ComputeBindingList listMachineAgents() throws ApiException {
+        ApiResponse<ComputeBindingList> localVarResp = listMachineAgentsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns every agent↔machine binding in the caller&#39;s org — which machines are running which cloud Agent, with vm&#39;s own reconciled status.
      * Returns every agent↔machine binding in the caller&#39;s org — which machines are running which cloud Agent, with vm&#39;s own reconciled status.
-     * @return ApiResponse&lt;BindingList&gt;
+     * @return ApiResponse&lt;ComputeBindingList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BindingList> listMachineAgentsWithHttpInfo() throws ApiException {
+    public ApiResponse<ComputeBindingList> listMachineAgentsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = listMachineAgentsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<BindingList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeBindingList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3088,12 +3208,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMachineAgentsAsync(final ApiCallback<BindingList> _callback) throws ApiException {
+    public okhttp3.Call listMachineAgentsAsync(final ApiCallback<ComputeBindingList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listMachineAgentsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<BindingList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeBindingList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3108,6 +3229,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call listMachinesCall(@javax.annotation.Nullable String kind, final ApiCallback _callback) throws ApiException {
@@ -3140,7 +3262,8 @@ public class ComputeApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3168,17 +3291,18 @@ public class ComputeApi {
      * Returns every machine the caller&#39;s org has — Visor&#39;s registry, the live DigitalOcean droplets and the DOKS worker nodes (deduped into one union), plus the BYO machines that dialed in via &#x60;hanzo link&#x60; (provider \&quot;byo\&quot;).
      * Returns every machine the caller&#39;s org has — Visor&#39;s registry, the live DigitalOcean droplets and the DOKS worker nodes (deduped into one union), plus the BYO machines that dialed in via &#x60;hanzo link&#x60; (provider \&quot;byo\&quot;).  A source Visor cannot answer for is logged and skipped, never an error: one wedged upstream must not hide the machines the other sources can see.
      * @param kind  (optional)
-     * @return MachineList
+     * @return ComputeMachineList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public MachineList listMachines(@javax.annotation.Nullable String kind) throws ApiException {
-        ApiResponse<MachineList> localVarResp = listMachinesWithHttpInfo(kind);
+    public ComputeMachineList listMachines(@javax.annotation.Nullable String kind) throws ApiException {
+        ApiResponse<ComputeMachineList> localVarResp = listMachinesWithHttpInfo(kind);
         return localVarResp.getData();
     }
 
@@ -3186,18 +3310,19 @@ public class ComputeApi {
      * Returns every machine the caller&#39;s org has — Visor&#39;s registry, the live DigitalOcean droplets and the DOKS worker nodes (deduped into one union), plus the BYO machines that dialed in via &#x60;hanzo link&#x60; (provider \&quot;byo\&quot;).
      * Returns every machine the caller&#39;s org has — Visor&#39;s registry, the live DigitalOcean droplets and the DOKS worker nodes (deduped into one union), plus the BYO machines that dialed in via &#x60;hanzo link&#x60; (provider \&quot;byo\&quot;).  A source Visor cannot answer for is logged and skipped, never an error: one wedged upstream must not hide the machines the other sources can see.
      * @param kind  (optional)
-     * @return ApiResponse&lt;MachineList&gt;
+     * @return ApiResponse&lt;ComputeMachineList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MachineList> listMachinesWithHttpInfo(@javax.annotation.Nullable String kind) throws ApiException {
+    public ApiResponse<ComputeMachineList> listMachinesWithHttpInfo(@javax.annotation.Nullable String kind) throws ApiException {
         okhttp3.Call localVarCall = listMachinesValidateBeforeCall(kind, null);
-        Type localVarReturnType = new TypeToken<MachineList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeMachineList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3213,12 +3338,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMachinesAsync(@javax.annotation.Nullable String kind, final ApiCallback<MachineList> _callback) throws ApiException {
+    public okhttp3.Call listMachinesAsync(@javax.annotation.Nullable String kind, final ApiCallback<ComputeMachineList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listMachinesValidateBeforeCall(kind, _callback);
-        Type localVarReturnType = new TypeToken<MachineList>(){}.getType();
+        Type localVarReturnType = new TypeToken<ComputeMachineList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3279,7 +3405,7 @@ public class ComputeApi {
 
     /**
      * Launch a metered machine for your org, or price one first with dryRun
-     * Provisions a machine owned by the caller&#39;s org and answers 201 with the machine. Send &#x60;dryRun: true&#x60; to get a PRICE QUOTE instead: 200 with the upstream quote passed through verbatim, nothing launched and nothing spent. Two response shapes on one address is the rule to know, and it is why this is not a typed op.  Metering is not this plane&#39;s: the launch fronts the compute provider&#39;s resell endpoint, which owns the balance gate and the per-hour meter, and cloud only forwards the tenant. Ownership is the validated principal&#39;s org and is never read from the body, so a launch always lands in the caller&#39;s OWN tenant and the machine it creates is only ever visible to that tenant. Fails closed: a validated principal is required (403 without one) and &#x60;size&#x60; (or its &#x60;instanceType&#x60; alias) is required (400).
+     * Provisions a machine owned by the caller&#39;s org and answers 201 with the machine. Send &#x60;dryRun: true&#x60; to get a PRICE QUOTE instead: 200 with the upstream quote passed through verbatim, nothing launched and nothing spent. Two response shapes on one address is the rule to know, and it is why this is not a typed op.  Metering is not this plane&#39;s: the launch fronts the compute provider&#39;s resell endpoint, which owns the balance gate and the per-hour meter, and cloud only forwards the tenant. Ownership is the validated principal&#39;s org and is never read from the body, so a launch always lands in the caller&#39;s OWN tenant and the machine it creates is only ever visible to that tenant. Fails closed: a validated principal is required (401 without one) and &#x60;size&#x60; (or its &#x60;instanceType&#x60; alias) is required (400).
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postComputeMachines() throws ApiException {
@@ -3288,7 +3414,7 @@ public class ComputeApi {
 
     /**
      * Launch a metered machine for your org, or price one first with dryRun
-     * Provisions a machine owned by the caller&#39;s org and answers 201 with the machine. Send &#x60;dryRun: true&#x60; to get a PRICE QUOTE instead: 200 with the upstream quote passed through verbatim, nothing launched and nothing spent. Two response shapes on one address is the rule to know, and it is why this is not a typed op.  Metering is not this plane&#39;s: the launch fronts the compute provider&#39;s resell endpoint, which owns the balance gate and the per-hour meter, and cloud only forwards the tenant. Ownership is the validated principal&#39;s org and is never read from the body, so a launch always lands in the caller&#39;s OWN tenant and the machine it creates is only ever visible to that tenant. Fails closed: a validated principal is required (403 without one) and &#x60;size&#x60; (or its &#x60;instanceType&#x60; alias) is required (400).
+     * Provisions a machine owned by the caller&#39;s org and answers 201 with the machine. Send &#x60;dryRun: true&#x60; to get a PRICE QUOTE instead: 200 with the upstream quote passed through verbatim, nothing launched and nothing spent. Two response shapes on one address is the rule to know, and it is why this is not a typed op.  Metering is not this plane&#39;s: the launch fronts the compute provider&#39;s resell endpoint, which owns the balance gate and the per-hour meter, and cloud only forwards the tenant. Ownership is the validated principal&#39;s org and is never read from the body, so a launch always lands in the caller&#39;s OWN tenant and the machine it creates is only ever visible to that tenant. Fails closed: a validated principal is required (401 without one) and &#x60;size&#x60; (or its &#x60;instanceType&#x60; alias) is required (400).
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -3299,7 +3425,7 @@ public class ComputeApi {
 
     /**
      * Launch a metered machine for your org, or price one first with dryRun (asynchronously)
-     * Provisions a machine owned by the caller&#39;s org and answers 201 with the machine. Send &#x60;dryRun: true&#x60; to get a PRICE QUOTE instead: 200 with the upstream quote passed through verbatim, nothing launched and nothing spent. Two response shapes on one address is the rule to know, and it is why this is not a typed op.  Metering is not this plane&#39;s: the launch fronts the compute provider&#39;s resell endpoint, which owns the balance gate and the per-hour meter, and cloud only forwards the tenant. Ownership is the validated principal&#39;s org and is never read from the body, so a launch always lands in the caller&#39;s OWN tenant and the machine it creates is only ever visible to that tenant. Fails closed: a validated principal is required (403 without one) and &#x60;size&#x60; (or its &#x60;instanceType&#x60; alias) is required (400).
+     * Provisions a machine owned by the caller&#39;s org and answers 201 with the machine. Send &#x60;dryRun: true&#x60; to get a PRICE QUOTE instead: 200 with the upstream quote passed through verbatim, nothing launched and nothing spent. Two response shapes on one address is the rule to know, and it is why this is not a typed op.  Metering is not this plane&#39;s: the launch fronts the compute provider&#39;s resell endpoint, which owns the balance gate and the per-hour meter, and cloud only forwards the tenant. Ownership is the validated principal&#39;s org and is never read from the body, so a launch always lands in the caller&#39;s OWN tenant and the machine it creates is only ever visible to that tenant. Fails closed: a validated principal is required (401 without one) and &#x60;size&#x60; (or its &#x60;instanceType&#x60; alias) is required (400).
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3381,7 +3507,7 @@ public class ComputeApi {
 
     /**
      * Message a bot, or stop it, by naming the action in the path
-     * Dispatches one verb against a bot the caller&#39;s org owns. &#x60;message&#x60; runs the bot&#39;s bound agent with the request body as the message and streams the agent&#39;s answer back VERBATIM — the upstream body, its content type and its status — so a message is a real agent run, recorded, billed and traced exactly like any other, under the caller&#39;s own identity rather than a fabricated one. &#x60;stop&#x60; and &#x60;pause&#x60; are the same single honest capability: they halt the runtime by unbinding the agent while LEAVING THE MACHINE UP, so the bot stops answering but keeps costing — rebind to resume, or delete the bot to tear it down. Stopping is idempotent; a bot with no binding still reports stopped.  Org-scoped and fails closed: a validated principal is required (403 without one) and the bot is addressed under the caller&#39;s OWN org, so another tenant&#39;s id is not reachable. An unknown action is a clean 400 naming the three it accepts, never a silent no-op, and messaging a bot with no bound agent is a 400.
+     * Dispatches one verb against a bot the caller&#39;s org owns. &#x60;message&#x60; runs the bot&#39;s bound agent with the request body as the message and streams the agent&#39;s answer back VERBATIM — the upstream body, its content type and its status — so a message is a real agent run, recorded, billed and traced exactly like any other, under the caller&#39;s own identity rather than a fabricated one. &#x60;stop&#x60; and &#x60;pause&#x60; are the same single honest capability: they halt the runtime by unbinding the agent while LEAVING THE MACHINE UP, so the bot stops answering but keeps costing — rebind to resume, or delete the bot to tear it down. Stopping is idempotent; a bot with no binding still reports stopped.  Org-scoped and fails closed: a validated principal is required (401 without one) and the bot is addressed under the caller&#39;s OWN org, so another tenant&#39;s id is not reachable. An unknown action is a clean 400 naming the three it accepts, never a silent no-op, and messaging a bot with no bound agent is a 400.
      * @param id  (required)
      * @param action  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3392,7 +3518,7 @@ public class ComputeApi {
 
     /**
      * Message a bot, or stop it, by naming the action in the path
-     * Dispatches one verb against a bot the caller&#39;s org owns. &#x60;message&#x60; runs the bot&#39;s bound agent with the request body as the message and streams the agent&#39;s answer back VERBATIM — the upstream body, its content type and its status — so a message is a real agent run, recorded, billed and traced exactly like any other, under the caller&#39;s own identity rather than a fabricated one. &#x60;stop&#x60; and &#x60;pause&#x60; are the same single honest capability: they halt the runtime by unbinding the agent while LEAVING THE MACHINE UP, so the bot stops answering but keeps costing — rebind to resume, or delete the bot to tear it down. Stopping is idempotent; a bot with no binding still reports stopped.  Org-scoped and fails closed: a validated principal is required (403 without one) and the bot is addressed under the caller&#39;s OWN org, so another tenant&#39;s id is not reachable. An unknown action is a clean 400 naming the three it accepts, never a silent no-op, and messaging a bot with no bound agent is a 400.
+     * Dispatches one verb against a bot the caller&#39;s org owns. &#x60;message&#x60; runs the bot&#39;s bound agent with the request body as the message and streams the agent&#39;s answer back VERBATIM — the upstream body, its content type and its status — so a message is a real agent run, recorded, billed and traced exactly like any other, under the caller&#39;s own identity rather than a fabricated one. &#x60;stop&#x60; and &#x60;pause&#x60; are the same single honest capability: they halt the runtime by unbinding the agent while LEAVING THE MACHINE UP, so the bot stops answering but keeps costing — rebind to resume, or delete the bot to tear it down. Stopping is idempotent; a bot with no binding still reports stopped.  Org-scoped and fails closed: a validated principal is required (401 without one) and the bot is addressed under the caller&#39;s OWN org, so another tenant&#39;s id is not reachable. An unknown action is a clean 400 naming the three it accepts, never a silent no-op, and messaging a bot with no bound agent is a 400.
      * @param id  (required)
      * @param action  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -3405,7 +3531,7 @@ public class ComputeApi {
 
     /**
      * Message a bot, or stop it, by naming the action in the path (asynchronously)
-     * Dispatches one verb against a bot the caller&#39;s org owns. &#x60;message&#x60; runs the bot&#39;s bound agent with the request body as the message and streams the agent&#39;s answer back VERBATIM — the upstream body, its content type and its status — so a message is a real agent run, recorded, billed and traced exactly like any other, under the caller&#39;s own identity rather than a fabricated one. &#x60;stop&#x60; and &#x60;pause&#x60; are the same single honest capability: they halt the runtime by unbinding the agent while LEAVING THE MACHINE UP, so the bot stops answering but keeps costing — rebind to resume, or delete the bot to tear it down. Stopping is idempotent; a bot with no binding still reports stopped.  Org-scoped and fails closed: a validated principal is required (403 without one) and the bot is addressed under the caller&#39;s OWN org, so another tenant&#39;s id is not reachable. An unknown action is a clean 400 naming the three it accepts, never a silent no-op, and messaging a bot with no bound agent is a 400.
+     * Dispatches one verb against a bot the caller&#39;s org owns. &#x60;message&#x60; runs the bot&#39;s bound agent with the request body as the message and streams the agent&#39;s answer back VERBATIM — the upstream body, its content type and its status — so a message is a real agent run, recorded, billed and traced exactly like any other, under the caller&#39;s own identity rather than a fabricated one. &#x60;stop&#x60; and &#x60;pause&#x60; are the same single honest capability: they halt the runtime by unbinding the agent while LEAVING THE MACHINE UP, so the bot stops answering but keeps costing — rebind to resume, or delete the bot to tear it down. Stopping is idempotent; a bot with no binding still reports stopped.  Org-scoped and fails closed: a validated principal is required (401 without one) and the bot is addressed under the caller&#39;s OWN org, so another tenant&#39;s id is not reachable. An unknown action is a clean 400 naming the three it accepts, never a silent no-op, and messaging a bot with no bound agent is a 400.
      * @param id  (required)
      * @param action  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -3420,7 +3546,7 @@ public class ComputeApi {
     }
     /**
      * Build call for recordFleetSample
-     * @param sampleIngest  (required)
+     * @param computeSampleIngest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3429,9 +3555,10 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call recordFleetSampleCall(@javax.annotation.Nonnull SampleIngest sampleIngest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call recordFleetSampleCall(@javax.annotation.Nonnull ComputeSampleIngest computeSampleIngest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3445,7 +3572,7 @@ public class ComputeApi {
             basePath = null;
         }
 
-        Object localVarPostBody = sampleIngest;
+        Object localVarPostBody = computeSampleIngest;
 
         // create path and map variables
         String localVarPath = "/v1/compute/fleet/samples";
@@ -3457,7 +3584,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3477,57 +3605,59 @@ public class ComputeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call recordFleetSampleValidateBeforeCall(@javax.annotation.Nonnull SampleIngest sampleIngest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'sampleIngest' is set
-        if (sampleIngest == null) {
-            throw new ApiException("Missing the required parameter 'sampleIngest' when calling recordFleetSample(Async)");
+    private okhttp3.Call recordFleetSampleValidateBeforeCall(@javax.annotation.Nonnull ComputeSampleIngest computeSampleIngest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'computeSampleIngest' is set
+        if (computeSampleIngest == null) {
+            throw new ApiException("Missing the required parameter 'computeSampleIngest' when calling recordFleetSample(Async)");
         }
 
-        return recordFleetSampleCall(sampleIngest, _callback);
+        return recordFleetSampleCall(computeSampleIngest, _callback);
 
     }
 
     /**
      * Records a BYO worker&#39;s live GPU utilization into the SAME series the fleet board overlays.
      * Records a BYO worker&#39;s live GPU utilization into the SAME series the fleet board overlays. The org is the validated principal and source/kind are fixed server-side, so a worker names only its own metrics — never another tenant or another source. Answers 202: the warehouse write is DETACHED (its own bounded context, never in the response path), so a slow or absent warehouse cannot stall a heartbeat.
-     * @param sampleIngest  (required)
-     * @return SampleAccepted
+     * @param computeSampleIngest  (required)
+     * @return ComputeSampleAccepted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SampleAccepted recordFleetSample(@javax.annotation.Nonnull SampleIngest sampleIngest) throws ApiException {
-        ApiResponse<SampleAccepted> localVarResp = recordFleetSampleWithHttpInfo(sampleIngest);
+    public ComputeSampleAccepted recordFleetSample(@javax.annotation.Nonnull ComputeSampleIngest computeSampleIngest) throws ApiException {
+        ApiResponse<ComputeSampleAccepted> localVarResp = recordFleetSampleWithHttpInfo(computeSampleIngest);
         return localVarResp.getData();
     }
 
     /**
      * Records a BYO worker&#39;s live GPU utilization into the SAME series the fleet board overlays.
      * Records a BYO worker&#39;s live GPU utilization into the SAME series the fleet board overlays. The org is the validated principal and source/kind are fixed server-side, so a worker names only its own metrics — never another tenant or another source. Answers 202: the warehouse write is DETACHED (its own bounded context, never in the response path), so a slow or absent warehouse cannot stall a heartbeat.
-     * @param sampleIngest  (required)
-     * @return ApiResponse&lt;SampleAccepted&gt;
+     * @param computeSampleIngest  (required)
+     * @return ApiResponse&lt;ComputeSampleAccepted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SampleAccepted> recordFleetSampleWithHttpInfo(@javax.annotation.Nonnull SampleIngest sampleIngest) throws ApiException {
-        okhttp3.Call localVarCall = recordFleetSampleValidateBeforeCall(sampleIngest, null);
-        Type localVarReturnType = new TypeToken<SampleAccepted>(){}.getType();
+    public ApiResponse<ComputeSampleAccepted> recordFleetSampleWithHttpInfo(@javax.annotation.Nonnull ComputeSampleIngest computeSampleIngest) throws ApiException {
+        okhttp3.Call localVarCall = recordFleetSampleValidateBeforeCall(computeSampleIngest, null);
+        Type localVarReturnType = new TypeToken<ComputeSampleAccepted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Records a BYO worker&#39;s live GPU utilization into the SAME series the fleet board overlays. (asynchronously)
      * Records a BYO worker&#39;s live GPU utilization into the SAME series the fleet board overlays. The org is the validated principal and source/kind are fixed server-side, so a worker names only its own metrics — never another tenant or another source. Answers 202: the warehouse write is DETACHED (its own bounded context, never in the response path), so a slow or absent warehouse cannot stall a heartbeat.
-     * @param sampleIngest  (required)
+     * @param computeSampleIngest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3536,12 +3666,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call recordFleetSampleAsync(@javax.annotation.Nonnull SampleIngest sampleIngest, final ApiCallback<SampleAccepted> _callback) throws ApiException {
+    public okhttp3.Call recordFleetSampleAsync(@javax.annotation.Nonnull ComputeSampleIngest computeSampleIngest, final ApiCallback<ComputeSampleAccepted> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = recordFleetSampleValidateBeforeCall(sampleIngest, _callback);
-        Type localVarReturnType = new TypeToken<SampleAccepted>(){}.getType();
+        okhttp3.Call localVarCall = recordFleetSampleValidateBeforeCall(computeSampleIngest, _callback);
+        Type localVarReturnType = new TypeToken<ComputeSampleAccepted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3549,7 +3680,7 @@ public class ComputeApi {
      * Build call for scaleNodePool
      * @param clusterId ClusterID is the cluster holding the pool, from the URL path. (required)
      * @param poolId PoolID is the pool to resize, from the URL path — the &#x60;poolId&#x60; a cluster read reports for it. Required. (required)
-     * @param poolScale  (required)
+     * @param computePoolScale  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3558,9 +3689,10 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call scaleNodePoolCall(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull String poolId, @javax.annotation.Nonnull PoolScale poolScale, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call scaleNodePoolCall(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull String poolId, @javax.annotation.Nonnull ComputePoolScale computePoolScale, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3574,7 +3706,7 @@ public class ComputeApi {
             basePath = null;
         }
 
-        Object localVarPostBody = poolScale;
+        Object localVarPostBody = computePoolScale;
 
         // create path and map variables
         String localVarPath = "/v1/compute/clusters/{clusterId}/pools/{poolId}/scale"
@@ -3588,7 +3720,8 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3608,7 +3741,7 @@ public class ComputeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call scaleNodePoolValidateBeforeCall(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull String poolId, @javax.annotation.Nonnull PoolScale poolScale, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call scaleNodePoolValidateBeforeCall(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull String poolId, @javax.annotation.Nonnull ComputePoolScale computePoolScale, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'clusterId' is set
         if (clusterId == null) {
             throw new ApiException("Missing the required parameter 'clusterId' when calling scaleNodePool(Async)");
@@ -3619,12 +3752,12 @@ public class ComputeApi {
             throw new ApiException("Missing the required parameter 'poolId' when calling scaleNodePool(Async)");
         }
 
-        // verify the required parameter 'poolScale' is set
-        if (poolScale == null) {
-            throw new ApiException("Missing the required parameter 'poolScale' when calling scaleNodePool(Async)");
+        // verify the required parameter 'computePoolScale' is set
+        if (computePoolScale == null) {
+            throw new ApiException("Missing the required parameter 'computePoolScale' when calling scaleNodePool(Async)");
         }
 
-        return scaleNodePoolCall(clusterId, poolId, poolScale, _callback);
+        return scaleNodePoolCall(clusterId, poolId, computePoolScale, _callback);
 
     }
 
@@ -3633,18 +3766,19 @@ public class ComputeApi {
      * Resizes a node pool to an absolute node count and returns the pool as Visor reports it after the change.
      * @param clusterId ClusterID is the cluster holding the pool, from the URL path. (required)
      * @param poolId PoolID is the pool to resize, from the URL path — the &#x60;poolId&#x60; a cluster read reports for it. Required. (required)
-     * @param poolScale  (required)
-     * @return NodePoolView
+     * @param computePoolScale  (required)
+     * @return ComputeNodePoolView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public NodePoolView scaleNodePool(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull String poolId, @javax.annotation.Nonnull PoolScale poolScale) throws ApiException {
-        ApiResponse<NodePoolView> localVarResp = scaleNodePoolWithHttpInfo(clusterId, poolId, poolScale);
+    public ComputeNodePoolView scaleNodePool(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull String poolId, @javax.annotation.Nonnull ComputePoolScale computePoolScale) throws ApiException {
+        ApiResponse<ComputeNodePoolView> localVarResp = scaleNodePoolWithHttpInfo(clusterId, poolId, computePoolScale);
         return localVarResp.getData();
     }
 
@@ -3653,19 +3787,20 @@ public class ComputeApi {
      * Resizes a node pool to an absolute node count and returns the pool as Visor reports it after the change.
      * @param clusterId ClusterID is the cluster holding the pool, from the URL path. (required)
      * @param poolId PoolID is the pool to resize, from the URL path — the &#x60;poolId&#x60; a cluster read reports for it. Required. (required)
-     * @param poolScale  (required)
-     * @return ApiResponse&lt;NodePoolView&gt;
+     * @param computePoolScale  (required)
+     * @return ApiResponse&lt;ComputeNodePoolView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NodePoolView> scaleNodePoolWithHttpInfo(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull String poolId, @javax.annotation.Nonnull PoolScale poolScale) throws ApiException {
-        okhttp3.Call localVarCall = scaleNodePoolValidateBeforeCall(clusterId, poolId, poolScale, null);
-        Type localVarReturnType = new TypeToken<NodePoolView>(){}.getType();
+    public ApiResponse<ComputeNodePoolView> scaleNodePoolWithHttpInfo(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull String poolId, @javax.annotation.Nonnull ComputePoolScale computePoolScale) throws ApiException {
+        okhttp3.Call localVarCall = scaleNodePoolValidateBeforeCall(clusterId, poolId, computePoolScale, null);
+        Type localVarReturnType = new TypeToken<ComputeNodePoolView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -3674,7 +3809,7 @@ public class ComputeApi {
      * Resizes a node pool to an absolute node count and returns the pool as Visor reports it after the change.
      * @param clusterId ClusterID is the cluster holding the pool, from the URL path. (required)
      * @param poolId PoolID is the pool to resize, from the URL path — the &#x60;poolId&#x60; a cluster read reports for it. Required. (required)
-     * @param poolScale  (required)
+     * @param computePoolScale  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3683,12 +3818,13 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call scaleNodePoolAsync(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull String poolId, @javax.annotation.Nonnull PoolScale poolScale, final ApiCallback<NodePoolView> _callback) throws ApiException {
+    public okhttp3.Call scaleNodePoolAsync(@javax.annotation.Nonnull String clusterId, @javax.annotation.Nonnull String poolId, @javax.annotation.Nonnull ComputePoolScale computePoolScale, final ApiCallback<ComputeNodePoolView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = scaleNodePoolValidateBeforeCall(clusterId, poolId, poolScale, _callback);
-        Type localVarReturnType = new TypeToken<NodePoolView>(){}.getType();
+        okhttp3.Call localVarCall = scaleNodePoolValidateBeforeCall(clusterId, poolId, computePoolScale, _callback);
+        Type localVarReturnType = new TypeToken<ComputeNodePoolView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3703,6 +3839,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call unbindMachineAgentCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -3732,6 +3869,7 @@ public class ComputeApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3770,6 +3908,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public void unbindMachineAgent(@javax.annotation.Nonnull String id) throws ApiException {
@@ -3787,6 +3926,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> unbindMachineAgentWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
@@ -3806,6 +3946,7 @@ public class ComputeApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call unbindMachineAgentAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {

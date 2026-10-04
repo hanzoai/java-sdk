@@ -27,17 +27,18 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.AccountsUsage;
-import ai.hanzo.cloud.model.BoardResp;
-import ai.hanzo.cloud.model.DeviceView;
-import ai.hanzo.cloud.model.EnrollReq;
-import ai.hanzo.cloud.model.IngestReq;
-import ai.hanzo.cloud.model.IngestResp;
-import ai.hanzo.cloud.model.LinkList;
-import ai.hanzo.cloud.model.LinkView;
-import ai.hanzo.cloud.model.RevokeResp;
-import ai.hanzo.cloud.model.RoutePlan;
-import ai.hanzo.cloud.model.SummaryResp;
+import ai.hanzo.cloud.model.LinkAccountsUsage;
+import ai.hanzo.cloud.model.LinkBoardResp;
+import ai.hanzo.cloud.model.LinkDeviceView;
+import ai.hanzo.cloud.model.LinkEnrollReq;
+import ai.hanzo.cloud.model.LinkIngestReq;
+import ai.hanzo.cloud.model.LinkIngestResp;
+import ai.hanzo.cloud.model.LinkLinkList;
+import ai.hanzo.cloud.model.LinkLinkView;
+import ai.hanzo.cloud.model.LinkRevokeResp;
+import ai.hanzo.cloud.model.LinkRoutePlan;
+import ai.hanzo.cloud.model.LinkSummaryResp;
+import ai.hanzo.cloud.model.ProblemDetails;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -93,6 +94,7 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteLinkByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -122,7 +124,8 @@ public class LinkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -155,17 +158,18 @@ public class LinkApi {
      * Logs out one account and stops the sessions it was running.
      * Logs out one account and stops the sessions it was running.  It revokes a single linked account and stops the agent sessions that ran under it, answering with the revoked row and how many sessions stopped. The link is RETAINED with a revoked status rather than deleted, so its usage history and the audit trail survive the log-out — which also means a revoked account still appears in the list, and is excluded from the route plan rather than absent from it. The session stop is narrowed to the revoking user&#39;s own sessions on that device, provider and account, and a stop that fails does not fail the revoke: the revoked row is the durable truth. An id that does not exist, or belongs to another user or org, is the same 404.
      * @param id ID is the link to act on, from the path. It is scoped to the caller, so another user&#39;s or org&#39;s id is a 404. (required)
-     * @return RevokeResp
+     * @return LinkRevokeResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RevokeResp deleteLinkById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<RevokeResp> localVarResp = deleteLinkByIdWithHttpInfo(id);
+    public LinkRevokeResp deleteLinkById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<LinkRevokeResp> localVarResp = deleteLinkByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -173,18 +177,19 @@ public class LinkApi {
      * Logs out one account and stops the sessions it was running.
      * Logs out one account and stops the sessions it was running.  It revokes a single linked account and stops the agent sessions that ran under it, answering with the revoked row and how many sessions stopped. The link is RETAINED with a revoked status rather than deleted, so its usage history and the audit trail survive the log-out — which also means a revoked account still appears in the list, and is excluded from the route plan rather than absent from it. The session stop is narrowed to the revoking user&#39;s own sessions on that device, provider and account, and a stop that fails does not fail the revoke: the revoked row is the durable truth. An id that does not exist, or belongs to another user or org, is the same 404.
      * @param id ID is the link to act on, from the path. It is scoped to the caller, so another user&#39;s or org&#39;s id is a 404. (required)
-     * @return ApiResponse&lt;RevokeResp&gt;
+     * @return ApiResponse&lt;LinkRevokeResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RevokeResp> deleteLinkByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<LinkRevokeResp> deleteLinkByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteLinkByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<RevokeResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkRevokeResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -200,12 +205,13 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteLinkByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<RevokeResp> _callback) throws ApiException {
+    public okhttp3.Call deleteLinkByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<LinkRevokeResp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteLinkByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<RevokeResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkRevokeResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -219,6 +225,7 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLinkCall(final ApiCallback _callback) throws ApiException {
@@ -247,7 +254,8 @@ public class LinkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -274,35 +282,37 @@ public class LinkApi {
     /**
      * Lists your linked accounts and the devices they sit on.
      * Lists your linked accounts and the devices they sit on.  It answers the caller&#39;s own links plus a devices projection of the same rows folded per machine — the cross-machine \&quot;AI Providers / Accounts\&quot; view. A device is a projection, not a stored entity: its labels come from its most-recently-seen account, so there is no device to create and none to garbage-collect. Revoked links are INCLUDED rather than dropped, because a logged-out account keeps its usage history and audit trail. Scoped to the caller: a validated principal and a non-empty org, else 403.
-     * @return LinkList
+     * @return LinkLinkList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public LinkList getLink() throws ApiException {
-        ApiResponse<LinkList> localVarResp = getLinkWithHttpInfo();
+    public LinkLinkList getLink() throws ApiException {
+        ApiResponse<LinkLinkList> localVarResp = getLinkWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists your linked accounts and the devices they sit on.
      * Lists your linked accounts and the devices they sit on.  It answers the caller&#39;s own links plus a devices projection of the same rows folded per machine — the cross-machine \&quot;AI Providers / Accounts\&quot; view. A device is a projection, not a stored entity: its labels come from its most-recently-seen account, so there is no device to create and none to garbage-collect. Revoked links are INCLUDED rather than dropped, because a logged-out account keeps its usage history and audit trail. Scoped to the caller: a validated principal and a non-empty org, else 403.
-     * @return ApiResponse&lt;LinkList&gt;
+     * @return ApiResponse&lt;LinkLinkList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LinkList> getLinkWithHttpInfo() throws ApiException {
+    public ApiResponse<LinkLinkList> getLinkWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getLinkValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<LinkList>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkLinkList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -317,12 +327,13 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLinkAsync(final ApiCallback<LinkList> _callback) throws ApiException {
+    public okhttp3.Call getLinkAsync(final ApiCallback<LinkLinkList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLinkValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<LinkList>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkLinkList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -337,6 +348,7 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLinkByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -366,7 +378,8 @@ public class LinkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -399,17 +412,18 @@ public class LinkApi {
      * Reads one linked account.
      * Reads one linked account.  It answers a single link — its device, provider, account, plan, how it bills, its status and its latest usage snapshot. An id that does not exist, or belongs to another user or org, is the same 404: the scope is a bound predicate on the read, so a wrong id and a foreign id are indistinguishable and neither confirms the other&#39;s existence. The static paths on this collection — route, usage, devices — register before this one and win first-match, so a link whose id collided with one of those words could not be addressed here.
      * @param id ID is the link to act on, from the path. It is scoped to the caller, so another user&#39;s or org&#39;s id is a 404. (required)
-     * @return LinkView
+     * @return LinkLinkView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public LinkView getLinkById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<LinkView> localVarResp = getLinkByIdWithHttpInfo(id);
+    public LinkLinkView getLinkById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<LinkLinkView> localVarResp = getLinkByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -417,18 +431,19 @@ public class LinkApi {
      * Reads one linked account.
      * Reads one linked account.  It answers a single link — its device, provider, account, plan, how it bills, its status and its latest usage snapshot. An id that does not exist, or belongs to another user or org, is the same 404: the scope is a bound predicate on the read, so a wrong id and a foreign id are indistinguishable and neither confirms the other&#39;s existence. The static paths on this collection — route, usage, devices — register before this one and win first-match, so a link whose id collided with one of those words could not be addressed here.
      * @param id ID is the link to act on, from the path. It is scoped to the caller, so another user&#39;s or org&#39;s id is a 404. (required)
-     * @return ApiResponse&lt;LinkView&gt;
+     * @return ApiResponse&lt;LinkLinkView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LinkView> getLinkByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<LinkLinkView> getLinkByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getLinkByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<LinkView>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkLinkView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -444,12 +459,13 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLinkByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<LinkView> _callback) throws ApiException {
+    public okhttp3.Call getLinkByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<LinkLinkView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLinkByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<LinkView>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkLinkView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -464,6 +480,7 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLinkDevicesByMachineCall(@javax.annotation.Nonnull String machine, final ApiCallback _callback) throws ApiException {
@@ -493,7 +510,8 @@ public class LinkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -526,17 +544,18 @@ public class LinkApi {
      * Shows one machine: its accounts, usage and live sessions.
      * Shows one machine: its accounts, usage and live sessions.  It answers one device — its host and OS labels, every account the caller has signed in on that machine with its latest usage, and how many agent sessions the caller currently has running on it. The device labels come from the most-recently-seen account, since a device is a projection of its links rather than a row of its own. A machine with none of the caller&#39;s accounts is 404, which is also the answer when the machine belongs to someone else — the scope makes the two indistinguishable, deliberately. The session count reports 0 where the agent plane is not mounted rather than failing the read.
      * @param machine Machine is the machine to act on, from the path. It is scoped to the caller, so a machine with none of the caller&#39;s accounts is a 404. (required)
-     * @return DeviceView
+     * @return LinkDeviceView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public DeviceView getLinkDevicesByMachine(@javax.annotation.Nonnull String machine) throws ApiException {
-        ApiResponse<DeviceView> localVarResp = getLinkDevicesByMachineWithHttpInfo(machine);
+    public LinkDeviceView getLinkDevicesByMachine(@javax.annotation.Nonnull String machine) throws ApiException {
+        ApiResponse<LinkDeviceView> localVarResp = getLinkDevicesByMachineWithHttpInfo(machine);
         return localVarResp.getData();
     }
 
@@ -544,18 +563,19 @@ public class LinkApi {
      * Shows one machine: its accounts, usage and live sessions.
      * Shows one machine: its accounts, usage and live sessions.  It answers one device — its host and OS labels, every account the caller has signed in on that machine with its latest usage, and how many agent sessions the caller currently has running on it. The device labels come from the most-recently-seen account, since a device is a projection of its links rather than a row of its own. A machine with none of the caller&#39;s accounts is 404, which is also the answer when the machine belongs to someone else — the scope makes the two indistinguishable, deliberately. The session count reports 0 where the agent plane is not mounted rather than failing the read.
      * @param machine Machine is the machine to act on, from the path. It is scoped to the caller, so a machine with none of the caller&#39;s accounts is a 404. (required)
-     * @return ApiResponse&lt;DeviceView&gt;
+     * @return ApiResponse&lt;LinkDeviceView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeviceView> getLinkDevicesByMachineWithHttpInfo(@javax.annotation.Nonnull String machine) throws ApiException {
+    public ApiResponse<LinkDeviceView> getLinkDevicesByMachineWithHttpInfo(@javax.annotation.Nonnull String machine) throws ApiException {
         okhttp3.Call localVarCall = getLinkDevicesByMachineValidateBeforeCall(machine, null);
-        Type localVarReturnType = new TypeToken<DeviceView>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkDeviceView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -571,12 +591,13 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLinkDevicesByMachineAsync(@javax.annotation.Nonnull String machine, final ApiCallback<DeviceView> _callback) throws ApiException {
+    public okhttp3.Call getLinkDevicesByMachineAsync(@javax.annotation.Nonnull String machine, final ApiCallback<LinkDeviceView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLinkDevicesByMachineValidateBeforeCall(machine, _callback);
-        Type localVarReturnType = new TypeToken<DeviceView>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkDeviceView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -590,6 +611,7 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLinkRouteCall(final ApiCallback _callback) throws ApiException {
@@ -618,7 +640,8 @@ public class LinkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -645,35 +668,37 @@ public class LinkApi {
     /**
      * Gets the failover order across your linked accounts.
      * Gets the failover order across your linked accounts.  It answers an ordered redundancy plan over the caller&#39;s LINKED (not revoked) accounts: each candidate with its remaining rate-limit headroom, whether it is routable right now, how it BILLS (plan or commerce), and a reason when it is not — plus the primary to try first. It is what lets a router fail over from one subscription to another and fall back to the metered API as the always-available backstop, knowing the cost consequence before it dials.  It is POLICY, not execution: the plan is computed purely from the usage snapshots already in the registry, never by probing a provider, so it is a total function of the links and costs nothing to ask for. Actually dialing, detecting a live 429 and advancing to the next candidate belongs to the caller. A link with no snapshot counts as full headroom.
-     * @return RoutePlan
+     * @return LinkRoutePlan
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RoutePlan getLinkRoute() throws ApiException {
-        ApiResponse<RoutePlan> localVarResp = getLinkRouteWithHttpInfo();
+    public LinkRoutePlan getLinkRoute() throws ApiException {
+        ApiResponse<LinkRoutePlan> localVarResp = getLinkRouteWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Gets the failover order across your linked accounts.
      * Gets the failover order across your linked accounts.  It answers an ordered redundancy plan over the caller&#39;s LINKED (not revoked) accounts: each candidate with its remaining rate-limit headroom, whether it is routable right now, how it BILLS (plan or commerce), and a reason when it is not — plus the primary to try first. It is what lets a router fail over from one subscription to another and fall back to the metered API as the always-available backstop, knowing the cost consequence before it dials.  It is POLICY, not execution: the plan is computed purely from the usage snapshots already in the registry, never by probing a provider, so it is a total function of the links and costs nothing to ask for. Actually dialing, detecting a live 429 and advancing to the next candidate belongs to the caller. A link with no snapshot counts as full headroom.
-     * @return ApiResponse&lt;RoutePlan&gt;
+     * @return ApiResponse&lt;LinkRoutePlan&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RoutePlan> getLinkRouteWithHttpInfo() throws ApiException {
+    public ApiResponse<LinkRoutePlan> getLinkRouteWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getLinkRouteValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<RoutePlan>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkRoutePlan>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -688,12 +713,13 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLinkRouteAsync(final ApiCallback<RoutePlan> _callback) throws ApiException {
+    public okhttp3.Call getLinkRouteAsync(final ApiCallback<LinkRoutePlan> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLinkRouteValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<RoutePlan>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkRoutePlan>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -711,6 +737,7 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLinkUsageCall(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
@@ -755,7 +782,8 @@ public class LinkApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -786,17 +814,18 @@ public class LinkApi {
      * @param account Account narrows to one account when a user has several with the provider. (optional)
      * @param window Window selects a window class: 6h, day, week or month. Empty reads all. (optional)
      * @param range Range is the period, one of 1h, 24h, 7d or 30d; empty means 24h, and an unknown label is 400, never a quiet fallback. (optional)
-     * @return BoardResp
+     * @return LinkBoardResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public BoardResp getLinkUsage(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range) throws ApiException {
-        ApiResponse<BoardResp> localVarResp = getLinkUsageWithHttpInfo(provider, account, window, range);
+    public LinkBoardResp getLinkUsage(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range) throws ApiException {
+        ApiResponse<LinkBoardResp> localVarResp = getLinkUsageWithHttpInfo(provider, account, window, range);
         return localVarResp.getData();
     }
 
@@ -807,18 +836,19 @@ public class LinkApi {
      * @param account Account narrows to one account when a user has several with the provider. (optional)
      * @param window Window selects a window class: 6h, day, week or month. Empty reads all. (optional)
      * @param range Range is the period, one of 1h, 24h, 7d or 30d; empty means 24h, and an unknown label is 400, never a quiet fallback. (optional)
-     * @return ApiResponse&lt;BoardResp&gt;
+     * @return ApiResponse&lt;LinkBoardResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BoardResp> getLinkUsageWithHttpInfo(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range) throws ApiException {
+    public ApiResponse<LinkBoardResp> getLinkUsageWithHttpInfo(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range) throws ApiException {
         okhttp3.Call localVarCall = getLinkUsageValidateBeforeCall(provider, account, window, range, null);
-        Type localVarReturnType = new TypeToken<BoardResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkBoardResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -837,12 +867,13 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLinkUsageAsync(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range, final ApiCallback<BoardResp> _callback) throws ApiException {
+    public okhttp3.Call getLinkUsageAsync(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range, final ApiCallback<LinkBoardResp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLinkUsageValidateBeforeCall(provider, account, window, range, _callback);
-        Type localVarReturnType = new TypeToken<BoardResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkBoardResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -856,6 +887,7 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLinkUsageAccountsCall(final ApiCallback _callback) throws ApiException {
@@ -884,7 +916,8 @@ public class LinkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -911,35 +944,37 @@ public class LinkApi {
     /**
      * Breaks down what the gateway routed through each of your accounts.
      * Breaks down what the gateway routed through each of your accounts.  It answers one row per linked account the GATEWAY actually routed through, plus their total — requests, prompt and completion tokens, and cost. This is the routed ledger, the read twin of the counter the router writes, and it is distinct from both of its neighbours: not the device collector&#39;s plan snapshots, and not the org money ledger. The source and scope fields on the response say so on every payload. The same shape answers in the billing namespace, from one shaping function, so the two mounts cannot drift.
-     * @return AccountsUsage
+     * @return LinkAccountsUsage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public AccountsUsage getLinkUsageAccounts() throws ApiException {
-        ApiResponse<AccountsUsage> localVarResp = getLinkUsageAccountsWithHttpInfo();
+    public LinkAccountsUsage getLinkUsageAccounts() throws ApiException {
+        ApiResponse<LinkAccountsUsage> localVarResp = getLinkUsageAccountsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Breaks down what the gateway routed through each of your accounts.
      * Breaks down what the gateway routed through each of your accounts.  It answers one row per linked account the GATEWAY actually routed through, plus their total — requests, prompt and completion tokens, and cost. This is the routed ledger, the read twin of the counter the router writes, and it is distinct from both of its neighbours: not the device collector&#39;s plan snapshots, and not the org money ledger. The source and scope fields on the response say so on every payload. The same shape answers in the billing namespace, from one shaping function, so the two mounts cannot drift.
-     * @return ApiResponse&lt;AccountsUsage&gt;
+     * @return ApiResponse&lt;LinkAccountsUsage&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccountsUsage> getLinkUsageAccountsWithHttpInfo() throws ApiException {
+    public ApiResponse<LinkAccountsUsage> getLinkUsageAccountsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getLinkUsageAccountsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<AccountsUsage>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkAccountsUsage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -954,12 +989,13 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLinkUsageAccountsAsync(final ApiCallback<AccountsUsage> _callback) throws ApiException {
+    public okhttp3.Call getLinkUsageAccountsAsync(final ApiCallback<LinkAccountsUsage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLinkUsageAccountsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<AccountsUsage>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkAccountsUsage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -974,6 +1010,7 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getLinkUsageSummaryCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
@@ -1006,7 +1043,8 @@ public class LinkApi {
         }
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1034,17 +1072,18 @@ public class LinkApi {
      * Shows plan consumption and Hanzo spend side by side.
      * Shows plan consumption and Hanzo spend side by side.  It answers the global usage board over one window: the caller&#39;s own linked accounts, metered from each provider&#39;s own login, alongside their org&#39;s Hanzo-routed inference. These come from different ledgers and mean different things, so every row is LABELLED by source, by scope and by availability, and THE TWO ARE NEVER SUMMED — a plan&#39;s percentage is not money, and a provider&#39;s own spend is not a Hanzo charge. The rows sit side by side and say what they are.  One resolver fixes the window for both halves, so the two sets always cover the same period. range is one of 1h, 24h, 7d or 30d and defaults to 24h; anything else is 400 rather than a silent substitution. A ledger that cannot answer reports available:false instead of a zero that would read as \&quot;no usage\&quot;.
      * @param range Range is the period, one of 1h, 24h, 7d or 30d; empty means 24h, and an unknown label is 400, never a silent substitution. (optional)
-     * @return SummaryResp
+     * @return LinkSummaryResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public SummaryResp getLinkUsageSummary(@javax.annotation.Nullable String range) throws ApiException {
-        ApiResponse<SummaryResp> localVarResp = getLinkUsageSummaryWithHttpInfo(range);
+    public LinkSummaryResp getLinkUsageSummary(@javax.annotation.Nullable String range) throws ApiException {
+        ApiResponse<LinkSummaryResp> localVarResp = getLinkUsageSummaryWithHttpInfo(range);
         return localVarResp.getData();
     }
 
@@ -1052,18 +1091,19 @@ public class LinkApi {
      * Shows plan consumption and Hanzo spend side by side.
      * Shows plan consumption and Hanzo spend side by side.  It answers the global usage board over one window: the caller&#39;s own linked accounts, metered from each provider&#39;s own login, alongside their org&#39;s Hanzo-routed inference. These come from different ledgers and mean different things, so every row is LABELLED by source, by scope and by availability, and THE TWO ARE NEVER SUMMED — a plan&#39;s percentage is not money, and a provider&#39;s own spend is not a Hanzo charge. The rows sit side by side and say what they are.  One resolver fixes the window for both halves, so the two sets always cover the same period. range is one of 1h, 24h, 7d or 30d and defaults to 24h; anything else is 400 rather than a silent substitution. A ledger that cannot answer reports available:false instead of a zero that would read as \&quot;no usage\&quot;.
      * @param range Range is the period, one of 1h, 24h, 7d or 30d; empty means 24h, and an unknown label is 400, never a silent substitution. (optional)
-     * @return ApiResponse&lt;SummaryResp&gt;
+     * @return ApiResponse&lt;LinkSummaryResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SummaryResp> getLinkUsageSummaryWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
+    public ApiResponse<LinkSummaryResp> getLinkUsageSummaryWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
         okhttp3.Call localVarCall = getLinkUsageSummaryValidateBeforeCall(range, null);
-        Type localVarReturnType = new TypeToken<SummaryResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkSummaryResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1079,18 +1119,19 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLinkUsageSummaryAsync(@javax.annotation.Nullable String range, final ApiCallback<SummaryResp> _callback) throws ApiException {
+    public okhttp3.Call getLinkUsageSummaryAsync(@javax.annotation.Nullable String range, final ApiCallback<LinkSummaryResp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLinkUsageSummaryValidateBeforeCall(range, _callback);
-        Type localVarReturnType = new TypeToken<SummaryResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkSummaryResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postLink
-     * @param enrollReq  (required)
+     * @param linkEnrollReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1099,9 +1140,10 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postLinkCall(@javax.annotation.Nonnull EnrollReq enrollReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postLinkCall(@javax.annotation.Nonnull LinkEnrollReq linkEnrollReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1115,7 +1157,7 @@ public class LinkApi {
             basePath = null;
         }
 
-        Object localVarPostBody = enrollReq;
+        Object localVarPostBody = linkEnrollReq;
 
         // create path and map variables
         String localVarPath = "/v1/link";
@@ -1127,7 +1169,8 @@ public class LinkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1147,57 +1190,59 @@ public class LinkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postLinkValidateBeforeCall(@javax.annotation.Nonnull EnrollReq enrollReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'enrollReq' is set
-        if (enrollReq == null) {
-            throw new ApiException("Missing the required parameter 'enrollReq' when calling postLink(Async)");
+    private okhttp3.Call postLinkValidateBeforeCall(@javax.annotation.Nonnull LinkEnrollReq linkEnrollReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'linkEnrollReq' is set
+        if (linkEnrollReq == null) {
+            throw new ApiException("Missing the required parameter 'linkEnrollReq' when calling postLink(Async)");
         }
 
-        return postLinkCall(enrollReq, _callback);
+        return postLinkCall(linkEnrollReq, _callback);
 
     }
 
     /**
      * Registers a signed-in AI provider account on a machine.
      * Registers a signed-in AI provider account on a machine.  It records that a developer has signed into one provider account on one machine — a Claude Max or ChatGPT Plus subscription, a Hanzo key, a raw provider key — and answers 201 with the stored link. Re-reporting the same (machine, provider, account) UPDATES that link rather than creating a second, so a collector may call this on every heartbeat. machine and provider are required (400 otherwise), as is a valid kind, and every field is length-bounded. Scoped to the caller: a validated principal and a non-empty org, else 403, so a caller writes only their OWN accounts within their own org.
-     * @param enrollReq  (required)
-     * @return LinkView
+     * @param linkEnrollReq  (required)
+     * @return LinkLinkView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public LinkView postLink(@javax.annotation.Nonnull EnrollReq enrollReq) throws ApiException {
-        ApiResponse<LinkView> localVarResp = postLinkWithHttpInfo(enrollReq);
+    public LinkLinkView postLink(@javax.annotation.Nonnull LinkEnrollReq linkEnrollReq) throws ApiException {
+        ApiResponse<LinkLinkView> localVarResp = postLinkWithHttpInfo(linkEnrollReq);
         return localVarResp.getData();
     }
 
     /**
      * Registers a signed-in AI provider account on a machine.
      * Registers a signed-in AI provider account on a machine.  It records that a developer has signed into one provider account on one machine — a Claude Max or ChatGPT Plus subscription, a Hanzo key, a raw provider key — and answers 201 with the stored link. Re-reporting the same (machine, provider, account) UPDATES that link rather than creating a second, so a collector may call this on every heartbeat. machine and provider are required (400 otherwise), as is a valid kind, and every field is length-bounded. Scoped to the caller: a validated principal and a non-empty org, else 403, so a caller writes only their OWN accounts within their own org.
-     * @param enrollReq  (required)
-     * @return ApiResponse&lt;LinkView&gt;
+     * @param linkEnrollReq  (required)
+     * @return ApiResponse&lt;LinkLinkView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LinkView> postLinkWithHttpInfo(@javax.annotation.Nonnull EnrollReq enrollReq) throws ApiException {
-        okhttp3.Call localVarCall = postLinkValidateBeforeCall(enrollReq, null);
-        Type localVarReturnType = new TypeToken<LinkView>(){}.getType();
+    public ApiResponse<LinkLinkView> postLinkWithHttpInfo(@javax.annotation.Nonnull LinkEnrollReq linkEnrollReq) throws ApiException {
+        okhttp3.Call localVarCall = postLinkValidateBeforeCall(linkEnrollReq, null);
+        Type localVarReturnType = new TypeToken<LinkLinkView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Registers a signed-in AI provider account on a machine. (asynchronously)
      * Registers a signed-in AI provider account on a machine.  It records that a developer has signed into one provider account on one machine — a Claude Max or ChatGPT Plus subscription, a Hanzo key, a raw provider key — and answers 201 with the stored link. Re-reporting the same (machine, provider, account) UPDATES that link rather than creating a second, so a collector may call this on every heartbeat. machine and provider are required (400 otherwise), as is a valid kind, and every field is length-bounded. Scoped to the caller: a validated principal and a non-empty org, else 403, so a caller writes only their OWN accounts within their own org.
-     * @param enrollReq  (required)
+     * @param linkEnrollReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1206,12 +1251,13 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postLinkAsync(@javax.annotation.Nonnull EnrollReq enrollReq, final ApiCallback<LinkView> _callback) throws ApiException {
+    public okhttp3.Call postLinkAsync(@javax.annotation.Nonnull LinkEnrollReq linkEnrollReq, final ApiCallback<LinkLinkView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postLinkValidateBeforeCall(enrollReq, _callback);
-        Type localVarReturnType = new TypeToken<LinkView>(){}.getType();
+        okhttp3.Call localVarCall = postLinkValidateBeforeCall(linkEnrollReq, _callback);
+        Type localVarReturnType = new TypeToken<LinkLinkView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1226,6 +1272,7 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postLinkDevicesByMachineRevokeCall(@javax.annotation.Nonnull String machine, final ApiCallback _callback) throws ApiException {
@@ -1255,7 +1302,8 @@ public class LinkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1288,17 +1336,18 @@ public class LinkApi {
      * Logs out every account on one machine and stops its sessions.
      * Logs out every account on one machine and stops its sessions.  It revokes every one of the caller&#39;s accounts on one machine and stops the agent sessions they were running, answering with how many of each. This is the \&quot;I lost that laptop\&quot; button. Revoked links are RETAINED, not deleted, so usage history and the audit trail survive a log-out — the rows come back in the response with their new status. The session stop reaches only the REVOKING user&#39;s own sessions, so a shared machine name can never be used to stop a co-tenant&#39;s work, and a stop that fails does not fail the revoke: the revoked row is the durable truth and the count then honestly reports fewer. A machine with nothing left to revoke is 404.
      * @param machine Machine is the machine to act on, from the path. It is scoped to the caller, so a machine with none of the caller&#39;s accounts is a 404. (required)
-     * @return RevokeResp
+     * @return LinkRevokeResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public RevokeResp postLinkDevicesByMachineRevoke(@javax.annotation.Nonnull String machine) throws ApiException {
-        ApiResponse<RevokeResp> localVarResp = postLinkDevicesByMachineRevokeWithHttpInfo(machine);
+    public LinkRevokeResp postLinkDevicesByMachineRevoke(@javax.annotation.Nonnull String machine) throws ApiException {
+        ApiResponse<LinkRevokeResp> localVarResp = postLinkDevicesByMachineRevokeWithHttpInfo(machine);
         return localVarResp.getData();
     }
 
@@ -1306,18 +1355,19 @@ public class LinkApi {
      * Logs out every account on one machine and stops its sessions.
      * Logs out every account on one machine and stops its sessions.  It revokes every one of the caller&#39;s accounts on one machine and stops the agent sessions they were running, answering with how many of each. This is the \&quot;I lost that laptop\&quot; button. Revoked links are RETAINED, not deleted, so usage history and the audit trail survive a log-out — the rows come back in the response with their new status. The session stop reaches only the REVOKING user&#39;s own sessions, so a shared machine name can never be used to stop a co-tenant&#39;s work, and a stop that fails does not fail the revoke: the revoked row is the durable truth and the count then honestly reports fewer. A machine with nothing left to revoke is 404.
      * @param machine Machine is the machine to act on, from the path. It is scoped to the caller, so a machine with none of the caller&#39;s accounts is a 404. (required)
-     * @return ApiResponse&lt;RevokeResp&gt;
+     * @return ApiResponse&lt;LinkRevokeResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RevokeResp> postLinkDevicesByMachineRevokeWithHttpInfo(@javax.annotation.Nonnull String machine) throws ApiException {
+    public ApiResponse<LinkRevokeResp> postLinkDevicesByMachineRevokeWithHttpInfo(@javax.annotation.Nonnull String machine) throws ApiException {
         okhttp3.Call localVarCall = postLinkDevicesByMachineRevokeValidateBeforeCall(machine, null);
-        Type localVarReturnType = new TypeToken<RevokeResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkRevokeResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1333,18 +1383,19 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postLinkDevicesByMachineRevokeAsync(@javax.annotation.Nonnull String machine, final ApiCallback<RevokeResp> _callback) throws ApiException {
+    public okhttp3.Call postLinkDevicesByMachineRevokeAsync(@javax.annotation.Nonnull String machine, final ApiCallback<LinkRevokeResp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postLinkDevicesByMachineRevokeValidateBeforeCall(machine, _callback);
-        Type localVarReturnType = new TypeToken<RevokeResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<LinkRevokeResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postLinkUsage
-     * @param ingestReq  (required)
+     * @param linkIngestReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1353,9 +1404,10 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postLinkUsageCall(@javax.annotation.Nonnull IngestReq ingestReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postLinkUsageCall(@javax.annotation.Nonnull LinkIngestReq linkIngestReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1369,7 +1421,7 @@ public class LinkApi {
             basePath = null;
         }
 
-        Object localVarPostBody = ingestReq;
+        Object localVarPostBody = linkIngestReq;
 
         // create path and map variables
         String localVarPath = "/v1/link/usage";
@@ -1381,7 +1433,8 @@ public class LinkApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "application/json",
+            "application/problem+json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1401,57 +1454,59 @@ public class LinkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postLinkUsageValidateBeforeCall(@javax.annotation.Nonnull IngestReq ingestReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'ingestReq' is set
-        if (ingestReq == null) {
-            throw new ApiException("Missing the required parameter 'ingestReq' when calling postLinkUsage(Async)");
+    private okhttp3.Call postLinkUsageValidateBeforeCall(@javax.annotation.Nonnull LinkIngestReq linkIngestReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'linkIngestReq' is set
+        if (linkIngestReq == null) {
+            throw new ApiException("Missing the required parameter 'linkIngestReq' when calling postLinkUsage(Async)");
         }
 
-        return postLinkUsageCall(ingestReq, _callback);
+        return postLinkUsageCall(linkIngestReq, _callback);
 
     }
 
     /**
      * Reports usage samples from the device collector.
      * Reports usage samples from the device collector.  It ingests a batch of usage samples and answers with how many were accepted, whether history was durably stored, and the links they refreshed. A report also REFRESHES one link per distinct (machine, provider, account) it names, so a running collector keeps the accounts overview current without a separate registration call.  A caller can only ever report for THEMSELVES: org and subject come from the validated bearer, never from the body, so no sample can be attributed to another user or tenant. History is FAIL-SOFT and stored says which happened — a warehouse outage still accepts the report and refreshes the links rather than failing the device, and answers 202 either way. Send either one sample inline or up to 256 in samples; an empty batch or an over-long one is 400, as is a provider, window class or kind outside the closed vocabulary — an unrecognized window is refused rather than rewritten, because a silently reclassified sample would fill a dashboard with a class nobody reported.
-     * @param ingestReq  (required)
-     * @return IngestResp
+     * @param linkIngestReq  (required)
+     * @return LinkIngestResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public IngestResp postLinkUsage(@javax.annotation.Nonnull IngestReq ingestReq) throws ApiException {
-        ApiResponse<IngestResp> localVarResp = postLinkUsageWithHttpInfo(ingestReq);
+    public LinkIngestResp postLinkUsage(@javax.annotation.Nonnull LinkIngestReq linkIngestReq) throws ApiException {
+        ApiResponse<LinkIngestResp> localVarResp = postLinkUsageWithHttpInfo(linkIngestReq);
         return localVarResp.getData();
     }
 
     /**
      * Reports usage samples from the device collector.
      * Reports usage samples from the device collector.  It ingests a batch of usage samples and answers with how many were accepted, whether history was durably stored, and the links they refreshed. A report also REFRESHES one link per distinct (machine, provider, account) it names, so a running collector keeps the accounts overview current without a separate registration call.  A caller can only ever report for THEMSELVES: org and subject come from the validated bearer, never from the body, so no sample can be attributed to another user or tenant. History is FAIL-SOFT and stored says which happened — a warehouse outage still accepts the report and refreshes the links rather than failing the device, and answers 202 either way. Send either one sample inline or up to 256 in samples; an empty batch or an over-long one is 400, as is a provider, window class or kind outside the closed vocabulary — an unrecognized window is refused rather than rewritten, because a silently reclassified sample would fill a dashboard with a class nobody reported.
-     * @param ingestReq  (required)
-     * @return ApiResponse&lt;IngestResp&gt;
+     * @param linkIngestReq  (required)
+     * @return ApiResponse&lt;LinkIngestResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IngestResp> postLinkUsageWithHttpInfo(@javax.annotation.Nonnull IngestReq ingestReq) throws ApiException {
-        okhttp3.Call localVarCall = postLinkUsageValidateBeforeCall(ingestReq, null);
-        Type localVarReturnType = new TypeToken<IngestResp>(){}.getType();
+    public ApiResponse<LinkIngestResp> postLinkUsageWithHttpInfo(@javax.annotation.Nonnull LinkIngestReq linkIngestReq) throws ApiException {
+        okhttp3.Call localVarCall = postLinkUsageValidateBeforeCall(linkIngestReq, null);
+        Type localVarReturnType = new TypeToken<LinkIngestResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Reports usage samples from the device collector. (asynchronously)
      * Reports usage samples from the device collector.  It ingests a batch of usage samples and answers with how many were accepted, whether history was durably stored, and the links they refreshed. A report also REFRESHES one link per distinct (machine, provider, account) it names, so a running collector keeps the accounts overview current without a separate registration call.  A caller can only ever report for THEMSELVES: org and subject come from the validated bearer, never from the body, so no sample can be attributed to another user or tenant. History is FAIL-SOFT and stored says which happened — a warehouse outage still accepts the report and refreshes the links rather than failing the device, and answers 202 either way. Send either one sample inline or up to 256 in samples; an empty batch or an over-long one is 400, as is a provider, window class or kind outside the closed vocabulary — an unrecognized window is refused rather than rewritten, because a silently reclassified sample would fill a dashboard with a class nobody reported.
-     * @param ingestReq  (required)
+     * @param linkIngestReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1460,12 +1515,13 @@ public class LinkApi {
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postLinkUsageAsync(@javax.annotation.Nonnull IngestReq ingestReq, final ApiCallback<IngestResp> _callback) throws ApiException {
+    public okhttp3.Call postLinkUsageAsync(@javax.annotation.Nonnull LinkIngestReq linkIngestReq, final ApiCallback<LinkIngestResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postLinkUsageValidateBeforeCall(ingestReq, _callback);
-        Type localVarReturnType = new TypeToken<IngestResp>(){}.getType();
+        okhttp3.Call localVarCall = postLinkUsageValidateBeforeCall(linkIngestReq, _callback);
+        Type localVarReturnType = new TypeToken<LinkIngestResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
