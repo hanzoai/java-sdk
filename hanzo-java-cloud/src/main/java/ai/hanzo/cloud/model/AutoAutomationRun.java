@@ -14,13 +14,16 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.AutoPostResult;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,6 +58,11 @@ public class AutoAutomationRun {
   @javax.annotation.Nullable
   private String at;
 
+  public static final String SERIALIZED_NAME_DRAFT = "draft";
+  @SerializedName(SERIALIZED_NAME_DRAFT)
+  @javax.annotation.Nullable
+  private String draft;
+
   public static final String SERIALIZED_NAME_FINISHED = "finished";
   @SerializedName(SERIALIZED_NAME_FINISHED)
   @javax.annotation.Nullable
@@ -64,6 +72,11 @@ public class AutoAutomationRun {
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
   private String id;
+
+  public static final String SERIALIZED_NAME_POSTS = "posts";
+  @SerializedName(SERIALIZED_NAME_POSTS)
+  @javax.annotation.Nullable
+  private List<AutoPostResult> posts = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -99,6 +112,25 @@ public class AutoAutomationRun {
 
   public void setAt(@javax.annotation.Nullable String at) {
     this.at = at;
+  }
+
+
+  public AutoAutomationRun draft(@javax.annotation.Nullable String draft) {
+    this.draft = draft;
+    return this;
+  }
+
+  /**
+   * Draft is the post the agent wrote, for an automation that posts; empty otherwise.
+   * @return draft
+   */
+  @javax.annotation.Nullable
+  public String getDraft() {
+    return draft;
+  }
+
+  public void setDraft(@javax.annotation.Nullable String draft) {
+    this.draft = draft;
   }
 
 
@@ -140,13 +172,40 @@ public class AutoAutomationRun {
   }
 
 
+  public AutoAutomationRun posts(@javax.annotation.Nullable List<AutoPostResult> posts) {
+    this.posts = posts;
+    return this;
+  }
+
+  public AutoAutomationRun addPostsItem(AutoPostResult postsItem) {
+    if (this.posts == null) {
+      this.posts = new ArrayList<>();
+    }
+    this.posts.add(postsItem);
+    return this;
+  }
+
+  /**
+   * Posts are where it went: one per account, its link or the platform&#39;s reason it did not go. Never null.
+   * @return posts
+   */
+  @javax.annotation.Nullable
+  public List<AutoPostResult> getPosts() {
+    return posts;
+  }
+
+  public void setPosts(@javax.annotation.Nullable List<AutoPostResult> posts) {
+    this.posts = posts;
+  }
+
+
   public AutoAutomationRun status(@javax.annotation.Nullable String status) {
     this.status = status;
     return this;
   }
 
   /**
-   * Status is succeeded, failed, running, queued, skipped for a start that found the previous run still going, or refused for a run whose person is no longer a member of the org.
+   * Status is succeeded, failed, running, queued, review for a post waiting for its person to post or discard it, skipped for a start that found the previous run still going, or refused for a run whose person is no longer a member of the org.
    * @return status
    */
   @javax.annotation.Nullable
@@ -252,8 +311,10 @@ public class AutoAutomationRun {
     }
     AutoAutomationRun autoAutomationRun = (AutoAutomationRun) o;
     return Objects.equals(this.at, autoAutomationRun.at) &&
+        Objects.equals(this.draft, autoAutomationRun.draft) &&
         Objects.equals(this.finished, autoAutomationRun.finished) &&
         Objects.equals(this.id, autoAutomationRun.id) &&
+        Objects.equals(this.posts, autoAutomationRun.posts) &&
         Objects.equals(this.status, autoAutomationRun.status) &&
         Objects.equals(this.summary, autoAutomationRun.summary) &&
         Objects.equals(this.transcript, autoAutomationRun.transcript)&&
@@ -262,7 +323,7 @@ public class AutoAutomationRun {
 
   @Override
   public int hashCode() {
-    return Objects.hash(at, finished, id, status, summary, transcript, additionalProperties);
+    return Objects.hash(at, draft, finished, id, posts, status, summary, transcript, additionalProperties);
   }
 
   @Override
@@ -270,8 +331,10 @@ public class AutoAutomationRun {
     StringBuilder sb = new StringBuilder();
     sb.append("class AutoAutomationRun {\n");
     sb.append("    at: ").append(toIndentedString(at)).append("\n");
+    sb.append("    draft: ").append(toIndentedString(draft)).append("\n");
     sb.append("    finished: ").append(toIndentedString(finished)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    posts: ").append(toIndentedString(posts)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    summary: ").append(toIndentedString(summary)).append("\n");
     sb.append("    transcript: ").append(toIndentedString(transcript)).append("\n");
@@ -297,7 +360,7 @@ public class AutoAutomationRun {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("at", "finished", "id", "status", "summary", "transcript"));
+    openapiFields = new HashSet<String>(Arrays.asList("at", "draft", "finished", "id", "posts", "status", "summary", "transcript"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -319,11 +382,28 @@ public class AutoAutomationRun {
       if ((jsonObj.get("at") != null && !jsonObj.get("at").isJsonNull()) && !jsonObj.get("at").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `at` to be a primitive type in the JSON string but got `%s`", jsonObj.get("at").toString()));
       }
+      if ((jsonObj.get("draft") != null && !jsonObj.get("draft").isJsonNull()) && !jsonObj.get("draft").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `draft` to be a primitive type in the JSON string but got `%s`", jsonObj.get("draft").toString()));
+      }
       if ((jsonObj.get("finished") != null && !jsonObj.get("finished").isJsonNull()) && !jsonObj.get("finished").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `finished` to be a primitive type in the JSON string but got `%s`", jsonObj.get("finished").toString()));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if (jsonObj.get("posts") != null && !jsonObj.get("posts").isJsonNull()) {
+        JsonArray jsonArrayposts = jsonObj.getAsJsonArray("posts");
+        if (jsonArrayposts != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("posts").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `posts` to be an array in the JSON string but got `%s`", jsonObj.get("posts").toString()));
+          }
+
+          // validate the optional field `posts` (array)
+          for (int i = 0; i < jsonArrayposts.size(); i++) {
+            AutoPostResult.validateJsonElement(jsonArrayposts.get(i));
+          };
+        }
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));

@@ -14,7 +14,6 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.AiDecisionSidesFalse;
 import ai.hanzo.cloud.model.AiDecisionsQuestion;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -88,7 +87,7 @@ public class AiDecisionsRequest {
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
   @javax.annotation.Nullable
-  private AiDecisionSidesFalse state;
+  private Object state = null;
 
   public static final String SERIALIZED_NAME_TRACE = "trace";
   @SerializedName(SERIALIZED_NAME_TRACE)
@@ -225,7 +224,7 @@ public class AiDecisionsRequest {
   }
 
 
-  public AiDecisionsRequest state(@javax.annotation.Nullable AiDecisionSidesFalse state) {
+  public AiDecisionsRequest state(@javax.annotation.Nullable Object state) {
     this.state = state;
     return this;
   }
@@ -235,11 +234,11 @@ public class AiDecisionsRequest {
    * @return state
    */
   @javax.annotation.Nullable
-  public AiDecisionSidesFalse getState() {
+  public Object getState() {
     return state;
   }
 
-  public void setState(@javax.annotation.Nullable AiDecisionSidesFalse state) {
+  public void setState(@javax.annotation.Nullable Object state) {
     this.state = state;
   }
 
@@ -436,10 +435,6 @@ public class AiDecisionsRequest {
       }
       if ((jsonObj.get("session_id") != null && !jsonObj.get("session_id").isJsonNull()) && !jsonObj.get("session_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `session_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("session_id").toString()));
-      }
-      // validate the optional field `state`
-      if (jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) {
-        AiDecisionSidesFalse.validateJsonElement(jsonObj.get("state"));
       }
       if ((jsonObj.get("user") != null && !jsonObj.get("user").isJsonNull()) && !jsonObj.get("user").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `user` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user").toString()));

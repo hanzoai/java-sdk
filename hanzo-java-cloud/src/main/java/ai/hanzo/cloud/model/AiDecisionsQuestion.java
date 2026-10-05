@@ -14,7 +14,6 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.AiDecisionSidesFalse;
 import ai.hanzo.cloud.model.AiDecisionsChoice;
 import ai.hanzo.cloud.model.AiDecisionsNoul;
 import ai.hanzo.cloud.model.AiDecisionsScore;
@@ -29,6 +28,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 
 

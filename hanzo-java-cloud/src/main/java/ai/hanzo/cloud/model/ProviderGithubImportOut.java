@@ -52,6 +52,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class ProviderGithubImportOut {
+  public static final String SERIALIZED_NAME_CODEBASES = "codebases";
+  @SerializedName(SERIALIZED_NAME_CODEBASES)
+  @javax.annotation.Nullable
+  private List<String> codebases = new ArrayList<>();
+
   public static final String SERIALIZED_NAME_QUEUED = "queued";
   @SerializedName(SERIALIZED_NAME_QUEUED)
   @javax.annotation.Nullable
@@ -64,6 +69,33 @@ public class ProviderGithubImportOut {
 
   public ProviderGithubImportOut() {
   }
+
+  public ProviderGithubImportOut codebases(@javax.annotation.Nullable List<String> codebases) {
+    this.codebases = codebases;
+    return this;
+  }
+
+  public ProviderGithubImportOut addCodebasesItem(String codebasesItem) {
+    if (this.codebases == null) {
+      this.codebases = new ArrayList<>();
+    }
+    this.codebases.add(codebasesItem);
+    return this;
+  }
+
+  /**
+   * Codebases are the names they take in the org&#39;s code workspace, in the same order: poll GET /v1/git/repos for each to appear.
+   * @return codebases
+   */
+  @javax.annotation.Nullable
+  public List<String> getCodebases() {
+    return codebases;
+  }
+
+  public void setCodebases(@javax.annotation.Nullable List<String> codebases) {
+    this.codebases = codebases;
+  }
+
 
   public ProviderGithubImportOut queued(@javax.annotation.Nullable Long queued) {
     this.queued = queued;
@@ -165,20 +197,22 @@ public class ProviderGithubImportOut {
       return false;
     }
     ProviderGithubImportOut providerGithubImportOut = (ProviderGithubImportOut) o;
-    return Objects.equals(this.queued, providerGithubImportOut.queued) &&
+    return Objects.equals(this.codebases, providerGithubImportOut.codebases) &&
+        Objects.equals(this.queued, providerGithubImportOut.queued) &&
         Objects.equals(this.repos, providerGithubImportOut.repos)&&
         Objects.equals(this.additionalProperties, providerGithubImportOut.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(queued, repos, additionalProperties);
+    return Objects.hash(codebases, queued, repos, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProviderGithubImportOut {\n");
+    sb.append("    codebases: ").append(toIndentedString(codebases)).append("\n");
     sb.append("    queued: ").append(toIndentedString(queued)).append("\n");
     sb.append("    repos: ").append(toIndentedString(repos)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
@@ -203,7 +237,7 @@ public class ProviderGithubImportOut {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("queued", "repos"));
+    openapiFields = new HashSet<String>(Arrays.asList("codebases", "queued", "repos"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -222,6 +256,10 @@ public class ProviderGithubImportOut {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("codebases") != null && !jsonObj.get("codebases").isJsonNull() && !jsonObj.get("codebases").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `codebases` to be an array in the JSON string but got `%s`", jsonObj.get("codebases").toString()));
+      }
       // ensure the optional json data is an array if present
       if (jsonObj.get("repos") != null && !jsonObj.get("repos").isJsonNull() && !jsonObj.get("repos").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `repos` to be an array in the JSON string but got `%s`", jsonObj.get("repos").toString()));

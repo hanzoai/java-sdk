@@ -14,8 +14,6 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.AiDecisionSidesFalse;
-import ai.hanzo.cloud.model.AiDecisionsChoiceCriteriaValue;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,8 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -56,13 +53,13 @@ import ai.hanzo.cloud.JSON;
 public class AiDecisionsChoice {
   public static final String SERIALIZED_NAME_CRITERIA = "criteria";
   @SerializedName(SERIALIZED_NAME_CRITERIA)
-  @javax.annotation.Nonnull
-  private Map<String, AiDecisionsChoiceCriteriaValue> criteria = new HashMap<>();
+  @javax.annotation.Nullable
+  private Object criteria = null;
 
   public static final String SERIALIZED_NAME_INSTRUCTIONS = "instructions";
   @SerializedName(SERIALIZED_NAME_INSTRUCTIONS)
   @javax.annotation.Nullable
-  private AiDecisionSidesFalse instructions;
+  private Object instructions = null;
 
   /**
    * Gets or Sets type
@@ -122,16 +119,8 @@ public class AiDecisionsChoice {
   public AiDecisionsChoice() {
   }
 
-  public AiDecisionsChoice criteria(@javax.annotation.Nonnull Map<String, AiDecisionsChoiceCriteriaValue> criteria) {
+  public AiDecisionsChoice criteria(@javax.annotation.Nullable Object criteria) {
     this.criteria = criteria;
-    return this;
-  }
-
-  public AiDecisionsChoice putCriteriaItem(String key, AiDecisionsChoiceCriteriaValue criteriaItem) {
-    if (this.criteria == null) {
-      this.criteria = new HashMap<>();
-    }
-    this.criteria.put(key, criteriaItem);
     return this;
   }
 
@@ -139,17 +128,17 @@ public class AiDecisionsChoice {
    * Get criteria
    * @return criteria
    */
-  @javax.annotation.Nonnull
-  public Map<String, AiDecisionsChoiceCriteriaValue> getCriteria() {
+  @javax.annotation.Nullable
+  public Object getCriteria() {
     return criteria;
   }
 
-  public void setCriteria(@javax.annotation.Nonnull Map<String, AiDecisionsChoiceCriteriaValue> criteria) {
+  public void setCriteria(@javax.annotation.Nullable Object criteria) {
     this.criteria = criteria;
   }
 
 
-  public AiDecisionsChoice instructions(@javax.annotation.Nullable AiDecisionSidesFalse instructions) {
+  public AiDecisionsChoice instructions(@javax.annotation.Nullable Object instructions) {
     this.instructions = instructions;
     return this;
   }
@@ -159,11 +148,11 @@ public class AiDecisionsChoice {
    * @return instructions
    */
   @javax.annotation.Nullable
-  public AiDecisionSidesFalse getInstructions() {
+  public Object getInstructions() {
     return instructions;
   }
 
-  public void setInstructions(@javax.annotation.Nullable AiDecisionSidesFalse instructions) {
+  public void setInstructions(@javax.annotation.Nullable Object instructions) {
     this.instructions = instructions;
   }
 
@@ -247,9 +236,20 @@ public class AiDecisionsChoice {
         Objects.equals(this.additionalProperties, aiDecisionsChoice.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(criteria, instructions, type, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -307,10 +307,6 @@ public class AiDecisionsChoice {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `instructions`
-      if (jsonObj.get("instructions") != null && !jsonObj.get("instructions").isJsonNull()) {
-        AiDecisionSidesFalse.validateJsonElement(jsonObj.get("instructions"));
-      }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }

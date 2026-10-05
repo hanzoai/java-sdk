@@ -14,7 +14,6 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.AiDecisionSides;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,9 +21,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,164 +46,106 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * AiDecisionsNoul
+ * TaskComment
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class AiDecisionsNoul {
-  public static final String SERIALIZED_NAME_CRITERIA = "criteria";
-  @SerializedName(SERIALIZED_NAME_CRITERIA)
+public class TaskComment {
+  public static final String SERIALIZED_NAME_AUTHOR = "author";
+  @SerializedName(SERIALIZED_NAME_AUTHOR)
   @javax.annotation.Nullable
-  private AiDecisionSides criteria;
+  private String author;
 
-  public static final String SERIALIZED_NAME_INSTRUCTIONS = "instructions";
-  @SerializedName(SERIALIZED_NAME_INSTRUCTIONS)
+  public static final String SERIALIZED_NAME_BODY = "body";
+  @SerializedName(SERIALIZED_NAME_BODY)
   @javax.annotation.Nullable
-  private Object instructions = null;
+  private String body;
 
-  public static final String SERIALIZED_NAME_LABELS = "labels";
-  @SerializedName(SERIALIZED_NAME_LABELS)
+  public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+  @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Map<String, String> labels = new HashMap<>();
+  private String createdAt;
 
-  /**
-   * Gets or Sets type
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    NOUL("noul");
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
+  private Long id;
 
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      TypeEnum.fromValue(value);
-    }
+  public TaskComment() {
   }
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  @javax.annotation.Nonnull
-  private TypeEnum type;
-
-  public AiDecisionsNoul() {
-  }
-
-  public AiDecisionsNoul criteria(@javax.annotation.Nullable AiDecisionSides criteria) {
-    this.criteria = criteria;
+  public TaskComment author(@javax.annotation.Nullable String author) {
+    this.author = author;
     return this;
   }
 
   /**
-   * Get criteria
-   * @return criteria
+   * Author is who wrote it: their name, else their forge login.
+   * @return author
    */
   @javax.annotation.Nullable
-  public AiDecisionSides getCriteria() {
-    return criteria;
+  public String getAuthor() {
+    return author;
   }
 
-  public void setCriteria(@javax.annotation.Nullable AiDecisionSides criteria) {
-    this.criteria = criteria;
+  public void setAuthor(@javax.annotation.Nullable String author) {
+    this.author = author;
   }
 
 
-  public AiDecisionsNoul instructions(@javax.annotation.Nullable Object instructions) {
-    this.instructions = instructions;
+  public TaskComment body(@javax.annotation.Nullable String body) {
+    this.body = body;
     return this;
   }
 
   /**
-   * Get instructions
-   * @return instructions
+   * Body is what was written, as markdown.
+   * @return body
    */
   @javax.annotation.Nullable
-  public Object getInstructions() {
-    return instructions;
+  public String getBody() {
+    return body;
   }
 
-  public void setInstructions(@javax.annotation.Nullable Object instructions) {
-    this.instructions = instructions;
+  public void setBody(@javax.annotation.Nullable String body) {
+    this.body = body;
   }
 
 
-  public AiDecisionsNoul labels(@javax.annotation.Nullable Map<String, String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public AiDecisionsNoul putLabelsItem(String key, String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new HashMap<>();
-    }
-    this.labels.put(key, labelsItem);
+  public TaskComment createdAt(@javax.annotation.Nullable String createdAt) {
+    this.createdAt = createdAt;
     return this;
   }
 
   /**
-   * Get labels
-   * @return labels
+   * CreatedAt is when it was written, RFC 3339.
+   * @return createdAt
    */
   @javax.annotation.Nullable
-  public Map<String, String> getLabels() {
-    return labels;
+  public String getCreatedAt() {
+    return createdAt;
   }
 
-  public void setLabels(@javax.annotation.Nullable Map<String, String> labels) {
-    this.labels = labels;
+  public void setCreatedAt(@javax.annotation.Nullable String createdAt) {
+    this.createdAt = createdAt;
   }
 
 
-  public AiDecisionsNoul type(@javax.annotation.Nonnull TypeEnum type) {
-    this.type = type;
+  public TaskComment id(@javax.annotation.Nullable Long id) {
+    this.id = id;
     return this;
   }
 
   /**
-   * Get type
-   * @return type
+   * ID is the forge&#39;s id for the comment.
+   * @return id
    */
-  @javax.annotation.Nonnull
-  public TypeEnum getType() {
-    return type;
+  @javax.annotation.Nullable
+  public Long getId() {
+    return id;
   }
 
-  public void setType(@javax.annotation.Nonnull TypeEnum type) {
-    this.type = type;
+  public void setId(@javax.annotation.Nullable Long id) {
+    this.id = id;
   }
 
   /**
@@ -223,9 +161,9 @@ public class AiDecisionsNoul {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the AiDecisionsNoul instance itself
+   * @return the TaskComment instance itself
    */
-  public AiDecisionsNoul putAdditionalProperty(String key, Object value) {
+  public TaskComment putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -264,38 +202,27 @@ public class AiDecisionsNoul {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AiDecisionsNoul aiDecisionsNoul = (AiDecisionsNoul) o;
-    return Objects.equals(this.criteria, aiDecisionsNoul.criteria) &&
-        Objects.equals(this.instructions, aiDecisionsNoul.instructions) &&
-        Objects.equals(this.labels, aiDecisionsNoul.labels) &&
-        Objects.equals(this.type, aiDecisionsNoul.type)&&
-        Objects.equals(this.additionalProperties, aiDecisionsNoul.additionalProperties);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    TaskComment taskComment = (TaskComment) o;
+    return Objects.equals(this.author, taskComment.author) &&
+        Objects.equals(this.body, taskComment.body) &&
+        Objects.equals(this.createdAt, taskComment.createdAt) &&
+        Objects.equals(this.id, taskComment.id)&&
+        Objects.equals(this.additionalProperties, taskComment.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(criteria, instructions, labels, type, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(author, body, createdAt, id, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AiDecisionsNoul {\n");
-    sb.append("    criteria: ").append(toIndentedString(criteria)).append("\n");
-    sb.append("    instructions: ").append(toIndentedString(instructions)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("class TaskComment {\n");
+    sb.append("    author: ").append(toIndentedString(author)).append("\n");
+    sb.append("    body: ").append(toIndentedString(body)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -318,57 +245,50 @@ public class AiDecisionsNoul {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("criteria", "instructions", "labels", "type"));
+    openapiFields = new HashSet<String>(Arrays.asList("author", "body", "createdAt", "id"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("type"));
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to AiDecisionsNoul
+   * @throws IOException if the JSON Element is invalid with respect to TaskComment
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!AiDecisionsNoul.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AiDecisionsNoul is not found in the empty JSON string", AiDecisionsNoul.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : AiDecisionsNoul.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        if (!TaskComment.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in TaskComment is not found in the empty JSON string", TaskComment.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `criteria`
-      if (jsonObj.get("criteria") != null && !jsonObj.get("criteria").isJsonNull()) {
-        AiDecisionSides.validateJsonElement(jsonObj.get("criteria"));
+      if ((jsonObj.get("author") != null && !jsonObj.get("author").isJsonNull()) && !jsonObj.get("author").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `author` to be a primitive type in the JSON string but got `%s`", jsonObj.get("author").toString()));
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      if ((jsonObj.get("body") != null && !jsonObj.get("body").isJsonNull()) && !jsonObj.get("body").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `body` to be a primitive type in the JSON string but got `%s`", jsonObj.get("body").toString()));
       }
-      // validate the required field `type`
-      TypeEnum.validateJsonElement(jsonObj.get("type"));
+      if ((jsonObj.get("createdAt") != null && !jsonObj.get("createdAt").isJsonNull()) && !jsonObj.get("createdAt").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `createdAt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdAt").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!AiDecisionsNoul.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'AiDecisionsNoul' and its subtypes
+       if (!TaskComment.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'TaskComment' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<AiDecisionsNoul> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(AiDecisionsNoul.class));
+       final TypeAdapter<TaskComment> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(TaskComment.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<AiDecisionsNoul>() {
+       return (TypeAdapter<T>) new TypeAdapter<TaskComment>() {
            @Override
-           public void write(JsonWriter out, AiDecisionsNoul value) throws IOException {
+           public void write(JsonWriter out, TaskComment value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -396,12 +316,12 @@ public class AiDecisionsNoul {
            }
 
            @Override
-           public AiDecisionsNoul read(JsonReader in) throws IOException {
+           public TaskComment read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             AiDecisionsNoul instance = thisAdapter.fromJsonTree(jsonObj);
+             TaskComment instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -428,18 +348,18 @@ public class AiDecisionsNoul {
   }
 
   /**
-   * Create an instance of AiDecisionsNoul given an JSON string
+   * Create an instance of TaskComment given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of AiDecisionsNoul
-   * @throws IOException if the JSON string is invalid with respect to AiDecisionsNoul
+   * @return An instance of TaskComment
+   * @throws IOException if the JSON string is invalid with respect to TaskComment
    */
-  public static AiDecisionsNoul fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, AiDecisionsNoul.class);
+  public static TaskComment fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, TaskComment.class);
   }
 
   /**
-   * Convert an instance of AiDecisionsNoul to an JSON string
+   * Convert an instance of TaskComment to an JSON string
    *
    * @return JSON string
    */

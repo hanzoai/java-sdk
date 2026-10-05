@@ -50,6 +50,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class ProviderGithubRepoItem {
+  public static final String SERIALIZED_NAME_CODEBASE = "codebase";
+  @SerializedName(SERIALIZED_NAME_CODEBASE)
+  @javax.annotation.Nullable
+  private String codebase;
+
   public static final String SERIALIZED_NAME_DEFAULT_BRANCH = "default_branch";
   @SerializedName(SERIALIZED_NAME_DEFAULT_BRANCH)
   @javax.annotation.Nullable
@@ -87,6 +92,25 @@ public class ProviderGithubRepoItem {
 
   public ProviderGithubRepoItem() {
   }
+
+  public ProviderGithubRepoItem codebase(@javax.annotation.Nullable String codebase) {
+    this.codebase = codebase;
+    return this;
+  }
+
+  /**
+   * Codebase is the name it has in the org&#39;s code workspace once brought in (POST /v1/provider/github/repos/import): listed by GET /v1/git/repos when it is there.
+   * @return codebase
+   */
+  @javax.annotation.Nullable
+  public String getCodebase() {
+    return codebase;
+  }
+
+  public void setCodebase(@javax.annotation.Nullable String codebase) {
+    this.codebase = codebase;
+  }
+
 
   public ProviderGithubRepoItem defaultBranch(@javax.annotation.Nullable String defaultBranch) {
     this.defaultBranch = defaultBranch;
@@ -275,7 +299,8 @@ public class ProviderGithubRepoItem {
       return false;
     }
     ProviderGithubRepoItem providerGithubRepoItem = (ProviderGithubRepoItem) o;
-    return Objects.equals(this.defaultBranch, providerGithubRepoItem.defaultBranch) &&
+    return Objects.equals(this.codebase, providerGithubRepoItem.codebase) &&
+        Objects.equals(this.defaultBranch, providerGithubRepoItem.defaultBranch) &&
         Objects.equals(this.fullName, providerGithubRepoItem.fullName) &&
         Objects.equals(this.installationId, providerGithubRepoItem.installationId) &&
         Objects.equals(this.name, providerGithubRepoItem.name) &&
@@ -287,13 +312,14 @@ public class ProviderGithubRepoItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultBranch, fullName, installationId, name, owner, _private, pushedAt, additionalProperties);
+    return Objects.hash(codebase, defaultBranch, fullName, installationId, name, owner, _private, pushedAt, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProviderGithubRepoItem {\n");
+    sb.append("    codebase: ").append(toIndentedString(codebase)).append("\n");
     sb.append("    defaultBranch: ").append(toIndentedString(defaultBranch)).append("\n");
     sb.append("    fullName: ").append(toIndentedString(fullName)).append("\n");
     sb.append("    installationId: ").append(toIndentedString(installationId)).append("\n");
@@ -323,7 +349,7 @@ public class ProviderGithubRepoItem {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("default_branch", "full_name", "installation_id", "name", "owner", "private", "pushed_at"));
+    openapiFields = new HashSet<String>(Arrays.asList("codebase", "default_branch", "full_name", "installation_id", "name", "owner", "private", "pushed_at"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -342,6 +368,9 @@ public class ProviderGithubRepoItem {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("codebase") != null && !jsonObj.get("codebase").isJsonNull()) && !jsonObj.get("codebase").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `codebase` to be a primitive type in the JSON string but got `%s`", jsonObj.get("codebase").toString()));
+      }
       if ((jsonObj.get("default_branch") != null && !jsonObj.get("default_branch").isJsonNull()) && !jsonObj.get("default_branch").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `default_branch` to be a primitive type in the JSON string but got `%s`", jsonObj.get("default_branch").toString()));
       }

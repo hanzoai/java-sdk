@@ -29,6 +29,10 @@ import java.io.IOException;
 
 import ai.hanzo.cloud.model.AiAnthropicRequest;
 import ai.hanzo.cloud.model.AiAnthropicResponse;
+import ai.hanzo.cloud.model.AiChat;
+import ai.hanzo.cloud.model.AiChatIn;
+import ai.hanzo.cloud.model.AiDecideIn;
+import ai.hanzo.cloud.model.AiDecision;
 import ai.hanzo.cloud.model.AiDecisionsRefused;
 import ai.hanzo.cloud.model.AiDecisionsRequest;
 import ai.hanzo.cloud.model.AiDecisionsResponse;
@@ -36,12 +40,15 @@ import ai.hanzo.cloud.model.AiLimits;
 import ai.hanzo.cloud.model.AiLimitsSet;
 import ai.hanzo.cloud.model.AiMCPSurface;
 import ai.hanzo.cloud.model.AiModelList;
+import ai.hanzo.cloud.model.AiModels;
 import ai.hanzo.cloud.model.AiRanking;
 import ai.hanzo.cloud.model.AiResponse;
 import ai.hanzo.cloud.model.AiResponsesResource;
 import ai.hanzo.cloud.model.AiRoutingEdit;
+import ai.hanzo.cloud.model.AiRoutingRewardRequest;
 import ai.hanzo.cloud.model.AiTokenCount;
 import ai.hanzo.cloud.model.AiVideoStatus;
+import java.math.BigDecimal;
 import ai.hanzo.cloud.model.DocSearchResult;
 import ai.hanzo.cloud.model.Envelope;
 import ai.hanzo.cloud.model.GetAiActivities200Response;
@@ -169,6 +176,270 @@ public class AiApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for aiChat
+     * @param aiChatIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call aiChatCall(@javax.annotation.Nonnull AiChatIn aiChatIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = aiChatIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/ai/mcp/chat";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call aiChatValidateBeforeCall(@javax.annotation.Nonnull AiChatIn aiChatIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'aiChatIn' is set
+        if (aiChatIn == null) {
+            throw new ApiException("Missing the required parameter 'aiChatIn' when calling aiChat(Async)");
+        }
+
+        return aiChatCall(aiChatIn, _callback);
+
+    }
+
+    /**
+     * Asks one model one prompt and answers the reply, which model served it and who paid.
+     * Asks one model one prompt and answers the reply, which model served it and who paid. The call is the caller&#39;s own POST /v1/chat/completions, run as the caller, so it is gated, billed and refused exactly as that route is; a refusal names its code and what lifts it, never an amount. An empty model asks the deployment&#39;s default Hanzo model.
+     * @param aiChatIn  (required)
+     * @return AiChat
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AiChat aiChat(@javax.annotation.Nonnull AiChatIn aiChatIn) throws ApiException {
+        ApiResponse<AiChat> localVarResp = aiChatWithHttpInfo(aiChatIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Asks one model one prompt and answers the reply, which model served it and who paid.
+     * Asks one model one prompt and answers the reply, which model served it and who paid. The call is the caller&#39;s own POST /v1/chat/completions, run as the caller, so it is gated, billed and refused exactly as that route is; a refusal names its code and what lifts it, never an amount. An empty model asks the deployment&#39;s default Hanzo model.
+     * @param aiChatIn  (required)
+     * @return ApiResponse&lt;AiChat&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AiChat> aiChatWithHttpInfo(@javax.annotation.Nonnull AiChatIn aiChatIn) throws ApiException {
+        okhttp3.Call localVarCall = aiChatValidateBeforeCall(aiChatIn, null);
+        Type localVarReturnType = new TypeToken<AiChat>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Asks one model one prompt and answers the reply, which model served it and who paid. (asynchronously)
+     * Asks one model one prompt and answers the reply, which model served it and who paid. The call is the caller&#39;s own POST /v1/chat/completions, run as the caller, so it is gated, billed and refused exactly as that route is; a refusal names its code and what lifts it, never an amount. An empty model asks the deployment&#39;s default Hanzo model.
+     * @param aiChatIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call aiChatAsync(@javax.annotation.Nonnull AiChatIn aiChatIn, final ApiCallback<AiChat> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = aiChatValidateBeforeCall(aiChatIn, _callback);
+        Type localVarReturnType = new TypeToken<AiChat>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for aiDecide
+     * @param aiDecideIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call aiDecideCall(@javax.annotation.Nonnull AiDecideIn aiDecideIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = aiDecideIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/ai/mcp/decisions";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call aiDecideValidateBeforeCall(@javax.annotation.Nonnull AiDecideIn aiDecideIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'aiDecideIn' is set
+        if (aiDecideIn == null) {
+            throw new ApiException("Missing the required parameter 'aiDecideIn' when calling aiDecide(Async)");
+        }
+
+        return aiDecideCall(aiDecideIn, _callback);
+
+    }
+
+    /**
+     * Runs one decision — the caller&#39;s own POST /v1/decisions, gated and billed exactly as that route is — and answers the decision, which model served it and who paid.
+     * Runs one decision — the caller&#39;s own POST /v1/decisions, gated and billed exactly as that route is — and answers the decision, which model served it and who paid. A refusal names its code and what lifts it, never an amount.
+     * @param aiDecideIn  (required)
+     * @return AiDecision
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AiDecision aiDecide(@javax.annotation.Nonnull AiDecideIn aiDecideIn) throws ApiException {
+        ApiResponse<AiDecision> localVarResp = aiDecideWithHttpInfo(aiDecideIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Runs one decision — the caller&#39;s own POST /v1/decisions, gated and billed exactly as that route is — and answers the decision, which model served it and who paid.
+     * Runs one decision — the caller&#39;s own POST /v1/decisions, gated and billed exactly as that route is — and answers the decision, which model served it and who paid. A refusal names its code and what lifts it, never an amount.
+     * @param aiDecideIn  (required)
+     * @return ApiResponse&lt;AiDecision&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AiDecision> aiDecideWithHttpInfo(@javax.annotation.Nonnull AiDecideIn aiDecideIn) throws ApiException {
+        okhttp3.Call localVarCall = aiDecideValidateBeforeCall(aiDecideIn, null);
+        Type localVarReturnType = new TypeToken<AiDecision>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Runs one decision — the caller&#39;s own POST /v1/decisions, gated and billed exactly as that route is — and answers the decision, which model served it and who paid. (asynchronously)
+     * Runs one decision — the caller&#39;s own POST /v1/decisions, gated and billed exactly as that route is — and answers the decision, which model served it and who paid. A refusal names its code and what lifts it, never an amount.
+     * @param aiDecideIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call aiDecideAsync(@javax.annotation.Nonnull AiDecideIn aiDecideIn, final ApiCallback<AiDecision> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = aiDecideValidateBeforeCall(aiDecideIn, _callback);
+        Type localVarReturnType = new TypeToken<AiDecision>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for aiLimits
      * @param _callback Callback for upload/download progress
@@ -418,6 +689,168 @@ public class AiApi {
 
         okhttp3.Call localVarCall = aiMCPToolsValidateBeforeCall(names, _callback);
         Type localVarReturnType = new TypeToken<AiMCPSurface>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for aiModels
+     * @param q Q matches the model&#39;s id, name, description or owner, ignoring case. (optional)
+     * @param propertyClass Class keeps one class: premium (third-party frontier models), ours (Hanzo&#39;s priced models) or free. (optional)
+     * @param family Family keeps one Hanzo family: enso, zen, kai or zoo. (optional)
+     * @param capability Capability keeps the models that have it: tools, vision or reasoning, or a modality they take or give (text, image, audio, file, video, decision). (optional)
+     * @param limit Limit is the most models to answer, 1 to 500; 0 answers 50. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call aiModelsCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String propertyClass, @javax.annotation.Nullable String family, @javax.annotation.Nullable String capability, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/ai/mcp/models";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (propertyClass != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("class", propertyClass));
+        }
+
+        if (family != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("family", family));
+        }
+
+        if (capability != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("capability", capability));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call aiModelsValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String propertyClass, @javax.annotation.Nullable String family, @javax.annotation.Nullable String capability, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        return aiModelsCall(q, propertyClass, family, capability, limit, _callback);
+
+    }
+
+    /**
+     * Searches the model catalog — the one GET /v1/models lists — by text, class, family or capability, and answers each match with its class, family, list price (per token and per million; variable for a router billed at the answering model&#39;s price), context window and capabilities.
+     * Searches the model catalog — the one GET /v1/models lists — by text, class, family or capability, and answers each match with its class, family, list price (per token and per million; variable for a router billed at the answering model&#39;s price), context window and capabilities.
+     * @param q Q matches the model&#39;s id, name, description or owner, ignoring case. (optional)
+     * @param propertyClass Class keeps one class: premium (third-party frontier models), ours (Hanzo&#39;s priced models) or free. (optional)
+     * @param family Family keeps one Hanzo family: enso, zen, kai or zoo. (optional)
+     * @param capability Capability keeps the models that have it: tools, vision or reasoning, or a modality they take or give (text, image, audio, file, video, decision). (optional)
+     * @param limit Limit is the most models to answer, 1 to 500; 0 answers 50. (optional)
+     * @return AiModels
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AiModels aiModels(@javax.annotation.Nullable String q, @javax.annotation.Nullable String propertyClass, @javax.annotation.Nullable String family, @javax.annotation.Nullable String capability, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<AiModels> localVarResp = aiModelsWithHttpInfo(q, propertyClass, family, capability, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Searches the model catalog — the one GET /v1/models lists — by text, class, family or capability, and answers each match with its class, family, list price (per token and per million; variable for a router billed at the answering model&#39;s price), context window and capabilities.
+     * Searches the model catalog — the one GET /v1/models lists — by text, class, family or capability, and answers each match with its class, family, list price (per token and per million; variable for a router billed at the answering model&#39;s price), context window and capabilities.
+     * @param q Q matches the model&#39;s id, name, description or owner, ignoring case. (optional)
+     * @param propertyClass Class keeps one class: premium (third-party frontier models), ours (Hanzo&#39;s priced models) or free. (optional)
+     * @param family Family keeps one Hanzo family: enso, zen, kai or zoo. (optional)
+     * @param capability Capability keeps the models that have it: tools, vision or reasoning, or a modality they take or give (text, image, audio, file, video, decision). (optional)
+     * @param limit Limit is the most models to answer, 1 to 500; 0 answers 50. (optional)
+     * @return ApiResponse&lt;AiModels&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AiModels> aiModelsWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String propertyClass, @javax.annotation.Nullable String family, @javax.annotation.Nullable String capability, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = aiModelsValidateBeforeCall(q, propertyClass, family, capability, limit, null);
+        Type localVarReturnType = new TypeToken<AiModels>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Searches the model catalog — the one GET /v1/models lists — by text, class, family or capability, and answers each match with its class, family, list price (per token and per million; variable for a router billed at the answering model&#39;s price), context window and capabilities. (asynchronously)
+     * Searches the model catalog — the one GET /v1/models lists — by text, class, family or capability, and answers each match with its class, family, list price (per token and per million; variable for a router billed at the answering model&#39;s price), context window and capabilities.
+     * @param q Q matches the model&#39;s id, name, description or owner, ignoring case. (optional)
+     * @param propertyClass Class keeps one class: premium (third-party frontier models), ours (Hanzo&#39;s priced models) or free. (optional)
+     * @param family Family keeps one Hanzo family: enso, zen, kai or zoo. (optional)
+     * @param capability Capability keeps the models that have it: tools, vision or reasoning, or a modality they take or give (text, image, audio, file, video, decision). (optional)
+     * @param limit Limit is the most models to answer, 1 to 500; 0 answers 50. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call aiModelsAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String propertyClass, @javax.annotation.Nullable String family, @javax.annotation.Nullable String capability, @javax.annotation.Nullable Long limit, final ApiCallback<AiModels> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = aiModelsValidateBeforeCall(q, propertyClass, family, capability, limit, _callback);
+        Type localVarReturnType = new TypeToken<AiModels>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -26483,6 +26916,7 @@ public class AiApi {
     }
     /**
      * Build call for postAiFeedback
+     * @param aiRoutingRewardRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -26495,7 +26929,7 @@ public class AiApi {
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAiFeedbackCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAiFeedbackCall(@javax.annotation.Nonnull AiRoutingRewardRequest aiRoutingRewardRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -26509,7 +26943,7 @@ public class AiApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = aiRoutingRewardRequest;
 
         // create path and map variables
         String localVarPath = "/v1/ai/feedback";
@@ -26529,6 +26963,7 @@ public class AiApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -26540,14 +26975,20 @@ public class AiApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAiFeedbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postAiFeedbackCall(_callback);
+    private okhttp3.Call postAiFeedbackValidateBeforeCall(@javax.annotation.Nonnull AiRoutingRewardRequest aiRoutingRewardRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'aiRoutingRewardRequest' is set
+        if (aiRoutingRewardRequest == null) {
+            throw new ApiException("Missing the required parameter 'aiRoutingRewardRequest' when calling postAiFeedback(Async)");
+        }
+
+        return postAiFeedbackCall(aiRoutingRewardRequest, _callback);
 
     }
 
     /**
      * Attaches a per-request outcome reward to the routing decision that served request_id — the enso training loop&#39;s quality signal.
      * Attaches a per-request outcome reward to the routing decision that served request_id — the enso training loop&#39;s quality signal. Org-scoped via the same session-OR-Bearer principal the usage read uses (RequirePrincipal): the reward lands only on the caller&#39;s OWN org&#39;s event, so a request_id from another org (or unknown) is a 404 — cross-org writes are impossible and unknown ids are indistinguishable from foreign ones. Idempotent: a repeat overwrites. The body carries NO prompt text — only {request_id, reward|rating}.
+     * @param aiRoutingRewardRequest  (required)
      * @return PostAiFeedback200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -26559,14 +27000,15 @@ public class AiApi {
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public PostAiFeedback200Response postAiFeedback() throws ApiException {
-        ApiResponse<PostAiFeedback200Response> localVarResp = postAiFeedbackWithHttpInfo();
+    public PostAiFeedback200Response postAiFeedback(@javax.annotation.Nonnull AiRoutingRewardRequest aiRoutingRewardRequest) throws ApiException {
+        ApiResponse<PostAiFeedback200Response> localVarResp = postAiFeedbackWithHttpInfo(aiRoutingRewardRequest);
         return localVarResp.getData();
     }
 
     /**
      * Attaches a per-request outcome reward to the routing decision that served request_id — the enso training loop&#39;s quality signal.
      * Attaches a per-request outcome reward to the routing decision that served request_id — the enso training loop&#39;s quality signal. Org-scoped via the same session-OR-Bearer principal the usage read uses (RequirePrincipal): the reward lands only on the caller&#39;s OWN org&#39;s event, so a request_id from another org (or unknown) is a 404 — cross-org writes are impossible and unknown ids are indistinguishable from foreign ones. Idempotent: a repeat overwrites. The body carries NO prompt text — only {request_id, reward|rating}.
+     * @param aiRoutingRewardRequest  (required)
      * @return ApiResponse&lt;PostAiFeedback200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -26578,8 +27020,8 @@ public class AiApi {
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PostAiFeedback200Response> postAiFeedbackWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postAiFeedbackValidateBeforeCall(null);
+    public ApiResponse<PostAiFeedback200Response> postAiFeedbackWithHttpInfo(@javax.annotation.Nonnull AiRoutingRewardRequest aiRoutingRewardRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAiFeedbackValidateBeforeCall(aiRoutingRewardRequest, null);
         Type localVarReturnType = new TypeToken<PostAiFeedback200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -26587,6 +27029,7 @@ public class AiApi {
     /**
      * Attaches a per-request outcome reward to the routing decision that served request_id — the enso training loop&#39;s quality signal. (asynchronously)
      * Attaches a per-request outcome reward to the routing decision that served request_id — the enso training loop&#39;s quality signal. Org-scoped via the same session-OR-Bearer principal the usage read uses (RequirePrincipal): the reward lands only on the caller&#39;s OWN org&#39;s event, so a request_id from another org (or unknown) is a 404 — cross-org writes are impossible and unknown ids are indistinguishable from foreign ones. Idempotent: a repeat overwrites. The body carries NO prompt text — only {request_id, reward|rating}.
+     * @param aiRoutingRewardRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -26599,9 +27042,9 @@ public class AiApi {
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAiFeedbackAsync(final ApiCallback<PostAiFeedback200Response> _callback) throws ApiException {
+    public okhttp3.Call postAiFeedbackAsync(@javax.annotation.Nonnull AiRoutingRewardRequest aiRoutingRewardRequest, final ApiCallback<PostAiFeedback200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAiFeedbackValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postAiFeedbackValidateBeforeCall(aiRoutingRewardRequest, _callback);
         Type localVarReturnType = new TypeToken<PostAiFeedback200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -34917,6 +35360,8 @@ public class AiApi {
     /**
      * Build call for postChat
      * @param openaiChatCompletionRequest  (required)
+     * @param xMaxCost The most this request may cost, in USD per 1,000 tokens. Routing picks only models under it; an org&#39;s own ceiling fills it when it is absent, and the lower of the two holds. (optional)
+     * @param xMaxLatencyMs The slowest model this request accepts, in milliseconds. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -34924,12 +35369,12 @@ public class AiApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success. </td><td>  * X-Routed-Model - The model that served a routed request, one that named auto or an id the router resolves. The body&#39;s model field names the same id. <br>  </td></tr>
         <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postChatCall(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postChatCall(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, @javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -34970,18 +35415,28 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
+        if (xMaxCost != null) {
+            localVarHeaderParams.put("X-Max-Cost", localVarApiClient.parameterToString(xMaxCost));
+        }
+
+
+        if (xMaxLatencyMs != null) {
+            localVarHeaderParams.put("X-Max-Latency-Ms", localVarApiClient.parameterToString(xMaxLatencyMs));
+        }
+
+
         String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postChatValidateBeforeCall(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postChatValidateBeforeCall(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, @javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'openaiChatCompletionRequest' is set
         if (openaiChatCompletionRequest == null) {
             throw new ApiException("Missing the required parameter 'openaiChatCompletionRequest' when calling postChat(Async)");
         }
 
-        return postChatCall(openaiChatCompletionRequest, _callback);
+        return postChatCall(openaiChatCompletionRequest, xMaxCost, xMaxLatencyMs, _callback);
 
     }
 
@@ -34989,19 +35444,21 @@ public class AiApi {
      * Implements the OpenAI-compatible chat completions API
      * Implements the OpenAI-compatible chat completions API
      * @param openaiChatCompletionRequest  (required)
+     * @param xMaxCost The most this request may cost, in USD per 1,000 tokens. Routing picks only models under it; an org&#39;s own ceiling fills it when it is absent, and the lower of the two holds. (optional)
+     * @param xMaxLatencyMs The slowest model this request accepts, in milliseconds. (optional)
      * @return OpenaiChatCompletionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success. </td><td>  * X-Routed-Model - The model that served a routed request, one that named auto or an id the router resolves. The body&#39;s model field names the same id. <br>  </td></tr>
         <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public OpenaiChatCompletionResponse postChat(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest) throws ApiException {
-        ApiResponse<OpenaiChatCompletionResponse> localVarResp = postChatWithHttpInfo(openaiChatCompletionRequest);
+    public OpenaiChatCompletionResponse postChat(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, @javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs) throws ApiException {
+        ApiResponse<OpenaiChatCompletionResponse> localVarResp = postChatWithHttpInfo(openaiChatCompletionRequest, xMaxCost, xMaxLatencyMs);
         return localVarResp.getData();
     }
 
@@ -35009,19 +35466,21 @@ public class AiApi {
      * Implements the OpenAI-compatible chat completions API
      * Implements the OpenAI-compatible chat completions API
      * @param openaiChatCompletionRequest  (required)
+     * @param xMaxCost The most this request may cost, in USD per 1,000 tokens. Routing picks only models under it; an org&#39;s own ceiling fills it when it is absent, and the lower of the two holds. (optional)
+     * @param xMaxLatencyMs The slowest model this request accepts, in milliseconds. (optional)
      * @return ApiResponse&lt;OpenaiChatCompletionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success. </td><td>  * X-Routed-Model - The model that served a routed request, one that named auto or an id the router resolves. The body&#39;s model field names the same id. <br>  </td></tr>
         <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OpenaiChatCompletionResponse> postChatWithHttpInfo(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postChatValidateBeforeCall(openaiChatCompletionRequest, null);
+    public ApiResponse<OpenaiChatCompletionResponse> postChatWithHttpInfo(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, @javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs) throws ApiException {
+        okhttp3.Call localVarCall = postChatValidateBeforeCall(openaiChatCompletionRequest, xMaxCost, xMaxLatencyMs, null);
         Type localVarReturnType = new TypeToken<OpenaiChatCompletionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -35030,6 +35489,8 @@ public class AiApi {
      * Implements the OpenAI-compatible chat completions API (asynchronously)
      * Implements the OpenAI-compatible chat completions API
      * @param openaiChatCompletionRequest  (required)
+     * @param xMaxCost The most this request may cost, in USD per 1,000 tokens. Routing picks only models under it; an org&#39;s own ceiling fills it when it is absent, and the lower of the two holds. (optional)
+     * @param xMaxLatencyMs The slowest model this request accepts, in milliseconds. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -35037,14 +35498,14 @@ public class AiApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success. </td><td>  * X-Routed-Model - The model that served a routed request, one that named auto or an id the router resolves. The body&#39;s model field names the same id. <br>  </td></tr>
         <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postChatAsync(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, final ApiCallback<OpenaiChatCompletionResponse> _callback) throws ApiException {
+    public okhttp3.Call postChatAsync(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, @javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs, final ApiCallback<OpenaiChatCompletionResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postChatValidateBeforeCall(openaiChatCompletionRequest, _callback);
+        okhttp3.Call localVarCall = postChatValidateBeforeCall(openaiChatCompletionRequest, xMaxCost, xMaxLatencyMs, _callback);
         Type localVarReturnType = new TypeToken<OpenaiChatCompletionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -35052,6 +35513,8 @@ public class AiApi {
     /**
      * Build call for postChatCompletions
      * @param openaiChatCompletionRequest  (required)
+     * @param xMaxCost The most this request may cost, in USD per 1,000 tokens. Routing picks only models under it; an org&#39;s own ceiling fills it when it is absent, and the lower of the two holds. (optional)
+     * @param xMaxLatencyMs The slowest model this request accepts, in milliseconds. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -35059,12 +35522,12 @@ public class AiApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success. </td><td>  * X-Routed-Model - The model that served a routed request, one that named auto or an id the router resolves. The body&#39;s model field names the same id. <br>  </td></tr>
         <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postChatCompletionsCall(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postChatCompletionsCall(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, @javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -35105,18 +35568,28 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
+        if (xMaxCost != null) {
+            localVarHeaderParams.put("X-Max-Cost", localVarApiClient.parameterToString(xMaxCost));
+        }
+
+
+        if (xMaxLatencyMs != null) {
+            localVarHeaderParams.put("X-Max-Latency-Ms", localVarApiClient.parameterToString(xMaxLatencyMs));
+        }
+
+
         String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postChatCompletionsValidateBeforeCall(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postChatCompletionsValidateBeforeCall(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, @javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'openaiChatCompletionRequest' is set
         if (openaiChatCompletionRequest == null) {
             throw new ApiException("Missing the required parameter 'openaiChatCompletionRequest' when calling postChatCompletions(Async)");
         }
 
-        return postChatCompletionsCall(openaiChatCompletionRequest, _callback);
+        return postChatCompletionsCall(openaiChatCompletionRequest, xMaxCost, xMaxLatencyMs, _callback);
 
     }
 
@@ -35124,19 +35597,21 @@ public class AiApi {
      * Implements the OpenAI-compatible chat completions API
      * Implements the OpenAI-compatible chat completions API
      * @param openaiChatCompletionRequest  (required)
+     * @param xMaxCost The most this request may cost, in USD per 1,000 tokens. Routing picks only models under it; an org&#39;s own ceiling fills it when it is absent, and the lower of the two holds. (optional)
+     * @param xMaxLatencyMs The slowest model this request accepts, in milliseconds. (optional)
      * @return OpenaiChatCompletionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success. </td><td>  * X-Routed-Model - The model that served a routed request, one that named auto or an id the router resolves. The body&#39;s model field names the same id. <br>  </td></tr>
         <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public OpenaiChatCompletionResponse postChatCompletions(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest) throws ApiException {
-        ApiResponse<OpenaiChatCompletionResponse> localVarResp = postChatCompletionsWithHttpInfo(openaiChatCompletionRequest);
+    public OpenaiChatCompletionResponse postChatCompletions(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, @javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs) throws ApiException {
+        ApiResponse<OpenaiChatCompletionResponse> localVarResp = postChatCompletionsWithHttpInfo(openaiChatCompletionRequest, xMaxCost, xMaxLatencyMs);
         return localVarResp.getData();
     }
 
@@ -35144,19 +35619,21 @@ public class AiApi {
      * Implements the OpenAI-compatible chat completions API
      * Implements the OpenAI-compatible chat completions API
      * @param openaiChatCompletionRequest  (required)
+     * @param xMaxCost The most this request may cost, in USD per 1,000 tokens. Routing picks only models under it; an org&#39;s own ceiling fills it when it is absent, and the lower of the two holds. (optional)
+     * @param xMaxLatencyMs The slowest model this request accepts, in milliseconds. (optional)
      * @return ApiResponse&lt;OpenaiChatCompletionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success. </td><td>  * X-Routed-Model - The model that served a routed request, one that named auto or an id the router resolves. The body&#39;s model field names the same id. <br>  </td></tr>
         <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OpenaiChatCompletionResponse> postChatCompletionsWithHttpInfo(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postChatCompletionsValidateBeforeCall(openaiChatCompletionRequest, null);
+    public ApiResponse<OpenaiChatCompletionResponse> postChatCompletionsWithHttpInfo(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, @javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs) throws ApiException {
+        okhttp3.Call localVarCall = postChatCompletionsValidateBeforeCall(openaiChatCompletionRequest, xMaxCost, xMaxLatencyMs, null);
         Type localVarReturnType = new TypeToken<OpenaiChatCompletionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -35165,6 +35642,8 @@ public class AiApi {
      * Implements the OpenAI-compatible chat completions API (asynchronously)
      * Implements the OpenAI-compatible chat completions API
      * @param openaiChatCompletionRequest  (required)
+     * @param xMaxCost The most this request may cost, in USD per 1,000 tokens. Routing picks only models under it; an org&#39;s own ceiling fills it when it is absent, and the lower of the two holds. (optional)
+     * @param xMaxLatencyMs The slowest model this request accepts, in milliseconds. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -35172,14 +35651,14 @@ public class AiApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success. </td><td>  * X-Routed-Model - The model that served a routed request, one that named auto or an id the router resolves. The body&#39;s model field names the same id. <br>  </td></tr>
         <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postChatCompletionsAsync(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, final ApiCallback<OpenaiChatCompletionResponse> _callback) throws ApiException {
+    public okhttp3.Call postChatCompletionsAsync(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, @javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs, final ApiCallback<OpenaiChatCompletionResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postChatCompletionsValidateBeforeCall(openaiChatCompletionRequest, _callback);
+        okhttp3.Call localVarCall = postChatCompletionsValidateBeforeCall(openaiChatCompletionRequest, xMaxCost, xMaxLatencyMs, _callback);
         Type localVarReturnType = new TypeToken<OpenaiChatCompletionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -35322,6 +35801,8 @@ public class AiApi {
     /**
      * Build call for postCompletions
      * @param openaiChatCompletionRequest  (required)
+     * @param xMaxCost The most this request may cost, in USD per 1,000 tokens. Routing picks only models under it; an org&#39;s own ceiling fills it when it is absent, and the lower of the two holds. (optional)
+     * @param xMaxLatencyMs The slowest model this request accepts, in milliseconds. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -35329,12 +35810,12 @@ public class AiApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success. </td><td>  * X-Routed-Model - The model that served a routed request, one that named auto or an id the router resolves. The body&#39;s model field names the same id. <br>  </td></tr>
         <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompletionsCall(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompletionsCall(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, @javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -35375,18 +35856,28 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
+        if (xMaxCost != null) {
+            localVarHeaderParams.put("X-Max-Cost", localVarApiClient.parameterToString(xMaxCost));
+        }
+
+
+        if (xMaxLatencyMs != null) {
+            localVarHeaderParams.put("X-Max-Latency-Ms", localVarApiClient.parameterToString(xMaxLatencyMs));
+        }
+
+
         String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCompletionsValidateBeforeCall(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCompletionsValidateBeforeCall(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, @javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'openaiChatCompletionRequest' is set
         if (openaiChatCompletionRequest == null) {
             throw new ApiException("Missing the required parameter 'openaiChatCompletionRequest' when calling postCompletions(Async)");
         }
 
-        return postCompletionsCall(openaiChatCompletionRequest, _callback);
+        return postCompletionsCall(openaiChatCompletionRequest, xMaxCost, xMaxLatencyMs, _callback);
 
     }
 
@@ -35394,19 +35885,21 @@ public class AiApi {
      * Implements the OpenAI-compatible chat completions API
      * Implements the OpenAI-compatible chat completions API
      * @param openaiChatCompletionRequest  (required)
+     * @param xMaxCost The most this request may cost, in USD per 1,000 tokens. Routing picks only models under it; an org&#39;s own ceiling fills it when it is absent, and the lower of the two holds. (optional)
+     * @param xMaxLatencyMs The slowest model this request accepts, in milliseconds. (optional)
      * @return OpenaiChatCompletionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success. </td><td>  * X-Routed-Model - The model that served a routed request, one that named auto or an id the router resolves. The body&#39;s model field names the same id. <br>  </td></tr>
         <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public OpenaiChatCompletionResponse postCompletions(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest) throws ApiException {
-        ApiResponse<OpenaiChatCompletionResponse> localVarResp = postCompletionsWithHttpInfo(openaiChatCompletionRequest);
+    public OpenaiChatCompletionResponse postCompletions(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, @javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs) throws ApiException {
+        ApiResponse<OpenaiChatCompletionResponse> localVarResp = postCompletionsWithHttpInfo(openaiChatCompletionRequest, xMaxCost, xMaxLatencyMs);
         return localVarResp.getData();
     }
 
@@ -35414,19 +35907,21 @@ public class AiApi {
      * Implements the OpenAI-compatible chat completions API
      * Implements the OpenAI-compatible chat completions API
      * @param openaiChatCompletionRequest  (required)
+     * @param xMaxCost The most this request may cost, in USD per 1,000 tokens. Routing picks only models under it; an org&#39;s own ceiling fills it when it is absent, and the lower of the two holds. (optional)
+     * @param xMaxLatencyMs The slowest model this request accepts, in milliseconds. (optional)
      * @return ApiResponse&lt;OpenaiChatCompletionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success. </td><td>  * X-Routed-Model - The model that served a routed request, one that named auto or an id the router resolves. The body&#39;s model field names the same id. <br>  </td></tr>
         <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OpenaiChatCompletionResponse> postCompletionsWithHttpInfo(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postCompletionsValidateBeforeCall(openaiChatCompletionRequest, null);
+    public ApiResponse<OpenaiChatCompletionResponse> postCompletionsWithHttpInfo(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, @javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs) throws ApiException {
+        okhttp3.Call localVarCall = postCompletionsValidateBeforeCall(openaiChatCompletionRequest, xMaxCost, xMaxLatencyMs, null);
         Type localVarReturnType = new TypeToken<OpenaiChatCompletionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -35435,6 +35930,8 @@ public class AiApi {
      * Implements the OpenAI-compatible chat completions API (asynchronously)
      * Implements the OpenAI-compatible chat completions API
      * @param openaiChatCompletionRequest  (required)
+     * @param xMaxCost The most this request may cost, in USD per 1,000 tokens. Routing picks only models under it; an org&#39;s own ceiling fills it when it is absent, and the lower of the two holds. (optional)
+     * @param xMaxLatencyMs The slowest model this request accepts, in milliseconds. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -35442,14 +35939,14 @@ public class AiApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success. </td><td>  * X-Routed-Model - The model that served a routed request, one that named auto or an id the router resolves. The body&#39;s model field names the same id. <br>  </td></tr>
         <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCompletionsAsync(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, final ApiCallback<OpenaiChatCompletionResponse> _callback) throws ApiException {
+    public okhttp3.Call postCompletionsAsync(@javax.annotation.Nonnull OpenaiChatCompletionRequest openaiChatCompletionRequest, @javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs, final ApiCallback<OpenaiChatCompletionResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCompletionsValidateBeforeCall(openaiChatCompletionRequest, _callback);
+        okhttp3.Call localVarCall = postCompletionsValidateBeforeCall(openaiChatCompletionRequest, xMaxCost, xMaxLatencyMs, _callback);
         Type localVarReturnType = new TypeToken<OpenaiChatCompletionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -36399,6 +36896,8 @@ public class AiApi {
     }
     /**
      * Build call for postResponses
+     * @param xMaxCost The most this request may cost, in USD per 1,000 tokens. Routing picks only models under it; an org&#39;s own ceiling fills it when it is absent, and the lower of the two holds. (optional)
+     * @param xMaxLatencyMs The slowest model this request accepts, in milliseconds. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -36406,12 +36905,12 @@ public class AiApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success. </td><td>  * X-Routed-Model - The model that served a routed request, one that named auto or an id the router resolves. The body&#39;s model field names the same id. <br>  </td></tr>
         <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postResponsesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postResponsesCall(@javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -36451,51 +36950,65 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
+        if (xMaxCost != null) {
+            localVarHeaderParams.put("X-Max-Cost", localVarApiClient.parameterToString(xMaxCost));
+        }
+
+
+        if (xMaxLatencyMs != null) {
+            localVarHeaderParams.put("X-Max-Latency-Ms", localVarApiClient.parameterToString(xMaxLatencyMs));
+        }
+
+
         String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postResponsesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postResponsesCall(_callback);
+    private okhttp3.Call postResponsesValidateBeforeCall(@javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs, final ApiCallback _callback) throws ApiException {
+        return postResponsesCall(xMaxCost, xMaxLatencyMs, _callback);
 
     }
 
     /**
      * Implements POST /v1/responses.
      * Implements POST /v1/responses. The converted request is completed by the chat path, which is handed a sink saying where the answer goes: a stream is translated as it is produced, a whole body is translated entire.
+     * @param xMaxCost The most this request may cost, in USD per 1,000 tokens. Routing picks only models under it; an org&#39;s own ceiling fills it when it is absent, and the lower of the two holds. (optional)
+     * @param xMaxLatencyMs The slowest model this request accepts, in milliseconds. (optional)
      * @return AiResponsesResource
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success. </td><td>  * X-Routed-Model - The model that served a routed request, one that named auto or an id the router resolves. The body&#39;s model field names the same id. <br>  </td></tr>
         <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public AiResponsesResource postResponses() throws ApiException {
-        ApiResponse<AiResponsesResource> localVarResp = postResponsesWithHttpInfo();
+    public AiResponsesResource postResponses(@javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs) throws ApiException {
+        ApiResponse<AiResponsesResource> localVarResp = postResponsesWithHttpInfo(xMaxCost, xMaxLatencyMs);
         return localVarResp.getData();
     }
 
     /**
      * Implements POST /v1/responses.
      * Implements POST /v1/responses. The converted request is completed by the chat path, which is handed a sink saying where the answer goes: a stream is translated as it is produced, a whole body is translated entire.
+     * @param xMaxCost The most this request may cost, in USD per 1,000 tokens. Routing picks only models under it; an org&#39;s own ceiling fills it when it is absent, and the lower of the two holds. (optional)
+     * @param xMaxLatencyMs The slowest model this request accepts, in milliseconds. (optional)
      * @return ApiResponse&lt;AiResponsesResource&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success. </td><td>  * X-Routed-Model - The model that served a routed request, one that named auto or an id the router resolves. The body&#39;s model field names the same id. <br>  </td></tr>
         <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AiResponsesResource> postResponsesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postResponsesValidateBeforeCall(null);
+    public ApiResponse<AiResponsesResource> postResponsesWithHttpInfo(@javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs) throws ApiException {
+        okhttp3.Call localVarCall = postResponsesValidateBeforeCall(xMaxCost, xMaxLatencyMs, null);
         Type localVarReturnType = new TypeToken<AiResponsesResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -36503,6 +37016,8 @@ public class AiApi {
     /**
      * Implements POST /v1/responses. (asynchronously)
      * Implements POST /v1/responses. The converted request is completed by the chat path, which is handed a sink saying where the answer goes: a stream is translated as it is produced, a whole body is translated entire.
+     * @param xMaxCost The most this request may cost, in USD per 1,000 tokens. Routing picks only models under it; an org&#39;s own ceiling fills it when it is absent, and the lower of the two holds. (optional)
+     * @param xMaxLatencyMs The slowest model this request accepts, in milliseconds. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -36510,14 +37025,14 @@ public class AiApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Success. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Success. </td><td>  * X-Routed-Model - The model that served a routed request, one that named auto or an id the router resolves. The body&#39;s model field names the same id. <br>  </td></tr>
         <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postResponsesAsync(final ApiCallback<AiResponsesResource> _callback) throws ApiException {
+    public okhttp3.Call postResponsesAsync(@javax.annotation.Nullable BigDecimal xMaxCost, @javax.annotation.Nullable Integer xMaxLatencyMs, final ApiCallback<AiResponsesResource> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postResponsesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postResponsesValidateBeforeCall(xMaxCost, xMaxLatencyMs, _callback);
         Type localVarReturnType = new TypeToken<AiResponsesResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

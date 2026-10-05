@@ -14,7 +14,6 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.AiDecisionSidesFalse;
 import ai.hanzo.cloud.model.AiDecisionsAction;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -78,7 +77,7 @@ public class AiDecisionsAnswer {
   public static final String SERIALIZED_NAME_LEGEND = "legend";
   @SerializedName(SERIALIZED_NAME_LEGEND)
   @javax.annotation.Nullable
-  private Map<String, AiDecisionSidesFalse> legend = new HashMap<>();
+  private Map<String, Object> legend = new HashMap<>();
 
   public static final String SERIALIZED_NAME_NOUL = "noul";
   @SerializedName(SERIALIZED_NAME_NOUL)
@@ -233,12 +232,12 @@ public class AiDecisionsAnswer {
   }
 
 
-  public AiDecisionsAnswer legend(@javax.annotation.Nullable Map<String, AiDecisionSidesFalse> legend) {
+  public AiDecisionsAnswer legend(@javax.annotation.Nullable Map<String, Object> legend) {
     this.legend = legend;
     return this;
   }
 
-  public AiDecisionsAnswer putLegendItem(String key, AiDecisionSidesFalse legendItem) {
+  public AiDecisionsAnswer putLegendItem(String key, Object legendItem) {
     if (this.legend == null) {
       this.legend = new HashMap<>();
     }
@@ -251,11 +250,11 @@ public class AiDecisionsAnswer {
    * @return legend
    */
   @javax.annotation.Nullable
-  public Map<String, AiDecisionSidesFalse> getLegend() {
+  public Map<String, Object> getLegend() {
     return legend;
   }
 
-  public void setLegend(@javax.annotation.Nullable Map<String, AiDecisionSidesFalse> legend) {
+  public void setLegend(@javax.annotation.Nullable Map<String, Object> legend) {
     this.legend = legend;
   }
 

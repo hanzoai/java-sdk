@@ -31,6 +31,7 @@ import ai.hanzo.cloud.model.AutoAutomation;
 import ai.hanzo.cloud.model.AutoAutomationIn;
 import ai.hanzo.cloud.model.AutoAutomationPage;
 import ai.hanzo.cloud.model.AutoAutomationPatch;
+import ai.hanzo.cloud.model.AutoAutomationRun;
 import ai.hanzo.cloud.model.AutoAutomationRunPage;
 import ai.hanzo.cloud.model.AutoCatalog;
 import ai.hanzo.cloud.model.AutoCreateFlowReq;
@@ -41,6 +42,7 @@ import ai.hanzo.cloud.model.AutoFlowRun;
 import ai.hanzo.cloud.model.AutoFlowVersion;
 import ai.hanzo.cloud.model.AutoPatchFlowIn;
 import ai.hanzo.cloud.model.AutoPopulatedFlow;
+import ai.hanzo.cloud.model.AutoReviewIn;
 import ai.hanzo.cloud.model.AutoRunIn;
 import ai.hanzo.cloud.model.AutoRunPage;
 import ai.hanzo.cloud.model.AutoRunResp;
@@ -2217,6 +2219,158 @@ public class AutoApi {
 
         okhttp3.Call localVarCall = postAutoAutomationsByIdRunValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<AutoRunStarted>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postAutoAutomationsByIdRunsByRunReview
+     * @param id ID is the automation, and Run its run in review, from the path. (required)
+     * @param run  (required)
+     * @param autoReviewIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAutoAutomationsByIdRunsByRunReviewCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String run, @javax.annotation.Nonnull AutoReviewIn autoReviewIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = autoReviewIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/auto/automations/{id}/runs/{run}/review"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
+            .replace("{" + "run" + "}", localVarApiClient.escapeString(run.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postAutoAutomationsByIdRunsByRunReviewValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String run, @javax.annotation.Nonnull AutoReviewIn autoReviewIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postAutoAutomationsByIdRunsByRunReview(Async)");
+        }
+
+        // verify the required parameter 'run' is set
+        if (run == null) {
+            throw new ApiException("Missing the required parameter 'run' when calling postAutoAutomationsByIdRunsByRunReview(Async)");
+        }
+
+        // verify the required parameter 'autoReviewIn' is set
+        if (autoReviewIn == null) {
+            throw new ApiException("Missing the required parameter 'autoReviewIn' when calling postAutoAutomationsByIdRunsByRunReview(Async)");
+        }
+
+        return postAutoAutomationsByIdRunsByRunReviewCall(id, run, autoReviewIn, _callback);
+
+    }
+
+    /**
+     * Answers a run that holds a post for review, for the person the automation runs as or an admin of the org: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it.
+     * Answers a run that holds a post for review, for the person the automation runs as or an admin of the org: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it. A run not in review answers 409; one held longer than a day is not posted.
+     * @param id ID is the automation, and Run its run in review, from the path. (required)
+     * @param run  (required)
+     * @param autoReviewIn  (required)
+     * @return AutoAutomationRun
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public AutoAutomationRun postAutoAutomationsByIdRunsByRunReview(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String run, @javax.annotation.Nonnull AutoReviewIn autoReviewIn) throws ApiException {
+        ApiResponse<AutoAutomationRun> localVarResp = postAutoAutomationsByIdRunsByRunReviewWithHttpInfo(id, run, autoReviewIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Answers a run that holds a post for review, for the person the automation runs as or an admin of the org: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it.
+     * Answers a run that holds a post for review, for the person the automation runs as or an admin of the org: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it. A run not in review answers 409; one held longer than a day is not posted.
+     * @param id ID is the automation, and Run its run in review, from the path. (required)
+     * @param run  (required)
+     * @param autoReviewIn  (required)
+     * @return ApiResponse&lt;AutoAutomationRun&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AutoAutomationRun> postAutoAutomationsByIdRunsByRunReviewWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String run, @javax.annotation.Nonnull AutoReviewIn autoReviewIn) throws ApiException {
+        okhttp3.Call localVarCall = postAutoAutomationsByIdRunsByRunReviewValidateBeforeCall(id, run, autoReviewIn, null);
+        Type localVarReturnType = new TypeToken<AutoAutomationRun>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Answers a run that holds a post for review, for the person the automation runs as or an admin of the org: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it. (asynchronously)
+     * Answers a run that holds a post for review, for the person the automation runs as or an admin of the org: &#x60;post&#x60; true posts it to the automation&#39;s accounts and answers the run while it posts; false discards it. A run not in review answers 409; one held longer than a day is not posted.
+     * @param id ID is the automation, and Run its run in review, from the path. (required)
+     * @param run  (required)
+     * @param autoReviewIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postAutoAutomationsByIdRunsByRunReviewAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String run, @javax.annotation.Nonnull AutoReviewIn autoReviewIn, final ApiCallback<AutoAutomationRun> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postAutoAutomationsByIdRunsByRunReviewValidateBeforeCall(id, run, autoReviewIn, _callback);
+        Type localVarReturnType = new TypeToken<AutoAutomationRun>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

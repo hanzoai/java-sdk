@@ -14,17 +14,16 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.AiDecisionSides;
+import ai.hanzo.cloud.model.TaskComment;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,164 +49,66 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * AiDecisionsNoul
+ * TaskCommentList
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class AiDecisionsNoul {
-  public static final String SERIALIZED_NAME_CRITERIA = "criteria";
-  @SerializedName(SERIALIZED_NAME_CRITERIA)
+public class TaskCommentList {
+  public static final String SERIALIZED_NAME_DATA = "data";
+  @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private AiDecisionSides criteria;
+  private List<TaskComment> data = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_INSTRUCTIONS = "instructions";
-  @SerializedName(SERIALIZED_NAME_INSTRUCTIONS)
+  public static final String SERIALIZED_NAME_HOME = "home";
+  @SerializedName(SERIALIZED_NAME_HOME)
   @javax.annotation.Nullable
-  private Object instructions = null;
+  private String home;
 
-  public static final String SERIALIZED_NAME_LABELS = "labels";
-  @SerializedName(SERIALIZED_NAME_LABELS)
-  @javax.annotation.Nullable
-  private Map<String, String> labels = new HashMap<>();
-
-  /**
-   * Gets or Sets type
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    NOUL("noul");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      TypeEnum.fromValue(value);
-    }
+  public TaskCommentList() {
   }
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  @javax.annotation.Nonnull
-  private TypeEnum type;
-
-  public AiDecisionsNoul() {
+  public TaskCommentList data(@javax.annotation.Nullable List<TaskComment> data) {
+    this.data = data;
+    return this;
   }
 
-  public AiDecisionsNoul criteria(@javax.annotation.Nullable AiDecisionSides criteria) {
-    this.criteria = criteria;
+  public TaskCommentList addDataItem(TaskComment dataItem) {
+    if (this.data == null) {
+      this.data = new ArrayList<>();
+    }
+    this.data.add(dataItem);
     return this;
   }
 
   /**
-   * Get criteria
-   * @return criteria
+   * Data is the conversation. Empty is an empty array, never null.
+   * @return data
    */
   @javax.annotation.Nullable
-  public AiDecisionSides getCriteria() {
-    return criteria;
+  public List<TaskComment> getData() {
+    return data;
   }
 
-  public void setCriteria(@javax.annotation.Nullable AiDecisionSides criteria) {
-    this.criteria = criteria;
+  public void setData(@javax.annotation.Nullable List<TaskComment> data) {
+    this.data = data;
   }
 
 
-  public AiDecisionsNoul instructions(@javax.annotation.Nullable Object instructions) {
-    this.instructions = instructions;
+  public TaskCommentList home(@javax.annotation.Nullable String home) {
+    this.home = home;
     return this;
   }
 
   /**
-   * Get instructions
-   * @return instructions
+   * Home is the GitHub repository (owner/name) the issue lives on when its board mirrors one; its conversation is read there, and Data is then empty.
+   * @return home
    */
   @javax.annotation.Nullable
-  public Object getInstructions() {
-    return instructions;
+  public String getHome() {
+    return home;
   }
 
-  public void setInstructions(@javax.annotation.Nullable Object instructions) {
-    this.instructions = instructions;
-  }
-
-
-  public AiDecisionsNoul labels(@javax.annotation.Nullable Map<String, String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public AiDecisionsNoul putLabelsItem(String key, String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new HashMap<>();
-    }
-    this.labels.put(key, labelsItem);
-    return this;
-  }
-
-  /**
-   * Get labels
-   * @return labels
-   */
-  @javax.annotation.Nullable
-  public Map<String, String> getLabels() {
-    return labels;
-  }
-
-  public void setLabels(@javax.annotation.Nullable Map<String, String> labels) {
-    this.labels = labels;
-  }
-
-
-  public AiDecisionsNoul type(@javax.annotation.Nonnull TypeEnum type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @javax.annotation.Nonnull
-  public TypeEnum getType() {
-    return type;
-  }
-
-  public void setType(@javax.annotation.Nonnull TypeEnum type) {
-    this.type = type;
+  public void setHome(@javax.annotation.Nullable String home) {
+    this.home = home;
   }
 
   /**
@@ -223,9 +124,9 @@ public class AiDecisionsNoul {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the AiDecisionsNoul instance itself
+   * @return the TaskCommentList instance itself
    */
-  public AiDecisionsNoul putAdditionalProperty(String key, Object value) {
+  public TaskCommentList putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -264,38 +165,23 @@ public class AiDecisionsNoul {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AiDecisionsNoul aiDecisionsNoul = (AiDecisionsNoul) o;
-    return Objects.equals(this.criteria, aiDecisionsNoul.criteria) &&
-        Objects.equals(this.instructions, aiDecisionsNoul.instructions) &&
-        Objects.equals(this.labels, aiDecisionsNoul.labels) &&
-        Objects.equals(this.type, aiDecisionsNoul.type)&&
-        Objects.equals(this.additionalProperties, aiDecisionsNoul.additionalProperties);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    TaskCommentList taskCommentList = (TaskCommentList) o;
+    return Objects.equals(this.data, taskCommentList.data) &&
+        Objects.equals(this.home, taskCommentList.home)&&
+        Objects.equals(this.additionalProperties, taskCommentList.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(criteria, instructions, labels, type, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(data, home, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AiDecisionsNoul {\n");
-    sb.append("    criteria: ").append(toIndentedString(criteria)).append("\n");
-    sb.append("    instructions: ").append(toIndentedString(instructions)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("class TaskCommentList {\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    home: ").append(toIndentedString(home)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -318,57 +204,58 @@ public class AiDecisionsNoul {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("criteria", "instructions", "labels", "type"));
+    openapiFields = new HashSet<String>(Arrays.asList("data", "home"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("type"));
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to AiDecisionsNoul
+   * @throws IOException if the JSON Element is invalid with respect to TaskCommentList
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!AiDecisionsNoul.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AiDecisionsNoul is not found in the empty JSON string", AiDecisionsNoul.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : AiDecisionsNoul.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        if (!TaskCommentList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in TaskCommentList is not found in the empty JSON string", TaskCommentList.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `criteria`
-      if (jsonObj.get("criteria") != null && !jsonObj.get("criteria").isJsonNull()) {
-        AiDecisionSides.validateJsonElement(jsonObj.get("criteria"));
+      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
+        JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
+        if (jsonArraydata != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("data").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
+          }
+
+          // validate the optional field `data` (array)
+          for (int i = 0; i < jsonArraydata.size(); i++) {
+            TaskComment.validateJsonElement(jsonArraydata.get(i));
+          };
+        }
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      if ((jsonObj.get("home") != null && !jsonObj.get("home").isJsonNull()) && !jsonObj.get("home").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `home` to be a primitive type in the JSON string but got `%s`", jsonObj.get("home").toString()));
       }
-      // validate the required field `type`
-      TypeEnum.validateJsonElement(jsonObj.get("type"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!AiDecisionsNoul.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'AiDecisionsNoul' and its subtypes
+       if (!TaskCommentList.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'TaskCommentList' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<AiDecisionsNoul> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(AiDecisionsNoul.class));
+       final TypeAdapter<TaskCommentList> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(TaskCommentList.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<AiDecisionsNoul>() {
+       return (TypeAdapter<T>) new TypeAdapter<TaskCommentList>() {
            @Override
-           public void write(JsonWriter out, AiDecisionsNoul value) throws IOException {
+           public void write(JsonWriter out, TaskCommentList value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -396,12 +283,12 @@ public class AiDecisionsNoul {
            }
 
            @Override
-           public AiDecisionsNoul read(JsonReader in) throws IOException {
+           public TaskCommentList read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             AiDecisionsNoul instance = thisAdapter.fromJsonTree(jsonObj);
+             TaskCommentList instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -428,18 +315,18 @@ public class AiDecisionsNoul {
   }
 
   /**
-   * Create an instance of AiDecisionsNoul given an JSON string
+   * Create an instance of TaskCommentList given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of AiDecisionsNoul
-   * @throws IOException if the JSON string is invalid with respect to AiDecisionsNoul
+   * @return An instance of TaskCommentList
+   * @throws IOException if the JSON string is invalid with respect to TaskCommentList
    */
-  public static AiDecisionsNoul fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, AiDecisionsNoul.class);
+  public static TaskCommentList fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, TaskCommentList.class);
   }
 
   /**
-   * Convert an instance of AiDecisionsNoul to an JSON string
+   * Convert an instance of TaskCommentList to an JSON string
    *
    * @return JSON string
    */

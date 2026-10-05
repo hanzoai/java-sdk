@@ -14,7 +14,6 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.AiDecisionSidesFalse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,17 +54,17 @@ public class AiDecisionSides {
   public static final String SERIALIZED_NAME_FALSE = "false";
   @SerializedName(SERIALIZED_NAME_FALSE)
   @javax.annotation.Nullable
-  private AiDecisionSidesFalse _false;
+  private Object _false = null;
 
   public static final String SERIALIZED_NAME_TRUE = "true";
   @SerializedName(SERIALIZED_NAME_TRUE)
   @javax.annotation.Nullable
-  private AiDecisionSidesFalse _true;
+  private Object _true = null;
 
   public AiDecisionSides() {
   }
 
-  public AiDecisionSides _false(@javax.annotation.Nullable AiDecisionSidesFalse _false) {
+  public AiDecisionSides _false(@javax.annotation.Nullable Object _false) {
     this._false = _false;
     return this;
   }
@@ -74,16 +74,16 @@ public class AiDecisionSides {
    * @return _false
    */
   @javax.annotation.Nullable
-  public AiDecisionSidesFalse getFalse() {
+  public Object getFalse() {
     return _false;
   }
 
-  public void setFalse(@javax.annotation.Nullable AiDecisionSidesFalse _false) {
+  public void setFalse(@javax.annotation.Nullable Object _false) {
     this._false = _false;
   }
 
 
-  public AiDecisionSides _true(@javax.annotation.Nullable AiDecisionSidesFalse _true) {
+  public AiDecisionSides _true(@javax.annotation.Nullable Object _true) {
     this._true = _true;
     return this;
   }
@@ -93,11 +93,11 @@ public class AiDecisionSides {
    * @return _true
    */
   @javax.annotation.Nullable
-  public AiDecisionSidesFalse getTrue() {
+  public Object getTrue() {
     return _true;
   }
 
-  public void setTrue(@javax.annotation.Nullable AiDecisionSidesFalse _true) {
+  public void setTrue(@javax.annotation.Nullable Object _true) {
     this._true = _true;
   }
 
@@ -161,9 +161,20 @@ public class AiDecisionSides {
         Objects.equals(this.additionalProperties, aiDecisionSides.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(_false, _true, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -213,14 +224,6 @@ public class AiDecisionSides {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `false`
-      if (jsonObj.get("false") != null && !jsonObj.get("false").isJsonNull()) {
-        AiDecisionSidesFalse.validateJsonElement(jsonObj.get("false"));
-      }
-      // validate the optional field `true`
-      if (jsonObj.get("true") != null && !jsonObj.get("true").isJsonNull()) {
-        AiDecisionSidesFalse.validateJsonElement(jsonObj.get("true"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

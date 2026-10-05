@@ -14,7 +14,6 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.AiDecisionSides;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,9 +21,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,164 +46,130 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * AiDecisionsNoul
+ * AiPrice
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class AiDecisionsNoul {
-  public static final String SERIALIZED_NAME_CRITERIA = "criteria";
-  @SerializedName(SERIALIZED_NAME_CRITERIA)
+public class AiPrice {
+  public static final String SERIALIZED_NAME_COMPLETION = "completion";
+  @SerializedName(SERIALIZED_NAME_COMPLETION)
   @javax.annotation.Nullable
-  private AiDecisionSides criteria;
+  private String completion;
 
-  public static final String SERIALIZED_NAME_INSTRUCTIONS = "instructions";
-  @SerializedName(SERIALIZED_NAME_INSTRUCTIONS)
+  public static final String SERIALIZED_NAME_INPUT_PER_MILLION = "input_per_million";
+  @SerializedName(SERIALIZED_NAME_INPUT_PER_MILLION)
   @javax.annotation.Nullable
-  private Object instructions = null;
+  private Double inputPerMillion;
 
-  public static final String SERIALIZED_NAME_LABELS = "labels";
-  @SerializedName(SERIALIZED_NAME_LABELS)
+  public static final String SERIALIZED_NAME_OUTPUT_PER_MILLION = "output_per_million";
+  @SerializedName(SERIALIZED_NAME_OUTPUT_PER_MILLION)
   @javax.annotation.Nullable
-  private Map<String, String> labels = new HashMap<>();
+  private Double outputPerMillion;
 
-  /**
-   * Gets or Sets type
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    NOUL("noul");
+  public static final String SERIALIZED_NAME_PROMPT = "prompt";
+  @SerializedName(SERIALIZED_NAME_PROMPT)
+  @javax.annotation.Nullable
+  private String prompt;
 
-    private String value;
+  public static final String SERIALIZED_NAME_VARIABLE = "variable";
+  @SerializedName(SERIALIZED_NAME_VARIABLE)
+  @javax.annotation.Nullable
+  private Boolean variable;
 
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      TypeEnum.fromValue(value);
-    }
+  public AiPrice() {
   }
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  @javax.annotation.Nonnull
-  private TypeEnum type;
-
-  public AiDecisionsNoul() {
-  }
-
-  public AiDecisionsNoul criteria(@javax.annotation.Nullable AiDecisionSides criteria) {
-    this.criteria = criteria;
+  public AiPrice completion(@javax.annotation.Nullable String completion) {
+    this.completion = completion;
     return this;
   }
 
   /**
-   * Get criteria
-   * @return criteria
+   * Completion is the price of one output token, a decimal string.
+   * @return completion
    */
   @javax.annotation.Nullable
-  public AiDecisionSides getCriteria() {
-    return criteria;
+  public String getCompletion() {
+    return completion;
   }
 
-  public void setCriteria(@javax.annotation.Nullable AiDecisionSides criteria) {
-    this.criteria = criteria;
+  public void setCompletion(@javax.annotation.Nullable String completion) {
+    this.completion = completion;
   }
 
 
-  public AiDecisionsNoul instructions(@javax.annotation.Nullable Object instructions) {
-    this.instructions = instructions;
+  public AiPrice inputPerMillion(@javax.annotation.Nullable Double inputPerMillion) {
+    this.inputPerMillion = inputPerMillion;
     return this;
   }
 
   /**
-   * Get instructions
-   * @return instructions
+   * InputPerMillion is the price of a million input tokens.
+   * @return inputPerMillion
    */
   @javax.annotation.Nullable
-  public Object getInstructions() {
-    return instructions;
+  public Double getInputPerMillion() {
+    return inputPerMillion;
   }
 
-  public void setInstructions(@javax.annotation.Nullable Object instructions) {
-    this.instructions = instructions;
+  public void setInputPerMillion(@javax.annotation.Nullable Double inputPerMillion) {
+    this.inputPerMillion = inputPerMillion;
   }
 
 
-  public AiDecisionsNoul labels(@javax.annotation.Nullable Map<String, String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public AiDecisionsNoul putLabelsItem(String key, String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new HashMap<>();
-    }
-    this.labels.put(key, labelsItem);
+  public AiPrice outputPerMillion(@javax.annotation.Nullable Double outputPerMillion) {
+    this.outputPerMillion = outputPerMillion;
     return this;
   }
 
   /**
-   * Get labels
-   * @return labels
+   * OutputPerMillion is the price of a million output tokens.
+   * @return outputPerMillion
    */
   @javax.annotation.Nullable
-  public Map<String, String> getLabels() {
-    return labels;
+  public Double getOutputPerMillion() {
+    return outputPerMillion;
   }
 
-  public void setLabels(@javax.annotation.Nullable Map<String, String> labels) {
-    this.labels = labels;
+  public void setOutputPerMillion(@javax.annotation.Nullable Double outputPerMillion) {
+    this.outputPerMillion = outputPerMillion;
   }
 
 
-  public AiDecisionsNoul type(@javax.annotation.Nonnull TypeEnum type) {
-    this.type = type;
+  public AiPrice prompt(@javax.annotation.Nullable String prompt) {
+    this.prompt = prompt;
     return this;
   }
 
   /**
-   * Get type
-   * @return type
+   * Prompt is the price of one input token, a decimal string.
+   * @return prompt
    */
-  @javax.annotation.Nonnull
-  public TypeEnum getType() {
-    return type;
+  @javax.annotation.Nullable
+  public String getPrompt() {
+    return prompt;
   }
 
-  public void setType(@javax.annotation.Nonnull TypeEnum type) {
-    this.type = type;
+  public void setPrompt(@javax.annotation.Nullable String prompt) {
+    this.prompt = prompt;
+  }
+
+
+  public AiPrice variable(@javax.annotation.Nullable Boolean variable) {
+    this.variable = variable;
+    return this;
+  }
+
+  /**
+   * Variable is true for a router that bills each answer at the price of the model that gave it; the figures above are then that router&#39;s ceiling.
+   * @return variable
+   */
+  @javax.annotation.Nullable
+  public Boolean getVariable() {
+    return variable;
+  }
+
+  public void setVariable(@javax.annotation.Nullable Boolean variable) {
+    this.variable = variable;
   }
 
   /**
@@ -223,9 +185,9 @@ public class AiDecisionsNoul {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the AiDecisionsNoul instance itself
+   * @return the AiPrice instance itself
    */
-  public AiDecisionsNoul putAdditionalProperty(String key, Object value) {
+  public AiPrice putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -264,38 +226,29 @@ public class AiDecisionsNoul {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AiDecisionsNoul aiDecisionsNoul = (AiDecisionsNoul) o;
-    return Objects.equals(this.criteria, aiDecisionsNoul.criteria) &&
-        Objects.equals(this.instructions, aiDecisionsNoul.instructions) &&
-        Objects.equals(this.labels, aiDecisionsNoul.labels) &&
-        Objects.equals(this.type, aiDecisionsNoul.type)&&
-        Objects.equals(this.additionalProperties, aiDecisionsNoul.additionalProperties);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    AiPrice aiPrice = (AiPrice) o;
+    return Objects.equals(this.completion, aiPrice.completion) &&
+        Objects.equals(this.inputPerMillion, aiPrice.inputPerMillion) &&
+        Objects.equals(this.outputPerMillion, aiPrice.outputPerMillion) &&
+        Objects.equals(this.prompt, aiPrice.prompt) &&
+        Objects.equals(this.variable, aiPrice.variable)&&
+        Objects.equals(this.additionalProperties, aiPrice.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(criteria, instructions, labels, type, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(completion, inputPerMillion, outputPerMillion, prompt, variable, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AiDecisionsNoul {\n");
-    sb.append("    criteria: ").append(toIndentedString(criteria)).append("\n");
-    sb.append("    instructions: ").append(toIndentedString(instructions)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("class AiPrice {\n");
+    sb.append("    completion: ").append(toIndentedString(completion)).append("\n");
+    sb.append("    inputPerMillion: ").append(toIndentedString(inputPerMillion)).append("\n");
+    sb.append("    outputPerMillion: ").append(toIndentedString(outputPerMillion)).append("\n");
+    sb.append("    prompt: ").append(toIndentedString(prompt)).append("\n");
+    sb.append("    variable: ").append(toIndentedString(variable)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -318,57 +271,47 @@ public class AiDecisionsNoul {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("criteria", "instructions", "labels", "type"));
+    openapiFields = new HashSet<String>(Arrays.asList("completion", "input_per_million", "output_per_million", "prompt", "variable"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("type"));
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to AiDecisionsNoul
+   * @throws IOException if the JSON Element is invalid with respect to AiPrice
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!AiDecisionsNoul.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AiDecisionsNoul is not found in the empty JSON string", AiDecisionsNoul.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : AiDecisionsNoul.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        if (!AiPrice.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AiPrice is not found in the empty JSON string", AiPrice.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `criteria`
-      if (jsonObj.get("criteria") != null && !jsonObj.get("criteria").isJsonNull()) {
-        AiDecisionSides.validateJsonElement(jsonObj.get("criteria"));
+      if ((jsonObj.get("completion") != null && !jsonObj.get("completion").isJsonNull()) && !jsonObj.get("completion").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `completion` to be a primitive type in the JSON string but got `%s`", jsonObj.get("completion").toString()));
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      if ((jsonObj.get("prompt") != null && !jsonObj.get("prompt").isJsonNull()) && !jsonObj.get("prompt").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `prompt` to be a primitive type in the JSON string but got `%s`", jsonObj.get("prompt").toString()));
       }
-      // validate the required field `type`
-      TypeEnum.validateJsonElement(jsonObj.get("type"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!AiDecisionsNoul.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'AiDecisionsNoul' and its subtypes
+       if (!AiPrice.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AiPrice' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<AiDecisionsNoul> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(AiDecisionsNoul.class));
+       final TypeAdapter<AiPrice> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AiPrice.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<AiDecisionsNoul>() {
+       return (TypeAdapter<T>) new TypeAdapter<AiPrice>() {
            @Override
-           public void write(JsonWriter out, AiDecisionsNoul value) throws IOException {
+           public void write(JsonWriter out, AiPrice value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -396,12 +339,12 @@ public class AiDecisionsNoul {
            }
 
            @Override
-           public AiDecisionsNoul read(JsonReader in) throws IOException {
+           public AiPrice read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             AiDecisionsNoul instance = thisAdapter.fromJsonTree(jsonObj);
+             AiPrice instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -428,18 +371,18 @@ public class AiDecisionsNoul {
   }
 
   /**
-   * Create an instance of AiDecisionsNoul given an JSON string
+   * Create an instance of AiPrice given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of AiDecisionsNoul
-   * @throws IOException if the JSON string is invalid with respect to AiDecisionsNoul
+   * @return An instance of AiPrice
+   * @throws IOException if the JSON string is invalid with respect to AiPrice
    */
-  public static AiDecisionsNoul fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, AiDecisionsNoul.class);
+  public static AiPrice fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AiPrice.class);
   }
 
   /**
-   * Convert an instance of AiDecisionsNoul to an JSON string
+   * Convert an instance of AiPrice to an JSON string
    *
    * @return JSON string
    */

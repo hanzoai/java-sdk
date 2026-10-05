@@ -29,6 +29,7 @@ import java.io.IOException;
 
 import ai.hanzo.cloud.model.ProblemDetails;
 import ai.hanzo.cloud.model.TaskBoardView;
+import ai.hanzo.cloud.model.TaskCommentList;
 import ai.hanzo.cloud.model.TaskIssueEdit;
 import ai.hanzo.cloud.model.TaskIssueHit;
 import ai.hanzo.cloud.model.TaskIssueHits;
@@ -1122,6 +1123,148 @@ public class TaskApi {
 
         okhttp3.Call localVarCall = getTaskProjectsByKeyIssuesByNumValidateBeforeCall(key, num, _callback);
         Type localVarReturnType = new TypeToken<TaskIssueView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getTaskProjectsByKeyIssuesByNumComments
+     * @param key Key is the board — the repository name, or an index board&#39;s key. (required)
+     * @param num Num is the issue&#39;s number on that board. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTaskProjectsByKeyIssuesByNumCommentsCall(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/task/projects/{key}/issues/{num}/comments"
+            .replace("{" + "key" + "}", localVarApiClient.escapeString(key.toString()))
+            .replace("{" + "num" + "}", localVarApiClient.escapeString(num.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTaskProjectsByKeyIssuesByNumCommentsValidateBeforeCall(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'key' is set
+        if (key == null) {
+            throw new ApiException("Missing the required parameter 'key' when calling getTaskProjectsByKeyIssuesByNumComments(Async)");
+        }
+
+        // verify the required parameter 'num' is set
+        if (num == null) {
+            throw new ApiException("Missing the required parameter 'num' when calling getTaskProjectsByKeyIssuesByNumComments(Async)");
+        }
+
+        return getTaskProjectsByKeyIssuesByNumCommentsCall(key, num, _callback);
+
+    }
+
+    /**
+     * Is one issue&#39;s conversation, oldest first, read as the caller.
+     * Is one issue&#39;s conversation, oldest first, read as the caller. An issue that lives on GitHub names its home and is read there.
+     * @param key Key is the board — the repository name, or an index board&#39;s key. (required)
+     * @param num Num is the issue&#39;s number on that board. (required)
+     * @return TaskCommentList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public TaskCommentList getTaskProjectsByKeyIssuesByNumComments(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num) throws ApiException {
+        ApiResponse<TaskCommentList> localVarResp = getTaskProjectsByKeyIssuesByNumCommentsWithHttpInfo(key, num);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Is one issue&#39;s conversation, oldest first, read as the caller.
+     * Is one issue&#39;s conversation, oldest first, read as the caller. An issue that lives on GitHub names its home and is read there.
+     * @param key Key is the board — the repository name, or an index board&#39;s key. (required)
+     * @param num Num is the issue&#39;s number on that board. (required)
+     * @return ApiResponse&lt;TaskCommentList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TaskCommentList> getTaskProjectsByKeyIssuesByNumCommentsWithHttpInfo(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num) throws ApiException {
+        okhttp3.Call localVarCall = getTaskProjectsByKeyIssuesByNumCommentsValidateBeforeCall(key, num, null);
+        Type localVarReturnType = new TypeToken<TaskCommentList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Is one issue&#39;s conversation, oldest first, read as the caller. (asynchronously)
+     * Is one issue&#39;s conversation, oldest first, read as the caller. An issue that lives on GitHub names its home and is read there.
+     * @param key Key is the board — the repository name, or an index board&#39;s key. (required)
+     * @param num Num is the issue&#39;s number on that board. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> refused </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTaskProjectsByKeyIssuesByNumCommentsAsync(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num, final ApiCallback<TaskCommentList> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTaskProjectsByKeyIssuesByNumCommentsValidateBeforeCall(key, num, _callback);
+        Type localVarReturnType = new TypeToken<TaskCommentList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

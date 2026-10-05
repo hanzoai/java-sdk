@@ -14,7 +14,6 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.AiDecisionSides;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,9 +21,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,164 +46,82 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * AiDecisionsNoul
+ * AutoPostResult
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class AiDecisionsNoul {
-  public static final String SERIALIZED_NAME_CRITERIA = "criteria";
-  @SerializedName(SERIALIZED_NAME_CRITERIA)
+public class AutoPostResult {
+  public static final String SERIALIZED_NAME_ERROR = "error";
+  @SerializedName(SERIALIZED_NAME_ERROR)
   @javax.annotation.Nullable
-  private AiDecisionSides criteria;
+  private String error;
 
-  public static final String SERIALIZED_NAME_INSTRUCTIONS = "instructions";
-  @SerializedName(SERIALIZED_NAME_INSTRUCTIONS)
+  public static final String SERIALIZED_NAME_TO = "to";
+  @SerializedName(SERIALIZED_NAME_TO)
   @javax.annotation.Nullable
-  private Object instructions = null;
+  private String to;
 
-  public static final String SERIALIZED_NAME_LABELS = "labels";
-  @SerializedName(SERIALIZED_NAME_LABELS)
+  public static final String SERIALIZED_NAME_URL = "url";
+  @SerializedName(SERIALIZED_NAME_URL)
   @javax.annotation.Nullable
-  private Map<String, String> labels = new HashMap<>();
+  private String url;
 
-  /**
-   * Gets or Sets type
-   */
-  @JsonAdapter(TypeEnum.Adapter.class)
-  public enum TypeEnum {
-    NOUL("noul");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeEnum fromValue(String value) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      TypeEnum.fromValue(value);
-    }
+  public AutoPostResult() {
   }
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  @javax.annotation.Nonnull
-  private TypeEnum type;
-
-  public AiDecisionsNoul() {
-  }
-
-  public AiDecisionsNoul criteria(@javax.annotation.Nullable AiDecisionSides criteria) {
-    this.criteria = criteria;
+  public AutoPostResult error(@javax.annotation.Nullable String error) {
+    this.error = error;
     return this;
   }
 
   /**
-   * Get criteria
-   * @return criteria
+   * Error is the platform&#39;s reason it did not go; absent when it did.
+   * @return error
    */
   @javax.annotation.Nullable
-  public AiDecisionSides getCriteria() {
-    return criteria;
+  public String getError() {
+    return error;
   }
 
-  public void setCriteria(@javax.annotation.Nullable AiDecisionSides criteria) {
-    this.criteria = criteria;
+  public void setError(@javax.annotation.Nullable String error) {
+    this.error = error;
   }
 
 
-  public AiDecisionsNoul instructions(@javax.annotation.Nullable Object instructions) {
-    this.instructions = instructions;
+  public AutoPostResult to(@javax.annotation.Nullable String to) {
+    this.to = to;
     return this;
   }
 
   /**
-   * Get instructions
-   * @return instructions
+   * To is the account&#39;s platform: x, linkedin or facebook.
+   * @return to
    */
   @javax.annotation.Nullable
-  public Object getInstructions() {
-    return instructions;
+  public String getTo() {
+    return to;
   }
 
-  public void setInstructions(@javax.annotation.Nullable Object instructions) {
-    this.instructions = instructions;
+  public void setTo(@javax.annotation.Nullable String to) {
+    this.to = to;
   }
 
 
-  public AiDecisionsNoul labels(@javax.annotation.Nullable Map<String, String> labels) {
-    this.labels = labels;
-    return this;
-  }
-
-  public AiDecisionsNoul putLabelsItem(String key, String labelsItem) {
-    if (this.labels == null) {
-      this.labels = new HashMap<>();
-    }
-    this.labels.put(key, labelsItem);
+  public AutoPostResult url(@javax.annotation.Nullable String url) {
+    this.url = url;
     return this;
   }
 
   /**
-   * Get labels
-   * @return labels
+   * URL opens the post; absent when it did not go.
+   * @return url
    */
   @javax.annotation.Nullable
-  public Map<String, String> getLabels() {
-    return labels;
+  public String getUrl() {
+    return url;
   }
 
-  public void setLabels(@javax.annotation.Nullable Map<String, String> labels) {
-    this.labels = labels;
-  }
-
-
-  public AiDecisionsNoul type(@javax.annotation.Nonnull TypeEnum type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @javax.annotation.Nonnull
-  public TypeEnum getType() {
-    return type;
-  }
-
-  public void setType(@javax.annotation.Nonnull TypeEnum type) {
-    this.type = type;
+  public void setUrl(@javax.annotation.Nullable String url) {
+    this.url = url;
   }
 
   /**
@@ -223,9 +137,9 @@ public class AiDecisionsNoul {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the AiDecisionsNoul instance itself
+   * @return the AutoPostResult instance itself
    */
-  public AiDecisionsNoul putAdditionalProperty(String key, Object value) {
+  public AutoPostResult putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -264,38 +178,25 @@ public class AiDecisionsNoul {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AiDecisionsNoul aiDecisionsNoul = (AiDecisionsNoul) o;
-    return Objects.equals(this.criteria, aiDecisionsNoul.criteria) &&
-        Objects.equals(this.instructions, aiDecisionsNoul.instructions) &&
-        Objects.equals(this.labels, aiDecisionsNoul.labels) &&
-        Objects.equals(this.type, aiDecisionsNoul.type)&&
-        Objects.equals(this.additionalProperties, aiDecisionsNoul.additionalProperties);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    AutoPostResult autoPostResult = (AutoPostResult) o;
+    return Objects.equals(this.error, autoPostResult.error) &&
+        Objects.equals(this.to, autoPostResult.to) &&
+        Objects.equals(this.url, autoPostResult.url)&&
+        Objects.equals(this.additionalProperties, autoPostResult.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(criteria, instructions, labels, type, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(error, to, url, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AiDecisionsNoul {\n");
-    sb.append("    criteria: ").append(toIndentedString(criteria)).append("\n");
-    sb.append("    instructions: ").append(toIndentedString(instructions)).append("\n");
-    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("class AutoPostResult {\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    to: ").append(toIndentedString(to)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -318,57 +219,50 @@ public class AiDecisionsNoul {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("criteria", "instructions", "labels", "type"));
+    openapiFields = new HashSet<String>(Arrays.asList("error", "to", "url"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("type"));
+    openapiRequiredFields = new HashSet<String>(0);
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to AiDecisionsNoul
+   * @throws IOException if the JSON Element is invalid with respect to AutoPostResult
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!AiDecisionsNoul.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AiDecisionsNoul is not found in the empty JSON string", AiDecisionsNoul.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : AiDecisionsNoul.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        if (!AutoPostResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AutoPostResult is not found in the empty JSON string", AutoPostResult.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `criteria`
-      if (jsonObj.get("criteria") != null && !jsonObj.get("criteria").isJsonNull()) {
-        AiDecisionSides.validateJsonElement(jsonObj.get("criteria"));
+      if ((jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) && !jsonObj.get("error").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
       }
-      // validate the required field `type`
-      TypeEnum.validateJsonElement(jsonObj.get("type"));
+      if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!AiDecisionsNoul.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'AiDecisionsNoul' and its subtypes
+       if (!AutoPostResult.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AutoPostResult' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<AiDecisionsNoul> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(AiDecisionsNoul.class));
+       final TypeAdapter<AutoPostResult> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AutoPostResult.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<AiDecisionsNoul>() {
+       return (TypeAdapter<T>) new TypeAdapter<AutoPostResult>() {
            @Override
-           public void write(JsonWriter out, AiDecisionsNoul value) throws IOException {
+           public void write(JsonWriter out, AutoPostResult value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additional properties
@@ -396,12 +290,12 @@ public class AiDecisionsNoul {
            }
 
            @Override
-           public AiDecisionsNoul read(JsonReader in) throws IOException {
+           public AutoPostResult read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             AiDecisionsNoul instance = thisAdapter.fromJsonTree(jsonObj);
+             AutoPostResult instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -428,18 +322,18 @@ public class AiDecisionsNoul {
   }
 
   /**
-   * Create an instance of AiDecisionsNoul given an JSON string
+   * Create an instance of AutoPostResult given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of AiDecisionsNoul
-   * @throws IOException if the JSON string is invalid with respect to AiDecisionsNoul
+   * @return An instance of AutoPostResult
+   * @throws IOException if the JSON string is invalid with respect to AutoPostResult
    */
-  public static AiDecisionsNoul fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, AiDecisionsNoul.class);
+  public static AutoPostResult fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AutoPostResult.class);
   }
 
   /**
-   * Convert an instance of AiDecisionsNoul to an JSON string
+   * Convert an instance of AutoPostResult to an JSON string
    *
    * @return JSON string
    */

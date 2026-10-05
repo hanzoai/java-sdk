@@ -218,14 +218,16 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiAnthropicTool.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiAnthropicUsage.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiCacheWrites.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiChat.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiChatIn.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiClass.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiCostStats.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiDecideIn.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiDecision.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiDecisionSides.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiDecisionSidesFalse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiDecisionsAction.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiDecisionsAnswer.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiDecisionsChoice.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiDecisionsChoiceCriteriaValue.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiDecisionsNoul.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiDecisionsQuestion.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiDecisionsReason.CustomTypeAdapterFactory());
@@ -247,13 +249,16 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiLimitsSet.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiMCPApp.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiMCPSurface.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiModel.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiModelAccessInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiModelInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiModelList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiModelPricingInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiModelProviders.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiModels.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiPanelJudge.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiPaused.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiPrice.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiProviderUsage.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiProviderUsageModelSpend.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiProviderUsageSeriesPoint.CustomTypeAdapterFactory());
@@ -263,6 +268,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiRankedDoc.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiRankedText.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiRanking.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiReceipt.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiResponsesInputDetails.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiResponsesOutputDetails.CustomTypeAdapterFactory());
@@ -275,6 +281,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiRoutingEdit.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiRoutingProbe.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiRoutingProposal.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiRoutingRewardRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiRoutingRewardResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiRoutingView.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AiStatsWindow.CustomTypeAdapterFactory());
@@ -330,7 +337,9 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AutoLastRun.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AutoPatchFlowIn.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AutoPopulatedFlow.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AutoPostResult.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AutoPropSpec.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AutoReviewIn.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AutoRunHandle.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AutoRunIn.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.AutoRunPage.CustomTypeAdapterFactory());
@@ -1032,6 +1041,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.GitWorkflowRun.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.GitWorkflowRuns.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.GitWorkflowView.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.GitWorkspaceView.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.Grants.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.Graph.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.GraphGraphAnswerIn.CustomTypeAdapterFactory());
@@ -2797,6 +2807,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.TagConfig.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.Task.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.TaskBoardView.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.TaskComment.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.TaskCommentList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.TaskIssueEdit.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.TaskIssueHit.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.TaskIssueHits.CustomTypeAdapterFactory());

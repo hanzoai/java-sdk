@@ -97,6 +97,11 @@ public class AgentTargetView {
   @javax.annotation.Nullable
   private Long running;
 
+  public static final String SERIALIZED_NAME_SERVING = "serving";
+  @SerializedName(SERIALIZED_NAME_SERVING)
+  @javax.annotation.Nullable
+  private Boolean serving;
+
   public static final String SERIALIZED_NAME_SESSIONS = "sessions";
   @SerializedName(SERIALIZED_NAME_SESSIONS)
   @javax.annotation.Nullable
@@ -291,6 +296,25 @@ public class AgentTargetView {
   }
 
 
+  public AgentTargetView serving(@javax.annotation.Nullable Boolean serving) {
+    this.serving = serving;
+    return this;
+  }
+
+  /**
+   * Serving says whether a run the caller sends here now would be taken: the machine is the caller&#39;s (or the caller is an org admin), and it is online with a runner that polled for work within the last 90 seconds — the online and runner half is what dispatch checks (TargetDispatchable). A heartbeat alone keeps a machine online, not serving, and a colleague&#39;s machine never serves the caller.
+   * @return serving
+   */
+  @javax.annotation.Nullable
+  public Boolean getServing() {
+    return serving;
+  }
+
+  public void setServing(@javax.annotation.Nullable Boolean serving) {
+    this.serving = serving;
+  }
+
+
   public AgentTargetView sessions(@javax.annotation.Nullable Long sessions) {
     this.sessions = sessions;
     return this;
@@ -430,6 +454,7 @@ public class AgentTargetView {
         Objects.equals(this.metrics, agentTargetView.metrics) &&
         Objects.equals(this.metricsAt, agentTargetView.metricsAt) &&
         Objects.equals(this.running, agentTargetView.running) &&
+        Objects.equals(this.serving, agentTargetView.serving) &&
         Objects.equals(this.sessions, agentTargetView.sessions) &&
         Objects.equals(this.spec, agentTargetView.spec) &&
         Objects.equals(this.status, agentTargetView.status) &&
@@ -439,7 +464,7 @@ public class AgentTargetView {
 
   @Override
   public int hashCode() {
-    return Objects.hash(capacity, createdAt, host, id, kind, label, metrics, metricsAt, running, sessions, spec, status, updatedAt, additionalProperties);
+    return Objects.hash(capacity, createdAt, host, id, kind, label, metrics, metricsAt, running, serving, sessions, spec, status, updatedAt, additionalProperties);
   }
 
   @Override
@@ -455,6 +480,7 @@ public class AgentTargetView {
     sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    metricsAt: ").append(toIndentedString(metricsAt)).append("\n");
     sb.append("    running: ").append(toIndentedString(running)).append("\n");
+    sb.append("    serving: ").append(toIndentedString(serving)).append("\n");
     sb.append("    sessions: ").append(toIndentedString(sessions)).append("\n");
     sb.append("    spec: ").append(toIndentedString(spec)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
@@ -481,7 +507,7 @@ public class AgentTargetView {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("capacity", "createdAt", "host", "id", "kind", "label", "metrics", "metricsAt", "running", "sessions", "spec", "status", "updatedAt"));
+    openapiFields = new HashSet<String>(Arrays.asList("capacity", "createdAt", "host", "id", "kind", "label", "metrics", "metricsAt", "running", "serving", "sessions", "spec", "status", "updatedAt"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

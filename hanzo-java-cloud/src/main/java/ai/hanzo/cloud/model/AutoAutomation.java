@@ -22,7 +22,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -106,6 +108,11 @@ public class AutoAutomation {
   @SerializedName(SERIALIZED_NAME_PERMISSIONS)
   @javax.annotation.Nullable
   private String permissions;
+
+  public static final String SERIALIZED_NAME_POST_TO = "postTo";
+  @SerializedName(SERIALIZED_NAME_POST_TO)
+  @javax.annotation.Nullable
+  private List<String> postTo = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)
@@ -334,6 +341,33 @@ public class AutoAutomation {
   }
 
 
+  public AutoAutomation postTo(@javax.annotation.Nullable List<String> postTo) {
+    this.postTo = postTo;
+    return this;
+  }
+
+  public AutoAutomation addPostToItem(String postToItem) {
+    if (this.postTo == null) {
+      this.postTo = new ArrayList<>();
+    }
+    this.postTo.add(postToItem);
+    return this;
+  }
+
+  /**
+   * PostTo are the connected accounts each run&#39;s answer is posted to — x, linkedin, facebook — after review when Permissions is ask (post.go). Never null.
+   * @return postTo
+   */
+  @javax.annotation.Nullable
+  public List<String> getPostTo() {
+    return postTo;
+  }
+
+  public void setPostTo(@javax.annotation.Nullable List<String> postTo) {
+    this.postTo = postTo;
+  }
+
+
   public AutoAutomation project(@javax.annotation.Nullable String project) {
     this.project = project;
     return this;
@@ -456,6 +490,7 @@ public class AutoAutomation {
         Objects.equals(this.next, autoAutomation.next) &&
         Objects.equals(this.notify, autoAutomation.notify) &&
         Objects.equals(this.permissions, autoAutomation.permissions) &&
+        Objects.equals(this.postTo, autoAutomation.postTo) &&
         Objects.equals(this.project, autoAutomation.project) &&
         Objects.equals(this.schedule, autoAutomation.schedule) &&
         Objects.equals(this.updated, autoAutomation.updated)&&
@@ -464,7 +499,7 @@ public class AutoAutomation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, draft, enabled, id, instructions, last, model, name, next, notify, permissions, project, schedule, updated, additionalProperties);
+    return Objects.hash(created, draft, enabled, id, instructions, last, model, name, next, notify, permissions, postTo, project, schedule, updated, additionalProperties);
   }
 
   @Override
@@ -482,6 +517,7 @@ public class AutoAutomation {
     sb.append("    next: ").append(toIndentedString(next)).append("\n");
     sb.append("    notify: ").append(toIndentedString(notify)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
+    sb.append("    postTo: ").append(toIndentedString(postTo)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
@@ -507,7 +543,7 @@ public class AutoAutomation {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("created", "draft", "enabled", "id", "instructions", "last", "model", "name", "next", "notify", "permissions", "project", "schedule", "updated"));
+    openapiFields = new HashSet<String>(Arrays.asList("created", "draft", "enabled", "id", "instructions", "last", "model", "name", "next", "notify", "permissions", "postTo", "project", "schedule", "updated"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -550,6 +586,10 @@ public class AutoAutomation {
       }
       if ((jsonObj.get("permissions") != null && !jsonObj.get("permissions").isJsonNull()) && !jsonObj.get("permissions").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `permissions` to be a primitive type in the JSON string but got `%s`", jsonObj.get("permissions").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("postTo") != null && !jsonObj.get("postTo").isJsonNull() && !jsonObj.get("postTo").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `postTo` to be an array in the JSON string but got `%s`", jsonObj.get("postTo").toString()));
       }
       if ((jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) && !jsonObj.get("project").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `project` to be a primitive type in the JSON string but got `%s`", jsonObj.get("project").toString()));

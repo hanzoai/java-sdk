@@ -14,7 +14,6 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.AiDecisionSidesFalse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -56,12 +56,12 @@ public class AiDecisionsScore {
   public static final String SERIALIZED_NAME_CRITERIA = "criteria";
   @SerializedName(SERIALIZED_NAME_CRITERIA)
   @javax.annotation.Nonnull
-  private List<AiDecisionSidesFalse> criteria = new ArrayList<>();
+  private List<Object> criteria = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_INSTRUCTIONS = "instructions";
   @SerializedName(SERIALIZED_NAME_INSTRUCTIONS)
   @javax.annotation.Nullable
-  private AiDecisionSidesFalse instructions;
+  private Object instructions = null;
 
   /**
    * Gets or Sets type
@@ -121,12 +121,12 @@ public class AiDecisionsScore {
   public AiDecisionsScore() {
   }
 
-  public AiDecisionsScore criteria(@javax.annotation.Nonnull List<AiDecisionSidesFalse> criteria) {
+  public AiDecisionsScore criteria(@javax.annotation.Nonnull List<Object> criteria) {
     this.criteria = criteria;
     return this;
   }
 
-  public AiDecisionsScore addCriteriaItem(AiDecisionSidesFalse criteriaItem) {
+  public AiDecisionsScore addCriteriaItem(Object criteriaItem) {
     if (this.criteria == null) {
       this.criteria = new ArrayList<>();
     }
@@ -139,16 +139,16 @@ public class AiDecisionsScore {
    * @return criteria
    */
   @javax.annotation.Nonnull
-  public List<AiDecisionSidesFalse> getCriteria() {
+  public List<Object> getCriteria() {
     return criteria;
   }
 
-  public void setCriteria(@javax.annotation.Nonnull List<AiDecisionSidesFalse> criteria) {
+  public void setCriteria(@javax.annotation.Nonnull List<Object> criteria) {
     this.criteria = criteria;
   }
 
 
-  public AiDecisionsScore instructions(@javax.annotation.Nullable AiDecisionSidesFalse instructions) {
+  public AiDecisionsScore instructions(@javax.annotation.Nullable Object instructions) {
     this.instructions = instructions;
     return this;
   }
@@ -158,11 +158,11 @@ public class AiDecisionsScore {
    * @return instructions
    */
   @javax.annotation.Nullable
-  public AiDecisionSidesFalse getInstructions() {
+  public Object getInstructions() {
     return instructions;
   }
 
-  public void setInstructions(@javax.annotation.Nullable AiDecisionSidesFalse instructions) {
+  public void setInstructions(@javax.annotation.Nullable Object instructions) {
     this.instructions = instructions;
   }
 
@@ -246,9 +246,20 @@ public class AiDecisionsScore {
         Objects.equals(this.additionalProperties, aiDecisionsScore.additionalProperties);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(criteria, instructions, type, additionalProperties);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -306,19 +317,11 @@ public class AiDecisionsScore {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("criteria").isJsonArray()) {
+      // ensure the required json array is present
+      if (jsonObj.get("criteria") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("criteria").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `criteria` to be an array in the JSON string but got `%s`", jsonObj.get("criteria").toString()));
-      }
-
-      JsonArray jsonArraycriteria = jsonObj.getAsJsonArray("criteria");
-      // validate the required field `criteria` (array)
-      for (int i = 0; i < jsonArraycriteria.size(); i++) {
-        AiDecisionSidesFalse.validateJsonElement(jsonArraycriteria.get(i));
-      };
-      // validate the optional field `instructions`
-      if (jsonObj.get("instructions") != null && !jsonObj.get("instructions").isJsonNull()) {
-        AiDecisionSidesFalse.validateJsonElement(jsonObj.get("instructions"));
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
